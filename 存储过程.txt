@@ -1,0 +1,48 @@
+ALTER PROCEDURE [dbo].[outinshop]
+	@name nvarchar(50),
+	@outintype int,
+	@pageIndex int,
+	@pageSize int
+as
+begin
+	select ROW_NUMBER() over(order by CreateTime desc) num,* into #temp from
+	(
+			--采购
+			select 3 as OutInType,b.Number as Number,null as OutShop,b.ShopId as InShop, a.ProductId,p.Name as ProductName,a.Quantity, a.CreateTime,a.CreateBy
+			from Todo_PurchaseDetail a 
+			inner join Todo_Purchase  b on a.ParentId=b.id
+			inner join Todo_Product p on a.ProductId=p.Id
+			where p.Name like '%'+@name+'%'
+
+			--转出
+			union all
+
+			select 1 as OutInType,b.Number as Number,b.OutShop, b.InShop as InShop, a.ProductId,p.Name as ProductName,-a.Quantity, a.CreateTime,a.CreateBy
+			from Todo_AdjustStockDetail a 
+			inner join Todo_AdjustStock  b on a.ParentId=b.id
+			inner join Todo_Product p on a.ProductId=p.Id
+			where p.Name like '%'+@name+'%'
+
+			--转入
+			union all
+
+			select 2 as OutInType,b.Number as Number,b.OutShop, b.InShop as InShop, a.ProductId,p.Name as ProductName,a.Quantity, a.CreateTime,a.CreateBy
+			from Todo_AdjustStockDetail a 
+			inner join Todo_AdjustStock  b on a.ParentId=b.id
+			inner join Todo_Product p on a.ProductId=p.Id
+			where p.Name like '%'+@name+'%'
+	) f
+
+	--查询
+	select * from #temp 
+	where num > (@pageIndex-1)*@pageSize and num <= @pageIndex*@pageSize
+	and OutInType=(case @outintype when 0 then OutInType else @outintype end)
+
+	--总数
+	select count(1) as TotalItems from #temp
+	where OutInType=(case @outintype when 0 then OutInType else @outintype end)
+
+	--数量汇总
+	select sum(quantity) as TotalQuantity from #temp
+	where OutInType=(case @outintype when 0 then OutInType else @outintype end)
+end

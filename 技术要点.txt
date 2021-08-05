@@ -1,0 +1,53 @@
+=======代码技术部分========
+1.EF对自定义字符串字段排序
+	Extention.Order.OrderBy
+2.EF对自定义条件筛选
+	Extention.Search.WhereFilter
+3.EF对返回结果指定字段数据汇总
+	Extention.Summary.Summary
+	汇总类型转换：https://blog.csdn.net/xiaohan2826/article/details/8536074
+4.表关联查询
+	Extention.Select.BuildExtendSelectExpre
+5.实体映射
+	Extention.Map.Map/MapList
+6.层表设计
+	DetailTableInfo
+	不在模型中定义层表结构也能获取到参数：
+		1,扩展方法：HttpRequest.GetFormData
+		2,Startup配置:
+		services.Configure<KestrelServerOptions>(options =>
+        {
+            options.AllowSynchronousIO = true;
+        });
+		app.Use(next => new RequestDelegate(
+            async context =>
+            {
+                context.Request.EnableBuffering();
+                await next(context);
+            }
+        ));
+7.操作日志设计(即对所有数据表进行新曾、删除、修改后存留的记录数据)
+8.返回指定字段
+	dynamic obj = new System.Dynamic.ExpandoObject();
+	((IDictionary<string, object>)obj).Add(propertyInfo.Name.FirstToLower(), propertyInfo.GetValue(item));
+	
+
+
+
+======任务调度器========
+
+======日志服务=======
+注入logger：在StartUp.Configure中注入ILoggerFactory，并调用 loggerFactory.AddNLog();
+配置日志文件：nlog.config
+在需要记录日志的地方注入日志服务(ILogger<TModel>)并在需要记录日志的地方调用记录日志方法
+
+
+==========Token及身份认证==========
+1,Startup中配置身份认证
+
+==========登录缓存(Redis)==========
+前提：引入，ServiceStack.Redis，建立Cache公共类
+1,登录，返回token，并将token写入header中
+2,登录之后，将User信息保存到Redis缓存中
+3,查询数据时，校验是否将数据写入缓存(默认不写入)，在控制中将IsWriteCache=true，则会写入缓存，缓存Key为"视图模对象名称+Cache"
+4,取数据时，先校验是否有缓存，若有则从缓存中取数据

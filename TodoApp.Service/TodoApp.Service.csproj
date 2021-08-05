@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="ShopManager\PurchaseService.cs~RF1a35649d.TMP" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Todo.App.Cache\Todo.App.Cache.csproj" />
+    <ProjectReference Include="..\TodoApp.IService\TodoApp.IService.csproj" />
+    <ProjectReference Include="..\TodoApp.Repository\TodoApp.Repository.csproj" />
+    <ProjectReference Include="..\TodoApp.Util\TodoApp.Util.csproj" />
+  </ItemGroup>
+
+</Project>

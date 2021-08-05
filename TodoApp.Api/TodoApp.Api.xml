@@ -1,0 +1,180 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>TodoApp.Api</name>
+    </assembly>
+    <members>
+        <member name="M:TodoApp.Api.Api.Patten.ApiBase`2.Insert(`0)">
+            <summary>
+            新增
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TodoApp.Api.Api.Patten.ApiBase`2.Update(`0)">
+            <summary>
+            修改
+            </summary>
+            <param name="entity"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TodoApp.Api.Api.Patten.ApiBase`2.GetModelById(System.Guid)">
+            <summary>
+            获取对象
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TodoApp.Api.Api.Patten.ApiBase`2.Delete(System.Collections.Generic.List{`1})">
+            <summary>
+            删除
+            </summary>
+            <param name="ids"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TodoApp.Api.Api.Patten.ApiBase`2.CancelDelete(System.Collections.Generic.List{`1})">
+            <summary>
+            取消删除
+            </summary>
+            <param name="ids"></param>
+            <returns></returns>
+        </member>
+        <member name="P:TodoApp.Api.Api.Patten.LoadOptions.Skip">
+            <summary>
+            跳过记录数
+            </summary>
+        </member>
+        <member name="P:TodoApp.Api.Api.Patten.LoadOptions.Take">
+            <summary>
+            返回记录数
+            </summary>
+        </member>
+        <member name="P:TodoApp.Api.Api.Patten.LoadOptions.IsCountQuery">
+            <summary>
+            是否返回汇总记录
+            </summary>
+        </member>
+        <member name="P:TodoApp.Api.Api.Patten.LoadOptions.CountField">
+            <summary>
+            汇总字段
+            </summary>
+        </member>
+        <member name="P:TodoApp.Api.Api.Patten.LoadOptions.select">
+            <summary>
+            查询字段
+            </summary>
+        </member>
+        <member name="P:TodoApp.Api.Api.Patten.LoadOptions.Filter">
+            <summary>
+            过滤条件
+            </summary>
+        </member>
+        <member name="P:TodoApp.Api.Api.Patten.LoadOptions.sortfilter">
+            <summary>
+            排序
+            </summary>
+        </member>
+        <member name="P:TodoApp.Api.Api.Patten.LoadResult.Data">
+            <summary>
+            结果集
+            </summary>
+        </member>
+        <member name="P:TodoApp.Api.Api.Patten.LoadResult.TModel">
+            <summary>
+            汇总对象
+            </summary>
+        </member>
+        <member name="P:TodoApp.Api.Api.Patten.LoadResult.TotalSummary">
+            <summary>
+            总记录数
+            </summary>
+        </member>
+        <member name="M:TodoApp.Api.Api.Patten.TreeApiBase`2.GetTreeData">
+            <summary>
+            获取树型结构数据集合
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:TodoApp.Api.Controllers.ShopManager.ShopController.OutInShopList(TodoApp.IService.DTO.PageInput{TodoApp.IService.DTO.ShopManager.OutInShopInput})">
+            <summary>
+            出入库记录
+            </summary>
+            <param name="obj"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TodoApp.Api.Controllers.UserManager.UserController.GetToken(System.String,System.String)">
+            <summary>
+            登录
+            </summary>
+            <param name="userName">帐号</param>
+            <param name="password">密码</param>
+            <returns></returns>
+        </member>
+        <member name="M:TodoApp.Api.Helper.DateTimeUtil.Unix2Datetime(System.Double)">
+            <summary>
+            将Unix时间戳(秒) 转换为 DateTime时间
+            </summary>
+            <param name="secondsFrom1970"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TodoApp.Api.Helper.DateTimeUtil.Datetime2Unix(System.DateTime)">
+            <summary>
+            将DateTime时间 转换为 Unix时间戳(秒)
+            </summary>
+            <param name="time"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TodoApp.Api.Helper.JWTUtil.GetToken(TodoApp.Entity.Model.UserModel.User)">
+            <summary>
+            把源数据转换成JWT加密串
+            </summary>
+            <param name="payload"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TodoApp.Api.Helper.JWTUtil.GetToken(TodoApp.Entity.Model.UserModel.User,System.String)">
+            <summary>
+            把源数据转换成JWT加密串
+            </summary>
+            <param name="payload">源数据</param>
+            <param name="key">密钥</param>
+            <returns></returns>
+        </member>
+        <member name="M:TodoApp.Api.Helper.JWTUtil.ValidateLogin(System.Security.Claims.ClaimsIdentity)">
+            <summary>
+            校验用户是否已登陆
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="F:TodoApp.Api.Model.Appsettings.Issuer">
+            <summary>
+            JWT的Issuer，token是谁颁发的
+            </summary>
+        </member>
+        <member name="F:TodoApp.Api.Model.Appsettings.Audience">
+            <summary>
+            JWT的Audience，token可以给那些客户端使用
+            </summary>
+        </member>
+        <member name="F:TodoApp.Api.Model.Appsettings.SecretKey">
+            <summary>
+            JWT的SecretKey，长度必须大于16
+            </summary>
+        </member>
+        <member name="F:TodoApp.Api.Model.Appsettings.TokenValidMinutes">
+            <summary>
+            JWT的Token有效期
+            </summary>
+        </member>
+        <member name="F:TodoApp.Api.Model.Appsettings.TokenCacheMinutes">
+            <summary>
+            JWT的Token失效缓冲期
+            </summary>
+        </member>
+        <member name="M:TodoApp.Api.Model.Appsettings.Initial(Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            初始化json文件中的配置项
+            </summary>
+            <param name="configuration"></param>
+        </member>
+    </members>
+</doc>
