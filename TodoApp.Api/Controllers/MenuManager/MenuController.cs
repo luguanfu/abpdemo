@@ -5,18 +5,26 @@ using System.Linq;
 using System.Threading.Tasks;
 using TodoApp.Api.Api.Patten;
 using TodoApp.Entity.Model.MenuManager;
+using TodoApp.IService.DTO.MenuManager;
 using TodoApp.IService.IService.MenuManager;
+using TodoApp.IService.IService.Patten;
 
 namespace TodoApp.Api.Controllers.MenuManager
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class MenuController : TreeApiControllerBase<Menu, Guid>
+    public class MenuController : TreeApiBase<Menu, Guid>
     {
-        protected override bool? IsDeleted => null;
+        protected override bool IgnoreAuth => true;
+
         protected override List<Menu> GetListByParentId(Guid? parentId)
         {
             return GetService<IMenuService>().GetQuery().Where(s => s.ParentId == parentId).ToList();
         }
+
+        //protected override IQueryable<MenuViewModel> ProcessGetListViewModelDataQuery()
+        //{
+        //    return GetService<IMenuService>().GetListData();
+        //}
     }
 }

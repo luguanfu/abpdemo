@@ -1,16 +1,16 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using TodoApp.Entity.Patten;
-using TodoApp.IService.IService.Patten;
 
 namespace TodoApp.Api.Api.Patten
 {
-    public abstract class TreeApiControllerBase<TEntity, TKey> : TreeApiBase<TEntity, TKey>
+    public abstract class TreeApiBase<TEntity, TGetViewModel, TGetListViewModel, TKey> : TreeApiBase<TEntity, TGetListViewModel, TKey>
         where TEntity : class, ITreeEntity<TKey>, new()
+        where TGetListViewModel : class
         where TKey : struct
     {
-        protected override BillNumberRule billNumberRule => null;
     }
 }

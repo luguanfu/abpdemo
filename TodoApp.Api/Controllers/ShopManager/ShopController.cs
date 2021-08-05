@@ -14,7 +14,7 @@ namespace TodoApp.Api.Controllers.ShopManager
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ShopController : ApiControllerBase<Shop, Guid>
+    public class ShopController : ApiBase<Shop, Guid>
     {
         /// <summary>
         /// 出入库记录

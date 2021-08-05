@@ -14,11 +14,20 @@ using TodoApp.Service.OperationLogManager;
 
 namespace TodoApp.Service.Patten
 {
+    /// <summary>
+    /// 服务基类
+    /// </summary>
+    /// <typeparam name="TEntity"></typeparam>
+    /// <typeparam name="TKey"></typeparam>
     public class ServiceBase<TEntity, TKey> : IServiceBase<TEntity, TKey>
         where TEntity : class, new()
     {
         public EfDbContext context;
         DbSet<TEntity> DbSet { get; set; }
+        /// <summary>
+        /// 是否查询已删除的数据
+        /// </summary>
+        protected virtual bool? IsDelete => false;
 
         public ServiceBase()
         {
@@ -251,7 +260,17 @@ namespace TodoApp.Service.Patten
         }
         public virtual IQueryable<TEntity> GetQuery()
         {
-            return DbSet.AsQueryable();
+            var query = DbSet.AsQueryable();
+            if (IsDelete.HasValue)
+            {
+                Type t = typeof(TEntity);
+                var pro = t.GetProperties().FirstOrDefault(s => s.Name.Equals("IsDeleted"));
+                if (pro != null)
+                {
+                    query = query.WhereFilter(new SearchField[] { new SearchField { Field = pro.Name, Op = "=", Value = IsDelete?.ToString() } });
+                }
+            }
+            return query;
         }
         public TEntity GetModelById(Guid? id)
         {
@@ -330,12 +349,25 @@ namespace TodoApp.Service.Patten
             }
             return true;
         }
-
+        /// <summary>
+        /// 执行sql返回结果集
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="sql"></param>
+        /// <param name="parameters"></param>
+        /// <returns></returns>
         public IEnumerable<T> SqlQuery<T>(string sql,params SqlParameter[] parameters)
             where T : class, new()
         {
             return context.Database.SqlQuery<T>(sql, parameters);
         }
+        /// <summary>
+        /// 执行存储过程返回结果集
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="sql"></param>
+        /// <param name="parameters"></param>
+        /// <returns></returns>
         public Tuple<IEnumerable<T>,int> SqlProcedure<T>(string sql, params SqlParameter[] parameters)
             where T : class, new()
         {

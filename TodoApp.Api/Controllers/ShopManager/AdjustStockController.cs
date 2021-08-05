@@ -9,7 +9,7 @@ using TodoApp.IService.IService.Patten;
 
 namespace TodoApp.Api.Controllers.ShopManager
 {
-    public class AdjustStockController : NumberApiControllerBase<AdjustStock, Guid>
+    public class AdjustStockController : NumberApiBase<AdjustStock, Guid>
     {
         readonly DetailTableInfo<AdjustStockDetail, Guid> _detailEmp = new DetailTableInfo<AdjustStockDetail, Guid>
         {

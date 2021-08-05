@@ -15,7 +15,7 @@ namespace TodoApp.Api.Controllers.UserManager
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class UserController : ApiControllerBase<User, Guid>
+    public class UserController : ApiBase<User, Guid>
     {
         /// <summary>
         /// 登录

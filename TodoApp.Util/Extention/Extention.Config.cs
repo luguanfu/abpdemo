@@ -37,5 +37,16 @@ namespace TodoApp
             //    .Value;
             //return appconfig;
         }
+        public static string GetConfigValue(string key)
+        {
+            string keyDir = System.IO.Directory.GetCurrentDirectory();
+
+            IConfiguration config = new ConfigurationBuilder()
+                .SetBasePath(keyDir)
+                .Add(new JsonConfigurationSource { Path = "appsettings.json", ReloadOnChange = true })
+                .Build();
+
+            return config[key];
+        }
     }
 }

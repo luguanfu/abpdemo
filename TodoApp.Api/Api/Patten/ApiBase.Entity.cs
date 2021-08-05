@@ -11,6 +11,7 @@ using System.Runtime.CompilerServices;
 using System.Runtime.Loader;
 using System.Text;
 using System.Threading.Tasks;
+using Todo.App.Cache;
 using TodoApp.Api.Api.DetailTable;
 using TodoApp.Entity.Patten;
 using TodoApp.IService.IService.Patten;
@@ -19,23 +20,55 @@ using TodoApp.Service.Patten;
 
 namespace TodoApp.Api.Api.Patten
 {
-    //[Authorize]
+    /// <summary>
+    /// 控制器基类
+    /// </summary>
+    /// <typeparam name="TEntity"></typeparam>
+    /// <typeparam name="TKey"></typeparam>
     [ApiController]
-    public abstract class ApiBase<TEntity, TKey> : ControllerBase
+    public abstract class ApiBase<TEntity, TKey> : ApiBase
         where TEntity : class, IEntity<TKey>, new()
         where TKey : struct
     {
+        /// <summary>
+        /// 服务基类
+        /// </summary>
         protected ServiceBase<TEntity, TKey> services = new ServiceBase<TEntity, TKey>();
-
+        /// <summary>
+        /// 返回类型对象
+        /// </summary>
         protected virtual ApiResult ApiResult => new ApiResult();
+        /// <summary>
+        /// 是否写入缓存
+        /// </summary>
         protected virtual bool IsWriteCache => false;
+        /// <summary>
+        /// 添加或修改层表结构
+        /// </summary>
         protected virtual List<IDetailTableInfo<TKey>> DetailsTableInfo => null;
+        /// <summary>
+        /// 删除层表结构
+        /// </summary>
         protected virtual List<IDeleteTableInfo<TKey>> DeletesTableInfo => null;
+        /// <summary>
+        /// 是否获取已删除的数据
+        /// </summary>
         protected virtual bool? IsDeleted => false;
-        protected abstract BillNumberRule billNumberRule { get; }
+        /// <summary>
+        /// 是否显示全部数据
+        /// </summary>
+        protected virtual bool IgnoreAuth => false;
+        /// <summary>
+        /// 编号自动生成对象
+        /// </summary>
+        protected virtual BillNumberRule billNumberRule => null;
 
         #region GetList
-
+        /// <summary>
+        /// 获取列表
+        /// </summary>
+        /// <param name="options"></param>
+        /// <returns></returns>
         [HttpPost, Route("GetList")]
         public virtual async Task<ApiResult<LoadResult>> GetList([FromBody] LoadOptions options)
         {
@@ -46,18 +79,33 @@ namespace TodoApp.Api.Api.Patten
         protected virtual LoadResult ProcessGetLoadResult(LoadOptions options)
         {
             var list = services.GetQuery();
+
+            Type type = typeof(TEntity);
+            var propertys = type.GetProperties();
             if (IsDeleted.HasValue)
             {
-                Type type = typeof(TEntity);
-                var propertys = type.GetProperties();
                 if (propertys.FirstOrDefault(s => s.Name.Equals("IsDeleted")) != null)
                 {
                     list = list.WhereFilter(new SearchField[] { new SearchField { Field = "IsDeleted", Op = "=", Value = IsDeleted.ToString() } });
                 }
             }
+            if (!IgnoreAuth)
+            {
+                if (propertys.FirstOrDefault(s => s.Name.Equals("CreateBy")) != null)
+                {
+                    list = list.WhereFilter(new SearchField[] { new SearchField { Field = "CreateBy", Op = "=", Value = UserCacheProject.LoginUserId.ToString() } });
+                }
+            }
 
             return Search(list, options);
         }
+        /// <summary>
+        /// 按条件筛选和排序
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="list"></param>
+        /// <param name="options"></param>
+        /// <returns></returns>
         protected virtual LoadResult Search<T>(IQueryable<T> list, LoadOptions options)
             where T : class
         {
@@ -94,6 +142,13 @@ namespace TodoApp.Api.Api.Patten
 
             return result;
         }
+        /// <summary>
+        /// 返回指定字段匿名对象
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="list"></param>
+        /// <param name="select"></param>
+        /// <returns></returns>
         private IEnumerable<dynamic> SelectData<T>(List<T> list, string[] select)
         {
             if (select != null && select.Length > 0)
@@ -119,6 +174,10 @@ namespace TodoApp.Api.Api.Patten
             }
             return list.Select(s => (dynamic)s);
         }
+        /// <summary>
+        /// 处理结果集
+        /// </summary>
+        /// <param name="list"></param>
         protected virtual void GetListReload(LoadResult list)
         {
 
@@ -163,7 +222,6 @@ namespace TodoApp.Api.Api.Patten
         /// </summary>
         /// <param name="entity"></param>
         /// <returns></returns>
-
         [Route("Insert")]
         [HttpPost]
         public async Task<ApiResult<TEntity>> Insert([FromBody] TEntity entity)
@@ -188,7 +246,10 @@ namespace TodoApp.Api.Api.Patten
 
             return await ApiResult.Of(entity);
         }
-
+        /// <summary>
+        /// 生成编号
+        /// </summary>
+        /// <param name="entity"></param>
         protected virtual void ProcessNumberBeforeSave(TEntity entity)
         {
             if (billNumberRule != null)
@@ -208,6 +269,10 @@ namespace TodoApp.Api.Api.Patten
                 }
             }
         }
+        /// <summary>
+        /// 添加层表数据
+        /// </summary>
+        /// <param name="model"></param>
         protected virtual void ProcessSaveDetailTableData(TEntity model)
         {
             if (DetailsTableInfo != null)
@@ -264,27 +329,7 @@ namespace TodoApp.Api.Api.Patten
         {
             return await ApiResult.Of(services.GetModelById(id));
         }
-        protected virtual TService GetService<TService>() where TService : IDependency
-        {
-            var builder = DependencyResolver();
-            using (var container = builder.Build())
-            {
-                return container.Resolve<TService>();
-            }
-        }
-        private ContainerBuilder DependencyResolver()
-        {
-            var builder = new ContainerBuilder();
-            Type basetype = typeof(IDependency); //获取顶级接口类型
-            builder.RegisterAssemblyTypes(
-                Assembly.GetExecutingAssembly(),
-                AssemblyLoadContext.Default.LoadFromAssemblyName(new AssemblyName("TodoApp.Service")),
-                AssemblyLoadContext.Default.LoadFromAssemblyName(new AssemblyName("TodoApp.IService"))
-                )
-            .Where(t => basetype.IsAssignableFrom(t) && t.IsClass) //查询继承自顶级接口IDependency的实现类，如果没有这句，则注册所有当前运行环境中接口实现类
-            .AsImplementedInterfaces().InstancePerLifetimeScope();
-            return builder;
-        }
+        
         /// <summary>
         /// 删除
         /// </summary>
@@ -312,6 +357,10 @@ namespace TodoApp.Api.Api.Patten
                 throw new Exception(ex.Message);
             }
         }
+        /// <summary>
+        /// 删除层表数据
+        /// </summary>
+        /// <param name="parentId"></param>
         protected virtual void ProcessDeleteDetailTableData(TKey parentId)
         {
             foreach (IDeleteTableInfo<TKey> item in DeletesTableInfo)

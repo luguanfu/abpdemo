@@ -23,7 +23,7 @@ namespace TodoApp.Api.Controllers.ProductManager
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ProductController : ApiControllerBase<Product, ProductViewModel, Guid>
+    public class ProductController : ApiBase<Product, ProductViewModel, Guid>
     {
         private readonly ILogger<ProductController> logger;
         public ProductController(ILogger<ProductController> logger)
@@ -111,7 +111,7 @@ namespace TodoApp.Api.Controllers.ProductManager
             return new ContentResult() { Content = JsonConvert.SerializeObject(value) };
         }
 
-        public override IQueryable<ProductViewModel> ProcessGetListViewModelDataQuery()
+        protected override IQueryable<ProductViewModel> ProcessGetListViewModelDataQuery()
         {
             return GetService<IProductService>().GetListData();
         }

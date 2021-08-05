@@ -10,7 +10,7 @@ namespace TodoApp.Api.Controllers.OperationLogManager
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class OperationLogController : ApiControllerBase<OperationLog, Guid>
+    public class OperationLogController : ApiBase<OperationLog, Guid>
     {
     }
 }

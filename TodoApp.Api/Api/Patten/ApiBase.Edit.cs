@@ -7,18 +7,21 @@ using TodoApp.Entity.Patten;
 
 namespace TodoApp.Api.Api.Patten
 {
-    public abstract class ApiBase<TEntity, TEntityGetModel, TEntityViewModel, TKey> : ApiBase<TEntity, TKey>
-        where TEntity : class, IEntity<TKey>,new()
+    public abstract class ApiBase<TEntity, TGetViewModel, TGetListViewModel, TKey> : ApiBase<TEntity, TGetListViewModel, TKey>
+        where TEntity : class, IEntity<TKey>, new()
+        where TGetListViewModel : class
         where TKey : struct
     {
-        public virtual IQueryable<TEntityViewModel> ProcessGetListViewModelDataQuery()
-        {
-            return null;
-        }
+        /// <summary>
+        /// 获取视图模型对象
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [HttpGet, Route("GetViewModelById")]
-        public virtual TEntityGetModel ProcessGetViewModelById(Guid id)
+        public virtual TGetViewModel GetViewModelById(Guid id)
         {
-            throw new NotImplementedException();
+            return ProcessGetViewModelById(id);
         }
+        protected abstract TGetViewModel ProcessGetViewModelById(Guid id);
     }
 }

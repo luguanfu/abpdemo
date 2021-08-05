@@ -255,7 +255,7 @@ namespace TodoApp
             bool isaddps = false; 
             foreach (var item in ps)
             {
-                var pro = this.p_model.Type.GetProperty(item.name);
+                var pro = this.p_model.Type.GetProperties().FirstOrDefault(s => s.Name.ToLower().Equals(item.name.ToLower()));
                 if (pro == null)
                     continue;
                 if (!item.IsAddWhere(pro.PropertyType))

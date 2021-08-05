@@ -4,5 +4,5 @@ update-database -Context PublicDbContext
 
 
 业务库
-Add-Migration 自定义 -Context OacDbContext -Project "Zny.Repository"
-Update-Database -Context OacDbContext -Project "Zny.Repository"
+Add-Migration 自定义 -Context OacDbContext -Project "xxx"
+Update-Database -Context OacDbContext -Project "xxx"
