@@ -10,6 +10,9 @@ using TodoApp.IService.IService.Patten;
 
 namespace TodoApp.Api.Controllers.ShopManager
 {
+    /// <summary>
+    /// 采购
+    /// </summary>
     [Route("api/[controller]")]
     [ApiController]
     public class PurchaseController : NumberApiBase<Purchase, Guid>

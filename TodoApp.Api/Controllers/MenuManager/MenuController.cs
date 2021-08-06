@@ -11,15 +11,19 @@ using TodoApp.IService.IService.Patten;
 
 namespace TodoApp.Api.Controllers.MenuManager
 {
+    /// <summary>
+    /// 菜单服务
+    /// </summary>
     [Route("api/[controller]")]
     [ApiController]
     public class MenuController : TreeApiBase<Menu, Guid>
     {
         protected override bool IgnoreAuth => true;
+        protected override bool? IsDeleted => null;
 
         protected override List<Menu> GetListByParentId(Guid? parentId)
         {
-            return GetService<IMenuService>().GetQuery().Where(s => s.ParentId == parentId).ToList();
+            return GetService<IMenuService>().GetQuery(IsDeleted).Where(s => s.ParentId == parentId).ToList();
         }
 
         //protected override IQueryable<MenuViewModel> ProcessGetListViewModelDataQuery()

@@ -21,6 +21,9 @@ using TodoApp.Repository;
 
 namespace TodoApp.Api.Controllers.ProductManager
 {
+    /// <summary>
+    /// 产品
+    /// </summary>
     [Route("api/[controller]")]
     [ApiController]
     public class ProductController : ApiBase<Product, ProductViewModel, Guid>

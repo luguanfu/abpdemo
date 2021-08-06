@@ -210,12 +210,52 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="T:TodoApp.Api.Controllers.MenuManager.MenuController">
+            <summary>
+            菜单服务
+            </summary>
+        </member>
+        <member name="T:TodoApp.Api.Controllers.OperationLogManager.OperationLogController">
+            <summary>
+            操作日志
+            </summary>
+        </member>
+        <member name="T:TodoApp.Api.Controllers.ProductManager.ProductController">
+            <summary>
+            产品
+            </summary>
+        </member>
+        <member name="T:TodoApp.Api.Controllers.ShopManager.AdjustStockController">
+            <summary>
+            转仓
+            </summary>
+        </member>
+        <member name="T:TodoApp.Api.Controllers.ShopManager.PurchaseController">
+            <summary>
+            采购
+            </summary>
+        </member>
+        <member name="T:TodoApp.Api.Controllers.ShopManager.ShopController">
+            <summary>
+            店铺
+            </summary>
+        </member>
         <member name="M:TodoApp.Api.Controllers.ShopManager.ShopController.OutInShopList(TodoApp.IService.DTO.PageInput{TodoApp.IService.DTO.ShopManager.OutInShopInput})">
             <summary>
             出入库记录
             </summary>
             <param name="obj"></param>
             <returns></returns>
+        </member>
+        <member name="T:TodoApp.Api.Controllers.ShopManager.StockRecordController">
+            <summary>
+            出入库记录
+            </summary>
+        </member>
+        <member name="T:TodoApp.Api.Controllers.UserManager.UserController">
+            <summary>
+            员工
+            </summary>
         </member>
         <member name="M:TodoApp.Api.Controllers.UserManager.UserController.GetToken(System.String,System.String)">
             <summary>

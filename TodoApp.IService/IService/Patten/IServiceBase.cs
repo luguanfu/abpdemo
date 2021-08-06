@@ -14,7 +14,7 @@ namespace TodoApp.IService.IService.Patten
 
         TEntity GetModelById(Guid? id);
 
-        IQueryable<TEntity> GetQuery();
+        IQueryable<TEntity> GetQuery(bool? IsDelete = false);
 
         List<TEntity> GetListByParentId(Guid? parentId);
 

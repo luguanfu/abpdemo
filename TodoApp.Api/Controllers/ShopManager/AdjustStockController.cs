@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -9,6 +10,11 @@ using TodoApp.IService.IService.Patten;
 
 namespace TodoApp.Api.Controllers.ShopManager
 {
+    /// <summary>
+    /// 转仓
+    /// </summary>
+    [Route("api/[controller]")]
+    [ApiController]
     public class AdjustStockController : NumberApiBase<AdjustStock, Guid>
     {
         readonly DetailTableInfo<AdjustStockDetail, Guid> _detailEmp = new DetailTableInfo<AdjustStockDetail, Guid>

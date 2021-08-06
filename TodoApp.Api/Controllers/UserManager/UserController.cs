@@ -13,6 +13,9 @@ using TodoApp.IService.IService.UserManager;
 
 namespace TodoApp.Api.Controllers.UserManager
 {
+    /// <summary>
+    /// 员工
+    /// </summary>
     [Route("api/[controller]")]
     [ApiController]
     public class UserController : ApiBase<User, Guid>

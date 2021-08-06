@@ -78,17 +78,10 @@ namespace TodoApp.Api.Api.Patten
         }
         protected virtual LoadResult ProcessGetLoadResult(LoadOptions options)
         {
-            var list = services.GetQuery();
+            var list = services.GetQuery(IsDeleted);
 
             Type type = typeof(TEntity);
             var propertys = type.GetProperties();
-            if (IsDeleted.HasValue)
-            {
-                if (propertys.FirstOrDefault(s => s.Name.Equals("IsDeleted")) != null)
-                {
-                    list = list.WhereFilter(new SearchField[] { new SearchField { Field = "IsDeleted", Op = "=", Value = IsDeleted.ToString() } });
-                }
-            }
             if (!IgnoreAuth)
             {
                 if (propertys.FirstOrDefault(s => s.Name.Equals("CreateBy")) != null)

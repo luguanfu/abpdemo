@@ -14,7 +14,6 @@ namespace TodoApp.Service.MenuManager
 {
     public class MenuService : ServiceBase<Menu, Guid>, IMenuService
     {
-        protected override bool? IsDelete => true;
 
         public override List<Menu> GetListByParentId(Guid? parentId)
         {

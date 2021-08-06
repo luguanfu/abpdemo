@@ -24,10 +24,6 @@ namespace TodoApp.Service.Patten
     {
         public EfDbContext context;
         DbSet<TEntity> DbSet { get; set; }
-        /// <summary>
-        /// 是否查询已删除的数据
-        /// </summary>
-        protected virtual bool? IsDelete => false;
 
         public ServiceBase()
         {
@@ -258,7 +254,7 @@ namespace TodoApp.Service.Patten
             context.SaveChanges();
             return entity;
         }
-        public virtual IQueryable<TEntity> GetQuery()
+        public virtual IQueryable<TEntity> GetQuery(bool? IsDelete = false)
         {
             var query = DbSet.AsQueryable();
             if (IsDelete.HasValue)
@@ -356,7 +352,7 @@ namespace TodoApp.Service.Patten
         /// <param name="sql"></param>
         /// <param name="parameters"></param>
         /// <returns></returns>
-        public IEnumerable<T> SqlQuery<T>(string sql,params SqlParameter[] parameters)
+        public IEnumerable<T> SqlQuery<T>(string sql, params SqlParameter[] parameters)
             where T : class, new()
         {
             return context.Database.SqlQuery<T>(sql, parameters);
@@ -368,7 +364,7 @@ namespace TodoApp.Service.Patten
         /// <param name="sql"></param>
         /// <param name="parameters"></param>
         /// <returns></returns>
-        public Tuple<IEnumerable<T>,int> SqlProcedure<T>(string sql, params SqlParameter[] parameters)
+        public Tuple<IEnumerable<T>, int> SqlProcedure<T>(string sql, params SqlParameter[] parameters)
             where T : class, new()
         {
             return context.Database.SqlProcedure<T>(sql, parameters);

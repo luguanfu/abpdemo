@@ -12,6 +12,9 @@ using TodoApp.IService.IService.ShopManager;
 
 namespace TodoApp.Api.Controllers.ShopManager
 {
+    /// <summary>
+    /// 店铺
+    /// </summary>
     [Route("api/[controller]")]
     [ApiController]
     public class ShopController : ApiBase<Shop, Guid>
