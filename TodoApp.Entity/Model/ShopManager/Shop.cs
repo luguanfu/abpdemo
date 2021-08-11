@@ -14,6 +14,13 @@ namespace TodoApp.Entity.Model.ShopManager
         /// 店铺名称
         /// </summary>
         [Display(Name = "店铺名称")]
+        [PinYinFilter]
         public string Name { get; set; }
+        /// <summary>
+        /// 地址
+        /// </summary>
+        [Display(Name = "地址")]
+        [PinYinFilter]
+        public string Address { get; set; }
     }
 }

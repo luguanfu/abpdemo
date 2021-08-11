@@ -5,7 +5,4 @@ using System.Threading.Tasks;
 
 namespace TodoApp.Api.Api.Patten
 {
-    public class TreeApiBase
-    {
-    }
 }

@@ -9,6 +9,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Autofac" Version="6.2.0" />
+    <PackageReference Include="WebApiClientCore" Version="2.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Todo.App.Cache\Todo.App.Cache.csproj" />
     <ProjectReference Include="..\TodoApp.IService\TodoApp.IService.csproj" />
     <ProjectReference Include="..\TodoApp.Repository\TodoApp.Repository.csproj" />

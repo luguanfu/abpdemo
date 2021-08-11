@@ -22,6 +22,9 @@ namespace TodoApp.Api.Api.Patten
         {
             return ProcessGetViewModelById(id);
         }
-        protected abstract TGetViewModel ProcessGetViewModelById(Guid id);
+        protected virtual TGetViewModel ProcessGetViewModelById(Guid id)
+        {
+            return default(TGetViewModel);
+        }
     }
 }

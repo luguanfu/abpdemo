@@ -1,37 +1,27 @@
 ﻿using Autofac;
-using Microsoft.AspNetCore.Mvc;
+using ServiceStack;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.Loader;
+using System.Text;
 using System.Threading.Tasks;
 using TodoApp.IService.IService.Patten;
-using TodoApp.Service.Patten;
 
-namespace TodoApp.Api.Api.Patten
+namespace TodoApp.Service.Patten
 {
-    /// <summary>
-    /// 控制器基类
-    /// </summary>
-    //[Authorize]
-    public abstract class ApiBase : ControllerBase
+    public class ServiceLocator
     {
-        /// <summary>
-        /// 获取服务接口
-        /// </summary>
-        /// <typeparam name="TService">接口泛型类</typeparam>
-        /// <returns></returns>
-        protected virtual TService GetService<TService>() where TService : IDependency
+        public static T GetService<T>()
         {
-            return ServiceLocator.GetService<TService>();
-            //var builder = ServiceLocator.DependencyResolver();
-            //using (var container = builder.Build())
-            //{
-            //    return container.Resolve<TService>();
-            //}
+            var builder = DependencyResolver();
+            using (var container = builder.Build())
+            {
+                return container.Resolve<T>();
+            }
         }
-        private ContainerBuilder DependencyResolver()
+        public static ContainerBuilder DependencyResolver()
         {
             var builder = new ContainerBuilder();
             Type basetype = typeof(IDependency); //获取顶级接口类型

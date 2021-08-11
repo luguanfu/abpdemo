@@ -6,9 +6,8 @@ using TodoApp.Entity.Patten;
 
 namespace TodoApp.Api.Api.Patten
 {
-    public abstract class NumberApiBase<TEntity, TGetViewModel, TGetListViewModel, TKey> : NumberApiBase<TEntity, TGetListViewModel, TKey>
+    public abstract class ArchiveApiBase<TEntity,TKey>:ApiBase<TEntity,TKey>
         where TEntity : class, IEntity<TKey>, new()
-        where TGetListViewModel : class
         where TKey : struct
     {
     }

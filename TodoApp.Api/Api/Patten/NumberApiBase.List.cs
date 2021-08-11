@@ -11,15 +11,5 @@ namespace TodoApp.Api.Api.Patten
          where TGetListViewModel : class
          where TKey : struct
     {
-        protected override LoadResult ProcessGetLoadResult(LoadOptions options)
-        {
-            var query = ProcessGetListViewModelDataQuery();
-
-            return Search(query, options);
-        }
-        protected virtual IQueryable<TGetListViewModel> ProcessGetListViewModelDataQuery()
-        {
-            return null;
-        }
     }
 }

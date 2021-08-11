@@ -17,6 +17,8 @@ namespace TodoApp.Api.Api.DetailTable
 
         public Action<List<TEntity>, TKey, object> BeginInsertOrEdit;
 
+        public Func<List<TEntity>, TKey, List<TEntity>> EndInsertOrEdit;
+
         public void SaveDetails(string detailsData, List<TKey> deleteKeys, TKey mainId, dynamic mainEntity)
         {
             ServiceBase<TEntity, TKey> services = new ServiceBase<TEntity, TKey>();
@@ -37,6 +39,11 @@ namespace TodoApp.Api.Api.DetailTable
                     foreignKey.SetValue(item, mainId);
                 });
                 services.BulkInsert(list);
+
+                if (EndInsertOrEdit != null)
+                {
+                    list = EndInsertOrEdit(list, mainId);
+                }
             }
             if (deleteKeys?.Count > 0)
             {

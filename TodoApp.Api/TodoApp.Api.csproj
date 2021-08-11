@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <DocumentationFile>D:\MyProject\abpproject\demo\abpdemo\TodoApp.Api\TodoApp.Api.xml</DocumentationFile>
+    <DocumentationFile>C:\workSpaces\ym\abpdemo\TodoApp.Api\TodoApp.Api.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>

@@ -1,16 +1,20 @@
 ﻿using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.International.Converters.PinYinConverter;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using Todo.App.Cache;
 using TodoApp.Entity.Model;
+using TodoApp.Entity.Patten;
 using TodoApp.IService.IService.Patten;
 using TodoApp.Repository;
 using TodoApp.Service.OperationLogManager;
+using TodoApp.Util.Helper;
 
 namespace TodoApp.Service.Patten
 {
@@ -138,6 +142,9 @@ namespace TodoApp.Service.Patten
         {
             Type type = entity.GetType();
             var propertys = type.GetProperties();
+
+            SetFilterContent(propertys, entity);
+
             if (newCreate)
             {
                 //新增
@@ -186,6 +193,28 @@ namespace TodoApp.Service.Patten
                             break;
                     }
                 }
+            }
+        }
+        private void SetFilterContent(PropertyInfo[] filterInfos, TEntity entity)
+        {
+            var filterInfo = filterInfos.FirstOrDefault(s => s.Name.Equals("FilterContent"));
+            if (filterInfo != null)
+            {
+                string filterValue = string.Empty;
+
+                foreach (var info in filterInfos)
+                {
+                    if (info.GetCustomAttribute<PinYinFilterAttribute>() != null)
+                    {
+                        var chinaValue = info.GetValue(entity)?.ToString();
+                        if (!string.IsNullOrEmpty(chinaValue))
+                        {
+                            filterValue += $"#{chinaValue}#{PinYinConverterHelp.ConvertToAllSpell(chinaValue)}";
+                        }
+                    }
+                }
+
+                filterInfo.SetValue(entity, filterValue.Trim('#'));
             }
         }
         public virtual void BulkInsert(List<TEntity> entities)

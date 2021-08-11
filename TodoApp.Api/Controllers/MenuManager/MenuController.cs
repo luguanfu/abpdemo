@@ -18,17 +18,12 @@ namespace TodoApp.Api.Controllers.MenuManager
     [ApiController]
     public class MenuController : TreeApiBase<Menu, Guid>
     {
-        protected override bool IgnoreAuth => true;
-        protected override bool? IsDeleted => null;
+        //protected override bool IgnoreAuth => true;
+        //protected override bool? IsDeleted => null;
 
         protected override List<Menu> GetListByParentId(Guid? parentId)
         {
             return GetService<IMenuService>().GetQuery(IsDeleted).Where(s => s.ParentId == parentId).ToList();
         }
-
-        //protected override IQueryable<MenuViewModel> ProcessGetListViewModelDataQuery()
-        //{
-        //    return GetService<IMenuService>().GetListData();
-        //}
     }
 }

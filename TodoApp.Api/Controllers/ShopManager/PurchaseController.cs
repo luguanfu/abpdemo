@@ -15,7 +15,7 @@ namespace TodoApp.Api.Controllers.ShopManager
     /// </summary>
     [Route("api/[controller]")]
     [ApiController]
-    public class PurchaseController : NumberApiBase<Purchase, Guid>
+    public class PurchaseController : NumberApiBase<Purchase, Purchase, Guid>
     {
         protected override BillNumberRule billNumberRule => new BillNumberRule
         {
@@ -40,5 +40,9 @@ namespace TodoApp.Api.Controllers.ShopManager
             }
         }
 
+        protected override IQueryable<Purchase> ProcessGetListViewModelDataQuery()
+        {
+            return base.ProcessGetListViewModelDataQuery();
+        }
     }
 }

@@ -39,5 +39,10 @@ namespace TodoApp.Entity.Patten
         public bool IsDeleted { get; set; }
         [Display(Name = "排序")]
         public int OrderIndex { get; set; }
+        /// <summary>
+        /// 条件过滤
+        /// </summary>
+        [Display(Name = "条件过滤")]
+        public string FilterContent { get; set; }
     }
 }
