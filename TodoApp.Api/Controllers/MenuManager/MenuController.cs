@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Todo.App.Cache;
 using TodoApp.Api.Api.Patten;
 using TodoApp.Entity.Model.MenuManager;
 using TodoApp.IService.DTO.MenuManager;
@@ -24,6 +25,22 @@ namespace TodoApp.Api.Controllers.MenuManager
         protected override List<Menu> GetListByParentId(Guid? parentId)
         {
             return GetService<IMenuService>().GetQuery(IsDeleted).Where(s => s.ParentId == parentId).ToList();
+        }
+        [HttpGet,Route("Test")]
+        public Task<ApiResult<Menu>> Test()
+        {
+            string menuCacheKey = "MenuCache";
+            Menu m = new Menu { Name = "abcdef" };
+
+            Func<string, Menu> f = (a) =>
+            {
+                m.Name += a;
+                return m;
+            };
+
+            var val = CacheHelper.GetCache<Menu>(menuCacheKey, f, 60);
+
+            return ApiResult.Of(val);
         }
     }
 }

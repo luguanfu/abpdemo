@@ -209,12 +209,13 @@ namespace TodoApp.Service.Patten
                         var chinaValue = info.GetValue(entity)?.ToString();
                         if (!string.IsNullOrEmpty(chinaValue))
                         {
-                            filterValue += $"#{chinaValue}#{PinYinConverterHelp.ConvertToAllSpell(chinaValue)}";
+                            //filterValue += $"#{chinaValue}#{PinYinConverterHelp.ConvertToAllSpell(chinaValue)}";
+                            filterValue += $";{chinaValue};{chinaValue.GetPinyin()}";
                         }
                     }
                 }
 
-                filterInfo.SetValue(entity, filterValue.Trim('#'));
+                filterInfo.SetValue(entity, filterValue.Trim(';'));
             }
         }
         public virtual void BulkInsert(List<TEntity> entities)

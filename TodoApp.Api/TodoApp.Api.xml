@@ -4,6 +4,15 @@
         <name>TodoApp.Api</name>
     </assembly>
     <members>
+        <member name="M:TodoApp.Api.Api.IPatten.ApiBaseExtention.Archive``1(``0,System.Collections.Generic.List{System.Guid})">
+            <summary>
+            归档
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="apiBase"></param>
+            <param name="ids"></param>
+            <returns></returns>
+        </member>
         <member name="T:TodoApp.Api.Api.Patten.ApiBase">
             <summary>
             控制器基类
@@ -150,6 +159,27 @@
         <member name="M:TodoApp.Api.Api.Patten.ApiBase`2.CancelDelete(System.Collections.Generic.List{`1})">
             <summary>
             取消删除
+            </summary>
+            <param name="ids"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TodoApp.Api.Api.Patten.ArchiveApiBase`3.Archive(System.Collections.Generic.List{System.Guid})">
+            <summary>
+            归档
+            </summary>
+            <param name="ids"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TodoApp.Api.Api.Patten.ArchiveApiBase`1.Archive(System.Collections.Generic.List{System.Guid})">
+            <summary>
+            归档
+            </summary>
+            <param name="ids"></param>
+            <returns></returns>
+        </member>
+        <member name="M:TodoApp.Api.Api.Patten.ArchiveApiBase`2.Archive(System.Collections.Generic.List{System.Guid})">
+            <summary>
+            归档
             </summary>
             <param name="ids"></param>
             <returns></returns>

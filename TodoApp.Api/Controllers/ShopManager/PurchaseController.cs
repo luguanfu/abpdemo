@@ -40,9 +40,9 @@ namespace TodoApp.Api.Controllers.ShopManager
             }
         }
 
-        protected override IQueryable<Purchase> ProcessGetListViewModelDataQuery()
-        {
-            return base.ProcessGetListViewModelDataQuery();
-        }
+        //protected override IQueryable<Purchase> ProcessGetListViewModelDataQuery()
+        //{
+        //    return base.ProcessGetListViewModelDataQuery();
+        //}
     }
 }
