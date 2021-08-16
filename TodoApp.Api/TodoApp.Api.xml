@@ -104,7 +104,7 @@
             <param name="select"></param>
             <returns></returns>
         </member>
-        <member name="M:TodoApp.Api.Api.Patten.ApiBase`2.GetListReload(TodoApp.Api.Api.Patten.LoadResult)">
+        <member name="M:TodoApp.Api.Api.Patten.ApiBase`2.GetListReload(TodoApp.Api.Api.Patten.LoadResult,TodoApp.Api.Api.Patten.LoadOptions)">
             <summary>
             处理结果集
             </summary>
@@ -280,6 +280,11 @@
         <member name="T:TodoApp.Api.Controllers.ShopManager.StockRecordController">
             <summary>
             出入库记录
+            </summary>
+        </member>
+        <member name="T:TodoApp.Api.Controllers.UploadManager.UploadController">
+            <summary>
+            上传文件
             </summary>
         </member>
         <member name="T:TodoApp.Api.Controllers.UserManager.UserController">

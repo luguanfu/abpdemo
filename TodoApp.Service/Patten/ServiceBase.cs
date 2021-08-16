@@ -14,7 +14,6 @@ using TodoApp.Entity.Patten;
 using TodoApp.IService.IService.Patten;
 using TodoApp.Repository;
 using TodoApp.Service.OperationLogManager;
-using TodoApp.Util.Helper;
 
 namespace TodoApp.Service.Patten
 {

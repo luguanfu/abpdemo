@@ -1,8 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using DevExtreme.AspNet.Data.ResponseModel;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using TodoApp.Api.Api.LoadOptions;
 using TodoApp.Entity.Patten;
 
 namespace TodoApp.Api.Api.Patten
@@ -16,6 +18,7 @@ namespace TodoApp.Api.Api.Patten
         {
             var query = ProcessGetListViewModelDataQuery();
 
+            //return DataSourceLoaderEx.LoadList(query, options);
             return Search(query, options);
         }
         protected virtual IQueryable<TGetListViewModel> ProcessGetListViewModelDataQuery()

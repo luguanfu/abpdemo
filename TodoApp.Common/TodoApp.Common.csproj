@@ -1,0 +1,13 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net5.0</TargetFramework>
+	</PropertyGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\Todo.App.Cache\Todo.App.Cache.csproj" />
+	  <ProjectReference Include="..\TodoApp.Entity\TodoApp.Entity.csproj" />
+	  <ProjectReference Include="..\TodoApp.Util\TodoApp.Util.csproj" />
+	</ItemGroup>
+
+</Project>

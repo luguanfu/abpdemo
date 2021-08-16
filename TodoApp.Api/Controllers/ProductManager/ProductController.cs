@@ -1,23 +1,17 @@
 ﻿using Autofac;
-using ExpressMapper.Extensions;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Todo;
 using Todo.App.Cache;
 using TodoApp.Api.Api.DetailTable;
 using TodoApp.Api.Api.Patten;
-using TodoApp.Api.Filters;
 using TodoApp.Entity.Model.ProductManager;
 using TodoApp.IService.DTO.ProductManager;
-using TodoApp.IService.IService.Patten;
 using TodoApp.IService.IService.ProductManager;
-using TodoApp.Repository;
 
 namespace TodoApp.Api.Controllers.ProductManager
 {
@@ -118,9 +112,9 @@ namespace TodoApp.Api.Controllers.ProductManager
         {
             return GetService<IProductService>().GetListData();
         }
-        protected override void GetListReload(LoadResult list)
-        { 
-            base.GetListReload(list);
+        protected override void GetListReload(LoadResult list, LoadOptions options)
+        {
+            base.GetListReload(list, options);
             var items = list.GetData<ProductViewModel>();
             items.ForEach(item =>
             {

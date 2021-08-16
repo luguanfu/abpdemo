@@ -30,7 +30,11 @@
 8.返回指定字段
 	dynamic obj = new System.Dynamic.ExpandoObject();
 	((IDictionary<string, object>)obj).Add(propertyInfo.Name.FirstToLower(), propertyInfo.GetValue(item));
-	
+9.了解和使用反射
+
+=======问题点=======
+1.apibase基类多继承问题(?)
+2.DataSourceLoader.Load(list, options),查询报错
 
 
 

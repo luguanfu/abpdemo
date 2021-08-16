@@ -107,7 +107,7 @@ namespace TodoApp.Api
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "TodoApp.Api", Version = "v1" });
-
+                //c.OperationFilter<FileUploadOperation>();
                 #region 读取xml信息
 
                 // 使用反射获取xml文件。并构造出文件的路径

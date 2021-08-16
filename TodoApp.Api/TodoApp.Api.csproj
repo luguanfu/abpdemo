@@ -2,9 +2,14 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
+    <UserSecretsId>a5640d5c-922c-4924-b086-0864d6be0f31</UserSecretsId>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>C:\workSpaces\ym\abpdemo\TodoApp.Api\TodoApp.Api.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <DocumentationFile>C:\workSpaces\ym\abpdemo\TodoApp.Api\TodoApp.Api.xml</DocumentationFile>
   </PropertyGroup>
 
@@ -26,10 +31,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Todo.App.Cache\Todo.App.Cache.csproj" />
-    <ProjectReference Include="..\TodoApp.Repository\TodoApp.Repository.csproj" />
     <ProjectReference Include="..\TodoApp.Service\TodoApp.Service.csproj" />
-    <ProjectReference Include="..\TodoApp.Util\TodoApp.Util.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\files\" />
+    <Folder Include="wwwroot\lib\" />
   </ItemGroup>
 
 </Project>

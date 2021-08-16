@@ -15,6 +15,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Todo.App.Cache\Todo.App.Cache.csproj" />
+    <ProjectReference Include="..\TodoApp.Common\TodoApp.Common.csproj" />
     <ProjectReference Include="..\TodoApp.IService\TodoApp.IService.csproj" />
     <ProjectReference Include="..\TodoApp.Repository\TodoApp.Repository.csproj" />
     <ProjectReference Include="..\TodoApp.Util\TodoApp.Util.csproj" />

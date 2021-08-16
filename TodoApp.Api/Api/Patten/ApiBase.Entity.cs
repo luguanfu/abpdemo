@@ -1,18 +1,14 @@
-﻿using Autofac;
+﻿using DevExtreme.AspNet.Data;
+using DevExtreme.AspNet.Data.ResponseModel;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Reflection;
-using System.Runtime.CompilerServices;
-using System.Runtime.Loader;
-using System.Text;
 using System.Threading.Tasks;
 using Todo.App.Cache;
 using TodoApp.Api.Api.DetailTable;
+using TodoApp.Api.Api.LoadOptions;
 using TodoApp.Entity.Patten;
 using TodoApp.IService.IService.Patten;
 using TodoApp.IService.UnitManager;
@@ -74,6 +70,8 @@ namespace TodoApp.Api.Api.Patten
         {
             var loadResult = ProcessGetLoadResult(options);
 
+            GetListReload(loadResult, options);
+
             return await ApiResult.Of(loadResult);
         }
         protected virtual LoadResult ProcessGetLoadResult(LoadOptions options)
@@ -89,7 +87,7 @@ namespace TodoApp.Api.Api.Patten
                     list = list.WhereFilter(new SearchField[] { new SearchField { Field = "CreateBy", Op = "=", Value = UserCacheProject.LoginUserId.ToString() } });
                 }
             }
-
+            //return DataSourceLoader.Load(list, options);
             return Search(list, options);
         }
         /// <summary>
@@ -100,7 +98,6 @@ namespace TodoApp.Api.Api.Patten
         /// <param name="options"></param>
         /// <returns></returns>
         protected virtual LoadResult Search<T>(IQueryable<T> list, LoadOptions options)
-            where T : class
         {
             //条件筛选
             list = list.WhereFilter(options.Filter);
@@ -113,7 +110,7 @@ namespace TodoApp.Api.Api.Patten
 
             //汇总数据
             var data = list.ToList();
-            T countEntity = null;
+            T countEntity = default(T);
             if (options.IsCountQuery)
             {
                 countEntity = data.Summary(options.CountField);
@@ -131,7 +128,6 @@ namespace TodoApp.Api.Api.Patten
                 TModel = countEntity,
                 TotalSummary = totalSummary
             };
-            GetListReload(result);
 
             return result;
         }
@@ -171,7 +167,7 @@ namespace TodoApp.Api.Api.Patten
         /// 处理结果集
         /// </summary>
         /// <param name="list"></param>
-        protected virtual void GetListReload(LoadResult list)
+        protected virtual void GetListReload(LoadResult list, LoadOptions options)
         {
 
         }
