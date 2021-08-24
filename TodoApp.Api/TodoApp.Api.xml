@@ -59,11 +59,6 @@
             添加或修改层表结构
             </summary>
         </member>
-        <member name="P:TodoApp.Api.Api.Patten.ApiBase`2.DeletesTableInfo">
-            <summary>
-            删除层表结构
-            </summary>
-        </member>
         <member name="P:TodoApp.Api.Api.Patten.ApiBase`2.IsDeleted">
             <summary>
             是否获取已删除的数据
@@ -136,7 +131,7 @@
             <param name="entity"></param>
             <returns></returns>
         </member>
-        <member name="M:TodoApp.Api.Api.Patten.ApiBase`2.GetModelById(System.Guid)">
+        <member name="M:TodoApp.Api.Api.Patten.ApiBase`2.GetModelById(`1)">
             <summary>
             获取对象
             </summary>
@@ -149,12 +144,6 @@
             </summary>
             <param name="ids"></param>
             <returns></returns>
-        </member>
-        <member name="M:TodoApp.Api.Api.Patten.ApiBase`2.ProcessDeleteDetailTableData(`1)">
-            <summary>
-            删除层表数据
-            </summary>
-            <param name="parentId"></param>
         </member>
         <member name="M:TodoApp.Api.Api.Patten.ApiBase`2.CancelDelete(System.Collections.Generic.List{`1})">
             <summary>

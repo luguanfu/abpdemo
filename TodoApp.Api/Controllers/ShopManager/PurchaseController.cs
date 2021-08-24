@@ -22,7 +22,9 @@ namespace TodoApp.Api.Controllers.ShopManager
             NumberName = nameof(Purchase.Number),
             BillDateRuleEnum = BillDateRuleEnum.YearMonthDay,
             BillNumberPrefixStr = "PU",
-            SerialNumber = 5
+            SerialNumber = 5,
+            OpenRandomEnglish = true,
+            OpenRandomNumber = true
         };
         readonly DetailTableInfo<PurchaseDetail, Guid> _detailEmp = new DetailTableInfo<PurchaseDetail, Guid>
         {

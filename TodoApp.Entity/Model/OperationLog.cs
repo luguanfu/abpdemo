@@ -53,8 +53,25 @@ namespace TodoApp.Entity.Model
     }
     public enum OperationLog_Operation
     {
+        /// <summary>
+        /// 新增
+        /// </summary>
         Insert,
+        /// <summary>
+        /// 逻辑删除
+        /// </summary>
+        LogicDelete,
+        /// <summary>
+        /// 物理删除
+        /// </summary>
         Delete,
+        /// <summary>
+        /// 撤销删除
+        /// </summary>
+        CancelDelete,
+        /// <summary>
+        /// 修改
+        /// </summary>
         Update
     }
 }

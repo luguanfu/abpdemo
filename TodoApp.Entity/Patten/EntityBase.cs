@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace TodoApp.Entity.Patten
 {
-    public abstract class EntityBase<TKey> : IEntity<TKey>, ICreateEntity, IUpdateEntity, IDeleteEntity, IOrderEntity
+    public abstract class EntityBase<TKey> : IEntity<TKey>, ICreateEntity, IUpdateEntity, IDeleteEntity, IOrderEntity, IFilterEntity
     {
         [Display(Name = "主键Id")]
         public virtual TKey Id { get; set; }

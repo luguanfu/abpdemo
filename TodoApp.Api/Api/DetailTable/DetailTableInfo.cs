@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using TodoApp.Api.Api.LoadOptions;
 using TodoApp.Entity.Patten;
 using TodoApp.Service.Patten;
 
@@ -14,10 +15,39 @@ namespace TodoApp.Api.Api.DetailTable
     {
         public string TableName { get; set; }
         public string ForeignKey { get; set; }
+        public bool IsLogicDelete { get; set; }
 
         public Action<List<TEntity>, TKey, object> BeginInsertOrEdit;
 
         public Func<List<TEntity>, TKey, List<TEntity>> EndInsertOrEdit;
+
+        public Action<TKey> MainDataDelete;
+
+        public void MainDataDeleteExecute(TKey tKey, dynamic mainEntity)
+        {
+            if (MainDataDelete != null)
+            {
+                MainDataDelete(tKey);
+            }
+            else
+            {
+                var service = new ServiceBase<TEntity, TKey>();
+                var list = service.GetQuery().WhereFilter(new SearchField[] { new SearchField { Field = ForeignKey, Op = "=", Value = tKey.ToString() } }).ToList();
+                foreach (var curItem in list)
+                {
+                    var curModel = curItem as TEntity;
+                    if (curModel == null) continue;
+                    if (IsLogicDelete)
+                    {
+                        service.DeleteLogic(curModel);
+                    }
+                    else
+                    {
+                        service.Delete(curModel);
+                    }
+                }
+            }
+        }
 
         public void SaveDetails(string detailsData, List<TKey> deleteKeys, TKey mainId, dynamic mainEntity)
         {

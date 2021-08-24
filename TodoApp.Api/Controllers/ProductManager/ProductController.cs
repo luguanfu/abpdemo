@@ -4,6 +4,7 @@ using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
 using Todo.App.Cache;
@@ -32,6 +33,7 @@ namespace TodoApp.Api.Controllers.ProductManager
         {
             TableName = "PropertyList",
             ForeignKey = "ProductId",
+            IsLogicDelete = true,
             BeginInsertOrEdit = (list, mainId, entity) =>
               {
                   if (list?.Count > 0)
@@ -58,23 +60,6 @@ namespace TodoApp.Api.Controllers.ProductManager
             }
         }
 
-        readonly DeleteTableInfo<ProductProperty, Guid> _deleteTemp = new DeleteTableInfo<ProductProperty, Guid>
-        {
-            ForeignKey = "ProductId",
-        };
-
-        protected override List<IDeleteTableInfo<Guid>> DeletesTableInfo
-        {
-            get
-            {
-                return new List<IDeleteTableInfo<Guid>>
-                {
-                    _deleteTemp
-                };
-            }
-        }
-
-
         [HttpGet, Route("LogTest")]
         public ActionResult LogTest()
         {
@@ -97,8 +82,13 @@ namespace TodoApp.Api.Controllers.ProductManager
             var list = GetService<IProductService>().GetQuery().Where(s => s.Name.Equals("222222")).ToList();
             CacheHelper.SetCache(key, list);
 
+            float a = 26.24f;
+            float b = a * 100.0f;
+            float c = b / 100.0f;
 
-            return new ContentResult() { Content = "true" };
+            double d = 26.32d;
+
+            return new ContentResult() { Content = $"{a},{b},{c}" };
         }
         [HttpGet, Route("getCache")]
         public ActionResult GetCache(string key)
@@ -128,5 +118,11 @@ namespace TodoApp.Api.Controllers.ProductManager
             var list = GetService<IProductService>().SqlDataList(name).ToList();
             return await ApiResult.Of(list);
         }
+
+
+
+
+
+
     }
 }

@@ -40,13 +40,39 @@ namespace TodoApp.Service.Patten
         }
         public virtual TEntity Insert(TEntity entity)
         {
-            AddOrUpdate(entity, null, true);
+            InsertReset(entity);
+
             DbSet.Add(entity);
 
             InsertOperationLog(OperationLog_Operation.Insert, JsonConvert.SerializeObject(entity));
 
             context.SaveChanges();
             return entity;
+        }
+        private void InsertReset(TEntity entity, int? orderIndex = null)
+        {
+            SetFilterContent(entity);
+
+            if (entity is ICreateEntity createEntity)
+            {
+                createEntity.CreateBy ??= UserCacheProject.LoginUserId;
+                createEntity.CreateTime ??= DateTimeOffset.Now;
+            }
+            if (entity is ITreeEntity<TKey> treeEntity)
+            {
+                int level = 1;
+                GetLevel(treeEntity.ParentId, ref level);
+                treeEntity.Level = level;
+            }
+            if (entity is IOrderEntity orderEntity)
+            {
+                Guid? parentId = null;
+                if (entity is ITreeEntity<TKey> treeEntity2)
+                {
+                    parentId = treeEntity2.ParentId;
+                }
+                orderEntity.OrderIndex = orderIndex ?? GetMaxOrderIndex(parentId) + 1;
+            }
         }
         private void InsertOperationLog(OperationLog_Operation operation, string content, bool deleteFlag = false, Guid? keyId = null)
         {
@@ -64,38 +90,6 @@ namespace TodoApp.Service.Patten
             });
             context.Entry(logModel).State = EntityState.Added;
         }
-        private int GetLevel(Guid? id)
-        {
-            List<Guid> idList = GetParentIds(id) ?? new List<Guid>();
-            if (id != null)
-            {
-                idList.Insert(0, id.Value);
-            }
-
-            return (idList?.Count ?? 0) + 1;
-        }
-        public List<Guid> GetParentIds(Guid? nodeId)
-        {
-            List<Guid> list = new List<Guid>();
-            GetParentIdList(list, nodeId);
-            return list;
-        }
-        private Guid? GetParentIdList(Guid? nodeId)
-        {
-            var model = GetModelById(nodeId);
-
-            return GetParentId(model);
-        }
-        private void GetParentIdList(List<Guid> list, Guid? nodeId)
-        {
-            Guid? result = GetParentIdList(nodeId);
-            if (result != null)
-            {
-                list.Add(result.Value);
-
-                GetParentIdList(list, result.Value);
-            }
-        }
         private int GetMaxOrderIndex(Guid? parentId)
         {
             Type type = typeof(TEntity);
@@ -110,98 +104,25 @@ namespace TodoApp.Service.Patten
                 return (int)this.GetQuery().MaxValue("OrderIndex", 0);
             }
         }
-        private Guid? GetParentId(TEntity entity)
+        public void GetLevel(Guid? parentid, ref int level)
         {
-            if (entity == null)
-                return null;
-            Type type = entity.GetType();
-            var propertys = type.GetProperties();
-
-            try
+            if (parentid != null)
             {
-                foreach (var item in propertys)
+                var model = GetModelById(parentid);
+                if (model != null && model is ITreeEntity<TKey> treeEntity)
                 {
-                    if (item.Name.Equals("ParentId"))
-                    {
-                        var parentId = item.GetValue(entity);
-                        if (parentId != null && parentId != DBNull.Value)
-                        {
-                            return Guid.Parse(parentId.ToString());
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-
-            }
-            return null;
-        }
-        private void AddOrUpdate(TEntity entity, int? orderIndex, bool newCreate = true)
-        {
-            Type type = entity.GetType();
-            var propertys = type.GetProperties();
-
-            SetFilterContent(propertys, entity);
-
-            if (newCreate)
-            {
-                //新增
-                foreach (var pro in propertys)
-                {
-                    switch (pro.Name)
-                    {
-                        case "CreateBy":
-                            pro.SetValue(entity, UserCacheProject.LoginUserId);
-                            break;
-                        case "CreateTime":
-                            pro.SetValue(entity, DateTimeOffset.Now);
-                            break;
-                        case "UpdateBy":
-                            pro.SetValue(entity, UserCacheProject.LoginUserId);
-                            break;
-                        case "UpdateTime":
-                            pro.SetValue(entity, DateTimeOffset.Now);
-                            break;
-                        case "OrderIndex":
-                            int oIndex = orderIndex ?? GetMaxOrderIndex(GetParentId(entity)) + 1;
-                            pro.SetValue(entity, oIndex);
-                            break;
-                        case "Level":
-                            pro.SetValue(entity, GetLevel(GetParentId(entity) ?? null));
-                            break;
-                    }
-                }
-            }
-            else
-            {
-                //修改
-                foreach (var pro in propertys)
-                {
-                    switch (pro.Name)
-                    {
-                        case "UpdateBy":
-                            pro.SetValue(entity, UserCacheProject.LoginUserId);
-                            break;
-                        case "UpdateTime":
-                            pro.SetValue(entity, DateTimeOffset.Now);
-                            break;
-                        case "UpdateVersion":
-                            int version = Convert.ToInt32(pro.GetValue(entity));
-                            pro.SetValue(entity, version + 1);
-                            break;
-                    }
+                    level += 1;
+                    GetLevel(treeEntity.ParentId, ref level);
                 }
             }
         }
-        private void SetFilterContent(PropertyInfo[] filterInfos, TEntity entity)
+        private void SetFilterContent(TEntity entity)
         {
-            var filterInfo = filterInfos.FirstOrDefault(s => s.Name.Equals("FilterContent"));
-            if (filterInfo != null)
+            if (entity is IFilterEntity filterEntity)
             {
-                string filterValue = string.Empty;
-
-                foreach (var info in filterInfos)
+                StringBuilder filterValue = new StringBuilder();
+                var pros = entity.GetType().GetProperties();
+                foreach (var info in pros)
                 {
                     if (info.GetCustomAttribute<PinYinFilterAttribute>() != null)
                     {
@@ -209,21 +130,25 @@ namespace TodoApp.Service.Patten
                         if (!string.IsNullOrEmpty(chinaValue))
                         {
                             //filterValue += $"#{chinaValue}#{PinYinConverterHelp.ConvertToAllSpell(chinaValue)}";
-                            filterValue += $";{chinaValue};{chinaValue.GetPinyin()}";
+                            filterValue.Append($";{chinaValue};{chinaValue.GetPinyin()}");
                         }
                     }
                 }
-
-                filterInfo.SetValue(entity, filterValue.Trim(';'));
+                filterEntity.FilterContent = filterValue.ToString();
             }
         }
         public virtual void BulkInsert(List<TEntity> entities)
         {
-            int orderIndex = GetMaxOrderIndex(GetParentId(entities[0]));
+            Guid? parentId = null;
+            if (entities[0] is ITreeEntity<TKey> treeEntity)
+            {
+                parentId = treeEntity.ParentId;
+            }
+            int orderIndex = GetMaxOrderIndex(parentId);
             foreach (var item in entities)
             {
                 orderIndex++;
-                AddOrUpdate(item, orderIndex, true);
+                InsertReset(item, orderIndex);
                 InsertOperationLog(OperationLog_Operation.Insert, JsonConvert.SerializeObject(item));
             }
             DbSet.AddRange(entities);
@@ -233,7 +158,7 @@ namespace TodoApp.Service.Patten
         {
             foreach (var item in entities)
             {
-                AddOrUpdate(item, null, false);
+                UpdateReset(item);
 
                 string updateContent = UpdateContent(item);
                 if (!string.IsNullOrEmpty(updateContent))
@@ -246,14 +171,15 @@ namespace TodoApp.Service.Patten
         }
         private string UpdateContent(TEntity entity)
         {
-            Type type = entity.GetType();
-            var propertys = type.GetProperties();
-            var idpro = propertys.FirstOrDefault(s => s.Name.Equals("Id"));
-            if (Guid.TryParse(idpro.GetValue(entity)?.ToString(), out Guid idValue))
+            if (entity is IEntity<TKey> ientity)
             {
+                TKey idValue = ientity.Id;
+
                 var oldEntity = DbSet.AsNoTracking().WhereFilter(new SearchField[] { new SearchField { Field = "Id", Op = "=", Value = idValue.ToString() } }).FirstOrDefault();
 
                 StringBuilder result = new StringBuilder();
+                Type type = entity.GetType();
+                var propertys = type.GetProperties();
 
                 foreach (var pro in propertys)
                 {
@@ -269,9 +195,19 @@ namespace TodoApp.Service.Patten
             }
             return string.Empty;
         }
+        private void UpdateReset(TEntity entity)
+        {
+            if (entity is IUpdateEntity updateEntity)
+            {
+                updateEntity.UpdateBy ??= UserCacheProject.LoginUserId;
+                updateEntity.UpdateTime ??= DateTimeOffset.Now;
+                updateEntity.UpdateVersion += 1;
+            }
+        }
         public virtual TEntity Update(TEntity entity)
         {
-            AddOrUpdate(entity, null, false);
+            UpdateReset(entity);
+
             string updateContent = UpdateContent(entity);
             if (!string.IsNullOrEmpty(updateContent))
             {
@@ -303,6 +239,10 @@ namespace TodoApp.Service.Patten
                 return null;
             return DbSet.Find(id);
         }
+        public TEntity GetModelById(TKey id)
+        {
+            return DbSet.Find(id);
+        }
 
         public virtual List<TEntity> GetListByParentId(Guid? parentId)
         {
@@ -311,6 +251,17 @@ namespace TodoApp.Service.Patten
 
         public bool Delete(List<TKey> ids)
         {
+            Dictionary<TKey, TEntity> deleteModelDic = new Dictionary<TKey, TEntity>();
+            foreach (var id in ids)
+            {
+                if (deleteModelDic.ContainsKey(id))
+                    continue;
+
+                TEntity model = GetModelById(id);
+                if (model == null)
+                    continue;
+            }
+
             foreach (var id in ids)
             {
                 var model = DbSet.Find(id);
@@ -318,51 +269,58 @@ namespace TodoApp.Service.Patten
             }
             return true;
         }
-        public bool Delete(List<TEntity> entities)
+        /// <summary>
+        /// 物理删除对象
+        /// </summary>
+        /// <param name="entity"></param>
+        /// <returns></returns>
+        public bool Delete(TEntity entity)
+        {
+            Delete(entity, false);
+
+            return true;
+        }
+        public bool Delete(List<TEntity> entities, bool isLoginDelete = true)
         {
             foreach (var model in entities)
             {
-                Delete(model, true);
-
+                Delete(model, isLoginDelete);
             }
             return true;
         }
-        private void Delete(TEntity entity, bool isDelete)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="entity">删除对象</param>
+        /// <param name="isLogicDelete">是否是逻辑删除</param>
+        private void Delete(TEntity entity, bool isLogicDelete)
         {
             if (entity == null)
                 return;
-            Type type = entity.GetType();
-            var propertys = type.GetProperties();
-            var pro = propertys.FirstOrDefault(s => s.Name.Equals("IsDeleted"));
-            if (pro != null)
+
+            if (isLogicDelete)
             {
-                pro.SetValue(entity, isDelete);
-                if (isDelete)
+                //逻辑删除
+                if (entity is IDeleteEntity dentity)
                 {
-                    foreach (var proinfo in propertys)
-                    {
-                        switch (proinfo.Name)
-                        {
-                            case "DeleteBy":
-                                proinfo.SetValue(entity, UserCacheProject.LoginUserId);
-                                break;
-                            case "DeleteTime":
-                                proinfo.SetValue(entity, DateTimeOffset.Now);
-                                break;
-                        }
-                    }
+                    dentity.IsDeleted = true;
+                    dentity.DeleteBy = UserCacheProject.LoginUserId;
+                    dentity.DeleteTime = DateTimeOffset.Now;
                 }
                 DbSet.Update(entity);
 
-                if (isDelete)
-                {
-                    var idpro = propertys.FirstOrDefault(s => s.Name.Equals("Id"));
-                    Guid.TryParse(idpro.GetValue(entity)?.ToString(), out Guid idValue);
-                    InsertOperationLog(OperationLog_Operation.Delete, JsonConvert.SerializeObject(entity), keyId: idValue);
-                }
-
-                context.SaveChanges();
+                if (entity is IEntity<Guid> ientity)
+                    InsertOperationLog(OperationLog_Operation.LogicDelete, JsonConvert.SerializeObject(entity), keyId: ientity.Id);
             }
+            else
+            {
+                //物理删除
+                DbSet.Remove(entity);
+
+                if (entity is IEntity<Guid> ientity)
+                    InsertOperationLog(OperationLog_Operation.Delete, JsonConvert.SerializeObject(entity), keyId: ientity.Id);
+            }
+            context.SaveChanges();
         }
 
         public bool CancelDelete(List<TKey> ids)
@@ -370,9 +328,24 @@ namespace TodoApp.Service.Patten
             foreach (var id in ids)
             {
                 var model = DbSet.Find(id);
-                Delete(model, false);
+                if (model is IDeleteEntity ientity)
+                {
+                    ientity.IsDeleted = false;
+                }
+                DbSet.Update(model);
             }
+            InsertOperationLog(OperationLog_Operation.CancelDelete, string.Join(",", ids.ToArray()));
+            context.SaveChanges();
             return true;
+        }
+
+        /// <summary>
+        /// 逻辑删除对象
+        /// </summary>
+        /// <param name="entity"></param>
+        public void DeleteLogic(TEntity entity)
+        {
+            Delete(entity, true);
         }
         /// <summary>
         /// 执行sql返回结果集

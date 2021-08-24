@@ -41,10 +41,46 @@ namespace TodoApp.IService.IService.Patten
     }
     public class BillNumberRule
     {
-        public string NumberName { get; set; }
-        public BillDateRuleEnum BillDateRuleEnum { get; set; }
-        public string BillNumberPrefixStr { get; set; }
-        public int SerialNumber { get; set; }
+        /// <summary>
+        /// 编号字段名称,默认为BillNumber
+        /// </summary>
+        public string NumberName { get; set; } = "BillNumber";
+        /// <summary>
+        /// 编号日期组成部分,默认为ShortYearMonth
+        /// </summary>
+        public BillDateRuleEnum BillDateRuleEnum { get; set; } = BillDateRuleEnum.ShortYearMonth;
+        /// <summary>
+        /// 编号前缀,默认为空
+        /// </summary>
+        public string BillNumberPrefixStr { get; set; } = "";
+        /// <summary>
+        /// 流水号位数,默认4位
+        /// </summary>
+        public int SerialNumber { get; set; } = 4;
+        /// <summary>
+        /// 流水号起始数,默认为1
+        /// </summary>
+        public int StartSerial { get; set; } = 1;
+        /// <summary>
+        /// 流水号步进数
+        /// </summary>
+        public int SerialStep { get; set; } = 1;
+        /// <summary>
+        /// 是否开启随机英文
+        /// </summary>
+        public bool OpenRandomEnglish { get; set; } = false;
+        /// <summary>
+        /// 随机英文位数
+        /// </summary>
+        public int RandomEnglisthLength { get; set; } = 3;
+        /// <summary>
+        /// 是否开启随机数字
+        /// </summary>
+        public bool OpenRandomNumber { get; set; } = false;
+        /// <summary>
+        /// 随机数字位数
+        /// </summary>
+        public int RandomNumberLength { get; set; } = 3;
 
         public string ResultNumber(string lastNumber)
         {
@@ -76,14 +112,31 @@ namespace TodoApp.IService.IService.Patten
                 case BillDateRuleEnum.None:
                     break;
             }
-            int maxNumber = 1;
+            if (OpenRandomEnglish && RandomEnglisthLength > 0)
+            {
+                string englishStr = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+                for (int i = 0; i < RandomEnglisthLength; i++)
+                {
+                    result += englishStr[new Random().Next(0, englishStr.Length - 1)];
+                }
+            }
+            if (OpenRandomNumber && RandomNumberLength > 0)
+            {
+                for (int i = 0; i < RandomNumberLength; i++)
+                {
+                    result += new Random().Next(0, 9);
+                }
+            }
+            int maxNumber = StartSerial;
             if (!string.IsNullOrEmpty(lastNumber))
             {
-                maxNumber = Convert.ToInt32(lastNumber.Right(SerialNumber)) + 1;
+                maxNumber = Convert.ToInt32(lastNumber.Right(SerialNumber)) + SerialStep;
             }
             result += maxNumber.ToString().PadLeft(SerialNumber, '0');
 
             return result;
+
+
         }
     }
 }

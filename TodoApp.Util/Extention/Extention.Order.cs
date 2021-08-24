@@ -62,7 +62,7 @@ public static partial class Extention
             var parameter = Expression.Parameter(typeof(T), "o");
 
             //根据属性名获取属性
-            var property = typeof(T).GetProperty(order);
+            var property = typeof(T).GetProperties().FirstOrDefault(s => s.Name.ToLower().Equals(order.ToLower()));
             //创建一个访问属性的表达式
             var propertyAccess = Expression.MakeMemberAccess(parameter, property);
             var orderByExp = Expression.Lambda(propertyAccess, parameter);
@@ -81,7 +81,7 @@ public static partial class Extention
         }
         catch
         {
-            throw new Exception($"排序异常:请检查 {order} 是否存在,大小写是否与属性匹配");
+            throw new Exception($"排序异常:请检查 {order} 是否存在");
         }
     }
 }

@@ -5,6 +5,7 @@ using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Dynamic.Core;
 using System.Threading.Tasks;
 using Todo.App.Cache;
 using TodoApp.Api.Api.DetailTable;
@@ -42,10 +43,6 @@ namespace TodoApp.Api.Api.Patten
         /// 添加或修改层表结构
         /// </summary>
         protected virtual List<IDetailTableInfo<TKey>> DetailsTableInfo => null;
-        /// <summary>
-        /// 删除层表结构
-        /// </summary>
-        protected virtual List<IDeleteTableInfo<TKey>> DeletesTableInfo => null;
         /// <summary>
         /// 是否获取已删除的数据
         /// </summary>
@@ -250,9 +247,10 @@ namespace TodoApp.Api.Api.Patten
                 {
                     string lastNumber = string.Empty;
                     var temp = services.GetQuery().OrderBy("CreateTime").LastOrDefault();
-                    if (temp != null)
+                    if (temp != null &&temp is IBillNumberEntity billEntity )
                     {
-                        lastNumber = pro.GetValue(temp)?.ToString();
+                        lastNumber = billEntity.BillNumber;
+                        //lastNumber = pro.GetValue(temp)?.ToString();
                     }
                     pro.SetValue(entity, billNumberRule.ResultNumber(lastNumber));
                 }
@@ -314,7 +312,7 @@ namespace TodoApp.Api.Api.Patten
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet, Route("GetModelById")]
-        public async Task<ApiResult<TEntity>> GetModelById(Guid id)
+        public async Task<ApiResult<TEntity>> GetModelById(TKey id)
         {
             return await ApiResult.Of(services.GetModelById(id));
         }
@@ -330,15 +328,28 @@ namespace TodoApp.Api.Api.Patten
             var unitOfWork = new UnitOfWork(services.context);
             try
             {
-                var result = services.Delete(ids);
-
+                //var result = services.Delete(ids);
+                Dictionary<TKey, TEntity> deleteModelDic = new Dictionary<TKey, TEntity>();
                 foreach (var id in ids)
                 {
-                    ProcessDeleteDetailTableData(id);
+                    if (deleteModelDic.ContainsKey(id))
+                        continue;
+
+                    TEntity model = services.GetModelById(id);
+                    if (model == null)
+                        continue;
+
+                    deleteModelDic.Add(id, model);
                 }
+
+                foreach (var (key, value) in deleteModelDic)
+                {
+                    ProcessDelete(key, value);
+                }
+
                 unitOfWork.Commit();
 
-                return await ApiResult.Of(result);
+                return await ApiResult.Of(true);
             }
             catch (Exception ex)
             {
@@ -346,16 +357,43 @@ namespace TodoApp.Api.Api.Patten
                 throw new Exception(ex.Message);
             }
         }
-        /// <summary>
-        /// 删除层表数据
-        /// </summary>
-        /// <param name="parentId"></param>
-        protected virtual void ProcessDeleteDetailTableData(TKey parentId)
+        protected virtual void ProcessDelete(TKey id, TEntity model)
         {
-            foreach (IDeleteTableInfo<TKey> item in DeletesTableInfo)
+            ProcessDeleteRecord(id, model);
+
+        }
+        protected virtual void ProcessDeleteRecord(TKey id, TEntity deleteModel)
+        {
+            ProcessBeforeDelete(id);
+
+            services.DeleteLogic(deleteModel);
+
+            if (DetailsTableInfo != null)
             {
-                item.DeleteDetails(parentId);
+                foreach (IDetailTableInfo<TKey> item in DetailsTableInfo)
+                {
+                    item.MainDataDeleteExecute(id, deleteModel);
+                }
             }
+
+            if(deleteModel is ITreeEntity<TKey> treeEntity)
+            {
+                var childrenList = services.GetQuery().Where("ParentId == @0", treeEntity.Id).ToList();
+                foreach (var childrenModel in childrenList)
+                {
+                    ProcessDeleteRecord(childrenModel.Id, childrenModel);
+                }
+            }
+
+            ProcessAfterDelete(id);
+        }
+        protected virtual void ProcessBeforeDelete(TKey id)
+        {
+
+        }
+        protected virtual void ProcessAfterDelete(TKey id)
+        {
+
         }
         /// <summary>
         /// 取消删除
@@ -368,6 +406,11 @@ namespace TodoApp.Api.Api.Patten
             var result = services.CancelDelete(ids);
 
             return await ApiResult.Of(result);
+        }
+
+        protected virtual void ProcessInsertOrUpdateBeginTransaction(bool newCreate)
+        { 
+            
         }
     }
 }

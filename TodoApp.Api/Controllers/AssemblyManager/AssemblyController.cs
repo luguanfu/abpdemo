@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
+using TodoApp.Common.DelegateManager;
 
 namespace TodoApp.Api.Controllers.AssemblyManager
 {
@@ -45,7 +46,38 @@ namespace TodoApp.Api.Controllers.AssemblyManager
             var v2 = mi.Invoke(o, new object[] { n2, s });
             result.Add("V2:" + v2);
 
+            Chief chief = new Chief();
+            //chief.FallEvent = () => chief.result.Add("所有士兵发起了攻击");
+            //chief.RaiseEvent = (a) => result.Add($"士兵{(a.Equals("左") ? "A" : "B")}发起了攻击");
+            SoldierB sb = new SoldierB(chief);
+            SoldierC sc = new SoldierC(chief);
+
+            chief.Raise("左");
+            chief.Raise("右");
+            chief.Fall();
+
+            result.AddRange(chief.result);
+
             return result;
+        }
+        [HttpGet("BackTest")]
+        public IActionResult BackTest()
+        {
+            List<string> list = null;
+            int amount = list.Amount(s => s.Length % 2 != 0);
+
+            return new ContentResult() { Content = amount.ToString() };
+        }
+        private T Test<T>(bool name, Func<string, T> tResult, Func<string, T> fResult)
+        {
+            if (name)
+            {
+                return tResult("true");
+            }
+            else
+            {
+                return fResult("false");
+            }
         }
     }
 }
