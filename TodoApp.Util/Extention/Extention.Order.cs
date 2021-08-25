@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Linq.Dynamic.Core;
 using System.Linq.Expressions;
 
 public struct OrderField
@@ -16,9 +17,10 @@ public static partial class Extention
     /// <param name="query"></param>
     /// <param name="order"></param>
     /// <returns></returns>
-    public static IQueryable<T> OrderBy<T>(this IQueryable<T> query, string order)
+    public static IQueryable<T> OrderByAsc<T>(this IQueryable<T> query, string order)
     {
-        return OrderBy(query, order, false);
+        //return OrderBy(query, order, false);
+        return query.OrderBy($"{order} asc");
     }
     /// <summary>
     /// 降序
@@ -29,7 +31,8 @@ public static partial class Extention
     /// <returns></returns>
     public static IQueryable<T> OrderByDescending<T>(this IQueryable<T> query, string order)
     {
-        return OrderBy(query, order, true);
+        //return OrderBy(query, order, true);
+        return query.OrderBy($"{order} desc");
     }
     /// <summary>
     /// 组合升序
@@ -38,7 +41,7 @@ public static partial class Extention
     /// <param name="query"></param>
     /// <param name="order"></param>
     /// <returns></returns>
-    public static IQueryable<T> ThenBy<T>(this IQueryable<T> query, string order)
+    public static IQueryable<T> ThenByAsc<T>(this IQueryable<T> query, string order)
     {
         return OrderBy(query, order, false, true);
     }

@@ -26,6 +26,7 @@ namespace TodoApp.Service.Patten
         where TEntity : class, new()
     {
         public EfDbContext context;
+        public Guid TenantId { get; set; }
         DbSet<TEntity> DbSet { get; set; }
 
         public ServiceBase()
@@ -72,6 +73,11 @@ namespace TodoApp.Service.Patten
                     parentId = treeEntity2.ParentId;
                 }
                 orderEntity.OrderIndex = orderIndex ?? GetMaxOrderIndex(parentId) + 1;
+            }
+            if (entity is ITenantEntity tenantEntity)
+            {
+                tenantEntity.TenantId ??= null;
+                tenantEntity.TenantProjectId ??= null;
             }
         }
         private void InsertOperationLog(OperationLog_Operation operation, string content, bool deleteFlag = false, Guid? keyId = null)
@@ -134,7 +140,7 @@ namespace TodoApp.Service.Patten
                         }
                     }
                 }
-                filterEntity.FilterContent = filterValue.ToString();
+                filterEntity.FilterContent = filterValue.ToString().Trim(';');
             }
         }
         public virtual void BulkInsert(List<TEntity> entities)

@@ -6,3 +6,6 @@ update-database -Context PublicDbContext
 业务库
 Add-Migration 自定义 -Context OacDbContext -Project "xxx"
 Update-Database -Context OacDbContext -Project "xxx"
+
+推送代码443异常处理:
+git命令提示窗口输入:git config --global http.sslVerify false

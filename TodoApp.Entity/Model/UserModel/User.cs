@@ -16,7 +16,7 @@ namespace TodoApp.Entity.Model.UserModel
         [Display(Name = "密码")]
         public string Password { get; set; }
         [Display(Name = "姓名")]
-        public string UserName { get; set; }       
+        public string UserName { get; set; }
         /// <summary>
         /// 生日
         /// </summary>
@@ -27,5 +27,15 @@ namespace TodoApp.Entity.Model.UserModel
         /// </summary>
         [Display(Name = "部门")]
         public string Department { get; set; }
+        /// <summary>
+        /// 租户Id
+        /// </summary>
+        [Display(Name = "租户Id")]
+        public Guid? TenantId { get; set; }
+        /// <summary>
+        /// 租户项目Id
+        /// </summary>
+        [Display(Name = "租户项目Id")]
+        public Guid? TenantProjectId { get; set; }
     }
 }

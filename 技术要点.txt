@@ -32,6 +32,7 @@
 	((IDictionary<string, object>)obj).Add(propertyInfo.Name.FirstToLower(), propertyInfo.GetValue(item));
 9.了解和使用反射
 10.委托与事件(常常用于事件监听)--TodoApp.Common.DelegateManager
+11.从token从获取用户信息(ControllerBase.User)
 
 =======问题点=======
 1.apibase基类多继承问题(?)

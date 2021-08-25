@@ -74,6 +74,11 @@
             编号自动生成对象
             </summary>
         </member>
+        <member name="P:TodoApp.Api.Api.Patten.ApiBase`2.TenantId">
+            <summary>
+            租户Id
+            </summary>
+        </member>
         <member name="M:TodoApp.Api.Api.Patten.ApiBase`2.GetList(TodoApp.Api.Api.Patten.LoadOptions)">
             <summary>
             获取列表

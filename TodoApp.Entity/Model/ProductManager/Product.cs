@@ -10,7 +10,7 @@ using Volo.Abp.Domain.Entities;
 
 namespace TodoApp.Entity.Model.ProductManager
 {
-    public class Product : EntityBase<Guid>
+    public class Product : EntityBaseTenant<Guid>
     {
         /// <summary>
         /// 产品名称

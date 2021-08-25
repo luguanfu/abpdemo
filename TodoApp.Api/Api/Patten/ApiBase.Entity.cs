@@ -10,8 +10,10 @@ using System.Threading.Tasks;
 using Todo.App.Cache;
 using TodoApp.Api.Api.DetailTable;
 using TodoApp.Api.Api.LoadOptions;
+using TodoApp.Common;
 using TodoApp.Entity.Patten;
 using TodoApp.IService.IService.Patten;
+using TodoApp.IService.IService.UserManager;
 using TodoApp.IService.UnitManager;
 using TodoApp.Service.Patten;
 
@@ -55,6 +57,40 @@ namespace TodoApp.Api.Api.Patten
         /// 编号自动生成对象
         /// </summary>
         protected virtual BillNumberRule billNumberRule => null;
+
+        /// <summary>
+        /// 租户Id
+        /// </summary>
+        protected Guid TenantId
+        {
+            get
+            {
+                Guid? userId = UserId;
+                var model = GetService<IUserService>().GetModelById(userId);
+                if (model == null)
+                {
+                    throw new MyException("登录信息异常");
+                }
+                if (model.TenantId != null)
+                    return services.TenantId = model.TenantId.Value;
+
+                return services.TenantId = model.Id;
+            }
+        }
+        private Guid? UserId
+        {
+            get
+            {
+                foreach (var item in User.Claims)
+                {
+                    if (item.Type.Equals("id"))
+                    {
+                        return Guid.Parse(item.Value);
+                    }
+                }
+                return null;
+            }
+        }
 
         #region GetList
         /// <summary>
@@ -182,7 +218,7 @@ namespace TodoApp.Api.Api.Patten
                         }
                         else
                         {
-                            query = query.ThenBy(sortFilter[k].FieldName);
+                            query = query.ThenByAsc(sortFilter[k].FieldName);
                         }
                     }
                     else
@@ -193,7 +229,7 @@ namespace TodoApp.Api.Api.Patten
                         }
                         else
                         {
-                            query = query.OrderBy(sortFilter[k].FieldName);
+                            query = query.OrderByAsc(sortFilter[k].FieldName);
                         }
                     }
                 }
@@ -216,6 +252,11 @@ namespace TodoApp.Api.Api.Patten
             try
             {
                 ProcessNumberBeforeSave(entity);
+
+                if (entity is ITenantEntity tenantEntity)
+                {
+                    tenantEntity.TenantId = TenantId;
+                }
 
                 entity = services.Insert(entity);
 
@@ -246,8 +287,8 @@ namespace TodoApp.Api.Api.Patten
                 if (pro != null)
                 {
                     string lastNumber = string.Empty;
-                    var temp = services.GetQuery().OrderBy("CreateTime").LastOrDefault();
-                    if (temp != null &&temp is IBillNumberEntity billEntity )
+                    var temp = services.GetQuery().OrderByAsc("CreateTime").LastOrDefault();
+                    if (temp != null && temp is IBillNumberEntity billEntity)
                     {
                         lastNumber = billEntity.BillNumber;
                         //lastNumber = pro.GetValue(temp)?.ToString();
@@ -316,7 +357,7 @@ namespace TodoApp.Api.Api.Patten
         {
             return await ApiResult.Of(services.GetModelById(id));
         }
-        
+
         /// <summary>
         /// 删除
         /// </summary>
@@ -376,7 +417,7 @@ namespace TodoApp.Api.Api.Patten
                 }
             }
 
-            if(deleteModel is ITreeEntity<TKey> treeEntity)
+            if (deleteModel is ITreeEntity<TKey> treeEntity)
             {
                 var childrenList = services.GetQuery().Where("ParentId == @0", treeEntity.Id).ToList();
                 foreach (var childrenModel in childrenList)
@@ -409,8 +450,8 @@ namespace TodoApp.Api.Api.Patten
         }
 
         protected virtual void ProcessInsertOrUpdateBeginTransaction(bool newCreate)
-        { 
-            
+        {
+
         }
     }
 }
