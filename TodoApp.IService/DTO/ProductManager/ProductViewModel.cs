@@ -10,5 +10,5 @@ namespace TodoApp.IService.DTO.ProductManager
     public class ProductViewModel : Product
     {
         public string ProductName { get; set; }
-    }
+    }    
 }

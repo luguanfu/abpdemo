@@ -16,7 +16,9 @@ namespace TodoApp.Api.Api.Patten
     }
     public class ApiResult
     {
-        string Message { get; set; }
+        public int Code { get; set; }
+        public string Message { get; set; }
+
         public Task<ApiResult<T>> Of<T>(T data)
         {
             return Task.FromResult(new ApiResult<T>(data));

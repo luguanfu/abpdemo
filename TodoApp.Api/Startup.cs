@@ -149,6 +149,7 @@ namespace TodoApp.Api
                 options.Filters.Add(typeof(CustomerExceptionFilter));
                 //options.Filters.Add(typeof(MyActionFilter));
             });
+            services.AddHttpClient();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
