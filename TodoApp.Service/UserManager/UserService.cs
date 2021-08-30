@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TodoApp.Entity.Model.UserModel;
 using TodoApp.IService.IService.UserManager;
+using TodoApp.IService.Patten;
 using TodoApp.Service.Patten;
 
 namespace TodoApp.Service.UserManager

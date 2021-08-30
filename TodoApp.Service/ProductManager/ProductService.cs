@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using TodoApp.Entity.Model.ProductManager;
 using TodoApp.IService.DTO.ProductManager;
 using TodoApp.IService.IService.ProductManager;
+using TodoApp.IService.Patten;
 using TodoApp.Repository;
 using TodoApp.Service.Patten;
 

@@ -34,12 +34,11 @@ namespace TodoApp.Common.Upload
             //如果有文件
             if (file.Length > 0)
             {
-                fileSize = 0;
                 fileSize = file.Length;
 
                 using (var stream = new FileStream(dirPath, FileMode.OpenOrCreate))
                 {
-                    file.CopyToAsync(stream);
+                    file.CopyTo(stream);                           
                 }
             }
 

@@ -19,7 +19,9 @@ using System.Reflection;
 using System.Text;
 using TodoApp.Api.Filters;
 using TodoApp.Api.Model;
+using TodoApp.IService.Patten;
 using TodoApp.Repository;
+using TodoApp.Service.Patten;
 
 namespace TodoApp.Api
 {
@@ -150,6 +152,7 @@ namespace TodoApp.Api
                 //options.Filters.Add(typeof(MyActionFilter));
             });
             services.AddHttpClient();
+            //services.AddScoped<IUnitOfWork, UnitOfWork>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -160,7 +163,7 @@ namespace TodoApp.Api
             {
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
-                app.UseSwaggerUI(c => 
+                app.UseSwaggerUI(c =>
                 {
                     c.SwaggerEndpoint("/swagger/v1/swagger.json", "TodoApp.Api v1");
                     c.DocExpansion(Swashbuckle.AspNetCore.SwaggerUI.DocExpansion.None);

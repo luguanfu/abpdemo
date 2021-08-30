@@ -9,14 +9,16 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TodoApp.IService.Patten;
+using TodoApp.Repository;
 
-namespace TodoApp.IService.UnitManager
+namespace TodoApp.Service.Patten
 {
     public class UnitOfWork : IUnitOfWork
     {
-        private DbContext _context;
+        private EfDbContext _context;
         private IDbContextTransaction _tran;
-        public UnitOfWork(DbContext context)
+        public UnitOfWork(EfDbContext context)
         {
             this._context = context;
 

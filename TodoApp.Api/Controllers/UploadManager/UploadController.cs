@@ -16,15 +16,18 @@ namespace TodoApp.Api.Controllers.UploadManager
     public class UploadController : ControllerBase
     {
         [Consumes("multipart/form-data")]
-        [HttpPost,Route("FileSave")]
+        [HttpPost, Route("FileSave")]
         public async Task<MessageEntity> FileSave(IFormCollection collection)
         {
-            //var files = Request.Form.Files;
-            var file = collection.Files[0];
+            MessageEntity entity = null;
+            int count = collection.Files?.Count ?? 0;
+            for (int i = 0; i < count; i++)
+            {
+                var file = collection.Files[i];
 
-            var result = UploadFileInfo.Save(file);
-
-            return await Task.FromResult(result);
+                entity = UploadFileInfo.Save(file);
+            }
+            return await Task.FromResult(entity);
         }
 
         [HttpGet("Test")]

@@ -22,7 +22,7 @@ namespace TodoApp.Api.Api.Patten
         /// </summary>
         public int TotalSummary { get; set; }
     }
-    public static class Extention
+    public static class ApiExtention
     {
         public static List<T> GetData<T>(this LoadResult loadResult)
         {

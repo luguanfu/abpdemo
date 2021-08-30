@@ -8,6 +8,7 @@ using TodoApp.Api.Api.Patten;
 using TodoApp.Entity.Model.MenuManager;
 using TodoApp.IService.DTO;
 using TodoApp.IService.DTO.MenuManager;
+using TodoApp.IService.Patten;
 using TodoApp.Service.MenuManager;
 
 namespace TodoApp.Api.Controllers.ApiManager
@@ -17,7 +18,11 @@ namespace TodoApp.Api.Controllers.ApiManager
     public class ApiTestController : ControllerBase
     {
         ApiResult ApiResult => new ApiResult();
-
+        public IUnitOfWork unitOfWork;
+        public ApiTestController(IUnitOfWork unitOfWork)
+        {
+            this.unitOfWork = unitOfWork;
+        }
         [HttpPost("GetMenu")]
         [Authorize]
         public async Task<ApiResult<List<Menu>>> GetMenu(PageInput<MenuInput> input)

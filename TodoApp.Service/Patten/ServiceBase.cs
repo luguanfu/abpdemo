@@ -12,6 +12,7 @@ using Todo.App.Cache;
 using TodoApp.Entity.Model;
 using TodoApp.Entity.Patten;
 using TodoApp.IService.IService.Patten;
+using TodoApp.IService.Patten;
 using TodoApp.Repository;
 using TodoApp.Service.OperationLogManager;
 
@@ -25,18 +26,20 @@ namespace TodoApp.Service.Patten
     public class ServiceBase<TEntity, TKey> : IServiceBase<TEntity, TKey>
         where TEntity : class, new()
     {
+        public IUnitOfWork unitOfWork;
         public EfDbContext context;
         public Guid TenantId { get; set; }
         DbSet<TEntity> DbSet { get; set; }
 
         public ServiceBase()
-        {
+        {            
             //string connection = "Data Source=.; User Id=sa; PassWord=000000; Initial Catalog=TodoApp;";
             string connection = Extention.GetConnectionString("TodoAppConnection");
             DbContextOptions<EfDbContext> options = new DbContextOptions<EfDbContext>();
             DbContextOptionsBuilder<EfDbContext> dbContextOptionBuilder = new DbContextOptionsBuilder<EfDbContext>(options);
             context = new EfDbContext(dbContextOptionBuilder.UseSqlServer(connection).Options);
 
+            this.unitOfWork = new UnitOfWork(context);
             DbSet = context.Set<TEntity>();
         }
         public virtual TEntity Insert(TEntity entity)

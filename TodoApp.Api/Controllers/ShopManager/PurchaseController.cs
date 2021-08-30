@@ -26,7 +26,7 @@ namespace TodoApp.Api.Controllers.ShopManager
             OpenRandomEnglish = true,
             OpenRandomNumber = true
         };
-        readonly DetailTableInfo<PurchaseDetail, Guid> _detailEmp = new DetailTableInfo<PurchaseDetail, Guid>
+        readonly DetailTableInfo<PurchaseDetail, Guid> _detailEmp = new DetailTableInfo<PurchaseDetail, Guid>()
         {
             TableName = "DetailList",
             ForeignKey = "ParentId"

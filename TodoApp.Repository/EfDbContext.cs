@@ -8,13 +8,14 @@ using TodoApp.Entity.Model.MenuManager;
 using TodoApp.Entity.Model.ProductManager;
 using TodoApp.Entity.Model.ShopManager;
 using TodoApp.Entity.Model.UserModel;
+using TodoApp.IService.IService.Patten;
 using Volo.Abp.EntityFrameworkCore;
 using Volo.Abp.EntityFrameworkCore.Modeling;
 using Volo.Abp.Users.EntityFrameworkCore;
 
 namespace TodoApp.Repository
 {
-    public class EfDbContext : AbpDbContext<EfDbContext>
+    public class EfDbContext : AbpDbContext<EfDbContext>, IDependency
     {
         private const string DbTablePrefix = "Todo_";
         public EfDbContext(DbContextOptions<EfDbContext> options) : base(options) { }

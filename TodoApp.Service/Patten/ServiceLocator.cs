@@ -8,6 +8,8 @@ using System.Runtime.Loader;
 using System.Text;
 using System.Threading.Tasks;
 using TodoApp.IService.IService.Patten;
+using TodoApp.IService.Patten;
+using TodoApp.Repository;
 
 namespace TodoApp.Service.Patten
 {
@@ -16,6 +18,7 @@ namespace TodoApp.Service.Patten
         public static T GetService<T>()
         {
             var builder = DependencyResolver();
+            //builder.RegisterType<IUnitOfWork>().As<UnitOfWork>().SingleInstance();            
             using (var container = builder.Build())
             {
                 return container.Resolve<T>();

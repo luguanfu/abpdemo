@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TodoApp.Entity.Model.ProductManager;
 using TodoApp.IService.IService.ProductManager;
+using TodoApp.IService.Patten;
 using TodoApp.Service.Patten;
 
 namespace TodoApp.Service.ProductManager

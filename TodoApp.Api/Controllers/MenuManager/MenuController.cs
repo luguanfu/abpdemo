@@ -21,7 +21,6 @@ namespace TodoApp.Api.Controllers.MenuManager
     {
         //protected override bool IgnoreAuth => true;
         //protected override bool? IsDeleted => null;
-
         protected override List<Menu> GetListByParentId(Guid? parentId)
         {
             return GetService<IMenuService>().GetQuery(IsDeleted).Where(s => s.ParentId == parentId).ToList();

@@ -1,6 +1,8 @@
-﻿using DevExtreme.AspNet.Data;
+﻿using Autofac;
+using DevExtreme.AspNet.Data;
 using DevExtreme.AspNet.Data.ResponseModel;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -14,7 +16,8 @@ using TodoApp.Common;
 using TodoApp.Entity.Patten;
 using TodoApp.IService.IService.Patten;
 using TodoApp.IService.IService.UserManager;
-using TodoApp.IService.UnitManager;
+using TodoApp.IService.Patten;
+using TodoApp.Repository;
 using TodoApp.Service.Patten;
 
 namespace TodoApp.Api.Api.Patten
@@ -29,10 +32,33 @@ namespace TodoApp.Api.Api.Patten
         where TEntity : class, IEntity<TKey>, new()
         where TKey : struct
     {
+        private EfDbContext context
+        {
+            get
+            {
+                string connection = Extention.GetConnectionString("TodoAppConnection");
+                DbContextOptions<EfDbContext> options = new DbContextOptions<EfDbContext>();
+                DbContextOptionsBuilder<EfDbContext> dbContextOptionBuilder = new DbContextOptionsBuilder<EfDbContext>(options);
+                return new EfDbContext(dbContextOptionBuilder.UseSqlServer(connection).Options);
+            }
+        }
+        private IUnitOfWork _unitOfWork;
+        public IUnitOfWork unitOfWork
+        {
+            get
+            {
+                if (_unitOfWork == null)
+                {
+                    _unitOfWork = new UnitOfWork(context);
+                }
+                return _unitOfWork;
+            }
+        }
         /// <summary>
         /// 服务基类
         /// </summary>
         protected ServiceBase<TEntity, TKey> services = new ServiceBase<TEntity, TKey>();
+        
         /// <summary>
         /// 返回类型对象
         /// </summary>
@@ -248,7 +274,6 @@ namespace TodoApp.Api.Api.Patten
         [HttpPost]
         public async Task<ApiResult<TEntity>> Insert([FromBody] TEntity entity)
         {
-            var unitOfWork = new UnitOfWork(services.context);
             try
             {
                 ProcessNumberBeforeSave(entity);
@@ -329,7 +354,6 @@ namespace TodoApp.Api.Api.Patten
         [HttpPost, Route("Update")]
         public async Task<ApiResult<TEntity>> Update([FromBody] TEntity entity)
         {
-            var unitOfWork = new UnitOfWork(services.context);
             try
             {
                 entity = services.Update(entity);
@@ -366,7 +390,6 @@ namespace TodoApp.Api.Api.Patten
         [HttpPost, Route("Delete")]
         public async Task<ApiResult<bool>> Delete(List<TKey> ids)
         {
-            var unitOfWork = new UnitOfWork(services.context);
             try
             {
                 //var result = services.Delete(ids);

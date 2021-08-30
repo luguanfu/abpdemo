@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using TodoApp.Api.Api.LoadOptions;
 using TodoApp.Entity.Patten;
+using TodoApp.IService.IService.Patten;
 using TodoApp.Service.Patten;
 
 namespace TodoApp.Api.Api.DetailTable
@@ -31,7 +32,7 @@ namespace TodoApp.Api.Api.DetailTable
             }
             else
             {
-                var service = new ServiceBase<TEntity, TKey>();
+                var service = TodoApp.Service.Patten.ServiceLocator.GetService<IServiceBase<TEntity, TKey>>();
                 var list = service.GetQuery().WhereFilter(new SearchField[] { new SearchField { Field = ForeignKey, Op = "=", Value = tKey.ToString() } }).ToList();
                 foreach (var curItem in list)
                 {
@@ -51,7 +52,7 @@ namespace TodoApp.Api.Api.DetailTable
 
         public void SaveDetails(string detailsData, List<TKey> deleteKeys, TKey mainId, dynamic mainEntity)
         {
-            ServiceBase<TEntity, TKey> services = new ServiceBase<TEntity, TKey>();
+            var service = TodoApp.Service.Patten.ServiceLocator.GetService<IServiceBase<TEntity, TKey>>();
 
             if (!string.IsNullOrEmpty(detailsData))
             {
@@ -68,7 +69,7 @@ namespace TodoApp.Api.Api.DetailTable
                 {
                     foreignKey.SetValue(item, mainId);
                 });
-                services.BulkInsert(list);
+                service.BulkInsert(list);
 
                 if (EndInsertOrEdit != null)
                 {
@@ -77,7 +78,7 @@ namespace TodoApp.Api.Api.DetailTable
             }
             if (deleteKeys?.Count > 0)
             {
-                services.Delete(deleteKeys);
+                service.Delete(deleteKeys);
             }
         }
     }

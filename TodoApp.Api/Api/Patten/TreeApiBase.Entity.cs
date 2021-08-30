@@ -12,7 +12,6 @@ namespace TodoApp.Api.Api.Patten
         where TEntity :class, ITreeEntity<TKey>,new()
         where TKey : struct
     {
-
         /// <summary>
         /// 获取树型结构数据集合
         /// </summary>

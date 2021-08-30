@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using TodoApp.IService.IService.Patten;
 
-namespace TodoApp.IService.UnitManager
+namespace TodoApp.IService.Patten
 {
     public interface IUnitOfWork : IDisposable, IDependency
     {
