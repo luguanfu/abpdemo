@@ -172,6 +172,8 @@ namespace TodoApp.Api
 
             loggerFactory.AddNLog();
 
+            app.UseStaticFiles();
+
             app.UseHttpsRedirection();
 
             app.UseRouting();

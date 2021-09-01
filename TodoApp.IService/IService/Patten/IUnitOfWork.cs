@@ -10,6 +10,7 @@ namespace TodoApp.IService.Patten
 {
     public interface IUnitOfWork : IDisposable, IDependency
     {
+        void BeginTransaction();
         void Commit();
         void Rollback();
     }

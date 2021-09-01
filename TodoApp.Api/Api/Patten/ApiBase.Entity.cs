@@ -276,6 +276,8 @@ namespace TodoApp.Api.Api.Patten
         {
             try
             {
+                unitOfWork.BeginTransaction();
+
                 ProcessNumberBeforeSave(entity);
 
                 if (entity is ITenantEntity tenantEntity)

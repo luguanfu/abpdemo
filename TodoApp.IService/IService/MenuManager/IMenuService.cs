@@ -12,5 +12,7 @@ namespace TodoApp.IService.IService.MenuManager
     public interface IMenuService : IServiceBase<Menu, Guid>
     {
         IQueryable<MenuViewModel> GetListData();
+
+        void ImportData(List<MenuImportModel> dataList);
     }
 }

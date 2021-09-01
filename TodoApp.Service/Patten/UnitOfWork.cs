@@ -21,11 +21,9 @@ namespace TodoApp.Service.Patten
         public UnitOfWork(EfDbContext context)
         {
             this._context = context;
-
-            BeginTransaction();
         }
 
-        private void BeginTransaction()
+        public void BeginTransaction()
         {
             _tran = _context.Database.BeginTransaction();
         }

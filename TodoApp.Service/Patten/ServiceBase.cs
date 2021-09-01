@@ -32,7 +32,7 @@ namespace TodoApp.Service.Patten
         DbSet<TEntity> DbSet { get; set; }
 
         public ServiceBase()
-        {            
+        {
             //string connection = "Data Source=.; User Id=sa; PassWord=000000; Initial Catalog=TodoApp;";
             string connection = Extention.GetConnectionString("TodoAppConnection");
             DbContextOptions<EfDbContext> options = new DbContextOptions<EfDbContext>();
@@ -62,13 +62,13 @@ namespace TodoApp.Service.Patten
                 createEntity.CreateBy ??= UserCacheProject.LoginUserId;
                 createEntity.CreateTime ??= DateTimeOffset.Now;
             }
-            if (entity is ITreeEntity<TKey> treeEntity)
+            if (entity is ITreeEntity<TKey> treeEntity && treeEntity.Level == 0)
             {
                 int level = 1;
                 GetLevel(treeEntity.ParentId, ref level);
                 treeEntity.Level = level;
             }
-            if (entity is IOrderEntity orderEntity)
+            if (entity is IOrderEntity orderEntity && orderEntity.OrderIndex == 0)
             {
                 Guid? parentId = null;
                 if (entity is ITreeEntity<TKey> treeEntity2)
@@ -76,6 +76,7 @@ namespace TodoApp.Service.Patten
                     parentId = treeEntity2.ParentId;
                 }
                 orderEntity.OrderIndex = orderIndex ?? GetMaxOrderIndex(parentId) + 1;
+
             }
             if (entity is ITenantEntity tenantEntity)
             {
@@ -105,7 +106,8 @@ namespace TodoApp.Service.Patten
             var propertys = type.GetProperties();
             if (propertys.FirstOrDefault(s => s.Name.Equals("ParentId")) != null)
             {
-                return (int)this.GetQuery().WhereFilter(new SearchField[] { new SearchField { Field = "ParentId", Op = "=", Value = parentId?.ToString() } })
+                string value = parentId == null ? "is null" : parentId.ToString();
+                return (int)this.GetQuery().WhereFilter(new SearchField[] { new SearchField { Field = "ParentId", Op = "=", Value = value } })
                     .MaxValue("OrderIndex", 0);
             }
             else
@@ -156,12 +158,69 @@ namespace TodoApp.Service.Patten
             int orderIndex = GetMaxOrderIndex(parentId);
             foreach (var item in entities)
             {
-                orderIndex++;
-                InsertReset(item, orderIndex);
+                SetLevel(entities, item);
+                int oIndex = GetOrderIndex(entities, item, ref orderIndex);
+                InsertReset(item, oIndex);
                 InsertOperationLog(OperationLog_Operation.Insert, JsonConvert.SerializeObject(item));
             }
             DbSet.AddRange(entities);
             context.SaveChanges();
+        }
+        private void SetLevel(List<TEntity> entities, TEntity item)
+        {
+            if (item is ITreeEntity<TKey> treeEntity && treeEntity.Level == 0)
+            {
+                if (treeEntity.ParentId == null)
+                {
+                    treeEntity.Level = 1;
+                }
+                else
+                {
+                    int level = 1;
+                    SetLevel(entities, treeEntity.ParentId, ref level);
+                    treeEntity.Level = level;
+                }
+            }
+        }
+        private void SetLevel(List<TEntity> list, Guid? parentId, ref int level)
+        {
+            if (parentId != null)
+            {
+                var temp = list.FirstOrDefault(s => s is ITreeEntity<Guid> it && it.Id == parentId.Value);
+                if (temp != null && temp is ITreeEntity<TKey> treeEntity)
+                {
+                    level++;
+                    SetLevel(list, treeEntity.ParentId, ref level);
+                }
+            }
+        }
+        private int GetOrderIndex(List<TEntity> entities, TEntity item, ref int orderIndex)
+        {
+            if (item is ITreeEntity<TKey> treeEntity)
+            {
+                if (treeEntity.ParentId == null)
+                    orderIndex++;
+                else
+                {
+                    int maxOrderIndex = 0;
+                    entities.ForEach(detail =>
+                    {
+                        if (detail is ITreeEntity<TKey> treeEntity2 && treeEntity2.ParentId == treeEntity.ParentId)
+                        {
+                            if (detail is IOrderEntity orderEntity && orderEntity.OrderIndex > maxOrderIndex)
+                            {
+                                maxOrderIndex = orderEntity.OrderIndex;
+                            }
+                        }
+                    });
+                    return maxOrderIndex + 1;
+                }
+            }
+            else
+            {
+                orderIndex++;
+            }
+            return orderIndex;
         }
         public virtual void BulkUpdate(List<TEntity> entities)
         {
