@@ -9,3 +9,4 @@ Update-Database -Context OacDbContext -Project "xxx"
 
 推送代码443异常处理:
 git命令提示窗口输入:git config --global http.sslVerify false
+git->设置->Git全局设置->加密网络提供程序->Secure Channel
