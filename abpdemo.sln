@@ -32,11 +32,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TodoApp.Winform", "TodoApp.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TodoApp.Web", "TodoApp.Web\TodoApp.Web.csproj", "{A53C20EA-DB17-41AD-8F6B-ADBA2623F973}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "资料库", "资料库", "{7FB98868-BC48-487F-94DF-53A41E01500B}"
-	ProjectSection(SolutionItems) = preProject
-		..\..\学习资料\数据结构(C#版).pdf = ..\..\学习资料\数据结构(C#版).pdf
-	EndProjectSection
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -90,9 +85,6 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{7FB98868-BC48-487F-94DF-53A41E01500B} = {50732A12-D054-4D6C-A06E-8DD6AA1A383F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A499DF2A-AA6A-4168-B12F-0426194ED523}
