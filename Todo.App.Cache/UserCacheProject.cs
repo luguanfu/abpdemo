@@ -13,7 +13,8 @@ namespace Todo.App.Cache
         {
             get
             {
-                return CacheHelper.GetCache<User>("User").Id;
+                return Guid.NewGuid();
+                //return CacheHelper.GetCache<User>("User").Id;
             }
         }
         public static string GetUserName(Guid? userId)

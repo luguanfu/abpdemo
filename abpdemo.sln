@@ -26,9 +26,16 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TodoApp.Cache", "Todo.App.C
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TodoApp.Common", "TodoApp.Common\TodoApp.Common.csproj", "{EA69C929-30A3-40EA-BAA2-C62CB597F7DC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TodoApp.App", "TodoApp.App\TodoApp.App.csproj", "{97FD8D30-E604-4D23-BCCB-E11E57CCCBAA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TodoApp.App", "TodoApp.App\TodoApp.App.csproj", "{97FD8D30-E604-4D23-BCCB-E11E57CCCBAA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TodoApp.Winform", "TodoApp.Winform\TodoApp.Winform.csproj", "{5A644453-5536-4F17-8936-F5DF090E23BB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TodoApp.Winform", "TodoApp.Winform\TodoApp.Winform.csproj", "{5A644453-5536-4F17-8936-F5DF090E23BB}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TodoApp.Web", "TodoApp.Web\TodoApp.Web.csproj", "{A53C20EA-DB17-41AD-8F6B-ADBA2623F973}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "资料库", "资料库", "{7FB98868-BC48-487F-94DF-53A41E01500B}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\学习资料\数据结构(C#版).pdf = ..\..\学习资料\数据结构(C#版).pdf
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -76,9 +83,16 @@ Global
 		{5A644453-5536-4F17-8936-F5DF090E23BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5A644453-5536-4F17-8936-F5DF090E23BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5A644453-5536-4F17-8936-F5DF090E23BB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A53C20EA-DB17-41AD-8F6B-ADBA2623F973}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A53C20EA-DB17-41AD-8F6B-ADBA2623F973}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A53C20EA-DB17-41AD-8F6B-ADBA2623F973}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A53C20EA-DB17-41AD-8F6B-ADBA2623F973}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{7FB98868-BC48-487F-94DF-53A41E01500B} = {50732A12-D054-4D6C-A06E-8DD6AA1A383F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A499DF2A-AA6A-4168-B12F-0426194ED523}

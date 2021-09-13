@@ -23,8 +23,13 @@ namespace TodoApp.Winform
         {
             if (action != null)
             {
+                InitData();
                 action(this.textBox1.Text);
             }
+        }
+        private void InitData()
+        { 
+            
         }
     }
 }

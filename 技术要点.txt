@@ -42,6 +42,16 @@
 13.调用外部api
 14.数据导入(menucontroller.import)
 15.自动生成层级(Level)&排序(OrderIndex)--区别单个对象添加和批量添加
+16..net core webapi项目中嵌入web项目，需添加web服务--》endpoints.MapRazorPages();services.AddRazorPages();
+
+
+
+=======需要掌握的技术要点========
+1.消息队列
+2.http协议、TCP/IP协议
+3.数据算法
+4..Net Core中间件&依赖注入
+5.微服务架构
 
 
 =======问题点=======

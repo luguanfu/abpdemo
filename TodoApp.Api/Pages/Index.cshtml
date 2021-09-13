@@ -1,0 +1,36 @@
+﻿@page
+@model TodoApp.Api.Pages.IndexModel
+@{
+}
+<script src="/Scripts/jquery.js"></script>
+<script>
+    $(function () {
+        $("#submit").click(function () {
+            var url = "/api/menu/insert";
+            var data = {};
+            $($("#form1").serializeArray()).each(function () {
+                data[this.name] = this.value;
+            });
+            console.log(data);
+            $.ajax({
+                url: url,
+                type: "post",
+                dataType: "json",
+                cache: false,
+                contentType: "application/json; charset=utf-8",
+                data: JSON.stringify(data),
+                success: function (r) {
+                    alert("提交成功")
+                }
+            });
+            //console.log($("#form1").serialize());
+        });
+    })
+</script>
+
+<form id="form1">
+    <input type="number" /><br/>
+    <input name="name" id="name" autocomplete="off" /><br />
+    <input name="parentid" id="parentid" autocomplete="off" /><br/>
+    <input type="button" id="submit" value="submit" />
+</form>

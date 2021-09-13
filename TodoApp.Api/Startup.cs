@@ -148,16 +148,22 @@ namespace TodoApp.Api
 
             services.AddMvc(options =>
             {
+                options.EnableEndpointRouting = false;
                 options.Filters.Add(typeof(CustomerExceptionFilter));
                 //options.Filters.Add(typeof(MyActionFilter));
             });
             services.AddHttpClient();
+            services.AddRazorPages();
             //services.AddScoped<IUnitOfWork, UnitOfWork>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ILoggerFactory loggerFactory)
         {
+            app.UseMvc(routes =>
+            {
+                routes.MapRoute(name: "areaRoute", template: "{controller}/{action}/{id}");
+            });
 
             if (env.IsDevelopment())
             {
@@ -195,8 +201,10 @@ namespace TodoApp.Api
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllers();
+                endpoints.MapControllers(); 
+                endpoints.MapRazorPages();
             });
+
         }
     }
 }
