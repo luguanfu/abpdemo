@@ -30,7 +30,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TodoApp.App", "TodoApp.App\
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TodoApp.Winform", "TodoApp.Winform\TodoApp.Winform.csproj", "{5A644453-5536-4F17-8936-F5DF090E23BB}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TodoApp.Web", "TodoApp.Web\TodoApp.Web.csproj", "{A53C20EA-DB17-41AD-8F6B-ADBA2623F973}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TodoApp.WebCore", "TodoApp.Web\TodoApp.WebCore.csproj", "{A53C20EA-DB17-41AD-8F6B-ADBA2623F973}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TodoApp.WebFramework", "TodoApp.WebFramework\TodoApp.WebFramework.csproj", "{C54401C6-BCD2-43C5-9237-DF1C40E75CAE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -82,6 +84,10 @@ Global
 		{A53C20EA-DB17-41AD-8F6B-ADBA2623F973}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A53C20EA-DB17-41AD-8F6B-ADBA2623F973}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A53C20EA-DB17-41AD-8F6B-ADBA2623F973}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C54401C6-BCD2-43C5-9237-DF1C40E75CAE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C54401C6-BCD2-43C5-9237-DF1C40E75CAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C54401C6-BCD2-43C5-9237-DF1C40E75CAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C54401C6-BCD2-43C5-9237-DF1C40E75CAE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
