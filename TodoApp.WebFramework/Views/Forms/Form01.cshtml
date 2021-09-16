@@ -1,0 +1,29 @@
+﻿@{
+    Layout = null;
+}
+@model TodoApp.WebFramework.FormManager.Forms.Form01
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+</head>
+<body>
+    <div>
+        <form id="form1">
+        </form>
+        @using (Html.BeginForm("Add", "Forms", new { formId = Request["formId"] }))
+        {
+            <div>
+                Name:@Html.TextBoxFor(s => s.Name)<br />
+                Age:@Html.TextBoxFor(s => s.Age, new { @type = "number" })<br />
+
+                <input type="submit" value="submit" />
+            </div>
+        }
+    </div>
+</body>
+</html>

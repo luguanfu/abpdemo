@@ -14,4 +14,8 @@
     <ProjectReference Include="..\TodoApp.Util\TodoApp.Util.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="DTO\FormManager\" />
+  </ItemGroup>
+
 </Project>

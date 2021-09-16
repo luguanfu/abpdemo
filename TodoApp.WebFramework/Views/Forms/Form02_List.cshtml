@@ -1,0 +1,36 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+</head>
+<body>
+    <div>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th>Birthday</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in ViewBag.DataList)
+                {
+                    <tr>
+                        <td>@item.Name</td>
+                        <td>@item.Age</td>
+                        <td>@Html.Raw(item.Birthday?.ToString("yyyy-MM-dd"))</td>
+
+                  </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

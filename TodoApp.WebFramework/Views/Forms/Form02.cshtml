@@ -1,0 +1,30 @@
+﻿@{
+    Layout = null;
+}
+@model TodoApp.WebFramework.FormManager.Forms.Form02
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+</head>
+<body>
+    <div>
+        @using (Html.BeginForm("Add", "Forms", new { formId = Request["formId"] }))
+        {
+            <div>
+                Name:@Html.TextBoxFor(s => s.Name,new { autocomplete = "off" })&nbsp;@Html.ValidationMessageFor(s => s.Name)<br />
+                Age:@Html.TextBoxFor(s => s.Age, new { @type = "number" })<br />
+                Birthday:@Html.TextBoxFor(s=>s.Birthday,new { @type="date"})<br/>
+
+                <input type="submit" value="submit" />
+            </div>
+        }
+    </div>
+</body>
+</html>

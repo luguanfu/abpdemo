@@ -5,6 +5,7 @@ using System;
 using System.Text;
 using System.Threading;
 using TodoApp.Entity.Model.ProductManager;
+using TodoApp.Util.DataStructureAlgorithm.List;
 
 namespace TodoApp.App
 {
@@ -12,6 +13,44 @@ namespace TodoApp.App
     {
         static void Main(string[] args)
         {
+            int[,] t = new int[2, 3];
+            t[0, 0] = 1;
+            t[0, 1] = 2;
+
+            for (int i = 0; i < 2; i++)
+            {
+                for (int j = 0; j < 3; j++)
+                {
+                    t[i, j] = i * j;
+                    Console.WriteLine($"{i}*{j}={t[i, j]}");
+                }
+            }
+
+            int[][] x = new int[2][];
+            x[0] = new int[] { 1, 2 };
+            x[1] = new int[] { 2, 3, 4 };
+
+            return;
+
+            SeqList<int> list = new SeqList<int>(10);
+
+            list.Append(555);
+            list.Append(556);
+            list.Append(557);
+            list.Append(558);
+            list.Append(559);
+            list.Insert(550, 3);
+
+            for (int k = 0; k <= list.Last; k++)
+            {
+                Console.WriteLine(list.Items[k]);
+            }
+            Console.WriteLine(list.GetItem(3));
+            Console.WriteLine("MaxSize:" + list.MaxSize);
+            Console.WriteLine("Last:" + list.Last);
+            return;
+
+
             new AsyncHelper().Run();
             //Console.ReadLine();
             return;

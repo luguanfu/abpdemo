@@ -4,6 +4,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using TodoApp.Entity.Model;
+using TodoApp.Entity.Model.FormManager;
 using TodoApp.Entity.Model.MenuManager;
 using TodoApp.Entity.Model.ProductManager;
 using TodoApp.Entity.Model.ShopManager;
@@ -107,6 +108,13 @@ namespace TodoApp.Repository
             modelBuilder.Entity<AdjustStockDetail>(b =>
             {
                 b.ToTable(DbTablePrefix + "AdjustStockDetail");
+                b.ConfigureByConvention();
+            });
+            modelBuilder.Entity<Form_Data>(b =>
+            {
+                b.ToTable("Form_Data");
+                b.Property(s => s.FormId).HasMaxLength(30);
+                b.Property(s => s.FieldName).HasMaxLength(50);
                 b.ConfigureByConvention();
             });
         }
