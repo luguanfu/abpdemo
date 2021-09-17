@@ -6,25 +6,13 @@ using System.Web.Mvc;
 
 namespace TodoApp.WebFramework.Controllers
 {
+    [Authorize]
     public class HomeController : Controller
     {
         public ActionResult Index()
         {
-
-            return View();
-        }
-
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
+            Session[""] = "";
+            ViewBag.Name = User.Identity.Name;
             return View();
         }
     }

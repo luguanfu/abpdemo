@@ -20,6 +20,7 @@ namespace TodoApp.WebFramework.Controllers
             string formId = Request["FormId"];
             var list = service.GetQuery().Where(s => s.FormId.Equals("Form" + formId)).ToList();
 
+
             if (formId.Equals("01"))
             {
                 var dataList = list.GroupBy(s => s.DataId)
