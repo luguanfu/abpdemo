@@ -30,6 +30,13 @@ namespace TodoApp.Api.Controllers.MenuManager
         {
             return GetService<IMenuService>().GetQuery(IsDeleted).Where(s => s.ParentId == parentId).ToList();
         }
+        [HttpGet("TokenTest")]
+        public Task<ApiResult<string>> TokenTest()
+        {
+
+            return ApiResult.Of("tokentest");
+        }
+
         [HttpGet,Route("Test")]
         public Task<ApiResult<Menu>> Test()
         {

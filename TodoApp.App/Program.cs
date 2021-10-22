@@ -2,8 +2,10 @@
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
 using System;
+using System.Collections.Immutable;
 using System.Text;
 using System.Threading;
+using System.Threading.Tasks;
 using TodoApp.Entity.Model.ProductManager;
 using TodoApp.Util.DataStructureAlgorithm.List;
 
@@ -11,8 +13,103 @@ namespace TodoApp.App
 {
     class Program
     {
+        static async Task<int> DoSomethingAsync()
+        {
+            int val = 13;
+
+            Task t1 = Task.Run(() =>
+            {
+                val = 1;
+                Task.Delay(TimeSpan.FromSeconds(3));
+                Console.WriteLine("11");
+            });
+            Task t3 = Task.Run(() =>
+            {
+                val = 3;
+                Task.Delay(TimeSpan.FromSeconds(3));
+                Console.WriteLine("33");
+            });
+            Task t2 = Task.Run(() =>
+            {
+                val = 2;
+                Task.Delay(TimeSpan.FromSeconds(3));
+                Console.WriteLine("22");
+            });
+
+
+            //Task.Delay(TimeSpan.FromSeconds(1));
+
+            //val *= 2;
+
+            await Task.WhenAny(t1, t3, t2);
+
+            //await Task.Delay(TimeSpan.FromSeconds(1));
+
+            Console.WriteLine("val:" + val);
+
+            return val;
+        }
+
+        private static readonly object objLock = new object();
+
+        static void LockTest(string str, int times)
+        {
+            Console.WriteLine("没进锁：" + str);
+            lock (objLock)
+            {
+                Thread.Sleep(times);
+                Console.WriteLine(str);
+            }
+        }
+
         static void Main(string[] args)
         {
+            QueueHelper.Run();
+            Console.ReadLine();
+            return;
+            var ques = ImmutableQueue<int>.Empty;
+            ques = ques.Enqueue(13);
+            var qqs = ques.Enqueue(7);
+
+            var qs = ques.GetEnumerator();
+            while (qs.MoveNext())
+            {
+                Console.WriteLine(qs.Current);
+            }
+            Console.WriteLine("========");
+            qs = qqs.GetEnumerator();
+            while (qs.MoveNext())
+            {
+                Console.WriteLine(qs.Current);
+            }
+            Console.ReadLine();
+
+            return;
+
+
+            Task.Run(() =>
+            {
+                LockTest("111", 3000);
+            });
+            Thread.Sleep(1000);
+            Task.Run(() =>
+            {
+                LockTest("222", 0);
+            });
+
+            Console.ReadLine();
+            return;
+            Console.WriteLine("start");
+
+            var result = DoSomethingAsync();
+            //Console.WriteLine(result.Result);
+
+
+            Console.WriteLine("end");
+
+            Console.ReadLine();
+
+            return;
             int[,] t = new int[2, 3];
             t[0, 0] = 1;
             t[0, 1] = 2;

@@ -35,7 +35,7 @@ namespace TodoApp.Api.Controllers.UserManager
             {
                 throw new Exception($"{userName}不存在或密码错误");
             }
-            CacheHelper.SetCache("User", user);
+            //CacheHelper.SetCache("User", user);
             var responseResult = new
             {
                 Success = true,

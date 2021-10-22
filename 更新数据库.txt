@@ -1,5 +1,6 @@
 Public库(Code First)
 Add-Migration 自定义 -Context PublicDbContext
+EntityFrameworkCore\Add-Migration 自定义 -Context PublicDbContext
 update-database -Context PublicDbContext
 
 Public库(DB First)

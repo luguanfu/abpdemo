@@ -1,4 +1,5 @@
 ﻿using Autofac;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -14,7 +15,7 @@ namespace TodoApp.Api.Api.Patten
     /// <summary>
     /// 控制器基类
     /// </summary>
-    //[Authorize]
+    [Authorize]
     public abstract class ApiBase : ControllerBase
     {
         /// <summary>

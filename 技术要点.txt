@@ -39,6 +39,11 @@
 			<environmentVariable name="ASPNETCORE_ENVIRONMENT" value="Development" />
 		</environmentVariables>
 	</aspNetCore>
+
+	.net core 部署到IIS 以及上 HTTP Error 502.5 - ANCM Out-Of-Process Startup Failure
+	1.net stop was /y
+	2.net start w3svc
+	https://www.cnblogs.com/owenzh/p/11062932.html
 13.调用外部api
 14.数据导入(menucontroller.import)
 15.自动生成层级(Level)&排序(OrderIndex)--区别单个对象添加和批量添加
@@ -98,5 +103,60 @@ TodoApp.WebFramework.FormsController
 　　　　　2、写一个过滤器用于判断当前的用户ID和SessionID跟服务器记录的是否匹配以及不匹配时进行的操作。
 　　　　  3、在Session过期或者退出系统时释放资源。
 
+
+======如何处理并发修改同一条数据，乐观锁，悲观锁的实现及应用场景=======
+悲观锁：查询加锁 【select ...... for update】
+乐观锁：修改加锁 【版本号控制】
+排它锁：事务A可以查询、修改，直到事务A释放为止才可以执行下一个事务
+共享锁：事务A可以查询、修改，同时事务B也可以查询但不能修改
+互斥锁：同一资源同一时间只能被一个线程访问
+
+悲观锁：
+START TRANSACTION;
+SELECT * FROM USER WHERE id = 1 FOR UPDATE ;
+乐观锁：
+在表中新增一列(version) 该列不参与业务逻辑，仅记录数据版本,每次修改数据时进行版本比对，相同则提交，反之事务回滚
+模型字段
+public byte[] RowVersion { get; set; }
+//数据迁移设置
+b.Property(s => s.RowVersion).IsRowVersion();
+//业务处理
+try
+{
+    DbSet.Update(entity);
+    context.Entry(entity).State = EntityState.Modified;
+    return context.SaveChanges() > 0;
+}
+catch (DbUpdateConcurrencyException e)
+{
+    foreach (var item in e.Entries)
+    {
+        item.Reload();
+        return context.SaveChanges() > 0;
+    }
+}
+
+高并发对同一字段值进行修改
+思路1：使用队列
+
+
+
+
+==============数据库读写分离设计================
+https://www.cnblogs.com/netlock/p/14098844.html
+
+
+
+
+===================负载均衡==================
+
+
+=============Docker容器化技术以及微服务架构=============
+https://blog.csdn.net/wf19930209/article/details/80534499
+https://blog.csdn.net/lijingyao8206/article/details/50284357
+K8s：https://www.kubernetes.org.cn/k8s
+
+================领域驱动设计(DDD)===========
+https://www.likecs.com/default/index/show?id=93970
 
 
