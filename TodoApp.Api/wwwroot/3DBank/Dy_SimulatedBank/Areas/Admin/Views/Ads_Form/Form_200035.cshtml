@@ -1,0 +1,151 @@
+﻿
+<link href="~/CSS/bootstrap-table.min.css" rel="stylesheet" />
+
+<!--支付密码器协议管理-->
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <label id="lbl_account" name="lbl_account" for="inputEmail3" class="col-sm-3 control-label">账号</label>
+            <div class="col-sm-6">
+                <input vl-default="" id="txt_account" name="txt_account" type="text" class="form-control input-sm">
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <label id="lbl_accountName" name="lbl_accountName" for="inputEmail3" class="col-sm-3 control-label">户名</label>
+            <div class="col-sm-6">
+                <input vl-default="" id="txt_accountName" name="txt_accountName" type="text" class="form-control input-sm">
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <label id="lbl_signingStatus" name="lbl_signingStatus" for="inputEmail3" class="col-sm-3 control-label">签约状态</label>
+            <div class="col-sm-6">
+                <select vl-default="" id="sle_signingStatus" name="sle_signingStatus" class="form-control">
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <label id="lbl_startDate" name="lbl_startDate" for="inputEmail3" class="col-sm-3 control-label">起始日期</label>
+            <div class="col-sm-6">
+                <input vl-default="" id="date_startDate" name="date_startDate" type="date" max="9999-12-31"  class="form-control input-sm">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <label id="lbl_endDate" name="lbl_endDate" for="inputEmail3" class="col-sm-3 control-label">终止日期</label>
+            <div class="col-sm-6">
+                <input vl-default="" id="date_endDate" name="date_endDate" type="date" max="9999-12-31" class="form-control input-sm">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="text-right" style="margin-bottom: 10px;">
+    <button type="button" class="btn btn-primary btn-sm" onclick="doSearch()">查询</button>
+    <button type="button" class="btn btn-primary btn-sm" onclick="goPage('200036',afterGoPage())">签约</button>
+    <button type="button" class="btn btn-default btn-sm">退出</button>
+</div>
+
+<table class="table table-hover table-condensed" id="tbl"></table>
+<div id="DivTabValue" style="display:none;">
+    <div class="divider divider-horizontal"><div class="divider-text is-left"><strong>列表反显值</strong></div></div>
+<textarea rows="5" id="tb1Value" name="tb1Value" style="width:100%;"></textarea>
+</div>
+
+<script src="~/Scripts/bootstrap-table.min.js"></script>
+<script src="~/Scripts/bootstrap-table-zh-CN.js"></script>
+<script>
+    setOptions(['signingStatus']);
+    var data = [];
+    function setTableValue(values) {
+        var vals = values.split('\n');
+        data = [{
+            'account': vals[0],
+            'accountName': vals[1],
+            'customerNo': vals[2],
+            'toolNumber': vals[3],
+            'issueMark': vals[4],
+            'signStatus': vals[5],
+        }];
+        $("#tbl").bootstrapTable('load', data);
+    }
+    $('#tbl').bootstrapTable({
+        data,
+        paginationHAlign: 'left',
+        columns: [{
+            checkbox: true,
+            align: 'center',
+        },
+        {
+            title: '序号',
+            align: 'center',
+            formatter: function (value, row, index) {
+                return index + 1;
+            }
+        },
+        {
+            title: '账号',
+            field: 'account',
+            align: 'center'
+        },
+        {
+            title: '账户名称',
+            field: 'accountName',
+            align: 'center'
+        },
+        {
+            title: '客户编号',
+            field: 'customerNo',
+            align: 'center'
+        },
+        {
+            title: '机具号',
+            field: 'toolNumber',
+            align: 'center'
+        },
+        {
+            title: '发行标志',
+            field: 'issueMark',
+            align: 'center'
+        },
+        {
+            title: '签约状态',
+            field: 'signStatus',
+            align: 'center'
+        },
+        ]
+    });
+    function doSearch() {
+        data = [{
+            'account': "343123213",
+            'accountName': '的萨芬地方的',
+            'customerNo': '22222',
+            'toolNumber': '66666',
+            'issueMark': '标志',
+            'signStatus': '正常',
+        },];
+        $("#tbl").bootstrapTable('append', data);
+    }
+    function doSubmit() {
+        checkEmpowe();
+    }
+    $(function () {
+        var init = getQueryString("init");
+        if (init != null && init != undefined && init.length > 0) {
+            doSearch();
+        } else {
+            if (window.performance.navigation.type == 0) {
+                layer.alert('请输入经办人信息', function () {
+                    inConnectForm("200059");
+                })
+            }
+        }
+    });
+</script>

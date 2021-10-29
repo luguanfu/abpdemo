@@ -1,0 +1,147 @@
+﻿@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewData["nvc"] = "理论考核成绩";
+}
+
+
+<div class="row   white-bg dashboard-header">
+    <div class="col-sm-12">
+        <ol class="breadcrumb">
+            <li>
+                <h2>成绩管理</h2>
+            </li>
+            <li>
+                <a href="#">理论考核成绩</a>
+            </li>
+            <li>
+                <strong>成绩列表</strong>
+            </li>
+        </ol>
+
+    </div>
+    <div class="ibox-content">
+        <div class="row form-horizontal">
+
+            <div class="row">
+                
+                <div class="col-sm-3">
+                    <div class="input-group">
+                        <input type="text" placeholder="请输入考试名称" id="E_Name" class="form-control">
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-primary" onclick="searchinfo()">搜索</button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row m-t-sm table-responsive">
+            <table class="table text-center table-bordered ">
+                <thead>
+                    <tr>
+                        <th class="text-center">考试名称</th>
+                        <th class="text-center">开始时间</th>
+                        <th class="text-center">结束时间</th>
+                        <th class="text-center">操作</th>
+                    </tr>
+                </thead>
+                <tbody class="new_table text-center" id="tablelist">
+                </tbody>
+            </table>
+        </div>
+
+        <!--分页开始-->
+        <div class="row text-center" id="PaginatorLibrary">
+        </div>
+        <!--分页结束-->
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(function () {
+        bindIngfo();
+    });
+
+    function redload() {
+        $('.i-checks').iCheck({
+            checkboxClass: 'icheckbox_square-green',
+            radioClass: 'iradio_square-green',
+        });
+        //全选checkbox
+        var $checkboxAll = $(".checkbox-all"),
+                           $checkbox = $(".new_table").find("[type='checkbox']").not("[disabled]"),
+                           length = $checkbox.length,
+                           i = 0;
+        $checkboxAll.on("ifClicked", function (event) {
+            if (event.target.checked) {
+                $checkbox.iCheck('uncheck');
+                i = 0;
+            } else {
+                $checkbox.iCheck('check');
+                i = length;
+            }
+        });
+    }
+
+    //列表数据加载
+    function bindIngfo(page) {
+
+        var E_Name = $("#E_Name").val();//考试名称
+
+        var PageSize = 10;
+
+        $.ajax({
+            url: '/Admin/HB_ExamResult/GetList',
+            Type: "post",
+            dataType: "json", cache: false,
+            contentType: "application/json; charset=utf-8",
+            data: { "E_Name": E_Name, "page": page, "PageSize": PageSize },
+            success: function (tb) {
+
+                var html = '';
+                var data = tb.Tb;//转换table
+                for (var i = 0; i < data.length; i++) {
+                    html += '<tr>';
+                    //当前页面
+                    //var idx = 0;
+                    //if (page != "undefined" && page != null) {
+                    //    idx = page;
+                    //    idx = idx - 1;
+                    //}
+                    //html += '<td><span class="pie">' + ((idx * PageSize) + i + 1) + '</span></td>';
+
+                    //html += '<td><input type="checkbox" class="i-checks" name="input[]" value="' + data[i]["EId"] + '"></td>';
+                    html += '<td><span class="pie" >' + data[i]["E_Name"] + '</span></td>';
+                    var E_StartTime = data[i]["E_StartTime"] + "";
+                    var E_EndTime = data[i]["E_EndTime"] + "";
+                    html += '<td><span class="pie">' + E_StartTime.substr(0, 19).replace('T', ' ') + '</span></td>';
+                    html += '<td><span class="pie">' + E_EndTime.substr(0, 19).replace('T', ' ') + '</span></td>';
+                    html += '<td>';
+                    //查看 中看种类区分E_Kind
+                    html += '<a href="javascript:void(0);" onclick="See(' + data[i]["EId"] + ',' + data[i]["E_PId"] + ')" class=" btn-info btn-sm"><i class="fa fa-lightbulb-o m-r-xxs"></i>查看成绩 </a>';
+                    html += '</td>';
+
+                    html += '</tr>';
+                }
+
+                $("#tablelist").html(html);
+
+                bootstrapPaginator("#PaginatorLibrary", tb, bindIngfo);//分页
+                //样式重新加载
+                redload();
+            }
+        });
+    }
+
+    //搜索
+    function searchinfo() {
+
+        bindIngfo();
+
+    }
+
+    function See(EId, PId) {
+        window.location.href = '/Admin/HB_ExamResult/ResultIndex?EId=' + EId + '&PId='+PId;
+    }
+</script>

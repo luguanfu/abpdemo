@@ -1,0 +1,83 @@
+﻿@{
+    ViewBag.Title = "Form_110203";
+    Layout = "~/Views/Shared/_AdminLayoutIsNull.cshtml";
+}
+
+<script src="~/Js/Admin/AdminForm.js"></script>
+<script src="~/Js/Admin/CaseManagement/AddDefaultValue.js"></script>
+<link href="~/CSS/danju/css/menu08.css" rel="stylesheet" />
+
+<form id="form1" onsubmit="return false" action="##" method="post">
+    <input type="hidden" id="TaskId" name="TaskId" value="@Request["TaskId"]" />
+    <input type="hidden" id="CustomerId" name="CustomerId" value="@Request["CustomerId"]" />
+    <input type="hidden" id="FormId" name="FormId" value="@Request["FormId"]" />
+    <input type="hidden" id="Types" name="Types" value="@Request["Types"]" />
+    <!--内容表单区域开始-->
+
+    <div class="from_map08">
+        <input class="inputall site1 text_center" maxlength="4" type="text" name="dy01" id="dy01" value="" />
+        <input class="inputall site2 text_center" maxlength="2" type="text" name="dy02" id="dy02" value="" />
+        <input class="inputall site3 text_center" maxlength="2" type="text" name="dy03" id="dy03" value="" />
+        <input class="inputall site4 " type="text" name="dy04" id="dy04" value="" />
+
+        <input class="inputall site5 " type="text" name="dy05" id="dy05" value="" />
+        <input class="inputall site6 " type="text" name="dy06" id="dy06" value="" />
+
+
+        <input class="inputall site7 " type="checkbox" name="dy07" id="dy07" value="1" />
+        <input class="inputall site8 " type="checkbox" name="dy08" id="dy08" value="1" />
+        <input class="inputall site9 " type="checkbox" name="dy09" id="dy09" value="1" />
+        <input class="inputall site10 " type="checkbox" name="dy010" id="dy010" value="1" />
+
+        <input class="inputall site11 " type="text" name="dy011" id="dy011" value="" />
+        <input class="inputall site12 " type="text" name="dy012" id="dy012" value="" />
+        <input class="inputall site13 " type="text" name="dy013" id="dy013" value="" />
+
+        <input class="inputall site14 " type="text" name="dy014" id="dy014" value="" />
+        <input class="inputall site15 " type="text" name="dy015" id="dy015" value="" />
+        <input class="inputall site16 " type="text" name="dy016" id="dy016" value="" />
+        <input class="inputall site17 " type="text" name="dy017" id="dy017" value="" />
+
+        <input class="inputall site18 " type="text" name="dy018" id="dy018" value="" />
+        <input class="inputall site19 " type="text" name="dy019" id="dy019" value="" />
+
+
+        <input class="inputall site20 " type="checkbox" name="dy020" id="dy020" value="1" />
+        <input class="inputall site21" type="checkbox" name="dy021" id="dy021" value="1" />
+        <input class="inputall site22 " type="checkbox" name="dy022" id="dy022" value="1" />
+        <input class="inputall site23 " type="checkbox" name="dy023" id="dy023" value="1" />
+
+        <input class="inputall site24 " type="text" name="dy024" id="dy024" value="" />
+        <input class="inputall site25 " type="text" name="dy025" id="dy025" value="" />
+        <input class="inputall site26 " type="text" name="dy026" id="dy026" value="" />
+        <input class="inputall site27 " type="text" name="dy027" id="dy027" value="" />
+        <input class="inputall site28 " type="text" name="dy028" id="dy028" value="" />
+
+        <!--<textarea class="inputall site29 " name="dy029" id="dy029" rows="" cols=""></textarea>-->
+
+
+        <input class="inputall site30 " type="text" name="dy030" id="dy030" value="" />
+
+        <!--新追加的申请事项-->
+        <input class="inputall site31 " type="checkbox" name="dy031" id="dy031" value="1" />
+        <input class="inputall site32 " type="checkbox" name="dy032" id="dy032" value="1" />
+        <input class="inputall site33 " type="checkbox" name="dy033" id="dy033" value="1" />
+        <input class="inputall site34 " type="checkbox" name="dy034" id="dy034" value="1" />
+        <input class="inputall site35 " type="checkbox" name="dy035" id="dy035" value="1" />
+        <input class="inputall site36 " type="checkbox" name="dy036" id="dy036" value="1" />
+        <input class="inputall site37 " type="checkbox" name="dy037" id="dy037" value="1" />
+        <input class="inputall site38 " type="text" name="dy038" id="dy038" value="" />
+
+        @*<button class="btn_chongzhi" type="button" value="重置" onclick="FormReset()">重置</button>*@
+        <button class="btn_chongzhi" type="button" value="获取填单设置结果" onclick="GetFormSetResult()">获取填单设置结果</button>
+        <button class="btn_tijiao" type="button" value="提交" onclick="SubmitForm()">提交</button>
+
+
+
+
+    </div>
+
+
+
+
+</form>

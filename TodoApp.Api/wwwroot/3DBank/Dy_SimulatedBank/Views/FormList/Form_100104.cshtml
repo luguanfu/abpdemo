@@ -1,0 +1,134 @@
+﻿@{
+                    ViewBag.Title = "Form_100104";
+                    Layout = "~/Views/Shared/_StutentLayoutIsNull.cshtml";
+                }
+               <form id="form1" onsubmit="return false" action="##" method="post">
+                   <input type="hidden" id="FormType" name="FormType" value="@Request["FormType"]" />
+                   <input type="hidden" id="FormId" name="FormId" value="@Request["FormId"]" />
+                   <input type="hidden" id="TRId" name="TRId" value="@Request["TotalResultId"]" />
+                   <input type="hidden" id="ExamId" name="ExamId" value="@Request["ExamId"]" />
+                   <input type="hidden" id="TaskId" name="TaskId" value="@Request["TaskId"]" />
+                   <input type="hidden" id="CustomerId" name="CustomerId" value="@Request["CustomerId"]" />
+                   <input type="hidden" id="LinkId" name="LinkId" value="@Request["LinkId"]" />
+                   <input type="hidden" id="Types" name="Types" value="2" />
+                <!--内容表单区域开始-->
+            <div class="tables bankmap">
+			<div class="con-map selected"> <span class="top-title">基本信息 <span id="dianji_con" style="cursor: pointer;">▼</span></span>
+				<table id="qv" class="con-map2-table qv">
+					<tbody>
+						<tr>
+							<td class="" style="width: 80px;"><label vl-default="" id="label_nsrbm" vtitle="纳税人编码" class="form-item text-left" vl-tipsid="label_nsrbm_tips" title="label_nsrbm">纳税人编码</label>
+								<div id="label_nsrbm_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class=""><input type="text" oncopy="return false" oncut="return false" vl-default="1123332" id="txt_nsrbm" vtitle="纳税人编码" class="form-item text-left" vl-disabled="true" vl-tipsid="txt_nsrbm_tips" title="txt_nsrbm" onpaste="return false" disabled="disabled">
+								<div id="txt_nsrbm_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="" style="width: 80px;"><label vl-default="" id="label_nsrmc" vtitle="纳税人名称" class="form-item text-left" vl-tipsid="label_nsrmc_tips" title="label_nsrmc">纳税人名称</label>
+								<div id="label_nsrmc_tips" class="tipsmsg"></div>
+							</td>
+							<td class=""><input type="text" oncopy="return false" oncut="return false" vl-default="2222" id="txt_nsrmc" vtitle="纳税人名称" class="form-item text-left" vl-disabled="true" vl-tipsid="txt_nsrmc_tips" title="txt_nsrmc" onpaste="return false" disabled="disabled">
+								<div id="txt_nsrmc_tips" class="tipsmsg"></div>
+							</td>
+							<td class="" style="width: 64px;"><label vl-default="" id="label_sphm" vtitle="税票i号码" class="form-item text-left" vl-tipsid="label_sphm_tips" title="label_sphm">税票<i></i>号码</label>
+								<div id="label_sphm_tips" class="tipsmsg"></div>
+							</td>
+							<td class=""><input type="text" oncopy="return false" oncut="return false" vl-default="jk100" id="txt_sphm" vtitle="税票号码" class="form-item text-left" vl-disabled="true" vl-tipsid="txt_sphm_tips" title="txt_sphm" onpaste="return false" disabled="disabled">
+								<div id="txt_sphm_tips" class="tipsmsg"></div>
+							</td>
+						</tr>
+						<tr>
+							<td rowspan="1" colspan="1" class="" style="width: 80px;"><label vl-default="" id="label_skrmc" vtitle="收款人名称" class="form-item text-left" vl-tipsid="label_skrmc_tips" title="label_skrmc">收款人名称</label>
+								<div id="label_skrmc_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class=""><input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_skrmc" vtitle="收款人名称" class="form-item text-left" vl-disabled="true" vl-tipsid="txt_skrmc_tips" title="txt_skrmc" onpaste="return false" disabled="disabled">
+								<div id="txt_skrmc_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="" style="width: 80px;"><label vl-default="" id="label_skrzh" vtitle="收款人帐号" class="form-item text-left" vl-tipsid="label_skrzh_tips" title="label_skrzh">收款人帐号</label>
+								<div id="label_skrzh_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class=""><input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_skrzh" vtitle="收款人帐号" class="form-item text-left" vl-disabled="true" vl-tipsid="txt_skrzh_tips" title="txt_skrzh" onpaste="return false" disabled="disabled">
+								<div id="txt_skrzh_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="" style="width: 64px;"><label vl-default="" id="label_jkje" vtitle="缴款i金额" class="form-item text-left" vl-tipsid="label_jkje_tips" title="label_jkje">缴款<i></i>金额</label>
+								<div id="label_jkje_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="">
+								<div class="moneystyle">
+									<input type="text" oncopy="return false" onpaste="return false" oncut="return false" vl-type="money" vl-default="" id="money_jkje" vtitle="缴款金额" class="form-item text-left money" vl-tipsid="money_jkje_tips" title="money_jkje">
+									<label class="moneytips hide green">人民币CNY￥<span class="num">0.00</span><span class="cn">零元整</span></label>
+								</div>
+								<div id="money_jkje_tips" class="tipsmsg"></div>
+							</td>
+						</tr>
+						<tr>
+							<td rowspan="1" colspan="1" class="" style="width: 64px;"><label vl-default="" id="label_fklx" vtitle="付款i类型" class="form-item text-left" vl-tipsid="label_fklx_tips" title="label_fklx">付款<i></i>类型</label>
+								<div id="label_fklx_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class=""><input type="text" oncopy="return false" oncut="return false" id="txt_fklx" vtitle="付款类型" class="form-item text-left" vl-disabled="true" vl-tipsid="txt_fklx_tips" title="txt_fklx" onpaste="return false" disabled="disabled">
+								<div id="label_dgzh_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="" style="width: 64px;"><label vl-default="" id="label_sbxh" vtitle="申报i序号" class="form-item text-left" vl-tipsid="label_sbxh_tips" title="label_sbxh">申报<i></i>序号</label>
+								<div id="label_sbxh_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class=""><input type="text" oncopy="return false" oncut="return false" vl-default="07979300" id="txt_sbxh" vtitle="申报序号" class="form-item text-left" vl-disabled="true" vl-tipsid="txt_sbxh_tips" title="txt_sbxh" onpaste="return false" disabled="disabled">
+								<div id="txt_sbxh_tips" class="tipsmsg"></div>
+							</td>
+						</tr>
+						<tr>
+							<td rowspan="1" colspan="1" class="" style="width: 64px;"><label vl-default="" id="label_dgzh" vtitle="对公i账号" class="form-item text-left" vl-tipsid="label_dgzh_tips" title="label_dgzh">对公<i></i>账号</label>
+								<div id="label_dgzh_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class=""><input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_dgzh" vtitle="对公帐号" class="form-item text-left" vl-disabled="true" vl-tipsid="txt_dgzh_tips" title="txt_dgzh" onpaste="return false" disabled="disabled">
+								<div id="txt_dgzh_tips" class="tipsmsg"></div>
+							</td>
+						</tr>
+						<tr>
+							<td rowspan="1" colspan="1" class="" style="width: 80px;"><label vl-default="" id="label_zzzph" vtitle="转账支票号" class="form-item text-left" vl-tipsid="label_zzzph_tips" title="label_zzzph">转账支票号</label>
+								<div id="label_zzzph_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class=""><input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_zzzph" vtitle="转账支票号" class="form-item text-left" vl-tipsid="txt_zzzph_tips" vl-regex="['maxlength40']" vl-message="['转账支票号长度大于最大长度:[40]!']" title="txt_zzzph" onpaste="return false">
+								<div id="txt_zzzph_tips" class="tipsmsg"></div>
+							</td>
+						</tr>
+						<tr>
+							<td rowspan="1" colspan="2" class="" style="width: 64px;"><label vl-default="" id="label_zgfh" vtitle="主管i复核" class="form-item text-left" vl-tipsid="label_zgfh_tips" title="label_zgfh">主管<i></i>复核</label>
+								<div id="label_zgfh_tips" class="tipsmsg"></div>
+							</td>
+						</tr>
+						<tr>
+							<td rowspan="1" colspan="1" class="" style="width: 64px;"><label vl-default="" id="label_zgdm" vtitle="主管i代码" class="form-item text-left" vl-tipsid="label_zgdm_tips" title="label_zgdm">主管<i></i>代码</label>
+								<div id="label_zgdm_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class=""><input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_zzdm" vtitle="主管代码" class="form-item text-left on" vl-tipsid="txt_zzdm_tips" vl-regex="['require', 'maxlength40']" vl-message="['主管代码不能为空!','主管代码长度大于最大长度:[40]!']" title="txt_zzdm" onpaste="return false"><span class="text-red redtip">!</span>
+								<div id="txt_zzdm_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="" style="width: 64px;"><label vl-default="" id="label_zzmm" vtitle="主管i密码" class="form-item text-left" vl-tipsid="label_zzmm_tips" title="label_zzmm">主管<i></i>密码</label>
+								<div id="label_zzmm_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class=""><input type="password" onkeyup="value=value.replace(/[\W]/g,'') " onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[^\d]/g,''))" oncopy="return false" onpaste="return false" oncut="return false" vl-default="" id="pwd_zzmm" vtitle="主管密码" class="form-item text-left" vl-tipsid="pwd_zzmm_tips" vl-regex="['require', 'maxlength8', 'minlength8']" vl-message="['主管密码不能为空!','主管密码长度为:[8]!','主管密码长度为:[8]!']" style="width: 160px;" title="pwd_zzmm"><span class="text-red redtip">!</span>
+								<div id="pwd_zzmm_tips" class="tipsmsg"></div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<input type="hidden" class="hidmainwidth" value="1000/" oncopy="return false" onpaste="return false" oncut="return false">
+			<div class="foot  text-center" id="sb-btn">
+			<!--	<button vl-submit="true" id="btnsubmit">确定</button>-->
+				<button vl-submit="true" id="btnsubmit" class="sbt">提交</button>
+			<button type="button" onclick="FormReset()">重置</button>
+                       <button type="button " style="margin-right: 0px; " vl-submit="true" id="btnsubmit" onclick="SubmitForm()"> 提交</button></div>
+		</div><script src="~/Js/Student/GetDefaultValue/common.bank.js"></script>
+              <script src="~/Js/Student/GetDefaultValue/lodash.min.js"></script>
+              <script src="~/Js/Student/GetDefaultValue/common.regex.cz.js"></script>
+              <script src="~/Js/Student/GetDefaultValue/common.regex.js"></script>
+<script src="~/Js/Student/GetDefaultValue/js/common.bank.ed.js"></script>
+<script src="~/Js/Student/GetDefaultValue/js/layer.js"></script>
+<script src="~/Js/Student/GetDefaultValue/js/My97DatePicker/WdatePicker.js"></script>
+<link href="~/Js/Student/GetDefaultValue/js/common.bank.ed.css" rel="stylesheet" />
+<style>
+			#sb-btn .sbt {
+				margin-left: 200px;
+			}
+		</style>
+              </form>

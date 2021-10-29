@@ -1,0 +1,469 @@
+﻿@{
+    
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+
+    if (Session["UserType"].ToString() == "2")
+    {
+        ViewData["nvc"] = "分类标签";
+    }
+    else
+    {
+        ViewData["nvc"] = "系统参数";
+    }
+
+}
+
+<style type="text/css">
+    a.disabled {
+        pointer-events: none;
+        filter: alpha(opacity=50); /*IE滤镜，透明度50%*/
+        -moz-opacity: 0.5; /*Firefox私有，透明度50%*/
+        opacity: 0.5; /*其他，透明度50%*/
+    }
+</style>
+
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-sm-12">
+        <ol class="breadcrumb">
+            <li>
+                <h2>系统管理</h2>
+            </li>
+            <li>
+                @if (Session["UserType"].ToString() == "2")
+                {
+                    <a href="/Admin/HB_QuestionBQ?AllType=2">分类标签</a>
+                }
+                else
+                {
+                    <a href="/Admin/SystemParameter/Index">系统参数</a>
+                }
+            </li>
+            <li>
+                <strong>标签列表</strong>
+            </li>
+        </ol>
+
+    </div>
+</div>
+
+<div class="ibox-content">
+    <div class="row m-t" id="selcxdiv">
+
+
+        <div class="col-sm-3">
+            <div class="input-group">
+                <input type="text" placeholder="请输入关键字搜索……" id="txtQuestonBQName" class="form-control" name="txtQuestonBQName">
+                <span class="input-group-btn">
+                    <button type="button" onclick="SearchInfo()" class="btn btn-primary"><i class="fa fa-search "></i></button>
+                </span>
+            </div>
+        </div>
+        <div class="col-sm-4">
+        </div>
+        <div class=" col-sm-5 text-right">
+            <button onclick="Add_school()" class="btn btn-primary btn-sm " type="button"><i class="fa fa-plus m-r-xs"></i><span class="bold">新增标签</span></button>
+            <button onclick="del_all()" class="btn btn-warning btn-sm " type="button"><i class="fa fa-trash m-r-xs"></i><span class="bold">删除标签</span></button>
+        </div>
+    </div>
+    <div class="row  m-t-sm ">
+        <div class="col-sm-12">
+            <table class="table text-center table-bordered ">
+                <thead>
+                    <tr>
+                        <th class="text-center">
+                            <input type="Checkbox" class="i-checks checkbox-all">
+                        </th>
+                        <th class="text-center">试题标签名称</th>
+                        <th class="text-center">题目数量</th>
+                        <th class="text-center">操作</th>
+                    </tr>
+                </thead>
+                <tbody class="new_table text-center" id="tablelist"></tbody>
+            </table>
+
+        </div>
+        <!--分页开始-->
+        <div class="row text-center m-t-md" id="PaginatorLibrary">
+        </div>
+        <!--分页结束-->
+    </div>
+
+
+</div>
+
+
+
+<!--新增弹框-->
+<div id="Add_school" style="display: none;" class="form-inline">
+    <form name="Add_schoolform" id="Add_schoolform">
+        <div class="col-sm-12">
+            <div class="form-horizontal  m-t-lg">
+                <label for="firstname" class="col-sm-3 control-label"><span style="color: red;">*</span>标签名称：</label>
+                <div class="col-sm-9">
+                    <input style="width: 100%;" autocomplete="off" type="text" class="form-control" id="AddQuestonBQName" name="AddQuestonBQName" placeholder="请输入标签名称">
+                </div>
+            </div>
+        </div>
+
+    </form>
+</div>
+
+<!--编辑弹框-->
+<div id="Edit_school" style="display: none;" class="form-inline">
+    <form name="Edit_schoolform" id="Edit_schoolform">
+        <div class="col-sm-12">
+            <div class="form-horizontal  m-t-lg">
+                <label for="firstname" class="col-sm-3 control-label"><span style="color: red;">*</span>标签名称：</label>
+                <div class="col-sm-9">
+                    <input style="width: 100%;" autocomplete="off" type="text" class="form-control" id="EditQuestonBQName" name="EditQuestonBQName" placeholder="请输入标签名称">
+                </div>
+            </div>
+        </div>
+
+
+    </form>
+</div>
+
+
+<script type="text/javascript">
+
+    $(function () {
+        bindIngfo();
+    });
+
+    function redload() {
+        $('.i-checks').iCheck({
+            checkboxClass: 'icheckbox_square-green',
+            radioClass: 'iradio_square-green',
+        });
+        //全选checkbox
+        var $checkboxAll = $(".checkbox-all"),
+            $checkbox = $(".new_table").find("[type='checkbox']").not("[disabled]"),
+            length = $checkbox.length,
+            i = 0;
+        $checkboxAll.on("ifClicked", function (event) {
+            if (event.target.checked) {
+                $checkbox.iCheck('uncheck');
+                i = 0;
+            } else {
+                $checkbox.iCheck('check');
+                i = length;
+            }
+        });
+    }
+
+    //列表数据加载
+    function bindIngfo(page) {
+
+        var PageSize = 10;
+
+        $.ajax({
+            url: '/Admin/HB_QuestionBQ/GetList',
+            Type: "post",
+            dataType: "json", cache: false,
+            contentType: "application/json; charset=utf-8",
+            data: { "page": page, "PageSize": PageSize, "txtQuestonBQName": $("#txtQuestonBQName").val(), "BQ_Kind": getQueryString('AllType') },
+            success: function (tb) {
+
+                var html = '';
+                var data = tb.Tb;//转换table
+                if (data.length>0) {
+                         for (var i = 0; i < data.length; i++) {
+                            html += '<tr>';
+                            //当前页面
+                            var idx = 0;
+                            if (page != "undefined" && page != null) {
+                                idx = page;
+                                idx = idx - 1;
+                            }
+
+                             var AllType = data[i]["BQ_Kind"];
+
+                             if (@Session["UserId"]== 1) { //管理员
+                                 html += '<td><input type="checkbox" class="i-checks" name="input[]" value=' + data[i]["ID"] + '></td>';
+                             } else {
+                                 if (parseInt(AllType) == 1) {//管理员新增的
+                                     html += '<td><input type="checkbox" class="i-checks" name="input[]" value=' + data[i]["ID"] + ' disabled ></td>';
+                                 }
+                                 else {
+                                     //自己曾的
+                                     html += '<td><input type="checkbox" class="i-checks" name="input[]" value=' + data[i]["ID"] + ' ></td>';
+                                 }
+                             }
+
+                            html += '<td>' + data[i]["QuestonBQName"] + '</td>';
+                            html += '<td>' + data[i]["STnum"] + '</td>';
+
+                            if (@Session["UserId"]== 1) {//管理员创建
+                                html += '<td><a onclick="update(' + data[i]["ID"] + ')" class=" btn-primary btn-sm  m-r-sm"><i class="fa fa-pencil m-r-xxs"></i>编辑 </a>';
+                                html += '<a onclick="del(' + data[i]["ID"] + ')" class=" btn-warning btn-sm"><i class="fa fa-trash-o m-r-xxs"></i>删除 </a></td>';
+                            } else { //当前登录是教师
+                                if (parseInt(AllType) == 1) {//管理员新增de  不可操作
+                                    html += '<td><a onclick="update(' + data[i]["ID"] + ')" class=" btn-primary btn-sm  m-r-sm disabled"><i class="fa fa-pencil m-r-xxs"></i>编辑 </a>';
+                                    html += '<a onclick="del(' + data[i]["ID"] + ')" class=" btn-warning btn-sm disabled"><i class="fa fa-trash-o m-r-xxs"></i>删除 </a></td>';
+                                }
+                                else {
+                                    //自己曾的 可操作
+                                    html += '<td><a onclick="update(' + data[i]["ID"] + ')" class=" btn-primary btn-sm  m-r-sm"><i class="fa fa-pencil m-r-xxs"></i>编辑 </a>';
+                                    html += '<a onclick="del(' + data[i]["ID"] + ')" class=" btn-warning btn-sm"><i class="fa fa-trash-o m-r-xxs"></i>删除 </a></td>';
+                                }
+                            }
+                            html += '</tr>';
+
+                         }
+
+
+                    $("#tablelist").html(html);
+                    bootstrapPaginator("#PaginatorLibrary", tb, bindIngfo);//分页
+                    //样式重新加载
+                    redload();
+
+
+                } else {
+                    $("#tablelist").html("");
+                }
+
+            }
+        });
+    }
+
+
+    //查询
+    function SearchInfo() {
+        bindIngfo();
+    }
+
+
+    //新增学校
+    function Add_school() {
+
+        //表单清空
+        $("#Add_schoolform")[0].reset();
+        layer.open({
+            title: '新增标签',
+            btn: ['确定', '取消'],
+            area: ['450px', '220px'],
+            type: 1,
+            skin: 'layui-layer-lan', //样式类名
+            closeBtn: 1, //显示关闭按钮
+            anim: 2,
+            shadeClose: false, //关闭点击遮罩关闭，true为打开遮罩关闭
+            content: $("#Add_school"),
+            yes: function (index, layero) {
+                Add();
+
+            }
+        });
+    }
+
+
+    //新增学校方法
+    function Add() {
+        //新增校验
+        var AddQuestonBQName = $("#AddQuestonBQName").val();
+
+
+        if (trim(AddQuestonBQName) == 0) {
+            layer.msg('请输入标签名称');
+            return;
+        }
+        if (!CheckCharacter(AddQuestonBQName, '60')) {
+            layer.msg('标签名称长度不能超过30个汉字');
+            return;
+        }
+
+        //新增OK
+        $.ajax({
+            url: '/Admin/HB_QuestionBQ/Add',
+            type: 'POST',
+            data: { "AddQuestonBQName": AddQuestonBQName, "BQ_Kind": getQueryString('AllType') },
+            async: false,
+            success: function (data) {
+                if (data == "1") {
+                    layer.closeAll();//关闭所有弹出框
+                    layer.msg('操作成功', { icon: 1 });
+                    bindIngfo();
+                }
+                if (data == "77") {
+                    layer.msg('标签名称已经存在', { icon: 2 });
+                    return;
+                }
+                if (data == "99") {
+                    layer.msg('操作失败', { icon: 2 });
+                    return;
+                }
+            }
+        });
+    }
+
+    //批量删除弹窗
+    function del_all() {
+
+        var chks = document.getElementsByName('input[]');//name
+        var chkstr = "";
+        for (var i = 0; i < chks.length; i++) {
+            if (chks[i].checked == true) {
+                chkstr += chks[i].value + ",";
+            }
+        }
+
+
+        if (chkstr.length == 0) {
+            layer.alert('请选择要删除的数据！', {
+                skin: 'layui-layer-lan'
+                , closeBtn: 0
+            });
+            return;
+        }
+        //去除逗号
+        chkstr = chkstr.substr(0, chkstr.length - 1);
+
+        layer.confirm('您确认要删除选中的标签吗？', {
+            title: '删除标签',
+            btn: ['确定删除', '取消操作'],
+            shadeClose: false, //开启遮罩关闭
+            skin: 'layui-layer-lan'
+            //按钮
+        },
+            function () {
+                $.ajax({
+                    type: "POST",
+                    dataType: "text",
+                    url: '/Admin/HB_QuestionBQ/Del',
+                    data: { "Ids": chkstr },//多个Id
+                    success: function (data) {
+                        if (data == "1") {
+                            layer.closeAll();//关闭所有弹出框
+                            layer.msg('操作成功', { icon: 1 });
+                            bindIngfo();
+                        }
+                        if (data == "77") {
+                            layer.msg('请先删除标签下的试题', { icon: 2 });
+                            return;
+                        }
+                        if (data == "99") {
+                            layer.msg('操作失败', { icon: 2 });
+                            return;
+                        }
+
+                    }
+                })
+            });
+    }
+
+    //单删除
+    function del(ID) {
+        layer.confirm('您确认要删除选中的标签吗？', {
+            title: '删除标签',
+            btn: ['确定删除', '取消操作'],
+            shadeClose: false, //开启遮罩关闭
+            skin: 'layui-layer-lan'
+            //按钮
+        },
+            function () {
+                $.ajax({
+                    type: "POST",
+                    dataType: "text",
+                    url: '/Admin/HB_QuestionBQ/Del',
+                    data: { "Ids": ID },//多个Id
+                    success: function (data) {
+                        if (data == "1") {
+                            layer.closeAll();//关闭所有弹出框
+                            layer.msg('操作成功', { icon: 1 });
+                            bindIngfo();
+                        }
+                        if (data == "77") {
+                            layer.msg('请先删除标签下的试题', { icon: 2 });
+                            return;
+                        }
+                        if (data == "99") {
+                            layer.msg('操作失败', { icon: 2 });
+                            return;
+                        }
+
+                    }
+                })
+            });
+    }
+
+
+
+
+    //修改
+    function update(ID) {
+
+        //修改
+
+        //清空表单
+        $("#Edit_schoolform")[0].reset();
+        //赋值
+        $.ajax({
+            type: "POST",
+            dataType: "json",
+            url: '/Admin/HB_QuestionBQ/GetListById',
+            data: { "ID": ID },
+            async: false,
+            success: function (data) {
+                if (data.length > 0) {
+                    //学校
+                    $("#EditQuestonBQName").val(data[0]["QuestonBQName"]);
+                }
+
+            }
+        });
+
+        layer.open({
+            title: '编辑标签',
+            btn: ['确定', '取消'],
+            area: ['450px', '220px'],
+            type: 1,
+            skin: 'layui-layer-lan', //样式类名
+            closeBtn: 1, //显示关闭按钮
+            anim: 2,
+            shadeClose: false, //关闭点击遮罩关闭，true为打开遮罩关闭
+            content: $("#Edit_school"),
+            yes: function (index, layero) {
+                Edit(ID);
+
+            }
+        });
+    }
+
+    //修改 方法
+    function Edit(ID) {
+        //新增校验
+        var EditQuestonBQName = $("#EditQuestonBQName").val();
+
+
+        if (trim(EditQuestonBQName) == 0) {
+            layer.msg('请输入标签名称');
+            return;
+        }
+        if (!CheckCharacter(EditQuestonBQName, '60')) {
+            layer.msg('标签名称长度不能超过30个汉字');
+            return;
+        }
+
+        $.ajax({
+            url: '/Admin/HB_QuestionBQ/Update',
+            type: 'POST',
+            data: { "EditQuestonBQName": EditQuestonBQName, "ID": ID, "BQ_Kind": getQueryString('AllType') },
+            async: false,
+            success: function (data) {
+                if (data == "1") {
+                    layer.closeAll();//关闭所有弹出框
+                    layer.msg('操作成功', { icon: 1 });
+                    bindIngfo();
+                }
+                if (data == "77") {
+                    layer.msg('标签名称已经存在', { icon: 2 });
+                    return;
+                }
+                if (data == "99") {
+                    layer.msg('操作失败', { icon: 2 });
+                    return;
+                }
+            }
+        });
+    }
+</script>

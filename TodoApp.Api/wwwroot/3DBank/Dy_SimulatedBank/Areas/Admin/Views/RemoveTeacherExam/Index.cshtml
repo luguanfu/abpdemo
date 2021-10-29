@@ -1,0 +1,92 @@
+﻿@{
+    /**/
+
+    
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewData["nvc"] = "试卷转移";
+}
+
+
+<div class="row   white-bg dashboard-header">
+    <div class="col-sm-12">
+        <ol class="breadcrumb">
+            <li>
+                <h2><a href="#">试卷转移</a></h2>
+            </li>
+        </ol>
+    </div>
+    <div class="ibox-content">
+        <div class="row form-horizontal">
+
+            <div class="row">
+                <div class="col-sm-3 m-b-xs">
+                    <select class="form-control input-s-sm inline" id="sourceTeacher">
+                        <option value="0">请选择教师</option>
+                        @foreach (System.Data.DataRow item in Model.Rows)
+                        {
+                            <option value="@item["UserId"]">@item["TeacherName"]</option>
+                        }
+                    </select>
+                </div>
+                <div class="col-sm-3 m-b-xs m-t-sm text-center">
+                    <label>转移到</label>
+                </div>
+
+                <div class="col-sm-3 m-b-xs">
+                    <select class="form-control input-s-sm inline" id="receiveTeacher">
+                        <option value="0">请选择需要转移到的教师</option>
+                        @foreach (System.Data.DataRow item in Model.Rows)
+                        {
+                            <option value="@item["UserId"]">@item["TeacherName"]</option>
+                        }
+
+                    </select>
+                </div>
+                <div class="col-sm-3">
+                    <div class="input-group">
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-primary" onclick="SubmitRemove()">转移试题</button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="hr-line-dashed"></div>
+
+    </div>
+</div>
+
+<script type="text/javascript">
+
+    function SubmitRemove() {
+        var OLdTeacherId = $("#sourceTeacher").val();
+        var NewTeacherId = $("#receiveTeacher").val();
+        if (OLdTeacherId == 0) {
+            layer.msg('请选择转出教师！', function () { });
+            return;
+        }
+        if (NewTeacherId == 0) {
+            layer.msg('请选择转入教师！', function () { });
+            return;
+        }
+        ///
+        layer.load(1);
+        $.ajax({
+            type: "POST",
+            dataType: "text",
+            url: '/Admin/RemoveTeacherExam/RemoveTeacherExam',
+            data: { "OLdTeacherId": OLdTeacherId, "NewTeacherId": NewTeacherId },
+            success: function (data) {
+                if (data == "1") {
+                    layer.closeAll();//关闭所有弹出框
+                    layer.msg('试卷转移成功', { icon: 1 });
+                } else {
+                    layer.closeAll();//关闭所有弹出框
+                    layer.msg('试卷转移失败', { icon: 2 });
+                }
+
+            }
+        })
+    }
+</script>

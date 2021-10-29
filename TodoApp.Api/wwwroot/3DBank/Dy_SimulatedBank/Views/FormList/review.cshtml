@@ -1,0 +1,227 @@
+﻿@{
+    ViewBag.Title = "review";
+}
+
+<head>
+    <meta charset="utf-8" />
+    <title>核心业务复核操作</title>
+    <link href="~/Js/Student/GetDefaultValue/js/layer.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-3.2.0.js"></script>
+    <script src="~/Js/Student/GetDefaultValue/configure.js"></script>
+    <script src="~/Scripts/My97DatePicker/WdatePicker.js"></script>
+</head>
+
+<body>
+    <div id="divContent"></div>
+    <div id="conTask" style="display:none">bbbbb</div>
+    <div id="findData" style="display:none"></div>
+    <div id="DefaultValue" style="display:none"></div>
+    <div id="taskidCur" style="display:none"></div>
+    <div id="haveShowquan" style="display:none">0</div>
+    <div id="review" style="display:none">true</div>
+</body>
+
+<script type="text/javascript">
+    $(function () {
+
+        var formid = getQueryString("FormId");
+        var url = `/FormList/ToForm?FormId=` + formid + `&FormType=${getQueryString("FormType")}&TotalResultId=${getQueryString("TotalResultId")}&ExamId=${getQueryString("ExamId")}&TaskId=${getQueryString("TaskId")}&CustomerId=${getQueryString("CustomerId")}&LinkId=${getQueryString("LinkId")}&Satisfaction=${getQueryString("Satisfaction")}`;
+        $("#divContent").load(url, null, function () {
+            var review_controls = sessionStorage.ReviewControls ? sessionStorage.ReviewControls:"";
+            //throw "这是一个自定义错误，用于测试";
+            var prevYwData = sessionStorage.PrevYwData ? sessionStorage.PrevYwData:"";
+            var data_array = prevYwData.split("&");
+            for (var i = 0; i < data_array.length; i++) {
+                if (!data_array[i]) {
+                    continue;
+                }
+                if (data_array[i].indexOf("label_") > -1) {
+                    continue;
+                }
+                var title = data_array[i].split(":")[0];
+                var c_v = data_array[i].split(":")[1];
+
+                var control_id = c_v.split("=")[0];
+                var control_value = c_v.split("=")[1];
+
+                if (control_id.indexOf("sle_") > -1) {
+                    $("#" + control_id).next().val(control_value);
+                } else if (control_id.indexOf("redio_") > -1) {
+                    control_value = control_value.replace(/\s+/g, "");
+                    if (control_value == "1-选中") {
+                        $("#" + control_id).attr("checked", "checked");
+                    }
+                }
+                //给控件赋值
+                //判断需要复核的字段，加上data-ori-value属性
+                if (review_controls.indexOf(control_id) > -1) {
+                    $("#" + control_id).attr("data-ori-value", control_value);
+                    $("#" + control_id).addClass("wait-review");
+                    if (control_id.indexOf("sle_") > -1) {
+                        // $("#" + control_id).find("option").eq(1).attr("selected", "selected")
+                        // $("#" + control_id).next().val($("#" + control_id).find("option").eq(1).text());
+                        $("#" + control_id).val("");
+                        $("#" + control_id).next().val("");
+                    }
+                    $("#" + control_id).parent().find(".redtip").remove();
+                    $("#" + control_id).append("<span class=\"text-red redtip\">!</span>");
+                } else {
+                    //不需要复核的字段禁用并赋值
+                    if (control_value == "" || control_value == null || control_value.indexOf("值含义") > -1) {
+                        $("#" + control_id).val("");
+                        $("#" + control_id).next().val("");
+                    } else {
+                        $("#" + control_id).val(control_value);
+                    }
+
+                    $("#" + control_id).attr("disabled", "disabled");
+                    if (control_id.indexOf("sle_") > -1) {
+                        $("#" + control_id).next().attr("disabled", "disabled");
+                    }
+                    $("#" + control_id).parent().find(".redtip").hide();//隐藏非复核字段的红色感叹号提醒
+
+                }
+            }
+            if (formid == "060703") {
+                $("#txt_zkhm").removeAttr("disabled")
+            }
+            if (formid == "063902") {
+                $("#sle_czlx").removeAttr("disabled");
+            }
+            if (formid == "010907") {
+                var zclx = $("#sle_aazclx").next().val();
+                if (zclx == "1 - 本金转存") {
+                    $("#txt_lxzrzh").removeAttr("disabled");
+                }
+            }
+            $("#btnsubmit").click(function () {
+                var formid = getQueryString("formid");
+                if (formid == "060703") {
+                    var controls = $(".form-item");
+                    var errormsg = "";
+                    for (var i = 0; i < controls.length; i++) {
+                        var result = checkRegex($(controls[i]).get(0));
+                        if (!result.isCheck) {
+                            errormsg += result.errormsg;
+                        }
+                    }
+                    if (errormsg != "") {
+                        layer.alert(errormsg);
+                        return;
+                    }
+                }
+
+                var is_pass = true;
+                var control = $(".wait-review");
+                for (var i = 0; i < control.length; i++) {
+                    var id = $(control[i]).attr("id");
+                   
+                    var ori_value = $(control[i]).attr("data-ori-value");
+
+                    if (ori_value == "" || ori_value == null || ori_value.indexOf("值含义") > -1) {
+
+                    }
+                    var r = $(control[i]).attr("vtitle") ? $(control[i]).attr("vtitle"):"";
+                    var tips = r.split("_")[0] + "复核数据输入错误";
+                    var value = $(control[i]).val();
+                    if (value==null) {
+                        value = "";
+                    }
+                    var nextInput = ori_value;
+                    if (id.indexOf("sle_") > -1) {
+                        var nextInput = $(control[i]).next("input").val();
+                        //alert(nextInput);
+                        ori_value = ori_value.split('-')[0].trim();
+                    }
+                    //alert("val:" + value + ";ori:" + ori_value + ";next:" + nextInput)
+
+                    //val:012;ori:介质种类值含义;next:012 - 单位定期存款证实书
+                    if (id.indexOf("sle_") > -1) {
+                        ori_value = nextInput.split('-')[0].trim();
+                    }
+                     
+                    if (value != ori_value) {
+                        //alert(id + " / " + value + " / " + ori_value);
+                        layer.alert(tips);
+                        is_pass = false;
+                        break;
+                    }
+                }
+                var formid = getQueryString("FormId");
+                if (formid == "063901") {
+                    var val = $("#txt_zkhm").val();
+                    if (val == "") {
+                        layer.alert("重控号码不能为空！");
+                        is_pass = false;
+                    }
+                }
+                if (is_pass) {
+
+                    //checkEmpowe1()
+                    //EditEmpower1();
+                    
+                }
+            });
+
+            $(".slectstyle input").css("height","96%")
+            $("#txt_jszh").unbind("keyup");
+            $("#txt_jszh").unbind("focus");
+            $("#txt_jszh").unbind("blur");
+            $("#txt_cprq").val("0");
+            $("#date_czrq").val("0");
+        });
+    });
+
+    function getQueryString(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) return unescape(r[2]);
+        return null;
+    }
+
+
+    function checkEmpowe1() {
+        var TMNO = getQueryString("FormId"); 
+        $.ajax({
+            url: '/FormList/CheckEmpove',
+            Type: "post",
+            dataType: "json", cache: false,
+            data: { "TMNO": TMNO },
+            contentType: "application/json; charset=utf-8",
+            success: function (data) {
+                if (data > 0) {
+                    EditEmpower2(TMNO);
+                }
+                else {
+                    
+                    if (review_printarraw1.join(",").indexOf(TMNO) > -1) {
+                        printWin(TMNO);
+                    }
+                    else {
+                        layer.msg("复核成功!");
+                        setTimeout(function () { 
+                            window.close(); 
+                        }, 2 * 1000);//延迟5000毫秒 
+                    }
+                }
+            }
+        });
+    }
+
+    var review_printarraw1 = ["081001","080201", "050511", "090201", "010101", "010102", "010103", "010104", "010105", "010106", "010107", "010108", "010114", "010301", "010302", "010303", "010401", "010402", "010501", "010601", "010702", "010901", "010902", "010903", "010904", "010905", "010906", "010910", "020501", "020502", "020704", "030601", "030602", "030603", "030604", "030606", "030608", "030612", "050504", "060302", "065401", "065501", "080704", "080705", "080706", "080803", "081003", "081005", "091001", "091008", "091010", "091105", "091009", "050503", "010907"];
+    //内部授权打开新窗口
+    function EditEmpower2() {
+        var formid = getQueryString("FormId");
+        var url = '/FormList/Form_010001?FormId=' + formid + "&type=1";
+        var height = 600;
+        window.open(url, '_blank', 'width=1024,height=' + height + ',top=10px,left=10px,location=no,scrollbars=yes');
+        window.close();
+        //window.parent.layer.close(sessionStorage.getItem("open_layer"));
+    }
+
+  
+</script>
+<script>
+    
+
+</script>

@@ -1,0 +1,122 @@
+.wrapper{
+	width: 1200px;
+	margin: 0 auto;
+}
+
+/******面包屑******/
+.wrapper_title{
+	overflow: hidden;
+	margin-top: 40px;
+	margin-bottom: 50px;
+}
+
+.wrapper_title span{
+	float: left;
+	font-size: 22px;
+	color: #333333;
+	margin-top: 2px;
+}
+
+.wrapper_title span:nth-child(2){
+	padding-left: 6px;
+}
+
+.wrapper_title button{
+	border: none;
+	outline: none;
+	cursor: pointer;
+	float: left;
+	width: 108px;
+	height: 34px;
+	line-height: 34px;
+	color: #fff;
+	font-size: 13px;
+	background: url(../img/tab_icon.png) no-repeat 10px center;
+	background-color: #CF9354;
+	border-radius: 4px;
+	padding-left: 24px;
+	margin-left: 34px;
+}
+
+.wrapper_title button:hover{
+	background-color: #B27639;
+}
+
+
+/******类别******/
+.wrapper_list{
+	overflow: hidden;
+	padding-bottom: 48px;
+	padding-left: 30px;
+	border-bottom: 1px solid #DDDDDD;
+}
+
+.wrapper_list li{
+	width: 190px;
+	height: 140px;
+	border: 1px solid #F1F1F1;
+	padding: 22px 0 18px 50px;
+	float: left;
+	margin-right: 52px;
+	position: relative;
+}
+
+.wrapper_list li:last-child{
+	margin-right: 0;
+}
+
+.wrapper_list .list_name{
+	font-size: 20px;
+	color: #333333;
+}
+
+.wrapper_list .list_number{
+	font-size: 14px;
+	color: #A0A0A0;
+	margin: 4px 0 20px;
+}
+
+.wrapper_list .list_number span{
+	font-size: 18px;
+	color: #CF9354;
+}
+
+.wrapper_list .list_details{
+	font-size: 14px;
+	color: #CF9354;
+	cursor: pointer;
+}
+
+.wrapper_list .list_details:hover{
+	color: #B27639;
+}
+
+.wrapper_list .list_icon{
+	width: 60px;
+	height: 60px;
+	position: absolute;
+	top: 40px;
+	left: -30px;
+	border: 1px solid #F1F1F1;
+}
+.icon_one{
+	background: url(../img/acquisition_icon.png) no-repeat center center;
+	background-color: #FBFBFB;
+}
+.icon_two{
+	background: url(../img/underwrite_icon.png) no-repeat center center;
+	background-color: #FBFBFB;
+}
+.icon_three{
+	background: url(../img/settlement_icon.png) no-repeat center center;
+	background-color: #FBFBFB;
+}
+.icon_four{
+	background: url(../img/preserve_icon.png) no-repeat center center;
+	background-color: #FBFBFB;
+}
+.icon_five{
+	background: url(../img/intermediary_icon.png) no-repeat center center;
+	background-color: #FBFBFB;
+}
+

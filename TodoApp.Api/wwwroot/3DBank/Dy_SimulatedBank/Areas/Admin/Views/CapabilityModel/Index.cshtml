@@ -1,0 +1,130 @@
+﻿@{
+    ViewBag.Title = "跨境电商综合实训平台";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewData["nvc"] = "系统参数";
+    @model System.Data.DataTable
+}
+<link href="~/CSS/chosen/chosen.css" rel="stylesheet" />
+<script src="~/Scripts/chosen/chosen.jquery.js"></script>
+
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-sm-12">
+        <ol class="breadcrumb">
+            <li>
+                <h2>系统管理</h2>
+            </li>
+            <li>
+                <a href="/Admin/SystemParameter/Index">系统参数</a>
+            </li>
+            <li>
+                <strong>能力模型列表</strong>
+            </li>
+        </ol>
+
+    </div>
+</div>
+
+
+<div class="ibox-content">
+    <div class="row m-t" id="selcxdiv">
+
+        <div class="col-sm-3">
+            <div class="input-group">
+                <input type="text" placeholder="请输入能力名称……" id="txtCapabilityName" class="form-control" name="txtCapabilityName">
+                <span class="input-group-btn">
+                    <button type="button" onclick="SearchInfo()" class="btn btn-primary"><i class="fa fa-search "></i></button>
+                </span>
+            </div>
+        </div>
+        <div class="col-sm-9 text-right">
+            <input type="text" hidden="hidden" id="uids" name="uids" value="@Session["UserId"]" />
+            <button onclick="Add()" id="butAdd" class="btn btn-primary btn-sm " type="button"><i class="fa fa-plus m-r-xs"></i><span class="bold">新增能力(<span id="num">0</span>/10)</span></button>
+        </div>
+    </div>
+    <div class="row  m-t-sm ">
+        <div class="col-sm-12">
+            <table class="table text-center table-bordered ">
+                <thead>
+                    <tr>
+                        <th class="text-center">序号</th>
+                        <th class="text-center">能力名称</th>
+                        <th class="text-center">能力简介</th>
+                        <th class="text-center">分数上限</th>
+                        <th class="text-center">上移</th>
+                        <th class="text-center">下移</th>
+                        <th class="text-center">操作</th>
+                    </tr>
+                </thead>
+                <tbody class="new_table text-center" id="tablelist"></tbody>
+            </table>
+
+        </div>
+
+    </div>
+</div>
+
+<!--新增弹框-->
+<div id="Add_div" style="display: none;" class="form-inline">
+    <form name="Add_form" id="Add_form">
+        <div class="col-sm-12">
+            <div class="form-horizontal  m-t-lg">
+                <label for="firstname" class="col-sm-3 control-label"><span style="color: red;">*</span>能力名称：</label>
+                <div class="col-sm-9">
+                    <input style="width: 100%;" autocomplete="off" type="text" class="form-control" id="CapabilityName" name="CapabilityName" maxlength="10">
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12">
+            <div class="form-horizontal  m-t-lg">
+                <label for="firstname" class="col-sm-3 control-label">能力简介：</label>
+                <div class="col-sm-9">
+                    <textarea style="width: 100%;" rows="6" class="form-control" id="AbilityProfile" name="AbilityProfile" maxlength="300"></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12">
+            <div class="form-horizontal  m-t-lg">
+                <label for="firstname" class="col-sm-3 control-label"><span style="color: red;">*</span>分数上限：</label>
+                <div class="col-sm-9">
+                    <input style="width: 100%;" autocomplete="off" type="text" class="form-control" id="CMScore" name="CMScore" oninput="value=value.replace(/[^\d]/g,'')" maxlength="4">
+                </div>
+            </div>
+        </div>
+
+
+    </form>
+</div>
+
+<!--编辑弹框-->
+<div id="Edit_div" style="display: none;" class="form-inline">
+    <form name="Edit_form" id="Edit_form">
+        <div class="col-sm-12">
+            <div class="form-horizontal  m-t-lg">
+                <label for="firstname" class="col-sm-3 control-label"><span style="color: red;">*</span>能力名称：</label>
+                <div class="col-sm-9">
+                    <input style="width: 100%;" autocomplete="off" type="text" class="form-control" id="EditCapabilityName" name="CapabilityName" maxlength="10">
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12">
+            <div class="form-horizontal  m-t-lg">
+                <label for="firstname" class="col-sm-3 control-label">能力简介：</label>
+                <div class="col-sm-9">
+                    <textarea style="width: 100%;" rows="6" class="form-control" id="EdntAbilityProfile" name="EditAbilityProfile" maxlength="300"></textarea>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12">
+            <div class="form-horizontal  m-t-lg">
+                <label for="firstname" class="col-sm-3 control-label"><span style="color: red;">*</span>分数上限：</label>
+                <div class="col-sm-9">
+                    <input style="width: 100%;" autocomplete="off" type="text" class="form-control" id="EdntCMScore" name="EditCMScore" oninput="value=value.replace(/[^\d]/g,'')" maxlength="4" value="0">
+                </div>
+            </div>
+        </div>
+
+
+    </form>
+</div>
+
+<script src="~/Js/Admin/CapabilityModel/CapabilityModel.js"></script>

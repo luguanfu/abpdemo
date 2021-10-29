@@ -1,0 +1,124 @@
+﻿@using System.Data;
+@{
+    
+    ViewData["nvc"] = "试卷解析";
+    DataTable dt = (DataTable)ViewData["Assessment"];
+    Layout = "~/Views/Shared/_AdminLayoutNull.cshtml";
+}
+
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-sm-12">
+        <ol class="breadcrumb">
+            <li>
+                <h2>试卷解析</h2>
+            </li>
+        </ol>
+
+    </div>
+</div>
+<!--面包屑位置结束-->
+<!--主体内容开始-->
+<div class="ibox-content">
+
+    <div class="row  m-t-sm ">
+        <div class="col-sm-12">
+            <table class="table text-center table-bordered ">
+                <thead>
+                    <tr>
+                        <th class="text-center">案例名称</th>
+                        <th class="text-center">流程模块</th>
+                        <th class="text-center">表单名称</th>
+                        <th class="text-center">正确答案</th>
+                        <th class="text-center">考生答案</th>
+                        <th class="text-center">是否正确</th>
+                    </tr>
+                </thead>
+                <tbody class="new_table text-center" id="tablelist"></tbody>
+            </table>
+            <input type="hidden" id="pid" value="@ViewData["PID"]" />
+        </div>
+
+    </div>
+
+
+    <!--分页开始-->
+    <div class=" text-center">
+        <div class="dataTables_paginate paging_simple_numbers" id="PaginatorLibrary">
+
+        </div>
+
+    </div>
+    <!--分页结束-->
+</div>
+<script>
+
+    function SearchTb(page) {
+        $.ajax({
+            type: "Get",
+            async: false,
+            url: "/PracticeResult/GetListByStu",
+            data: { "practiceID": $("#pid").val(), "page": page },
+            dataType: "json",
+            success: function (data) {
+                if (data != null && data != "") {
+                    //var evldata = eval("" + data + "");
+                    var html = "";
+                    for (var i = 0; i < data.length; i++) {
+                        html += '<tr>';
+                        html += '<td>' + data[i]["TaskName"] + '</td>';
+                        html += '<td>' + data[i]["CustomerName"] + '</td>';
+                        if (data[i]["IsTrue"] == "答案错误" || data[i]["IsTrue"] == "此环节未做") {
+                            html += '<td style="color:red;">' + data[i]["TMName"] + '</td>';
+                        } else {
+                            html += '<td>' + data[i]["TMName"] + '</td>';
+                        }
+
+                        html += '<td><table>';
+                        for (var k = 0; k < data[i]["RightKey"].split(',').length; k++) {
+                            html += '<tr><td>' + data[i]["RightKey"].split(',')[k] + '</td><tr>'
+                        }
+                        html += '</table></td>';
+
+
+                        html += '<td><table>';
+                        for (var k = 0; k < data[i]["StuOperationalAnswers"].split(',').length; k++) {
+                            if (data[i]["IsTrue"] == "答案错误") {
+                                if (data[i]["StuOperationalAnswers"].split(',')[k] != data[i]["RightKey"].split(',')[k]) {
+                                    html += '<tr style="color:red;"><td>' + data[i]["StuOperationalAnswers"].split(',')[k] + '</td><tr>'
+                                } else {
+                                    html += '<tr><td>' + data[i]["StuOperationalAnswers"].split(',')[k] + '</td><tr>'
+                                }
+                            } else {
+                                html += '<tr><td>' + data[i]["StuOperationalAnswers"].split(',')[k] + '</td><tr>'
+                            }
+                        }
+                        html += '</table></td>';
+                        if (data[i]["IsTrue"] == "答案错误" || data[i]["IsTrue"] == "此环节未做") {
+                            html += '<td style="color:red;">' + data[i]["IsTrue"] + '</td>';
+                        } else {
+                            html += '<td>' + data[i]["IsTrue"] + '</td>';
+                        }
+                        html += '</tr>';
+                    }
+
+                    $("#tablelist").html(html);
+                    var pageCount = parseInt(data[0]["PageCount"]);
+                    var pageHtml = '<div><div class="dataTables_paginate paging_simple_numbers " id="editable_paginate"> <ul class="pagination">';
+                    for (var l = 0; l < pageCount; l++) {
+                        pageHtml += '<li class="paginate_button previous home_page" aria - controls="editable" tabindex = "0" id = "" onclick="SearchTb(' + (l + 1) + ')" ><a href="javascript: void (0); ">' + (l + 1) + '</a></li>';
+                    }
+                    pageHtml += '<li><span class="pagesize">第<span id="page">' + page + '</span>页/共<span>' + pageCount + '</span>页</span></li ></ul></div ></div > ';
+                    $("#PaginatorLibrary").html(pageHtml);
+                }
+
+
+            },
+            error: function (error) {
+
+            }
+        });
+    }
+    SearchTb(1);
+
+</script>
+

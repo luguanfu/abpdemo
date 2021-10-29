@@ -1,0 +1,151 @@
+﻿@{
+    
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewData["nvc"] = "学校管理";
+}
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-sm-12">
+        <ol class="breadcrumb">
+            <li>
+                <h2>组织架构管理</h2>
+            </li>
+            <li>
+                <a href="#">学校管理</a>
+            </li>
+            <li>
+                <strong>学校列表</strong>
+            </li>
+        </ol>
+
+    </div>
+</div>
+
+<div class="ibox-content">
+    <div class="row m-t" id="selcxdiv">
+        <div class="col-sm-2">
+            <select class=" form-control input-s-sm inline" id="selProvince" onchange="provinceChange()">
+            </select>
+        </div>
+        <div class="col-sm-2">
+            <select class=" form-control input-s-sm inline" id="selCity">
+            </select>
+        </div>
+        <div class="col-sm-3">
+            <div class="input-group">
+                <input type="text" placeholder="请输入关键字搜索……" id="txtSchoolName" class="form-control" name="txtSchoolName">
+                <span class="input-group-btn">
+                    <button type="button" onclick="SearchInfo()" class="btn btn-primary"><i class="fa fa-search "></i></button>
+                </span>
+            </div>
+        </div>
+        <div class=" col-sm-5 text-right">
+            <button onclick="Add_school()" class="btn btn-primary btn-sm " type="button"><i class="fa fa-plus m-r-xs"></i><span class="bold">新增学校</span></button>
+            <button onclick="del_all()" class="btn btn-warning btn-sm " type="button"><i class="fa fa-trash m-r-xs"></i><span class="bold">删除学校</span></button>
+        </div>
+    </div>
+    <div class="row  m-t-sm ">
+        <div class="col-sm-12">
+            <table class="table text-center table-bordered ">
+                <thead>
+                    <tr>
+                        <th class="text-center">
+                            <input type="Checkbox" class="i-checks checkbox-all">
+                        </th>
+                        <th class="text-center">学校名称</th>
+                        <th class="text-center">学院数量</th>
+                        <th class="text-center">专业数量</th>
+                        <th class="text-center">班级数量</th>
+                        <th class="text-center">教师数量</th>
+                        <th class="text-center">学生数量</th>
+                        <th class="text-center">学校地址</th>
+                        <th class="text-center">到期时间</th>
+                        <th class="text-center">操作</th>
+                    </tr>
+                </thead>
+                <tbody class="new_table text-center" id="tablelist">
+                </tbody>
+            </table>
+
+        </div>
+        <!--分页开始-->
+        <div class="row text-center m-t-md" id="PaginatorLibrary">
+        </div>
+        <!--分页结束-->
+    </div>
+
+
+</div>
+
+
+
+<!--新增弹框-->
+<div id="Add_school" style="display: none;" class="form-inline">
+    <form name="Add_schoolform" id="Add_schoolform">
+        <div class="col-sm-12">
+            <div class="form-horizontal  m-t-lg">
+                <label for="firstname" class="col-sm-3 control-label"><span style="color: red;">*</span>学校名称：</label>
+                <div class="col-sm-9">
+                    <input style="width: 100%;" autocomplete="off" type="text" class="form-control" id="AddschoolName" name="AddschoolName" placeholder="请输入学校名称">
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12">
+            <div class="form-horizontal  m-t-lg">
+                <label for="firstname" class="col-sm-3 control-label"><span style="color: red;">*</span>地区选择：</label>
+                <div class="col-sm-5">
+                    <select class="form-control input-s-sm inline" onchange="provinceaddChange()" style="width: 100%;" id="seladdprovince"></select>
+                </div>
+
+                <div class="col-sm-4">
+                    <select class=" form-control input-s-sm inline" style="width: 100%;" id="seladdCity"></select>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12">
+            <div class="form-horizontal  m-t-lg">
+                <label for="firstname" class="col-sm-3 control-label"><span style="color: red;">*</span>到期时间：</label>
+                <div class="col-sm-9">
+                    <input style="width: 100%;" autocomplete="off" type="text" class="form-control" id="EndtTime" name="EndtTime" onclick="WdatePicker({ dateFmt: 'yyyy-MM-dd', isShowClear: false, readOnly: false })" placeholder="请选择到期时间">
+                </div>
+            </div>
+        </div>
+
+    </form>
+</div>
+
+<!--编辑弹框-->
+<div id="Edit_school" style="display: none;" class="form-inline">
+    <form name="Edit_schoolform" id="Edit_schoolform">
+        <div class="col-sm-12">
+            <div class="form-horizontal  m-t-lg">
+                <label for="firstname" class="col-sm-3 control-label"><span style="color: red;">*</span>学校名称：</label>
+                <div class="col-sm-9">
+                    <input style="width: 100%;" autocomplete="off" type="text" class="form-control" id="EditschoolName" name="EditschoolName" placeholder="请输入学校名称">
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12">
+            <div class="form-horizontal  m-t-lg">
+                <label for="firstname" class="col-sm-3 control-label"><span style="color: red;">*</span>地区选择：</label>
+                <div class="col-sm-5">
+                    <select class="form-control input-s-sm inline" onchange="provinceEditChange()" style="width: 100%;" id="selEditprovince"></select>
+                </div>
+
+                <div class="col-sm-4">
+                    <select class=" form-control input-s-sm inline" style="width: 100%;" id="selEditCity"></select>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12">
+            <div class="form-horizontal  m-t-lg">
+                <label for="firstname" class="col-sm-3 control-label"><span style="color: red;">*</span>到期时间：</label>
+                <div class="col-sm-9">
+                    <input style="width: 100%;" autocomplete="off" type="text" class="form-control" id="EditEndtTime" name="EditEndtTime" onclick="WdatePicker({ dateFmt: 'yyyy-MM-dd', isShowClear: false, readOnly: false })" placeholder="请选择到期时间">
+                </div>
+            </div>
+        </div>
+
+    </form>
+</div>
+<script src="~/Js/Admin/SchoolManage/Provincesandcities.js"></script>
+<script src="~/Js/Admin/SchoolManage/SchoolManage.js?v=2020"></script>

@@ -1,0 +1,136 @@
+﻿@{
+    ViewBag.Title = "Form_130104";
+    Layout = "~/Views/Shared/_AdminLayoutIsNull.cshtml";
+}
+
+<style type="text/css">
+    .from_map040 {
+        width: 1100px;
+        margin: auto;
+        position: relative;
+        background: url(/CSS/danju/img/danjuimg/menu040.jpg) no-repeat top;
+        height: 720px;
+    }
+
+
+
+    .site1 {
+        width: 94px;
+        height: 25px;
+        left: 269px;
+        top: 318px;
+    }
+
+
+    .site2 {
+        width: 184px;
+        height: 25px;
+        left: 480px;
+        top: 318px;
+    }
+
+    .site3 {
+        width: 42px;
+        height: 25px;
+        left: 705px;
+        top: 318px;
+    }
+
+
+    .site4 {
+        width: 28px;
+        height: 25px;
+        left: 772px;
+        top: 318px;
+    }
+
+
+
+    .site5 {
+        width: 28px;
+        height: 25px;
+        left: 825px;
+        top: 318px;
+    }
+
+
+
+    .site6 {
+        width: 195px;
+        height: 25px;
+        left: 522px;
+        top: 348px;
+    }
+
+
+    .site7 {
+        width: 90px;
+        height: 25px;
+        left: 796px;
+        top: 348px;
+    }
+
+
+    .site8 {
+        width: 97px;
+        height: 25px;
+        left: 423px;
+        top: 376px;
+    }
+
+
+    .site9 {
+        width: 94px;
+        height: 25px;
+        left: 300px;
+        top: 458px;
+    }
+
+
+    .site10 {
+        width: 160px;
+        height: 25px;
+        left: 500px;
+        top: 458px;
+    }
+
+    .site11 {
+        width: 140px;
+        height: 25px;
+        left: 765px;
+        top: 458px;
+    }
+</style>
+
+
+
+<form id="form1" onsubmit="return false" action="##" method="post">
+    <input type="hidden" id="TaskId" name="TaskId" value="@Request["TaskId"]" />
+    <input type="hidden" id="CustomerId" name="CustomerId" value="@Request["CustomerId"]" />
+    <input type="hidden" id="FormId" name="FormId" value="@Request["FormId"]" />
+    <input type="hidden" id="Types" name="Types" value="@Request["Types"]" />
+    <!--内容表单区域开始-->
+    <div class="from_map040">
+        <input class="inputall site1 " type="text" name="dy01" id="dy01" value="" />
+        <input class="inputall site2 " type="text" name="dy02" id="dy02" value="" />
+
+        <input class="inputall site3 text_center " maxlength="4" type="text" name="dy03" id="dy03" value="" />
+        <input class="inputall site4 text_center " maxlength="2" type="text" name="dy04" id="dy04" value="" />
+        <input class="inputall site5 text_center " maxlength="2" type="text" name="dy05" id="dy05" value="" />
+        <input class="inputall site6 " type="text" name="dy06" id="dy06" value="" />
+        <input class="inputall site7 " type="text" name="dy07" id="dy07" value="" />
+        <input class="inputall site8 " type="text" name="dy08" id="dy08" value="" />
+        <input class="inputall site9 " type="text" name="dy09" id="dy09" value="" />
+
+        <input class="inputall site10 " type="text" name="dy010" id="dy010" value="" />
+        <input class="inputall site11 " type="text" name="dy011" id="dy011" value="" />
+
+
+        <button class="btn_chongzhi" type="button" value="重置" onclick="btnReset()">重置</button>
+        <button class="btn_tijiao" type="button" value="提交" onclick="btnSubmit()">提交</button>
+
+    </div>
+
+
+</form>
+<script src="~/Js/Admin/clicktoggle.js"></script>

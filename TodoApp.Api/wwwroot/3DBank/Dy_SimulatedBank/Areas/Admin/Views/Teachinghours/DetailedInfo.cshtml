@@ -1,0 +1,113 @@
+﻿@{
+    
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewData["nvc"] = "课时安排";
+}
+
+
+<link href="~/CSS/chosen/chosen.css" rel="stylesheet" />
+<script src="~/Scripts/chosen/chosen.jquery.js"></script>
+
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-sm-12">
+        <ol class="breadcrumb">
+            <li>
+                <h2>组织架构管理</h2>
+            </li>
+            <li>
+                <a href="/Admin/Teachinghours">课时安排</a>
+            </li>
+            <li>
+                <a id="BjName" href="/Admin/Teachinghours/Detailed?id=@Request["cid"]">班级</a>
+            </li>
+            <li>
+                <strong id="BjName">编辑课时</strong>
+            </li>
+
+        </ol>
+
+    </div>
+</div>
+
+
+<!--面包屑位置结束-->
+
+
+<div class="ibox-content">
+
+
+
+    <input type="text" hidden="hidden" id="cid" value="@Request["cid"]" />
+    <input type="text" hidden="hidden" id="sid" value="@Request["sid"]" />
+    <input type="text" hidden="hidden" id="aid" value="@ViewData["AID"]" />
+    <input type="text" hidden="hidden" id="isPreview" value="@ViewData["isPreview"]" />
+    <input type="text" hidden="hidden" id="Preview_time" value="@ViewData["Preview_time"]" />
+    <div class="row m-t">
+        @*<div class="col-sm-2">
+                <label for="inputEmail3">
+                    允许预习： <span class="m-r-xxs">
+                        开启  <input type="radio" name="danxuan" onchange="onchanges(1)" id="danxuanA" value="1">
+                        关闭  <input type="radio" name="danxuan" onchange="onchanges(0)" id="danxuanA" checked="checked" value="0">
+                    </span>
+                </label>
+            </div>*@
+        @*<div class="col-sm-2">
+                <select class=" form-control input-s-sm inline" disabled="" onchange="onchangeselect()" id="Majorid">
+                    <option value='-1'>预习时长</option>
+                    <option value='0'>提前24小时</option>
+                    <option value='1'>提前48小时</option>
+                    <option value='2'>提前一周</option>
+                </select>
+            </div>*@
+        <div class="col-sm-12 text-right">
+            <button class="btn btn-warning" type="button" onclick="Reset()"><i class="fa fa-repeat  m-r-xs"></i><span class="bold">恢复默认</span></button>
+            <button onclick="EditList()" class="btn btn-primary  " type="button"><i class="fa fa-gear    m-r-xs"></i><span class="bold">编辑所选</span></button>
+        </div>
+    </div>
+
+
+
+
+    <div class="row  m-t-sm ">
+        <div class="col-sm-12" tblist="tablelist" id="tableList">
+        </div>
+    </div>
+</div>
+<div id="Add_baodan1" style="display: none;" class="form-inline">
+    <form name="Add_baodantj" id="Add_baodantj">
+        <input hidden="hidden" id="sids" value="" type="text" />
+        <input hidden="hidden" id="Sid" value="" type="text" />
+        <div class="col-sm-12">
+            <div class="form-horizontal  m-t-lg" style="margin-top:70px">
+                <label for="firstname" class="col-sm-4 control-label"><span style="color: red;"></span>开课时间：</label>
+                <div class="col-sm-8">
+                    <input class="form-control" style="width: 150px;" placeholder="" type="text" size="30" name="start_time" id="start_time">
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-sm-12 m-t-lg text-center">
+            <button class="btn btn-success " type="button" onclick="Bj()"><span class="bold">保存</span></button>
+        </div>
+
+
+    </form>
+</div>
+
+<script src="~/Scripts/laydate/laydate.js"></script>
+<script src="~/Js/Teacher/Teachinghours/TeachinghoursDetailedInfo.js"></script>
+<script src="~/Scripts/String/StringFormat.js"></script>
+<script>
+    $(function () {
+
+        var stardate = laydate.render({
+            elem: '#start_time', //指定元素
+            format: "yyyy-MM-dd HH:mm",
+            type: 'datetime',
+
+        });
+
+
+    })
+</script>

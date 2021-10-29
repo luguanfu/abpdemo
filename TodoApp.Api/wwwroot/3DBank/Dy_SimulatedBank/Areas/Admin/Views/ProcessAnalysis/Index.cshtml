@@ -1,0 +1,183 @@
+﻿@{
+    
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewData["nvc"] = "流程解析";
+}
+
+
+
+<div class="row  white-bg dashboard-header">
+    <div class="col-sm-12">
+        <ol class="breadcrumb">
+            <li>
+                <h2>实训案例管理</h2>
+            </li>
+            <li>
+                <a href="#">流程解析</a>
+            </li>
+            <li>
+                <strong>通用流程解析</strong>
+            </li>
+        </ol>
+
+    </div>
+    <div class="ibox-content">
+  
+        <div class="row m-t-sm table-responsive">
+            <table class="table text-center table-bordered ">
+                <thead>
+                    <tr>
+                        @*  <th class="text-center">序号</th>*@
+                    
+                        <th class="text-center">场景</th>
+                        <th class="text-center">环节</th>
+              
+                        <th class="text-center">操作</th>
+                    </tr>
+                </thead>
+                <tbody class="new_table text-center" id="tablelist">
+
+                </tbody>
+            </table>
+        </div>
+
+      
+    </div>
+</div>
+
+<div class="modal fade" id="ImportDIV">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title">上传解析</h4>
+            </div>
+
+            <div class="modal-body">
+                <form name="Importform" id="Importform">
+                    <div class="col-md-12">
+                        <div class="form-horizontal  m-t-sm">
+                            <input type="file" class="form-control" name="FileName" id="FileName" />
+                        </div>
+                    </div>
+                    <div  class="col-md-12 m-t-md">
+                        <span style="color:red;">仅支持.pdf文件</span>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-12 text-center m-t-md">
+                            <button type="button" class="btn btn-info m-r-md" onclick="btnImport()">导入</button>
+                            <button type="button" class="btn btn-white" data-dismiss="modal">取消</button>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(function () {
+        bindIngfo();
+    })
+
+    //列表数据加载
+    function bindIngfo() {
+
+        $.ajax({
+            url: '/Admin/ProcessAnalysis/GetList',
+            Type: "post",
+            dataType: "json", cache: false,
+            contentType: "application/json; charset=utf-8",
+            data: {  },
+            success: function (data) {
+
+                var html = '';
+                for (var i = 0; i < data.length; i++) {
+                    html += '<tr>';
+
+                    html += '<td><span class="pie" >' + data[i]["cjname"] + '</span></td>';
+                    html += '<td><span class="pie" >' + data[i]["huanjiename"] + '</span></td>';
+           
+                    html += '<td>';
+       
+                    html += "<a href=\"javascript:void(0);\" onclick=\"See('" + data[i]["wjurl"] + "')\" class=\" btn-info btn-sm\"><i class=\"fa fa-lightbulb-o m-r-xxs\"></i>预览解析 </a>";
+                    html += '<a style="margin-left: 5px;"  href="javascript:void(0);" onclick="Edit(' + data[i]["Id"] + ')" class=" btn-primary btn-sm"><i class="fa fa-pencil m-r-xxs"></i>上传解析 </a> ';
+                    html += '</td>';
+
+                    html += '</tr>';
+                }
+
+                $("#tablelist").html(html);
+
+            }
+        });
+    }
+
+    //查看 只有pdf格式 浏览器直接打开
+    function See(url) {
+        if (url == "null" || url == null) {
+            layer.msg('请先上传解析', function () { });
+            return;
+        }
+        window.open(url)
+    }
+
+    //
+    var allId = 0;
+    function Edit(Id) {
+        allId = Id;
+        $("#FileName").val('');
+        jQuery('#ImportDIV').modal('show', { backdrop: 'static' });
+    }
+
+    function btnImport() {
+        var docObj = document.getElementById("FileName");
+
+        //上传文件校验只能是excel
+        if (docObj.files && docObj.files[0]) {
+            var f = docObj.files;
+            var exltype = f[0].name;//获取文件名
+            var exp = /.pdf$|.PDF$/;
+            if (exp.exec(exltype) == null) {
+                layer.msg('上传格式错误（仅支持.pdf文件）', { icon: 2 });
+                return;
+            }
+        }
+        else {
+            layer.msg('请选择上传文件！', function () { });
+            return;
+        }
+
+        //提交
+        $("#Importform").ajaxSubmit({
+            type: "post",
+            dataType: "json",
+            url: '/ashx/hbExport.ashx?action=Analysis_Import&allId=' + allId,
+            data: $("#Importform").serialize(),
+            success: function (data) {
+                if (data == "1") {//正常结束
+                    layer.closeAll();//关闭所有弹出框
+                  
+                    $("#FileName").val('');
+                    jQuery('#ImportDIV').modal('hide');
+               
+                    layer.msg('操作成功', { icon: 1 });
+                    bindIngfo();
+
+                }
+                else {
+                    layer.msg('操作失败', { icon: 2 });
+                    return;
+                }
+            }
+        });
+
+    }
+
+</script>
+
+
+

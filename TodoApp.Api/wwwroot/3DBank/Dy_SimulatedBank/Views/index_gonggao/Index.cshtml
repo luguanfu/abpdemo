@@ -1,0 +1,276 @@
+﻿@{
+    Layout = "~/Views/Shared/_StudentLayout.cshtml";
+}
+
+
+
+<style type="text/css">
+
+    .db_map {
+        min-height: 500px;
+    }
+
+    .item_name {
+        text-align: center;
+        font-size: 20px;
+        margin-top: 15px;
+        color: #333333;
+    }
+
+    .hr_item {
+        width: 50px;
+        height: 1px;
+        border: 2px solid #3487f5;
+        margin: auto;
+        margin-top: 3px;
+    }
+
+    .notice_map {
+        padding: 0px 40px;
+    }
+
+    .notice_list li {
+        list-style-type: disc;
+        border-bottom: 1px solid #dddddd;
+        padding-bottom: 10px;
+        margin-bottom: 15px;
+    }
+
+    .notic_name {
+        cursor: pointer;
+        font-size: 18px;
+        color: #333333;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+        .notic_name:hover {
+            color: #3487f5;
+        }
+
+    .topic_jj {
+        margin-top: 8px;
+        font-size: 16px;
+        color: #999999;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .text_yidu {
+        color: #999999 !important;
+    }
+</style>
+
+<!-------------内容------------->
+<div class="index_con">
+    <!--面包屑开始-->
+    <div class="crumbs_map">
+        你当前所在的位置：
+        <a href="index_one.html">首页</a>＞
+        <span>公告栏</span>
+    </div>
+    <!--面包屑结束-->
+    <!--切换内容区域-->
+    <div class="db_map" style="min-height: 180px;">
+        <div class="item_name">
+            公告栏
+        </div>
+        <div class="hr_item"></div>
+        <div class="col-sm-3">
+            <div class="input-group">
+                <input type="text" placeholder="输入公告标题" id="SelectcheckName" class="form-control">
+                <span class="input-group-btn">
+                    <button type="button" onclick="Search()" class="btn btn-primary"><i class="fa fa-search "></i>查找</button>
+                </span>
+            </div>
+        </div>
+        <div class="m-t-lg m-l-sm m-r-sm m-b-sm">
+            <div class="notice_map">
+                <ul class="notice_list" style="min-height:180px;"></ul>
+                <!--分页开始-->
+                <div class="con_bottom" style="margin: 0;" id="PaginatorLibrary">
+                    <a class="Previous_page disabled">＜</a>
+                    <a class="PageIndex Index_1 xz">1</a>
+                    <a class="next_page">＞</a>
+                    <span><input type="text" name="" id="" value="" /></span>
+                    <a class="next_page">GO</a>
+                </div>
+                <!--分页结束-->
+
+            </div>
+        </div>
+    </div>
+</div>
+<!--新增弹框-->
+<div id="Add_div" style="display: none;" class="form-inline">
+    <form name="Add_form" id="Add_form">
+        <p><h2 id="titleName">标题标题</h2></p>
+        <p id="txtdate">2019-8-22 10:31:12</p>
+        <div id="txtcontent"></div>
+    </form>
+</div>
+<script src="~/Scripts/String/StringFormat.js"></script>
+<script type="text/javascript">
+    //根据渲染出来的数据，动态设置底部
+
+    //文档body的高度
+    var bodyHeight = $(document.body).height()
+    //当前窗口可视区域高度
+    var winHeight = $(window).height()
+    if (bodyHeight > winHeight) {
+        $(".footer").removeClass("fid")
+    } else {
+        $(".footer").show();
+        $(".footer").hide();
+    }
+
+    //退出系统
+    function out_xitong() {
+        layer.confirm('您确定要退出系统吗？', {
+            title: '退出系统',
+            btn: ['确定', '取消'],
+            offset: 'auto',//定义弹窗位置垂直居中
+            shadeClose: false, //遮罩关闭控制
+            skin: 'layui-layer-lan'
+            //按钮
+        },
+            function () {
+                layer.msg('退出成功', {
+                    time: 10000,
+                    icon: 1,
+                });
+                window.location.href = "login.html"
+            });
+    }
+
+    //查询
+    function Search() {
+        GetNoticeList();
+    }
+
+    //初始化
+    $(function () {
+        GetNoticeList();
+    });
+
+    //加载公告栏列表
+    function GetNoticeList(page) {
+        var PageSize = 10;
+        $.ajax({
+            url: '/index_gonggao/GetNoticeList',
+            Type: "post",
+            dataType: "json", cache: false,
+            contentType: "application/json; charset=utf-8",
+            data: {
+                "page": page, "PageSize": PageSize, "SelectcheckName": $("#SelectcheckName").val()
+            },
+            success: function (tb) {
+                var html = '';
+                //$(".notice_list").html("");
+                var data = tb.Tb;//转换table
+                if (data.length > 0) {
+                    for (var i = 0; i < data.length; i++) {
+
+                        html += '<li onclick="Add(' + data[i]["id"] + ')">'
+                        html += ' <p class="notic_name">'
+                        html += data[i]["NoticeTitle"];
+                        if (data[i]["IsRead"] == "未读") {
+                            html += '<span class="text_red pull-right">' + data[i]["IsRead"] + '</span>'
+                        } else {
+                            html += '<span class="text_yidu pull-right">' + data[i]["IsRead"] + '</span>'
+                        }
+                        html += '</p>'
+                        var teachName = data[i]["TeacherName"];
+                        if (teachName == "" || teachName == null) {
+                            teachName = "系统消息";
+                        } else {
+                            teachName = "教师" + teachName + "";
+                        }
+                        html += '<p class="topic_jj"><span>' + (new Date(data[i]["ReleaseTime"]).Format("yyyy-MM-dd HH:mm")) + '</span> <span class="m-l-xl">来自：' + teachName + '</span>    </p>'
+                        html += '<p class="topic_jj">'
+                        html += data[i]["NoticeContent"];
+                        //html += '<span class="text_navy pull-right">2018-07-25</span>'
+                        html += '</p>'
+                        html += '</li>'
+
+                    }
+                }
+                $(".notice_list").html(html);
+
+                bootstrapPaginator("#PaginatorLibrary", tb, GetNoticeList);//分页
+
+            }
+        });
+    }
+
+    //新增学校
+    function Add(ID) {
+
+        //表单清空
+        $("#Add_form")[0].reset();
+
+        GetNoticeById(ID);
+
+        layer.open({
+            title: '公告详情',
+            //btn: ['确定', '取消'],
+            area: ['1000px', '800px'],
+            type: 1,
+            skin: 'layui-layer-lan', //样式类名
+            closeBtn: 1, //显示关闭按钮
+            anim: 2,
+            shadeClose: false, //关闭点击遮罩关闭，true为打开遮罩关闭
+            content: $("#Add_div"),
+            //yes: function (index, layero) {//确认按钮事件
+            //    Insert();
+            //}
+        });
+
+        AddNoticeUser(ID);//记录是否已读
+    }
+
+    //根据id
+    function GetNoticeById(ID) {
+        $.ajax({
+            url: '/index_gonggao/GetNoticeById',
+            Type: "post",
+            dataType: "json", cache: false,
+            contentType: "application/json; charset=utf-8",
+            data: { "ID": ID },
+            success: function (data) {
+
+                if (data.length > 0) {
+                    $("#titleName").html(data[0]["NoticeTitle"]);
+                    $("#txtdate").html(new Date(data[0]["ReleaseTime"]).Format("yyyy-MM-dd HH:mm"));
+                    $("#txtcontent").html(data[0]["NoticeContent"]);
+                }
+            }
+
+        });
+    }
+
+    //添加该用户公告已读记录
+    function AddNoticeUser(ID) {
+        $.ajax({
+            url: '/index_gonggao/AddNoticeUser',
+            Type: "post",
+            dataType: "json", cache: false,
+            contentType: "application/json; charset=utf-8",
+            data: { "NoticeID": ID },
+            success: function (data) {
+                if (data == "1") {
+                    //layer.msg('操作成功', { icon: 1 });
+                    GetNoticeList();
+                }
+                if (data == "99") {
+                    //layer.msg('操作失败', { icon: 2 });
+                    return;
+                }
+            }
+
+        });
+    }
+
+</script>

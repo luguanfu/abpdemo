@@ -1,0 +1,53 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Lout</title>
+    <link href="~/CSS/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Scripts/layer/skin/layer.css" rel="stylesheet" />
+
+    <script src="~/Scripts/jquery-3.2.0.js"></script>
+    <script src="~/Scripts/layer/layer.js"></script>
+
+</head>
+<body>
+    @{
+        string LoutId = "";
+        if (ViewData["Lout"] != null)
+        {
+            LoutId = ViewData["Lout"].ToString();
+        }
+    }
+</body>
+<script>
+    $(function () {
+        var logId = "@LoutId";
+             if (logId == "2") {
+                 layer.alert('你的帐号已在别处登陆，你被强迫下线！!', {
+                     skin: 'layui-layer-lan', //样式类名
+                     title: '系统提示',
+                     offset: ["37%", "42%"]
+                , closeBtn: 0
+                 }, function () {
+                     window.location.href = "/Login";
+                 });
+             } else {
+                 layer.alert('系统已超时，请重新登录!', {
+                     skin: 'layui-layer-lan', //样式类名
+                     title: '系统超时',
+                     offset: ["37%", "42%"]
+             , closeBtn: 0
+                 }, function () {
+                     window.location.href = "/Login";
+                 });
+
+             }
+
+         });
+</script>
+</html>

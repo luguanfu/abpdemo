@@ -1,0 +1,87 @@
+﻿@{
+    
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewData["nvc"] = "课程管理";
+}
+<link href="~/CSS/Public_img.css" rel="stylesheet" />
+<!--右侧头部结束-->
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-sm-12">
+        <ol class="breadcrumb">
+
+            <li>
+                <h2>课程管理</h2>
+            </li>
+            <li>
+                <a href="#">新增课程</a>
+            </li>
+        </ol>
+    </div>
+</div>
+<!--面包屑位置结束-->
+<!--主体内容开始-->
+<div class="ibox-content">
+    <div class="row m-t-md">
+        <form class="form-horizontal">
+          
+            <div class="form-group">
+                <label for="inputEmail3" class="col-sm-2 control-label"><span class="text-danger">*</span>上传封面：</label>
+                <div class="col-sm-8">
+                    <!--上传图片插件-->
+                    <img id="use_img" onclick="item_fengm();" style="cursor: pointer;" src="~/Img/scfmimg.png" />
+                    <!--上传图片插件-End-->
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="inputEmail3" class="col-sm-2 control-label"><span class="text-danger">*</span>课程名称：</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" id="txtTitle" name="txtTitle" placeholder="最长50个字符">
+                </div>
+            </div>
+          
+            <div class="form-group m-t-lg">
+                <label for="inputEmail3" class="col-sm-2 control-label"><span class="text-danger">*</span>课程简介：</label>
+                <div class="col-sm-8">
+                    <textarea class="form-control" id="synopsisid" name="txt" clos=",5" rows="5" warp="virtual" style="margin: 0px; height: 195px;" placeholder="最长300个字符"></textarea>
+                </div>
+            </div>
+
+            <div class="text-center m-t-md">
+                <div class="form-group">
+                    <a href="javascript:void(0)" onclick="btnOk()" class="btn btn-w-m btn-primary m-r-lg">保存</a>
+                    <a href="/Admin/Curriculum/Index" class="btn btn-w-m btn-default ">取消</a>
+                </div>
+            </div>
+        </form>
+
+    </div>
+</div>
+
+<!--上传封面区域弹窗开始-->
+<div id="item_fengm" style="display: none;">
+    <div class="box-body ">
+        <div class="col-sm-12" style="margin-top: 10px;">
+            <div style="margin: auto;width: 400px;">
+                <div class="imageBox">
+                    <div class="thumbBox"></div>
+                    <div class="spinner" style="display: none">Loading...</div>
+                </div>
+                <div class="action">
+                    <div class="new-contentarea tc">
+                        <a href="javascript:void(0)" class="upload-img">
+                            <label for="upload-file">选择图像</label>
+                        </a>
+                        <input type="file" class="" name="upload-file" id="upload-file" />
+                    </div>
+                 
+                    <input type="button" id="btnCrop" class="Btnsty_peyton" value="保存">
+                    <input type="button" id="btnZoomIn" class="Btnsty_peyton" value="+">
+                    <input type="button" id="btnZoomOut" class="Btnsty_peyton" value="-">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/Scripts/cropbox.js"></script>
+<script src="~/Js/Admin/Curriculum/Curriculum-Add.js"></script>

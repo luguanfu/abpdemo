@@ -1,0 +1,187 @@
+﻿
+<div class="container-wrap">
+    <link href="~/CSS/bootstrap-table.min.css" rel="stylesheet" />
+    <!--存单-账户开立-->
+    <div class="divider divider-horizontal"><div class="divider-text is-left"><strong>已录入产品</strong></div></div>
+    <table class="table table-hover" id="tbl"></table>
+    <div id="DivTabValue" style="display:none;">
+        <div class="divider divider-horizontal"><div class="divider-text is-left"><strong>已录入产品反显值</strong></div></div>
+<textarea rows="5" id="tb1Value" name="tb1Value" style="width:100%;"></textarea>
+    </div>
+
+    <div style="display: flex;margin-bottom: 10px;">
+        <div style="display: flex;margin-right: 10px;">
+            <span style="width: 100px;">总笔数</span>
+            <input vl-default="" type="text" class="form-control input-sm" id="totalTransactions" disabled>
+        </div>
+        <div style="display: flex;">
+            <span style="width: 100px;">总金额</span>
+            <input vl-default="" type="text" class="form-control input-sm" id="totalAmount" disabled>
+        </div>
+    </div>
+
+    <div class="divider divider-horizontal"><div class="divider-text is-left"><strong>资金来源</strong></div></div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label id="lbl_transactionCategory" name="lbl_transactionCategory" for="inputEmail3" class="col-sm-3 control-label">交易类别</label>
+                <div class="col-sm-6">
+                    <select vl-default="" id="sle_transactionCategory" name="sle_transactionCategory" class="form-control" onchange="doChange()">
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row cash" style="display: none;">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label id="lbl_depositAmount" name="lbl_depositAmount" for="inputEmail3" class="col-sm-1 control-label">存入金额</label>
+                <div class="col-sm-3">
+                    <input vl-default="" id="txt_depositAmount" name="txt_depositAmount" type="text" class="form-control input-sm" oninput="moneyToChinese('depositAmount')">
+                </div>
+                <span class="amount depositAmount"></span>
+            </div>
+        </div>
+    </div>
+    <div class="row cash" style="display: none;">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label id="lbl_cashItems" name="lbl_cashItems" for="inputEmail3" class="col-sm-3 control-label">现金项目</label>
+                <div class="col-sm-6">
+                    <select vl-default="" id="sle_cashItems" name="sle_cashItems" class="form-control"></select>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label id="lbl_abstract" name="lbl_abstract" for="inputEmail3" class="col-sm-3 control-label">摘要</label>
+                <div class="col-sm-6">
+                    <select vl-default="" id="sle_abstract" name="sle_abstract" class="form-control">
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label id="lbl_manager" name="lbl_manager" for="inputEmail3" class="col-sm-3 control-label">客户经理</label>
+                <div class="col-sm-7">
+                    <input vl-default="" id="txt_manager" name="txt_manager" type="text" class="form-control input-sm" style="width: 146px;display: inline-block;">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label id="lbl_remarks" name="lbl_remarks" for="inputEmail3" class="col-sm-3 control-label">备注</label>
+                <div class="col-sm-6">
+                    <input vl-default="" id="txt_remarks" name="txt_remarks" type="text" class="form-control input-sm">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label id="lbl_VoucherNumber" name="lbl_VoucherNumber" for="inputEmail3" class="col-sm-3 control-label">凭证印刷号</label>
+                <div class="col-sm-6">
+                    <input vl-default="" id="txt_VoucherNumber" name="txt_VoucherNumber" type="text" class="form-control input-sm">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label id="lbl_depositRatio" name="lbl_depositRatio" for="inputEmail3" class="col-sm-3 control-label">按存比例(%)</label>
+                <div class="col-sm-6">
+                    <input vl-default="" id="txt_depositRatio" name="txt_depositRatio" type="text" class="form-control input-sm">
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="~/Scripts/bootstrap-table.min.js"></script>
+    <script src="~/Js/Student/GetDefaultValue/js/common.js"></script>
+    <script>
+        setOptions(['transactionCategory', 'abstract', 'cashItems']);
+        var data = [];
+        function setTableValue(values) {
+            var vals = values.split('\n');
+            data = [{
+                'productName': vals[0],
+                'currency': vals[1],
+                'remittance': vals[2],
+                'openingAmount': vals[3],
+                'dueDate': vals[4],
+                'redepositFlag': vals[5],
+                'rate': vals[6],
+                'account': vals[7],
+            }];
+            $("#tbl").bootstrapTable('load', data);
+        }
+        $('#tbl').bootstrapTable({
+            data: data,
+            columns: [
+                {
+                    checkbox: true,
+                    align: 'center',
+                },
+                {
+                    title: '序号',
+                    align: 'center',
+                    formatter: function (value, row, index) {
+                        return index + 1;
+                    }
+                },
+                {
+                    title: '产品名称',
+                    field: 'productName',
+                    align: 'center'
+                },
+                {
+                    title: '币种',
+                    field: 'currency',
+                    align: 'center'
+                },
+                {
+                    title: '钞汇',
+                    field: 'remittance',
+                    align: 'center',
+                },
+                {
+                    title: '开户金额',
+                    field: 'openingAmount',
+                    align: 'center',
+                },
+                {
+                    title: '到期日期',
+                    field: 'dueDate',
+                    align: 'center'
+                },
+                {
+                    title: '转存标志',
+                    field: 'redepositFlag',
+                    align: 'center'
+                },
+                {
+                    title: '利率(%)',
+                    field: 'rate',
+                    align: 'center'
+                },
+                {
+                    title: '账号',
+                    field: 'account',
+                    align: 'center'
+                },
+            ]
+        });
+        function doChange() {
+            if ($("#transactionCategory").val() == '1') {
+                $(".cash").show();
+            } else {
+                $(".cash").hide();
+            }
+        }
+        function doSubmit() {
+            checkEmpowe();
+        }
+    </script>
+</div>

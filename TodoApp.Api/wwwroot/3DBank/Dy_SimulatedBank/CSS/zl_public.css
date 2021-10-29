@@ -1,0 +1,311 @@
+.wrapper_map {
+	width: 1200px;
+	margin: auto;
+	padding-bottom: 40px;
+}
+
+.map_box{
+	width: 1100px;
+	margin: auto;
+	margin-top: 46px;
+	padding: 32px 50px;
+	border: 1px solid #666666;
+	color: #333333;
+	font-size: 16px;
+	position: relative;
+}
+
+
+/***左侧浮动***/
+.fixed_left{
+	position: absolute;
+	left: 0;
+	top: 29%;
+	font-size: 14px;
+	width: 40px;
+	text-align: center;
+}
+.fixed_left p{
+	width: 20px;
+}
+.fixed_left span{
+	transform: rotate(90deg);
+	transform-origin:12px 6px;
+   display: inline-block;
+}
+.fixed_left span:first-child{
+	margin-bottom: 118px;
+}
+.fixed_left span:nth-child(2){
+	margin-top: 6px;
+	margin-bottom: 14px;
+}
+
+
+/***右侧浮动***/
+.fixed_right{
+	position: absolute;
+	right: 0;
+	top: 36%;
+	font-size: 14px;
+	width: 26px;
+	text-align: center;
+	padding-right: 26px;
+}
+.fixed_right span:first-child{
+	display: inline-block;
+	margin-bottom: 10px;
+}
+
+
+/******表单******/
+.menus_first{
+	font-size: 17px;
+	margin-bottom: 24px;
+}
+
+.menus_title{
+	font-size: 26px;
+	font-weight: 600;
+	text-align: center;
+	border-bottom: 1px solid #DDDDDD;
+	padding-bottom: 6px;
+}
+
+.menus_title img{
+	margin-bottom: 22px;
+}
+
+.menus_name{
+	font-size: 20px;
+	text-align: center;
+	padding:20px 0 14px;
+}
+
+.menus_number{
+	overflow: hidden;
+}
+
+.menus_number p:first-child{
+	font-weight: 600;
+	float: left;
+	width: 438px;
+	margin-right: 10px;
+}
+
+.menus_number p:first-child span{
+	font-weight: 500;
+}
+
+/*.menus_number p:last-child{
+	float: left;
+	width: 550px;
+}*/
+
+.menus_txt{
+	text-indent: 2em;
+	margin-top: 10px;
+	margin-bottom: 16px;
+}
+
+
+
+/***********表格***********/
+
+table{
+	border-collapse: collapse;
+	width: 100%;
+}
+
+/*默认高度*/
+table td{
+	border: 1px solid #333;
+	font-size: 15px;
+	height: 34px;
+}
+
+/*去除td上边框*/
+table .first_tr td{
+	border-top: none;
+}
+
+/*大高度*/
+table .tr_height td{
+	height: 40px;
+}
+
+/*小高度*/
+table .min_height td{
+	height: 30px;
+}
+
+/*120高度*/
+.height_120{
+	height: 120px;
+}
+
+
+
+/*整体table居中*/
+.table_center{
+	text-align: center;
+}
+
+/*单行居中*/
+.tr_center{
+	text-align: center;
+}
+
+/*单个居中*/
+.txtCenter{
+	text-align: center;
+}
+
+/*大写*/
+.money_upper{
+	display: inline-block;
+   width: 560px;
+}
+
+/*小写*/
+.money_lower{
+	display: inline-block;
+   width: 110px;
+}
+
+/*保险费合计大写*/
+.money_fei{
+	display: inline-block;
+   width: 576px;
+}
+
+/*年宽度*/
+.date_year{
+	display: inline-block;
+   width: 50px;
+   text-align: center;
+}
+
+/*月和天宽度*/
+.date_monthDay{
+	display: inline-block;
+   width: 32px;
+   text-align: center;
+}
+
+
+.only_width{
+	display: inline-block;
+   width: 780px;
+   padding-left: 4px;
+}
+
+.company_msg p{
+	margin-bottom: 18px;
+}
+
+.company_msg .msg_date{
+	display: inline-block;
+	width: 603px;
+}
+
+.company_msg p:last-child{
+	margin-bottom: 46px;
+	position: relative;
+}
+
+.company_msg p:last-child img{
+	position: absolute;
+	top: -90px !important;
+	right: 40px !important;
+}
+
+/*最下面的核保、制单*/
+.menus_base{
+	font-size: 15px;
+}
+
+.menus_base span{
+	display: inline-block;
+	width: 450px;
+}
+
+
+.fl{
+	float: left;
+}
+.fr{
+	float: right;
+}
+.mar_Bot_12{
+	margin-bottom: 12px;
+}
+.mar_Bot_18{
+	margin-bottom: 18px;
+}
+.mar_Top_4{
+	margin-top: 4px;
+}
+
+.mar_left_550{
+	margin-left: 550px;
+}
+
+.mar_left_446{
+	margin-left: 446px;
+}
+
+.mar_left_420{
+	margin-left: 420px;
+}
+
+.mar_left_413{
+	margin-left: 413px;
+}
+
+.mar_left_380{
+	margin-left: 380px;
+}
+
+.mar_left_396{
+	margin-left: 396px;
+}
+
+.mar_left_364{
+	margin-left: 364px;
+}
+
+.mar_left_290{
+	margin-left: 290px;
+}
+
+.pad_topLeft{
+	padding-left: 6px;
+	padding-top: 4PX;
+}
+
+.pad_bot_4{
+	padding-bottom: 4px;
+}
+
+.pad_10{
+	padding: 10px 0;
+}
+
+.pad_left_40{
+	padding-left: 40px;
+}
+
+.pad_left_30{
+	padding-left: 30px;
+}
+
+
+/*打印单据带输入框通用样式*/
+		.dayin_input_public {
+			height: 95%;
+			width: 100%;
+			/*background-color: #f0f7e8;*/
+			border: none;
+			outline: none;
+		}

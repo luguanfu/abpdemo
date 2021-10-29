@@ -1,0 +1,196 @@
+﻿@{
+    
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewData["nvc"] = "课件管理";
+}
+
+<!--右侧头部结束-->
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-sm-12">
+        <ol class="breadcrumb">
+            <li>
+                <h2>实务教学管理</h2>
+            </li>
+            <li>
+                <a href="/Admin/Resources">课件管理</a>
+            </li>
+            <li>
+                <strong id="Navigationid"></strong>
+            </li>
+        </ol>
+    </div>
+</div>
+<!--面包屑位置结束-->
+<!--主体内容开始-->
+
+<div class="ibox-content">
+    <div class="row m-t-md">
+        <form class="form-horizontal" id="form-horizontalid">
+            <div class="form-group">
+                <label for="inputEmail3" class="col-sm-2 control-label"><span class="text-danger">*</span>课件名称：</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" id="txtTitle" name="txtTitle" placeholder="最长20个字符" value="@ViewData["ResourcesName"]">
+                </div>
+            </div>
+
+            <div class="form-group m-t-lg">
+                <label for="inputEmail3" class="col-sm-2 control-label"><span class="text-danger">*</span>上传视频：</label>
+                <div class="col-sm-8">
+                    <div class="m-b-sm"><span id="UpName">上传名称显示</span>  <span id="WaitingUp" class="text-danger"></span>@*<button class="btn btn-danger btn-sm m-l-sm">删除</button>*@</div>
+                    <button type="button" onclick="btn_Update(1)" class="btn  btn-success ">选择文件</button>
+                    @*<button class="btn btn-primary btn-sm m-l-sm">开始上传</button>*@
+                    <div class="m-t-sm">
+                        <span>上传仅支持：MP4视频格式和PPT、PPTX格式</span><br />
+                        <div style="color:red; margin-top:10px;">注：上传PPT、PPTX格式资源文件后，还需要在列表勾选资源，点击”一键转图“按钮，完成资源上传</div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputEmail3" class="col-sm-2 control-label"><span class="text-danger">*</span>关联章节课程：</label>
+                <div class="col-sm-8">
+                    <span id="UpdateChapterStateid">管理课程-关联章-节</span>
+                    <button type="button" onclick="Choice()" class="btn  btn-success ">选择</button>
+                </div>
+                <div class="col-sm-8">
+
+                </div>
+            </div>
+            <div id="NLDiv">
+                <div class="form-group" id="NLDiv1">
+                    <label for="inputEmail3" class="col-sm-2 control-label">对应能力及分数：</label>
+
+                    <div class="col-sm-2">
+                        <select class="form-control inline" style="width:100%;" id="ability1" name="ability"></select>
+                    </div>
+                    <div class="col-sm-2">
+                        <input type="text" placeholder="请输入分值" id="fraction1" class="form-control" name="fraction1" oninput="value=value.replace(/[^\d]/g,'')" maxlength="3">
+                    </div>
+
+                    <button class="btn btn-success btn-sm m-r-sm" type="button" id="Tj" onclick="Tianjia()"><i class="fa fa-plus"></i></button>
+                    @*<button class="btn btn-success btn-sm m-r-sm" type="button" id="Qc" onclick="Quchu()"><i class="fa fa-minus"></i></button>*@
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-2"></div>
+                <div class="col-sm-8">
+                    提示：完成该课程学习后，可获得对应能力的对应分值
+                </div>
+            </div>
+
+            <input type="file" id="upfile" name="upfile" style="display: none;" />
+            <!--节ID-->
+            <input type="hidden" id="iid" name="iid" value="0" style="display: none;" />
+            <input type="hidden" id="Curriculumid" name="Curriculumid" value="0" style="display: none;" />
+            <input type="hidden" id="Chapterid" name="Chapterid" value="0" style="display: none;" />
+            <input type="hidden" id="ReId" name="ReId" value="@Request["Id"]" style="display: none;" />
+            <div class="text-center m-t-md">
+                <div class="form-group">
+                    <a onclick="Save()" class="btn btn-w-m btn-primary m-r-lg">保存</a>
+                    <a href="/Admin/Resources/Index" class="btn btn-w-m btn-default ">取消</a>
+                </div>
+            </div>
+        </form>
+
+    </div>
+</div>
+<!--选择-->
+<div id="Choiceid" class="ibox-content" style="display: none;padding:5px 30px;">
+    <div class="row m-t" id="selcxdiv">
+        <div class="col-sm-3">
+            <select class=" form-control  inline" style="width:100%;" id="checkcurriculum" onchange="BindZhang()"></select>
+        </div>
+        <div class="col-sm-3">
+            <select class=" form-control  inline" style="width:100%;" id="checkchapter" onchange="BindJie()"></select>
+        </div>
+        <div class="col-sm-3">
+            <select class=" form-control  inline" style="width:100%;" id="checksection">
+            </select>
+        </div>
+        <div class="col-sm-3">
+            <div class="input-group">
+                <input type="text" placeholder="请输入关键字搜索……" id="SelectCurriculumNameid" class="form-control" name="txtSchoolName">
+                <span class="input-group-btn">
+                    <button type="button" onclick="SearchInfo()" class="btn btn-primary"><i class="fa fa-search "></i></button>
+                </span>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row  m-t-sm ">
+        <div class="col-sm-12">
+            <table class="table text-center table-bordered ">
+                <thead>
+                    <tr>
+                        <th class="text-center">序号</th>
+                        <th class="text-center">课程名称</th>
+                        <th class="text-center">章名称</th>
+                        <th class="text-center">节名称</th>
+                        <th class="text-center">操作</th>
+                    </tr>
+                </thead>
+                <tbody class="new_table text-center" id="Curriculumtablelist"></tbody>
+            </table>
+
+        </div>
+        <!--分页开始-->
+        <div class="row text-center m-t-md" id="CurriculumPaginatorLibrary">
+        </div>
+        <!--分页结束-->
+    </div>
+</div>
+
+<div id="ChapteridShow" class="ibox-content" style="display: none; padding: 5px 30px;">
+    <div class="row m-t" id="selcxdiv">
+        <div class="col-sm-8">
+            <span>所有课程</span>><span id="KCName1">课程名称</span>
+        </div>
+    </div>
+    <div class="row  m-t-sm ">
+        <div class="col-sm-12">
+            <table class="table text-center table-bordered ">
+                <thead>
+                    <tr>
+                        <th class="text-center">章标题</th>
+                        <th class="text-center">操作</th>
+                    </tr>
+                </thead>
+                <tbody class="new_table text-center" id="Chaptertablelist"></tbody>
+            </table>
+
+        </div>
+        <!--分页开始-->
+        <div class="row text-center m-t-md" id="ChapterPaginatorLibrary">
+        </div>
+        <!--分页结束-->
+    </div>
+</div>
+
+<div id="Sectionid" class="ibox-content" style="display: none;">
+    <div class="row m-t" id="selcxdiv">
+        <div class="col-sm-8">
+            <span>所有课程</span>><span id="KCName2" >课程名称</span>><span id="ZName">章名称</span>
+        </div>
+    </div>
+    <div class="row  m-t-sm ">
+        <div class="col-sm-12">
+            <table class="table text-center table-bordered ">
+                <thead>
+                    <tr>
+                        <th class="text-center">节标题</th>
+                        <th class="text-center">操作</th>
+                    </tr>
+                </thead>
+                <tbody class="new_table text-center" id="Sectiontablelist"></tbody>
+            </table>
+
+        </div>
+        <!--分页开始-->
+        <div class="row text-center m-t-md" id="SectionPaginatorLibrary">
+        </div>
+        <!--分页结束-->
+    </div>
+</div>
+<script src="~/Scripts/jquery.form.js"></script>
+<script src="~/Js/Admin/Curriculum/Resources_Add.js"></script>

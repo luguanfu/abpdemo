@@ -1,0 +1,243 @@
+﻿/*登录页面样式*/
+
+@charset "utf-8";
+* {
+	padding: 0;
+	margin: 0;
+	font-family: "Microsoft YaHei";
+}
+
+body {
+	padding: 0;
+	margin: 0;
+}
+
+.body_bg {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	z-index: -1
+}
+
+.body_bg img {
+	position: fixed;
+	height: 100%;
+	width: 100%;
+}
+
+input {
+	border: 1px solid #e0d8d8;
+	border-radius: 3px;
+    behavior: url(css/PIE.htc);
+}
+
+input:focus {
+	outline: none;
+	border: 1px solid #1a93ff;
+	border-radius: 3px;
+    behavior: url(css/PIE.htc);
+}
+
+.logtext {
+	float: right;
+	margin-right: 10%;
+}
+
+.logtext a {
+	color: red;
+	text-decoration: none;
+}
+
+#box {
+	width: 100%;
+	height: 400px;
+	position: absolute;
+}
+
+
+/*右侧登录区域*/
+
+.logDiv .logGet {
+	width: 385px;
+	height: 420px;
+	position: absolute;
+	float: right;
+	right: 17%;
+	top: -15%;
+	border-radius: 5px;
+    /*border:8px solid #d1d4f5;*/
+	background-color: white;
+	background-color: rgba(255, 255, 255, 1);
+    webkit-box-shadow: 0 0 30px rgba(121, 113, 113, 0.5);
+    -moz-box-shadow: 0 0 30px rgba(121, 113, 113, 0.5);
+    box-shadow: 0 0 15px rgba(121, 113, 113, 0.5);
+    behavior: url(css/PIE.htc);  /*css3处理插件兼容ie8*/
+	/* IE9、标准浏览器、IE6和部分IE7内核的浏览器(如QQ浏览器)会读懂 */
+}
+
+.logDiv .logGet .logDtip {
+	margin: 0px auto;
+	margin-bottom: 25px;
+    margin-top:20px;
+	text-align: center;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+    border-radius: 10px 10px 0px 0px;
+    behavior: url(css/PIE.htc);
+}
+
+.logDiv .logGet .lgD {
+	width: 86%;
+	margin: 0px auto;
+	position: relative;
+	margin-bottom: 30px;
+}
+
+.logDiv .logGet .lgD img.img1 {
+	position: absolute;
+	top: 12px;
+	left: 8px;
+}
+
+.logDiv .logGet .lgD input {
+	width: 100%;
+	height: 42px;
+	/*text-indent: 2.5rem;*/
+}
+
+.logDiv .logGet .lgD .input_left{
+	padding-left: 36px;
+	box-sizing: border-box;
+}
+/*兼容IE8*/
+@media \0screen {.input_left { padding-top: 10px; }}
+
+.logDiv .logGet .lgD input.getYZM {
+	width: 25px;
+	display: inline-block;
+	float: left;
+	height: 20px;
+	margin-top: 2px;
+}
+
+.getYZM input {
+	border: 1px solid #e5e5e5;
+	border-radius: 3px;
+    behavior: url(css/PIE.htc);
+}
+
+.logDiv .logGet .lgD .logYZM {
+	width: 100px;
+	height: 46px;
+	overflow: hidden;
+	display: inline-block;
+	position: relative;
+	top: 18px;
+}
+
+.logDiv .logGet .lgD .logYZM img.yzm {
+	width: 100%;
+}
+
+.logDiv .logGet .logD2 {
+	margin-top: 20px;
+}
+
+.logDiv .logGet .logD .p1 {
+    display: inline-block;
+    font-size: 26px;
+    line-height: 70px;
+    color: #0f7edd;
+}
+
+.logDiv .logGet .logD .p2 {
+	display: inline-block;
+	font-size: 18px;
+	margin-top: 40px;
+	float: right;
+	color: #e60012;
+}
+
+.logDiv .logC {
+	width: 86%;
+	margin: 0px auto;
+	margin-top: 35px;
+}
+
+.jzpwd {
+	color: #ababab;
+}
+
+.jzpwd a {
+	float: right;
+	text-decoration: none;
+	cursor: pointer;
+	color: #cf9354;
+}
+
+.jzpwd a:hover {
+	color: #db9c5a;
+}
+
+.logDiv .logC button {
+    cursor: pointer;
+    width: 100%;
+    height: 50px;
+    background: #cf9354;
+    border: none;
+    color: white;
+    font-size: 18px;
+    border-radius: 5px;
+    behavior: url(css/PIE.htc);
+    background: -webkit-linear-gradient(top, #0f7edd, #0d61a9);
+    /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(top, #0f7edd, #0d61a9);
+    /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(top, #0f7edd, #0d61a9);
+    /* Firefox 3.6 - 15 */
+    background: linear-gradient(to top, #0f7edd, #0d61a9);
+    /* 标准的语法 */
+}
+
+    .logDiv .logC button:hover {
+        background: #22cd68;
+        background: -webkit-linear-gradient(top, #0d61a9, #0f7edd, #0d61a9);
+        /* Safari 5.1 - 6.0 */
+        background: -o-linear-gradient(top, #0d61a9, #0f7edd, #0d61a9);
+        /* Opera 11.1 - 12.0 */
+        background: -moz-linear-gradient(top, #0d61a9, #0f7edd, #0d61a9);
+        /* Firefox 3.6 - 15 */
+        background: linear-gradient(to top, #0d61a9, #0f7edd, #0d61a9);
+        /* 标准的语法 */
+    }
+
+.logDiv .logC button:focus {
+	outline: none;
+}
+
+.logFoot {
+	width: 100%;
+	text-align: center;
+}
+
+.logFoot {
+	padding-top: 0px;
+	font-size: 14px;
+	color: #969696;
+	margin-bottom: 5px;
+	margin-top: 5PX;
+}
+
+/*右侧登录区域结束*/
+
+.logbottom {
+	position: absolute;
+	bottom: 20px;
+	width: 100%;
+	font-size: 14px;
+	text-align: center;
+	color: #e6e6ea;
+}
+
+
+/*登录页面样式end*/

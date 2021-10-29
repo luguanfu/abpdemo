@@ -1,0 +1,89 @@
+﻿@{
+    
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    if (Request["AllType"] == "1")
+    {
+        ViewData["nvc"] = "个人实训成绩";
+    }
+    else
+    {
+        ViewData["nvc"] = "团队实训成绩";
+    }
+}
+<div class="ibox-content">
+    <div class="col-sm-12">
+        <ol class="breadcrumb">
+            <li>
+                <h2>成绩管理</h2>
+            </li>
+
+            @if (Request["AllType"] == "1")
+            {
+                <li>
+                    <a href="/Admin/PersonalTrainingEnd/Index?AllType=@Request["AllType"]">个人实训成绩</a>
+                </li>
+                <li>
+                    <strong>个人实训成绩列表</strong>
+                </li>
+            }
+            else
+            {
+                <li>
+                    <a href="/Admin/PersonalTrainingEnd/Index?AllType=@Request["AllType"]">团队实训成绩</a>
+                </li>
+                <li>
+                    <strong>团队实训成绩列表</strong>
+                </li>
+            }
+        </ol>
+    </div>
+    <div class="row form-horizontal">
+
+        <div class="row">
+
+            <div class="col-sm-3">
+                <div class="input-group">
+                    <input type="text" placeholder="请输入学员信息" id="stuinfo" class="form-control">
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-primary" onclick="searchinfo()">搜索</button>
+                    </span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="hr-line-dashed"></div>
+
+    <div class="row">
+        <div class="pull-right">
+            <button onclick="ExportExamResult()" class="btn btn-info btn-sm" type="button"><i class="fa fa-level-down  m-r-xs"></i><span class="bold">导出</span></button>
+        </div>
+    </div>
+    <div class="row m-t-sm table-responsive">
+        <table class="table text-center table-bordered ">
+            <thead>
+                <tr>
+                    <th class="text-center">排名</th>
+                    <th class="text-center">学生账号</th>
+                    <th class="text-center">学生姓名</th>
+                    <th class="text-center">所属学院</th>
+                    <th class="text-center">所属专业</th>
+                    <th class="text-center">所属班级</th>
+                    <th class="text-center" style="cursor: pointer;" onclick="ResultDesc()">分数↑↓</th>
+                    <th class="text-center" style="cursor: pointer;" onclick="TimeDesc()">提交时间↑↓</th>
+                    <th class="text-center">作答用时</th>
+                    <th class="text-center">操作</th>
+                </tr>
+            </thead>
+            <tbody class="new_table text-center" id="tablelist"></tbody>
+        </table>
+    </div>
+
+    <!--分页开始-->
+    <div class="row text-center" id="PaginatorLibrary">
+    </div>
+    <!--分页结束-->
+</div>
+<a id='downFile' href="" style="display: none"><span id='tf'></span></a>
+
+<script src="~/JS/Admin/PersonalTrainingEnd/PracticeStudentInfo.js?v=20211029"></script>

@@ -1,0 +1,166 @@
+﻿@{
+    
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewData["nvc"] = "试卷管理";
+}
+<style type="text/css">
+    a.disabled {
+        pointer-events: none;
+        filter: alpha(opacity=50); /*IE滤镜，透明度50%*/
+        -moz-opacity: 0.5; /*Firefox私有，透明度50%*/
+        opacity: 0.5; /*其他，透明度50%*/
+    }
+</style>
+
+<div class="row   white-bg dashboard-header">
+    <div class="col-sm-12">
+        <ol class="breadcrumb">
+            <li>
+                <h2>理论试题管理</h2>
+            </li>
+            <li>
+                <a href="#">试卷管理</a>
+            </li>
+            <li>
+                <strong>试卷列表</strong>
+            </li>
+        </ol>
+
+    </div>
+    <div class="ibox-content">
+        <div class="row form-horizontal">
+
+
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="input-group">
+                        <input type="text" placeholder="请输入试卷名称" id="P_Name" class="form-control">
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-primary" onclick="searchinfo()">搜索</button>
+                        </span>
+                    </div>
+                </div>
+                <div class="col-sm-9 text-right">
+                    <button onclick="javascript:window.location.href = '/Admin/HB_Paper/ManualTestPaper';" class="btn btn-primary btn-sm" type="button"><i class="fa fa-plus m-r-xs"></i><span class="bold">手工组卷</span></button>
+                    <button onclick="javascript:window.location.href = '/Admin/HB_Paper/IntelligentTestPaper';" class="btn btn-success btn-sm " type="button"><i class="fa fa-plus m-r-xs"></i><span class="bold">智能组卷</span></button>
+                    <button onclick="del_all()" type="button" class="btn btn-warning btn-sm"><i class="fa fa-trash m-r-xs"></i><span class="bold">删除</span></button>
+
+                    <button onclick="PaperImport()" class="btn btn-info btn-sm" type="button"><i class="fa fa-level-up  m-r-xs"></i><span class="bold">导入试卷</span></button>
+                    <button onclick="PaperExport()" class="btn btn-info btn-sm" type="button"><i class="fa fa-level-down  m-r-xs"></i><span class="bold">导出试卷</span></button>
+                </div>
+            </div>
+
+            <div class="row m-t-sm table-responsive">
+                <div class="col-sm-12 ">
+
+
+                    <table class="table text-center table-bordered ">
+                        <thead>
+                            <tr>
+                                <th width="60" class="text-center">序号</th>
+                                <th width="80" class="text-center">
+                                    <input type="Checkbox" class="i-checks checkbox-all">
+                                </th>
+                                <th class="text-center">试卷名称</th>
+                                <th class="text-center">试卷分值</th>
+                                <th width="300" class="text-center">操作</th>
+                            </tr>
+                        </thead>
+                        <tbody class="new_table text-center" id="tablelist"></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!--分页开始-->
+            <div class="row text-center" id="PaginatorLibrary">
+            </div>
+            <!--分页结束-->
+        </div>
+    </div>
+
+    <div id="Edit" style="display: none;" class="form-inline">
+        <form name="Editform" id="Editform">
+
+            <div class="col-sm-12">
+                <div class="form-horizontal  m-t-sm">
+                    <label for="firstname" class="col-sm-4 control-label"><span style="color: red;">*</span>试卷名称：</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" id="EditP_Name" name="EditP_Name" placeholder="">
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <div class="form-horizontal  m-t-sm">
+                    <label for="firstname" class="col-sm-4 control-label"><span style="color: red;">*</span>打乱试题顺序：</label>
+                    <div class="col-sm-8">
+                        <div style="text-align: left;" class=" control-label">
+                            <span class="m-r-xs">
+                                <input type="radio" class="i-checks" name="IsOrder" id="P_IsOrderA" value="1">
+                            </span>是
+                            <span class="m-l-md">
+                                <span class="m-r-xs">
+                                    <input type="radio" class="i-checks" name="IsOrder" id="P_IsOrderB" value="0">
+                                </span>否
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12 text-center">
+                <div class="form-horizontal  m-t-sm">
+
+                    <span>温馨提示：打乱试题顺序只针对于同一题型下的试题噢！</span>
+                </div>
+            </div>
+            <div class="col-sm-12 text-center">
+                <div class="form-horizontal m-t-md ">
+                    <button type="button" class="btn btn-w-m btn-success" onclick="EditBtnSubim()">保存</button>&nbsp;
+                    <button type="button" class="btn btn-w-m btn-white" onclick="EditFormRest()">关闭</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+
+    <!--导入-->
+    <div class="modal fade" id="ImportDIV">
+        <div class="modal-dialog">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title">试卷导入</h4>
+                </div>
+
+                <div class="modal-body">
+                    <form name="Importform" id="Importform">
+                        <div class="col-md-12">
+                            <div class="form-horizontal  m-t-sm">
+                                <input type="file" class="form-control" name="FileName" id="FileName" />
+                            </div>
+                        </div>
+
+
+
+                        <div class="col-md-12">
+                            <div class="form-horizontal  m-t-sm">
+                                <button class="btn btn-primary btn-sm" type="button" onclick="DownloadTemplates()">下载模板</button>
+                            </div>
+
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12 text-center">
+                                <button type="button" class="btn btn-info" onclick="btnImport()">导入</button>
+                                <button type="button" class="btn btn-white" data-dismiss="modal">取消</button>
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <a id='downFile' href="" style="display: none"><span id='tf'></span></a>
+    <input type="hidden" value="@Session["UserId"]" id="UserId" />
+    <script src="~/Js/Admin/HB_Paper/Index.js"></script>

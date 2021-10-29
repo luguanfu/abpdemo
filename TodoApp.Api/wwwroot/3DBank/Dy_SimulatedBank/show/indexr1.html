@@ -1,0 +1,487 @@
+﻿<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta http-equiv="Access-Control-Allow-Origin" content="*">
+	<title></title>
+	<script src="js/jquery-3.5.1.min.js"></script>
+	<script src="js/echarts.js"></script>
+	<script src="js/data.js"></script>
+	<style>
+		html, body{
+			width: 100%;
+			height: 100%;
+			padding: 0;
+			margin: 0;
+			font-size: 13px;
+			color: #000;
+			background-image: url(bg.png);
+			background-size: cover;
+			background-position: center center;
+		}
+		input, button, select{
+		    outline: none
+		}
+		button{
+			cursor: pointer;
+		}
+		.header{
+			height: 90px;
+			display: flex;
+			align-items: center;
+		}
+		.btn_inner{
+			margin-right: auto;
+		}
+		.btn_inner .btn{
+			border: 1px solid #bdbdbd;
+			height: 40px;
+			line-height: 40px;
+			padding: 0 15px;
+			margin: 0 20px;
+			border-radius: 3px;
+			background-color: #fff;
+			box-sizing: border-box;
+		}
+		.btn_inner .btn.hit{
+			box-shadow: 0px 0px 0px 2px #2293ff;
+			border: 1px solid #fff;
+			color: #2293ff;
+			font-weight: bold;
+		}
+		.inner{
+			height: 80px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			width: 0;
+			overflow: hidden;
+		}
+		.inner.show{
+			width: auto;
+		}
+		.centerBox{
+			height: calc(100% - 150px);
+		}
+		.item{
+			display: flex;
+			align-items: center;
+			margin: 0 20px;
+		}
+		.inner select,
+		.inner button{
+			height: 40px;
+			border: 1px solid #c1c1c1;
+			border-radius: 3px;
+		}
+		.item select{
+			min-width: 200px;
+			padding: 0px 6px;
+		}
+		.inner button{
+			width: 60px;
+			margin-right: 40px;
+			font-size: 12px;
+			background-color: #0073BD;
+			border-color: #0073BD;
+			color: #fff;
+		}
+		#main{
+			width: 100%;
+			height: 100%;
+			/* overflow: hidden; */
+		}
+		#main.show{
+			overflow: visible;
+		}
+		#main > div{
+			margin-left: auto!important;
+			margin-right: auto!important;
+		}
+	</style>
+</head>
+<body>
+	<div class="header">
+		<!-- 切换 -->
+		<div class="btn_inner">
+			<button class="btn btn1" onclick="switchModle(1)">查看赛项成绩</button>
+			<!-- <button class="btn btn2" onclick="switchModle(2)">查看系统总成绩</button> -->
+			<button class="btn btn3" onclick="switchModle(3)">查看四项大赛总成绩</button>
+		</div>
+		
+		
+		<!-- 查看赛项成绩 -->
+		<div class="inner inner1">
+			<div class="item">
+				<span>系统：</span>
+				<select class="options" id="model_one_sle1">
+					<option value="">请选择</option>
+					<!-- <option value="1">易考通</option> -->
+					<option value="2">信贷</option>
+					<option value="3">理财</option>
+					<!-- <option value="4">银行</option> -->
+					<option value="5">大堂经理</option>
+					<option value="6">综合柜员</option>
+				</select>
+			</div>
+			
+			<div class="item">
+				<span>赛项：</span>
+				<select class="options" id="model_one_sle2">
+					<option value="">请选择</option>
+				</select>
+			</div>
+			
+			<button onclick="model_one_query()">确定</button>
+		</div>
+		
+		<!-- 查看系统总成绩 -->
+		<div class="inner inner2">
+			<div class="item">
+				<span>系统：</span>
+				<select class="options" id="model_two_sle">
+					<option value="">请选择</option>
+					<option value="2">信贷</option>
+					<option value="3">理财</option>
+					<option value="5">大堂经理</option>
+					<option value="6">综合柜员</option>
+				</select>
+			</div>
+			
+			<button onclick="model_two_query()">确定</button>
+		</div>
+		
+		<!-- 查看四项大赛总成绩 -->
+		<div class="inner inner3"></div>
+	</div>
+	
+	<!-- 图表 -->
+	<div class="centerBox">
+		<div id="main"></div>
+	</div>
+</body>
+<script>
+	let baseUrl = 'http://10.10.1.134:5003/';
+	let myChart = echarts.init(document.getElementById('main'));
+	let timer; // 轮动计时器
+	let timer2; // 成绩刷新
+	let blocking; // 查看模式
+	let type = getParam()['type']; // 进入场景 当type=2时显示TeamID
+	let sum = 15; // 一次显示多少条
+	let maxSum = 50; // 最大显示条（当maxSum为0时不限制）
+	let refresh = 10000; // 多少毫秒刷新一次数据
+
+	// 图表配置项
+	myChart.setOption({
+		tooltip: {
+			trigger: 'axis',
+			formatter: function(param){
+				let o = param[0];
+				let s = type == 2 && o.data['TeamID'];
+				if(blocking == 3){
+					return `<div>
+						<div>院校：${o.data['TeamName']}</div>
+						<div>分数：${o.data['Result']}</div>
+						<div>名次：${o.data['ranking']}</div>
+					</div>`;
+				}else{
+					return `<div>
+						<div>${s?'编号':'姓名'}：${s ? `${o.data['TeamID']}号` : o.data['Teller_Name']}</div>
+						<div>院校：${o.data['TeamName']}</div>
+						<div>分数：${o.data['Result']}</div>
+						<div>名次：${o.data['ranking']}</div>
+					</div>`;
+				}
+			}
+		},
+		grid: {
+			bottom: 80
+		},
+		xAxis: {
+			type: 'category',
+			min: 0,
+			axisLabel: {
+	      		formatter: function(params) {
+	      			let arr = params.split('&');
+	      			let str1 = arr[0];
+	      			let str2 = arr[1] + '号';
+	      			(arr[1] == 'undefined' || !arr[1]) && (str2 = str1);
+					return (type == 2 ? str2 : str1);
+				}
+			},
+		},
+		yAxis: {
+			type: 'value',
+		},
+		series: [{
+			data: [],
+			type: 'bar', // bar, line
+			label: {
+				show: true,
+				position: 'top',
+				formatter: function(){
+					var data = arguments[0].data;
+					return `第${data.ranking}名\n${data.value}分`;
+				}
+			},
+			showBackground: true,
+			itemStyle: {
+	            barBorderRadius: 2,
+	            color: new echarts.graphic.LinearGradient(
+	                0, 0, 0, 1,
+	                [
+	                    {offset: 0, color: '#14c8d4'},
+	                    {offset: 1, color: '#4eb9fd'}
+	                ]
+	            )
+	        },
+		}],
+		dataZoom: [{
+			type: 'slider',
+			filterMode: 'empty',
+			backgroundColor: 'rgb(0, 40, 185, 0.1)',
+			showDetail: false, // 拖拽时候显示title
+			brushSelect: false, // 刷选功能
+			handleSize: 0, // 左右手柄尺寸
+		}],
+	});
+
+	// 监听拖动
+	let timer3;
+	myChart.on('datazoom', function (params) {
+		console.log(params);
+		clearInterval(timer);
+		clearInterval(timer2);
+		clearTimeout(timer3);
+		if(blocking){
+			timer3 = setTimeout(function(){
+				if(blocking){
+					({
+						1: model_one_query,
+						2: model_two_query,
+						3: model_three_query
+					}[blocking])();
+				}
+			}, refresh || 10000);
+		}
+	});
+
+	// 切换展示项
+	function switchModle(t){
+		if(blocking == t) return;
+		blocking = t;
+		$('.btn_inner .btn').removeClass('hit');
+		$('.btn_inner .btn' + t).addClass('hit');
+		$('.inner').removeClass('show');
+		$('.inner' + t).addClass('show');
+		$('#model_one_sle1').val('');
+		$('#model_one_sle2').val('').html('<option value="">请选择</option>');
+		$('#model_two_sle').val('');
+		clearInterval(timer);
+		clearInterval(timer2);
+		myChart.setOption({
+			xAxis: {
+				data: []
+			},
+			series: [{
+				data: []
+			}]
+		});
+		if(t == 3){
+			model_three_query();
+		}
+	}
+	
+	switchModle(1);
+	
+	// 1 - 查看赛项成绩 - 获取赛项选项
+	$('#model_one_sle1').bind('change', function(){
+		if(this.value){
+			$.ajax({
+				type: "GET",
+				url: baseUrl + 'api/Report/GetComplexPlanLis',
+				data: {SystemId: this.value},
+				dataType: "json",
+				success: function(data){
+					if(data && data.length){
+						let html = '<option value="">请选择</option>';
+						data.forEach(o => {
+							html += `<option value="${o.PlanId}">${o.Plan_Name}</option>`;
+						});
+						$('#model_one_sle2').html(html);
+					}
+				}
+			});
+		}else{
+			$('#model_one_sle2').html('');
+		}
+	});
+	
+	// 1 - 查看赛项成绩 - 获取图表数据
+	function model_one_query(){
+		let val1 = document.querySelector('#model_one_sle1').value;
+		let val2 = document.querySelector('#model_one_sle2').value;
+		if(val1 && val2){
+			$.ajax({
+				type: "GET",
+				url: baseUrl + "api/Report/GetComplexPlanResultList",
+				data: {
+					SystemId: val1,
+					PlanId: val2
+				},
+				dataType: "json",
+				success: function(data){
+					if(!data || !data.length){
+						alert('暂无数据');
+						// data = datas; // 假数据
+						return;
+					}
+					configData(data, model_one_query);
+				}
+			});
+		}else{
+			alert(!val1 ? '请选择系统' : '请选择赛项');
+		}
+	}
+	
+	// 2 - 查看系统总成绩 - 获取图表数据
+	function model_two_query(){
+		let val = document.querySelector('#model_two_sle').value;
+		if(val){
+			$.ajax({
+				type: "GET",
+				url: baseUrl + "api/Report/GetEveryResultList",
+				data: {
+					SystemId: val,
+					a: 'a',
+					b: 'b',
+					c: 'c'
+				},
+				dataType: "json",
+				success: function(data){
+					if(!data || !data.length){
+						alert('暂无数据');
+						// data = datas; // 假数据
+						return;
+					}
+					configData(data, model_two_query);
+				}
+			});
+		}else{
+			alert('请选择系统');
+		}
+	}
+	
+	// 3 - 查看四项大赛总成绩 - 获取图表数据
+	function model_three_query(){
+		$.ajax({
+			type: "GET",
+			url: baseUrl + "api/Report/GetResultList",
+			data: {
+				a: 'a',
+				b: 'b',
+				c: 'c'
+			},
+			dataType: "json",
+			success: function(data){
+				if(!data || !data.length){
+					alert('暂无数据');
+					// data = datas; // 假数据
+					return;
+				}
+				configData(data, model_three_query);
+			}
+		});
+	}
+	
+	// 处理展示数据
+	function configData(data, fn){
+		var arr = [];
+		let randomData = [];
+		let formDate = [];
+		let len = data.length;
+		
+		// 只显示前maxSum名（当maxSum为0时不限制）
+		for(let i = 0; i < (len < maxSum || maxSum==0 ? len : maxSum); i++){
+			// 没有名字的补上，杂乱名字覆盖
+			// if(!data[i].Teller_Name || 
+			// data[i].Teller_Name.includes('姓名待修改') || 
+			// data[i].Teller_Name.includes('测试') || 
+			// data[i].Teller_Name.includes('演示') || 
+			// Number(data[i].Teller_Name) != NaN){
+			// 	data[i].Teller_Name = names[i];
+			// }
+			data[i].ranking = (i + 1); 
+			arr.push(data[i]);
+		}
+		
+		arr.forEach(o => {
+			randomData.push({value: o.Result, ...o}); // 数值
+			if(blocking == 3){
+				formDate.push(o.TeamName); // 名字
+			}else{
+				formDate.push(o.Teller_Name + '&' + o.TeamID ); // 名字
+			}
+		});
+		
+		// 使用刚指定的配置项和数据显示图表
+		myChart.setOption({
+			xAxis: {
+				data: formDate,
+				max: formDate.length - 1
+			},
+			series: [{
+				data: randomData
+			}],
+			dataZoom: [{
+				minValueSpan: sum, // 限制窗口大小的最小值
+				maxValueSpan: sum, // 限制窗口大小的最大值
+				startValue: 0,
+				endValue: sum - 1,
+			}],
+		});
+		
+		// 轮播
+		// if(len > sum){
+		// 	handleMove();
+		// }
+		clearInterval(timer2);
+		timer2 = setInterval(fn, refresh || 10000);
+	}
+	
+	// 挪动
+	function handleMove(){
+		clearInterval(timer);
+		timer = setInterval(function(){
+			var op = myChart.getOption();
+			var dataZoom = op['dataZoom'][0];
+			var start = dataZoom.startValue;
+			var end = dataZoom.endValue;
+			var obj = {startValue: 0, endValue: sum - 1};
+			if(end < op['xAxis'][0].max){
+				obj['startValue'] = start + 1;
+				obj['endValue'] = end + 1;
+			}
+			myChart.setOption({
+				dataZoom: [obj]
+			});
+		}, 2000);
+	}
+
+	// 获取参数
+	function getParam() {
+		let query = location.href.split('?')[1] || '';
+		let obj = {};
+		if (query) {
+			let vars = query.split("&");
+			for (let i = 0; i < vars.length; i++) {
+				let pair = vars[i].split("=");
+				obj[pair[0]] = pair[1];
+			}
+		}
+		return obj;
+	}
+</script>
+</html>

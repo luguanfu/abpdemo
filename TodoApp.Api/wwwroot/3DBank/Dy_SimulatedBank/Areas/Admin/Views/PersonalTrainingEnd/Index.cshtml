@@ -1,0 +1,89 @@
+﻿@{
+    
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    if (Request["AllType"] == "1")
+    {
+        ViewData["nvc"] = "个人实训成绩";
+    }
+    else
+    {
+        ViewData["nvc"] = "团队实训成绩";
+    }
+}
+<div class="row   white-bg dashboard-header">
+    <div class="col-sm-12">
+        <ol class="breadcrumb">
+            <li>
+                <h2>成绩管理</h2>
+            </li>
+            @if (Request["AllType"] == "1")
+            {
+                <li>
+                    <a href="#">个人实训成绩列表</a>
+                </li>
+                <li>
+                    <strong>成绩列表</strong>
+                </li>
+            }
+            else
+            {
+                <li>
+                    <a href="#">团队实训成绩列表</a>
+                </li>
+                <li>
+                    <strong>成绩列表</strong>
+                </li>
+            }
+        </ol>
+    </div>
+    <div class="ibox-content">
+        <div class="row form-horizontal">
+
+            <div class="row">
+
+                <div class="col-sm-3">
+                    <div class="input-group">
+                        <input type="text" placeholder="输入考核名称" id="E_Name" class="form-control">
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-primary" onclick="SearchInfo()">查找</button>
+                        </span>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+        <div class="hr-line-dashed"></div>
+
+        <div class="row">
+            <div class="pull-right">
+                <button onclick="Delete()" class="btn btn-warning btn-sm"><i class="fa fa-trash m-r-xs"></i><span class="bold">删除所选</span></button>
+
+            </div>
+        </div>
+
+
+        <div class="row m-t-sm table-responsive">
+            <table class="table text-center table-bordered ">
+                <thead>
+                    <tr>
+                        <th class="text-center">
+                            <input type="Checkbox" class="i-checks checkbox-all">
+                        </th>
+                        <th class="text-center">考核名称</th>
+                        <th class="text-center">开始时间</th>
+                        <th class="text-center">考核时长</th>                       
+                        <th class="text-center">操作</th>
+                    </tr>
+                </thead>
+                <tbody class="new_table text-center" id="tablelist"></tbody>
+            </table>
+        </div>
+
+        <!--分页开始-->
+        <div class="row text-center" id="PaginatorLibrary">
+        </div>
+        <!--分页结束-->
+    </div>
+</div>
+<script src="~/JS/Admin/PersonalTrainingEnd/Index.js"></script>

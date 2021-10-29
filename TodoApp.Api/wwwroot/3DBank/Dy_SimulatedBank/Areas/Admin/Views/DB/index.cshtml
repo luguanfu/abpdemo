@@ -1,0 +1,353 @@
+﻿@using System.Data;
+@{
+    
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewData["nvc"] = "数据库控制";
+    DataTable dt = (DataTable)ViewData["Assessment"];
+}
+
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-sm-12">
+        <ol class="breadcrumb">
+            <li>
+                <h2>数据库控制</h2>
+            </li>
+            <li><a href="~/show/indexr2.html" target="_blank">查看实时成绩</a></li>
+        </ol>
+
+    </div>
+</div>
+<!--面包屑位置结束-->
+<!--主体内容开始-->
+<div class="ibox-content">
+    <div class="row  m-t-sm ">
+        <div class="col-sm-12">
+            <table class="table text-center table-bordered ">
+                <thead>
+                    <tr>
+                        <th class="text-center">数据库中文名称</th>
+                        <th class="text-center">数据库IP/链接</th>
+                        <th class="text-center">数据库名称</th>
+                        <th class="text-center">登录账号</th>
+                        <th class="text-center">登录密码</th>
+                        <th class="text-center">更新时间</th>
+                        <th class="text-center">操作</th>
+                    </tr>
+                </thead>
+                <tbody class="new_table text-center" id="tablelist"></tbody>
+            </table>
+            <input type="image" id="img_1" style="display:none;" />
+        </div>
+
+    </div>
+
+
+    <!--分页开始-->
+    <div class=" text-center">
+        <div class="dataTables_paginate paging_simple_numbers" id="PaginatorLibrary">
+
+        </div>
+
+    </div>
+    <!--分页结束-->
+</div>
+
+<div id="db" style="display: none;" class="form-inline">
+    <form name="" id="">
+
+        <div class="col-sm-12">
+            <div class="form-horizontal  m-t-lg">
+                <label for="firstname" class="col-sm-3 control-label"><span style="color: red;">*</span>数据库IP/链接：</label>
+                <div class="col-sm-9">
+                    <input style="width: 100%;" type="text" class="form-control" id="ConntionIP" name="ConntionIP" placeholder="">
+                    <input type="hidden" id="ID" name="ID" />
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12">
+            <div class="form-horizontal  m-t-lg">
+                <label for="firstname" class="col-sm-3 control-label"><span style="color: red;">*</span>数据库名称：</label>
+                <div class="col-sm-9">
+                    <input style="width: 100%;" type="text" class="form-control" id="DatabankName" name="DatabankName" placeholder="">
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12">
+            <div class="form-horizontal  m-t-lg">
+                <label for="firstname" class="col-sm-3 control-label"><span style="color: red;">*</span>登录账号：</label>
+                <div class="col-sm-9">
+                    <input style="width: 100%;" type="text" class="form-control" id="LoginNo" name="LoginNo" placeholder="">
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12">
+            <div class="form-horizontal  m-t-lg">
+                <label for="firstname" class="col-sm-3 control-label">登录密码：</label>
+                <div class="col-sm-9">
+                    <input style="width: 100%;" type="text" class="form-control" id="PassWord" name="PassWord" placeholder="">
+                </div>
+            </div>
+        </div>
+
+    </form>
+</div>
+
+<div id="addbatch" style="display: none;" class="form-inline">
+    <form name="" id="">
+
+        <div class="col-sm-12">
+            <div class="form-horizontal  m-t-lg">
+                <label for="firstname" class="col-sm-3 control-label"><span style="color: red;">*</span>班级数量：</label>
+                <div class="col-sm-9">
+                    <input style="width: 100%;" type="text" class="form-control" id="teamCount" name="teamCount" placeholder="">
+                    <input type="hidden" id="tID" name="tID" />
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12">
+            <div class="form-horizontal  m-t-lg">
+                <label for="firstname" class="col-sm-3 control-label"><span style="color: red;">*</span>班级名称规则：</label>
+                <div class="col-sm-9">
+                    <input style="width: 100%;" type="text" class="form-control" id="teamName" name="teamName" placeholder="">$count(格式：代表队$count/班级$count)
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12">
+            <div class="form-horizontal  m-t-lg">
+                <label for="firstname" class="col-sm-3 control-label"><span style="color: red;">*</span>学校名称：</label>
+                <div class="col-sm-9">
+                    <input style="width: 100%;" type="text" class="form-control" id="school" name="school" placeholder="">(格式：典阅学校-湖南-长沙)
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12">
+            <div class="form-horizontal  m-t-lg">
+                <label for="firstname" class="col-sm-3 control-label"><span style="color: red;">*</span>学院名称：</label>
+                <div class="col-sm-9">
+                    <input style="width: 100%;" type="text" class="form-control" id="college" name="college" placeholder="">
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12">
+            <div class="form-horizontal  m-t-lg">
+                <label for="firstname" class="col-sm-3 control-label"><span style="color: red;">*</span>专业名称：</label>
+                <div class="col-sm-9">
+                    <input style="width: 100%;" type="text" class="form-control" id="major" name="major" placeholder="">
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script>
+
+    SearchTb();
+    function SearchTb() {
+        $.ajax({
+            type: "Get",
+            async: false,
+            url: "/admin/DB/GetList",
+            dataType: "json",
+            success: function (data) {
+                if (data != null && data != "") {
+                    var html = "";
+                    for (var i = 0; i < data.length; i++) {
+                        html += '<tr>';
+                        html += '<td>' + data[i]["DatabankZHName"] + '</td>';
+                        html += '<td>' + data[i]["ConntionIP"] + '</td>';
+                        html += '<td>' + data[i]["DatabankName"] + '</td>';
+                        html += '<td>' + data[i]["LoginNo"] + '</td>';
+                        html += '<td>' + data[i]["PassWord"] + '</td>';
+                        html += '<td>' + data[i]["UpdateTime"] + '</td>';
+                        html += '<td>';
+                        html += '<a onclick="edit(' + data[i]["ID"] + ');" class=" btn-primary btn-sm  m-r-sm"><i class="fa fa-pencil m-r-xxs"></i>编辑</a>';
+                        html += '<a onclick="dateinit(' + data[i]["ID"] + ');" class=" btn-primary btn-sm  m-r-sm"><i class="fa fa-pencil m-r-xxs"></i>初始化数据</a>';
+                        html += '<a onclick="cleardate(' + data[i]["ID"] + ');" class=" btn-primary btn-sm  m-r-sm"><i class="fa fa-pencil m-r-xxs"></i>清理数据</a>';
+                        if (i > 1) {
+                            html += '<a onclick="adddate(' + data[i]["ID"] + ');" class=" btn-primary btn-sm  m-r-sm"><i class="fa fa-pencil m-r-xxs"></i>批量增加基础数据</a>';
+                        }
+                        html += '</td>';
+                        html += '</tr>';
+                    }
+
+                    $("#tablelist").html(html);
+                }
+
+
+            },
+            error: function (error) {
+
+            }
+        });
+    }
+    function dateinit(id) {
+        if (confirm("是否进行初始化数据?")) {
+            $.ajax({
+                type: "Get",
+                async: false,
+                url: "/admin/DB/init",
+                data: { "ID": id },
+                dataType: "json",
+                success: function (data) {
+                    alert("初始化完毕");
+                },
+                error: function (error) {
+
+                }
+            });
+        }
+    }
+
+    function cleardate(id) {
+        if (confirm("是否进行清理数据?")) {
+            $.ajax({
+                type: "Get",
+                async: false,
+                url: "/admin/DB/clear",
+                data: { "ID": id },
+                dataType: "json",
+                success: function (data) {
+                    alert("清理完毕");
+                },
+                error: function (error) {
+
+                }
+            });
+        }
+    }
+
+    var tdsd;
+    function edit(id) {
+        $.ajax({
+            type: "Get",
+            async: false,
+            url: "/admin/DB/GetOnly",
+            data: { "ID": id },
+            dataType: "json",
+            success: function (data) {
+                if (data != null && data != "") {
+                    $("#ID").val(data[0]["ID"]);
+                    $("#ConntionIP").val(data[0]["ConntionIP"]);
+                    $("#DatabankName").val(data[0]["DatabankName"]);
+                    $("#LoginNo").val(data[0]["LoginNo"]);
+                    $("#PassWord").val(data[0]["PassWord"]);
+                    tdsd = layer.open({
+                        title: "修改信息",
+                        btn: ['确定', '取消'],
+                        area: ['450px', '425px'],
+                        type: 1,
+                        skin: 'layui-layer-lan', //样式类名
+                        closeBtn: 1, //显示关闭按钮
+                        anim: 2,
+                        shadeClose: false, //关闭点击遮罩关闭，true为打开遮罩关闭
+                        content: $("#db"),
+                        yes: function (index, layero) {
+                            Update();
+                        },
+                    });
+                }
+
+
+            },
+            error: function (error) {
+
+            }
+        });
+    }
+
+    function adddate(id) {
+        $("#tID").val(id);
+        tdsd = layer.open({
+            title: "生成规则信息",
+            btn: ['确定', '取消'],
+            area: ['450px', '470px'],
+            type: 1,
+            skin: 'layui-layer-lan', //样式类名
+            closeBtn: 1, //显示关闭按钮
+            anim: 2,
+            shadeClose: false, //关闭点击遮罩关闭，true为打开遮罩关闭
+            content: $("#addbatch"),
+            yes: function (index, layero) {
+                CreateSource(id);
+            },
+        });
+    }
+
+    function CreateSource(id) {
+        var id = $("#tID").val();
+        var teamCount = $("#teamCount").val();
+        var teamName = $("#teamName").val();
+        var school = $("#school").val();
+        var college = $("#college").val();
+        var major = $("#major").val();
+        if (teamCount == "") {
+            alert("请输入生成数据的数量");
+            return;
+        }
+        $.ajax({
+            type: "Get",
+            async: false,
+            url: "/admin/DB/CreateSource",
+            data: { "ID": id, "teamCount": teamCount, "teamName": teamName, "school": school, "college": college, "major": major },
+            dataType: "json",
+            success: function (data) {
+                if (parseInt(data) > 0) {
+                    layer.closeAll();//关闭所有弹出框
+                    layer.msg('生成成功', { icon: 1 });
+                }
+            },
+            error: function (error) {
+                layer.closeAll();//关闭所有弹出框
+                layer.msg('生成失败', { icon: 1 });
+            }
+
+        });
+    }
+
+    function Update() {
+        var id = $("#ID").val();
+        var ip = $("#ConntionIP").val();
+        var name = $("#DatabankName").val();
+        var loginNo = $("#LoginNo").val();
+        var pwd = $("#PassWord").val();
+        if (ip == "") {
+            alert("请输入数据库IP/链接");
+            return;
+        }
+        if (name == "") {
+            alert("请输入数据库名称");
+            return;
+        }
+        if (loginNo == "") {
+            alert("请输登录账号");
+            return;
+        }
+        if (pwd == "") {
+            alert("请输入登录密码");
+            return;
+        }
+        $.ajax({
+            type: "Get",
+            async: false,
+            url: "/admin/DB/Update",
+            data: { "ID": id, "ip": ip, "name": name, "loginNo": loginNo, "pwd": pwd },
+            dataType: "json",
+            success: function (data) {
+                if (parseInt(data) > 0) {
+                    layer.closeAll();//关闭所有弹出框
+                    layer.msg('保存成功', { icon: 1 });
+                    SearchTb();
+                }
+
+            },
+            error: function (error) {
+                layer.closeAll();//关闭所有弹出框
+                layer.msg('保存失败', { icon: 1 });
+            }
+
+        });
+    }
+
+
+</script>
+

@@ -1,0 +1,95 @@
+﻿@{
+    
+    Layout = "~/Views/Shared/_StudentLayout.cshtml";
+    ViewData["nvc"] = "理论学习";
+}
+<style type="text/css">
+    .wrapper {
+        margin-bottom: 60px;
+    }
+
+    .wrapper_img {
+        width: 100%;
+    }
+
+        .wrapper_img img {
+            width: 100%;
+        }
+
+    .wrapper_select {
+        margin: 0 auto;
+        width: 1146px;
+        height: 500px;
+        background: url(/img/lilunfind_bg.png) no-repeat center center;
+        position: relative;
+        z-index: 99;
+        margin-top: -270px;
+        padding-top: 126px;
+    }
+
+    .select_moni {
+        font-size: 24px;
+        color: #313030;
+        margin: 24px 0 12px;
+    }
+
+    .select_into {
+        font-size: 14px;
+        color: #8B8B8B;
+        margin-bottom: 26px;
+    }
+
+    .wrapper_select button {
+        outline: none;
+        background-color: #fff;
+        border: 2px solid #E5C5A4;
+        border-radius: 6px;
+        color: #E5C5A4;
+        font-size: 16px;
+        padding: 4px 36px;
+        cursor: pointer;
+    }
+
+
+        .wrapper_select button:hover {
+            background-color: #E5C5A4;
+            color: #fff;
+        }
+
+
+    .wrapper_select div:first-child {
+        margin-left: 38px;
+    }
+
+    .wrapper_select div {
+        text-align: center;
+        width: 534px;
+    }
+
+    .select_line {
+        float: left;
+        border-left: 1px solid #DDDDDD;
+        height: 105px;
+        margin-top: 98px;
+    }
+</style>
+<div class="wrapper">
+    <div class="wrapper_img">
+        <img src="../img/lilun_ollbg.png" />
+    </div>
+    <div class="wrapper_select">
+        <div class="fl">
+            <img src="/img/ico_kcxx.png" />
+            <p class="select_moni">课程学习</p>
+            <p class="select_into"></p>
+            <button type="button" onclick="javascrtpt:window.location.href='/TheoreticalKnowledge'">开始学习</button>
+        </div>
+        <span class="select_line"></span>
+        <div class="fl">
+            <img src="/img/ico_khlx.png" />
+            <p class="select_moni">课后练习</p>
+            <p class="select_into"></p>
+            <button type="button" onclick="javascrtpt:window.location.href='/HB_Competition'">开始练习</button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,264 @@
+﻿@{
+    
+    Layout = "~/Views/Shared/_StudentLayout.cshtml";
+    ViewData["nvc"] = "习题简介"; 
+}
+
+<link href="~/CSS/bootstrap.min.css" rel="stylesheet" />
+<link href="~/CSS/header.css" rel="stylesheet" />
+<link href="~/CSS/footer.css" rel="stylesheet" />
+<link href="~/CSS/form_public.css" rel="stylesheet" />
+ 
+<style type="text/css">
+
+    .wrapper {
+        width: 1200px;
+        margin: 0 auto;
+    }
+
+
+    .rukou_map {
+        position: relative;
+        width: 925px;
+        height: 495px;
+        border: 1px solid rgba(0,154,255,0.30);
+        margin: auto;
+        margin-top: 70px;
+    }
+
+
+    .lianxi_name {
+        background: white;
+        width: 400px;
+        margin: auto;
+        text-align: center;
+        color: #4498FF;
+        font-size: 28px;
+        margin-top: -25px;
+    }
+
+    .rukou_con {
+        width: 90%;
+        margin: auto;
+        margin-top: 60px;
+        text-align: center;
+        color: #333333;
+        font-size: 18px;
+    }
+
+
+        .rukou_con p {
+            margin: 30px 0px;
+        }
+
+
+    .rikou_lx {
+        font-weight: 600;
+    }
+
+        .rikou_lx span {
+            font-size: 50px;
+        }
+
+
+
+    .look_btn {
+        border: 1px solid #4498FF;
+        background: #4498FF;
+        box-shadow: 0 2px 4px 0 rgba(3,30,41,0.30);
+        border-radius: 5px;
+        padding: 15px 40px;
+        font-size: 20px;
+        color: white;
+        margin: 30px 15px;
+        cursor: pointer;
+        margin: 0px 15px;
+    }
+
+
+        .look_btn:hover {
+            background-color: #3980d8;
+        }
+
+
+    .again_btn {
+        background: white;
+        box-shadow: 0 2px 4px 0 rgba(3,30,41,0.30);
+        border-radius: 5px;
+        padding: 15px 40px;
+        margin: 30px 15px;
+        font-size: 20px;
+        cursor: pointer;
+        border: 1px solid #4498FF;
+        color: #4498FF;
+    }
+
+
+        .again_btn:hover {
+            background: #4498FF;
+            color: white;
+        }
+</style>
+<!-------------内容------------->
+<div class="wrapper"> 
+    <div class="rukou_map"> 
+        <div class="lianxi_name">
+            @ViewData["EName"]
+        </div> 
+        <div class="rukou_con">
+            <div class="row">
+                <div class="col-sm-3">
+                    <img src="../img/img_lx1.png" />
+                    <p>答题时间</p>
+
+                    <div class="rikou_lx">
+                        <span>@ViewData["Whenlong"]</span>分钟
+                    </div>
+                </div>
+
+                <div class="col-sm-3">
+                    <img src="../img/img_lx2.png" />
+                    <p>题目数量</p>
+
+                    <div class="rikou_lx">
+                        <span>@ViewData["NUM"]</span>道
+                    </div>
+                </div>
+
+
+                <div class="col-sm-3">
+                    <img src="../img/img_lx3.png" />
+                    <p>试题分值</p>
+
+                    <div class="rikou_lx">
+                        <span>@ViewData["Score"]</span>分
+                    </div>
+                </div>
+
+
+                <div class="col-sm-3">
+                    <img src="../img/img_lx4.png" />
+                    <p>我的最高分</p>
+
+                    <div class="rikou_lx">
+                        <span>@ViewData["HeightScore"]</span>分
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+    </div>
+
+    <div class="text-center">
+        <button class="look_btn" onclick="ShwoResult('@Request["ID"]','@Request["EId"]')">查看解析</button>
+
+
+        <button class="again_btn" onclick="Getinto('@Request["ID"]','@Request["EId"]')">
+            @if (ViewData["HasRecord"].ToString() == "0")
+            {
+                <span>进入练习</span>
+            }
+            else
+            {
+                <span>再次练习</span>
+            }
+
+        </button>
+
+
+    </div>
+
+
+
+</div>
+
+
+@*<script src="../js/jquery-3.2.0.js"></script>
+<script src="../js/tab_bar.js"></script>
+<script src="../js/layer/layer.js"></script>*@
+<script type="text/javascript">
+    //根据渲染出来的数据，动态设置底部
+
+    //文档body的高度
+    var bodyHeight = $(document.body).height()
+    //当前窗口可视区域高度
+    var winHeight = $(window).height()
+    if (bodyHeight > winHeight) {
+        $(".footer").removeClass("fid")
+    } else {
+        $(".footer").addClass("fid")
+    }
+
+
+    //退出系统
+    function out_xitong() {
+        layer.confirm('您确定要退出系统吗？', {
+            title: '退出系统',
+            btn: ['确定', '取消'],
+            offset: 'auto',//定义弹窗位置垂直居中
+            shadeClose: false, //遮罩关闭控制
+            skin: 'layui-layer-lan'
+            //按钮
+        },
+            function () {
+                layer.msg('退出成功', {
+                    time: 10000,
+                    icon: 1,
+                });
+                window.location.href = "login.html"
+            });
+
+    }
+
+
+    //未进行比赛 进入 
+    function Getinto(Eid, Pid) {
+        //验证是否存在记载倒计时数据
+        //不存在就新增
+        $.ajax({
+            url: "/HB_Competition/CheckGointo",
+            data: { "Eid": Eid, "Pid": Pid, "Type": "1" },
+            type: 'POST',
+            async: false,
+            dataType: 'json',
+            success: function (data) {
+                if (data == "1") {
+                    window.open('/HB_kaoshi?Eid=' + Eid + '&Pid=' + Pid + '&ALLType=2');
+                }
+				if (data == "77") {
+                    layer.msg('考核时间未到！');
+                }
+                if (data == "99") {
+                    layer.alert('操作失败，请刷新或重新登录再试！', { skin: 'layui-layer-lan' }, function () {
+                        layer.closeAll();//关闭所有弹出框
+                    });
+                }
+            }
+        });
+
+    }
+
+    function ShwoResult(Eid, Pid) {
+
+        //判断是否第一次练习
+        $.ajax({
+            url: "/HB_Competition/SeCount",
+            data: { "Eid": Eid },
+            type: 'POST',
+            async: false,
+            dataType: 'json',
+            success: function (data) {
+                if (data == "1") {
+                    window.open('/HB_ExamPreview?Eid=' + Eid + '&Pid=' + Pid + '&Type=1&ALLType=2');
+                } else {
+                    layer.alert('暂无练习数据！', { skin: 'layui-layer-lan' }, function () {
+                        layer.closeAll();//关闭所有弹出框
+                    });
+                }
+            }
+        });
+
+    }
+</script>

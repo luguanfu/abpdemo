@@ -1,0 +1,190 @@
+﻿@{
+    
+    //Layout = "~/Views/Shared/_StudentLayout.cshtml";
+    ViewData["nvc"] = "理论学习";
+}
+
+
+<!--时间插件样式-->
+<link href="~/Scripts/My97DatePicker/skin/default/datepicker.css" rel="stylesheet" />
+
+<link rel="stylesheet" href="~/CSS/bootstrap.min.css" />
+<link rel="stylesheet" href="~/CSS/header.css" />
+<link rel="stylesheet" href="~/CSS/footer.css" />
+<link href="~/CSS/iCheck/custom.css" rel="stylesheet" />
+<link rel="stylesheet" href="~/CSS/form_public.css" />
+<link href="~/CSS/default.css" rel="stylesheet" />
+<!-- Mainly scripts  主体js -->
+<script src="~/Scripts/jquery-3.2.0.js"></script>
+<script src="~/Scripts/tab_bar.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<!-- iCheck -->
+<script src="~/Scripts/iCheck/icheck.min.js"></script>
+<!--时间插件js-->
+<script src="~/Scripts/My97DatePicker/WdatePicker.js"></script>
+<!--弹窗js-->
+<script src="~/Scripts/layer/layer.js"></script>
+
+<script src="~/Scripts/verifyform.js"></script>
+<script src="~/Scripts/StudentPage.js"></script>
+
+
+<link rel="stylesheet" type="text/css" href="~/CSS/study_details.css" />
+<script src="~/Scripts/study_details.js"></script>
+<!DOCTYPE html>
+<!-------------内容------------->
+<div class="wrapper" style="width:550px">
+
+    <!--面包屑导航-->
+    <!--面包屑开始-->
+    @*<div class="crumbs_map">
+            你当前所在的位置：
+            <a href="/TheoreticalKnowledge">首页</a>＞
+            <a href="/TheoreticalKnowledge">理论学习</a> ＞ <span>课程详情</span>
+
+        </div>*@
+    <!--面包屑结束-->
+    <!-----课程名称与简介----->
+    <div class="wrapper_details" style="width:650px; margin-left:80px">
+        <div class="details_left">
+            <img id="Cover" style="display:none" src="~/Img/details_bg.png" />
+        </div>
+        <div class="details_right">
+            <p id="CurriculumName"></p>
+            <div id="Synopsis">
+            </div>
+        </div>
+    </div>
+
+    <!-----课程目录列表----->
+    <div class="catalog_list" style="width:600px;margin-left:140px">
+        <p class="list_title">课程目录</p>
+
+        <!---目录--->
+        <div class="list_tabbar" id="tablelist">
+
+           
+
+        </div>
+
+    </div>
+
+</div>
+
+<script type="text/javascript">
+    //根据渲染出来的数据，动态设置底部
+
+    //文档body的高度
+    var bodyHeight = $(document.body).height()
+    //当前窗口可视区域高度
+    var winHeight = $(window).height()
+    if (bodyHeight > winHeight) {
+        $(".footer").removeClass("fid")
+    } else {
+        $(".footer").addClass("fid")
+    }
+    $(function () {
+        GetSectionList()
+    })
+    function GetSectionList(page) {
+        $.ajax({
+            url: '/TheoreticalKnowledge/GetSectionList',
+            Type: "post",
+            dataType: "json", cache: false,
+            contentType: "application/json; charset=utf-8",
+            data: { "CurriculumID": getQueryString("CurriculumID") },
+            success: function (tb) {
+                var html = '';
+                //课程
+                var Curriculum = tb.Curriculum;//转换table
+                //章
+                var Chapter = tb.Chapter;//转换table
+                //节
+                var Section = tb.Section;//转换table
+                //资源
+                var Resources = tb.Resources;//转换table
+                if (Curriculum != null && Curriculum.length > 0) {
+                    $("#Cover").attr("src", Curriculum[0]["Cover"]);
+                    $("#CurriculumName").html(Curriculum[0]["CurriculumName"]);
+                    $("#Synopsis").html(Curriculum[0]["Synopsis"]);
+                    $("#Cover").show();
+                }
+                if (Chapter != null && Chapter.length > 0) {
+                    for (var i = 0; i < Chapter.length; i++) {
+                        var ID = Chapter[i]["ID"];
+                        var ChapterID = Chapter[i]["ID"];
+                        var Name = Chapter[i]["Name"];
+                        var COUResources = Chapter[i]["COUResources"];
+                        var COUResourceRecord = Chapter[i]["COUResourceRecord"];
+                        var complete = 0;
+                        if (parseFloat(COUResourceRecord) > 0 && parseFloat(COUResources) > 0) {
+                            complete = (parseFloat(COUResourceRecord) / parseFloat(COUResources)) * 100;
+                        }
+                        html += '<div>';
+                        html += '<p class="tabbar_name" >';
+                        html += '<span>模块' + (1 + i) + '：' + Name + '</span>';
+                        html += '<img src="/Img/z_oval.png"/>';
+                        html += '<span class="plans" >';
+                        if (complete.toFixed(2) == 0.00) {
+                            html += '已观看<span>0</span>';
+                        } else {
+                            html += '已观看<span>' + complete.toFixed(2); + '</span>';
+                        }
+                        html += '%</span></p>';
+                        var ss = 0;
+                        for (var s = 0; s < Section.length; s++) {
+                            if (Section[s]["ChapterID"] == ChapterID) {
+                                ID = Section[s]["ID"];
+                                var SectionID = Section[s]["ID"];
+                                Name = Section[s]["Name"];
+                                html += '<div class="tabbar_knobble" >';
+                                html += '<p class="knobble_name">';
+                                html += '<span class="fl" >第' + (ss + 1) + '节：' + Name + '</span>';
+                               
+                                html += '<span class="pack_up pack_tab fr" id="andid' + ID + '" onclick="tab_up_down(' + ID + ')" >展开</span>';
+                                html += '</p></div>';
+                                html += '<div class="knobble_txt disBlock" style="display:none" id="div' + ID + '">';
+                                for (var j = 0; j < Resources.length; j++) {
+                                    if (Resources[j]["SectionID"] == SectionID) {
+                                        ID = Resources[j]["ID"];
+                                        Name = Resources[j]["Name"];
+                                        var Type = Resources[j]["Type"];
+                                        var IsRecord = Resources[j]["IsRecord"];
+
+                                        html += '<p  onclick="Event(this)" Id="' + ID + '" >';
+                                        if (Type == ".MP4" || Type == ".mp4" || Type == ".mP4" || Type == ".Mp4") {
+                                            html += '<span class="videoColor" >视频</span>';
+                                        } else {
+                                            html += '<span class="pptColor" >PPT</span>';
+                                        }
+                                        html += Name;
+                                        if (parseInt(IsRecord) >= 1) {
+                                            html += '<span class="study_ok" >已完成</span>';
+                                        } else {
+                                            html += '<span class="study_learn" ></span>';
+                                        }
+                                        html += '</p>';
+                                    }
+                                }
+                                html += '</div></div>';
+
+                                ss++;
+                            }
+                        }
+                        html += '</div>';
+                    }
+                }
+                $("#tablelist").html(html);
+            }
+        });
+    }
+    function Event(obj) {
+        var ID = $(obj).attr("Id");
+
+        $(obj).find(".study_learn").html("开始学习");
+        var num = Math.floor(Math.random() * 100000000);//0-100000000
+        window.open("/TheoreticalKnowledge/NewKechen?ResourcesID=" + ID + " &num=" + num);
+
+
+    }
+</script>

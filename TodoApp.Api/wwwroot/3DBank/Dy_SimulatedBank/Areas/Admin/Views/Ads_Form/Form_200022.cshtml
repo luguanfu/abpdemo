@@ -1,0 +1,145 @@
+﻿<!--单位活期销户[销户开始]-->
+<style>
+    .box {
+        display: inline-block;
+        width: 75%;
+    }
+</style>
+<link href="~/CSS/bootstrap-table.min.css" rel="stylesheet" />
+<link href="~/CSS/bootstrap-step.css" rel="stylesheet" />
+
+<div id="step_container" style="margin-bottom: 10px;"></div>
+<div class="pull-left">
+    <img src="/img/card.png" style="width:250px;height:150px;" alt="">
+</div>
+<div class="box">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label id="lbl_account" name="lbl_account" for="inputEmail3" class="col-sm-4 control-label">账(卡)号</label>
+                <div class="col-sm-8">
+                    <input vl-default="" id="txt_cancelReason" name="txt_cancelReason" type="text" class="form-control input-sm">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label id="lbl_accountType2" name="lbl_accountType2" for="inputEmail3" class="col-sm-4 control-label">账户类型</label>
+                <div class="col-sm-8">
+                    <select vl-default="" id="sle_accountType2" name="sle_accountType2" class="form-control"></select>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label id="lbl_accountName" name="lbl_accountName" for="inputEmail3" class="col-sm-4 control-label">账户名称</label>
+                <div class="col-sm-8">
+                    <input vl-default="" id="txt_accountName" name="txt_accountName" type="text" class="form-control input-sm">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label id="lbl_accoutOrgan" name="lbl_accoutOrgan" for="inputEmail3" class="col-sm-4 control-label">开户机构</label>
+                <div class="col-sm-8">
+                    <input vl-default="" id="txt_accoutOrgan" name="txt_accoutOrgan" type="text" class="form-control input-sm">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label id="lbl_accountNature2" name="lbl_accountNature2" for="inputEmail3" class="col-sm-4 control-label">账户性质</label>
+                <div class="col-sm-8">
+                    <select vl-default="" id="sle_accountNature2" name="sle_accountNature2" class="form-control"></select>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="divider divider-horizontal"><div class="divider-text is-left"><strong>账户信息</strong></div></div>
+<table class="table table-hover" id="tbl"></table>
+<div id="DivTabValue" style="display:none;">
+    <div class="divider divider-horizontal"><div class="divider-text is-left"><strong>账户信息反显值</strong></div></div>
+<textarea rows="5" id="tb1Value" name="tb1Value" style="width:100%;"></textarea>
+</div>
+<script src="~/Scripts/bootstrap-table.min.js"></script>
+<script src="~/Js/bootstrap-step.js"></script>
+<script src="~/Js/Student/GetDefaultValue/js/common.js"></script>
+
+<script>
+    setOptions(['accountType2', 'accountNature2']);
+    var data = [];
+    function setTableValue(values) {
+        var vals = values.split('\n');
+        data = [{
+            'productName': vals[0],
+            'currency': vals[1],
+            'remittance': vals[2],
+            'accountBalance': vals[3],
+            'availableBalance': vals[4],
+            'accountStatus': vals[5],
+            'rate': vals[6],
+        }];
+        $("#tbl").bootstrapTable('load', data);
+    }
+    $('#tbl').bootstrapTable({
+        data: data,
+        columns: [{
+            checkbox: true,
+            align: 'center',
+        },
+        {
+            title: '序号',
+            align: 'center',
+            formatter: function (value, row, index) {
+                return index + 1;
+            }
+        },
+        {
+            title: '存款类别',
+            field: 'productName',
+            align: 'center'
+        },
+        {
+            title: '币种',
+            field: 'currency',
+            align: 'center'
+        },
+        {
+            title: '钞汇',
+            field: 'remittance',
+            align: 'center',
+        },
+        {
+            title: '账户余额',
+            field: 'accountBalance',
+            align: 'center',
+        },
+        {
+            title: '可用余额',
+            field: 'availableBalance',
+            align: 'center',
+        },
+        {
+            title: '账户状态',
+            field: 'accountStatus',
+            align: 'center'
+        },
+        {
+            title: '利率(%)',
+            field: 'rate',
+            align: 'center'
+        },
+        ]
+    });
+    function doSubmit() {
+        goPage("200021", afterGoPage());
+    }
+    $(function () {
+        initData("200015");
+    });
+</script>

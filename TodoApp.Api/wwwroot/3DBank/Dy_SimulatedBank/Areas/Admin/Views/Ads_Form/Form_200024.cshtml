@@ -1,0 +1,132 @@
+﻿
+<!--企业网银客户签约管理[业务管理]-->
+<link href="~/CSS/bootstrap-table.min.css" rel="stylesheet" />
+<div class="divider divider-horizontal"><div class="divider-text is-left"><strong>企业网银基本信息</strong></div></div>
+<table class="table table-hover" id="tbl"></table>
+<div id="DivTabValue" style="display:none;">
+    <div class="divider divider-horizontal"><div class="divider-text is-left"><strong>企业网银基本信息反显值</strong></div></div>
+<textarea rows="5" id="tb1Value" name="tb1Value" style="width:100%;"></textarea>
+</div>
+<div class="row">
+    <div class="col-md-9">
+        <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 control-label">业务类型</label>
+            <div class="col-sm-9">
+                <button type="button" class="btn btn-default" onclick="goPage('200016')">证书管理</button>
+                <button type="button" class="btn btn-default" onclick="goPage('200007')">用户管理</button>
+                <button type="button" class="btn btn-default" onclick="goPage('200017')">账户管理</button>
+                <button type="button" class="btn btn-default active" onclick="goPage('200024')">业务管理</button>
+                <button type="button" class="btn btn-default" onclick="goPage('200025')">客户限额</button>
+                <button type="button" class="btn btn-default" onclick="goPage('200012')">注销网银</button>
+            </div>
+        </div>
+    </div>
+</div>
+<table class="table table-hover" id="tbl1"></table>
+
+<script src="~/Scripts/bootstrap-table.min.js"></script>
+<script src="~/Js/Student/GetDefaultValue/js/common.js"></script>
+
+<script>
+    $(function () {
+        initTableValue();
+    });
+    function initTableValue() {
+        var defaultValue = $("#TabDefaultValue").val();
+        if (defaultValue != null && defaultValue.length > 0) {
+            fanxian();
+        } else {
+            setTimeout("initTableValue()", 100);
+        }
+    }
+
+    var data = [];
+    function setTableValue(values, id) {
+        console.log(values);
+        var vals = values.split('\n');
+        data = [{
+            'customer': vals[0],
+            'bankingType': vals[1],
+            'contractingAgency': vals[2],
+            'signingDate': vals[3],
+            'customerNo': vals[4],
+        }];
+        $("#tbl").bootstrapTable('load', data);
+    }
+    $('#tbl').bootstrapTable({
+        data: data,
+        columns: [
+            {
+                title: '客户名称',
+                field: 'customer',
+                align: 'center'
+            },
+            {
+                title: '企业网银类型',
+                field: 'bankingType',
+                align: 'center'
+            },
+            {
+                title: '签约机构',
+                field: 'contractingAgency',
+                align: 'center',
+            },
+            {
+                title: '签约日期',
+                field: 'signingDate',
+                align: 'center',
+            },
+            {
+                title: '网银客户号',
+                field: 'customerNo',
+                align: 'center'
+            },
+        ]
+    });
+    $('#tbl1').bootstrapTable({
+        data: options.menus,
+        idField: 'id',
+        treeShowField: 'name',
+        parentIdField: 'pid',
+        columns: [
+            {
+                checkbox: true,
+                align: 'center',
+            },
+            {
+                title: '菜单名称',
+                field: 'name',
+            },
+            {
+                title: '操作权限',
+                field: 'operateAuth',
+            },
+            {
+                title: '是否可设置操作权限',
+                field: 'isOperateAuth',
+                formatter(value, row, index) {
+                    if (eval(value)) {
+                        return '是';
+                    } else {
+                        return '否';
+                    }
+                }
+            },
+        ],
+        onPostBody: function () {
+            var columns = $('#tbl1').bootstrapTable('getOptions').columns
+
+            if (columns && columns[0][1].visible) {
+                $('#tbl1').treegrid({
+                    treeColumn: 1,
+                    onChange: function () {
+                        $('#tbl1').bootstrapTable('resetView')
+                    }
+                })
+            }
+        }
+    });
+    function doSubmit() {
+        goPage("200050")
+    }
+</script>

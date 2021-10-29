@@ -1,0 +1,81 @@
+﻿@{
+    ViewBag.Title = "跨境电商综合实训平台";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewData["nvc"] = "排名管理";
+}
+<link href="~/CSS/Public_img.css" rel="stylesheet" />
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-sm-12">
+        <ol class="breadcrumb">
+            <li>
+                <h2>考试管理</h2>
+            </li>
+            <li>
+                <a href="/Admin/ExamineRank">排名管理</a>
+            </li>
+            @*<li>
+                    <strong>统计范围</strong>
+                </li>*@
+            <li>
+                <strong>查看成绩</strong>
+            </li>
+        </ol>
+
+    </div>
+</div>
+<div class="ibox-content">
+
+
+    <div class="row">
+
+        <div class="col-sm-3">
+            <div class="input-group">
+                <input type="text" placeholder="请输入学员信息" id="ExamineName" class="form-control">
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-primary" onclick="loadPage()">搜索</button>
+                </span>
+            </div>
+        </div>
+        <div class="col-sm-9 text-right">
+            <button onclick="exportInfo()" class="btn btn-primary btn-sm  m-r-lg" type="button"><i class="fa fa-plus  m-r-xs"></i><span class="bold">导出</span></button>
+            <a href="/Admin/ExamineRank/EditRank?id=@Request["ModeId"]" class="btn btn-sm btn-primary">返回</a>
+        </div>
+    </div>
+    <div class="row  m-t-sm ">
+        <input type="text" hidden="hidden" id="ModeId" name="ModeId" value="@Request["ModeId"]" />
+        <input type="text" hidden="hidden" id="eid" name="eid" value="@Request["eid"]" />
+        <input type="text" hidden="hidden" id="type" name="type" value="@Request["type"]" />
+        <div class="col-sm-12">
+            <table class="table text-center table-bordered ">
+                <thead>
+                    <tr>
+
+                        <th class="text-center">排名</th>
+                        <th class="text-center">学员帐号</th>
+                        <th class="text-center">学员姓名</th>
+                        <th class="text-center">所属学院</th>
+                        <th class="text-center">所属专业</th>
+                        <th class="text-center">所属班级</th>
+                        <th class="text-center">总分</th>
+                        <th class="text-center">提交时间</th>
+                    </tr>
+                </thead>
+                <tbody class="new_table text-center" id="tablelist"></tbody>
+            </table>
+        </div>
+    </div>
+
+    <!--分页开始-->
+    <div class="row text-center m-t-md" id="PaginatorLibrary">
+    </div>
+    <!--分页结束-->
+    <div class="text-center m-t-md">
+
+        <div class="form-group">
+           
+        </div>
+    </div>
+</div>
+<a id='downFile' href="" style="display: none"><span id='tf'></span></a>
+<script src="~/Js/Admin/ExamineRank/StundentInfo.js"></script>
+

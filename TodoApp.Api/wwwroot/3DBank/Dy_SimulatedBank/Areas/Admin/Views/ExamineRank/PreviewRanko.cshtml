@@ -1,0 +1,273 @@
+﻿@{
+    ViewBag.Title = "跨境电商综合实训平台";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewData["nvc"] = "排名管理";
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+
+    <link rel="stylesheet" href="../css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../css/form_public.css" />
+    <link rel="stylesheet" href="../css/header.css" />
+    <link rel="stylesheet" href="../css/footer.css" />
+    <link rel="stylesheet" href="../css/font-awesome-4.7.0/css/font-awesome.css" />
+    <link rel="stylesheet" href="../css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../css/form_public.css" />
+    <link rel="stylesheet" href="../css/header.css" />
+    <link rel="stylesheet" href="../css/footer.css" />
+    <link rel="stylesheet" href="../css/font-awesome-4.7.0/css/font-awesome.css" />
+    <style type="text/css">
+
+        /*排名页面样式*/
+        .user_img {
+            height: 80px;
+            border-radius: 50%;
+            border: solid 1px #cf9354;
+        }
+
+        .xun_user_name {
+            color: #000000 !important;
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .mingci {
+            font-size: 24px;
+            color: #cf9354;
+        }
+
+        i {
+            cursor: pointer;
+        }
+
+            i:hover {
+                color: #cf9354;
+            }
+
+        .rank_map {
+            width: 1200px;
+            margin: auto;
+        }
+
+        .three_map {
+            background: url(../Img/rank_bj.png);
+            width: 100%;
+            height: 400px;
+            border-radius: 5px;
+            padding: 1px;
+            color: #333333;
+            webkit-box-shadow: 0 0 30px rgba(121, 113, 113, 0.5);
+            -moz-box-shadow: 0 0 30px rgba(121, 113, 113, 0.5);
+            box-shadow: 0 0 15px rgba(121, 113, 113, 0.5);
+        }
+
+            .three_map h2 {
+                font-size: 22px;
+                text-align: center;
+                margin-top: 15px;
+                font-weight: 600;
+            }
+
+        .mingci_map {
+            width: 500px;
+            margin: auto;
+            margin-top: 10px;
+            text-align: center;
+            color: #666666;
+        }
+
+        .user_ming img {
+            margin: 10px 0px;
+            width: 45px;
+            border-radius: 50%;
+        }
+
+        .first_ming {
+            width: 70px;
+            height: 100px;
+            margin: auto;
+            background: url(../../../../Img/ico_rank1.png) center no-repeat;
+        }
+
+            .first_ming img {
+                width: 56px;
+                border-radius: 50%;
+                margin-top: 38px;
+                margin-left: 2px;
+            }
+
+        .bold {
+            font-weight: 600;
+        }
+
+        .rest_rank {
+            margin-top: 15px;
+            padding: 0px 40px;
+            color: #666666;
+            text-align: center;
+        }
+
+            .rest_rank ul li {
+                list-style-type: none;
+                float: left;
+                padding: 0px 20px;
+                margin: 0px 30px;
+            }
+
+        .rest_num {
+            border: 1px solid #3487f5;
+            color: #3487f5;
+            font-weight: 600;
+            font-size: 14px;
+            border-radius: 3px;
+            padding: 3px 15px;
+        }
+
+        .rank_map table {
+            text-align: center;
+        }
+
+            .rank_map table th {
+                border: 1px solid #dddddd;
+                color: #33333;
+                text-align: center;
+                padding: 15px 0px;
+            }
+
+            .rank_map table tr td {
+                border: 1px solid #dddddd;
+                font-size: 16px;
+                padding: 5px;
+            }
+
+        .table_left {
+            float: left;
+            width: 40%;
+        }
+
+            .table_left table {
+                width: 100%;
+            }
+
+        .table_right {
+            float: left;
+            width: 60%;
+            overflow-x: scroll;
+        }
+
+            .table_right table {
+                width: 160%;
+            }
+
+                .table_right table tr td {
+                    width: 105px !important;
+                }
+        /*排名页面样式结束*/
+
+        .clear {
+            clear: left;
+        }
+    </style>
+</head>
+<body>
+    <div class="row  border-bottom white-bg dashboard-header" style="background-color:#ffffff">
+        <input type="hidden" value="@ViewBag.rankid" id="rankid" />
+        <!-------------勋章内容开始------------->
+        <div class="row wrapper border-bottom white-bg page-heading">
+            <div class="col-sm-12">
+                <ol class="breadcrumb">
+                    <li>
+                        <h2>排名管理</h2>
+                    </li>
+                    <li>
+                        <strong id="Navigationid">排名预览</strong>
+                    </li>
+                </ol>
+            </div>
+        </div>
+        <!-------------排名开始------------->
+        <div class="rank_map">
+            <!--前十名-->
+            <div id="h" class="three_map">
+                <h2>@(ViewBag.rank_name)</h2>
+                <div class="mingci_map">
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <p class="m-t-xl"><img src="~/Img/ico_rank2.png" /></p>
+                            <p class="user_ming"><img src="/Img/xguse.png" /></p>
+                        </div>
+
+                        <div class="col-sm-4">
+                            <div class="first_ming">
+                                <img src="/Img/xguse.png" />
+                            </div>
+
+                        </div>
+
+                        <div class="col-sm-4">
+                            <p class="m-t-xl"><img src="~/Img/ico_rank3.png" /></p>
+                            <p class="user_ming"><img src="/Img/xguse.png" /></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="rest_rank">
+                    <ul>
+                        @for (int i = 3; i < 10; i++)
+                    {
+                        //只显示前十名
+                        if (i < 10)
+                        {
+                                <li>
+                                    <p><span class="rest_num">@(i + 1)</span> </p>
+                                    <p class="user_ming"><img src="/Img/xguse.png" /></p>
+                                </li>
+                        }
+                    }
+                    </ul>
+                </div>
+            </div>
+
+            <div class="row m-t-sm">
+                <div class="col-sm-9">
+                    <div class="pull-left">
+                        <span class="bold m-t-sm fl">全体排名</span>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="pull-right">
+                        <div class="input-group">
+                            <input type="text" placeholder="请输入账号/姓名" id="stu" class="form-control" name="stu">
+                            <span class="input-group-btn">
+                                <button type="button" id="btn_search" onclick="GetContestPersonalRank()" class="btn btn-primary"><i class="fa fa-search "></i></button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <!--排名table-->
+            <div class="rank_map" id="rank">
+            </div>
+
+            <!--分页-->
+            <div class="con_bottom">
+            </div>
+            <!--分页结束-->
+            <p class="clear"></p>
+        </div>
+
+    </div>
+
+
+
+</body>
+</html>
+<script src="~/Js/Student/ExamRank.js"></script>

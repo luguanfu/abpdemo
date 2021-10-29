@@ -1,0 +1,500 @@
+﻿@{
+                    ViewBag.Title = "Form_062003";
+                    Layout = "~/Views/Shared/_AdminLayoutIsNull.cshtml";
+                }
+               <script src="~/Js/Admin/AdminForm.js"></script>
+               <script src="~/Js/Admin/CaseManagement/AddDefaultValue.js"></script>
+               <form id="form1" onsubmit="return false" action="##" method="post">
+                  <input type="hidden" id="TaskId" name="TaskId" value="@Request["TaskId"]" />
+                  <input type="hidden" id="CustomerId" name="CustomerId" value="@Request["CustomerId"]" />
+                  <input type="hidden" id="FormId" name="FormId" value="@Request["FormId"]" />
+                  <input type="hidden" id="Types" name="Types" value="@Request["Types"]" />
+                <!--内容表单区域开始-->
+            <div class="tables bankmap"> 
+				<div class="banktop">
+						<ul class="mbx clearfix">
+								<li>二代农信银</li>
+								<li>&gt;</li>
+								<li>通存通兑</li>
+								<li>&gt;</li>
+								<li>对公转账存款</li>
+						</ul> 
+				</div>
+			<div class="con-map"> <span class="top-title">省外账号信息<span id="dianji_con" style="cursor: pointer;">▼</span></span>
+				<table id="qv" class="con-map2-table qv">
+					<tbody>
+						<tr>
+							<td class="" rowspan="1" colspan="1" style="width: 64px;"><label vl-keyup="wwww" vl-default="" id="label_zzfs" vtitle="转账方式" class="form-item text-left" vl-tipsid="label_zzfs_tips" title="label_zzfs">转账方式</label>
+								<div id="label_zzfs_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="3" class=""><input type="radio" vl-default="" id="redio_ss" name="redio_a" vtitle="实时" class="form-item text-left" vl-tipsid="redio_ss_tips" title="redio_ss" checked="true" oncopy="return false" onpaste="return false" oncut="return false" value="">实时<input type="radio" vl-default="" id="redio_pt" name="redio_a" vtitle="普通" class="form-item text-left" vl-tipsid="redio_pt_tips" title="redio_pt" oncopy="return false" onpaste="return false" oncut="return false" value="">普通<input type="radio" vl-default="" id="redio_cr" name="redio_a" vtitle="次日" class="form-item text-left" vl-tipsid="redio_cr_tips" title="redio_cr" oncopy="return false" onpaste="return false" oncut="return false" value="">次日
+								<div id="redio_ss_tips" class="tipsmsg"></div>
+							</td>
+						</tr>
+						<tr>
+							<td rowspan="1" colspan="1" class="" style="width: 64px;"><label vl-default="" id="label_zhlx" vtitle="账户类型" class="form-item text-left" vl-tipsid="label_zhlx_tips" title="label_zhlx">账户类型</label>
+								<div id="label_zhlx_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="">
+								<div class="slectstyle">
+									<select vl-default="1" id="sle_zhlx" vtitle="账户类型" class="form-item text-left" vl-tipsid="sle_zhlx_tips" vl-regex="['require']" vl-message="['账户类型不能为空！']" style="width: 180px;" title="sle_zhlx" vl-slemodel="">
+										<option disabled="" style="background-color: blue; color: #fff;" value="">账户类型值含义</option>
+										<option value="1">1 - 个人存折</option>
+										<option value="2">2 - 磁条借记卡</option>
+										<option value="3">3 - IC借记卡</option>
+										<option value="4">4 - 磁条贷记卡</option>
+										<option value="6">6 - 单位结算户</option>
+									</select><input type="text" oncopy="return false" onpaste="return false" oncut="return false" style="width: 157px;"></div>
+								<div id="sle_zhlx_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="" style="width: 87px;"><label vl-default="" id="label_" vtitle="是否有折/卡" class="form-item text-left" vl-tipsid="label__tips" title="label_">是否有折/卡</label>
+								<div id="label__tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class=""><input type="radio" vl-default="" id="redio_w" name="redio_b" vtitle="无" class="form-item text-left" vl-tipsid="redio_w_tips" title="redio_w" checked="true" oncopy="return false" onpaste="return false" oncut="return false" value="">无<input type="radio" vl-default="" id="redio_y" name="redio_b" vtitle="有" class="form-item text-left" vl-tipsid="redio_y_tips" title="redio_y" oncopy="return false" onpaste="return false" oncut="return false" value="">有
+								<div id="redio_w_tips" class="tipsmsg"></div>
+							</td>
+						</tr>
+						<tr>
+							<td rowspan="1" colspan="1" class="" style="width: 55px;"><label vl-default="" id="label_zkhz" vtitle="账/卡号" class="form-item text-left" vl-tipsid="label_zkhz_tips" title="label_zkhz">账/卡号</label>
+								<div id="label_zkhz_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class=""><input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_zkh" vtitle="账卡号" class="form-item text-left" kuaicha="true" vl-tipsid="txt_zkh_tips" vl-regex="['require', 'maxlength32', 'number']" vl-message="['账/卡号不能为空！','账/卡号长度超过最大长度:[32]!','']" style="width: 149px;" title="txt_zkh" onpaste="return false"><img class="sousuo" src="../busi/img/banksousuo.png" vl-select="txt_khhhh|0|0,txt_khhmc|0|0" vl-exec="false" vl-message="['账卡号查询未执行！']" title="执行快查！"><span class="text-red redtip">!</span>
+								<div id="txt_zkh_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="" style="width: 64px;"><label vl-default="" id="label_zhmc" vtitle="账户名称" class="form-item text-left on" vl-tipsid="label_zhmc_tips" title="label_zhmc">账户名称</label>
+								<div id="label_zhmc_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="3" class=""><input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_zhmc" vtitle="账户名称" class="form-item text-left" vl-tipsid="txt_zhmc_tips" vl-regex="['require', 'maxlength20', 'hascode']" vl-message="['账户名称不能为空！','账户名称长度超过最大长度:[20]!','账户名称不能全为数字!']" style="width: 149px;" title="txt_zhmc" onpaste="return false"><span class="text-red redtip">!</span>
+								<div id="txt_zhmc_tips" class="tipsmsg"></div>
+							</td>
+						</tr>
+						<tr>
+							<td rowspan="1" colspan="1" class="" style="width: 64px;"><label vl-default="" id="label_khhhh" vtitle="开户行行号" class="form-item text-left on" vl-tipsid="label_khhhh_tips" title="label_khhhh">开户行行号</label>
+								<div id="label_khhhh_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class=""><input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_khhhh" vtitle="开户行行号" class="form-item text-left" vl-tipsid="txt_khhhh_tips" vl-regex="['require', 'maxlength12']" vl-message="['开户行行号不能为空！','开户行行号超过最大长度:[12]!']" style="width: 149px;" title="txt_khhhh" onpaste="return false"><span class="text-red redtip">!</span>
+								<div id="txt_khhhh_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="" style="width: 80px;"><label vl-default="" id="label_khhmc" vtitle="开户行名称" class="form-item text-left" vl-tipsid="label_khhmc_tips" title="label_khhmc">开户行名称</label>
+								<div id="label_khhmc_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="3" class=""><input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_khhmc" vtitle="开户行名称" class="form-item text-left" vl-tipsid="txt_khhmc_tips" vl-regex="['maxlength60']" vl-message="['开户行名称长度大于最大长度:[60]!']" style="width: 149px;" title="txt_khhmc" onpaste="return false">
+								<div id="txt_khhmc_tips" class="tipsmsg"></div>
+							</td>
+						</tr>
+						<tr>
+							<td rowspan="1" colspan="1" class="" style="width: 64px;"><label vl-default="" id="label_jyje" vtitle="交易金额" class="form-item text-left" vl-tipsid="label_jyje_tips" title="label_jyje">交易金额</label>
+								<div id="label_jyje_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="">
+								<div class="moneystyle"><input type="text" oncopy="return false" onpaste="return false" oncut="return false" vl-type="money" vl-default="" id="money_" vtitle="交易金额" class="form-item text-left money" vl-tipsid="money__tips" vl-regex="['require', 'maxlength16', 'decimal']" vl-message="['交易金额不能为空！','交易金额长度超过最大长度:[16]!','只能输入数字！']" style="width: 149px;" title="money_"><img class="sousuo" src="../busi/img/banksousuo.png" vl-exec="false" vl-message="['交易金额查询未执行！']" style="display: none" title="执行快查！"><span class="text-red redtip">!</span>
+								<label class="moneytips hide green">人民币CNY￥<span class="num">0.00</span><span class="cn">零元整</span></label></div>
+								<div id="money__tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="" style="width: 64px;"><label vl-default="" id="label_jedx" vtitle="金额大写" class="form-item text-left" vl-tipsid="label_jedx_tips" title="label_jedx">金额大写</label>
+								<div id="label_jedx_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="3" class=""><input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_jedx" vtitle="金额大写" class="form-item text-left" jinejiaoyan="true" vl-tipsid="txt_jedx_tips" vl-regex="['maxlength40']" vl-message="['金额大写长度超过最大长度:[40]!']" title="txt_jedx" onpaste="return false">
+								<div id="txt_jedx_tips" class="tipsmsg"></div>
+							</td>
+						</tr>
+						<tr>
+							<td rowspan="1" colspan="1" class="" style="width: 64px;"><label vl-default="" id="label_czhm" vtitle="存折号码" class="form-item text-left" vl-tipsid="label_czhm_tips" title="label_czhm">存折号码</label>
+								<div id="label_czhm_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class=""><input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_czhm" vtitle="存折号码" class="form-item text-left" vl-tipsid="txt_czhm_tips" vl-regex="['maxlength40', 'number']" vl-message="['存折号码长度超过最大长度:[40]!','存折号码输入错误!']" style="width: 149px;" title="txt_czhm" onpaste="return false">
+								<div id="txt_czhm_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="" style="width: 64px;"><label vl-default="" id="label_czye" vtitle="存折余额" class="form-item text-left" vl-tipsid="label_czye_tips" title="label_czye">存折余额</label>
+								<div id="label_czye_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="3" class=""><input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_czye" vtitle="存折余额" class="form-item text-left money" vl-tipsid="txt_czye_tips" vl-type="money" vl-regex="['maxlength16', 'number']" vl-message="['存折余额长度大于最大长度:[16]!','']" style="width: 149px;" title="txt_czye" onpaste="return false">
+								<div id="txt_czye_tips" class="tipsmsg"></div>
+							</td>
+						</tr>
+						<tr>
+							<td rowspan="1" colspan="1" class="" style="width: 64px;"><label vl-default="" id="label_lxfs" vtitle="联系方式" class="form-item text-left on" vl-tipsid="label_lxfs_tips" title="label_lxfs">联系方式</label>
+								<div id="label_lxfs_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="3" class=""><input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_lxfs" vtitle="联系方式" class="form-item text-left" vl-tipsid="txt_lxfs_tips" vl-regex="['maxlength15', 'connect']" vl-message="['联系方式长度大于最大长度:[15]!','联系方式输入错误!']" style="width: 149px;" title="txt_lxfs" onpaste="return false">
+								<div id="txt_lxfs_tips" class="tipsmsg"></div>
+							</td>
+						</tr>
+						<tr>
+							<td rowspan="1" colspan="1" class="" style="width: 32px;"><label vl-default="" id="label_yt" vtitle="用途" class="form-item text-left" vl-tipsid="label_yt_tips" title="label_yt">用途</label>
+								<div id="label_yt_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="3" class=""><input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_yt" vtitle="用途" class="form-item text-left" vl-tipsid="txt_yt_tips" vl-regex="['maxlength120']" vl-message="['用途长度超过最大长度:[120]!']" title="txt_yt" onpaste="return false">
+								<div id="txt_yt_tips" class="tipsmsg"></div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="con-map"><span class="top-title">省内账号信息<span id="dianji_con" style="cursor: pointer;">▼</span></span>
+				<table id="qv" class="con-map2-table qv">
+					<tbody>
+						<tr>
+							<td class="" style="width: 64px;"><label vl-keyup="wwww" vl-default="" id="label_zhlx1" vtitle="账户类型" class="form-item text-left" vl-tipsid="label_zhlx1_tips" title="label_zhlx1">账户类型</label>
+								<div id="label_zhlx1_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="2" class="">
+								<div class="slectstyle">
+									<select vl-default="6" id="sle_zhlx1" vtitle="账户类型" class="form-item text-left" vl-tipsid="sle_zhlx1_tips" vl-regex="['require']" vl-message="['账户类型不能为空！']" style="width: 180px;" title="sle_zhlx1" vl-slemodel="" vl-disabled="true" disabled="disabled">
+										<option disabled="" style="background-color: blue; color: #fff;" value="">账户类型值含义</option>
+										<option value="1">1 - 个人存折</option>
+										<option value="2">2 - 磁条借记卡</option>
+										<option value="3">3 - IC借记卡</option>
+										<option value="4">4 - 磁条贷记卡</option>
+										<option value="6">6 - 单位结算户</option>
+									</select><input type="text" oncopy="return false" onpaste="return false" oncut="return false" disabled="disabled" style="width: 157px;"></div>
+								<div id="sle_zhlx1_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="" style="width: 64px;"><label vl-default="" id="label_pjlx" vtitle="票据类型" class="form-item text-left on" vl-tipsid="label_pjlx_tips" title="label_pjlx">票据类型</label>
+								<div id="label_pjlx_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="2" class="">
+								<div class="slectstyle">
+									<select id="sle_pjlx" vtitle="票据类型" class="form-item text-left" vl-tipsid="sle_pjlx_tips" vl-regex="['require']" vl-message="['票据类型不能为空!']" style="width: 180px;" title="sle_pjlx" vl-slemodel="">
+										<option disabled="" style="background-color: blue; color: #fff;" value="">票据类型值含义</option> 
+										<option value="1">1 - 支票</option>
+										<option value="6">6 - 其它</option>
+									</select>
+									<input type="text" oncopy="return false" onpaste="return false" oncut="return false" style="width: 157px;"><span class="text-red redtip">!</span></div>
+								<div id="sle_pjlx_tips" class="tipsmsg"></div>
+							</td>
+						</tr>
+						<tr>
+							<td rowspan="1" colspan="1" class="" style="width: 32px;"><label vl-default="" id="label_zh" vtitle="账号" class="form-item text-left" vl-disabled="true" vl-tipsid="label_zh_tips" title="label_zh" disabled="disabled">账号</label>
+								<div id="label_zh_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="2" class=""><input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_zh" vtitle="账号" class="form-item text-left" kuaicha="true" vl-tipsid="txt_zh_tips" vl-regex="['require', 'maxlength32', 'number']" vl-message="['账号不能为空!','账号长度大于最大长度:[32]!','']" title="txt_zh" onpaste="return false"><img class="sousuo" src="../busi/img/banksousuo.png" vl-select="txt_zhmc2|0|0" vl-exec="false" vl-message="['账号查询未执行！']" title="执行快查！"><span class="text-red redtip">!</span>
+								<div id="txt_zh_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="" style="width: 64px;"><label vl-default="" id="label_zhmc2" vtitle="账户名称" class="form-item text-left on" vl-disabled="true" vl-tipsid="label_zhmc2_tips" title="label_zhmc2" disabled="disabled">账户名称</label>
+								<div id="label_zhmc2_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="2" class=""><input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_zhmc2_mb2" vtitle="账户名称" class="form-item text-left" vl-disabled="true" vl-tipsid="txt_zhmc2_mb2_tips" vl-regex="['maxlength20', 'hascode']" vl-message="['账户名称长度超过最大长度:[20]!','账户名称不能为全数字!']" style="width: 157px;" title="txt_zhmc2_mb2" onpaste="return false" disabled="disabled">
+								<div id="txt_zhmc2_mb2_tips" class="tipsmsg"></div>
+							</td>
+						</tr>
+						<tr>
+							<td rowspan="1" colspan="1" class="" style="width: 64px;"><label vl-default="" id="label_pjhm" vtitle="票据号码" class="form-item text-left on" vl-tipsid="label_pjhm_tips" title="label_pjhm">票据号码</label>
+								<div id="label_pjhm_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class=""><input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_pjhm" vtitle="票据号码" class="form-item text-left" vl-tipsid="txt_pjhm_tips" vl-regex="['require', 'maxlength40', 'number']" vl-message="['票据号码不能为空!','票据号码长度大于最大长度:[40]!','']" style="width: 149px;" title="txt_pjhm" onpaste="return false"><span class="text-red redtip">!</span>
+								<div id="txt_pjhm_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="" style="width: 64px;"><label vl-default="" id="label_qfrq" vtitle="签发日期" class="form-item text-left on" vl-tipsid="label_qfrq_tips" title="label_qfrq">签发日期</label>
+								<div id="label_qfrq_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class=""><input type="text" class="date form-item text-left" vl-default="" id="date_qfrq" vtitle="签发日期" vl-tipsid="date_qfrq_tips" vl-regex="['require', 'maxlength8', 'tdate', 'number']" vl-message="['签发日期不能为空!','签发日期长度大于最大长度:[8]!','请输入正确的日期格式（如:19000101）!','']" style="width: 157px;" title="date_qfrq" oncopy="return false" onpaste="return false" oncut="return false"><img onclick="WdatePicker({el:'date_qfrq',dateFmt:'yyyyMMdd'})" src="/js/My97DatePicker/skin/datePicker.gif" align="absmiddle" style="width:16px;height:22px;margin-left:6px;"><span class="text-red redtip">!</span>
+								<div id="date_qfrq_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="" style="width: 64px;"><label vl-default="" id="label_zfmm" vtitle="支付密码" class="form-item text-left on" vl-tipsid="label_zfmm_tips" title="label_zfmm">支付密码</label>
+								<div id="label_zfmm_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class=""><input type="password" oncopy="return false" onpaste="return false" oncut="return false" vl-default="" id="pwd_zfmm" vtitle="支付密码" class="form-item text-left on" vl-tipsid="pwd_zfmm_tips" vl-regex="['minlength6', 'maxlength6', 'number']" vl-message="['','支付密码长度为:[6]!','']" style="width: 149px;" title="pwd_zfmm">
+								<div id="pwd_zfmm_tips" class="tipsmsg"></div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="con-map selected"><span class="top-title">手续费信息 <span id="dianji_con" style="cursor: pointer;">▼</span></span>
+				<table id="qv" class="con-map2-table qv">
+					<tbody>
+						<tr>
+							<td class="" style="width: 48px;"><label vl-default="" id="label_sxf" vtitle="手续费" class="form-item text-left on" vl-tipsid="label_sxf_tips" title="label_sxf">手续费</label>
+								<div id="label_sxf_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class=""><input type="text" oncopy="return false" oncut="return false" vl-default="12" id="txt_sxf" vtitle="手续费" class="form-item text-right" vl-disabled="true" vl-tipsid="txt_sxf_tips" style="width: 149px;" title="txt_sxf" onpaste="return false" disabled="disabled">
+								<div id="txt_sxf_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="" style="width: 89px;"><label vl-default="" id="label_sqbl" vtitle="收取比例(%)" class="form-item text-left" vl-tipsid="label_sqbl_tips" title="label_sqbl">收取比例(%)</label>
+								<div id="label_sqbl_tips" class="tipsmsg"></div>
+							</td>
+							<td class=""><input type="text" oncopy="return false" oncut="return false" vl-default="100" id="txt_sqbl" vtitle="收取比例(%)" class="form-item text-right" vl-tipsid="txt_sqbl_tips" vl-regex="['require']" vl-message="['收取比例不能为空！']" style="width: 157px;" title="txt_sqbl" onpaste="return false">
+								<div id="txt_sqbl_tips" class="tipsmsg"></div>
+							</td>
+							<td class="" style="width: 112px;"><label vl-default="" id="label_sjsqsxf" vtitle="实际收取手续费" class="form-item text-left" vl-tipsid="label_sjsqsxf_tips" title="label_sjsqsxf">实际收取手续费</label>
+								<div id="label_sjsqsxf_tips" class="tipsmsg"></div>
+							</td>
+							<td class=""><input type="text" oncopy="return false" oncut="return false" vl-default="14" id="txt_sjsqsxf" vtitle="实际收取手续费" class="form-item text-right" vl-disabled="true" vl-tipsid="txt_sjsqsxf_tips" style="width: 149px;" title="txt_sjsqsxf" onpaste="return false" disabled="disabled">
+								<div id="txt_sjsqsxf_tips" class="tipsmsg"></div>
+							</td>
+						</tr>
+						<tr>
+							<td rowspan="1" colspan="1" class="" style="width: 48px;"><label vl-default="" id="label_sqfs" vtitle="收取方式" class="form-item text-left" vl-tipsid="label_sqfs_tips" title="label_sqfs">收取方式</label>
+								<div id="label_sqfs_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class=""><input type="text" oncopy="return false" oncut="return false" vl-default="1-转账" id="txt_sqfs" vtitle="收取方式" class="form-item text-left" vl-disabled="true" vl-tipsid="txt_sqfs_tips" vl-regex="['require']" vl-message="['收取方式不能为空！']" title="txt_sqfs" onpaste="return false" disabled="disabled">
+								<div id="txt_sqfs_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="" style="width: 64px;"><label vl-keyup="wwww" vl-default="" id="label_skgy" vtitle="收款柜员" class="form-item text-left" vl-disabled="true" vl-tipsid="label_skgy_tips" disabled="disabled">收款柜员</label>
+								<div id="label_skgy_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class=""><input type="radio" vl-default="" id="redio_bg" name="redio_g" vtitle="本柜" class="form-item text-left on" vl-disabled="true" vl-tipsid="redio_bg_tips" title="redio_bg" checked="checked" oncopy="return false" onpaste="return false" oncut="return false" value="" disabled="disabled">本柜<input type="radio" vl-default="" id="redio_tg" name="redio_g" vtitle="他柜" class="form-item text-left on" vl-disabled="true" vl-tipsid="redio_tg_tips" title="redio_tg" oncopy="return false" onpaste="return false" oncut="return false" value="" disabled="disabled">他柜
+								<div id="redio_tg_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="" style="width: 80px;"><label vl-default="" id="label_skgyh" vtitle="收款柜员号" class="form-item text-left on" vl-tipsid="label_skgyh_tips" title="label_skgyh">收款柜员号</label>
+								<div id="label_skgyh_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class=""><input type="text" oncopy="return false" oncut="return false" vl-default="233" id="txt_skgyh" vtitle="收款柜员号" class="form-item text-left" vl-tipsid="txt_skgyh_tips" vl-regex="['maxlength40']" vl-message="['收款柜员号长度大于最大长度:[40]!']" style="width: 157px;" title="txt_skgyh" onpaste="return false">
+								<div id="txt_skgyh_tips" class="tipsmsg"></div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="con-map"><span class="top-title">经办人身份信息 <span id="dianji_con" style="cursor: pointer;">▼</span></span>
+				<table id="qv" class="con-map2-table qv" style="display:none">
+					<tbody>
+						<tr>
+							<td class="" style="width: 0px;"><label vl-keyup="wwww" vl-default="" id="label_zjlx2" vtitle="证件类型" class="form-item text-left" vl-tipsid="label_zjlx2_tips" title="label_zjlx2">证件类型</label>
+								<div id="label_zjlx2_tips" class="tipsmsg"></div>
+							</td>
+							<td class="">
+								<div class="slectstyle">
+									<select vl-default="" id="sle_zjlx2" vtitle="证件类型" class="form-item text-left" vl-tipsid="sle_zjlx2_tips" vl-regex="['maxlength25']" vl-message="['证件类型长度大于最大长度:[25]!']" style="width: 151px;" title="sle_zjlx2" vl-slemodel="txt_zjlx2,txt_zjxm2,txt_fzjg2,txt_zjyxrq2,txt_hcjg,txt_qtbz2,txt_zjlx2,txt_zjxm2,txt_fzjg2,txt_zjyxrq2,txt_hcjg,txt_qtbz2,txt_zjlx2,txt_zjxm2,txt_fzjg2,txt_zjyxrq2,txt_hcjg,txt_qtbz2,txt_zjlx2,txt_zjxm2,txt_fzjg2,txt_zjyxrq2,txt_qtbz2,txt_zjlx2,txt_zjxm2,txt_fzjg2,txt_zjyxrq2,txt_qtbz2,txt_zjlx2,txt_zjxm2,txt_fzjg2,txt_zjyxrq2,txt_qtbz2,txt_zjlx2,txt_zjxm2,txt_fzjg2,txt_zjyxrq2,txt_qtbz2,txt_zjlx2,txt_zjxm2,txt_fzjg2,txt_zjyxrq2,txt_qtbz2,txt_zjlx2,txt_zjxm2,txt_fzjg2,txt_zjyxrq2,txt_qtbz2,txt_zjlx2,txt_zjxm2,txt_fzjg2,txt_zjyxrq2,txt_qtbz2,txt_zjlx2,txt_zjxm2,txt_fzjg2,txt_zjyxrq2,txt_qtbz2,txt_zjlx2,txt_zjxm2,txt_fzjg2,txt_zjyxrq2,txt_qtbz2,txt_zjlx2,txt_zjxm2,txt_fzjg2,txt_zjyxrq2,txt_qtbz2,txt_zjlx2,txt_zjxm2,txt_fzjg2,txt_zjyxrq2,txt_qtbz2,txt_zjlx2,txt_zjxm2,txt_fzjg2,txt_zjyxrq2,txt_qtbz2,txt_zjlx2,txt_zjxm2,txt_fzjg2,txt_zjyxrq2,txt_qtbz2,txt_zjlx2,txt_zjxm2,txt_fzjg2,txt_zjyxrq2,txt_qtbz2,txt_zjlx2,txt_zjxm2,txt_fzjg2,txt_zjyxrq2,txt_qtbz2,txt_zjlx2,txt_zjxm2,txt_fzjg2,txt_zjyxrq2,txt_qtbz2,txt_zjlx2,txt_zjxm2,txt_fzjg2,txt_zjyxrq2,txt_qtbz2,txt_zjlx2,txt_zjxm2,txt_fzjg2,txt_zjyxrq2,txt_qtbz2">
+										<option disabled="" style="background-color: blue; color: #fff;" value="" selected="selected">证件类型值含义</option>
+										<option sle-require="[{'id':'txt_zjlx2','regex':['require','maxlength20','idcard'],'tips':['证件类型不能为空!','证件类型长度大于最大长度:[20]!','证件号码身份证位数不正确(应为15位或者18位)！'],'disabled':'false*false*false','default':'**'},{'id':'txt_zjxm2','regex':['require','maxlength80','hascode'],'tips':['证件姓名不能为空!','证件姓名长度大于最大长度:[80]!','证件姓名不能为全数字!'],'disabled':'false*false*false','default':'**'},{'id':'txt_fzjg2','regex':['maxlength80'],'tips':['发证机关长度大于最大长度:[80]!'],'disabled':'false','default':''},{'id':'txt_zjyxrq2','regex':['maxlength8','tdate','number'],'tips':['请输入正确的证件有效日期的格式（如：19000101）!','请输入正确的证件有效日期的格式（如：19000101）!'],'disabled':'false*false*false','default':'**'},{'id':'txt_hcjg','regex':['equal'],'tips':[''],'disabled':'false','default':''},{'id':'txt_qtbz2','regex':['maxlength120'],'tips':['其他备注长度大于最大长度:[120]!'],'disabled':'false','default':''}]" value="01">01 - 第一代居民身份证</option>
+										<option sle-require="[{'id':'txt_zjlx2','regex':['require','maxlength20','idcard'],'tips':['证件类型不能为空!','证件类型长度大于最大长度:[20]!','证件号码身份证位数不正确(应为15位或者18位)！'],'disabled':'false*false*false','default':'**'},{'id':'txt_zjxm2','regex':['require','maxlength80','hascode'],'tips':['证件姓名不能为空!','证件姓名长度大于最大长度:[80]!','证件姓名不能为全数字!'],'disabled':'false*false*false','default':'**'},{'id':'txt_fzjg2','regex':['maxlength80'],'tips':['发证机关长度大于最大长度:[80]!'],'disabled':'false','default':''},{'id':'txt_zjyxrq2','regex':['maxlength8','tdate','number'],'tips':['请输入正确的证件有效日期的格式（如：19000101）!','请输入正确的证件有效日期的格式（如：19000101）!'],'disabled':'false*false*false','default':'**'},{'id':'txt_hcjg','regex':['equal'],'tips':[''],'disabled':'false','default':''},{'id':'txt_qtbz2','regex':['maxlength120'],'tips':['其他备注长度大于最大长度:[120]!'],'disabled':'false','default':''}]" value="02">02 - 第二代居民身份证</option>
+										<option sle-require="[{'id':'txt_zjlx2','regex':['require','maxlength20','idcard'],'tips':['证件类型不能为空!','证件类型长度大于最大长度:[20]!','证件号码身份证位数不正确(应为15位或者18位)！'],'disabled':'false*false*false','default':'**'},{'id':'txt_zjxm2','regex':['require','maxlength80','hascode'],'tips':['证件姓名不能为空!','证件姓名长度大于最大长度:[80]!','证件姓名不能为全数字!'],'disabled':'false*false*false','default':'**'},{'id':'txt_fzjg2','regex':['maxlength80'],'tips':['发证机关长度大于最大长度:[80]!'],'disabled':'false','default':''},{'id':'txt_zjyxrq2','regex':['maxlength8','tdate','number'],'tips':['请输入正确的证件有效日期的格式（如：19000101）!','请输入正确的证件有效日期的格式（如：19000101）!'],'disabled':'false*false*false','default':'**'},{'id':'txt_hcjg','regex':['equal'],'tips':[''],'disabled':'false','default':''},{'id':'txt_qtbz2','regex':['maxlength120'],'tips':['其他备注长度大于最大长度:[120]!'],'disabled':'false','default':''}]" value="03">03 - 临时身份证</option>
+										<option sle-require="[{'id':'txt_zjlx2','regex':['require','maxlength40'],'tips':['证件类型不能为空!','证件类型长度大于最大长度:[40]!'],'disabled':'false*false','default':'*'},{'id':'txt_zjxm2','regex':['require','maxlength80','hascode'],'tips':['证件姓名不能为空!','证件姓名长度大于最大长度:[80]!','证件姓名不能为全数字!'],'disabled':'false*false*false','default':'**'},{'id':'txt_fzjg2','regex':['maxlength80'],'tips':['发证机关长度大于最大长度:[80]!'],'disabled':'false','default':''},{'id':'txt_zjyxrq2','regex':['maxlength8','tdate','number'],'tips':['请输入正确的证件有效日期的格式（如：19000101）!','请输入正确的证件有效日期的日期格式（如：19000101）!','请输入正确的证件有效日期日期格式（如：19000101）!'],'disabled':'false*false*false','default':'**'},{'id':'txt_qtbz2','regex':['maxlength120'],'tips':['其他备注长度大于最大长度:[120]!'],'disabled':'false','default':''}]value=&quot;04&quot;">04 - 中国护照</option>
+										<option sle-require="[{'id':'txt_zjlx2','regex':['require','maxlength40'],'tips':['证件类型不能为空!','证件类型长度大于最大长度:[40]!'],'disabled':'false*false','default':'*'},{'id':'txt_zjxm2','regex':['require','maxlength80','hascode'],'tips':['证件姓名不能为空!','证件姓名长度大于最大长度:[80]!','证件姓名不能为全数字!'],'disabled':'false*false*false','default':'**'},{'id':'txt_fzjg2','regex':['maxlength80'],'tips':['发证机关长度大于最大长度:[80]!'],'disabled':'false','default':''},{'id':'txt_zjyxrq2','regex':['maxlength8','tdate','number'],'tips':['请输入正确的证件有效日期的格式（如：19000101）!','请输入正确的证件有效日期的日期格式（如：19000101）!','请输入正确的证件有效日期日期格式（如：19000101）!'],'disabled':'false*false*false','default':'**'},{'id':'txt_qtbz2','regex':['maxlength120'],'tips':['其他备注长度大于最大长度:[120]!'],'disabled':'false','default':''}]value=&quot;05&quot;">05 - 户口簿</option>
+										<option sle-require="[{'id':'txt_zjlx2','regex':['require','maxlength40'],'tips':['证件类型不能为空!','证件类型长度大于最大长度:[40]!'],'disabled':'false*false','default':'*'},{'id':'txt_zjxm2','regex':['require','maxlength80','hascode'],'tips':['证件姓名不能为空!','证件姓名长度大于最大长度:[80]!','证件姓名不能为全数字!'],'disabled':'false*false*false','default':'**'},{'id':'txt_fzjg2','regex':['maxlength80'],'tips':['发证机关长度大于最大长度:[80]!'],'disabled':'false','default':''},{'id':'txt_zjyxrq2','regex':['maxlength8','tdate','number'],'tips':['请输入正确的证件有效日期的格式（如：19000101）!','请输入正确的证件有效日期的日期格式（如：19000101）!','请输入正确的证件有效日期日期格式（如：19000101）!'],'disabled':'false*false*false','default':'**'},{'id':'txt_qtbz2','regex':['maxlength120'],'tips':['其他备注长度大于最大长度:[120]!'],'disabled':'false','default':''}]value=&quot;06&quot;">06 - 村民委员会证明</option>
+										<option sle-require="[{'id':'txt_zjlx2','regex':['require','maxlength40'],'tips':['证件类型不能为空!','证件类型长度大于最大长度:[40]!'],'disabled':'false*false','default':'*'},{'id':'txt_zjxm2','regex':['require','maxlength80','hascode'],'tips':['证件姓名不能为空!','证件姓名长度大于最大长度:[80]!','证件姓名不能为全数字!'],'disabled':'false*false*false','default':'**'},{'id':'txt_fzjg2','regex':['maxlength80'],'tips':['发证机关长度大于最大长度:[80]!'],'disabled':'false','default':''},{'id':'txt_zjyxrq2','regex':['maxlength8','tdate','number'],'tips':['请输入正确的证件有效日期的格式（如：19000101）!','请输入正确的证件有效日期的日期格式（如：19000101）!','请输入正确的证件有效日期日期格式（如：19000101）!'],'disabled':'false*false*false','default':'**'},{'id':'txt_qtbz2','regex':['maxlength120'],'tips':['其他备注长度大于最大长度:[120]!'],'disabled':'false','default':''}]value=&quot;07&quot;">07 - 学生证</option>
+										<option sle-require="[{'id':'txt_zjlx2','regex':['require','maxlength40'],'tips':['证件类型不能为空!','证件类型长度大于最大长度:[40]!'],'disabled':'false*false','default':'*'},{'id':'txt_zjxm2','regex':['require','maxlength80','hascode'],'tips':['证件姓名不能为空!','证件姓名长度大于最大长度:[80]!','证件姓名不能为全数字!'],'disabled':'false*false*false','default':'**'},{'id':'txt_fzjg2','regex':['maxlength80'],'tips':['发证机关长度大于最大长度:[80]!'],'disabled':'false','default':''},{'id':'txt_zjyxrq2','regex':['maxlength8','tdate','number'],'tips':['请输入正确的证件有效日期的格式（如：19000101）!','请输入正确的证件有效日期的日期格式（如：19000101）!','请输入正确的证件有效日期日期格式（如：19000101）!'],'disabled':'false*false*false','default':'**'},{'id':'txt_qtbz2','regex':['maxlength120'],'tips':['其他备注长度大于最大长度:[120]!'],'disabled':'false','default':''}]value=&quot;08&quot;">08 - 军官证</option>
+										<option sle-require="[{'id':'txt_zjlx2','regex':['require','maxlength40'],'tips':['证件类型不能为空!','证件类型长度大于最大长度:[40]!'],'disabled':'false*false','default':'*'},{'id':'txt_zjxm2','regex':['require','maxlength80','hascode'],'tips':['证件姓名不能为空!','证件姓名长度大于最大长度:[80]!','证件姓名不能为全数字!'],'disabled':'false*false*false','default':'**'},{'id':'txt_fzjg2','regex':['maxlength80'],'tips':['发证机关长度大于最大长度:[80]!'],'disabled':'false','default':''},{'id':'txt_zjyxrq2','regex':['maxlength8','tdate','number'],'tips':['请输入正确的证件有效日期的格式（如：19000101）!','请输入正确的证件有效日期的日期格式（如：19000101）!','请输入正确的证件有效日期日期格式（如：19000101）!'],'disabled':'false*false*false','default':'**'},{'id':'txt_qtbz2','regex':['maxlength120'],'tips':['其他备注长度大于最大长度:[120]!'],'disabled':'false','default':''}]value=&quot;09&quot;">09 - 离休干部荣誉证</option>
+										<option sle-require="[{'id':'txt_zjlx2','regex':['require','maxlength40'],'tips':['证件类型不能为空!','证件类型长度大于最大长度:[40]!'],'disabled':'false*false','default':'*'},{'id':'txt_zjxm2','regex':['require','maxlength80','hascode'],'tips':['证件姓名不能为空!','证件姓名长度大于最大长度:[80]!','证件姓名不能为全数字!'],'disabled':'false*false*false','default':'**'},{'id':'txt_fzjg2','regex':['maxlength80'],'tips':['发证机关长度大于最大长度:[80]!'],'disabled':'false','default':''},{'id':'txt_zjyxrq2','regex':['maxlength8','tdate','number'],'tips':['请输入正确的证件有效日期的格式（如：19000101）!','请输入正确的证件有效日期的日期格式（如：19000101）!','请输入正确的证件有效日期日期格式（如：19000101）!'],'disabled':'false*false*false','default':'**'},{'id':'txt_qtbz2','regex':['maxlength120'],'tips':['其他备注长度大于最大长度:[120]!'],'disabled':'false','default':''}]value=&quot;10&quot;">10 - 军官退休证</option>
+										<option sle-require="[{'id':'txt_zjlx2','regex':['require','maxlength40'],'tips':['证件类型不能为空!','证件类型长度大于最大长度:[40]!'],'disabled':'false*false','default':'*'},{'id':'txt_zjxm2','regex':['require','maxlength80','hascode'],'tips':['证件姓名不能为空!','证件姓名长度大于最大长度:[80]!','证件姓名不能为全数字!'],'disabled':'false*false*false','default':'**'},{'id':'txt_fzjg2','regex':['maxlength80'],'tips':['发证机关长度大于最大长度:[80]!'],'disabled':'false','default':''},{'id':'txt_zjyxrq2','regex':['maxlength8','tdate','number'],'tips':['请输入正确的证件有效日期的格式（如：19000101）!','请输入正确的证件有效日期的日期格式（如：19000101）!','请输入正确的证件有效日期日期格式（如：19000101）!'],'disabled':'false*false*false','default':'**'},{'id':'txt_qtbz2','regex':['maxlength120'],'tips':['其他备注长度大于最大长度:[120]!'],'disabled':'false','default':''}]value=&quot;11&quot;">11 - 文职干部退休证</option>
+										<option sle-require="[{'id':'txt_zjlx2','regex':['require','maxlength40'],'tips':['证件类型不能为空!','证件类型长度大于最大长度:[40]!'],'disabled':'false*false','default':'*'},{'id':'txt_zjxm2','regex':['require','maxlength80','hascode'],'tips':['证件姓名不能为空!','证件姓名长度大于最大长度:[80]!','证件姓名不能为全数字!'],'disabled':'false*false*false','default':'**'},{'id':'txt_fzjg2','regex':['maxlength80'],'tips':['发证机关长度大于最大长度:[80]!'],'disabled':'false','default':''},{'id':'txt_zjyxrq2','regex':['maxlength8','tdate','number'],'tips':['请输入正确的证件有效日期的格式（如：19000101）!','请输入正确的证件有效日期的日期格式（如：19000101）!','请输入正确的证件有效日期日期格式（如：19000101）!'],'disabled':'false*false*false','default':'**'},{'id':'txt_qtbz2','regex':['maxlength120'],'tips':['其他备注长度大于最大长度:[120]!'],'disabled':'false','default':''}]value=&quot;12&quot;">12 - 军事学员证</option>
+										<option sle-require="[{'id':'txt_zjlx2','regex':['require','maxlength40'],'tips':['证件类型不能为空!','证件类型长度大于最大长度:[40]!'],'disabled':'false*false','default':'*'},{'id':'txt_zjxm2','regex':['require','maxlength80','hascode'],'tips':['证件姓名不能为空!','证件姓名长度大于最大长度:[80]!','证件姓名不能为全数字!'],'disabled':'false*false*false','default':'**'},{'id':'txt_fzjg2','regex':['maxlength80'],'tips':['发证机关长度大于最大长度:[80]!'],'disabled':'false','default':''},{'id':'txt_zjyxrq2','regex':['maxlength8','tdate','number'],'tips':['请输入正确的证件有效日期的格式（如：19000101）!','请输入正确的证件有效日期的日期格式（如：19000101）!','请输入正确的证件有效日期日期格式（如：19000101）!'],'disabled':'false*false*false','default':'**'},{'id':'txt_qtbz2','regex':['maxlength120'],'tips':['其他备注长度大于最大长度:[120]!'],'disabled':'false','default':''}]value=&quot;13&quot;">13 - 武警证</option>
+										<option sle-require="[{'id':'txt_zjlx2','regex':['require','maxlength40'],'tips':['证件类型不能为空!','证件类型长度大于最大长度:[40]!'],'disabled':'false*false','default':'*'},{'id':'txt_zjxm2','regex':['require','maxlength80','hascode'],'tips':['证件姓名不能为空!','证件姓名长度大于最大长度:[80]!','证件姓名不能为全数字!'],'disabled':'false*false*false','default':'**'},{'id':'txt_fzjg2','regex':['maxlength80'],'tips':['发证机关长度大于最大长度:[80]!'],'disabled':'false','default':''},{'id':'txt_zjyxrq2','regex':['maxlength8','tdate','number'],'tips':['请输入正确的证件有效日期的格式（如：19000101）!','请输入正确的证件有效日期的日期格式（如：19000101）!','请输入正确的证件有效日期日期格式（如：19000101）!'],'disabled':'false*false*false','default':'**'},{'id':'txt_qtbz2','regex':['maxlength120'],'tips':['其他备注长度大于最大长度:[120]!'],'disabled':'false','default':''}]value=&quot;14&quot;">14 - 士兵证</option>
+										<option sle-require="[{'id':'txt_zjlx2','regex':['require','maxlength40'],'tips':['证件类型不能为空!','证件类型长度大于最大长度:[40]!'],'disabled':'false*false','default':'*'},{'id':'txt_zjxm2','regex':['require','maxlength80','hascode'],'tips':['证件姓名不能为空!','证件姓名长度大于最大长度:[80]!','证件姓名不能为全数字!'],'disabled':'false*false*false','default':'**'},{'id':'txt_fzjg2','regex':['maxlength80'],'tips':['发证机关长度大于最大长度:[80]!'],'disabled':'false','default':''},{'id':'txt_zjyxrq2','regex':['maxlength8','tdate','number'],'tips':['请输入正确的证件有效日期的格式（如：19000101）!','请输入正确的证件有效日期的日期格式（如：19000101）!','请输入正确的证件有效日期日期格式（如：19000101）!'],'disabled':'false*false*false','default':'**'},{'id':'txt_qtbz2','regex':['maxlength120'],'tips':['其他备注长度大于最大长度:[120]!'],'disabled':'false','default':''}]value=&quot;15&quot;">15 - 香港通行证</option>
+										<option sle-require="[{'id':'txt_zjlx2','regex':['require','maxlength40'],'tips':['证件类型不能为空!','证件类型长度大于最大长度:[40]!'],'disabled':'false*false','default':'*'},{'id':'txt_zjxm2','regex':['require','maxlength80','hascode'],'tips':['证件姓名不能为空!','证件姓名长度大于最大长度:[80]!','证件姓名不能为全数字!'],'disabled':'false*false*false','default':'**'},{'id':'txt_fzjg2','regex':['maxlength80'],'tips':['发证机关长度大于最大长度:[80]!'],'disabled':'false','default':''},{'id':'txt_zjyxrq2','regex':['maxlength8','tdate','number'],'tips':['请输入正确的证件有效日期的格式（如：19000101）!','请输入正确的证件有效日期的日期格式（如：19000101）!','请输入正确的证件有效日期日期格式（如：19000101）!'],'disabled':'false*false*false','default':'**'},{'id':'txt_qtbz2','regex':['maxlength120'],'tips':['其他备注长度大于最大长度:[120]!'],'disabled':'false','default':''}]value=&quot;16&quot;">16 - 澳门通行证</option>
+										<option sle-require="[{'id':'txt_zjlx2','regex':['require','maxlength40'],'tips':['证件类型不能为空!','证件类型长度大于最大长度:[40]!'],'disabled':'false*false','default':'*'},{'id':'txt_zjxm2','regex':['require','maxlength80','hascode'],'tips':['证件姓名不能为空!','证件姓名长度大于最大长度:[80]!','证件姓名不能为全数字!'],'disabled':'false*false*false','default':'**'},{'id':'txt_fzjg2','regex':['maxlength80'],'tips':['发证机关长度大于最大长度:[80]!'],'disabled':'false','default':''},{'id':'txt_zjyxrq2','regex':['maxlength8','tdate','number'],'tips':['请输入正确的证件有效日期的格式（如：19000101）!','请输入正确的证件有效日期的日期格式（如：19000101）!','请输入正确的证件有效日期日期格式（如：19000101）!'],'disabled':'false*false*false','default':'**'},{'id':'txt_qtbz2','regex':['maxlength120'],'tips':['其他备注长度大于最大长度:[120]!'],'disabled':'false','default':''}]value=&quot;17&quot;">17 - 台湾通行证或有效旅行证件</option>
+										<option sle-require="[{'id':'txt_zjlx2','regex':['require','maxlength40'],'tips':['证件类型不能为空!','证件类型长度大于最大长度:[40]!'],'disabled':'false*false','default':'*'},{'id':'txt_zjxm2','regex':['require','maxlength80','hascode'],'tips':['证件姓名不能为空!','证件姓名长度大于最大长度:[80]!','证件姓名不能为全数字!'],'disabled':'false*false*false','default':'**'},{'id':'txt_fzjg2','regex':['maxlength80'],'tips':['发证机关长度大于最大长度:[80]!'],'disabled':'false','default':''},{'id':'txt_zjyxrq2','regex':['maxlength8','tdate','number'],'tips':['请输入正确的证件有效日期的格式（如：19000101）!','请输入正确的证件有效日期的日期格式（如：19000101）!','请输入正确的证件有效日期日期格式（如：19000101）!'],'disabled':'false*false*false','default':'**'},{'id':'txt_qtbz2','regex':['maxlength120'],'tips':['其他备注长度大于最大长度:[120]!'],'disabled':'false','default':''}]value=&quot;18&quot;">18 - 外国人永久居留证</option>
+										<option sle-require="[{'id':'txt_zjlx2','regex':['require','maxlength40'],'tips':['证件类型不能为空!','证件类型长度大于最大长度:[40]!'],'disabled':'false*false','default':'*'},{'id':'txt_zjxm2','regex':['require','maxlength80','hascode'],'tips':['证件姓名不能为空!','证件姓名长度大于最大长度:[80]!','证件姓名不能为全数字!'],'disabled':'false*false*false','default':'**'},{'id':'txt_fzjg2','regex':['maxlength80'],'tips':['发证机关长度大于最大长度:[80]!'],'disabled':'false','default':''},{'id':'txt_zjyxrq2','regex':['maxlength8','tdate','number'],'tips':['请输入正确的证件有效日期的格式（如：19000101）!','请输入正确的证件有效日期的日期格式（如：19000101）!','请输入正确的证件有效日期日期格式（如：19000101）!'],'disabled':'false*false*false','default':'**'},{'id':'txt_qtbz2','regex':['maxlength120'],'tips':['其他备注长度大于最大长度:[120]!'],'disabled':'false','default':''}]value=&quot;19&quot;">19 - 边民出入境通行证</option>
+										<option sle-require="[{'id':'txt_zjlx2','regex':['require','maxlength40'],'tips':['证件类型不能为空!','证件类型长度大于最大长度:[40]!'],'disabled':'false*false','default':'*'},{'id':'txt_zjxm2','regex':['require','maxlength80','hascode'],'tips':['证件姓名不能为空!','证件姓名长度大于最大长度:[80]!','证件姓名不能为全数字!'],'disabled':'false*false*false','default':'**'},{'id':'txt_fzjg2','regex':['maxlength80'],'tips':['发证机关长度大于最大长度:[80]!'],'disabled':'false','default':''},{'id':'txt_zjyxrq2','regex':['maxlength8','tdate','number'],'tips':['请输入正确的证件有效日期的格式（如：19000101）!','请输入正确的证件有效日期的日期格式（如：19000101）!','请输入正确的证件有效日期日期格式（如：19000101）!'],'disabled':'false*false*false','default':'**'},{'id':'txt_qtbz2','regex':['maxlength120'],'tips':['其他备注长度大于最大长度:[120]!'],'disabled':'false','default':''}]value=&quot;20&quot;">20 - 外国护照</option>
+										<option sle-require="[{'id':'txt_zjlx2','regex':['require','maxlength40'],'tips':['证件类型不能为空!','证件类型长度大于最大长度:[40]!'],'disabled':'false*false','default':'*'},{'id':'txt_zjxm2','regex':['require','maxlength80','hascode'],'tips':['证件姓名不能为空!','证件姓名长度大于最大长度:[80]!','证件姓名不能为全数字!'],'disabled':'false*false*false','default':'**'},{'id':'txt_fzjg2','regex':['maxlength80'],'tips':['发证机关长度大于最大长度:[80]!'],'disabled':'false','default':''},{'id':'txt_zjyxrq2','regex':['maxlength8','tdate','number'],'tips':['请输入正确的证件有效日期的格式（如：19000101）!','请输入正确的证件有效日期的日期格式（如：19000101）!','请输入正确的证件有效日期日期格式（如：19000101）!'],'disabled':'false*false*false','default':'**'},{'id':'txt_qtbz2','regex':['maxlength120'],'tips':['其他备注长度大于最大长度:[120]!'],'disabled':'false','default':''}]value=&quot;21&quot;">21 - 其他</option>
+									</select><input type="text" oncopy="return false" onpaste="return false" oncut="return false" style="width: 128px;"></div>
+								<div id="sle_zjlx2_tips" class="tipsmsg"></div>
+							</td>
+							<td class="" style="width: 0px;"><label vl-default="" id="label_zjhm2" vtitle="证件号码" class="form-item text-left" vl-tipsid="label_zjhm2_tips" title="label_zjhm2">证件号码</label>
+								<div id="label_zjhm2_tips" class="tipsmsg"></div>
+							</td>
+							<td class=""><input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_zjlx2" vtitle="证件号码" class="form-item text-left" vl-disabled="true" vl-tipsid="txt_zjlx2_tips" style="width: 151px;" title="txt_zjlx2" onpaste="return false" disabled="disabled">
+								<div id="txt_zjlx2_tips" class="tipsmsg"></div>
+							</td>
+						</tr>
+						<tr>
+							<td rowspan="1" colspan="1" class="" style="width: 0px;"><label vl-default="" id="label_zjxm2" vtitle="证件姓名" class="form-item text-left" vl-tipsid="label_zjxm2_tips" title="label_zjxm2">证件姓名</label>
+								<div id="label_zjxm2_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class=""><input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_zjxm2" vtitle="证件姓名" class="form-item text-left" vl-disabled="true" vl-tipsid="txt_zjxm2_tips" style="width: 151px;" title="txt_zjxm2" onpaste="return false" disabled="disabled">
+								<div id="txt_zjxm2_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="" style="width: 0px;"><label vl-default="" id="label_fzjg2" vtitle="发证机关" class="form-item text-left" vl-tipsid="label_fzjg2_tips" title="label_fzjg2">发证机关</label>
+								<div id="label_fzjg2_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class=""><input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_fzjg2" vtitle="发证机关" class="form-item text-left" vl-disabled="true" vl-tipsid="txt_fzjg2_tips" vl-regex="['maxlength120']" vl-message="['长度大于最大长度:[120]!']" style="width: 151px;" title="txt_fzjg2" onpaste="return false" disabled="disabled">
+								<div id="txt_fzjg2_tips" class="tipsmsg"></div>
+							</td>
+						</tr>
+						<tr>
+							<td rowspan="1" colspan="1" class="" style="width: 0px;"><label vl-default="" id="label_zjyxrq2" vtitle="证件有效日期" class="form-item text-left" vl-tipsid="label_zjyxrq2_tips" title="label_zjyxrq2">证件有效日期</label>
+								<div id="label_zjyxrq2_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class=""><input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_zjyxrq2" vtitle="证件有效日期" class="form-item text-left" vl-disabled="true" vl-tipsid="txt_zjyxrq2_tips" style="width: 151px;" title="txt_zjyxrq2" onpaste="return false" disabled="disabled">
+								<div id="txt_zjyxrq2_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="" style="width: 0px;"><label vl-default="" id="label_hcjg2" vtitle="核查结果" class="form-item text-left" vl-tipsid="label_hcjg2_tips" title="label_hcjg2">核查结果</label>
+								<div id="label_hcjg2_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class=""><input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_hcjg2" vtitle="核查结果" class="form-item text-left" vl-disabled="true" vl-tipsid="txt_hcjg2_tips" style="width: 151px;" title="txt_hcjg2" onpaste="return false" disabled="disabled">
+								<div id="txt_hcjg2_tips" class="tipsmsg"></div>
+							</td>
+						</tr>
+						<tr>
+							<td rowspan="1" colspan="1" class="" style="width: 0px;"><label vl-default="" id="label_qtbz2" vtitle="其它备注" class="form-item text-left" vl-tipsid="label_qtbz2_tips" title="label_qtbz2">其它备注</label>
+								<div id="label_qtbz2_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class=""><input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_qtbz2" vtitle="其它备注" class="form-item text-left" vl-disabled="true" vl-tipsid="txt_qtbz2_tips" style="width: 151px;" title="txt_qtbz2" onpaste="return false" disabled="disabled">
+								<div id="txt_qtbz2_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="" style="width: 0px;"><label vl-default="" id="label_hc2" vtitle="核查" class="form-item text-left" vl-tipsid="label_hc2_tips" title="label_hc2">核查</label>
+								<div id="label_hc2_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="" style="width: 0px;"><label vl-default="" id="label_dq2" vtitle="读取二代身份证" class="form-item text-left" vl-tipsid="label_dq2_tips" title="label_dq2">读取二代身份证</label>
+								<div id="label_dq2_tips" class="tipsmsg"></div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="con-map"><span class="top-title">账户持有人身份信息 <span id="dianji_con" style="cursor: pointer;">▼</span></span>
+				<table id="qv" class="con-map2-table qv" style="display:none">
+					<tbody>
+						<tr>
+							<td class="" style="width: 0px;"><label vl-keyup="wwww" vl-default="" id="label_zjlx" vtitle="证件类型" class="form-item text-left" vl-tipsid="label_zjlx_tips" title="label_zjlx">证件类型</label>
+								<div id="label_zjlx_tips" class="tipsmsg"></div>
+							</td>
+							<td class="">
+								<div class="slectstyle">
+									<select vl-default="" id="sle_zjlx" vtitle="证件类型" class="form-item text-left" vl-tipsid="sle_zjlx_tips" vl-regex="['maxlength25']" vl-message="['证件类型长度大于最大长度:[25]!']" style="width: 151px;" title="sle_zjlx" vl-slemodel="txt_zjlx,txt_zjxm,txt_fzjg,txt_zjyxrq,txt_qtbz,txt_zjlx,txt_zjxm,txt_fzjg,txt_zjyxrq,txt_qtbz,txt_zjlx,txt_zjxm,txt_fzjg,txt_zjyxrq,txt_qtbz,txt_zjlx,txt_zjxm,txt_fzjg,txt_zjyxrq,txt_qtbz,txt_zjlx,txt_zjxm,txt_fzjg,txt_zjyxrq,txt_qtbz,txt_zjlx,txt_zjxm,txt_fzjg,txt_zjyxrq,txt_qtbz,txt_zjlx,txt_zjxm,txt_fzjg,txt_zjyxrq,txt_qtbz,txt_zjlx,txt_zjxm,txt_fzjg,txt_zjyxrq,txt_qtbz,txt_zjlx,txt_zjxm,txt_fzjg,txt_zjyxrq,txt_qtbz,txt_zjlx,txt_zjxm,txt_fzjg,txt_zjyxrq,txt_qtbz,txt_zjlx,txt_zjxm,txt_fzjg,txt_zjyxrq,txt_qtbz,txt_zjlx,txt_zjxm,txt_fzjg,txt_zjyxrq,txt_qtbz,txt_zjlx,txt_zjxm,txt_fzjg,txt_zjyxrq,txt_qtbz,txt_zjlx,txt_zjxm,txt_fzjg,txt_zjyxrq,txt_qtbz,txt_zjlx,txt_zjxm,txt_fzjg,txt_zjyxrq,txt_qtbz,txt_zjlx,txt_zjxm,txt_fzjg,txt_zjyxrq,txt_qtbz,txt_zjlx,txt_zjxm,txt_fzjg,txt_zjyxrq,txt_qtbz,txt_zjlx,txt_zjxm,txt_fzjg,txt_zjyxrq,txt_qtbz,txt_zjlx,txt_zjxm,txt_fzjg,txt_zjyxrq,txt_qtbz,txt_zjlx,txt_zjxm,txt_fzjg,txt_zjyxrq,txt_qtbz,txt_zjlx,txt_zjxm,txt_fzjg,txt_zjyxrq,txt_qtbz">
+										<option disabled="" style="background-color: blue; color: #fff;" value="" selected="selected">证件类型值含义</option>
+										<option sle-require="[{'id':'txt_zjlx','regex':['require','maxlength20','idcard'],'tips':['证件类型不能为空!','证件类型长度大于最大长度:[20]!','证件号码身份证位数不正确(应为15位或者18位)！'],'disabled':'false*false*false','default':'**'},{'id':'txt_zjxm','regex':['require','maxlength80','hascode'],'tips':['证件姓名不能为空!','证件姓名长度大于最大长度:[80]!','证件姓名不能为全数字!'],'disabled':'false*false*false','default':'**'},{'id':'txt_fzjg','regex':['maxlength80'],'tips':['发证机关长度大于最大长度:[80]!'],'disabled':'false','default':''},{'id':'txt_zjyxrq','regex':['maxlength8','tdate','number'],'tips':['请输入正确的证件有效日期的格式（如：19000101）!','请输入正确的证件有效日期的格式（如：19000101）!','请输入正确的证件有效日期的格式（如：19000101）!'],'disabled':'false*false*false','default':'**'},{'id':'txt_qtbz','regex':['maxlength120'],'tips':['其他备注长度大于最大长度:[120]!'],'disabled':'false','default':''}]" value="01">01 - 第一代居民身份证</option>
+										<option sle-require="[{'id':'txt_zjlx','regex':['require','maxlength20','idcard'],'tips':['证件类型不能为空!','证件类型长度大于最大长度:[20]!','证件号码身份证位数不正确(应为15位或者18位)！'],'disabled':'false*false*false','default':'**'},{'id':'txt_zjxm','regex':['require','maxlength80','hascode'],'tips':['证件姓名不能为空!','证件姓名长度大于最大长度:[80]!','证件姓名不能为全数字!'],'disabled':'false*false*false','default':'**'},{'id':'txt_fzjg','regex':['maxlength80'],'tips':['发证机关长度大于最大长度:[80]!'],'disabled':'false','default':''},{'id':'txt_zjyxrq','regex':['maxlength8','tdate','number'],'tips':['请输入正确的证件有效日期的格式（如：19000101）!','请输入正确的证件有效日期的格式（如：19000101）!','请输入正确的证件有效日期的格式（如：19000101）!'],'disabled':'false*false*false','default':'**'},{'id':'txt_qtbz','regex':['maxlength120'],'tips':['其他备注长度大于最大长度:[120]!'],'disabled':'false','default':''}]" value="02">02 - 第二代居民身份证</option>
+										<option sle-require="[{'id':'txt_zjlx','regex':['require','maxlength20','idcard'],'tips':['证件类型不能为空!','证件类型长度大于最大长度:[20]!','证件号码身份证位数不正确(应为15位或者18位)！'],'disabled':'false*false*false','default':'**'},{'id':'txt_zjxm','regex':['require','maxlength80','hascode'],'tips':['证件姓名不能为空!','证件姓名长度大于最大长度:[80]!','证件姓名不能为全数字!'],'disabled':'false*false*false','default':'**'},{'id':'txt_fzjg','regex':['maxlength80'],'tips':['发证机关长度大于最大长度:[80]!'],'disabled':'false','default':''},{'id':'txt_zjyxrq','regex':['maxlength8','tdate','number'],'tips':['请输入正确的证件有效日期的格式（如：19000101）!','请输入正确的证件有效日期的格式（如：19000101）!','请输入正确的证件有效日期的格式（如：19000101）!'],'disabled':'false*false*false','default':'**'},{'id':'txt_qtbz','regex':['maxlength120'],'tips':['其他备注长度大于最大长度:[120]!'],'disabled':'false','default':''}]" value="03">03 - 临时身份证</option>
+										<option sle-require="[{'id':'txt_zjlx','regex':['require','maxlength40'],'tips':['证件类型不能为空!','证件类型长度大于最大长度:[40]!'],'disabled':'false*false','default':'*'},{'id':'txt_zjxm','regex':['require','maxlength80','hascode'],'tips':['证件姓名不能为空!','证件姓名长度大于最大长度:[80]!','证件姓名不能为全数字!'],'disabled':'false*false*false','default':'**'},{'id':'txt_fzjg','regex':['maxlength80'],'tips':['发证机关长度大于最大长度:[80]!'],'disabled':'false','default':''},{'id':'txt_zjyxrq','regex':['maxlength8','maxlength8','tdate','number'],'tips':['请输入正确的证件有效日期的格式（如：19000101）!','请输入正确的证件到期日期的格式（如：19000101）!','请输入正确的证件到期日期的格式（如：19000101）!'],'disabled':'false*false*false*false','default':'***'},{'id':'txt_qtbz','regex':['maxlength120'],'tips':['其他备注长度大于最大长度:[120]!'],'disabled':'false','default':''}]" value="04">04 - 中国护照</option>
+										<option sle-require="[{'id':'txt_zjlx','regex':['require','maxlength40'],'tips':['证件类型不能为空!','证件类型长度大于最大长度:[40]!'],'disabled':'false*false','default':'*'},{'id':'txt_zjxm','regex':['require','maxlength80','hascode'],'tips':['证件姓名不能为空!','证件姓名长度大于最大长度:[80]!','证件姓名不能为全数字!'],'disabled':'false*false*false','default':'**'},{'id':'txt_fzjg','regex':['maxlength80'],'tips':['发证机关长度大于最大长度:[80]!'],'disabled':'false','default':''},{'id':'txt_zjyxrq','regex':['maxlength8','maxlength8','tdate','number'],'tips':['请输入正确的证件有效日期的格式（如：19000101）!','请输入正确的证件到期日期的格式（如：19000101）!','请输入正确的证件到期日期的格式（如：19000101）!'],'disabled':'false*false*false*false','default':'***'},{'id':'txt_qtbz','regex':['maxlength120'],'tips':['其他备注长度大于最大长度:[120]!'],'disabled':'false','default':''}]" value="05">05 - 户口簿</option>
+										<option sle-require="[{'id':'txt_zjlx','regex':['require','maxlength40'],'tips':['证件类型不能为空!','证件类型长度大于最大长度:[40]!'],'disabled':'false*false','default':'*'},{'id':'txt_zjxm','regex':['require','maxlength80','hascode'],'tips':['证件姓名不能为空!','证件姓名长度大于最大长度:[80]!','证件姓名不能为全数字!'],'disabled':'false*false*false','default':'**'},{'id':'txt_fzjg','regex':['maxlength80'],'tips':['发证机关长度大于最大长度:[80]!'],'disabled':'false','default':''},{'id':'txt_zjyxrq','regex':['maxlength8','maxlength8','tdate','number'],'tips':['请输入正确的证件有效日期的格式（如：19000101）!','请输入正确的证件到期日期的格式（如：19000101）!','请输入正确的证件到期日期的格式（如：19000101）!'],'disabled':'false*false*false*false','default':'***'},{'id':'txt_qtbz','regex':['maxlength120'],'tips':['其他备注长度大于最大长度:[120]!'],'disabled':'false','default':''}]" value="06">06 - 村民委员会证明</option>
+										<option sle-require="[{'id':'txt_zjlx','regex':['require','maxlength40'],'tips':['证件类型不能为空!','证件类型长度大于最大长度:[40]!'],'disabled':'false*false','default':'*'},{'id':'txt_zjxm','regex':['require','maxlength80','hascode'],'tips':['证件姓名不能为空!','证件姓名长度大于最大长度:[80]!','证件姓名不能为全数字!'],'disabled':'false*false*false','default':'**'},{'id':'txt_fzjg','regex':['maxlength80'],'tips':['发证机关长度大于最大长度:[80]!'],'disabled':'false','default':''},{'id':'txt_zjyxrq','regex':['maxlength8','maxlength8','tdate','number'],'tips':['请输入正确的证件有效日期的格式（如：19000101）!','请输入正确的证件到期日期的格式（如：19000101）!','请输入正确的证件到期日期的格式（如：19000101）!'],'disabled':'false*false*false*false','default':'***'},{'id':'txt_qtbz','regex':['maxlength120'],'tips':['其他备注长度大于最大长度:[120]!'],'disabled':'false','default':''}]" value="07">07 - 学生证</option>
+										<option sle-require="[{'id':'txt_zjlx','regex':['require','maxlength40'],'tips':['证件类型不能为空!','证件类型长度大于最大长度:[40]!'],'disabled':'false*false','default':'*'},{'id':'txt_zjxm','regex':['require','maxlength80','hascode'],'tips':['证件姓名不能为空!','证件姓名长度大于最大长度:[80]!','证件姓名不能为全数字!'],'disabled':'false*false*false','default':'**'},{'id':'txt_fzjg','regex':['maxlength80'],'tips':['发证机关长度大于最大长度:[80]!'],'disabled':'false','default':''},{'id':'txt_zjyxrq','regex':['maxlength8','maxlength8','tdate','number'],'tips':['请输入正确的证件有效日期的格式（如：19000101）!','请输入正确的证件到期日期的格式（如：19000101）!','请输入正确的证件到期日期的格式（如：19000101）!'],'disabled':'false*false*false*false','default':'***'},{'id':'txt_qtbz','regex':['maxlength120'],'tips':['其他备注长度大于最大长度:[120]!'],'disabled':'false','default':''}]" value="08">08 - 军官证</option>
+										<option sle-require="[{'id':'txt_zjlx','regex':['require','maxlength40'],'tips':['证件类型不能为空!','证件类型长度大于最大长度:[40]!'],'disabled':'false*false','default':'*'},{'id':'txt_zjxm','regex':['require','maxlength80','hascode'],'tips':['证件姓名不能为空!','证件姓名长度大于最大长度:[80]!','证件姓名不能为全数字!'],'disabled':'false*false*false','default':'**'},{'id':'txt_fzjg','regex':['maxlength80'],'tips':['发证机关长度大于最大长度:[80]!'],'disabled':'false','default':''},{'id':'txt_zjyxrq','regex':['maxlength8','maxlength8','tdate','number'],'tips':['请输入正确的证件有效日期的格式（如：19000101）!','请输入正确的证件到期日期的格式（如：19000101）!','请输入正确的证件到期日期的格式（如：19000101）!'],'disabled':'false*false*false*false','default':'***'},{'id':'txt_qtbz','regex':['maxlength120'],'tips':['其他备注长度大于最大长度:[120]!'],'disabled':'false','default':''}]" value="09">09 - 离休干部荣誉证</option>
+										<option sle-require="[{'id':'txt_zjlx','regex':['require','maxlength40'],'tips':['证件类型不能为空!','证件类型长度大于最大长度:[40]!'],'disabled':'false*false','default':'*'},{'id':'txt_zjxm','regex':['require','maxlength80','hascode'],'tips':['证件姓名不能为空!','证件姓名长度大于最大长度:[80]!','证件姓名不能为全数字!'],'disabled':'false*false*false','default':'**'},{'id':'txt_fzjg','regex':['maxlength80'],'tips':['发证机关长度大于最大长度:[80]!'],'disabled':'false','default':''},{'id':'txt_zjyxrq','regex':['maxlength8','maxlength8','tdate','number'],'tips':['请输入正确的证件有效日期的格式（如：19000101）!','请输入正确的证件到期日期的格式（如：19000101）!','请输入正确的证件到期日期的格式（如：19000101）!'],'disabled':'false*false*false*false','default':'***'},{'id':'txt_qtbz','regex':['maxlength120'],'tips':['其他备注长度大于最大长度:[120]!'],'disabled':'false','default':''}]" value="10">10 - 军官退休证</option>
+										<option sle-require="[{'id':'txt_zjlx','regex':['require','maxlength40'],'tips':['证件类型不能为空!','证件类型长度大于最大长度:[40]!'],'disabled':'false*false','default':'*'},{'id':'txt_zjxm','regex':['require','maxlength80','hascode'],'tips':['证件姓名不能为空!','证件姓名长度大于最大长度:[80]!','证件姓名不能为全数字!'],'disabled':'false*false*false','default':'**'},{'id':'txt_fzjg','regex':['maxlength80'],'tips':['发证机关长度大于最大长度:[80]!'],'disabled':'false','default':''},{'id':'txt_zjyxrq','regex':['maxlength8','maxlength8','tdate','number'],'tips':['请输入正确的证件有效日期的格式（如：19000101）!','请输入正确的证件到期日期的格式（如：19000101）!','请输入正确的证件到期日期的格式（如：19000101）!'],'disabled':'false*false*false*false','default':'***'},{'id':'txt_qtbz','regex':['maxlength120'],'tips':['其他备注长度大于最大长度:[120]!'],'disabled':'false','default':''}]" value="11">11 - 文职干部退休证</option>
+										<option sle-require="[{'id':'txt_zjlx','regex':['require','maxlength40'],'tips':['证件类型不能为空!','证件类型长度大于最大长度:[40]!'],'disabled':'false*false','default':'*'},{'id':'txt_zjxm','regex':['require','maxlength80','hascode'],'tips':['证件姓名不能为空!','证件姓名长度大于最大长度:[80]!','证件姓名不能为全数字!'],'disabled':'false*false*false','default':'**'},{'id':'txt_fzjg','regex':['maxlength80'],'tips':['发证机关长度大于最大长度:[80]!'],'disabled':'false','default':''},{'id':'txt_zjyxrq','regex':['maxlength8','maxlength8','tdate','number'],'tips':['请输入正确的证件有效日期的格式（如：19000101）!','请输入正确的证件到期日期的格式（如：19000101）!','请输入正确的证件到期日期的格式（如：19000101）!'],'disabled':'false*false*false*false','default':'***'},{'id':'txt_qtbz','regex':['maxlength120'],'tips':['其他备注长度大于最大长度:[120]!'],'disabled':'false','default':''}]" value="12">12 - 军事学员证</option>
+										<option sle-require="[{'id':'txt_zjlx','regex':['require','maxlength40'],'tips':['证件类型不能为空!','证件类型长度大于最大长度:[40]!'],'disabled':'false*false','default':'*'},{'id':'txt_zjxm','regex':['require','maxlength80','hascode'],'tips':['证件姓名不能为空!','证件姓名长度大于最大长度:[80]!','证件姓名不能为全数字!'],'disabled':'false*false*false','default':'**'},{'id':'txt_fzjg','regex':['maxlength80'],'tips':['发证机关长度大于最大长度:[80]!'],'disabled':'false','default':''},{'id':'txt_zjyxrq','regex':['maxlength8','maxlength8','tdate','number'],'tips':['请输入正确的证件有效日期的格式（如：19000101）!','请输入正确的证件到期日期的格式（如：19000101）!','请输入正确的证件到期日期的格式（如：19000101）!'],'disabled':'false*false*false*false','default':'***'},{'id':'txt_qtbz','regex':['maxlength120'],'tips':['其他备注长度大于最大长度:[120]!'],'disabled':'false','default':''}]" value="13">13 - 武警证</option>
+										<option sle-require="[{'id':'txt_zjlx','regex':['require','maxlength40'],'tips':['证件类型不能为空!','证件类型长度大于最大长度:[40]!'],'disabled':'false*false','default':'*'},{'id':'txt_zjxm','regex':['require','maxlength80','hascode'],'tips':['证件姓名不能为空!','证件姓名长度大于最大长度:[80]!','证件姓名不能为全数字!'],'disabled':'false*false*false','default':'**'},{'id':'txt_fzjg','regex':['maxlength80'],'tips':['发证机关长度大于最大长度:[80]!'],'disabled':'false','default':''},{'id':'txt_zjyxrq','regex':['maxlength8','maxlength8','tdate','number'],'tips':['请输入正确的证件有效日期的格式（如：19000101）!','请输入正确的证件到期日期的格式（如：19000101）!','请输入正确的证件到期日期的格式（如：19000101）!'],'disabled':'false*false*false*false','default':'***'},{'id':'txt_qtbz','regex':['maxlength120'],'tips':['其他备注长度大于最大长度:[120]!'],'disabled':'false','default':''}]" value="14">14 - 士兵证</option>
+										<option sle-require="[{'id':'txt_zjlx','regex':['require','maxlength40'],'tips':['证件类型不能为空!','证件类型长度大于最大长度:[40]!'],'disabled':'false*false','default':'*'},{'id':'txt_zjxm','regex':['require','maxlength80','hascode'],'tips':['证件姓名不能为空!','证件姓名长度大于最大长度:[80]!','证件姓名不能为全数字!'],'disabled':'false*false*false','default':'**'},{'id':'txt_fzjg','regex':['maxlength80'],'tips':['发证机关长度大于最大长度:[80]!'],'disabled':'false','default':''},{'id':'txt_zjyxrq','regex':['maxlength8','maxlength8','tdate','number'],'tips':['请输入正确的证件有效日期的格式（如：19000101）!','请输入正确的证件到期日期的格式（如：19000101）!','请输入正确的证件到期日期的格式（如：19000101）!'],'disabled':'false*false*false*false','default':'***'},{'id':'txt_qtbz','regex':['maxlength120'],'tips':['其他备注长度大于最大长度:[120]!'],'disabled':'false','default':''}]" value="15">15 - 香港通行证</option>
+										<option sle-require="[{'id':'txt_zjlx','regex':['require','maxlength40'],'tips':['证件类型不能为空!','证件类型长度大于最大长度:[40]!'],'disabled':'false*false','default':'*'},{'id':'txt_zjxm','regex':['require','maxlength80','hascode'],'tips':['证件姓名不能为空!','证件姓名长度大于最大长度:[80]!','证件姓名不能为全数字!'],'disabled':'false*false*false','default':'**'},{'id':'txt_fzjg','regex':['maxlength80'],'tips':['发证机关长度大于最大长度:[80]!'],'disabled':'false','default':''},{'id':'txt_zjyxrq','regex':['maxlength8','maxlength8','tdate','number'],'tips':['请输入正确的证件有效日期的格式（如：19000101）!','请输入正确的证件到期日期的格式（如：19000101）!','请输入正确的证件到期日期的格式（如：19000101）!'],'disabled':'false*false*false*false','default':'***'},{'id':'txt_qtbz','regex':['maxlength120'],'tips':['其他备注长度大于最大长度:[120]!'],'disabled':'false','default':''}]" value="16">16 - 澳门通行证</option>
+										<option sle-require="[{'id':'txt_zjlx','regex':['require','maxlength40'],'tips':['证件类型不能为空!','证件类型长度大于最大长度:[40]!'],'disabled':'false*false','default':'*'},{'id':'txt_zjxm','regex':['require','maxlength80','hascode'],'tips':['证件姓名不能为空!','证件姓名长度大于最大长度:[80]!','证件姓名不能为全数字!'],'disabled':'false*false*false','default':'**'},{'id':'txt_fzjg','regex':['maxlength80'],'tips':['发证机关长度大于最大长度:[80]!'],'disabled':'false','default':''},{'id':'txt_zjyxrq','regex':['maxlength8','maxlength8','tdate','number'],'tips':['请输入正确的证件有效日期的格式（如：19000101）!','请输入正确的证件到期日期的格式（如：19000101）!','请输入正确的证件到期日期的格式（如：19000101）!'],'disabled':'false*false*false*false','default':'***'},{'id':'txt_qtbz','regex':['maxlength120'],'tips':['其他备注长度大于最大长度:[120]!'],'disabled':'false','default':''}]" value="17">17 - 台湾通行证或有效旅行证件</option>
+										<option sle-require="[{'id':'txt_zjlx','regex':['require','maxlength40'],'tips':['证件类型不能为空!','证件类型长度大于最大长度:[40]!'],'disabled':'false*false','default':'*'},{'id':'txt_zjxm','regex':['require','maxlength80','hascode'],'tips':['证件姓名不能为空!','证件姓名长度大于最大长度:[80]!','证件姓名不能为全数字!'],'disabled':'false*false*false','default':'**'},{'id':'txt_fzjg','regex':['maxlength80'],'tips':['发证机关长度大于最大长度:[80]!'],'disabled':'false','default':''},{'id':'txt_zjyxrq','regex':['maxlength8','maxlength8','tdate','number'],'tips':['请输入正确的证件有效日期的格式（如：19000101）!','请输入正确的证件到期日期的格式（如：19000101）!','请输入正确的证件到期日期的格式（如：19000101）!'],'disabled':'false*false*false*false','default':'***'},{'id':'txt_qtbz','regex':['maxlength120'],'tips':['其他备注长度大于最大长度:[120]!'],'disabled':'false','default':''}]" value="18">18 - 外国人永久居留证</option>
+										<option sle-require="[{'id':'txt_zjlx','regex':['require','maxlength40'],'tips':['证件类型不能为空!','证件类型长度大于最大长度:[40]!'],'disabled':'false*false','default':'*'},{'id':'txt_zjxm','regex':['require','maxlength80','hascode'],'tips':['证件姓名不能为空!','证件姓名长度大于最大长度:[80]!','证件姓名不能为全数字!'],'disabled':'false*false*false','default':'**'},{'id':'txt_fzjg','regex':['maxlength80'],'tips':['发证机关长度大于最大长度:[80]!'],'disabled':'false','default':''},{'id':'txt_zjyxrq','regex':['maxlength8','maxlength8','tdate','number'],'tips':['请输入正确的证件有效日期的格式（如：19000101）!','请输入正确的证件到期日期的格式（如：19000101）!','请输入正确的证件到期日期的格式（如：19000101）!'],'disabled':'false*false*false*false','default':'***'},{'id':'txt_qtbz','regex':['maxlength120'],'tips':['其他备注长度大于最大长度:[120]!'],'disabled':'false','default':''}]" value="19">19 - 边民出入境通行证</option>
+										<option sle-require="[{'id':'txt_zjlx','regex':['require','maxlength40'],'tips':['证件类型不能为空!','证件类型长度大于最大长度:[40]!'],'disabled':'false*false','default':'*'},{'id':'txt_zjxm','regex':['require','maxlength80','hascode'],'tips':['证件姓名不能为空!','证件姓名长度大于最大长度:[80]!','证件姓名不能为全数字!'],'disabled':'false*false*false','default':'**'},{'id':'txt_fzjg','regex':['maxlength80'],'tips':['发证机关长度大于最大长度:[80]!'],'disabled':'false','default':''},{'id':'txt_zjyxrq','regex':['maxlength8','maxlength8','tdate','number'],'tips':['请输入正确的证件有效日期的格式（如：19000101）!','请输入正确的证件到期日期的格式（如：19000101）!','请输入正确的证件到期日期的格式（如：19000101）!'],'disabled':'false*false*false*false','default':'***'},{'id':'txt_qtbz','regex':['maxlength120'],'tips':['其他备注长度大于最大长度:[120]!'],'disabled':'false','default':''}]" value="20">20 - 外国护照</option>
+										<option sle-require="[{'id':'txt_zjlx','regex':['require','maxlength40'],'tips':['证件类型不能为空!','证件类型长度大于最大长度:[40]!'],'disabled':'false*false','default':'*'},{'id':'txt_zjxm','regex':['require','maxlength80','hascode'],'tips':['证件姓名不能为空!','证件姓名长度大于最大长度:[80]!','证件姓名不能为全数字!'],'disabled':'false*false*false','default':'**'},{'id':'txt_fzjg','regex':['maxlength80'],'tips':['发证机关长度大于最大长度:[80]!'],'disabled':'false','default':''},{'id':'txt_zjyxrq','regex':['maxlength8','maxlength8','tdate','number'],'tips':['请输入正确的证件有效日期的格式（如：19000101）!','请输入正确的证件到期日期的格式（如：19000101）!','请输入正确的证件到期日期的格式（如：19000101）!'],'disabled':'false*false*false*false','default':'***'},{'id':'txt_qtbz','regex':['maxlength120'],'tips':['其他备注长度大于最大长度:[120]!'],'disabled':'false','default':''}]" value="21">21 - 其他</option>
+									</select><input type="text" oncopy="return false" onpaste="return false" oncut="return false" style="width: 128px;"></div>
+								<div id="sle_zjlx_tips" class="tipsmsg"></div>
+							</td>
+							<td class="" style="width: 0px;"><label vl-default="" id="label_zjhm" vtitle="证件号码" class="form-item text-left on" vl-tipsid="label_zjhm_tips" title="label_zjhm">证件号码</label>
+								<div id="label_zjhm_tips" class="tipsmsg"></div>
+							</td>
+							<td class="" colspan="2"><input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_zjlx" vtitle="证件号码" class="form-item text-left" vl-tipsid="txt_zjlx_tips" vl-rely="sle_zjlx" style="width: 157px;" title="txt_zjlx" onpaste="return false" maxlength="0" disabled="disabled">
+								<div id="txt_zjlx_tips" class="tipsmsg"></div>
+							</td>
+						</tr>
+						<tr>
+							<td rowspan="1" colspan="1" class="" style="width: 0px;"><label vl-default="" id="label_zjxm" vtitle="证件姓名" class="form-item text-left on" vl-tipsid="label_zjxm_tips" title="label_zjxm">证件姓名</label>
+								<div id="label_zjxm_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class=""><input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_zjxm" vtitle="证件姓名" class="form-item text-left" vl-disabled="true" vl-tipsid="txt_zjxm_tips" style="width: 151px;" title="txt_zjxm" onpaste="return false" disabled="disabled">
+								<div id="txt_zjxm_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="" style="width: 0px;"><label vl-default="" id="label_fzjg" vtitle="发证机关" class="form-item text-left on" vl-tipsid="label_fzjg_tips" title="label_fzjg">发证机关</label>
+								<div id="label_fzjg_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class=""><input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_fzjg" vtitle="发证机关" class="form-item text-left" vl-disabled="true" vl-tipsid="txt_fzjg_tips" vl-regex="['maxlength20']" vl-message="['发证机关长度大于最大长度:[120]!']" style="width: 151px;" title="txt_fzjg" onpaste="return false" disabled="disabled">
+								<div id="txt_fzjg_tips" class="tipsmsg"></div>
+							</td>
+						</tr>
+						<tr>
+							<td rowspan="1" colspan="1" class="" style="width: 0px;"><label vl-default="" id="label_zjyxrq" vtitle="证件有效日期" class="form-item text-left on" vl-tipsid="label_zjyxrq_tips" title="label_zjyxrq">证件有效日期</label>
+								<div id="label_zjyxrq_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class=""><input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_zjyxrq" vtitle="证件有效日期" class="form-item text-left" vl-disabled="true" vl-tipsid="txt_zjyxrq_tips" style="width: 151px;" title="txt_zjyxrq" onpaste="return false" disabled="disabled">
+								<div id="txt_zjyxrq_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="" style="width: 0px;"><label vl-default="" id="label_hcjg" vtitle="核查结果" class="form-item text-left on" vl-tipsid="label_hcjg_tips" title="label_hcjg">核查结果</label>
+								<div id="label_hcjg_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class=""><input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_hcjg" vtitle="核查结果" class="form-item text-left" vl-disabled="true" vl-tipsid="txt_hcjg_tips" style="width: 151px;" title="txt_hcjg" onpaste="return false" disabled="disabled">
+								<div id="txt_hcjg_tips" class="tipsmsg"></div>
+							</td>
+						</tr>
+						<tr>
+							<td rowspan="1" colspan="1" class="" style="width: 0px;"><label vl-default="" id="label_qtbz" vtitle="其它备注" class="form-item text-left" vl-tipsid="label_qtbz_tips" title="label_qtbz">其它备注</label>
+								<div id="label_qtbz_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class=""><input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_qtbz" vtitle="其它备注" class="form-item text-left" vl-disabled="true" vl-tipsid="txt_qtbz_tips" style="width: 151px;" title="txt_qtbz" onpaste="return false" disabled="disabled">
+								<div id="txt_qtbz_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="" style="width: 0px;"><label vl-default="" id="label_hc" vtitle="核查" class="form-item text-left on" vl-tipsid="label_hc_tips" title="label_hc">核查</label>
+								<div id="label_hc_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="" style="width: 0px;"><label vl-default="" id="label_dq" vtitle="读取二代身份证" class="form-item text-left on" vl-tipsid="label_dq_tips" title="label_dq">读取二代身份证</label>
+								<div id="label_dq_tips" class="tipsmsg"></div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div> <input type="hidden" class="hidmainwidth" value="1000/" oncopy="return false" onpaste="return false" oncut="return false">
+			<div class="foot  text-center" style="padding-bottom: 30px;"> 
+				<!-- <button id="ed_ok">确定</button>  -->
+				@*<button vl-submit="true" id="btnsubmit">提交</button>*@
+				<button>清空</button> 
+				<button disabled="disabled">继续下一笔</button> 
+				
+			<button type="button" onclick="FormReset()">重置</button>
+                       <button type="button " style="margin-right: 0px; " vl-submit="true" id="btnsubmit" onclick="SubmitForm()"> 提交</button></div>
+		</div>
+<script src="~/Js/Student/GetDefaultValue/js/common.bank.ed.js"></script>
+@*<script src="~/Js/Student/GetDefaultValue/js/dgzzck.js"></script>*@
+@*<script typt="text/javascript">
+	$(function(){ 
+		$("#sle_pjlx").val("");
+		//jt(); 
+
+        $("#money_hkje").change(function () {
+           
+            $(this).next('img').click();
+        });
+
+        $("#txt_sqbl").change(function () {
+            var vv = $('#txt_sxf').val().replace(',',"");
+		        	var bl = parseFloat($(this).val())/100
+		        	if(vv!=null&&vv!=''){
+		        		var ll = parseFloat(vv)*bl +'';
+		        		if(ll.indexOf('.') == -1){
+		        			$('#txt_sjsqsxf').val(ll + '.00');
+		        		}else if(ll.indexOf('.') == ll.length - 2){
+		        			$('#txt_sjsqsxf').val(ll + '0');
+		        		}else if(ll.indexOf('.') == ll.length - 3){
+							$('#txt_sjsqsxf').val(ll);
+		        		}
+		        		
+		        	}
+        });
+	});
+ 
+    function handel() {
+        catchSuccess(function () {
+            printEdWin();
+        });
+    }
+
+		function Submit(formid,auth_ids) {
+			var is_review = $("#review").text();
+			var tips = "请确认交易信息是否正确,正确请按“确定”开始复核操作，不正确请按“取消”返回到录入界面进行修改。";
+			if (is_review == "true") {
+				$("#btnsubmit").click();
+			} else {
+				var l_i = layer.confirm(tips,
+				{
+					btn: ['确定', '取消'] //按钮 
+				},
+				function () {
+					layer.close(l_i); 
+					if(is_review!="true"){
+						//跳转到复核页面  
+						review(formid,auth_ids); 
+					}else{ 
+						//复核页面 进行复核验证
+						$("#btnsubmit").click();
+					}
+				});
+
+			}
+        }
+        function calcsxj() {
+            var rate = parseFloat($("#txt_sqbl").val());
+            var sxf = parseFloat($("#txt_sxf").val());
+            var sxfhj = sxf * rate / 100;
+            $("#txt_sxfhj").val(sxfhj);
+        }
+</script>*@
+<link href="~/Js/Student/GetDefaultValue/js/common.bank.ed.css" rel="stylesheet" />
+<link href="~/Js/Student/GetDefaultValue/js/ed.common.css" rel="stylesheet" />
+              </form>

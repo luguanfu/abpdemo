@@ -1,0 +1,51 @@
+﻿@{
+    ViewBag.Title = "现金交款单";
+    Layout = "~/Views/Shared/_AdminLayoutIsNull.cshtml";
+}
+<link href="~/CSS/danju/css/menu03.css" rel="stylesheet" />
+<form id="form1" onsubmit="return false" action="##" method="post">
+    <input type="hidden" id="TaskId" name="TaskId" value="@Request["TaskId"]" />
+    <input type="hidden" id="CustomerId" name="CustomerId" value="@Request["CustomerId"]" />
+    <input type="hidden" id="FormId" name="FormId" value="@Request["FormId"]" />
+    <input type="hidden" id="Types" name="Types" value="@Request["Types"]" />
+
+    <!--表单内容 选择正确答案-->
+    <div class="from_map03">
+        <input class="inputall site1" type="checkbox" name="dy01" id="dy01" value="1" />
+        <input class="inputall site2" type="checkbox" name="dy02" id="dy02" value="1" />
+        <input class="inputall site3" type="text" name="dy03" id="dy03" value="" />
+        <input class="inputall site4 text_center" maxlength="4" type="text" name="dy04" id="dy04" value="" />
+        <input class="inputall site5 text_center" maxlength="2" type="text" name="dy05" id="dy05" data-type="月" value="" />
+        <input class="inputall site6 text_center" maxlength="2" type="text" name="dy06" id="dy06" data-type="日" value="" />
+        <input class="inputall site7 text_center"  type="text" name="dy07" id="dy07" value="" />
+        <input class="inputall site8" type="text" name="dy08" id="dy08" value="" />
+        <input class="inputall site9" type="text" name="dy09" id="dy09" value="" />
+        <input class="inputall site10" type="text" name="dy010" id="dy010" value="" />
+        <input class="inputall site11" type="text" name="dy011" id="dy011" value="" />
+        <input class="inputall site12" type="text" name="dy012" id="dy012" value="" />
+        <!--金额-->
+        <input class="inputall site13 text_center" maxlength="1" type="text" name="dy013" id="dy013" value="" />
+        <input class="inputall site14 text_center" maxlength="1" type="text" name="dy014" id="dy014" value="" />
+        <input class="inputall site15 text_center" maxlength="1" type="text" name="dy015" id="dy015" value="" />
+        <input class="inputall site16 text_center" maxlength="1" type="text" name="dy016" id="dy016" value="" />
+        <input class="inputall site17 text_center" maxlength="1" type="text" name="dy017" id="dy017" value="" />
+        <input class="inputall site18 text_center" maxlength="1" type="text" name="dy018" id="dy018" value="" />
+        <input class="inputall site19 text_center" maxlength="1" type="text" name="dy019" id="dy019" value="" />
+        <input class="inputall site20 text_center" maxlength="1" type="text" name="dy020" id="dy020" value="" />
+        <input class="inputall site21 text_center" maxlength="1" type="text" name="dy021" id="dy021" value="" />
+        <input class="inputall site22 text_center" maxlength="1" type="text" name="dy022" id="dy022" value="" />
+        <input class="inputall site23 text_center" maxlength="1" type="text" name="dy023" id="dy023" value="" />
+        <textarea class="inputall site24" name="dy024" id="dy024" rows="" cols=""></textarea>
+
+        <input class="inputall site25" type="text" name="dy025" id="dy025" value="" />
+        <input class="inputall site26" type="text" name="dy026" id="dy026" value="" />
+        <input class="inputall site27" type="text" name="dy027" id="dy027" value="" />
+        <input class="inputall site28" type="text" name="dy028" id="dy028" value="" />
+
+        <button class="btn_chongzhi" type="button" value="重置" onclick="btnReset()">重置</button>
+        <button class="btn_tijiao" type="button" value="提交" onclick="btnSubmit()">提交</button>
+    </div>
+    
+
+</form>
+    <script src="~/Js/Admin/clicktoggle.js"></script>

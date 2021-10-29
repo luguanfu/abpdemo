@@ -1,0 +1,671 @@
+﻿<div class="container-wrap">
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <link href="~/CSS/city.css?v=20211028" rel="stylesheet" />
+    <!--个人开户[客户信息]-->
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label id="lbl_certificateKind" name="lbl_certificateKind" for="inputEmail3" class="col-sm-3 control-label">证件种类</label>
+                <div class="col-sm-6">
+                    <select vl-default="" id="sle_certificateKind" name="sle_certificateKind" class="form-control">
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label id="lbl_idCode" name="lbl_idCode" for="inputEmail3" class="col-sm-3 control-label">证件号码</label>
+                <div class="col-sm-6">
+                    <input vl-default="" vl-exec="true" id="txt_idCode" name="txt_idCode" type="text" class="form-control input-sm">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label id="lbl_customer" name="lbl_customer" for="inputEmail3" class="col-sm-3 control-label">客户名称</label>
+                <div class="col-sm-6">
+                    <input vl-default="" id="txt_customer" name="txt_customer" type="text" class="form-control input-sm">
+                </div>
+            </div>
+        </div>
+    </div>
+    <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation" class="active"><a href="#baseinfo" aria-controls="baseinfo" role="tab" data-toggle="tab">基本信息</a></li>
+        <li role="presentation"><a href="#contactInfo" aria-controls="contactInfo" role="tab" data-toggle="tab">联系信息</a></li>
+        <li role="presentation"><a href="#supplyInfo" aria-controls="supplyInfo" role="tab" data-toggle="tab">补充信息</a></li>
+    </ul>
+
+    <!-- Tab panes -->
+    <div class="tab-content">
+        <div role="tabpanel" class="tab-pane active" id="baseinfo">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label id="lbl_englishName" name="lbl_englishName" for="inputEmail3" class="col-sm-3 control-label">英文名称</label>
+                        <div class="col-sm-6">
+                            <input vl-default="" id="txt_englishName" name="txt_englishName" type="text" class="form-control input-sm">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label id="lbl_sex" name="lbl_sex" for="inputEmail3" class="col-sm-3 control-label">性别</label>
+                        <div class="col-sm-6">
+                            <select vl-default="" id="sle_sex" name="sle_sex" class="form-control">
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label id="lbl_nation" name="lbl_nation" for="inputEmail3" class="col-sm-3 control-label">民族</label>
+                        <div class="col-sm-6">
+                            <select vl-default="" id="sle_nation" name="sle_nation" class="form-control">
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label id="lbl_birthday" name="lbl_birthday" for="inputEmail3" class="col-sm-3 control-label">出生日期</label>
+                        <div class="col-sm-6">
+                            <input vl-default="" id="txt_birthday" name="txt_birthday" type="date" max="9999-12-31" class="form-control input-sm">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label id="lbl_registrationAddress" name="lbl_registrationAddress" for="inputEmail3" class="col-sm-3 control-label">证件登记地址</label>
+                        <div class="col-sm-6">
+                            <input vl-default="" id="txt_registrationAddress" name="txt_registrationAddress" type="text" class="form-control input-sm">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label id="lbl_issuingDate" name="lbl_issuingDate" for="inputEmail3" class="col-sm-3 control-label">证件签发日期</label>
+                        <div class="col-sm-6">
+                            <input vl-default="" id="txt_issuingDate" name="txt_issuingDate" type="date" max="9999-12-31" class="form-control input-sm">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label id="lbl_dueDate" name="lbl_dueDate" for="inputEmail3" class="col-sm-3 control-label">证件到期日期</label>
+                        <div class="col-sm-6">
+                            <input vl-default="" id="txt_dueDate" name="txt_dueDate" type="date" max="9999-12-31" class="form-control input-sm">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label id="lbl_issuingOrgan" name="lbl_issuingOrgan" for="inputEmail3" class="col-sm-3 control-label">签发机关</label>
+                        <div class="col-sm-6">
+                            <input vl-default="" id="txt_issuingOrgan" name="txt_issuingOrgan" type="text" class="form-control input-sm">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label id="lbl_issuingArea" name="lbl_issuingArea" for="inputEmail3" class="col-sm-3 control-label">签发机关地区</label>
+                        <div class="col-sm-6">
+                            <input vl-default="" id="txt_issuingArea" name="txt_issuingArea" type="text" class="form-control">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label id="lbl_nationality" name="lbl_nationality" for="inputEmail3" class="col-sm-3 control-label">国籍</label>
+                        <div class="col-sm-6">
+                            <select vl-default="" id="sle_nationality" name="sle_nationality" class="form-control">
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label id="lbl_residence" name="lbl_residence" for="inputEmail3" class="col-sm-3 control-label">居住国家</label>
+                        <div class="col-sm-6">
+                            <select vl-default="" id="sle_residence" name="sle_residence" class="form-control">
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label id="lbl_auxiliaryCard1" name="lbl_auxiliaryCard1" for="inputEmail3" class="col-sm-3 control-label">辅助证件种类1</label>
+                        <div class="col-sm-6">
+                            <select vl-default="" id="sle_auxiliaryCard1" name="sle_auxiliaryCard1" class="form-control">
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label id="lbl_idCode1" name="lbl_idCode1" for="inputEmail3" class="col-sm-3 control-label">证件号码1</label>
+                        <div class="col-sm-6">
+                            <input vl-default="" id="txt_idCode1" name="txt_idCode1" type="text" class="form-control">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label id="lbl_occupation" name="lbl_occupation" for="inputEmail3" class="col-sm-3 control-label">职业</label>
+                        <div class="col-sm-6">
+                            <select vl-default="" id="sle_occupation" name="sle_occupation" class="form-control">
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label id="lbl_maritalStatus" name="lbl_maritalStatus" for="inputEmail3" class="col-sm-3 control-label">婚姻状况</label>
+                        <div class="col-sm-6">
+                            <select vl-default="" id="sle_maritalStatus" name="sle_maritalStatus" class="form-control">
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label id="lbl_registeredResidence" name="lbl_registeredResidence" for="inputEmail3" class="col-sm-3 control-label">户籍归属</label>
+                        <div class="col-sm-6">
+                            <select vl-default="" id="sle_registeredResidence" name="sle_registeredResidence" class="form-control">
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label id="lbl_results" name="lbl_results" for="inputEmail3" class="col-sm-3 control-label">身份核查结果</label>
+                        <div class="col-sm-6">
+                            <select vl-default="" id="sle_results" name="sle_results" class="form-control">
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label id="lbl_creationDate" name="lbl_creationDate" for="inputEmail3" class="col-sm-3 control-label">建立日期</label>
+                        <div class="col-sm-6">
+                            <input vl-default="" id="txt_creationDate" name="txt_creationDate" type="date" max="9999-12-31" class="form-control input-sm">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label id="lbl_creationChannels" name="lbl_creationChannels" for="inputEmail3" class="col-sm-3 control-label">建立渠道</label>
+                        <div class="col-sm-6">
+                            <select vl-default="" id="sle_creationChannels" name="sle_creationChannels" class="form-control">
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label id="lbl_verifyStatus" name="lbl_verifyStatus" for="inputEmail3" class="col-sm-3 control-label">核实状态</label>
+                        <div class="col-sm-6">
+                            <select vl-default="" id="sle_verifyStatus" name="sle_verifyStatus" class="form-control">
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label id="lbl_taxResidentSign" name="lbl_taxResidentSign" for="inputEmail3" class="col-sm-3 control-label">税收居民标志</label>
+                        <div class="col-sm-6">
+                            <select vl-default="" id="sle_taxResidentSign" name="sle_taxResidentSign" class="form-control">
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label id="lbl_remarks" name="lbl_remarks" for="inputEmail3" class="col-sm-3 control-label">备注</label>
+                        <div class="col-sm-6">
+                            <input vl-default="" id="txt_remarks" name="txt_remarks" type="text" class="form-control input-sm">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div role="tabpanel" class="tab-pane" id="contactInfo">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label id="lbl_mobile" name="lbl_mobile" for="inputEmail3" class="col-sm-3 control-label">常用移动电话</label>
+                        <div class="col-sm-6">
+                            <div class="input-group">
+                                <input vl-default="" id="txt_mobile" name="txt_mobile" type="text" class="form-control">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-primary" type="button" onclick="phoneCheck('sle_codeStatus','txt_verificationTime')">手机验证</button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label id="lbl_codeStatus" name="lbl_codeStatus" for="inputEmail3" class="col-sm-3 control-label">号码状态</label>
+                        <div class="col-sm-6">
+                            <select vl-default="" id="sle_codeStatus" name="sle_codeStatus" class="form-control">
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label id="lbl_verificationTime" name="lbl_verificationTime" for="inputEmail3" class="col-sm-3 control-label">验证时间</label>
+                        <div class="col-sm-6">
+                            <input vl-default="" id="txt_verificationTime" name="txt_verificationTime" type="datetime-local" class="form-control input-sm">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label id="lbl_standbyMobile" name="lbl_standbyMobile" for="inputEmail3" class="col-sm-3 control-label">备用移动电话</label>
+                        <div class="col-sm-6">
+                            <div class="input-group">
+                                <input vl-default="" id="txt_standbyMobile" name="txt_standbyMobile" type="text" class="form-control">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-primary" type="button" onclick="phoneCheck('sle_codeStatus1','txt_verificationTime1')">手机验证</button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label id="lbl_codeStatus1" name="lbl_codeStatus1" for="inputEmail3" class="col-sm-3 control-label">号码状态</label>
+                        <div class="col-sm-6">
+                            <select vl-default="" id="sle_codeStatus1" name="sle_codeStatus1" class="form-control">
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label id="lbl_verificationTime1" name="lbl_verificationTime1" for="inputEmail3" class="col-sm-3 control-label">验证时间</label>
+                        <div class="col-sm-6">
+                            <input vl-default="" id="txt_verificationTime1" name="txt_verificationTime1" type="datetime-local" step="01" class="form-control input-sm">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label id="lbl_contactNumber" name="lbl_contactNumber" for="inputEmail3" class="col-sm-3 control-label">联系电话</label>
+                        <div class="col-sm-3">
+                            <input vl-default="" id="txt_contactNumber" name="txt_contactNumber" type="text" class="form-control input-sm">
+                        </div>
+                        <div class="col-sm-1 text-center" style="width: 3px;padding-left:0px;padding-right:0px;">
+                            -
+                        </div>
+                        <div class="col-sm-3">
+                            <input vl-default="" id="txt_contactNumber1" name="txt_contactNumber1" type="text" class="form-control input-sm">
+                        </div>
+                        <div class="col-sm-1 text-center" style="width: 3px; padding-left: 0px; padding-right: 0px; ">
+                            -
+                        </div>
+                        <div class="col-sm-3">
+                            <input vl-default="" id="txt_contactNumber2" name="txt_contactNumber2" type="text" class="form-control input-sm">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label id="lbl_postalCode" name="lbl_postalCode" for="inputEmail3" class="col-sm-3 control-label">邮政编码</label>
+                        <div class="col-sm-3">
+                            <input vl-default="" id="txt_postalCode" name="txt_postalCode" type="text" class="form-control input-sm">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label id="lbl_contactAddress" name="lbl_contactAddress" for="inputEmail3" class="col-sm-3 control-label">联系地址</label>
+                        <div class="col-sm-6">
+                            <input vl-default="" id="txt_contactAddress" name="txt_contactAddress" type="text" class="form-control input-sm">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label id="lbl_email" name="lbl_email" for="inputEmail3" class="col-sm-3 control-label">E-mail</label>
+                        <div class="col-sm-6">
+                            <input vl-default="" id="txt_email" name="txt_email" type="text" class="form-control input-sm">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label id="lbl_emergencyName" name="lbl_emergencyName" for="inputEmail3" class="col-sm-3 control-label">紧急联系人名称</label>
+                        <div class="col-sm-6">
+                            <input vl-default="" id="txt_emergencyName" name="txt_emergencyName" type="text" class="form-control input-sm">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label id="lbl_relationship" name="lbl_relationship" for="inputEmail3" class="col-sm-3 control-label">关系说明</label>
+                        <div class="col-sm-6">
+                            <input vl-default="" id="txt_relationship" name="txt_relationship" type="text" class="form-control input-sm">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label id="lbl_contactTelephone" name="lbl_contactTelephone" for="inputEmail3" class="col-sm-3 control-label">联系人电话</label>
+                        <div class="col-sm-6">
+                            <input vl-default="" id="txt_contactTelephone" name="txt_contactTelephone" type="text" class="form-control input-sm">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-9">
+                    <div class="form-group">
+                        <label id="lbl_permanentAddress" name="lbl_permanentAddress" for="inputEmail3" class="col-sm-2 control-label">常住地址</label>
+                        <div class="col-sm-3">
+                            <div class="wrap">
+                                <input vl-default="" id="txt_permanentAddress" name="txt_permanentAddress" type="text" class="form-control input-sm" placeholder="请选择" readonly>
+                                <s></s>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <input vl-default="" id="txt_permanentAddress1" name="txt_permanentAddress1" type="text" class="form-control input-sm">
+                        </div>
+                        <div class="col-sm-1">
+                            路(街道/村镇)
+                        </div>
+                        <div class="col-sm-2">
+                            <input vl-default="" id="txt_permanentAddress2" name="txt_permanentAddress2" type="text" class="form-control input-sm">
+                        </div>
+                        <div class="col-sm-1">
+                            号
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label id="lbl_detailedAddress" name="lbl_detailedAddress" for="inputEmail3" class="col-sm-3 control-label">详细地址</label>
+                        <div class="col-sm-6">
+                            <input vl-default="" id="txt_detailedAddress" name="txt_detailedAddress" type="text" class="form-control input-sm">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div role="tabpanel" class="tab-pane" id="supplyInfo">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label id="lbl_highestEducation" name="lbl_highestEducation" for="inputEmail3" class="col-sm-3 control-label">最高学历</label>
+                        <div class="col-sm-6">
+                            <select vl-default="" id="sle_highestEducation" name="sle_highestEducation" class="form-control">
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label id="lbl_highestDegree" name="lbl_highestDegree" for="inputEmail3" class="col-sm-3 control-label">最高学位</label>
+                        <div class="col-sm-6">
+                            <select vl-default="" id="sle_highestDegree" name="sle_highestDegree" class="form-control">
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label id="lbl_title" name="lbl_title" for="inputEmail3" class="col-sm-3 control-label">职称</label>
+                        <div class="col-sm-3">
+                            <input vl-default="" id="txt_title" name="txt_title" type="text" class="form-control input-sm">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label id="lbl_post" name="lbl_post" for="inputEmail3" class="col-sm-3 control-label">职务</label>
+                        <div class="col-sm-3">
+                            <input vl-default="" id="txt_post" name="txt_post" type="text" class="form-control input-sm">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label id="lbl_workUnit" name="lbl_workUnit" for="inputEmail3" class="col-sm-3 control-label">工作单位</label>
+                        <div class="col-sm-6">
+                            <input vl-default="" id="txt_workUnit" name="txt_workUnit" type="text" class="form-control input-sm">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label id="lbl_unitAddress" name="lbl_unitAddress" for="inputEmail3" class="col-sm-3 control-label">单位地址</label>
+                        <div class="col-sm-6">
+                            <input vl-default="" id="txt_unitAddress" name="txt_unitAddress" type="text" class="form-control input-sm">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label id="lbl_unitCode" name="lbl_unitCode" for="inputEmail3" class="col-sm-3 control-label">单位邮编</label>
+                        <div class="col-sm-6">
+                            <input vl-default="" id="txt_unitCode" name="txt_unitCode" type="text" class="form-control input-sm">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label id="lbl_unitTel" name="lbl_unitTel" for="inputEmail3" class="col-sm-3 control-label">单位联系电话</label>
+                        <div class="col-sm-6">
+                            <input vl-default="" id="txt_unitTel" name="txt_unitTel" type="text" class="form-control input-sm">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label id="lbl_unitNature" name="lbl_unitNature" for="inputEmail3" class="col-sm-3 control-label">单位性质</label>
+                        <div class="col-sm-6">
+                            <select vl-default="" id="sle_unitNature" name="sle_unitNature" class="form-control">
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label id="lbl_workYear" name="lbl_workYear" for="inputEmail3" class="col-sm-3 control-label">参加工作年份</label>
+                        <div class="col-sm-6">
+                            <input vl-default="" id="txt_workYear" name="txt_workYear" type="text" class="form-control input-sm">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label id="lbl_languageHabits" name="lbl_languageHabits" for="inputEmail3" class="col-sm-3 control-label">语言习惯</label>
+                        <div class="col-sm-6">
+                            <input vl-default="" id="txt_languageHabits" name="txt_languageHabits" type="text" class="form-control input-sm">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label id="lbl_religiousBelief" name="lbl_religiousBelief" for="inputEmail3" class="col-sm-3 control-label">宗教信仰</label>
+                        <div class="col-sm-6">
+                            <input vl-default="" id="txt_religiousBelief" name="txt_religiousBelief" type="text" class="form-control input-sm">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label id="lbl_residentialType" name="lbl_residentialType" for="inputEmail3" class="col-sm-3 control-label">住宅类型</label>
+                        <div class="col-sm-6">
+                            <select vl-default="" id="sle_residentialType" name="sle_residentialType" class="form-control">
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label id="lbl_familyPopulation" name="lbl_familyPopulation" for="inputEmail3" class="col-sm-3 control-label">家庭人口</label>
+                        <div class="col-sm-6">
+                            <input vl-default="" id="txt_familyPopulation" name="txt_familyPopulation" type="text" class="form-control input-sm">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label id="lbl_mainSources" name="lbl_mainSources" for="inputEmail3" class="col-sm-3 control-label">主要经济来源</label>
+                        <div class="col-sm-6">
+                            <input vl-default="" id="txt_mainSources" name="txt_mainSources" type="text" class="form-control input-sm">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label id="lbl_otherSources" name="lbl_otherSources" for="inputEmail3" class="col-sm-3 control-label">其他经济来源</label>
+                        <div class="col-sm-6">
+                            <input vl-default="" id="txt_otherSources" name="txt_otherSources" type="text" class="form-control input-sm">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label id="lbl_monthlyIncome" name="lbl_monthlyIncome" for="inputEmail3" class="col-sm-3 control-label">月收入(元)</label>
+                        <div class="col-sm-6">
+                            <select vl-default="" id="sle_monthlyIncome" name="sle_monthlyIncome" class="form-control">
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label id="lbl_yearIncome" name="lbl_yearIncome" for="inputEmail3" class="col-sm-3 control-label">年纯收入(万元)</label>
+                        <div class="col-sm-6">
+                            <input vl-default="" id="txt_yearIncome" name="txt_yearIncome" type="text" class="form-control input-sm">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label id="lbl_totalIncome" name="lbl_totalIncome" for="inputEmail3" class="col-sm-3 control-label">总资产(万元)</label>
+                        <div class="col-sm-6">
+                            <input vl-default="" id="txt_totalIncome" name="txt_totalIncome" type="text" class="form-control input-sm">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label id="lbl_totalLiabilities" name="lbl_totalLiabilities" for="inputEmail3" class="col-sm-3 control-label">总负债(万元)</label>
+                        <div class="col-sm-6">
+                            <input vl-default="" id="txt_totalLiabilities" name="txt_totalLiabilities" type="text" class="form-control input-sm">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label id="lbl_spouseCertificate" name="lbl_spouseCertificate" for="inputEmail3" class="col-sm-3 control-label">配偶证件类型</label>
+                        <div class="col-sm-6">
+                            <select vl-default="" id="sle_spouseCertificate" name="sle_spouseCertificate" class="form-control">
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label id="lbl_spouseCode" name="lbl_spouseCode" for="inputEmail3" class="col-sm-3 control-label">配偶证件号码</label>
+                        <div class="col-sm-6">
+                            <input vl-default="" id="txt_spouseCode" name="txt_spouseCode" type="text" class="form-control input-sm">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label id="lbl_spouseName" name="lbl_spouseName" for="inputEmail3" class="col-sm-3 control-label">配偶姓名</label>
+                        <div class="col-sm-6">
+                            <input vl-default="" id="txt_spouseName" name="txt_spouseName" type="text" class="form-control input-sm">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label id="lbl_contactNumber3" name="lbl_contactNumber3" for="inputEmail3" class="col-sm-3 control-label">联系电话</label>
+                        <div class="col-sm-6">
+                            <input vl-default="" id="txt_contactNumber3" name="txt_contactNumber3" type="text" class="form-control input-sm">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label id="lbl_contactAffiliated1" name="lbl_contactAffiliated1" for="inputEmail3" class="col-sm-3 control-label">归属机构</label>
+                        <div class="col-sm-6">
+                            <input vl-default="" id="txt_contactAffiliated1" name="txt_contactAffiliated1" type="text" class="form-control input-sm">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @section btnList{
+        <button onclick="goPage('200032')">跳过</button>
+    }
+    <script src="~/Js/Popt.js"></script>
+    <script src="~/Js/city.json.js"></script>
+    <script src="~/Js/citySet.js"></script>
+
+    <script type="text/javascript">
+        setOptions(['nation', 'certificateKind', 'taxResidentSign', 'spouseCertificate', 'auxiliaryCard1', 'monthlyIncome', 'unitNature', 'residentialType', 'highestEducation', 'highestDegree', 'codeStatus', 'codeStatus1', 'verifyStatus', 'residence', 'creationChannels', 'registeredResidence', 'maritalStatus', 'results', 'sex', 'occupation', 'nationality']);
+
+        $("#txt_permanentAddress").click(function (e) {
+            SelCity(this, e);
+        });
+        $("s").click(function (e) {
+            SelCity(document.getElementById("txt_permanentAddress"), e);
+        });
+        function doSubmit() {
+            goPage("200032");
+        }
+        $(function () {
+            initData("200027");
+        });
+    </script>
+</div>

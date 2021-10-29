@@ -1,0 +1,20 @@
+﻿<!--ATM转账-->
+<div style="display: flex;clear: both;">
+    <div class="row" style="width: 100%;margin-left: 130px;">
+        <div class="col-md-6">
+            <div class="checkbox">
+                <label style="margin-right: 20px;">
+                    <input vl-default="" type="checkbox" value="行内转账" id="check_hanlinTransfer" name="check_hanlinTransfer">行内转账
+                </label>
+                <label>
+                    <input vl-default="" type="checkbox" value="银联转账" id="check_unionPayTransfer" name="check_unionPayTransfer">银联转账
+                </label>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    function doSubmit() {
+        window.location.href = "javascript:history.go(-1)";
+    }
+</script>

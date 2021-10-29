@@ -1,0 +1,167 @@
+﻿@{
+    ViewBag.Title = "Form_130106";
+    Layout = "~/Views/Shared/_StutentLayoutIsNull.cshtml";
+}
+
+<link href="~/CSS/danju/css/menupublic.css" rel="stylesheet" />
+<style type="text/css">
+    .from_map034 {
+        width: 1100px;
+        margin: auto;
+        position: relative;
+        background: url(/CSS/danju/img/danjuimg/menu041.jpg) no-repeat top;
+        height: 900px;
+    }
+
+    .site1 {
+        width: 130px;
+        height: 25px;
+        right: 330px;
+        top: 170px;
+    }
+
+    .site2 {
+        width: 75px;
+        height: 25px;
+        right: 190px;
+        top: 170px;
+    }
+
+    .site3 {
+        width: 193px;
+        height: 25px;
+        left: 167px;
+        top: 200px;
+    }
+
+    .site4 {
+        width: 80px;
+        height: 25px;
+        left: 277px;
+        top: 257px;
+    }
+
+    .site5 {
+        width: 380px;
+        height: 25px;
+        left: 366px;
+        top: 257px;
+    }
+
+    .site6 {
+        width: 300px;
+        height: 25px;
+        left: 165px;
+        top: 317px;
+    }
+
+    .site7 {
+        width: 328px;
+        height: 25px;
+        left: 560px;
+        top: 317px;
+    }
+
+    .site8 {
+        width: 235px;
+        height: 25px;
+        left: 280px;
+        top: 373px;
+    }
+
+    .site9 {
+        width: 272px;
+        height: 25px;
+        left: 626px;
+        top: 373px;
+    }
+
+    .site10 {
+        height: 25px;
+        width: 280px;
+        top: 430px;
+        left: 233px;
+    }
+
+    .site11 {
+        height: 25px;
+        width: 274px;
+        top: 430px;
+        left: 624px;
+    }
+
+    .site12 {
+        height: 25px;
+        width: 40px;
+        top: 548px;
+        left: 732px;
+    }
+
+    .site13 {
+        height: 25px;
+        width: 40px;
+        top: 548px;
+        left: 800px;
+    }
+
+    .site14 {
+        height: 25px;
+        width: 40px;
+        top: 548px;
+        left: 872px;
+    }
+
+    .site15 {
+        height: 25px;
+        width: 200px;
+        top: 698px;
+        left: 250px;
+    }
+
+    .site16 {
+        height: 25px;
+        width: 200px;
+        top: 698px;
+        left: 605px;
+    }
+</style>
+
+
+<form id="form1" onsubmit="return false" action="##" method="post">
+    <input type="hidden" id="FormType" name="FormType" value="@Request["FormType"]" />
+    <input type="hidden" id="FormId" name="FormId" value="@Request["FormId"]" />
+    <input type="hidden" id="TRId" name="TRId" value="@Request["TotalResultId"]" />
+    <input type="hidden" id="ExamId" name="ExamId" value="@Request["ExamId"]" />
+    <input type="hidden" id="TaskId" name="TaskId" value="@Request["TaskId"]" />
+    <input type="hidden" id="CustomerId" name="CustomerId" value="@Request["CustomerId"]" />
+    <input type="hidden" id="LinkId" name="LinkId" value="@Request["LinkId"]" />
+    <input type="hidden" id="mid" name="mid" value="@Request["mid"]" />
+    <input type="hidden" id="Types" name="Types" value="2" />
+    <!--内容表单区域开始-->
+    <div class="from_map034">
+        <input class="inputall site1 text_center" type="text" name="dy01" maxlength="8" id="dy01" value="" />
+        <input class="inputall site2 text_center" maxlength="5" type="text" name="dy02" id="dy02" value="" />
+        <input class="inputall site3 text_center" type="text" name="dy03" maxlength="10" id="dy03" value="" />
+        <input class="inputall site4 text_center" type="text" name="dy04" id="dy04" maxlength="8" value="" />
+        <input class="inputall site5 text_center" type="text" name="dy05" id="dy05" value="" />
+        <input class="inputall site6 text_center" type="text" name="dy06" id="dy06" value="" />
+        <input class="inputall site7 " type="text" name="dy07" id="dy07" value="" />
+        <input class="inputall site8 text_center" type="text" name="dy08" id="dy08" value="" />
+        <input class="inputall site9 " type="text" name="dy09" id="dy09" value="" />
+        <input class="inputall site10 text_center" type="text" name="dy10" id="dy10" value="" />
+        <input class="inputall site11 " type="text" name="dy11" id="dy11" value="" />
+
+        <input class="inputall site12 text_center" type="text" maxlength="4" name="dy12" id="dy12" value="" />
+        <input class="inputall site13 text_center" type="text" name="dy13" maxlength="2" id="dy13" value="" />
+        <input class="inputall site14 text_center" type="text" name="dy14" maxlength="2" id="dy14" value="" />
+
+        <input class="inputall site15 " type="text" name="dy15" id="dy15" value="" />
+        <input class="inputall site16 " type="text" name="dy16" id="dy16" value="" />
+
+        <button class="btn_chongzhi" type="button" value="重置" onclick="FormReset()">重置</button>
+        <button class="btn_tijiao" type="button" value="提交" onclick="SubmitForm()">提交</button>
+
+    </div>
+
+
+</form>

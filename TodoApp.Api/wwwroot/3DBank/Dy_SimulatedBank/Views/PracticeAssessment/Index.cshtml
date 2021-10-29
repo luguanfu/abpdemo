@@ -1,0 +1,391 @@
+﻿@{
+    Layout = "~/Views/Shared/_StudentLayout.cshtml";
+}
+
+<style type="text/css">
+
+    .wrapper_map {
+        width: 1200px;
+        margin: auto;
+        padding-bottom: 20px;
+        min-height: 808px;
+    }
+
+    .box_div,
+    .select_public,
+    .input_public {
+        width: 275px;
+    }
+
+    .add_btn {
+        border: none;
+        outline: none;
+        cursor: pointer;
+        width: 118px;
+        height: 38px;
+        padding-left: 20px;
+        color: #fff;
+        font-size: 16px;
+        background: url(../img/jia_bg.png) no-repeat 12px center;
+        background-color: #CF9354;
+        border-radius: 4px;
+    }
+
+        .add_btn:hover {
+            background-color: #B27639;
+        }
+</style>
+<!DOCTYPE html>
+<!-------------内容------------->
+<div class="wrapper_map">
+    <div class="wrapper_training">
+
+        <div class="tabs m-t-md">
+            <div class="tabs-header">
+                <div class="border"></div>
+                <ul>
+                    <li class="active">
+                        <a href="#nlxq" data-toggle="tab" ripple="ripple" ripple-color="#FFF" onclick="GetPersonalExercises(null,'1')">个人实训考核</a>
+                    </li>
+                    <li>
+                        <a href="#userlist" data-toggle="tab" ripple="ripple" ripple-color="#FFF" onclick="GetPersonalExercises(null,'2')">团队实训考核</a>
+                    </li>
+                    <li>
+                        <a href="#czjl" data-toggle="tab" ripple="ripple" ripple-color="#FFF" onclick="GetKnowledgeAssessment()">实训考核</a>
+                    </li>
+                 </ul>
+            </div>
+            <div class="tabs-content">
+                <div id="nlxq" class="tab active">
+                    <!--个人练习-->
+                    <div class="row m-t-lg">
+                        <div class="col-sm-12">
+                            <select style="width: 150px;" name="" class="select_public m-r-lg fl" id="TState">
+                                <option value="">全部</option>
+                                <option value="2">未开始</option>
+                                <option value="0">进行中</option>
+                                <option value="1">已结束</option>
+                            </select>
+
+                            <div class="search_public fl" style="margin-top: 0px;">
+                                <input type="text" placeholder="请输入考核名称" autocomplete="off" id="SearchName">
+                                <button class="search_btn" type="button" onclick="serchinfo()"></button>
+                            </div>
+
+                        </div>
+
+                        <div id="">
+                            <table class="table_public_two" id="tablelistFirst">
+                                <tr>
+                                    <th width="330">考核名称</th>
+                                    <th width="330">开始时间</th>
+                                    <th width="330">考试时长</th>
+                                    <th width="330">状态</th>
+                                    <th width="330">总分</th>
+                                    <th width="330">及格线</th>
+                                    <th width="330">我的成绩</th>
+                                    <th width="800">操作</th>
+                                </tr>
+                            </table>
+                        </div>
+
+                        <div class="m-t">
+                            <!--分页开始-->
+                            <div class="con_bottom" id="PaginatorLibrary1">
+                                <a class="Previous_page disabled">＜</a>
+                                <a class="PageIndex Index_1 xz">1</a>
+                                <a class="next_page">＞</a>
+                                <span><input type="text" name="" id="" value="" /></span>
+                                <a class="next_page">GO</a>
+                            </div>
+                            <!--分页结束-->
+                        </div>
+                    </div>
+
+                </div>
+                <!--团队练习-->
+                <div id="userlist" class="tab">
+                    <div class="row m-t-lg">
+                        <div class="col-sm-12">
+                            <div>
+                                <span>当前团队名称：</span><span style="color:#f0ad4e">@ViewBag.Groupingname</span>&nbsp;&nbsp;<span>当前团队角色：</span>
+                                @if (ViewBag.Groupingstate == 1)
+                                {
+                                    <span style="color:#f0ad4e">
+                                        小组长
+                                    </span>
+                                }
+                                else
+                                {
+                                    <span style="color:#f0ad4e">
+                                        组员
+                                    </span>
+                                }
+
+                            </div>
+                            <select style="width: 150px;" name="" class="select_public m-r-lg fl" id="TState1">
+                                <option value="">全部</option>
+                                <option value="2">未开始</option>
+                                <option value="0">进行中</option>
+                                <option value="1">已结束</option>
+                            </select>
+
+                            <div class="search_public fl" style="margin-top: 0px;">
+                                <input type="text" placeholder="请输入考核名称" autocomplete="off" id="SearchName1">
+                                <button class="search_btn" type="button" onclick="serchinfo()"></button>
+                            </div>
+
+                        </div>
+                        <div id="show2">
+                            <table class="table_public_two" id="tablelist2">
+                                <tr>
+                                    <th width="330">考核名称</th>
+                                    <th width="330">开始时间</th>
+                                    <th width="330">考试时长</th>
+                                    <th width="330">状态</th>
+                                    <th width="330">总分</th>
+                                    <th width="330">及格线</th>
+                                    <th width="330">我的成绩</th>
+                                    <th width="800">操作</th>
+                                </tr>
+                            </table>
+                        </div>
+
+                        <div class="m-t">
+                            <!--分页开始-->
+                            <div class="con_bottom" id="PaginatorLibrary2">
+                                <a class="Previous_page disabled">＜</a>
+                                <a class="PageIndex Index_1 xz">1</a>
+                                <a class="next_page">＞</a>
+                                <span><input type="text" name="" id="" value="" /></span>
+                                <a class="next_page">GO</a>
+                            </div>
+                            <!--分页结束-->
+                        </div>
+                    </div>
+                </div>
+
+                <!--知识考核-->
+                <div id="czjl" class="tab">
+                    <div class="row m-t-lg">
+                        <div class="col-sm-12">
+                            <select style="width: 150px;" name="" class="select_public m-r-lg fl" id="TState1">
+                                <option value="">全部</option>
+                                <option value="2">未开始</option>
+                                <option value="0">进行中</option>
+                                <option value="1">已结束</option>
+                            </select>
+
+                            <div class="search_public fl" style="margin-top: 0px;">
+                                <input type="text" placeholder="请输入考核名称" autocomplete="off" id="SearchName1">
+                                <button class="search_btn" type="button" onclick="serchinfo()"></button>
+                            </div>
+
+                        </div>
+                        <div id="show3">
+                            <table class="table_public_two" id="tablelist3">
+                                <tr>
+                                    <th width="330">考核名称</th>
+                                    <th width="330">开始时间</th>
+                                    <th width="330">考试时长</th>
+                                    <th width="330">状态</th>
+                                    <th width="330">总分</th>
+                                    <th width="330">及格线</th>
+                                    <th width="330">我的成绩</th>
+                                    <th width="800">操作</th>
+                                </tr>
+                            </table>
+                        </div>
+
+                        <div class="m-t">
+                            <!--分页开始-->
+                            <div class="con_bottom" id="PaginatorLibrary3">
+                                <a class="Previous_page disabled">＜</a>
+                                <a class="PageIndex Index_1 xz">1</a>
+                                <a class="next_page">＞</a>
+                                <span><input type="text" name="" id="" value="" /></span>
+                                <a class="next_page">GO</a>
+                            </div>
+                            <!--分页结束-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--切换标签结束-->
+
+
+
+
+    </div>
+</div>
+<!--考核类型（个人/团队）-->
+<input type="hidden" id="PracticeType" />
+
+<script src="~/Scripts/String/StringFormat.js"></script>
+<script type="text/javascript">
+
+        //文档body的高度
+        var bodyHeight = $(document.body).height()
+        //当前窗口可视区域高度
+        var winHeight = $(window).height()
+        if (bodyHeight > winHeight) {
+            $(".footer").removeClass("fid")
+        } else {
+            $(".footer").addClass("fid")
+        }
+
+        //初始化
+        $(function () {
+            GetPersonalExercises(null, '1');
+        });
+
+        //搜索
+        function serchinfo() {
+            GetPersonalExercises();
+        }
+
+        //获得（个人练习/团队练习）数据列表
+        function GetPersonalExercises(page, type) {
+
+            if (type != "undefined" && type != undefined) {
+                 $("#PracticeType").val(type);
+            } else {
+                 type = $("#PracticeType").val();
+            }
+
+            if (type == 1) {//个人
+                var TState = $("#TState option:selected").val();
+                var SearchName = $("#SearchName").val();
+            } else { //团队
+                var TState = $("#TState1 option:selected").val();
+                var SearchName = $("#SearchName1").val();
+            }
+
+            var PageSize = 10;
+
+            $.ajax({
+                url: '/PracticeAssessment/GetPersonalExercises',
+                Type: "post",
+                dataType: "json", cache: false,
+                contentType: "application/json; charset=utf-8",
+                data: { "page": page, "PageSize": PageSize, "SearchName": SearchName, "TState": TState, "PracticeType": type},
+                success: function (tb) {
+                   
+                    var html = '';
+                    var data = tb.Tb;//转换table
+            
+                    if (data.length>0) {
+                        for (var i = 0; i < data.length; i++) {
+                            html += '<tr>';
+                            //当前页面
+                            var idx = 0;
+                            if (page != "undefined" && page != null) {
+                                idx = page;
+                                idx = idx - 1;
+                            }
+
+                            html += '<td>' + data[i]["PracticeName"] + '</td>';
+                            html += '<td>' + (data[i]["PracticeStarTime"] == ("" || null) ? '-' : new Date(data[i]["PracticeStarTime"]).Format("yyyy-MM-dd HH:mm")) + '</td>';
+                            html += '<td>' + (data[i]["PracticeLong"] == ("" || null) ? '-' : data[i]["PracticeLong"]) + '</td>';
+                            html += '<td>' + data[i]["Tstate"] + '</td>';
+                            html += '<td>' + 100 + '</td>';
+                            html += '<td>' + 60 + '</td>';
+                            html += '<td>' + (data[i]["Scores"] == ("" || null) ? '-' : data[i]["Scores"]) + '</td>';
+
+                            if (data[i]["Tstate"] == "未开始") {
+                                html += '<td><a disabled="disabled" onclick="openToCaseView(' + data[i]["ID"] + ')" class=" btn-primary btn-sm  m-r-sm"><i class="fa fa-pencil m-r-xxs"></i>进入</a>';
+                            } else if (data[i]["Tstate"] == "进行中") {
+                                html += '<td><a onclick="openToCaseView(' + data[i]["ID"] + ')" class=" btn-primary btn-sm  m-r-sm"><i class="fa fa-pencil m-r-xxs"></i>进入</a>';
+                            } else if (data[i]["Tstate"] == "已结束") {
+                                html += '<td><a onclick="openToCaseView(' + data[i]["ID"] + ')" class=" btn-primary btn-sm  m-r-sm"><i class="fa fa-pencil m-r-xxs"></i>查看</a>';
+                            }
+
+                            html += '</tr>';
+                        }
+
+                        $("#tablelistFirst").html(html);
+
+                        bootstrapPaginator("#PaginatorLibrary1", tb, GetPersonalExercises);//分页
+                    }
+
+                }
+            });
+
+        }
+
+        //跳转至个人练习--》新增练习
+        function openToCaseView(Id) {
+            window.location.href = "/PracticeAssessment/CaseView?PracticeType=" + $("#PracticeType").val() + "&Role=" + "@ViewBag.Groupingstate" + "&ID=" + Id;
+        }
+
+        //知识考核
+        function GetKnowledgeAssessment(page) {
+
+            var TState = $("#TState option:selected").val();
+            var SearchName = $("#SearchName").val();
+
+            var PageSize = 10;
+
+            $.ajax({
+                url: '/PracticeAssessment/GetKnowledgeAssessment',
+                Type: "post",
+                dataType: "json", cache: false,
+                contentType: "application/json; charset=utf-8",
+                data: { "page": page, "PageSize": PageSize, "SearchName": SearchName, "TState": TState},
+                success: function (tb) {
+
+                    var html = '';
+                    var data = tb.Tb;//转换table
+
+                    if (data.length > 0) {
+                        for (var i = 0; i < data.length; i++) {
+                                html += '<tr>';
+                                //当前页面
+                                var idx = 0;
+                                if (page != "undefined" && page != null) {
+                                    idx = page;
+                                    idx = idx - 1;
+                            }
+
+                                html += '<td>' + data[i]["e_Name"] + '</td>';
+                                html += '<td>' + (data[i]["E_StartTime"] == ("" || null) ? '-' : new Date(data[i]["E_StartTime"]).Format("yyyy-MM-dd HH:mm")) + '</td>';
+                                html += '<td>' + (data[i]["duration"] == ("" || null) ? '-' : data[i]["duration"])+"分钟" + '</td>';
+                                html += '<td>' + data[i]["statas"] + '</td>';
+                                html += '<td>' + 100 + '</td>';
+                                html += '<td>' + 60 + '</td>';
+                                html += '<td>' + (data[i]["MyScore"] == ("" || null) ? '-' : data[i]["MyScore"]) + '</td>';
+
+                               if (data[i]["statas"] == "未开始") {
+                                   html += '<td><a disabled="disabled" onclick="openToCaseView(' + data[i]["EId"] + ')" class=" btn-primary btn-sm  m-r-sm"><i class="fa fa-pencil m-r-xxs"></i>进入</a>';
+                               } else if (data[i]["statas"] == "进行中") {
+                                   html += '<td><a onclick="GoToExam(' + data[i]["EId"] + ',' + data[i]["E_PId"] + ')" class=" btn-primary btn-sm  m-r-sm"><i class="fa fa-pencil m-r-xxs"></i>进入</a>';
+                               } else if (data[i]["statas"] == "已结束") {
+                                   html += '<td><a onclick="GoToExamPreView(' + data[i]["EId"] + ',' + data[i]["E_PId"] + ')" class=" btn-primary btn-sm  m-r-sm"><i class="fa fa-pencil m-r-xxs"></i>查看</a>';
+                                }
+
+                                html += '</tr>';
+                            }
+
+                            $("#tablelist3").html(html);
+
+                          bootstrapPaginator("#PaginatorLibrary3", tb, GetPersonalExercises);//分页
+                        }
+
+                    }
+
+            });
+        }
+
+        //查看成绩
+        function GoToExamPreView(eid, pid) {
+            window.location.href = "/HB_ExamPreview" + "?" + "&Eid="+ eid + "&Pid=" +pid+"&Type=1";
+        }
+
+        //成绩提交
+        function GoToExam(eid, pid) {
+            window.location.href = "/HB_kaoshi" + "?" + "&Eid=" + eid + "&Pid=" + pid + "&Type=2";
+        }
+
+</script>
+

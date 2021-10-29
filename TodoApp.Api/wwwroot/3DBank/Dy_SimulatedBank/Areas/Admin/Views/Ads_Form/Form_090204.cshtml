@@ -1,0 +1,69 @@
+﻿@{
+                    ViewBag.Title = "Form_090204";
+                    Layout = "~/Views/Shared/_AdminLayoutIsNull.cshtml";
+                }
+               <script src="~/Js/Admin/AdminForm.js"></script>
+               <script src="~/Js/Admin/CaseManagement/AddDefaultValue.js"></script>
+               <form id="form1" onsubmit="return false" action="##" method="post">
+                  <input type="hidden" id="TaskId" name="TaskId" value="@Request["TaskId"]" />
+                  <input type="hidden" id="CustomerId" name="CustomerId" value="@Request["CustomerId"]" />
+                  <input type="hidden" id="FormId" name="FormId" value="@Request["FormId"]" />
+                  <input type="hidden" id="Types" name="Types" value="@Request["Types"]" />
+                <!--内容表单区域开始-->
+            <div class="tables bankmap">
+        <div class="banktop"> <span class="toolbar-title-img">                                        <img src="../busi/img/topleft.png">06104-电费查询客户缴费记录</span> <span class="toolbar-title-close" style="display: none;">                                        </span> </div>
+        <div class="con-map2 selected">
+
+            <table id="qv" class="con-map2-table qv">
+                <tbody>
+                    <tr>
+                        <td class="" style="width: 64px;">
+                            <label vl-default="" id="label_jshm" vtitle="结s算s号s码" class="form-item text-left" vl-tipsid="label_jshm_tips" title="label_jshm" name="label_jshm">结<s></s>算<s></s>号<s></s>码</label>
+                            <div id="label_jshm_tips" class="tipsmsg"></div>
+                        </td>
+                        <td class="" rowspan="1" colspan="3">
+                            <input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_jshm" vtitle="结算号码" class="form-item text-left" vl-tipsid="txt_jshm_tips" vl-regex="['require', 'maxlength40', 'number']" vl-message="['结算号码不能为空!','结算号码长度超过最大长度:[40]!','']" style="width: 655px;" title="txt_jshm" onpaste="return false" name="txt_jshm"><span class="text-red redtip">!</span>
+                            <div id="txt_jshm_tips" class="tipsmsg"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td rowspan="1" colspan="1" class="" style="width: 64px;">
+                            <label vl-default="0" id="label_kkqsrq" vtitle="扣款起始日期" class="form-item text-left" vl-tipsid="label_kkqsrq_tips" title="label_kkqsrq" name="label_kkqsrq">扣款起始日期</label>
+                            <div id="label_kkqsrq_tips" class="tipsmsg"></div>
+                        </td>
+                        <td rowspan="1" colspan="1" class="">
+                            <input type="text" class="date form-item text-left" vl-keyup="wwww" vl-default="0" id="date_kqsrq" vtitle="扣款起始日期" vl-tipsid="date_kqsrq_tips" vl-regex="['require', 'maxlength8', 'tdate', 'number']" vl-message="['扣款起始日期不能为空！','','请输入正确的扣款起始日期格式（如：19000101）！','']" style="width: 180px;" oncopy="return false" onpaste="return false" oncut="return false" name="date_kqsrq"><img onclick="WdatePicker({el:'date_kqsrq',dateFmt:'yyyyMMdd'})" src="/js/My97DatePicker/skin/datePicker.gif" align="absmiddle" style="width:16px;height:22px;margin-left:6px;">
+                            <div id="date_kqsrq_tips" class="tipsmsg"></div>
+                        </td>
+                        <td rowspan="1" colspan="1" class="" style="width: 96px;">
+                            <label vl-default="" id="label_kkzzrq" vtitle="扣款终止日期" class="form-item text-left" vl-tipsid="label_kkzzrq_tips" title="label_kkzzrq" name="label_kkzzrq">扣款终止日期</label>
+                            <div id="label_kkzzrq_tips" class="tipsmsg"></div>
+                        </td>
+                        <td rowspan="1" colspan="1" class="">
+                            <input type="text" class="date form-item text-left" vl-default="20170505" id="date_kkzzrq" vtitle="扣款终止日期" vl-tipsid="date_kkzzrq_tips" vl-regex="['maxlength8', 'tdate', 'number']" vl-message="['','请输入正确的扣款终止日期（如：19000101）！','']" style="width: 180px;" title="date_kkzzrq" oncopy="return false" onpaste="return false" oncut="return false" name="date_kkzzrq"><img onclick="WdatePicker({el:'date_kkzzrq',dateFmt:'yyyyMMdd'})" src="/js/My97DatePicker/skin/datePicker.gif" align="absmiddle" style="width:16px;height:22px;margin-left:6px;">
+                            <div id="date_kkzzrq_tips" class="tipsmsg"></div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+        <div class="con-map2">
+            <div class="sq_table">
+                <table border="0" cellspacing="0" cellpadding="0" id="common_table"><tbody><tr><th data-field="sfbh">收费编号</th><th data-field="sfmc">收费名称</th><th data-field="ysje">应收金额</th><th data-field="ssje">实收金额</th></tr></tbody></table>
+
+            </div>
+
+            <iframe id="iframeID" name="iframeID" style="width: 100%;height: 300px; border:none; " src="http://bsi1.occupationedu.com/commontable/?fields=plld%7C%E6%89%B9%E9%87%8F%E8%81%94%E5%8A%A8,jylsh%7C%E4%BA%A4%E6%98%93%E6%B5%81%E6%B0%B4%E5%8F%B7,jyrq%7C%E4%BA%A4%E6%98%93%E6%97%A5%E6%9C%9F,sffs%7C%E6%94%B6%E8%B4%B9%E6%96%B9%E5%BC%8F,fylx%7C%E8%B4%B9%E7%94%A8%E7%B1%BB%E5%9E%8B,dwbm%7C%E5%8D%95%E4%BD%8D%E7%BC%96%E7%A0%81,jfh%7C%E7%BC%B4%E8%B4%B9%E5%8F%B7,jshmc%7C%E7%BB%93%E7%AE%97%E6%88%B7%E5%90%8D%E7%A7%B0,yddz%7C%E7%94%A8%E7%94%B5%E5%9C%B0%E5%9D%80,dfny%7C%E7%94%B5%E8%B4%B9%E5%B9%B4%E6%9C%88,kkzh%7C%E6%89%A3%E6%AC%BE%E8%B4%A6%E6%88%B7,kkzjmc%7C%E6%89%A3%E6%AC%BE%E8%B4%A6%E6%88%B7%E5%90%8D%E7%A7%B0,sfje%7C%E6%94%B6%E8%B4%B9%E9%87%91%E9%A2%9D,fkfs%7C%E4%BB%98%E6%AC%BE%E6%96%B9%E5%BC%8F&amp;table=tb_daily_dfcxkhjfjl&amp;orderby=id&amp;page=1&amp;pagesize=10&amp;is_page=true&amp;toolbar=true&amp;where=%20and%201!=1"></iframe>
+        </div>
+        <div class="foot "> <span>                                        <button>退出（F3）</button>                                        <button>帮助（F1）</button>                                        <button>辅助（F4）</button>                                        <button type="button" onclick="FormReset()">重置（F5）</button></span> <span style="float: right;">                                        <button type="button" style="margin-right: 0px;" vl-submit="true" id="btnsubmit" onclick="SubmitForm()">提交</button></span> </div>
+        <input type="hidden" class="hidmainwidth" value="1000" oncopy="return false" onpaste="return false" oncut="return false">
+    </div>
+@*<script type="text/javascript">
+    $(function () {
+        $("#iframeID").attr("src", _ip + encodeURI("commontable/?fields=plld|批量联动,jylsh|交易流水号,jyrq|交易日期,sffs|收费方式,fylx|费用类型,dwbm|单位编码,jfh|缴费号,jshmc|结算户名称,yddz|用电地址,dfny|电费年月,kkzh|扣款账户,kkzjmc|扣款账户名称,sfje|收费金额,fkfs|付款方式&table=tb_daily_dfcxkhjfjl&orderby=id&page=1&pagesize=10&is_page=true&toolbar=true&where= and 1!=1"));
+    });
+
+</script>*@
+<link href="~/Js/Student/GetDefaultValue/js/common.bank.css" rel="stylesheet" />
+              </form>

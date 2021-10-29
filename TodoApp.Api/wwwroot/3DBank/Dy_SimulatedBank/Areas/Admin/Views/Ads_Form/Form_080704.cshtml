@@ -1,0 +1,72 @@
+﻿@{
+                    ViewBag.Title = "Form_080704";
+                    Layout = "~/Views/Shared/_AdminLayoutIsNull.cshtml";
+                }
+               <script src="~/Js/Admin/AdminForm.js"></script>
+               <script src="~/Js/Admin/CaseManagement/AddDefaultValue.js"></script>
+               <form id="form1" onsubmit="return false" action="##" method="post">
+                  <input type="hidden" id="TaskId" name="TaskId" value="@Request["TaskId"]" />
+                  <input type="hidden" id="CustomerId" name="CustomerId" value="@Request["CustomerId"]" />
+                  <input type="hidden" id="FormId" name="FormId" value="@Request["FormId"]" />
+                  <input type="hidden" id="Types" name="Types" value="@Request["Types"]" />
+                <!--内容表单区域开始-->
+            <div class="tables bankmap">
+			<div class="banktop"> <span class="toolbar-title-img">                                        <img src="../busi/img/topleft.png">04411-现金轧账</span> <span class="toolbar-title-close" style="display: none;">                                        </span> </div>
+			<div class="con-map2 selected">
+				<table id="qv" class="con-map2-table qv">
+					<tbody>
+						<tr>
+							<td class="" rowspan="1" colspan="1" style="width: 64px;"><label vl-default="" id="label_zzrq" vtitle="轧账日期" class="form-item text-left" vl-tipsid="label_zzrq_tips" style="width: 160px;" title="label_zzrq" name="label_zzrq">轧账日期</label>
+								<div id="label_zzrq_tips" class="tipsmsg"></div>
+							</td>
+							<td class="" rowspan="1" colspan="1"><input type="text" class="date form-item text-left" vl-default="" id="date_zzra" vtitle="轧账日期" vl-tipsid="date_zzra_tips" vl-regex="['maxlength8', 'tdate', 'number', 'maxlength9']" vl-message="['轧帐日期长度大于最大长度:[8]!','请输入正确的轧账日期（如：19000101）!','轧帐日期输入错误1!','轧帐日期输入错误2!']" style="width: 600px;" oncopy="return false" onpaste="return false" oncut="return false" name="date_zzra"><img onclick="WdatePicker({el:'date_zzra',dateFmt:'yyyyMMdd'})" src="/js/My97DatePicker/skin/datePicker.gif" align="absmiddle" style="width:16px;height:22px;margin-left:6px;">
+								<div id="date_zzra_tips" class="tipsmsg"></div>
+							</td>
+						</tr>
+						<tr>
+							<td rowspan="1" colspan="1" class="" style="width: 64px;"><label vl-default="" id="label_zzgy" vtitle="轧账柜员" class="form-item text-left" vl-tipsid="label_zzgy_tips" style="width: 160px;" title="label_zzgy" name="label_zzgy">轧账柜员</label>
+								<div id="label_zzgy_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="">
+								<div class="slectstyle">
+									<select vl-default="160544" id="sle_zzgy" vtitle="轧账柜员" class="form-item text-left" vl-tipsid="sle_zzgy_tips" style="width: 600px;" title="sle_zzgy" vl-slemodel="" name="sle_zzgy">
+										<option disabled="" style="background-color: blue; color: #fff;" value="">轧账柜员值含义</option>
+										<option value="143276">143276-凌洪业</option>
+										<option value="624681">624681-范标睿</option>
+										<option value="115791">115791-盛庚盼</option>
+										<option value="315492">315492-周熊界</option>
+										<option value="550038">550038-孟天怡</option>
+										<option value="800169">800169-周华菘</option>
+										<option value="111654">111654-元当娜</option>
+										<option value="200468">200468-任悦远</option>
+										<option value="503480">503480-石艺宜</option>
+										<option value="776038">776038-巫碧枝</option>
+										<option value="671008">671008-张杜珍</option>
+										<option value="160544">160544-丁素晶</option>
+										<option value="605497">605497-武信雪</option>
+									</select><input type="text" oncopy="return false" onpaste="return false" oncut="return false" style="width: 577px;" id="mb1_sleinput_ZhaZhangGuiYuan_4" name="mb1_sleinput_ZhaZhangGuiYuan_4"></div>
+								<div id="sle_zzgy_tips" class="tipsmsg"></div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="foot "> <span>                                        <button>退出（F3）</button>                                        <button>帮助（F1）</button>                                        <button>辅助（F4）</button>                                        <button type="button" onclick="FormReset()">重置（F5）</button></span> <span style="float: right;">                                        <button type="button" style="margin-right: 0px;" vl-submit="true" id="btnsubmit" onclick="SubmitForm()">提交</button></span> </div>
+			<input type="hidden" class="hidmainwidth" value="1000/" oncopy="return false" onpaste="return false" oncut="return false"> </div>
+@*<script type="text/javascript">
+	var myDate = new Date();
+    var year = myDate.getFullYear().toString();
+    var month = (myDate.getMonth() + 1).toString();
+    if (parseInt(month) < 10) {
+        month = "0" + month;
+    }
+    var day = myDate.getDate();
+    if (parseInt(day) < 10) {
+        day = "0" + day;
+    }
+    var dateTimeNow = year + month + day;
+    var mm = "111111";
+    $("#date_zzra").val(dateTimeNow);
+</script>*@
+<link href="~/Js/Student/GetDefaultValue/js/common.bank.css" rel="stylesheet" />
+              </form>

@@ -1,0 +1,56 @@
+﻿@{
+    ViewBag.Title = "Form_110205";
+    Layout = "~/Views/Shared/_AdminLayoutIsNull.cshtml";
+}
+
+<script src="~/Js/Admin/AdminForm.js"></script>
+<script src="~/Js/Admin/CaseManagement/AddDefaultValue.js"></script>
+<link href="~/CSS/danju/css/menu06.css" rel="stylesheet" />
+
+<form id="form1" onsubmit="return false" action="##" method="post">
+    <input type="hidden" id="TaskId" name="TaskId" value="@Request["TaskId"]" />
+    <input type="hidden" id="CustomerId" name="CustomerId" value="@Request["CustomerId"]" />
+    <input type="hidden" id="FormId" name="FormId" value="@Request["FormId"]" />
+    <input type="hidden" id="Types" name="Types" value="@Request["Types"]" />
+    <!--内容表单区域开始-->
+
+    <div class="from_map06">
+        <input class="inputall site1 text_center" maxlength="4" type="text" name="dy01" id="dy01" value="" />
+        <input class="inputall site2 text_center" maxlength="2" type="text" name="dy02" data-type="月" id="dy02" value="" />
+        <input class="inputall site3 text_center" maxlength="2" type="text" name="dy03" data-type="日" id="dy03" value="" />
+
+        <input class="inputall site4" type="text" name="dy04" id="dy04" value="" />
+        <input class="inputall site5" type="text" name="dy05" id="dy05" value="" />
+        <input class="inputall site6" type="text" name="dy06" id="dy06" value="" />
+        <input class="inputall site7" type="text" name="dy07" id="dy07" value="" />
+        <input class="inputall site8" type="text" name="dy08" id="dy08" value="" />
+        <input class="inputall site9" type="text" name="dy09" id="dy09" value="" />
+        <input class="inputall site10" type="text" name="dy010" id="dy010" value="" />
+
+        <input class="inputall site11 text_center" maxlength="1" type="text" name="dy011" id="dy011" value="" />
+        <input class="inputall site12 text_center" maxlength="1" type="text" name="dy012" id="dy012" value="" />
+        <input class="inputall site13 text_center" maxlength="1" type="text" name="dy013" id="dy013" value="" />
+        <input class="inputall site14 text_center" maxlength="1" type="text" name="dy014" id="dy014" value="" />
+        <input class="inputall site15 text_center" maxlength="1" type="text" name="dy015" id="dy015" value="" />
+        <input class="inputall site16 text_center" maxlength="1" type="text" name="dy016" id="dy016" value="" />
+        <input class="inputall site17 text_center" maxlength="1" type="text" name="dy017" id="dy017" value="" />
+        <input class="inputall site18 text_center" maxlength="1" type="text" name="dy018" id="dy018" value="" />
+        <input class="inputall site19 text_center" maxlength="1" type="text" name="dy019" id="dy019" value="" />
+        <input class="inputall site20 text_center" maxlength="1" type="text" name="dy020" id="dy020" value="" />
+        <input class="inputall site21 text_center" maxlength="1" type="text" name="dy021" id="dy021" value="" />
+
+
+        <input class="inputall site22" type="text" name="dy022" id="dy022" value="" />
+        <input class="inputall site23" type="text" name="dy023" id="dy023" value="" />
+
+        <input class="inputall site24" type="text" name="dy024" id="dy024" value="" />
+
+        <input class="inputall site25" type="text" name="dy025" id="dy025" value="" />
+        <input class="inputall site26" type="text" name="dy026" id="dy026" value="" />
+
+        <button class="btn_chongzhi" type="button" value="重置" onclick="FormReset()">重置</button>
+        <button class="btn_tijiao" type="button" value="提交" onclick="SubmitForm()">提交</button>
+    </div>
+
+
+</form>

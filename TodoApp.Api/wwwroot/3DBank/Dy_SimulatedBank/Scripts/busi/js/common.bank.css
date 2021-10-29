@@ -1,0 +1,87 @@
+* {font-family: initial;} 
+.text-right {text-align: right;}
+.text-red {color: red;position:absolute;}
+ul {list-style-type: none;padding:0;}
+table {width: 100%;border-collapse: separate;border-spacing: 0px 10px;}
+table td {white-space: nowrap;}
+
+.tipsmsg {background-color: red;color: wheat; z-index: 99999; position: absolute; display: none;}
+label {display:inline-block;}
+.moneytips {position: relative;top: -28px;border: 2px solid #2eb33c;color: #59da67;padding: 2px;border-radius: 5px;background: #fff;}
+.moneytips.green {color: #11a511;}
+.moneytips.yellow {color: #adad0e;}
+.moneytips.red {color: red;}
+.moneytips.purple {color:purple}
+
+.hide {display:none;}
+img.sousuo {position: relative;left: 6px;top: 2px;cursor:pointer;padding-right: 10px;}
+.slectstyle {position:relative;display:inline-block;}
+.slectstyle select{outline: none;height:240px;}
+.slectstyle input{position: absolute;left: 0;/* border: none; */ top: 1px; height:75%;font-size:1em;}
+.moneystyle{position:relative;}
+.moneystyle label{position:absolute;left:0px;}
+.money {font-weight:bold;}
+
+.xcombox {border: 1px solid #a9a9a9;/* border-radius: 4px; */width: 200px;position:relative;}
+.xcombox p {margin: 0;padding: 0;background: url(http://120.24.172.198:1203/bankingsystem/kaihu/slectbj.png) no-repeat right;height: 20px;}
+.xcombox input {/* width:100%; */outline: none;border: none;padding: 0;margin: 0;height: 20px;position: absolute;}
+.xcombox ul {border-top: 1px solid #a9a9a9;padding: 0;margin: 0;position:absolute;width: 100%;background: #fff;border: 1px solid #a9a9a9;top: 20px;left: -1px;max-height:212px;overflow-y:scroll;}
+.xcombox li {cursor: default;}
+.xcombox ul .hover{background: #3c88ff;color: #fff;}
+
+/*�ո���*/
+label.form-item  i {display:inline-block;width:16px;}
+label.form-item  s {display:inline-block;width:8px;}
+
+
+/*.bankmap {background-color: #4a6e9e;margin: auto;max-width: 1200px!important; min-width: 950px;}*/
+.toolbar-title-img{float: left; margin-top: 5px; margin-left: 7px; color: white;}
+.toolbar-title-img img{float: left;}
+.toolbar-title-close{float: right; margin-right: 7px; margin-top: 5px;}
+
+.con-map2 {margin: 0 10px;margin-top: 5px;border: 1px solid #d5d5d5;padding: 10px 10px;position: relative;background-color: white;clear: both;}
+/*.con-map2.selected {background: #ffd5d5;}*/
+.con-map2 .con-map2-table {width: 100%;border-collapse: separate;border-spacing: 0px 10px;}
+.con-map2 .con-map2-table td {padding: 0px 3px;}
+.slectstyle select {cursor: pointer;width: 100%;height: 30px;line-height: 30px;border: 1px solid #d2d2d2;background:none;font-size:1.0em;}
+.inputstyle input {width: 100%;border: 1px solid #d2d2d2;height: 20px;line-height: 20px;}
+.foot {width: 940px;margin: auto;}
+.foot button {cursor: pointer;margin-right: 15px;margin-top: 5px;margin-bottom: 5px;padding: 3px 5px;border: 1px solid #98b8d8;background: none;text-align: center;border-radius: 5px;}
+
+.box .tab { margin-top: 0;margin-bottom: 0px;height: 22px;border: 1px solid #48515a;border-bottom: none;padding-top: 2px;background: -webkit-linear-gradient(top, #deeafa, #f3f4f9);background: -o-linear-gradient(top, #deeafa, #f3f4f9);background: -moz-linear-gradient(top, #deeafa, #f3f4f9);background: linear-gradient(to top, #deeafa, #f3f4f9);}
+.box ul li.one {border-top: 2px solid red;background: #e3e3e5;font-weight:600;}
+.box .tab li {border-top-left-radius: 5px;border-top-right-radius: 5px;float: left;border: 1px solid #4a6e9e;margin-right: 0px;padding: 0 10px;border-bottom: none;position: relative;cursor: pointer;background: #dfe3e8;}
+.box .content {border: 1px solid #101622;padding: 5px;}
+.box .tab li.disable {background: #898c90;}
+.ku {margin-left: -15px;margin-top: 5px;}
+/*.huise {background:#ccc;padding:2px;margin:0 0;}*/
+
+#xiala .selectlist li {border:1px solid #e2e2e2;margin-bottom:5px;padding:6px 10px;cursor: pointer;}
+#xiala .selectlist li.cur {background:#ded;}
+
+#profile {margin-left: -16px;margin-right: -16px;}
+#profile li {padding: 6px 10px;border: 1px solid #e2e2e2;margin-bottom:6px;}
+.guizelist {margin-left: -16px;margin-right: -16px;}
+.guizelist li {padding: 6px 10px;border: 1px solid #e2e2e2;margin-bottom:6px;}
+.guizelist li input {width:100px;}
+
+
+.ketianitems li {padding: 6px;border: 1px solid #dedede;margin-bottom:5px;}
+.ketianitems li .line{width:200px;display:inline-block;}
+
+.tabitems li {padding: 6px;border: 1px solid #dedede;margin-bottom:5px;}
+.tabitems li .line{width:100px;display:inline-block;}
+
+.zhiyuitems li {padding: 6px;border: 1px solid #dedede;margin-bottom:5px;}
+.zhiyuitems li .line{width:100px;display:inline-block;}
+.zhiyuitems li input{width:280px;}
+
+.ttkuaichaitems li {padding: 6px;border: 1px solid #dedede;margin-bottom:5px;}
+.ttkuaichaitems li .line{width:100px;display:inline-block;}
+.ttkuaichaitems li .subline{width:24px;display:inline-block;}
+
+.tipscontent{display: inline-block;position: relative;}
+.tipscontent select{position: absolute;right:-18px;top: 0px;height: 26px;width: 19px;}
+
+.ctrlcontent{display: inline-block;position: relative;}
+.ctrlcontent select{position: absolute;right:0px;top: 0px;height: 26px;width: 19px;}

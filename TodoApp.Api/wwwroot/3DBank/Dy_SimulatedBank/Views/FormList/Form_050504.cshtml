@@ -1,0 +1,152 @@
+﻿@{
+                    ViewBag.Title = "Form_050504";
+                    Layout = "~/Views/Shared/_StutentLayoutIsNull.cshtml";
+                }
+               <form id="form1" onsubmit="return false" action="##" method="post">
+                   <input type="hidden" id="FormType" name="FormType" value="@Request["FormType"]" />
+                   <input type="hidden" id="FormId" name="FormId" value="@Request["FormId"]" />
+                   <input type="hidden" id="TRId" name="TRId" value="@Request["TotalResultId"]" />
+                   <input type="hidden" id="ExamId" name="ExamId" value="@Request["ExamId"]" />
+                   <input type="hidden" id="TaskId" name="TaskId" value="@Request["TaskId"]" />
+                   <input type="hidden" id="CustomerId" name="CustomerId" value="@Request["CustomerId"]" />
+                   <input type="hidden" id="LinkId" name="LinkId" value="@Request["LinkId"]" />
+                   <input type="hidden" id="Types" name="Types" value="2" />
+                <!--内容表单区域开始-->
+            <div class="tables bankmap">
+			<div class="banktop"> <span class="toolbar-title-img">                                        <img src="../busi/img/topleft.png">04214-凭证调剂</span> <span class="toolbar-title-close" style="display: none;">                                        </span> </div>
+			<div class="con-map2 selected">
+				<table id="qv" class="con-map2-table qv">
+					<tbody>
+						<tr>
+							<td class="" style="width: 64px;"><label vl-default="" id="label_czlx" vtitle="操作类型" class="form-item text-left" vl-tipsid="label_czlx_tips" style="width: 100px;" title="label_czlx" name="label_czlx">操作类型</label>
+								<div id="label_czlx_tips" class="tipsmsg"></div>
+							</td>
+							<td class="" rowspan="1" colspan="3">
+								<div class="slectstyle">
+									<select vl-default="1" id="sle_czlx" vtitle="操作类型" class="form-item text-left" vl-tipsid="sle_czlx_tips" style="width: 600px;" vl-slemodel="" name="sle_czlx">
+										<option disabled="" style="background-color: blue; color: #fff;" value="">操作类型值含义</option>
+										<option value="1">1 - 付出</option>
+										<option value="2">2 - 收入</option>
+									</select><input type="text" oncopy="return false" onpaste="return false" oncut="return false" style="width: 577px;" id="mb1_sleinput_CaoZuoLeiXing_2" name="mb1_sleinput_CaoZuoLeiXing_2"></div>
+								<div id="sle_czlx_tips" class="tipsmsg"></div>
+							</td>
+						</tr>
+						<tr>
+							<td rowspan="1" colspan="1" class="" style="width: 64px;"><label vl-default="" id="label_dfgy" vtitle="对方柜员" class="form-item text-left" vl-tipsid="label_dfgy_tips" style="width: 100px;" title="label_dfgy" name="label_dfgy">对方柜员</label>
+								<div id="label_dfgy_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="3" class="">
+								<div class="slectstyle">
+									<select vl-default="" id="sle_dfgy" vtitle="对方柜员" class="form-item text-left" vl-tipsid="sle_dfgy_tips" vl-regex="['require', 'maxlength25']" vl-message="['对方柜员不能为空！','对方柜员长度超过最大长度;[25!]']" style="width: 600px;" title="sle_dfgy" vl-slemodel="" name="sle_dfgy">
+										<option disabled="" style="background-color: blue; color: #fff;" value="" selected="selected">对方柜员值含义</option>
+										<option value="143276">143276-凌洪业</option>
+										<option value="624681">624681-范标睿</option>
+										<option value="115791">115791-盛庚盼</option>
+										<option value="315492">315492-周熊界</option>
+										<option value="550038">550038-孟天怡</option>
+										<option value="800169">800169-周华菘</option>
+										<option value="111654">111654-元当娜</option>
+										<option value="200468">200468-任悦远</option>
+										<option value="503480">503480-石艺宜</option>
+										<option value="776038">776038-巫碧枝</option>
+										<option value="671008">671008-张杜珍</option>
+										<option value="160544">160544-丁素晶</option>
+										<option value="605497">605497-武信雪</option>
+									</select><input type="text" oncopy="return false" onpaste="return false" oncut="return false" style="width: 577px;" id="mb1_sleinput_DuiFangGuiYuan_4" name="mb1_sleinput_DuiFangGuiYuan_4"><span class="text-red redtip">!</span></div>
+								<div id="sle_dfgy_tips" class="tipsmsg"></div>
+							</td>
+						</tr>
+						<tr>
+							<td rowspan="1" colspan="1" class="" style="width: 64px;"><label vl-default="" id="label_pzzl" vtitle="凭证种类" class="form-item text-left" vl-tipsid="label_pzzl_tips" style="width: 100px;" title="label_pzzl" name="label_pzzl">凭证种类</label>
+								<div id="label_pzzl_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="3" class="">
+								<div class="slectstyle">
+									<select vl-default="001" id="sle_pzzl" vtitle="凭证种类" class="form-item text-left" kuaicha="true" vl-tipsid="sle_pzzl_tips" style="width: 580px;" title="sle_pzzl" vl-slemodel="txt_qshm,txt_zzhm,txt_qshm,txt_zzhm,txt_qshm,txt_zzhm,txt_qshm,txt_zzhm,txt_qshm,txt_zzhm,txt_qshm,txt_zzhm,txt_qshm,txt_zzhm,txt_qshm,txt_zzhm,txt_qshm,txt_zzhm,txt_qshm,txt_zzhm,txt_qshm,txt_zzhm,txt_qshm,txt_zzhm,txt_qshm,txt_zzhm,txt_qshm,txt_zzhm,txt_qshm,txt_zzhm,txt_qshm,txt_zzhm,txt_qshm,txt_zzhm,txt_qshm,txt_zzhm,txt_qshm,txt_zzhm,txt_qshm,txt_zzhm,txt_qshm,txt_zzhm,txt_qshm,txt_zzhm,txt_qshm,txt_zzhm,txt_qshm,txt_zzhm,txt_qshm,txt_zzhm,txt_qshm,txt_zzhm,txt_qshm,txt_zzhm,txt_qshm,txt_zzhm,txt_qshm,txt_zzhm,txt_qshm,txt_zzhm,txt_qshm,txt_zzhm,txt_qshm,txt_zzhm,txt_qshm,txt_zzhm,txt_qshm,txt_zzhm,txt_qshm,txt_zzhm,txt_qshm,txt_zzhm,txt_qshm,txt_zzhm,txt_qshm,txt_zzhm,txt_qshm,txt_zzhm" name="sle_pzzl">
+										<option disabled="" style="background-color: blue; color: #fff;" value="">凭证种类值含义</option>
+										<option sle-require="[{'id':'txt_qshm','regex':['require'],'tips':['起始号码不能为空！'],'disabled':'false','default':''},{'id':'txt_zzhm','regex':['require'],'tips':['终止号码不能为空！'],'disabled':'false','default':''}]" value="001">001 - 储蓄存折</option>
+										<option sle-require="[{'id':'txt_qshm','regex':['require'],'tips':['起始号码不能为空！'],'disabled':'false','default':''},{'id':'txt_zzhm','regex':['require'],'tips':['终止号码不能为空！'],'disabled':'false','default':''}]" value="002">002 - 信合惠农一折通专用存折</option>
+										<option sle-require="[{'id':'txt_qshm','regex':['require'],'tips':['起始号码不能为空！'],'disabled':'false','default':''},{'id':'txt_zzhm','regex':['require'],'tips':['终止号码不能为空！'],'disabled':'false','default':''}]" value="003">003 - 定期一本通</option>
+										<option sle-require="[{'id':'txt_qshm','regex':['require'],'tips':['起始号码不能为空！'],'disabled':'false','default':''},{'id':'txt_zzhm','regex':['require'],'tips':['终止号码不能为空！'],'disabled':'false','default':''}]" value="004">004 - 储蓄存单</option>
+										<option sle-require="[{'id':'txt_qshm','regex':['require'],'tips':['起始号码不能为空！'],'disabled':'false','default':''},{'id':'txt_zzhm','regex':['require'],'tips':['终止号码不能为空！'],'disabled':'false','default':''}]" value="005">005 - 信合借记IC卡</option>
+										<option sle-require="[{'id':'txt_qshm','regex':['require'],'tips':['起始号码不能为空！'],'disabled':'false','default':''},{'id':'txt_zzhm','regex':['require'],'tips':['终止号码不能为空！'],'disabled':'false','default':''}]" value="006">006 - 福农IC卡</option>
+										<option sle-require="[{'id':'txt_qshm','regex':['require'],'tips':['起始号码不能为空！'],'disabled':'false','default':''},{'id':'txt_zzhm','regex':['require'],'tips':['终止号码不能为空！'],'disabled':'false','default':''}]" value="007">007 - 合医IC卡</option>
+										<option sle-require="[{'id':'txt_qshm','regex':['require'],'tips':['起始号码不能为空！'],'disabled':'false','default':''},{'id':'txt_zzhm','regex':['require'],'tips':['终止号码不能为空！'],'disabled':'false','default':''}]" value="008">008 - 信合社保IC卡</option>
+										<option sle-require="[{'id':'txt_qshm','regex':['require'],'tips':['起始号码不能为空！'],'disabled':'false','default':''},{'id':'txt_zzhm','regex':['require'],'tips':['终止号码不能为空！'],'disabled':'false','default':''}]" value="009">009 - 信合居民健康IC卡</option>
+										<option sle-require="[{'id':'txt_qshm','regex':['require'],'tips':['起始号码不能为空！'],'disabled':'false','default':''},{'id':'txt_zzhm','regex':['require'],'tips':['终止号码不能为空！'],'disabled':'false','default':''}]" value="010">010 - 信合公务IC卡</option>
+										<option sle-require="[{'id':'txt_qshm','regex':['require'],'tips':['起始号码不能为空！'],'disabled':'false','default':''},{'id':'txt_zzhm','regex':['require'],'tips':['终止号码不能为空！'],'disabled':'false','default':''}]" value="011">011 - 股金证</option>
+										<option sle-require="[{'id':'txt_qshm','regex':['require'],'tips':['起始号码不能为空！'],'disabled':'false','default':''},{'id':'txt_zzhm','regex':['require'],'tips':['终止号码不能为空！'],'disabled':'false','default':''}]" value="012">012 - 单位定期存款开户证实书</option>
+										<option sle-require="[{'id':'txt_qshm','regex':['require'],'tips':['起始号码不能为空！'],'disabled':'false','default':''},{'id':'txt_zzhm','regex':['require'],'tips':['终止号码不能为空！'],'disabled':'false','default':''}]" value="013">013 - 单位定期存单</option>
+										<option sle-require="[{'id':'txt_qshm','regex':['require'],'tips':['起始号码不能为空！'],'disabled':'false','default':''},{'id':'txt_zzhm','regex':['require'],'tips':['终止号码不能为空！'],'disabled':'false','default':''}]" value="014">014 - 现金支票</option>
+										<option sle-require="[{'id':'txt_qshm','regex':['require'],'tips':['起始号码不能为空！'],'disabled':'false','default':''},{'id':'txt_zzhm','regex':['require'],'tips':['终止号码不能为空！'],'disabled':'false','default':''}]" value="015">015 - 转账支票</option>
+										<option sle-require="[{'id':'txt_qshm','regex':['require'],'tips':['起始号码不能为空！'],'disabled':'false','default':''},{'id':'txt_zzhm','regex':['require'],'tips':['终止号码不能为空！'],'disabled':'false','default':''}]" value="016">016 - 农信银银行汇票</option>
+										<option sle-require="[{'id':'txt_qshm','regex':['require'],'tips':['起始号码不能为空！'],'disabled':'false','default':''},{'id':'txt_zzhm','regex':['require'],'tips':['终止号码不能为空！'],'disabled':'false','default':''}]" value="017">017 - 银行承兑汇票</option>
+										<option sle-require="[{'id':'txt_qshm','regex':['require'],'tips':['起始号码不能为空！'],'disabled':'false','default':''},{'id':'txt_zzhm','regex':['require'],'tips':['终止号码不能为空！'],'disabled':'false','default':''}]" value="018">018 - 非税收入缴款书</option>
+										<option sle-require="[{'id':'txt_qshm','regex':['require'],'tips':['起始号码不能为空！'],'disabled':'false','default':''},{'id':'txt_zzhm','regex':['require'],'tips':['终止号码不能为空！'],'disabled':'false','default':''}]" value="019">019 - 印鉴卡</option>
+										<option sle-require="[{'id':'txt_qshm','regex':['require'],'tips':['起始号码不能为空！'],'disabled':'false','default':''},{'id':'txt_zzhm','regex':['require'],'tips':['终止号码不能为空！'],'disabled':'false','default':''}]" value="020">020 - 支付业务来账补充凭证</option>
+										<option sle-require="[{'id':'txt_qshm','regex':['require'],'tips':['起始号码不能为空！'],'disabled':'false','default':''},{'id':'txt_zzhm','regex':['require'],'tips':['终止号码不能为空！'],'disabled':'false','default':''}]" value="021">021 - 个人U盾</option>
+										<option sle-require="[{'id':'txt_qshm','regex':['require'],'tips':['起始号码不能为空！'],'disabled':'false','default':''},{'id':'txt_zzhm','regex':['require'],'tips':['终止号码不能为空！'],'disabled':'false','default':''}]" value="022">022 - 贷款证(卡)</option>
+										<option sle-require="[{'id':'txt_qshm','regex':['require'],'tips':['起始号码不能为空！'],'disabled':'false','default':''},{'id':'txt_zzhm','regex':['require'],'tips':['终止号码不能为空！'],'disabled':'false','default':''}]" value="023">023 - VIP贵宾卡</option>
+										<option sle-require="[{'id':'txt_qshm','regex':['require'],'tips':['起始号码不能为空！'],'disabled':'false','default':''},{'id':'txt_zzhm','regex':['require'],'tips':['终止号码不能为空！'],'disabled':'false','default':''}]" value="024">024 - 资信证明书</option>
+										<option sle-require="[{'id':'txt_qshm','regex':['require'],'tips':['起始号码不能为空！'],'disabled':'false','default':''},{'id':'txt_zzhm','regex':['require'],'tips':['终止号码不能为空！'],'disabled':'false','default':''}]" value="025">025 - 稽核审计现场检查处罚收据</option>
+										<option sle-require="[{'id':'txt_qshm','regex':['require'],'tips':['起始号码不能为空！'],'disabled':'false','default':''},{'id':'txt_zzhm','regex':['require'],'tips':['终止号码不能为空！'],'disabled':'false','default':''}]" value="027">027 - 机构信用代码证</option>
+										<option sle-require="[{'id':'txt_qshm','regex':['require'],'tips':['起始号码不能为空！'],'disabled':'false','default':''},{'id':'txt_zzhm','regex':['require'],'tips':['终止号码不能为空！'],'disabled':'false','default':''}]" value="028">028 - 空头支票代收罚款收据</option>
+										<option sle-require="[{'id':'txt_qshm','regex':['require'],'tips':['起始号码不能为空！'],'disabled':'false','default':''},{'id':'txt_zzhm','regex':['require'],'tips':['终止号码不能为空！'],'disabled':'false','default':''}]" value="029">029 - 假币收缴凭证</option>
+										<option sle-require="[{'id':'txt_qshm','regex':['require'],'tips':['起始号码不能为空！'],'disabled':'false','default':''},{'id':'txt_zzhm','regex':['require'],'tips':['终止号码不能为空！'],'disabled':'false','default':''}]" value="030">030 - 太保人寿保险单</option>
+										<option sle-require="[{'id':'txt_qshm','regex':['require'],'tips':['起始号码不能为空！'],'disabled':'false','default':''},{'id':'txt_zzhm','regex':['require'],'tips':['终止号码不能为空！'],'disabled':'false','default':''}]" value="031">031 - 国寿保险单</option>
+										<option sle-require="[{'id':'txt_qshm','regex':['require'],'tips':['起始号码不能为空！'],'disabled':'false','default':''},{'id':'txt_zzhm','regex':['require'],'tips':['终止号码不能为空！'],'disabled':'false','default':''}]" value="032">032 - 股权凭证</option>
+										<option sle-require="[{'id':'txt_qshm','regex':['require'],'tips':['起始号码不能为空！'],'disabled':'false','default':''},{'id':'txt_zzhm','regex':['require'],'tips':['终止号码不能为空！'],'disabled':'false','default':''}]" value="034">034 - 合医磁条卡</option>
+										<option sle-require="[{'id':'txt_qshm','regex':['require'],'tips':['起始号码不能为空！'],'disabled':'false','default':''},{'id':'txt_zzhm','regex':['require'],'tips':['终止号码不能为空！'],'disabled':'false','default':''}]" value="035">035 - 信合磁条卡</option>
+										<option sle-require="[{'id':'txt_qshm','regex':['require'],'tips':['起始号码不能为空！'],'disabled':'false','default':''},{'id':'txt_zzhm','regex':['require'],'tips':['终止号码不能为空！'],'disabled':'false','default':''}]" value="036">036 - 福农磁条卡</option>
+										<option sle-require="[{'id':'txt_qshm','regex':['require'],'tips':['起始号码不能为空！'],'disabled':'false','default':''},{'id':'txt_zzhm','regex':['require'],'tips':['终止号码不能为空！'],'disabled':'false','default':''}]" value="037">037 - 电子汇兑往账凭证</option>
+										<option sle-require="[{'id':'txt_qshm','regex':['require'],'tips':['起始号码不能为空！'],'disabled':'false','default':''},{'id':'txt_zzhm','regex':['require'],'tips':['终止号码不能为空！'],'disabled':'false','default':''}]" value="038">038 - 电子汇兑来账补充凭证</option>
+										<option sle-require="[{'id':'txt_qshm','regex':['require'],'tips':['起始号码不能为空！'],'disabled':'false','default':''},{'id':'txt_zzhm','regex':['require'],'tips':['终止号码不能为空！'],'disabled':'false','default':''}]" value="039">039 - 单位U盾</option>
+										<option sle-require="[{'id':'txt_qshm','regex':['require'],'tips':['起始号码不能为空！'],'disabled':'false','default':''},{'id':'txt_zzhm','regex':['require'],'tips':['终止号码不能为空！'],'disabled':'false','default':''}]" value="041">041 - TSM移动金融IC卡</option>
+										<option sle-require="[{'id':'txt_qshm','regex':['require'],'tips':['起始号码不能为空！'],'disabled':'false','default':''},{'id':'txt_zzhm','regex':['require'],'tips':['终止号码不能为空！'],'disabled':'false','default':''}]" value="023">033 - 联名卡</option>
+										<option value="299">299 - 其他凭证</option>
+										<option value="901">901 - 汇票申请委托书</option>
+										<option value="902">902 - 本票申请委托书</option>
+										<option value="903">903 - 电汇委托书</option>
+										<option value="904">904 - 其他</option>
+									</select><input type="text" oncopy="return false" onpaste="return false" oncut="return false" style="width: 557px;" id="mb1_sleinput_PingZhengZhongLei_6" name="mb1_sleinput_PingZhengZhongLei_6"><img class="sousuo" src="/Js/Student/GetDefaultValue/img/banksousuo.png" vl-exec="false" vl-message="['凭证种类查询未执行！']" title="执行快查！"></div>
+								<div id="sle_pzzl_tips" class="tipsmsg"></div>
+							</td>
+						</tr>
+						<tr>
+							<td rowspan="1" colspan="1" class="" style="width: 64px;"><label vl-default="" id="label_qshm" vtitle="起始号码" class="form-item text-left" vl-tipsid="label_qshm_tips" style="width: 100px;" title="label_qshm" name="label_qshm">起始号码</label>
+								<div id="label_qshm_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="3" class=""><input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_qshm" vtitle="起始号码" class="form-item text-left" kuaicha="true" vl-tipsid="txt_qshm_tips" vl-regex="['require', 'minlength16', 'maxlength20', 'number']" vl-message="['起始号码不能为空！','','','凭证号码输入错误!']" style="width: 580px;" title="txt_qshm" onpaste="return false" name="txt_qshm"><img class="sousuo" src="/Js/Student/GetDefaultValue/img/banksousuo.png" vl-exec="false" vl-message="['起始号码查询未执行！']" title="执行快查！"><span class="text-red redtip">!</span>
+								<div id="txt_qshm_tips" class="tipsmsg"></div>
+							</td>
+						</tr>
+						<tr>
+							<td rowspan="1" colspan="1" class="" style="width: 64px;"><label vl-default="" id="label_zzhm" vtitle="终止号码" class="form-item text-left" vl-tipsid="label_zzhm_tips" style="width: 100px;" title="label_zzhm" name="label_zzhm">终止号码</label>
+								<div id="label_zzhm_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="3" class=""><input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_zzhm" vtitle="终止号码" class="form-item text-left" kuaicha="true" vl-tipsid="txt_zzhm_tips" vl-regex="['require', 'minlength16', 'maxlength20']" vl-message="['终止号码不能为空！','','']" style="width: 580px;" title="txt_zzhm" onpaste="return false" name="txt_zzhm"><img class="sousuo" src="/Js/Student/GetDefaultValue/img/banksousuo.png" vl-exec="false" vl-message="['终止号码查询未执行！']" title="执行快查！"><span class="text-red redtip">!</span>
+								<div id="txt_zzhm_tips" class="tipsmsg"></div>
+							</td>
+						</tr>
+						<tr>
+							<td rowspan="1" colspan="1" class="" style="width: 64px;"><label vl-default="" id="label_pzsl" vtitle="凭证数量" class="form-item text-left" vl-tipsid="label_pzsl_tips" style="width: 100px;" title="label_pzsl" name="label_pzsl">凭证数量</label>
+								<div id="label_pzsl_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="3" class=""><input type="text" oncopy="return false" oncut="return false" vl-default="0" id="txt_pzsl" vtitle="凭证数量" class="form-item text-left on" vl-disabled="true" vl-tipsid="txt_pzsl_tips" style="width: 600px;" title="txt_pzsl" onpaste="return false" disabled="disabled" name="txt_pzsl">
+								<div id="txt_pzsl_tips" class="tipsmsg"></div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="foot "> <span>                                        <button>退出（F3）</button>                                        <button>帮助（F1）</button>                                        <button>辅助（F4）</button>                                        <button type="button" onclick="FormReset()">重置（F5）</button></span> <span style="float: right;">                                        <button type="button" style="margin-right: 0px;" vl-submit="true" id="btnsubmit" onclick="SubmitForm()">提交</button></span> </div>
+			<input type="hidden" class="hidmainwidth" value="1000/" oncopy="return false" onpaste="return false" oncut="return false"> </div><script src="~/Js/Student/GetDefaultValue/common.bank.js"></script>
+              <script src="~/Js/Student/GetDefaultValue/lodash.min.js"></script>
+              <script src="~/Js/Student/GetDefaultValue/common.regex.cz.js"></script>
+              <script src="~/Js/Student/GetDefaultValue/common.regex.js"></script>
+<script src="~/Js/Student/GetDefaultValue/js/VoucherSwap.js"></script>
+<script src="~/Js/Student/GetDefaultValue/js/indexone.js"></script>
+<script src="~/Js/Student/GetDefaultValue/js/layer.js"></script>
+<script src="~/Js/Student/GetDefaultValue/js/My97DatePicker/WdatePicker.js"></script>
+<link href="~/Js/Student/GetDefaultValue/js/common.bank.css" rel="stylesheet" />
+              </form>

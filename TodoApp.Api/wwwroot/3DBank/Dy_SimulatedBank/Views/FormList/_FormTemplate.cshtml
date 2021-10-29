@@ -1,0 +1,68 @@
+﻿@{ Layout = "~/Views/Shared/_StutentLayoutIsNull.cshtml"; }
+<link href="~/CSS/bootstrap.min.css?v=20211028" rel="stylesheet" />
+<link href="~/CSS/common.css?ver=20210929" rel="stylesheet" />
+<form id="form1" onsubmit="return false" action="##" method="post">
+    <input type="hidden" id="FormType" name="FormType" value="@Request["FormType"]" />
+    <input type="hidden" id="FormId" name="FormId" value="@Request["FormId"]" />
+    <input type="hidden" id="TRId" name="TRId" value="@Request["TotalResultId"]" />
+    <input type="hidden" id="ExamId" name="ExamId" value="@Request["ExamId"]" />
+    <input type="hidden" id="TaskId" name="TaskId" value="@Request["TaskId"]" />
+    <input type="hidden" id="CustomerId" name="CustomerId" value="@Request["CustomerId"]" />
+    <input type="hidden" id="LinkId" name="LinkId" value="@Request["LinkId"]" />
+    <input type="hidden" id="Types" name="Types" value="2" />
+    <div class="tables bankmap" style="margin-bottom: 150px; ">
+        @RenderBody()
+        <div class="foot ">
+            <span>
+                <button>退出（F3）</button>
+                <button>帮助（F1）</button>
+                <button>辅助（F4）</button>
+                <button type="button" onclick="FormReset()">重置（F5）</button>
+            </span> <span style="float: right; ">
+                <button vl-submit="true " id="btnsubmit" onclick="SubmitForm()">提交</button>
+                @RenderSection("btnList", required: false)
+            </span>
+        </div>
+
+    </div>
+    <input type="hidden" class="hidmainwidth" value="1000" oncopy="return false" onpaste="return false" oncut="return false">
+    <input type="hidden" class="zhanghao" oncopy="return false" onpaste="return false" oncut="return false">
+    <script src="~/Js/Student/GetDefaultValue/common.bank.js"></script>
+    <script src="~/Js/Student/GetDefaultValue/lodash.min.js"></script>
+    <script src="~/Js/Student/GetDefaultValue/common.regex.cz.js"></script>
+    @*<script src="~/Js/Student/GetDefaultValue/common.regex.js?v=202109272"></script>*@
+    <script src="~/Js/Student/GetDefaultValue/js/layer.js?v=20211013"></script>
+    <script src="~/Js/Student/GetDefaultValue/js/grkh.js "></script>
+    <script src="~/Js/Student/GetDefaultValue/js/My97DatePicker/WdatePicker.js "></script>
+    <link href="~/Js/Student/GetDefaultValue/js/common.bank.css?v=20211014" rel="stylesheet" />
+    <script src="~/Js/myCookie.js?v=2021101264"></script>
+    <style type="text/css">
+        /*.bankmap {
+            background-color: #4a6e9e;
+            margin: auto;
+            max-width: 1000px;
+            min-width: 1000px;
+        }*/
+
+        .form-group {
+            margin-top: 2px;
+        }
+
+        .img {
+            width: 20%;
+            height: 140px;
+            border: 1px solid;
+            border-radius: 10px;
+            float: left;
+        }
+
+        .box {
+            display: inline-block;
+            width: 75%;
+        }
+    </style>
+</form>
+
+
+@RenderSection("doSubmit", false)
+@RenderSection("MyScript", false)

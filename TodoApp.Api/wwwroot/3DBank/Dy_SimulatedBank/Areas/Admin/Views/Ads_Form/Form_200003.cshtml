@@ -1,0 +1,118 @@
+﻿<!--个人客户综合签约-->
+<style>
+    .img {
+        width: 250px;
+        height: 150px;
+    }
+
+    .logo {
+        width: 50px;
+        height: 50px;
+    }
+
+    .box {
+        display: inline-block;
+    }
+
+    .block {
+        padding-left: 30px;
+        width: 100px;
+        padding: 10px;
+        text-align: center;
+        cursor: pointer;
+        display: inline-block;
+    }
+</style>
+<div class="pull-left">
+    <img src="/img/card.png" style="width:250px;height:150px;" alt="">
+</div>
+<div class="row">
+    <div class="col-md-4">
+        <div class="form-group">
+            <label id="lbl_account" name="lbl_account" for="inputEmail3" class="col-sm-4 control-label">账(卡)号</label>
+            <div class="col-sm-8">
+                <input vl-default="" id="txt_cancelReason" name="txt_cancelReason" type="text" class="form-control input-sm">
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="form-group">
+            <label id="lbl_accountName" name="lbl_accountName" for="inputEmail3" class="col-sm-4 control-label">账户名称</label>
+            <div class="col-sm-8">
+                <input vl-default="" id="txt_accountName" name="txt_accountName" type="text" class="form-control input-sm">
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="form-group">
+            <label id="lbl_accountType" name="lbl_accountType" for="inputEmail3" class="col-sm-4 control-label">账户类型</label>
+            <div class="col-sm-8">
+                <select vl-default="" id="sle_accountType" name="sle_accountType" class="form-control">
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="form-group">
+            <label id="lbl_accountGrade" name="lbl_accountGrade" for="inputEmail3" class="col-sm-4 control-label">账户等级</label>
+            <div class="col-sm-8">
+                <select vl-default="" id="sle_accountGrade" name="sle_accountGrade" class="form-control">
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="form-group">
+            <label id="lbl_accoutOrgan" name="lbl_accoutOrgan" for="inputEmail3" class="col-sm-4 control-label">开户机构</label>
+            <div class="col-sm-8">
+                <input vl-default="" id="txt_accoutOrgan" name="txt_accoutOrgan" type="text" class="form-control input-sm">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="divider divider-horizontal"><div class="divider-text is-left"><strong>移动电话</strong></div></div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <label id="lbl_mobile" name="lbl_mobile" for="inputEmail3" class="col-sm-3 control-label">常用移动电话</label>
+            <div class="col-sm-6">
+                <input vl-default="" id="txt_mobile" name="txt_mobile" type="text" class="form-control input-sm">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="divider divider-horizontal"><div class="divider-text is-left"><strong>渠道签约</strong></div></div>
+<div class="block" onclick="goPage('200001', afterGoPage())">
+    <div>
+        <img class="logo" id="sms" src="/img/duanxin.png" alt="">
+    </div>
+    <span class="demonstration">短信通知</span>
+</div>
+<div class="block" onclick="goPage('200053', afterGoPage())">
+    <div>
+        <img class="logo" id="atm" src="/img/ATM.png" alt="">
+    </div>
+    <span class="demonstration">ATM转账</span>
+</div>
+<div class="block" onclick="goPage('200054', afterGoPage())">
+    <div>
+        <img class="logo" id="noCard" src="/img/zhifu.png" alt="">
+    </div>
+    <span class="demonstration">无卡支付</span>
+</div>
+<div class="divider divider-horizontal"><div class="divider-text is-left"><strong>产品签约</strong></div></div>
+<div class="block" onclick="goPage('200002&parentPage=200003', afterGoPage())">
+    <div>
+        <img class="logo" src="/img/huoqi.png" alt="">
+    </div>
+    <span class="demonstration">活期型智能存款</span>
+</div>
+<script type="text/javascript">
+    setOptions(['accountType', 'accountGrade']);
+    function doSubmit() {
+        checkEmpowe();
+    }
+    $(function () {
+        initData("200015");
+    })
+</script>

@@ -1,0 +1,72 @@
+﻿@{
+    
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewData["nvc"] = "团队管理";
+}
+<input type="hidden" id="G_ID" value="@ViewData["GID"]" />
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-sm-12">
+        <ol class="breadcrumb">
+            <li>
+                <h2>组织架构管理</h2>
+            </li>
+            <li>
+                <a onclick="tuandui()">团队管理</a>
+            </li>
+            <li>
+                <a onclick="shangyiji()">团队列表</a>
+            </li>
+            <li>
+                <strong>团队成员列表</strong>
+            </li>
+        </ol>
+
+    </div>
+</div>
+<!--面包屑位置结束-->
+<!--主体内容开始-->
+<div class="row   white-bg dashboard-header">
+    @*   <h3>学生管理</h3>*@
+   
+        <div class="row">
+        	<div class="col-sm-8">
+        		 <label for="firstname" class=" control-label"><span style="color: red;"></span>团队名称：@ViewData["Groupingname"]</label>
+                    <label for="firstname" class="m-l-lg  control-label"><span style="color: red;"></span> 团队成员数量：<span id="cysl"></span></label>
+        	</div>
+            <div class="col-sm-4 text-right">
+                <button onclick="Add(@ViewData["GID"])" class="btn btn-primary btn-sm" type="button"><i class="fa fa-plus  m-r-xs"></i><span class="bold">添加成员</span></button>
+                <button onclick="del_all()" type="button" class="btn btn-warning btn-sm"><i class="fa fa-trash  m-r-xs"></i><span class="bold">踢出成员</span></button>
+            </div>
+        </div>
+
+        <div class="row m-t-sm table-responsive">
+        	<div class="col-sm-12">
+        		 <table class="table text-center table-bordered ">
+                <thead>
+                    <tr>
+                        <th class="text-center">
+                            <input type="Checkbox" class="i-checks checkbox-all"></th>
+                        <th class="text-center">学院名称</th>
+                        <th class="text-center">专业名称</th>
+                        <th class="text-center">班级名称</th>
+                        <th class="text-center">姓名</th>
+                        <th class="text-center">学号</th>
+                        <th class="text-center">操作</th>
+                    </tr>
+                </thead>
+                <tbody class="new_table text-center" id="tablelist">
+                </tbody>
+            </table>
+        	</div>
+           
+        </div>
+
+        <!--分页开始-->
+        <div class="row text-center" id="PaginatorLibrary">
+        </div>
+        <!--分页结束-->
+
+   
+</div>
+<script src="~/JS/Teacher/TeamManagement/TeamListIndex.js?v=2018"></script>
+

@@ -1,0 +1,86 @@
+﻿@{
+    
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewData["nvc"] = "课件管理";
+}
+
+<style type="text/css">
+    a.disabled {
+        pointer-events: none;
+        filter: alpha(opacity=50); /*IE滤镜，透明度50%*/
+        -moz-opacity: 0.5; /*Firefox私有，透明度50%*/
+        opacity: 0.5; /*其他，透明度50%*/
+    }
+</style>
+
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-sm-12">
+        <ol class="breadcrumb">
+            <li>
+                <h2>实务教学管理</h2>
+            </li>
+            <li>
+                <a href="#">课件管理</a>
+            </li>
+            <li>
+                <strong>课件列表</strong>
+            </li>
+        </ol>
+
+    </div>
+</div>
+<!--面包屑位置结束-->
+<!--主体内容开始-->
+<div class="ibox-content">
+    <div class="row m-t">
+        <div class="col-sm-3">
+            <div class="input-group">
+                <input type="text" placeholder="请输入关键字搜索……" id="SelectNameid" class="form-control" name="SelectName">
+                <span class="input-group-btn">
+                    <button type="button" onclick="GetList()" class="btn btn-primary"><i class="fa fa-search "></i></button>
+                </span>
+            </div>
+        </div>
+        <div class=" col-sm-9 text-right">
+            <button onclick="AddJump();" class="btn btn-primary btn-sm " type="button"><i class="fa fa-plus m-r-xs"></i><span class="bold">新增课件</span></button>
+
+            <button onclick="Transformation();" class="btn btn-success btn-sm " type="button"><i class="fa fa-photo  m-r-xs"></i><span class="bold">一键转图</span></button>
+
+            <button onclick="del_all();" class="btn btn-warning btn-sm " type="button"><i class="fa fa-trash m-r-xs"></i><span class="bold">删除所选</span></button>
+
+            
+        </div>
+    </div>
+    <div class="row  m-t-sm ">
+        <div class="col-sm-12">
+            <table class="table text-center table-bordered ">
+                <thead>
+                    <tr>
+                        <th class="text-center">
+                            <input type="Checkbox" class="i-checks checkbox-all">
+                        </th>
+                        <th class="text-center">课件名称</th>
+                        <th class="text-center">类型</th>
+                        <th class="text-center">关联课程</th>
+                        <th class="text-center">对应能力</th>
+                        <th width="200" class="text-center">操作</th>
+
+                    </tr>
+                </thead>
+                <tbody class="new_table text-center" id="tablelist"></tbody>
+            </table>
+        </div>
+    </div>
+    <!--分页开始-->
+    <div class=" text-center">
+        <div class="dataTables_paginate paging_simple_numbers" id="PaginatorLibrary">
+
+        </div>
+
+    </div>
+    <!--分页结束-->
+</div>
+
+
+<input type="hidden" value="@Session["UserId"]" id="UserId" />
+<script src="~/Js/Admin/Curriculum/Resources.js"></script>

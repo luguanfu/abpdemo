@@ -1,0 +1,157 @@
+﻿@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewData["nvc"] = "案例管理";
+}
+
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-sm-12">
+        <ol class="breadcrumb">
+            <li>
+                <h2>案例管理</h2>
+            </li>
+            @*<li>
+                    <a href="#">课程管理</a>
+                </li>
+                <li>
+                    <strong>课程列表</strong>
+                </li>*@
+        </ol>
+
+    </div>
+</div>
+<!--面包屑位置结束-->
+<!--主体内容开始-->
+<div class="ibox-content">
+    <div class="row m-t">
+        <div class="col-sm-2">
+            <select class=" form-control input-s-sm inline" id="PublicState">
+                <option value="0">公开状态</option>
+                <option value="1">公开案例</option>
+                <option value="2">隐藏案例</option>
+            </select>
+        </div>
+        <div class="col-sm-2">
+            <select class=" form-control input-s-sm inline" id="EnabledState">
+                <option value="0">激活状态</option>
+                <option value="1">已激活</option>
+                <option value="2">未激活</option>
+            </select>
+        </div>
+        <div class="col-sm-2">
+            <div class="input-group">
+                <input type="text" placeholder="请输入关键字搜索……" id="SearchName" class="form-control" name="SearchName">
+                <span class="input-group-btn">
+                    <button type="button" onclick="GetList()" class="btn btn-primary"><i class="fa fa-search "></i></button>
+                </span>
+            </div>
+        </div>
+        <div class=" col-sm-6 text-right">
+            <button onclick="SetStatus('PublicState',1);" class="btn btn-success btn-sm " type="button"><i class="fa fa-check  m-r-xs"></i><span class="bold">设为公开</span></button>
+            <button onclick="SetStatus('PublicState',2);" class="btn btn-danger btn-sm " type="button"><i class="fa fa-times m-r-xs"></i><span class="bold">设为隐藏</span></button>
+            <button onclick="SetStatus('EnabledState',1);" class="btn btn-success btn-sm " type="button"><i class="fa fa-check  m-r-xs"></i><span class="bold">激活所选</span></button>
+            <button onclick="SetStatus('EnabledState',2);" class="btn btn-danger btn-sm " type="button"><i class="fa fa-times m-r-xs"></i><span class="bold">关闭激活</span></button>
+            <button onclick="AddCase();" class="btn btn-primary btn-sm " type="button"><i class="fa fa-plus m-r-xs"></i><span class="bold">新增案例</span></button>
+            <button onclick="del_all();" class="btn btn-danger btn-sm " type="button"><i class="fa fa-times m-r-xs"></i><span class="bold">删除所选</span></button>
+        </div>
+    </div>
+    <div class="row  m-t-sm ">
+        <div class="col-sm-12">
+            <table class="table text-center table-bordered ">
+                <thead>
+                    <tr>
+                        <th class="text-center">
+                            <input type="Checkbox" class="i-checks checkbox-all">
+                        </th>
+                        <th class="text-center">案例名称</th>
+                        <th class="text-center">开工管理</th>
+                        <th class="text-center">厅堂服务场景</th>
+                        <th class="text-center">柜面服务场景</th>
+                        <th class="text-center">完工管理</th>
+                        <th class="text-center">客户数量</th>
+                        <th class="text-center">公开状态</th>
+                        <th class="text-center">激活状态</th>
+                        <th class="text-center">能力项获取</th>
+                        <th width="300" class="text-center">已关联课程章节</th>
+                        <th width="480" class="text-center">操作</th>
+                    </tr>
+                </thead>
+                <tbody class="new_table text-center" id="tablelist"></tbody>
+            </table>
+
+        </div>
+
+    </div>
+
+
+    <!--分页开始-->
+    <div class=" text-center">
+        <div class="dataTables_paginate paging_simple_numbers" id="PaginatorLibrary">
+
+        </div>
+
+    </div>
+    <!--分页结束-->
+</div>
+
+
+<!--选择实验弹框-->
+<div id="LinkSection" style="display: none;padding:15px;">
+    <form class="form-horizontal">
+        <input type="hidden" id="LinkTaskId" value="0" />
+        <input type="hidden" id="LinkCourseId" value="0" />
+        <input type="hidden" id="LinkChapterId" value="0" />
+        <input type="hidden" id="LinkSectionId" value="0" />
+        <div class="col-sm-12 m-t ">
+            <div class="col-sm-4">
+                <select class=" form-control  " id="Course" onchange="SelCourse()">
+                    <option value="0">请选择课程</option>
+                </select>
+            </div>
+            <div class="col-sm-4">
+                <select class=" form-control  " id="Chapter" onchange="SelChapter()">
+                    <option value="0">请选择章</option>
+
+                </select>
+            </div>
+            @*<div class="col-sm-3">
+                <select class=" form-control  " id="Kcid">
+                    <option value="0">请选择课程</option>
+                </select>
+            </div>*@
+            <div class="col-sm-4">
+                <div class="input-group">
+                    <input type="text" placeholder="请输入关键字搜索……" id="search" class="form-control" name="search">
+                    <span class="input-group-btn">
+                        <button type="button" onclick="GetSectionList()" class="btn btn-primary"><i class="fa fa-search "></i></button>
+                    </span>
+                </div>
+            </div>
+        </div>
+
+
+        <!--table列表-->
+        <div class="col-sm-12 m-t-sm">
+            <div class="col-sm-12">
+                <table class="table text-center table-bordered ">
+                    <thead>
+                        <tr>
+                            <th class="text-center">课程名</th>
+                            <th class="text-center">章名</th>
+                            <th class="text-center">节名</th>
+                            <th width="150" class="text-center">操作</th>
+                        </tr>
+                    </thead>
+                    <tbody class="new_table text-center" id="tablelist1"></tbody>
+                </table>
+            </div>
+        </div>
+        <!--分页开始-->
+        <div class="row text-center m-t-md" id="PaginatorLibrary1">
+        </div>
+    </form>
+</div>
+
+
+
+
+<script src="~/Js/Admin/CaseManagement/CaseManagement.js"></script>

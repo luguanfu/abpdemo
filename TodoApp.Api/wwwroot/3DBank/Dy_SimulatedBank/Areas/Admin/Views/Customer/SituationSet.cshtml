@@ -1,0 +1,151 @@
+﻿@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewData["nvc"] = "案例管理";
+}
+<link href="~/CSS/Public_img.css" rel="stylesheet" />
+<!--右侧头部结束-->
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-sm-12">
+        <ol class="breadcrumb">
+            <li>
+                <h2><a href="/Admin/CaseManagement">案例管理</a></h2>
+            </li>
+            <li>
+                <strong><a href="/Admin/Customer/Index?taskid=@ViewBag.taskid">客户列表</a></strong>
+            </li>
+            <li>
+                <a href="#">客户情况设置</a>
+            </li>
+        </ol>
+    </div>
+</div>
+<!--面包屑位置结束-->
+<!--主体内容开始-->
+<div class="ibox-content">
+    <div class="row m-t-md">
+        <form class="form-horizontal">
+            <input hidden="hidden" type="hidden" id="AppearanceId" />
+            <div class="form-group">
+                <label for="inputEmail3" class="col-sm-2 control-label"><span class="text-danger">*</span>客户形象：</label>
+                <div class="col-sm-6">
+                    <span id="showName"></span><a onclick="ShowAppearance()">点击选择客户形象</a>
+                </div>
+            </div>
+
+            @*<div class="form-group">
+                    <label for="inputEmail3" class="col-sm-2 control-label"><span class="text-danger">*</span>出场优先级：</label>
+                    <div class="col-sm-2">
+                        <select id="selCustomerOrder" class="form-control input-s-sm inline">
+                            <option value="">请选择</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3"> 3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                        </select>
+                        提示：数字越小，出场优先级越高
+                    </div>
+                </div>*@
+
+            <div class="form-group m-t-lg">
+                <label for="inputEmail3" class="col-sm-2 control-label"><span class="text-danger">*</span>办理业务：</label>
+                <div class="col-sm-2">
+                    <select id="Appearance" onchange="GetListByType()" class="form-control input-s-sm inline">
+                        <option value="请选择业务类型">请选择业务类型</option>
+                        <option value="零售业务">零售业务</option>
+                        <option value="对公业务">对公业务</option>
+                    </select>
+                </div>
+                <div class="col-sm-2">
+                    <select id="BusinessType" class="form-control input-s-sm inline">
+                        <option value="请选择业务">请选择业务</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group m-t-lg">
+                <label for="inputEmail3" class="col-sm-2 control-label"><span class="text-danger">*</span>客户开场表达：</label>
+                <div class="col-sm-8">
+                    <textarea class="form-control" id="txtPrologue" name="txt" clos=",5" rows="5" warp="virtual" style="margin: 0px; height: 195px;" placeholder="最长300个字符" maxlength="300"></textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputEmail3" class="col-sm-2 control-label">案例描述：</label>
+                <div class="col-sm-8">
+                    <!--编辑器开始-->
+                    <div class="ibox-content no-padding">
+                        <div class="summernote" id="CaseDescription" name="CaseDescription">
+                        </div>
+                    </div>
+                    <!--编辑器结束-->
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="inputEmail3" class="col-sm-2 control-label">@*<span class="text-danger">*</span>*@录音上传：</label>
+                <div class="col-sm-8">
+                    <div class="form-horizontal  m-t-sm">
+                        <label for="Recording" style="position: relative;">
+                            <input type="button" id="selectFileBtn" value="选择文件"><span id="EitRecording" style="">未选择任何文件</span>
+                            <input type="file" id="Recording" name="Recording" style="position: absolute;left: 0;top: 0;opacity: 0;">
+                        </label>
+                    </div><span style="color:red">请上传大小不超过2M，格式为MP3或M4A的音频文件</span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="inputEmail3" class="col-sm-2 control-label">@*<span class="text-danger">*</span>*@伴随表情与动作：</label>
+                <div class="col-sm-2">
+                    <select id="MotionName" class="form-control input-s-sm inline" onchange="GetMotionGif()"></select>
+
+                    <div class="m-t-sm">
+                        <img src="~/Img/a1.jpg" alt="" style="width:250px;height:250px;" id="gifImages" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center m-t-md">
+                <div class="form-group">
+                    <a href="javascript:void(0)" onclick="btnOk()" class="btn btn-w-m btn-primary m-r-lg">保存</a>
+                    <a href="javascript:history.go(-1)" class="btn btn-w-m btn-default ">取消</a>
+                </div>
+            </div>
+        </form>
+
+    </div>
+</div>
+
+<!--编辑弹框-->
+<div id="Edit_Appearance" style="display: none;" class="form-inline">
+    <form name="Edit_Appearance" id="Edit_Appearance">
+        <div class="col-sm-12">
+            <div class="form-horizontal  m-t-lg">
+                <label for="firstname" class="col-sm-3 control-label"><span style="color: red;">*</span>客户形象：</label>
+                <div class="col-sm-6">
+                    <select id="AppearanceName" class="form-control input-s-sm inline"></select>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12">
+            <div class="form-horizontal  m-t-lg">
+                <div class="col-sm-5">
+                    <img src="~/Img/a1.jpg" alt="" id="CustomerImage" style="width:500px;height:500px;" />
+                </div>
+            </div>
+        </div>
+
+
+    </form>
+</div>
+<!--富文本编辑器样式-->
+<link href="~/CSS/plugins/summernote/summernote.css" rel="stylesheet" />
+<link href="~/CSS/plugins/summernote/summernote-bs3.css" rel="stylesheet" />
+<!--富文本编辑器js-->
+<script src="~/Scripts/summernote/summernote.min.js"></script>
+<script src="~/Scripts/summernote/summernote-zh-CN.js"></script>
+
+<script src="~/Js/Admin/Customer/SituationSet.js"></script>

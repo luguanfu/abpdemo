@@ -1,0 +1,92 @@
+﻿@{
+    ViewBag.Title = "Form_" + ViewBag.FormId;
+    Layout = "_FormTemplate.cshtml";
+}
+@RenderPage("~/Areas/Admin/Views/Ads_Form/Form_" + ViewBag.FormId + ".cshtml")
+@{
+    if (ViewBag.FormId == "200029")
+    {
+        @section btnList{
+            <button onclick="goPage('200044')">签约</button>
+            <button>升级</button>
+            <button onclick="javascript: alert('注销成功')">注销</button>
+        }
+    }
+    if (ViewBag.FormId == "200007")
+    {
+        @section btnList{
+            <button type="button" class="btn btn-primary btn-sm" onclick="goPage('200051')">新增</button>
+            <button type="button" class="btn btn-primary btn-sm" onclick="goPage('200051')">修改</button>
+            <button type="button" class="btn btn-primary btn-sm" onclick="doDel()">删除</button>
+        }
+    }
+    if (ViewBag.FormId == "200016")
+    {
+        @section btnList{
+            <button type="button" onclick="goPage('200050')">变更Ukey</button>
+        }
+    }
+    if (ViewBag.FormId == "200017")
+    {
+        @section btnList{
+            <button type="button" onclick="goPage('200013')">新增</button>
+            <button type="button" onclick="goPage('200013')">修改</button>
+            <button type="button" onclick="doDel()">删除</button>
+        }
+    }
+    if (ViewBag.FormId == "200020")
+    {
+        @section btnList{
+            <button type="button" onclick="goPage('200019')">电票签约</button>
+        }
+    }
+    if (ViewBag.FormId == "200046")
+    {
+        @section btnList{
+            <button type="button">添加其他帐号</button>
+            <button type="button">变更主帐号</button>
+            <button type="button">升级</button>
+            <button type="button">添加</button>
+            <button type="button" onclick="javascript:alert('删除成功')">删除</button>
+        }
+    }
+    if (ViewBag.FormId == "200022" || ViewBag.FormId == "200014" || ViewBag.FormId == "200021")
+    {
+        @section MyScript{
+            <script>
+                var currentIndex = 1;
+                if (@ViewBag.FormId == "200022") { currentIndex = 1; }
+                if (@ViewBag.FormId == "200021") { currentIndex = 2; }
+                if (@ViewBag.FormId == "200014") { currentIndex = 3; }
+                $("#step_container").loadStep({
+                    current: currentIndex,
+                    steps: [{
+                        title: "销户开始",
+                        content: "销户开始"
+                    }, {
+                        title: "申请书打印",
+                        content: "申请书打印"
+                    }, {
+                        title: "账户结息",
+                        content: "账户结息"
+                    }, {
+                        title: "统一解约",
+                        content: "统一解约"
+                    }, {
+                        title: "账户结清",
+                        content: "账户结清"
+                    }, {
+                        title: "账户销户",
+                        content: "账户销户"
+                    }, {
+                        title: "销户完成",
+                        content: "销户完成"
+                    }]
+                });
+                function skip(step) {
+                    $("#step_container").setStep(step);
+                }
+            </script>
+        }
+    }
+}

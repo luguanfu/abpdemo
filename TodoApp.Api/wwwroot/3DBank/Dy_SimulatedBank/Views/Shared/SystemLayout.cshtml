@@ -1,0 +1,164 @@
+﻿<!DOCTYPE html>
+
+<html lang="zh">
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link href="~/CSS/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/CSS/font-awesome/css/font-awesome.css" rel="stylesheet" />
+
+    <link href="~/CSS/plugins/iCheck/custom.css" rel="stylesheet" />
+    <!--框架自带自定义样式-->
+    <link href="~/CSS/style.css" rel="stylesheet" />
+    <!--弹窗插件样式-->
+    <link href="~/Scripts/layer/skin/layer.css" rel="stylesheet" />
+
+    <script src="~/Scripts/jquery-3.2.0.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/metisMenu/jquery.metisMenu.js"></script>
+    <script src="~/Scripts/slimscroll/jquery.slimscroll.min.js"></script>
+
+    <script src="~/Scripts/hplus.js"></script>
+    <script src="~/Scripts/pace/pace.min.js"></script>
+    <script src="~/Scripts/iCheck/icheck.min.js"></script>
+    <script src="~/Scripts/layer/layer.js"></script>
+    <script src="~/Scripts/jquery.form.js"></script>
+
+    <script src="~/Scripts/Page.js"></script>
+    <style>
+        /* 添加的分页样式*/
+        .boder_right { border-top-right-radius: 4px; border-bottom-right-radius: 4px; }
+
+        .paginate_button input { border: none; width: 90px; height: 26px; text-align: center; }
+
+            .paginate_button input:focus { outline: none; }
+
+        .pagesize { display: inherit; margin-left: 5px !important; border: none !important; }
+
+            .pagesize:hover { background: none !important; }
+    </style>
+</head>
+<body>
+    <div id="wrapper">
+        <!--左侧菜单栏开始-->
+        <nav class="navbar-default navbar-static-side" role="navigation">
+            <div class="sidebar-collapse">
+                <ul class="nav" id="side-menu">
+                    <li class="m-b-sm">
+                        <div class=" profile-element text-center  text-success">
+                            <h2 class="font-bold ">银行虚拟仿真实训</h2>
+                            <h4>管理</h4>
+                        </div>
+                        <div class="logo-element">
+                            银行虚拟<br />
+                            实训配置
+
+                        </div>
+                    </li>
+                    <!--系统设置-->
+                    <li class="active">
+                        <a href="index.html#"><i class="fa fa-money"></i><span class="nav-label">系统设置</span><span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="@Url.Action("Index", "Sys_Validation")">参数管理</a>
+                            </li>
+                            <li>
+                                <a href="@Url.Action("Index", "Sys_FormItemTM")">菜单管理</a>
+                            </li>
+                        </ul>
+                    </li>
+
+
+                </ul>
+            </div>
+        </nav>
+        <!--左侧菜单栏结束-->
+        <!--右侧内容区域开始-->
+        <div id="page-wrapper" class="gray-bg dashbard-1">
+
+            <div class="row  border-bottom">
+                <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
+                    <!--菜单收缩按钮-->
+                    <div class="navbar-header m-t-xs">
+                        <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-exchange"></i></a>
+                    </div>
+                    <!--菜单收缩按钮结束-->
+                    <ul class="nav navbar-top-links navbar-right">
+                        <!--用户头像区域-->
+                        <li>
+                            <span>
+                                <img alt="image" style="width: 48px;" class="img-circle" src="/img/profile_s.jpg" /></span>
+                        </li>
+
+                        <li class="dropdown">
+                            <a data-toggle="dropdown" class="dropdown-toggle count-info" href="#">
+                                <span class="block m-t-xs"></span><span class="text-muted text-xs block">超级管理员 </span>
+                            </a>
+
+                        </li>
+                        <!--用户头像区域结束-->
+                        <li>
+                            <a href="#">
+                                <i class="fa fa-sign-out"></i>退出
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+
+
+            <div id="body">
+                <!--内容区域模版开始-->
+                @RenderSection("featured", required: false)
+                <section class="gray-bg">
+                    @RenderBody()
+                </section>
+                <!--内容区域模版结束-->
+            </div>
+            @RenderSection("scripts", required: false)
+
+            <div class="footer">
+                <div class="text-center">
+                    <strong>Copyright</strong> 版权所有&copy;<strong>深圳典阅科技有限公司</strong> 2018
+				
+                </div>
+            </div>
+
+        </div>
+        <!--右侧内容区域结束-->
+    </div>
+    @{
+        var ul = ViewData["nvc"];
+    }
+    <script type="text/javascript">
+        $(function () {
+            var nvc = "@(ul)";
+            //alert(nvc)
+            $("#side-menu").find("a").each(function () {
+                $(this).parent().removeClass("active");
+                $(this).parent().parent().removeClass("in");
+                $(this).parent().parent().attr("aria-expanded", "false");
+            });
+
+            if (nvc != null && nvc != "") {
+                $("#side-menu").find("a").each(function () {
+                    var txt = $(this).html();
+                    if (txt == nvc) {
+                        $(this).parent().addClass("active");
+                        $(this).parent().parent().parent().addClass("active");
+                        $(this).parent().parent().addClass("in");
+                        $(this).parent().parent().attr("aria-expanded", "false");
+                        return false;
+                    }
+                })
+            } else {
+                $(".initial").addClass("active");
+                $(".initial").parent().parent().addClass("active");
+                $(".initial").parent().addClass("in");
+                $(".initial").parent().attr("aria-expanded", "true");
+            }
+        });
+
+    </script>
+</body>
+</html>

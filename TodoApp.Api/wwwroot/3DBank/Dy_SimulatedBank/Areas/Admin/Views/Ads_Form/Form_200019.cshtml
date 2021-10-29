@@ -1,0 +1,37 @@
+﻿
+<!--企业网银电票签约管理[签约]-->
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <label id="lbl_signingAccount" name="lbl_signingAccount" for="inputEmail3" class="col-sm-3 control-label">签约账号</label>
+            <div class="col-sm-6">
+                <input vl-default="" id="txt_signingAccount" name="txt_signingAccount" type="text" class="form-control input-sm">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <label id="lbl_certificateType" name="lbl_certificateType" for="inputEmail3" class="col-sm-3 control-label">证件类型</label>
+            <div class="col-sm-6">
+                <select vl-default="" id="sle_certificateType" name="sle_certificateType" class="form-control"></select>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <label id="lbl_idCode" name="lbl_idCode" for="inputEmail3" class="col-sm-3 control-label">证件号码</label>
+            <div class="col-sm-6">
+                <input vl-default="" id="txt_idCode" name="txt_idCode" type="text" class="form-control input-sm">
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    setOptions(['certificateType']);
+    function doSubmit() {
+        //goPage("200020");
+        window.location.href = "javascript:history.go(-1)";
+    }
+</script>

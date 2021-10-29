@@ -1,0 +1,395 @@
+﻿@{
+                    ViewBag.Title = "Form_030602";
+                    Layout = "~/Views/Shared/_StutentLayoutIsNull.cshtml";
+                }
+               <form id="form1" onsubmit="return false" action="##" method="post">
+                   <input type="hidden" id="FormType" name="FormType" value="@Request["FormType"]" />
+                   <input type="hidden" id="FormId" name="FormId" value="@Request["FormId"]" />
+                   <input type="hidden" id="TRId" name="TRId" value="@Request["TotalResultId"]" />
+                   <input type="hidden" id="ExamId" name="ExamId" value="@Request["ExamId"]" />
+                   <input type="hidden" id="TaskId" name="TaskId" value="@Request["TaskId"]" />
+                   <input type="hidden" id="CustomerId" name="CustomerId" value="@Request["CustomerId"]" />
+                   <input type="hidden" id="LinkId" name="LinkId" value="@Request["LinkId"]" />
+                   <input type="hidden" id="Types" name="Types" value="2" />
+                <!--内容表单区域开始-->
+            <div class="tables bankmap">
+			<div class="banktop">
+				<span class="toolbar-title-img"> <img src="../busi/img/topleft.png">02322-续冻业务
+			</span> <span class="toolbar-title-close" style="display: none;"> </span>
+			</div>
+			<div class="con-map2">
+				<table id="qv" class="con-map2-table qv">
+					<tbody>
+						<tr>
+							<td class="" style="width: 55px;"><label vl-default="" id="label_zkh" vtitle="账s/s卡ss号" class="form-item text-left on" vl-tipsid="label_zkh_tips" title="label_zkh" name="label_zkh">账<s></s>/<s></s>卡<s></s><s></s>号
+						</label>
+								<div id="label_zkh_tips" class="tipsmsg"></div>
+							</td>
+							<td class=""><input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_zkh" vtitle="账/卡号" class="form-item text-left on" kuaicha="true" vl-tipsid="txt_zkh_tips" vl-regex="['require','maxlength32','number']" vl-message="['账/卡号不能为空!','账/卡号长度大于最大长度:[32]!','账/卡号只能为数字!']" style="width: 180px;" title="txt_zkh" onpaste="return false" name="txt_zkh"><img class="sousuo" src="/Js/Student/GetDefaultValue/img/banksousuo.png" vl-select="txt_zhmc|1|0,sle_bz|1|0,sle_cpdm|1|0" vl-exec="false" vl-message="['账/卡号查询未执行！']" title="执行快查！"><span class="text-red redtip">!</span>
+								<div id="txt_zkh_tips" class="tipsmsg"></div>
+							</td>
+							<td class="" style="width: 32px;"><label vl-default="" id="label_xh" vtitle="序iiis号" class="form-item text-left on" vl-tipsid="label_xh_tips" title="label_xh" name="label_xh">序<i></i><i></i><i></i><s></s>号
+						</label>
+								<div id="label_xh_tips" class="tipsmsg"></div>
+							</td>
+							<td class="">
+								<div class="slectstyle">
+                                    <select vl-default="" id="sle_xh" vtitle="序号" class="form-item text-left on" kuaicha="true" vl-tipsid="sle_xh_tips" vl-regex="['require']" vl-message="['序号不能为空!']" style="width: 180px;" title="sle_xh" vl-slemodel="" name="sle_xh">
+                                        <option disabled="" style="background-color: blue; color: #fff;" value="" selected="selected">序号值含义</option>
+                                        <option value="1">1-个人银行结算存款</option>
+                                        <option value="2">2-整存整取1年</option>
+
+                                    </select><input type="text" oncopy="return false" onpaste="return false" oncut="return false" style="width: 157px;" id="mb1_sleinput_XuHao_4" name="mb1_sleinput_XuHao_4"><img class="sousuo" src="/Js/Student/GetDefaultValue/img/banksousuo.png" vl-select="" vl-exec="false" vl-message="['序号查询未执行！']" title="执行快查！"><span class="text-red redtip">!</span>
+								</div>
+								<div id="sle_xh_tips" class="tipsmsg"></div>
+							</td>
+						</tr>
+						<tr>
+							<td rowspan="1" colspan="1" class="" style="width: 64px;"><label vl-default="" id="label_zhmc" vtitle="账s户s名s称" class="form-item text-left on" vl-tipsid="label_zhmc_tips" title="label_zhmc" name="label_zhmc">账<s></s>户<s></s>名<s></s>称
+						</label>
+								<div id="label_zhmc_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="3" class=""><input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_zhmc" vtitle="账户名称" class="form-item text-left on" vl-disabled="true" jinejiaoyan="true" vl-tipsid="txt_zhmc_tips" style="width: 600px;" title="txt_zhmc" onpaste="return false" disabled="disabled" name="txt_zhmc">
+								<!--<img
+							class="sousuo"
+							src="../busi/img/banksousuo.png"
+							vl-select="sle_ydjxh|0|0,sle_ydjxh|0|0,sle_xh|0|0,txt_zhmc|1|0,sle_bz|1|0,sle_cpdm|1|0,money_zhye|1|0,money_kyye|1|0,sle_xh|0|0,txt_zhmc|1|0,sle_bz|1|0,sle_cpdm|1|0,money_zhye|1|0,money_kyye|1|0,sle_ydjxh|0|0,sle_ydjxh|0|0"
+							vl-exec="false" vl-message="['账户名称查询未执行！']">-->
+								<div id="txt_zhmc_tips" class="tipsmsg"></div>
+							</td>
+						</tr>
+						<tr>
+							<td rowspan="1" colspan="1" class="" style="width: 32px;"><label vl-default="" id="label_bz" vtitle="币iiis种" class="form-item text-left on" vl-tipsid="label_bz_tips" title="label_bz" name="label_bz">币<i></i><i></i><i></i><s></s>种
+						</label>
+								<div id="label_bz_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="">
+								<div class="slectstyle">
+									<select vl-default="" id="sle_bz" vtitle="币种" class="form-item text-left on" vl-disabled="true" vl-tipsid="sle_bz_tips" style="width: 180px;" title="sle_bz" vl-slemodel="" disabled="disabled" name="sle_bz">
+										<option disabled="" style="background-color: blue; color: #fff;" value="" selected="selected">币种值含义</option>
+										<option value="CNY">CNY - 人民币</option>
+									</select><input type="text" oncopy="return false" onpaste="return false" oncut="return false" disabled="disabled" style="width: 157px;" id="mb1_sleinput_BiZhong_8" name="mb1_sleinput_BiZhong_8">
+								</div>
+								<div id="sle_bz_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="" style="width: 64px;"><label vl-default="" id="label_cpdm" vtitle="产s品s代s码" class="form-item text-left on" vl-tipsid="label_cpdm_tips" title="label_cpdm" name="label_cpdm">产<s></s>品<s></s>代<s></s>码
+						</label>
+								<div id="label_cpdm_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="">
+								<div class="slectstyle">
+									<select vl-default="" id="sle_cpdm" vtitle="产品代码" class="form-item text-left on" vl-disabled="true" vl-tipsid="sle_cpdm_tips" style="width: 180px;" title="sle_cpdm" vl-slemodel="" disabled="disabled" name="sle_cpdm">
+										<option disabled="" style="background-color: blue; color: #fff;" value="" selected="selected">产品代码值含义</option>
+										<option value="11011">11011 - 个人银行结算存款</option>
+										<option value="11017">11017 - 个人银行结算存款9</option>
+										<option value="11041">11041 - 个人零存整取</option>
+										<option value="11051">11051 - 个人教育储蓄存款</option>
+										<option value="41011">41011 - 整存整取</option>
+										<option value="42031">42031 - 一天通知存款(自动转存)</option>
+										<option value="42041">42041 - 七天通知存款(自动转存)</option>
+										<option value="42045">42045 - 只能通知存款</option>
+										<option value="43011">43011 - 定活两便(六折)</option>
+										<option value="10011">10011 - 个人保险金活期存款</option>
+										<option value="42051">42051 - 智能通知存款</option>
+									</select><input type="text" oncopy="return false" onpaste="return false" oncut="return false" disabled="disabled" style="width: 157px;" id="mb1_sleinput_ChanPinDaiMa_10" name="mb1_sleinput_ChanPinDaiMa_10">
+								</div>
+								<div id="sle_cpdm_tips" class="tipsmsg"></div>
+							</td>
+						</tr>
+						<tr>
+							<td rowspan="1" colspan="1" class="" style="width: 64px;"><label vl-default="" id="label_zhye" vtitle="账s户s余s额" class="form-item text-left on" vl-tipsid="label_zhye_tips" title="label_zhye" name="label_zhye">账<s></s>户<s></s>余<s></s>额
+						</label>
+								<div id="label_zhye_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="">
+								<div class="moneystyle">
+									<input type="text" oncopy="return false" onpaste="return false" oncut="return false" vl-type="money" vl-default="0.00" id="money_zhye" vtitle="账户余额" class="form-item text-left on money" vl-disabled="true" vl-tipsid="money_zhye_tips" style="width: 180px;" title="money_zhye" disabled="disabled" name="money_zhye"><label class="moneytips hide green">人民币CNY￥<span class="num">0.00</span><span class="cn">零元整</span></label>
+								</div>
+								<div id="money_zhye_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="" style="width: 64px;"><label vl-default="" id="label_kyye" vtitle="可s用s余s额" class="form-item text-left on" vl-tipsid="label_kyye_tips" title="label_kyye" name="label_kyye">可<s></s>用<s></s>余<s></s>额
+						</label>
+								<div id="label_kyye_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="">
+								<div class="moneystyle">
+									<input type="text" oncopy="return false" onpaste="return false" oncut="return false" vl-type="money" vl-default="0.00" id="money_kyye" vtitle="可用余额" class="form-item text-left on money" vl-disabled="true" vl-tipsid="money_kyye_tips" style="width: 180px;" title="money_kyye" disabled="disabled" name="money_kyye"><label class="moneytips hide green">人民币CNY￥<span class="num">0.00</span><span class="cn">零元整</span></label>
+								</div>
+								<div id="money_kyye_tips" class="tipsmsg"></div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="con-map2 selected">
+				<div class="box">
+					<ul class="tab">
+						<li title="tab_0_0" id="tab_0_0" class="tab_0_0 one">冻结续冻信息</li>
+						<li title="tab_0_1" id="tab_0_1" class="tab_0_1">执行人信息</li>
+					</ul>
+					<div class="content">
+						<div class="ct" style="display: block;">
+							<table id="qv" class="con-map2-table qv">
+								<tbody>
+									<tr>
+										<td class="" colspan="1" style="width: 80px;"><label vl-default="" id="label_zhye" vtitle="原s冻s结s序s号" class="form-item text-left" vl-tipsid="label_zhye_tips" title="label_zhye" name="label_zhye">原<s></s>冻<s></s>结<s></s>序<s></s>号
+									</label>
+											<div id="label_zhye_tips" class="tipsmsg"></div>
+										</td>
+										<td rowspan="1" colspan="3" class="">
+											<div class="slectstyle">
+												<select vl-keyup="wwww" title="sle_ydjxh" vl-default="" id="sle_ydjxh" vtitle="原冻结序号" class="form-item text-left" kuaicha="true" vl-tipsid="sle_ydjxh_tips" style="width: 600px;" vl-slemodel="" name="sle_ydjxh">
+													<option disabled="" style="background-color: blue; color: #fff;" value="" selected="selected">原冻结序号值含义</option>
+													<option value="1">1 - 不进不出</option>
+													<option value="2">2 - 部分冻结</option>
+												</select><input type="text" oncopy="return false" onpaste="return false" oncut="return false" style="width: 577px;" id="mb2_sleinput_YuanDongJieXuHao_2" name="mb2_sleinput_YuanDongJieXuHao_2"><img class="sousuo" src="/Js/Student/GetDefaultValue/img/banksousuo.png" vl-select="txt_ydjdqr|0|0,date_xddqr|0|0,date_xddqr|0|0,money_djje|0|0" vl-exec="false" vl-message="['原冻结序号查询未执行！']" title="执行快查！">
+											</div>											
+											<div id="sle_ydjxh_tips" class="tipsmsg"></div>
+										</td>
+									</tr>
+									<tr>
+										<td rowspan="1" colspan="1" class="" style="width: 80px;"><label vl-default="" id="label_ydjdrq" vtitle="原冻s结到s期日" class="form-item text-left" vl-tipsid="label_ydjdrq_tips" title="label_ydjdrq" name="label_ydjdrq">原冻<s></s>结到<s></s>期日
+									</label>
+											<div id="label_ydjdrq_tips" class="tipsmsg"></div>
+										</td>
+										<td rowspan="1" colspan="1" class=""><input type="text" oncopy="return false" oncut="return false" vl-default="0" id="txt_ydjdqr" vtitle="原冻结到期日" class="form-item text-left on" vl-disabled="true" kuaicha="true" vl-tipsid="txt_ydjdqr_tips" vl-regex="['tdate']" vl-message="['请输入正确的续冻到期格式（如:19000101）!']" style="width: 180px;" title="txt_ydjdqr" onpaste="return false" disabled="disabled" name="txt_ydjdqr">
+											<!--<img
+										class="sousuo"
+										src="../busi/img/banksousuo.png"
+										vl-exec="false" vl-message="['原冻结到期日查询未执行！']">-->
+											<div id="txt_ydjdqr_tips" class="tipsmsg"></div>
+										</td>
+										<td rowspan="1" colspan="1" class="" style="width: 64px;"><label vl-default="" id="label_djje" vtitle="冻i结i金i额" class="form-item text-left on" vl-tipsid="label_djje_tips" title="label_djje" name="label_djje">冻<i></i>结<i></i>金<i></i>额
+									</label>
+											<div id="label_djje_tips" class="tipsmsg"></div>
+										</td>
+										<td rowspan="1" colspan="1" class="">
+											<div class="moneystyle">
+												<input type="text" oncopy="return false" onpaste="return false" oncut="return false" vl-type="money" vl-keyup="wwww" vl-default="0.00" id="money_djje" vtitle="冻结金额" class="form-item text-left on money" vl-regex="['maxlength16','notequal0','decimal']" vl-message="['冻结金额长度超过最大长度:[16]!','冻结金额应大于0!','冻结金额输入错误!']" jinejiaoyan="true" vl-tipsid="money_djje_tips" style="width: 180px;" title="money_djje" name="money_djje"><label class="moneytips hide green">人民币CNY￥<span class="num">0.00</span><span class="cn">零元整</span></label>
+											</div>
+											<div id="money_djje_tips" class="tipsmsg"></div>
+										</td>
+									</tr>
+									<tr>
+										<td rowspan="1" colspan="1" class="" style="width: 80px;"><label vl-default="" id="label_ytzsh" vtitle="原s通s知s书s号" class="form-item text-left" vl-tipsid="label_ytzsh_tips" title="label_ytzsh" name="label_ytzsh">原<s></s>通<s></s>知<s></s>书<s></s>号
+									</label>
+											<div id="label_ytzsh_tips" class="tipsmsg"></div>
+										</td>
+										<td rowspan="1" colspan="3" class=""><input type="text" oncopy="return false" oncut="return false" vl-keyup="wwww" vl-default="" id="txt_ytzsh" vtitle="原通知书号" class="form-item text-left on" vl-disabled="true" jinejiaoyan="true" vl-tipsid="txt_ytzsh_tips" style="width: 600px;" title="txt_ytzsh" onpaste="return false" disabled="disabled" name="txt_ytzsh">
+											<div id="txt_ytzsh_tips" class="tipsmsg"></div>
+										</td>
+									</tr>
+									<tr>
+										<td rowspan="1" colspan="1" class="" style="width: 80px;"><label vl-default="" id="label_ysqdjdw" vtitle="原申请冻结单位" class="form-item text-left" vl-tipsid="label_ysqdjdw_tips" title="label_ysqdjdw" name="label_ysqdjdw">原申请冻结单位</label>
+											<div id="label_ysqdjdw_tips" class="tipsmsg"></div>
+										</td>
+										<td rowspan="1" colspan="3" class=""><input type="text" oncopy="return false" oncut="return false" vl-keyup="wwww" vl-default="" id="txt_ysqdjdw" vtitle="原申请冻结单位" class="form-item text-left on" vl-disabled="true" jinejiaoyan="true" vl-tipsid="txt_ysqdjdw_tips" style="width: 600px;" title="txt_ysqdjdw" onpaste="return false" disabled="disabled" name="txt_ysqdjdw">
+											<div id="txt_ysqdjdw_tips" class="tipsmsg"></div>
+										</td>
+									</tr>
+									<tr>
+										<td rowspan="1" colspan="1" class="" style="width: 80px;"><label vl-default="" id="label_djtzsh" vtitle="冻s结s通知书号" class="form-item text-left" vl-tipsid="label_djtzsh_tips" title="label_djtzsh" name="label_djtzsh">冻<s></s>结<s></s>通知书号
+									</label>
+											<div id="label_djtzsh_tips" class="tipsmsg"></div>
+										</td>
+										<td rowspan="1" colspan="1" class=""><input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_djtzsh" vtitle="冻结通知书号" class="form-item text-left on" vl-tipsid="txt_djtzsh_tips" vl-regex="['require', 'maxlength40']" vl-message="['冻结通知书号不能为空！','冻结通知书号长度大于最大长度:[40]!']" style="width: 180px;" title="txt_djtzsh" onpaste="return false" name="txt_djtzsh"><span class="text-red redtip">!</span>
+											<div id="txt_djtzsh_tips" class="tipsmsg"></div>
+										</td>
+										<td rowspan="1" colspan="1" class="" style="width: 80px;"><label vl-default="" id="label_sxrlx" vtitle="生s效s日s类s型" class="form-item text-left on" vl-tipsid="label_sxrlx_tips" title="label_sxrlx" name="label_sxrlx">生<s></s>效<s></s>日<s></s>类<s></s>型
+									</label>
+											<div id="label_sxrlx_tips" class="tipsmsg"></div>
+										</td>
+										<td rowspan="1" colspan="1" class="">
+											<div class="slectstyle">
+												<select vl-default="0" id="sle_sxrlx" vtitle="生效日类型" class="form-item text-left on" vl-tipsid="sle_sxrlx_tips" style="width: 180px;" title="sle_sxrlx" vl-slemodel="txt_sxrq" name="sle_sxrlx">
+													<option disabled="" style="background-color: blue; color: #fff;" value="">生效日类型值含义</option>
+													<option sle-require="[{'id':'txt_sxrq','regex':['maxlength'],'tips':[''],'disabled':'true','default':'20170421'}]" value="0">0 - 今日生效</option>
+													<option value="1">1 - 原冻结到期日生效</option>
+													<option value="2">2 - 立即生效</option>
+												</select><input type="text" oncopy="return false" onpaste="return false" oncut="return false" style="width: 157px;" id="mb2_sleinput_ShengXiaoRiLeiXing_14" name="mb2_sleinput_ShengXiaoRiLeiXing_14">
+											</div>
+											<div id="sle_sxrlx_tips" class="tipsmsg"></div>
+										</td>
+									</tr>
+									<tr>
+										<td rowspan="1" colspan="1" class="" style="width: 64px;"><label vl-default="" id="label_sxrq" vtitle="生i效i日i期" class="form-item text-left" vl-tipsid="label_sxrq_tips" title="label_sxrq" name="label_sxrq">生<i></i>效<i></i>日<i></i>期
+									</label>
+											<div id="label_sxrq_tips" class="tipsmsg"></div>
+										</td>
+										<td rowspan="1" colspan="1" class=""><input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_sxrq" vtitle="生效日期" class="form-item text-left on" vl-disabled="true" vl-tipsid="txt_sxrq_tips" style="width: 180px;" title="txt_sxrq" onpaste="return false" disabled="disabled" name="txt_sxrq">
+											<div id="txt_sxrq_tips" class="tipsmsg"></div>
+										</td>
+										<td rowspan="1" colspan="1" class="" style="width: 80px;"><label vl-default="" id="label_xddqr" vtitle="续s冻s到s期s日" class="form-item text-left on" vl-tipsid="label_xddqr_tips" title="label_xddqr" name="label_xddqr">续<s></s>冻<s></s>到<s></s>期<s></s>日
+									</label>
+											<div id="label_xddqr_tips" class="tipsmsg"></div>
+										</td>
+
+										<td rowspan="1" colspan="1" class=""><input type="text" class="date form-item text-left on" vl-keyup="wwww" vl-default="" id="date_xddqr" vtitle="续冻到期日" jinejiaoyan="true" vl-tipsid="date_xddqr_tips" vl-regex="['tdate', 'number']" vl-message="['请输入正确的续冻到期日格式（如:19000101）!','续冻到期日输入错误！']" style="width: 180px;" title="date_xddqr" oncopy="return false" onpaste="return false" oncut="return false" name="date_xddqr"><img onclick="WdatePicker({el:'date_xddqr',dateFmt:'yyyyMMdd'})" src="/js/My97DatePicker/skin/datePicker.gif" align="absmiddle" style="width: 16px; height: 22px; margin-left: 6px;"><img class="sousuo" src="/Js/Student/GetDefaultValue/img/banksousuo.png" vl-select="txt_ydjdqr|1|0,date_sxrlx|1|0,date_sxrlx|1|0,money_djje|0|0" vl-exec="false" vl-message="['续冻到期日查询未执行！']" title="执行快查！">
+											<div id="date_xddqr_tips" class="tipsmsg"></div>
+										</td>
+									</tr>
+									<tr>
+										<td rowspan="1" colspan="1" class="" style="width: 32px;"><label vl-default="" id="label_zy" vtitle="摘iiiii要" class="form-item text-left" vl-tipsid="label_zy_tips" title="label_zy" name="label_zy">摘<i></i><i></i><i></i><i></i><i></i>要
+									</label>
+											<div id="label_zy_tips" class="tipsmsg"></div>
+										</td>
+										<td rowspan="1" colspan="3" class=""><input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_zy" vtitle="摘要" class="form-item text-left on" vl-tipsid="txt_zy_tips" vl-regex="['maxlength120']" vl-message="['摘要长度超过最大长度:[120]!']" style="width: 600px;" title="txt_zy" onpaste="return false" name="txt_zy">
+											<div id="txt_zy_tips" class="tipsmsg"></div>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<div class="ct" style="display: none;">
+							<table id="qv" class="con-map2-table qv">
+								<tbody>
+									<tr>
+										<td class="" style="width: 0px;"><label vl-default="" id="label_zxrzjlx" vtitle="执行人一证件类型" class="form-item text-left on" vl-tipsid="label_zxrzjlx_tips" title="label_zxrzjlx" name="label_zxrzjlx">执行人一证件类型</label>
+											<div id="label_zxrzjlx_tips" class="tipsmsg"></div>
+										</td>
+										<td rowspan="1" colspan="1" class="">
+											<div class="slectstyle">
+												<select vl-keyup="wwww" vl-default="" id="sle_zxryzjlx" vtitle="执行人一证件类型" class="form-item text-left" vl-tipsid="sle_zxryzjlx_tips" vl-regex="['require']" vl-message="['执行人一证件类型不能为空！']" style="width: 600px;" title="sle_zxryzjlx" vl-slemodel="txt_zjhm,txt_xm,txt_lxfs,txt_zjhm,txt_xm,txt_lxfs,txt_zjhm,txt_xm,txt_lxfs" name="sle_zxryzjlx">
+													<option disabled="" style="background-color: blue; color: #fff;" value="" selected="selected">执行人一证件类型值含义</option>
+													<option sle-require="[{'id':'txt_zjhm','regex':['require','maxlength40'],'tips':['执行人一证件号码不能为空!','执行人一证件号码长度超过最大长度:[40]!'],'disabled':'false*false','default':''},{'id':'txt_xm','regex':['require','hascode','maxlength20'],'tips':['执行人一姓名不能为空!','执行人一姓名不能全为数字!','执行人一姓名长度超过最大长度:[20]!'],'disabled':'false*false*false','default':''},{'id':'txt_lxfs','regex':['maxlength40'],'tips':['执行人一联系方式长度超过最大长度[40]!'],'disabled':'false','default':''}]" value="1">1 - 工作证 </option>
+													<option sle-require="[{'id':'txt_zjhm','regex':['require','maxlength40'],'tips':['执行人一证件号码不能为空!','执行人一证件号码长度超过最大长度:[40]!'],'disabled':'false*false','default':''},{'id':'txt_xm','regex':['require','hascode','maxlength20'],'tips':['执行人一姓名不能为空!','执行人一姓名不能全为数字!','执行人一姓名长度超过最大长度:[20]!'],'disabled':'false*false*false','default':''},{'id':'txt_lxfs','regex':['maxlength40'],'tips':['执行人一联系方式长度超过最大长度[40]!'],'disabled':'false','default':''}]" value="2">2 - 执行证</option>
+													<option sle-require="[{'id':'txt_zjhm','regex':['require','maxlength40'],'tips':['执行人一证件号码不能为空!','执行人一证件号码长度超过最大长度:[40]!'],'disabled':'false*false','default':''},{'id':'txt_xm','regex':['require','hascode','maxlength20'],'tips':['执行人一姓名不能为空!','执行人一姓名不能全为数字!','执行人一姓名长度超过最大长度:[20]!'],'disabled':'false*false*false','default':''},{'id':'txt_lxfs','regex':['maxlength40'],'tips':['执行人一联系方式长度超过最大长度[40]!'],'disabled':'false','default':''}]" value="3">3 - 其他</option>
+												</select><input type="text" oncopy="return false" onpaste="return false" oncut="return false" style="width: 577px;" id="mb2_sleinput_ZhiXingRenYiZhengJianLeiXing_22" name="mb2_sleinput_ZhiXingRenYiZhengJianLeiXing_22"><span class="text-red redtip">!</span>
+											</div>
+											<div id="sle_zxryzjlx_tips" class="tipsmsg"></div>
+										</td>
+									</tr>
+									<tr>
+										<td rowspan="1" colspan="1" class="" style="width: 0px;"><label vl-default="" id="label_zxrzjhm" vtitle="执行人一证件号码" class="form-item text-left" vl-tipsid="label_zxrzjhm_tips" title="label_zxrzjhm" name="label_zxrzjhm">执行人一证件号码</label>
+											<div id="label_zxrzjhm_tips" class="tipsmsg"></div>
+										</td>
+										<td rowspan="1" colspan="1" class=""><input type="text" oncopy="return false" oncut="return false" vl-keyup="wwww" vl-default="" id="txt_zxryzjhm" vtitle="执行人一证件号码" class="form-item text-left" vl-tipsid="txt_zxryzjhm_tips" vl-regex="['require', 'maxlength32']" vl-message="['执行人一证件号码不能为空！','执行人一证件号码长度大于最大长度:[32]!']" style="width: 600px;" title="txt_zxryzjhm" onpaste="return false" name="txt_zxryzjhm"><span class="text-red redtip">!</span>
+											<div id="txt_zxryzjhm_tips" class="tipsmsg"></div>
+										</td>
+									</tr>
+									<tr>
+										<td rowspan="1" colspan="1" class="" style="width: 0px;"><label vl-default="" id="label_zxrxm" vtitle="执行人一姓ii名" class="form-item text-left" vl-tipsid="label_zxrxm_tips" title="label_zxrxm" name="label_zxrxm">执行人一姓<i></i><i></i>名
+									</label>
+											<div id="label_zxrxm_tips" class="tipsmsg"></div>
+										</td>
+										<td rowspan="1" colspan="1" class=""><input type="text" oncopy="return false" oncut="return false" vl-keyup="wwww" vl-default="" id="txt_zxryxm" vtitle="执行人一姓名" class="form-item text-left" vl-tipsid="txt_zxryxm_tips" vl-regex="['require', 'maxlength20']" vl-message="['执行人一姓名不能为空！','执行人一姓名长度大于最大长度:[20]!']" style="width: 600px;" title="txt_zxryxm" onpaste="return false" name="txt_zxryxm"><span class="text-red redtip">!</span>
+											<div id="txt_zxryxm_tips" class="tipsmsg"></div>
+										</td>
+									</tr>
+									<tr>
+										<td rowspan="1" colspan="1" class="" style="width: 0px;"><label vl-default="" id="label_zxrlxfs" vtitle="执行人一联系方式" class="form-item text-left" vl-tipsid="label_zxrlxfs_tips" title="label_zxrlxfs" name="label_zxrlxfs">执行人一联系方式</label>
+											<div id="label_zxrlxfs_tips" class="tipsmsg"></div>
+										</td>
+										<td rowspan="1" colspan="1" class=""><input type="text" oncopy="return false" oncut="return false" vl-keyup="wwww" vl-default="" id="txt_zxrylxfs" vtitle="执行人一联系方式" class="form-item text-left" vl-tipsid="txt_zxrylxfs_tips" vl-regex="['maxlength20']" vl-message="['执行人一联系方式长度大于最大长度:[20]！']" style="width: 600px;" title="txt_zxrylxfs" onpaste="return false" name="txt_zxrylxfs">
+											<div id="txt_zxrylxfs_tips" class="tipsmsg"></div>
+										</td>
+									</tr>
+									<tr>
+										<td rowspan="1" colspan="1" class="" style="width: 0px;"><label vl-default="" id="label_zxrzjlx2" vtitle="执行人二证件类型" class="form-item text-left" vl-tipsid="label_zxrzjlx2_tips" title="label_zxrzjlx2" name="label_zxrzjlx2">执行人二证件类型</label>
+											<div id="label_zxrzjlx2_tips" class="tipsmsg"></div>
+										</td>
+										<td rowspan="1" colspan="1" class="">
+											<div class="slectstyle">
+												<select vl-keyup="wwww" vl-default="" id="sle_zxrezjlx" vtitle="执行人二证件类型" class="form-item text-left" vl-tipsid="sle_zxrezjlx_tips" vl-regex="['require']" vl-message="['执行人二证件类型不能为空！']" style="width: 600px;" title="sle_zxrezjlx" vl-slemodel="txt_zjhm2,txt_xm2,txt_lxfs2,txt_zjhm2,txt_xm2,txt_lxfs2,txt_zjhm2,txt_xm2,txt_lxfs2" name="sle_zxrezjlx">
+													<option disabled="" style="background-color: blue; color: #fff;" value="" selected="selected">执行人二证件类型值含义</option>
+													<option sle-require="[{'id':'txt_zjhm2','regex':['require','maxlength40'],'tips':['执行人二证件号码不能为空!','执行人二证件号码长度超过最大长度:[40]!'],'disabled':'false*false','default':''},{'id':'txt_xm2','regex':['require','maxlength20','hascode'],'tips':['执行人二姓名不能为空!','执行人二姓名长度超过最大长度:[20]!','执行二姓名不能全为数字!'],'disabled':'false*false*false','default':''},{'id':'txt_lxfs2','regex':['maxlength40'],'tips':['执行人二联系方式长度超过最大长度:[40]!'],'disabled':'false','default':''}]" value="1">1 - 工作证 </option>
+													<option sle-require="[{'id':'txt_zjhm2','regex':['require','maxlength40'],'tips':['执行人二证件号码不能为空!','执行人二证件号码长度超过最大长度:[40]!'],'disabled':'false*false','default':''},{'id':'txt_xm2','regex':['require','maxlength20','hascode'],'tips':['执行人二姓名不能为空!','执行人二姓名长度超过最大长度:[20]!','执行二姓名不能全为数字!'],'disabled':'false*false*false','default':''},{'id':'txt_lxfs2','regex':['maxlength40'],'tips':['执行人二联系方式长度超过最大长度:[40]!'],'disabled':'false','default':''}]" value="2">2 - 执行证</option>
+													<option sle-require="[{'id':'txt_zjhm2','regex':['require','maxlength40'],'tips':['执行人二证件号码不能为空!','执行人二证件号码长度超过最大长度:[40]!'],'disabled':'false*false','default':''},{'id':'txt_xm2','regex':['require','maxlength20','hascode'],'tips':['执行人二姓名不能为空!','执行人二姓名长度超过最大长度:[20]!','执行二姓名不能全为数字!'],'disabled':'false*false*false','default':''},{'id':'txt_lxfs2','regex':['maxlength40'],'tips':['执行人二联系方式长度超过最大长度:[40]!'],'disabled':'false','default':''}]" value="3">3 - 其他</option>
+												</select><input type="text" oncopy="return false" onpaste="return false" oncut="return false" style="width: 577px;" id="mb2_sleinput_ZhiXingRenErZhengJianLeiXing_30" name="mb2_sleinput_ZhiXingRenErZhengJianLeiXing_30"><span class="text-red redtip">!</span>
+											</div>
+											<div id="sle_zxrezjlx_tips" class="tipsmsg"></div>
+										</td>
+									</tr>
+									<tr>
+										<td rowspan="1" colspan="1" class="" style="width: 0px;"><label vl-default="" id="label_zxrzjhm2" vtitle="执行人二证件号码" class="form-item text-left" vl-tipsid="label_zxrzjhm2_tips" title="label_zxrzjhm2" name="label_zxrzjhm2">执行人二证件号码</label>
+											<div id="label_zxrzjhm2_tips" class="tipsmsg"></div>
+										</td>
+										<td rowspan="1" colspan="1" class=""><input type="text" oncopy="return false" oncut="return false" vl-keyup="wwww" vl-default="" id="txt_zxrezjhm" vtitle="执行人二证件号码" class="form-item text-left" vl-tipsid="txt_zxrezjhm_tips" style="width: 600px;" title="txt_zxrezjhm" onpaste="return false" name="txt_zxrezjhm">
+											<div id="txt_zxrezjhm_tips" class="tipsmsg"></div>
+										</td>
+									</tr>
+									<tr>
+										<td rowspan="1" colspan="1" class="" style="width: 0px;"><label vl-default="" id="label_zxrxm2" vtitle="执行人二姓ii名" class="form-item text-left" vl-tipsid="label_zxrxm2_tips" title="label_zxrxm2" name="label_zxrxm2">执行人二姓<i></i><i></i>名
+									</label>
+											<div id="label_zxrxm2_tips" class="tipsmsg"></div>
+										</td>
+										<td rowspan="1" colspan="1" class=""><input type="text" oncopy="return false" oncut="return false" vl-keyup="wwww" vl-default="" id="txt_zxrexm" vtitle="执行人二姓名" class="form-item text-left" vl-tipsid="txt_zxrexm_tips" style="width: 600px;" title="txt_zxrexm" onpaste="return false" name="txt_zxrexm">
+											<div id="txt_zxrexm_tips" class="tipsmsg"></div>
+										</td>
+									</tr>
+									<tr>
+										<td rowspan="1" colspan="1" class="" style="width: 0px;"><label vl-default="" id="label_zxrlxfs2" vtitle="执行人二联系方式" class="form-item text-left" vl-tipsid="label_zxrlxfs2_tips" title="label_zxrlxfs2" name="label_zxrlxfs2">执行人二联系方式</label>
+											<div id="label_zxrlxfs2_tips" class="tipsmsg"></div>
+										</td>
+										<td rowspan="1" colspan="1" class=""><input type="text" oncopy="return false" oncut="return false" vl-keyup="wwww" vl-default="" id="txt_zxrelxfs" vtitle="执行人二联系方式" class="form-item text-left" vl-tipsid="txt_zxrelxfs_tips" style="width: 600px;" title="txt_zxrelxfs" onpaste="return false" name="txt_zxrelxfs">
+											<div id="txt_zxrelxfs_tips" class="tipsmsg"></div>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="foot ">
+				<span>
+				<button>退出（F3）</button>
+				<button>帮助（F1）</button>
+				<button>辅助（F4）</button>
+				<button type="button" onclick="FormReset()">重置（F5）</button>
+			</span> <span style="float: right;">
+				<button type="button" style="margin-right: 0px;" vl-submit="true" id="btnsubmit" onclick="SubmitForm()">提交</button>
+			</span>
+			</div>
+			<input type="hidden" class="hidmainwidth" value="1000" oncopy="return false" onpaste="return false" oncut="return false">
+			<input type="hidden" class="zhanghao" oncopy="return false" onpaste="return false" oncut="return false">
+		</div><script src="~/Js/Student/GetDefaultValue/common.bank.js"></script>
+              <script src="~/Js/Student/GetDefaultValue/lodash.min.js"></script>
+              <script src="~/Js/Student/GetDefaultValue/common.regex.cz.js"></script>
+              <script src="~/Js/Student/GetDefaultValue/common.regex.js"></script>
+<script src="~/Js/Student/GetDefaultValue/js/xdyw002.js"</script>-->
+		<!-- <script src="../busi/js/xdyw001.js"></script>
+<script src="~/Js/Student/GetDefaultValue/js/layer.js"></script>
+<script src="~/Js/Student/GetDefaultValue/js/My97DatePicker/WdatePicker.js"></script>
+<script>
+			
+			
+			$("#btnsubmit").click(function(){
+				var values=$(".zhanghao").val().split('-');			
+					
+				$("#money_zhye").val(values[0]);
+				$("#money_kyye").val(values[1]);
+			});
+			
+			$(document).ready(function(){
+				
+			
+				var myDate = new Date();
+			    var year = myDate.getFullYear().toString();
+			    var month = (myDate.getMonth() + 1).toString();
+			    if (parseInt(month) < 10) {
+			        month = "0" + month;
+			    }
+			    var day = myDate.getDate();
+			    if (parseInt(day) < 10) {
+			        day = "0" + day;
+			    }
+			    var dateTimeNow = year + month + day;
+			   
+			    $("#txt_sxrq").val(dateTimeNow);
+				$('#sle_xh').change(function(){
+					if($('#sle_xh>option').length<=2){
+						$('#sle_xh').attr('disabled',true);
+						$('#sle_xh').next('input').attr('disabled',true).next('img').css('display','none');
+					}else{
+						$('#sle_xh').next('input').attr('disabled',false).next('img').css('display','inline-block');;
+						$('#sle_xh').attr('disabled',false);
+					}
+					$("#money_zhye").val('0.00');
+					$("#money_kyye").val('0.00');
+				});
+			});	
+			
+		</script>
+<link href="~/Js/Student/GetDefaultValue/js/common.bank.css" rel="stylesheet" />
+              </form>

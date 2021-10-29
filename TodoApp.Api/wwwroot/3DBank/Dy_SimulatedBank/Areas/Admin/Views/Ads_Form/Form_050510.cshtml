@@ -1,0 +1,126 @@
+﻿@{
+                    ViewBag.Title = "Form_050510";
+                    Layout = "~/Views/Shared/_AdminLayoutIsNull.cshtml";
+                }
+               <script src="~/Js/Admin/AdminForm.js"></script>
+               <script src="~/Js/Admin/CaseManagement/AddDefaultValue.js"></script>
+               <form id="form1" onsubmit="return false" action="##" method="post">
+                  <input type="hidden" id="TaskId" name="TaskId" value="@Request["TaskId"]" />
+                  <input type="hidden" id="CustomerId" name="CustomerId" value="@Request["CustomerId"]" />
+                  <input type="hidden" id="FormId" name="FormId" value="@Request["FormId"]" />
+                  <input type="hidden" id="Types" name="Types" value="@Request["Types"]" />
+                <!--内容表单区域开始-->
+            <div class="tables bankmap">
+			<div class="banktop"> <span class="toolbar-title-img">                                    <img src="../busi/img/topleft.png">04241-凭证出售</span> <span class="toolbar-title-close" style="display: none;">                                    </span> </div>
+			<div class="con-map2 selected">
+				<table id="qv" class="con-map2-table">
+					<tbody>
+						<tr>
+							<td class="" rowspan="1" colspan="1" style="width: 32px;"><label vl-default="" id="label_zh" vtitle="账ii号" class="form-item text-left" vl-tipsid="label_zh_tips" title="label_zh" name="label_zh">账<i></i><i></i>号</label>
+								<div id="label_zh_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="3" class=""><input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_zh" vtitle="账号" class="form-item text-left" kuaicha="true" vl-tipsid="txt_zh_tips" vl-regex="['require', 'maxlength32', 'number']" vl-message="['账号不能为空！','账户长度超过最大长度:[32]!','账户输入错误!']" style="width: 580px;" title="txt_zh" onpaste="return false" name="txt_zh"><img class="sousuo" src="/Js/Student/GetDefaultValue/img/banksousuo.png" vl-select="txt_zhmc|1|0,sle_csfs|0|0,sle_zfmmqsfbd|0|0,sle_yyjg|0|0" vl-exec="false" vl-message="['账号查询未执行！']" title="执行快查！"><span class="text-red redtip">!</span>
+								<div id="txt_zh_tips" class="tipsmsg"></div>
+							</td>
+						</tr>
+						<tr>
+							<td rowspan="1" colspan="1" class="" style="width: 48px;"><label vl-default="" id="label_zhmc" vtitle="账户名称" class="form-item text-left" vl-tipsid="label_zhmc_tips" title="label_zhmc" name="label_zhmc">账户名称</label>
+								<div id="label_zhmc_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="3" class=""><input type="text" oncopy="return false" oncut="return false" vl-keyup="wwww" vl-default="" id="txt_zhmc" vtitle="账户名称" class="form-item text-left" vl-disabled="true" vl-tipsid="txt_zhmc_tips" style="width: 600px;" onpaste="return false" disabled="disabled" name="txt_zhmc">
+								<div id="txt_zhmc_tips" class="tipsmsg"></div>
+							</td>
+						</tr>
+						<tr>
+							<td rowspan="1" colspan="1" class="" style="width: 48px;"><label vl-default="" id="label_csfs" vtitle="出售方式" class="form-item text-left on" vl-tipsid="label_csfs_tips" title="label_csfs" name="label_csfs">出售方式</label>
+								<div id="label_csfs_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="">
+								<div class="slectstyle">
+									<select vl-default="0" id="sle_csfs" vtitle="出售方式" class="form-item text-left" kuaicha="true" vl-tipsid="sle_csfs_tips" vl-regex="['maxlength25']" vl-message="['出售方式长度大于最大长度[25]1']" style="width: 180px;" title="sle_csfs" vl-slemodel="" name="sle_csfs">
+										<option disabled="" style="background-color: blue; color: #fff;" value="">出售方式值含义</option>
+										<option sle-require="[{'id':'txt_pzsl','disabled':'false','regex':'','tips':'','default':''}]" value="0">0 - 零星</option>
+										<option sle-require="[{'id':'txt_pzsl','disabled':'false','regex':'','tips':'','default':''}]" value="1">1 - 整本</option>
+									</select><input type="text" oncopy="return false" onpaste="return false" oncut="return false" style="width: 157px;" id="mb1_sleinput_ChuShouFangShi_6" name="mb1_sleinput_ChuShouFangShi_6"><img class="sousuo" src="/Js/Student/GetDefaultValue/img/banksousuo.png" vl-select="sle_pzzl|0|0" vl-exec="false" vl-message="['出售方式查询未执行！']" title="执行快查！"></div>
+								<div id="sle_csfs_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="" style="width: 64px;"><label vl-default="" id="label_pzzl" vtitle="凭证种类" class="form-item text-left" vl-tipsid="label_pzzl_tips" title="label_pzzl" name="label_pzzl">凭证种类</label>
+								<div id="label_pzzl_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="">
+								<div class="slectstyle">
+									<select vl-default="" id="sle_pzzl" vtitle="凭证种类" class="form-item text-left" vl-tipsid="sle_pzzl_tips" vl-regex="['require']" vl-message="['凭证种类不能为空!']" vl-rely="sle_pzzl,sle_pzzl" style="width: 180px;" title="sle_pzzl" vl-slemodel="" name="sle_pzzl">
+										<option disabled="" style="background-color: blue; color: #fff;" value="" selected="selected">凭证种类值含义</option>
+										<option value="014">014 - 现金支票</option>
+										<option value="015">015 - 转账支票</option>
+									</select><input type="text" oncopy="return false" onpaste="return false" oncut="return false" style="width: 157px;" id="mb1_sleinput_PingZhengZhongLei_8" name="mb1_sleinput_PingZhengZhongLei_8"><span class="text-red redtip">!</span></div>
+								<div id="sle_pzzl_tips" class="tipsmsg"></div>
+							</td>
+						</tr>
+						<tr>
+							<td rowspan="1" colspan="1" class="" style="width: 48px;"><label vl-default="" id="label_qshm" vtitle="起始号码" class="form-item text-left" vl-tipsid="label_qshm_tips" vl-rely="sle_pzzl" title="label_qshm" name="label_qshm">起始号码</label>
+								<div id="label_qshm_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class=""><input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_qshm" vtitle="起始号码" class="form-item text-left" kuaicha="true" vl-tipsid="txt_qshm_tips" vl-regex="['require', 'minlength16', 'maxlength16', 'number']" vl-message="['起始号码不能为空!','起始号码长度应该为16位,请重新输入!','起始号码长度应该为16位,请重新输入!','起始号码输入错误!']" style="width: 180px;" title="txt_qshm" onpaste="return false" name="txt_qshm"><img class="sousuo" src="/Js/Student/GetDefaultValue/img/banksousuo.png" vl-exec="false" vl-message="['起始号码查询未执行！']" title="执行快查！"><span class="text-red redtip">!</span>
+								<div id="txt_qshm_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="" style="width: 64px;"><label vl-default="" id="label_zzhm" vtitle="终止号码" class="form-item text-left" vl-tipsid="label_zzhm_tips" title="label_zzhm" name="label_zzhm">终止号码</label>
+								<div id="label_zzhm_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class=""><input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_zzhm" vtitle="终止号码" class="form-item text-left" kuaicha="true" vl-tipsid="txt_zzhm_tips" vl-regex="['require', 'maxlength16', 'number']" vl-message="['终止号码不能为空!','凭证号码应该为16位,请重新输入!','凭证号码输入错误!']" style="width: 180px;" title="txt_zzhm" onpaste="return false" name="txt_zzhm"><img class="sousuo" src="/Js/Student/GetDefaultValue/img/banksousuo.png" vl-select="txt_pzsl|1|0" vl-exec="false" vl-message="['终止号码查询未执行！']" title="执行快查！"><span class="text-red redtip">!</span>
+								<div id="txt_zzhm_tips" class="tipsmsg"></div>
+							</td>
+						</tr>
+						<tr>
+							<td rowspan="1" colspan="1" class="" style="width: 48px;"><label vl-default="" id="label_pzsl" vtitle="凭证数量" class="form-item text-left" vl-tipsid="label_pzsl_tips" title="label_pzsl" name="label_pzsl">凭证数量</label>
+								<div id="label_pzsl_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class=""><input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_pzsl" vtitle="凭证数量" class="form-item text-left" vl-tipsid="txt_pzsl_tips" vl-regex="['require']" vl-message="['凭证数量不能为空！']" disabled="disabled" style="width: 180px;" title="txt_pzsl" onpaste="return false" name="txt_pzsl"><span class="text-red redtip">!</span>
+								<div id="txt_pzsl_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="" style="width: 64px;"><label vl-default="" id="label_zfmmqsfbd" vtitle="支付密码器是否绑定" class="form-item text-left" vl-tipsid="label_zfmmqsfbd_tips" title="label_zfmmqsfbd" name="label_zfmmqsfbd">支付密码器是否绑定</label>
+								<div id="label_zfmmqsfbd_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="">
+								<div class="slectstyle">
+									<select vl-default="N" id="sle_zfmmqsfbd" vtitle="支付密码器是否绑定" class="form-item text-left" vl-disabled="true" vl-tipsid="sle_zfmmqsfbd_tips" style="width: 180px;" title="sle_zfmmqsfbd" vl-slemodel="" disabled="disabled" name="sle_zfmmqsfbd">
+										<option disabled="" style="background-color: blue; color: #fff;" value="">支付密码器是否绑定值含义</option>
+										<option value="Y">Y - 是</option>
+										<option value="N">N - 否</option>
+									</select><input type="text" oncopy="return false" onpaste="return false" oncut="return false" disabled="disabled" style="width: 157px;" id="mb1_sleinput_ZhiFuMiMaQiShiFuBangDing_16" name="mb1_sleinput_ZhiFuMiMaQiShiFuBangDing_16"></div>
+								<div id="sle_zfmmqsfbd_tips" class="tipsmsg"></div>
+							</td>
+						</tr>
+						<tr>
+							<td rowspan="1" colspan="1" class="" style="width: 48px;"><label vl-default="" id="label_yyy" vtitle="验s印s域" class="form-item text-left" vl-tipsid="label_yyy_tips" title="label_yyy" name="label_yyy">验<s></s>印<s></s>域</label>
+								<div id="label_yyy_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class=""><input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_yyy" vtitle="验印域" class="form-item text-left" vl-disabled="true" vl-tipsid="txt_yyy_tips" style="width: 180px;" title="txt_yyy" onpaste="return false" disabled="disabled" name="txt_yyy">
+								<div id="txt_yyy_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="" style="width: 64px;"><label vl-default="" id="label_yyjg" vtitle="验印结果" class="form-item text-left on" vl-tipsid="label_yyjg_tips" title="label_yyjg" name="label_yyjg">验印结果</label>
+								<div id="label_yyjg_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="">
+								<div class="slectstyle">
+									<select vl-default="0" id="sle_yyjg" vtitle="验印结果" class="form-item text-left" vl-disabled="true" vl-tipsid="sle_yyjg_tips" style="width: 180px;" title="sle_yyjg" vl-slemodel="" disabled="disabled" name="sle_yyjg">
+										<option disabled="" style="background-color: blue; color: #fff;" value="">验印结果值含义</option>
+										<option value="0">0 - 未验印</option>
+										<option value="1">1 - 自动验印通过</option>
+										<option value="2">2 - 自动验印不通过</option>
+										<option value="3">3 - 人工验印通过</option>
+										<option value="4">4 - 人工验印不通过</option>
+										<option value="5">5 - 标准通过</option>
+									</select><input type="text" oncopy="return false" onpaste="return false" oncut="return false" disabled="disabled" style="width: 157px;" id="mb1_sleinput_YanYinJieGuo_20" name="mb1_sleinput_YanYinJieGuo_20"></div>
+								<div id="sle_yyjg_tips" class="tipsmsg"></div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="foot "> <span>                                    <button>退出（F3）</button>                                    <button>帮助（F1）</button>                                    <button>辅助（F4）</button>                                    <button type="button" onclick="FormReset()">重置（F5）</button></span> <span style="float: right;">                                    <button type="button" style="margin-right: 0px;" vl-submit="true" id="btnsubmit" onclick="SubmitForm()">提交</button></span> </div>
+			<input type="hidden" class="hidmainwidth" value="1000/" oncopy="return false" onpaste="return false" oncut="return false"> </div>
+@*<script src="~/Js/Student/GetDefaultValue/js/pzcs050510byxu.js"></script>
+<script src="~/Js/Student/GetDefaultValue/js/pzcs001.js"></script>*@
+<link href="~/Js/Student/GetDefaultValue/js/common.bank.css" rel="stylesheet" />
+              </form>

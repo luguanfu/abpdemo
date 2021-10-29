@@ -1,0 +1,287 @@
+﻿<link href="~/CSS/jquery.treegrid.css" rel="stylesheet" />
+<link href="~/CSS/bootstrap-step.css" rel="stylesheet" />
+<link href="~/CSS/bootstrap-table.min.css" rel="stylesheet" />
+<!--企业网银客户签约管理[签约]-->
+<div class="main-container">
+    <div id="step_container" style="margin-bottom: 10px;"></div>
+    <div class="form-horizontal">
+        <div class="divider divider-horizontal"><div class="divider-text is-left"><strong>版本信息</strong></div></div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-3 control-label">企业网银版本</label>
+                    <div class="col-sm-9">
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="version" id="version1"> 标准版
+                            </label>
+                            <label>
+                                <input type="radio" name="version" id="version2"> 单人版
+                            </label>
+                            <label>
+                                <input type="radio" name="version" id="version2"> 查询版
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="divider divider-horizontal"><div class="divider-text is-left"><strong>设置信息</strong></div></div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-3 control-label">是否开立公司</label>
+                    <div class="col-sm-9">
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="company" id="company1"> 普通客户
+                            </label>
+                            <label>
+                                <input type="radio" name="company" id="company2"> 集团客户
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-3 control-label">托管方式</label>
+                    <div class="col-sm-9">
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="methods" id="methods1"> 银行管理
+                            </label>
+                            <label>
+                                <input type="radio" name="methods" id="methods2"> 企业管理
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="divider divider-horizontal"><div class="divider-text is-left"><strong>授权模式</strong></div></div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-3 control-label">授权模式</label>
+                    <div class="col-sm-9">
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="auth" id="auth1"> 一人录入一人授权
+                            </label>
+                            <label>
+                                <input type="radio" name="auth" id="auth2"> 其他授权方式
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="divider divider-horizontal"><div class="divider-text is-left"><strong>客户转账限额</strong></div></div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-3 control-label">日累计限额/笔数</label>
+                    <div class="col-sm-9">
+                        <input type="text" name="optionsRadios" id="dailyLimit">
+                        <input type="text" name="optionsRadios" id="dailyCount">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-3 control-label">年累计限额</label>
+                    <div class="col-sm-9">
+                        <input type="text" name="optionsRadios" id="yearLimit">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="divider divider-horizontal"><div class="divider-text is-left"><strong>添加企业账户</strong></div></div>
+        <table id="tbl" class="table table-hover"></table>
+        <div id="DivTabValue" style="display:none;">
+            <div class="divider divider-horizontal"><div class="divider-text is-left"><strong>添加企业账户反显值</strong></div></div>
+<textarea rows="5" id="tb1Value" name="tb1Value" style="width:100%;"></textarea>
+        </div>
+        <div class="pull-right">
+            <button type="button" class="btn btn-primary btn-sm" onclick="goPage('200061')">添加</button>
+            <button type="button" class="btn btn-primary btn-sm" onclick="goPage('200061')">修改</button>
+            <button type="button" class="btn btn-primary btn-sm">删除</button>
+        </div>
+        <table id="tbl1" class="table table-hover"></table>
+        <div class="divider divider-horizontal"><div class="divider-text is-left"><strong>企业用户设置</strong></div></div>
+        <table id="tbl2" class="table table-hover"></table>
+        <div class="pull-right">
+            <button type="button" class="btn btn-primary btn-sm" onclick="goPage('200062')">添加</button>
+            <button type="button" class="btn btn-primary btn-sm" onclick="goPage('200062')">修改</button>
+            <button type="button" class="btn btn-primary btn-sm">删除</button>
+        </div>
+        <div class="divider divider-horizontal" style="clear: both;"><div class="divider-text is-left"><strong>客户经理</strong></div></div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-3 control-label">客户经理编号</label>
+                    <div class="col-sm-9">
+                        <input type="text" name="txt_customerNumber" id="txt_customerNumber">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-3 control-label">客户经理名称</label>
+                    <div class="col-sm-9">
+                        <input type="text" name="txt_customerName" id="txt_customerName">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-3 control-label">历史签约次数</label>
+                    <div class="col-sm-9">
+                        <input type="text" name="txt_historyCount" id="txt_historyCount">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/Scripts/jquery.treegrid.min.js"></script>
+<script src="~/Scripts/bootstrap-table.min.js"></script>
+<script src="~/Scripts/bootstrap-table-treegrid.min.js"></script>
+<script src="~/Js/bootstrap-step.js"></script>
+<script>
+    $("#step_container").loadStep({
+        current: 1,
+        steps: [{
+            title: "签约处理",
+            content: "签约处理"
+        }, {
+            title: "发放证书",
+            content: "发放证书"
+        }]
+    });
+    var data = [];
+    function setTableValue(values) {
+        var vals = values.split('\n');
+        data = [{
+            'account': vals[0],
+            'accountName': vals[1],
+            'openingAgency': vals[2],
+            'deductionID': vals[3],
+        }];
+        $("#tbl").bootstrapTable('load', data);
+    }
+    $('#tbl').bootstrapTable({
+        data: data,
+        columns: [{
+            checkbox: true,
+            align: 'center',
+            valign: 'middle'
+        },
+        {
+            title: '序号',
+            align: 'center',
+            formatter: function (value, row, index) {
+                return index + 1;
+            }
+        },
+        {
+            title: '账号',
+            field: 'account',
+            align: 'center'
+        },
+        {
+            title: '户名',
+            field: 'accountName',
+            align: 'center'
+        },
+        {
+            title: '开户机构',
+            field: 'openingAgency',
+            align: 'center',
+        },
+        {
+            title: '扣费账户标识',
+            field: 'deductionID',
+            align: 'center',
+        },
+        ]
+    });
+    $('#tbl1').bootstrapTable({
+        data: options.menus,
+        idField: 'id',
+        treeShowField: 'name',
+        parentIdField: 'pid',
+        columns: [
+            {
+                checkbox: true,
+                align: 'center',
+            },
+            {
+                title: '选择开通的业务',
+                field: 'name',
+            }
+        ],
+        onPostBody: function () {
+            var columns = $('#tbl1').bootstrapTable('getOptions').columns
+
+            if (columns && columns[0][1].visible) {
+                $('#tbl1').treegrid({
+                    treeColumn: 1,
+                    onChange: function () {
+                        $('#tbl1').bootstrapTable('resetView')
+                    }
+                })
+            }
+        }
+    });
+    $('#tbl2').bootstrapTable({
+        data: [{
+            'account': "564565342432423",
+            'accountName': '西安市长宁',
+            'openingAgency': '长安银行股份有限公司',
+            'deductionID': '是'
+        }],
+        columns: [{
+            checkbox: true,
+            align: 'center',
+            valign: 'middle'
+        },
+        {
+            title: '序号',
+            align: 'center',
+            formatter: function (value, row, index) {
+                return index + 1;
+            }
+        },
+        {
+            title: '用户编号',
+            field: 'userNumber',
+            align: 'center'
+        },
+        {
+            title: '姓名',
+            field: 'name',
+            align: 'center'
+        },
+        {
+            title: '证件类型',
+            field: 'certificateType',
+            align: 'center',
+        },
+        {
+            title: '证件号码',
+            field: 'certificateNumber',
+            align: 'center',
+        },
+        {
+            title: '用户权限',
+            field: 'userAuth',
+            align: 'center',
+        },
+        ]
+    });
+    function doSubmit() {
+
+    }
+</script>

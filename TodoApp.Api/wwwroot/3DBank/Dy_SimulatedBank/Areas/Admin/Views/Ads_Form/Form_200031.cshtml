@@ -1,0 +1,42 @@
+﻿
+<!--信息录入-->
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <label id="lbl_account" name="lbl_account" for="inputEmail3" class="col-sm-3 control-label">账 号</label>
+            <div class="col-sm-6">
+                <input vl-default="" id="txt_account" name="txt_account" type="text" class="form-control input-sm">
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <label id="lbl_certificateType" name="lbl_certificateType" for="inputEmail3" class="col-sm-3 control-label">证件类型</label>
+            <div class="col-sm-6">
+                <select vl-default="" id="sle_certificateType" name="sle_certificateType" class="form-control"></select>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <label id="lbl_idCode" name="lbl_idCode" for="inputEmail3" class="col-sm-3 control-label">证件号码</label>
+            <div class="col-sm-6">
+                <input vl-default="" id="txt_idCode" name="txt_idCode" type="text" class="form-control input-sm">
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <label id="lbl_identityResults" for="inputEmail3" class="col-sm-3 control-label">身份核查结果</label>
+            <div class="col-sm-6">
+                <select vl-default="" id="sle_identityResults" name="sle_identityResults" class="form-control"></select>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    setOptions(['certificateType','identityResults']);
+    //function doSubmit() {
+    //    goPage("200020");
+    //}
+</script>

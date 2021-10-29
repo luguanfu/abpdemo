@@ -1,0 +1,486 @@
+﻿@{
+    
+    Layout = "~/Views/Shared/_StudentLayout.cshtml";
+    ViewData["nvc"] = "理论学习";
+}
+@{
+    var tb = ViewData["tb"] as System.Data.DataTable;
+    string CurriculumName = "空";
+    string ChapterName = "空";
+    string SectionName = "空";
+    string ResourcesName = "空";
+    string Type = ".mp4";
+    string URL = "";
+    if (tb != null && tb.Rows.Count > 0)
+    {
+        CurriculumName = tb.Rows[0]["CurriculumName"].ToString();
+        ChapterName = tb.Rows[0]["ChapterName"].ToString();//章
+        SectionName = tb.Rows[0]["SectionName"].ToString();//节
+        ResourcesName = tb.Rows[0]["ResourcesName"].ToString();//课
+                                                               //Type = tb.Rows[0]["Type"].ToString();
+                                                               //URL = tb.Rows[0]["URL"].ToString();
+                                                               //Type = ".mp4";
+                                                               //URL = "/Resources/mp4/1.mp4";
+    }
+}
+
+<style>
+
+
+    .web_page {
+        overflow: hidden;
+        font-size: 17px;
+        height: 70px;
+        padding-top: 14px;
+        border: 1px solid #DDDDDD;
+    }
+
+    .page_prev,
+    .page_down {
+        float: left;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        width: 82px;
+        height: 40px;
+        color: #999999;
+        font-size: 16px;
+        background-color: #fff;
+        border: 1px solid #E6E6E6;
+        border-radius: 4px;
+    }
+
+        .page_prev:hover,
+        .page_down:hover {
+            color: #fff;
+            background-color: #CF9354;
+        }
+
+    .page_prev {
+        margin-left: 98px;
+        margin-right: 36px;
+    }
+
+    .page_down {
+        margin-left: 34px;
+        margin-right: 54px;
+    }
+
+    .page_go {
+        float: left;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        width: 76px;
+        height: 40px;
+        color: #fff;
+        font-size: 20px;
+        background-color: #D9A976;
+        border-radius: 4px;
+        letter-spacing: 2px;
+        margin-left: 36px;
+    }
+
+        .page_go:hover {
+            background-color: #CF9354;
+        }
+
+
+    .page_now,
+    .page_oll {
+        float: left;
+        letter-spacing: 2px;
+        margin-top: 6px;
+    }
+
+    .page_now {
+        color: #333333;
+    }
+
+    .page_oll {
+        color: #999999;
+    }
+
+    .page_to {
+        color: #999999;
+        float: left;
+        letter-spacing: 2px;
+    }
+
+        .page_to input {
+            width: 76px;
+            height: 40px;
+            border: 1px solid #EBEBEB;
+            border-radius: 4px;
+            margin: 0 10px;
+            color: #333333;
+            text-align: center;
+        }
+
+            .page_to input:focus {
+                border: 1px solid #CF9354;
+            }
+
+    .wrapper {
+        min-height: 800px !important;
+    }
+</style>
+<link href="~/CSS/jiaoxue_play.css" rel="stylesheet" />
+<link href="~/CSS/form_public.css" rel="stylesheet" />
+<link href="~/CSS/footer.css" rel="stylesheet" />
+<!DOCTYPE html>
+<div class="wrapper">
+    <div class="row">
+        <div class="col-sm-12">
+            <span id="RTitle"></span>
+            <div class="jxplay_map">
+                <!--左侧播放区域-->
+                <div class="play_left" id="play_falsh">
+                    <div class="web_pagefile" id="pptImgDiv" style="padding-top:8px;" hidden="hidden">
+                        <img id="pptImg" style="width:98%;height:98%;  display: none;" src="" />
+                    </div>
+                    <video hidden="hidden" controlslist="nodownload" id="mp3id" class="video" autoplay="autoplay" poster="" width="100%" style="text-align: -webkit-center; margin: 0 auto;" controls="" preload="">
+                        <source id="RealUrl" src="" type="video/mp4">
+                    </video>
+                </div>
+
+                <div class="play_right" id="tablelist">
+
+                </div>
+
+                <div class="web_page" id="play_ppt">
+                    <button class="page_prev" onclick="PageClick(0)">上一页</button>
+                    <p class="page_now">
+                        第<span id="page">0</span>页
+                    </p>
+                    <p class="page_oll">
+                        /共<span id="total">200</span>页
+                    </p>
+                    <button class="page_down" onclick="PageClick(1)">下一页</button>
+                    <div class="page_to">
+                        到第<input type="text" id="inputPage" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')" />页
+                    </div>
+                    <button class="page_go" onclick="PageClick(2)">GO</button>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+
+</div>
+
+
+<!-- Mainly scripts  主体js -->
+<script src="~/Scripts/jquery-3.2.0.js"></script>
+<script src="~/Scripts/tab_bar.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<!-- iCheck -->
+<script src="~/Scripts/iCheck/icheck.min.js"></script>
+<!--时间插件js-->
+<script src="~/Scripts/My97DatePicker/WdatePicker.js"></script>
+<!--弹窗js-->
+<script src="~/Scripts/layer/layer.js"></script>
+
+<script type="text/javascript">
+
+    $(function () {
+        GetSectionList();
+        changeUrl();
+        getResources();
+    })
+    //根据渲染出来的数据，动态设置底部
+
+    function funcfoter() {
+        //文档body的高度
+        var bodyHeight = document.body.scrollHeight;
+        //当前窗口可视区域高度
+        var winHeight = $(window).height();
+
+        if (bodyHeight > winHeight) {
+            $(".footer_index").removeClass("fid")
+        } else {
+            $(".footer_index").addClass("fid")
+        }
+    }
+
+
+    //退出系统
+    function out_xitong() {
+        layer.confirm('您确定要退出系统吗？', {
+            title: '退出系统',
+            btn: ['确定', '取消'],
+            offset: 'auto',//定义弹窗位置垂直居中
+            shadeClose: false, //遮罩关闭控制
+            skin: 'layui-layer-lan'
+            //按钮
+        },
+            function () {
+                layer.msg('退出成功', {
+                    time: 10000,
+                    icon: 1,
+                });
+                window.location.href = "login.html"
+            });
+
+    }
+    function getQueryString(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) return unescape(r[2]); return null;
+    }
+
+    function GetSectionList(page) {
+        $.ajax({
+            url: '/TheoreticalKnowledge/GetSectionList',
+            Type: "post",
+            dataType: "json", cache: false,
+            contentType: "application/json; charset=utf-8",
+            data: { "Type": getQueryString("Type") },
+            //data: { "CurriculumID": getQueryString("CurriculumID") },
+            success: function (tb) {
+                
+                var html = '';
+                //课程
+                var Curriculum = tb.Curriculum;//转换table
+                //章
+                var Chapter = tb.Chapter;//转换table
+                //节
+                var Section = tb.Section;//转换table
+                //资源
+                var Resources = tb.Resources;//转换table
+                if (Curriculum != null && Curriculum.length > 0) {
+                    $("#Cover").attr("src", Curriculum[0]["Cover"]);
+                    $("#CurriculumName").html(Curriculum[0]["CurriculumName"]);
+                    $("#Synopsis").html(Curriculum[0]["Synopsis"]);
+                    $("#Cover").show();
+                }
+                if (Chapter != null && Chapter.length > 0) {
+                    for (var i = 0; i < Chapter.length; i++) {
+                        var ID = Chapter[i]["ID"];
+                        var ChapterID = Chapter[i]["ID"];
+                        var Name = Chapter[i]["Name"];
+                        var COUResources = Chapter[i]["COUResources"];
+                        var COUResourceRecord = Chapter[i]["COUResourceRecord"];
+                        var complete = 0;
+                        if (parseFloat(COUResourceRecord) > 0 && parseFloat(COUResources) > 0) {
+                            complete = (parseFloat(COUResourceRecord) / parseFloat(COUResources)) * 100;
+                        }
+                        html += '<div class="chapter_name">';
+                        html += '<span>模块' + (1 + i) + '：' + Name + '</span>';
+                        html += '</div>';
+                        html += '<ul class="zhangjie">'
+                        var ss = 0;
+                        for (var s = 0; s < Section.length; s++) {
+                            if (Section[s]["ChapterID"] == ChapterID) {
+                                ID = Section[s]["ID"];
+                                ;
+                                var SectionID = Section[s]["ID"];
+                                Name = Section[s]["Name"];
+                                var Name1 = Name.replace(/\s/g, "");
+
+
+                                for (var j = 0; j < Resources.length; j++) {
+                                    if (Resources.length>0) {
+                                        if (Resources[j]["SectionID"] == SectionID) {
+                                            var Rurl = Resources[j]["URL"];
+                                            if (Rurl != null) {
+                                                if (Resources[j]["Type"] == ".mp4") {
+                                                    html += '<li data_name=' + Name1 + ' data_type=' + Resources[j]["Type"] + ' data_url="' + Rurl + '" onclick="changeUrl(this)" class="jietou"><a data_url="' + Rurl + '">' + '<span class="fl" > 第' + (ss + 1) + '节：' + Name + '-视频' + '</span >' + ' .' + '</a> </li>'
+                                                }
+                                                else {
+                                                    html += '<li data_name=' + Name1 + ' data_type=' + Resources[j]["Type"] + ' data_url="' + Rurl + '" onclick="changeUrl(this)" class="jietou"><a data_url="' + Rurl + '">' + '<span class="fl" > 第' + (ss + 1) + '节：' + Name + '-课件' + '</span >' + ' .' + '</a> </li>'
+                                                }
+                                            }
+                                            else {
+                                                if (Resources[j]["OriginalUrl"] != null) {
+                                                    html += '<li  data_name=' + Name1 + ' data_type=' + Resources[j]["Type"] + ' data_url="' + Rurl + '" onclick="changeUrl(this)" class="jietou"><a data_url="' + Rurl + '">' + '<span class="fl" > 第' + (ss + 1) + '节：' + Name + '-课件' + '</span >' + ' .' + '</a> </li>'
+                                                }
+                                                else {
+                                                    html += '<li data_type=' + Resources[j]["Type"] + ' data_url="' + Rurl + '" onclick="changeUrl(this)" class="jietou"><a data_url="' + Rurl + '">' + '<span class="fl" > 第' + (ss + 1) + '节：' + Name + '</span >' + ' .' + '</a> </li>'
+
+                                                }
+
+                                            }
+
+                                        }
+
+                                    }
+                                }
+
+                                ss++;
+                            }
+                        }
+                        html += '</ul>';
+
+                    }
+                }
+                $("#tablelist").html(html);
+            }
+        });
+    }
+
+
+
+    //文档body的高度
+    var bodyHeight = $(document.body).height()
+    //当前窗口可视区域高度
+    var winHeight = $(window).height()
+    if (bodyHeight > winHeight) {
+        $(".footer").removeClass("fid")
+    } else {
+        $(".footer").addClass("fid")
+    }
+    $(function () {
+        PPTPay();
+    })
+    var page = 0;
+    var z = null;
+    function PPTPay(url, type) {
+        var Type = type;
+        var URL = url;
+        if (Type == ".PPT" || Type == ".ppt" || Type == ".PPTX" || Type == ".pptx") {
+            ;
+            if (URL != null) {
+                z = URL.split('|');
+                $("#total").html(z.length);
+            }
+            else {
+                $("#total").html(0);
+            }
+            PageClick(0);
+        }
+    }
+    function PageClick(t) {
+        if (z != null) {
+            $("#pptImg").show();
+            if (t == 0) {
+                if (page == 0) {
+                    $("#pptImg").attr("src", z[page]);
+                } else {
+                    page = page - 1;
+                    $("#pptImg").attr("src", z[page]);
+                }
+            } else if (t == 1) {
+                if (page >= z.length - 1) {
+                    $("#pptImg").attr("src", z[page]);
+                } else {
+                    page = page + 1;
+                    $("#pptImg").attr("src", z[page]);
+                }
+            } else {
+                var inputPage = $("#inputPage").val()
+                if (parseInt(inputPage) <= (z.length + 1)) {
+                    page = (parseInt(inputPage) - 1);
+                    $("#pptImg").attr("src", z[page]);
+                } else {
+                    layer.msg("请输入正确的码数!", { icon: 2 });
+                    return;
+                }
+            }
+
+            $("#page").html((page + 1));
+        } else {
+            layer.msg("暂无数据!", { icon: 2 });
+            return;
+        }
+    }
+
+    //屏蔽视频右键功能
+    $('#mp3id').bind('contextmenu', function () { return false; });
+    $('#pptImg').bind('contextmenu', function () { return false; });
+
+
+    function changeUrl(data) {
+        ;
+        if (typeof (data) == "undefined") {
+            //alert("a");
+        }
+        var url = $(data).attr("data_url");
+        if (url == "") {
+            layer.msg("该课程没有资源")
+        }
+        var name = $(data).attr("data_name");
+        $("#RTitle").html(name);
+        $(data).attr("cuanzhong");
+        var dataType = $(data).attr("data_type");
+        if (dataType == ".mp4" || dataType == ".MP4" || dataType == ".mP4" || dataType == ".Mp4") {
+            $("#pptImgDiv").hide();
+            $("#play_ppt").hide();
+            $("#mp3id").show();
+            $("#MediaPlayer").hide();
+            $("#mp3id").attr("src", url)
+            $("#mp3id").pause();
+            $("#mp3id").play();
+        }
+        else if (dataType == ".wmv" || dataType == ".WMV") {
+            $("#mp3id").hide();
+            $("#play_ppt").hide();
+            $("#MediaPlayer").show();
+            $("#pptImgDiv").hide();
+            $("#mp3id").attr("src", url)
+            $("#mp3id").pause();
+            $("#mp3id").play();
+        }
+        else {
+            $("#mp3id").hide();
+            $("#play_ppt").show();
+            $("#MediaPlayer").hide();
+            $("#pptImgDiv").show();
+            PPTPay(url, dataType);
+        }
+
+    }
+
+    function getResources() {
+        $.ajax({
+            Type: "post",
+            dataType: "json",
+            url: '/TheoreticalKnowledge/getResources?ID=' + getQueryString('ResourcesID'),
+            async: false,
+            success: function (data) {
+                if (data.length > 0) {
+                    var url = data[0]["URL"];
+                    var dataType = data[0]["Type"];
+                    //alert("TYpe:" + Type + "        url:" + URL)
+                    //$("#EditE_PId").val(data[0]["URL"]);
+                    //$("#EditP_Name").val(data[0]["E_Name"]);
+
+                    if (dataType == ".mp4" || dataType == ".MP4" || dataType == ".mP4" || dataType == ".Mp4") {
+                        $("#pptImgDiv").hide();
+                        $("#play_ppt").hide();
+                        $("#mp3id").show();
+                        $("#MediaPlayer").hide();
+                        $("#mp3id").attr("src", url)
+                        //$("#mp3id").pause();
+                        $("#mp3id").play();
+                    }
+                    else if (dataType == ".wmv" || dataType == ".WMV") {
+                        $("#mp3id").hide();
+                        $("#play_ppt").hide();
+                        $("#MediaPlayer").show();
+                        $("#pptImgDiv").hide();
+                        $("#mp3id").attr("src", url)
+                        //$("#mp3id").pause();
+                        $("#mp3id").play();
+                    }
+                    else {
+                        $("#mp3id").hide();
+                        $("#play_ppt").show();
+                        $("#MediaPlayer").hide();
+                        $("#pptImgDiv").show();
+                        PPTPay(url, dataType);
+                    }
+                }
+            }
+        });
+    }
+
+    function getQueryString(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) return unescape(r[2]); return null;
+    }
+
+</script>

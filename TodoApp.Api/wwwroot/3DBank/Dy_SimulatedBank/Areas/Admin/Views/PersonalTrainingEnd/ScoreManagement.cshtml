@@ -1,0 +1,131 @@
+﻿@{
+    
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    if (Request["AllType"] == "1")
+    {
+        ViewData["nvc"] = "个人实训成绩";
+    }
+    else
+    {
+        ViewData["nvc"] = "团队实训成绩";
+    }
+}
+<div class="row   white-bg dashboard-header">
+    <div class="col-sm-12">
+        <ol class="breadcrumb">
+            <li>
+                <h2>成绩管理</h2>
+            </li>
+            @if (Request["AllType"] == "1")
+            {
+                <li>
+                    <a href="/Admin/PersonalTrainingEnd/Index?AllType=1">个人实训成绩</a>
+                </li>
+                <li>
+                    <a href="/Admin/PersonalTrainingEnd/PracticeStudentInfo?PracticeId=@Request["PracticeId"]&AllType=@Request["AllType"]">个人实训成绩列表</a>
+                </li>
+                <li>
+                    <strong>学生成绩详情</strong>
+                </li>
+            }
+            else
+            {
+                <li>
+                    <a href="/Admin/PersonalTrainingEnd/Index?AllType=2">团队实训成绩</a>
+                </li>
+                <li>
+                    <a href="/Admin/PersonalTrainingEnd/PracticeStudentInfo?PracticeId=@Request["PracticeId"]&AllType=@Request["AllType"]">团队实训成绩列表</a>
+                </li>
+                <li>
+                    <strong>学生成绩详情</strong>
+                </li>
+            }
+        </ol>
+    </div>
+
+    <div class="ibox-content">
+        <div class="row">
+        </div>
+        <div class="row m-t-sm table-responsive">
+            <table class="table text-center table-bordered ">
+                <thead>
+                    <tr>
+                        <th class="text-center">案例名称</th>
+                        <th class="text-center">最近一次保存时间</th>
+                        <th class="text-center">综合得分</th>
+                        <th class="text-center">操作</th>
+                    </tr>
+                </thead>
+                <tbody class="new_table text-center" id="tablelist"></tbody>
+            </table>
+        </div>
+
+        <!--分页开始-->
+        <div class="row text-center" id="PaginatorLibrary">
+        </div>
+        <!--分页结束-->
+    </div>
+    <a id='downFile' href="" style="display: none"><span id='tf'></span></a>
+</div>
+
+
+
+
+
+
+    <script>
+        $(function () {
+            bindIngfo();
+        });
+
+        function bindIngfo(page) {
+            var Userid = getQueryString('Userid');
+            var PageSize = 10;
+            var PracticeId = getQueryString('PracticeId');
+            var AllType = getQueryString('AllType');
+            $.ajax({
+                url: '/Admin/PersonalTrainingEnd/CaseList',
+                Type: "post",
+                dataType: "json", cache: false,
+                contentType: "application/json; charset=utf-8",
+                data: { "page": page, "PageSize": PageSize, "AllType": AllType, "PracticeId": PracticeId, "Userid": Userid},
+                success: function (tb) {
+
+                    var html = '';
+                    var data = tb.Tb;//转换table
+                    for (var i = 0; i < data.length; i++) {
+                        html += '<tr>';
+
+                        html += '<td><span class="pie">' + data[i]["TaskName"] + '</span></td>';
+                        var UpdateTime = data[i]["UpdateTime"] + "";
+                        if (UpdateTime == null || UpdateTime == "null") {
+                            html += '<td><span class="pie">--</span></td>';
+                        }
+                        else {
+                            html += '<td><span class="pie">' + UpdateTime.substr(0, 19).replace('T', ' ') + '</span></td>';
+                        }
+                        if (data[i]["Scores"] == null) {
+                            html += '<td><span class="pie">---</span></td>';
+                        } else {
+                            html += '<td><span class="pie">' + data[i]["Scores"] + '</span></td>';
+                        }
+                        html += '<td><a  href="javascript:void(0);"onclick="seturl(' + data[i]["TRID"] + ',' + data[i]["TaskId"] + ',' + data[i]["AddUserId"] + ')" class=" btn-primary btn-sm  m-r-sm"><i class="fa fa-pencil m-r-xxs"></i>案例成绩</a></td>';
+                        html += '</tr>';
+                    }
+
+                    $("#tablelist").html(html);
+
+                    bootstrapPaginator("#PaginatorLibrary", tb, bindIngfo);//分页
+                    //样式重新加载
+                    redload();
+                }
+            });
+        }
+
+
+        function seturl(TRID, TaskId, AddUserId ) {
+
+            window.open('/Admin/PracticeResult/Index?TotalResultId=' + TRID + '&TaskId=' + TaskId + '&UserId=' + AddUserId);
+        }
+
+    </script>

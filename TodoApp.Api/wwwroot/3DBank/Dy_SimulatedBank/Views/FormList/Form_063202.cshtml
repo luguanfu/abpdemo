@@ -1,0 +1,88 @@
+﻿@{
+                    ViewBag.Title = "Form_063202";
+                    Layout = "~/Views/Shared/_StutentLayoutIsNull.cshtml";
+                }
+               <form id="form1" onsubmit="return false" action="##" method="post">
+                   <input type="hidden" id="FormType" name="FormType" value="@Request["FormType"]" />
+                   <input type="hidden" id="FormId" name="FormId" value="@Request["FormId"]" />
+                   <input type="hidden" id="TRId" name="TRId" value="@Request["TotalResultId"]" />
+                   <input type="hidden" id="ExamId" name="ExamId" value="@Request["ExamId"]" />
+                   <input type="hidden" id="TaskId" name="TaskId" value="@Request["TaskId"]" />
+                   <input type="hidden" id="CustomerId" name="CustomerId" value="@Request["CustomerId"]" />
+                   <input type="hidden" id="LinkId" name="LinkId" value="@Request["LinkId"]" />
+                   <input type="hidden" id="Types" name="Types" value="2" />
+                <!--内容表单区域开始-->
+            <div class="tables bankmap">
+        <div class="con-map selected"> <span class="top-title">查询条件 <span id="dianji_con" style="cursor: pointer;">▼</span></span>
+            <table id="qv" class="con-map2-table qv">
+                <tbody>
+                    <tr>
+                        <td class="" style="width: 64px;"><label vl-default="" id="label_jyrq" vtitle="交易日期" class="form-item text-left" vl-tipsid="label_jyrq_tips" title="label_jyrq">交易日期</label>
+                            <div id="label_jyrq_tips" class="tipsmsg"></div>
+                        </td>
+                        <td class=""><input type="text" class="date form-item text-left on" vl-default="20170707" id="date_jyrq" vtitle="交易日期" vl-tipsid="date_jyrq_tips" vl-regex="['maxlength8', 'tdate']" vl-message="['交易日期长度大于最大长度:[8]!','请输入正确的日期格式(如:19000101)!']" style="width: 180px;" title="date_jyrq" oncopy="return false" onpaste="return false" oncut="return false"><img onclick="WdatePicker({el:'date_jyrq',dateFmt:'yyyyMMdd'})" src="/js/My97DatePicker/skin/datePicker.gif" align="absmiddle" style="width:16px;height:22px;margin-left:6px;">
+                            <div id="date_jyrq_tips" class="tipsmsg"></div>
+                        </td>
+                        <td class="" style="width: 64px;"><label vl-default="" id="label_hllx" vtitle="汇路类型" class="form-item text-left on" vl-tipsid="label_hllx_tips" title="label_hllx">汇路类型</label>
+                            <div id="label_hllx_tips" class="tipsmsg"></div>
+                        </td>
+                        <td class="">
+                            <div class="slectstyle"><select vl-keyup="wwww" vl-default="" id="sle_hllx" vtitle="汇路类型" class="form-item text-left" vl-tipsid="sle_hllx_tips" style="width: 180px;" vl-slemodel=""><option disabled="" style="background-color: blue; color: #fff;" value="" selected="selected">汇路类型值含义</option> <option value="1">--请选择--</option> <option value="0">行内汇兑</option></select><input type="text" oncopy="return false" onpaste="return false" oncut="return false" style="width: 157px;"></div>
+                            <div id="sle_hllx_tips" class="tipsmsg"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td rowspan="1" colspan="1" class="" style="width: 64px;"><label vl-default="" id="label_fkrzh" vtitle="付款人账号" class="form-item text-left on" vl-tipsid="label_fkrzh_tips" title="label_fkrzh">付款人账号</label>
+                            <div id="label_fkrzh_tips" class="tipsmsg"></div>
+                        </td>
+                        <td rowspan="1" colspan="1" class=""><input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_fkrzh" vtitle="付款人账号" class="form-item text-left on" vl-tipsid="txt_fkrzh_tips" vl-regex="['maxlength32', 'number']" vl-message="['付款人账号长度大于最大长度:[32]!','付款人账号输入错误!']" style="width: 180px;" title="txt_fkrzh" onpaste="return false">
+                            <div id="txt_fkrzh_tips" class="tipsmsg"></div>
+                        </td>
+                        <td rowspan="1" colspan="1" class="" style="width: 64px;"><label vl-default="" id="label_skrzh" vtitle="收款人账号" class="form-item text-left on" vl-tipsid="label_skrzh_tips" title="label_skrzh">收款人账号</label>
+                            <div id="label_skrzh_tips" class="tipsmsg"></div>
+                        </td>
+                        <td rowspan="1" colspan="1" class=""><input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_skrzh" vtitle="收款人账号" class="form-item text-left on" vl-tipsid="txt_skrzh_tips" vl-regex="['maxlength32', 'number']" vl-message="['收款人账号长度大于最大长度:[32]!','收款人账号输入错误!']" style="width: 180px;" title="txt_skrzh" onpaste="return false">
+                            <div id="txt_skrzh_tips" class="tipsmsg"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td rowspan="1" colspan="1" class="" style="width: 64px;"><label vl-default="" id="label_jzgyh" vtitle="记账柜员号" class="form-item text-left on" vl-tipsid="label_jzgyh_tips" title="label_jzgyh">记账柜员号</label>
+                            <div id="label_jzgyh_tips" class="tipsmsg"></div>
+                        </td>
+                        <td rowspan="1" colspan="1" class=""><input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_jzgyh" vtitle="记账柜员号" class="form-item text-left" vl-tipsid="txt_jzgyh_tips" vl-regex="['maxlength32', 'shuziandmu']" vl-message="['记账柜员号长度大于最大长度:[32]!','记账柜员号输入错误!']" style="width: 180px;" title="txt_jzgyh" onpaste="return false">
+                            <div id="txt_jzgyh_tips" class="tipsmsg"></div>
+                        </td>
+                        <td rowspan="1" colspan="1" class="" style="width: 64px;"><label vl-default="" id="label_jyje" vtitle="交易金额" class="form-item text-left on" vl-tipsid="label_jyje_tips" title="label_jyje">交易金额</label>
+                            <div id="label_jyje_tips" class="tipsmsg"></div>
+                        </td>
+                        <td rowspan="1" colspan="1" class="">
+                            <div class="moneystyle"><input type="text" oncopy="return false" onpaste="return false" oncut="return false" vl-type="money" vl-default="" id="money_jyje" vtitle="交易金额" class="form-item text-left money" jinejiaoyan="true" vl-tipsid="money_jyje_tips" vl-regex="['maxlength16', 'decimal']" vl-message="['交易金额长度大于最大长度:[16]','交易金额输入错误!']" style="width: 180px;" title="money_jyje"><label class="moneytips hide green">人民币CNY￥<span class="num">0.00</span><span class="cn">零元整</span></label></div>
+                            <div id="money_jyje_tips" class="tipsmsg"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td rowspan="1" colspan="1" class="" style="width: 64px;"><label vl-default="" id="label_pxtj" vtitle="排序条件" class="form-item text-left" vl-tipsid="label_pxtj_tips" title="label_pxtj">排序条件</label>
+                            <div id="label_pxtj_tips" class="tipsmsg"></div>
+                        </td>
+                        <td rowspan="1" colspan="1" class="">
+                            <div class="slectstyle"><select vl-default="" id="sle_pxtj" vtitle="排序条件" class="form-item text-left" vl-tipsid="sle_pxtj_tips" style="width: 180px;" title="sle_pxtj" vl-slemodel=""><option disabled="" style="background-color: blue; color: #fff;" value="" selected="selected">排序条件值含义</option> <option value="1">日期</option> <option value="2">金额</option></select><input type="text" oncopy="return false" onpaste="return false" oncut="return false" style="width: 157px;"></div>
+                            <div id="sle_pxtj_tips" class="tipsmsg"></div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div> <input type="hidden" class="hidmainwidth" value="1000/" oncopy="return false" onpaste="return false" oncut="return false">
+        <div class="foot  text-center"> <button vl-submit="true" id="btnsubmit">确定</button> <button>清空</button> <button>继续下一笔</button> <button type="button" onclick="FormReset()">重置</button>
+                       <button type="button " style="margin-right: 0px; " vl-submit="true" id="btnsubmit" onclick="SubmitForm()"> 提交</button></div>
+    </div><script src="~/Js/Student/GetDefaultValue/common.bank.js"></script>
+              <script src="~/Js/Student/GetDefaultValue/lodash.min.js"></script>
+              <script src="~/Js/Student/GetDefaultValue/common.regex.cz.js"></script>
+              <script src="~/Js/Student/GetDefaultValue/common.regex.js"></script>
+<script src="~/Js/Student/GetDefaultValue/js/common.bank.ed.js"></script>
+<script src="~/Js/Student/GetDefaultValue/js/layer.js"></script>
+<script src="~/Js/Student/GetDefaultValue/js/My97DatePicker/WdatePicker.js"></script>
+<script type="text/javascript">
+        $(function () { $(document).on("click", "#btnsubmit", function () { if (bank.isCheck) { layer.alert('提交成功！'); } else { var str = ""; for (var i = 0; i < bank.errors.length; i++) { str += bank.errors[i].errormsg + "<br/>"; } layer.alert(str); } }); });
+    </script>
+<link href="~/Js/Student/GetDefaultValue/js/common.bank.ed.css" rel="stylesheet" />
+              </form>

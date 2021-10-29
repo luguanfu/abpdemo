@@ -1,0 +1,135 @@
+﻿@{
+    Layout = "~/Views/Shared/_StudentLayout.cshtml";
+}
+
+
+<style type="text/css">
+
+    .wrapper_map {
+        width: 1200px;
+        margin: auto;
+        padding-bottom: 20px;
+        min-height: 808px;
+    }
+
+    .box_div,
+    .select_public,
+    .input_public {
+        width: 275px;
+    }
+
+    .add_btn {
+        border: none;
+        outline: none;
+        cursor: pointer;
+        width: 118px;
+        height: 38px;
+        padding-left: 20px;
+        color: #fff;
+        font-size: 16px;
+        background: url(../img/jia_bg.png) no-repeat 12px center;
+        background-color: #CF9354;
+        border-radius: 4px;
+    }
+
+        .add_btn:hover {
+            background-color: #B27639;
+        }
+
+    .btn-primary.disabled {
+        background-color: #a59b9b !important;
+    }
+</style>
+<!DOCTYPE html>
+<!-------------内容------------->
+<div class="wrapper_map">
+    <!--面包屑开始-->
+    <div class="crumbs_map">
+        你当前所在的位置：
+
+        <span>综合柜员成绩</span>
+    </div>
+    <!--面包屑结束-->
+
+    <div class="wrapper_training">
+
+        <div class="tabs m-t-md">
+
+            <div class="tabs-content">
+                <div id="nlxq" class="tab active">
+                    <!--个人练习-->
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div>
+                                @*<h3 class="m-b-md">考核名称： @ViewData["PracticeName"] </h3>
+                                <span>学员姓名：</span><span style="color:#f0ad4e">@Session["StuName"]</span>&nbsp;&nbsp;<span>账号：</span><span style="color:#f0ad4e">@Session["UserNo"]</span>
+                                <span class="m-l-sm" id="role">
+                                    <span>当前团队名称：</span><span style="color:#f0ad4e">@ViewBag.Groupingname</span>&nbsp;&nbsp;<span>当前团队角色：</span>
+                                    @if (ViewBag.Groupingstate == 1)
+                                    {
+                                        <span style="color:#f0ad4e">小组长</span>
+                                    }
+                                    else
+                                    {
+                                        <span style="color:#f0ad4e">组员</span>
+                                    }
+                                </span>*@
+                                @*<span>总分：</span><span style="color:#f0ad4e" id="ZongF"></span>&nbsp;&nbsp;<span>及格线：</span><span style="color:#f0ad4e" id="JiG"></span>*@
+                                <span>最终得分：</span><span style="color:red" > @ViewData["TotalScore"]</span>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!--切换标签结束-->
+
+        <div class="m-t">
+            <table class="table_public_two" id="tablelist"></table>
+            <!--分页开始-->
+            <div class="con_bottom" id="PaginatorLibrary">
+
+            </div>
+            <!--分页结束	-->
+        </div>
+    </div>
+</div>
+<input type="hidden" value="@ViewData["Timemm"]" id="Timeid" />
+
+<input type="hidden" id="freshflag" value="fresh" />
+
+<!--考核类型（个人/团队）-->
+<input type="hidden" id="PracticeType" />
+<script src="~/Scripts/String/StringFormat.js"></script>
+<script src="~/Js/Student/StuHome/CaseEndView.js"></script>
+<script type="text/javascript">
+    window.onfocus = function () {
+        if ($("freshflag").value == "fresh") { // 表示要刷新 {
+            //window.location.reload();
+            console.log("获得焦点");
+           
+            $("freshflag").value = "";
+        };
+        GetPersonalExercises();
+    };
+    window.onblur = function () {
+        console.log("失去焦点");
+        $("freshflag").value = "fresh";
+    };
+
+    //文档body的高度
+    var bodyHeight = $(document.body).height()
+    //当前窗口可视区域高度
+    var winHeight = $(window).height()
+    if (bodyHeight > winHeight) {
+        $(".footer").removeClass("fid")
+    } else {
+        $(".footer").addClass("fid")
+    }
+
+
+    javascript: window.history.forward(1);
+</script>

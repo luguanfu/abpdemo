@@ -1,0 +1,147 @@
+﻿@{
+    ViewBag.Title = "Form_120103";
+    Layout = "~/Views/Shared/_StutentLayoutIsNull.cshtml";
+}
+
+ 
+<link href="~/CSS/danju/css/menupublic.css" rel="stylesheet" />
+<style type="text/css">
+    .from_map020 {
+        width: 590px;
+        margin: auto;
+        position: relative;
+        background: url(/CSS/danju/img/danjuimg/menu020.jpg) no-repeat top;
+        height: 860px;
+    }
+
+    .site1 {
+        width: 200px;
+        height: 25px;
+        left: 120px;
+        top: 50px;
+    }
+
+
+
+    .site2 {
+        width: 55px;
+        height: 25px;
+        left: 120px;
+        top: 100px;
+    }
+
+
+    .site3 {
+        width: 55px;
+        height: 25px;
+        left: 120px;
+        top: 136px;
+    }
+
+    .site4 {
+        width: 30px;
+        height: 25px;
+        left: 200px;
+        top: 136px;
+    }
+
+    .site5 {
+        width: 30px;
+        height: 25px;
+        left: 252px;
+        top: 136px;
+    }
+
+
+    .site6 {
+        width: 245px;
+        height: 25px;
+        left: 120px;
+        top: 180px;
+    }
+
+
+    .site7 {
+        width: 245px;
+        height: 25px;
+        left: 184px;
+        top: 300px;
+    }
+
+
+    .site8 {
+        width: 245px;
+        height: 25px;
+        left: 245px;
+        top: 660px;
+    }
+
+
+    .site9 {
+        width: 245px;
+        height: 25px;
+        left: 245px;
+        top: 700px;
+    }
+    .site11 {
+        width: 80px;
+        height: 25px;
+        left: 240px;
+        top: 100px;
+    }
+
+    .btn_chongzhi {
+        left: 10%;
+    }
+
+    .btn_tijiao {
+        right: 10%;
+    }
+</style>
+
+<form id="form1" onsubmit="return false" action="##" method="post">
+    <input type="hidden" id="FormType" name="FormType" value="@Request["FormType"]" />
+    <input type="hidden" id="FormId" name="FormId" value="@Request["FormId"]" />
+    <input type="hidden" id="TRId" name="TRId" value="@Request["TotalResultId"]" />
+    <input type="hidden" id="ExamId" name="ExamId" value="@Request["ExamId"]" />
+    <input type="hidden" id="TaskId" name="TaskId" value="@Request["TaskId"]" />
+    <input type="hidden" id="CustomerId" name="CustomerId" value="@Request["CustomerId"]" />
+    <input type="hidden" id="LinkId" name="LinkId" value="@Request["LinkId"]" />
+    <input type="hidden" id="mid" name="mid" value="@Request["mid"]" />
+    <input type="hidden" id="Types" name="Types" value="2" />
+    <!--内容表单区域开始-->
+    <div class="from_map020">
+        <input class="inputall site1 " type="text" name="dy01" id="dy01" value="" />
+        <input class="inputall site2 text_center" maxlength="1" type="text" name="dy02" id="dy02" value="" />
+        <input class="inputall site3 text_center" maxlength="4" type="text" name="dy03" id="dy03" value="" />
+        <input class="inputall site11 text_center" maxlength="2" type="text" name="dy011" id="dy011" value="" />
+        <input class="inputall site4 text_center" maxlength="2" type="text" name="dy04" id="dy04" value="" />
+        <input class="inputall site5 text_center" maxlength="2" type="text" name="dy05" id="dy05" value="" />
+        <input class="inputall site6 " type="text" name="dy06" id="dy06" value="" />
+        <input class="inputall site7 " type="text" name="dy07" id="dy07" value="" />
+        <input class="inputall site8 " type="text" name="dy08" id="dy08" value="" />
+        <input class="inputall site9 " type="text" name="dy09" id="dy09" value="" />
+
+        <button class="btn_chongzhi" type="button" value="重置" onclick="FormReset()">重置</button>
+        <button class="btn_tijiao" type="button" value="提交" onclick="SubmitForm()">提交</button>
+
+        <div style="position:absolute;bottom:60px; left:180px;" id="lianwanghechajieguo" hidden>
+            联网核查结果:
+            <select class="select_public" name="dy010" id="dy010" disabled>
+                <option value="">请选择核查结果</option>
+                <option value="1">00-号码和姓名一致，且存在照片</option>
+                <option value="2">01-号码和姓名一致，但不存在照片</option>
+                <option value="3">02-号码存在，但与姓名不匹配</option>
+                <option value="4">03-号码存在，但照片不一致</option>
+                <option value="5">04-其它错误</option>
+                <option value="6">05-输入的参数错误</option>
+                <option value="7">06-待审核</option>
+            </select>
+        </div>
+
+    </div>
+
+
+
+
+</form>

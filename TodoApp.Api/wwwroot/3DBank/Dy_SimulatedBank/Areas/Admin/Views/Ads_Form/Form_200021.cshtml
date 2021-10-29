@@ -1,0 +1,262 @@
+﻿<!--单位活期销户[申请书打印]-->
+<link href="~/CSS/bootstrap-step.css" rel="stylesheet" />
+<div class="main-container">
+    <div id="step_container" style="margin-bottom: 10px;"></div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label id="lbl_accountName" name="lbl_accountName" for="inputEmail3" class="col-sm-3 control-label">账户名称</label>
+                <div class="col-sm-6">
+                    <input vl-default="" id="txt_accountName" name="txt_accountName" type="text" class="form-control input-sm">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label id="lbl_bankName" name="lbl_bankName" for="inputEmail3" class="col-sm-3 control-label">开户银行名称</label>
+                <div class="col-sm-6">
+                    <input vl-default="" id="txt_bankName" name="txt_bankName" type="text" class="form-control input-sm">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label id="lbl_bankCode" name="lbl_bankCode" for="inputEmail3" class="col-sm-3 control-label">开户银行代码</label>
+                <div class="col-sm-6">
+                    <input vl-default="" id="txt_bankCode" name="txt_bankCode" type="text" class="form-control input-sm">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label id="lbl_account" name="lbl_account" for="inputEmail3" class="col-sm-3 control-label">账号</label>
+                <div class="col-sm-6">
+                    <input vl-default="" id="txt_cancelReason" name="txt_cancelReason" type="text" class="form-control input-sm">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label id="lbl_basic" name="lbl_basic" for="inputEmail3" class="col-sm-3 control-label">账户性质</label>
+                <div class="col-sm-6">
+                    <div class="checkbox">
+                        <label>
+                            <input vl-default="" id="check_basic" name="check_basic" eventId="check_basic" type="checkbox"> 基本
+                        </label>
+                        <label>
+                            <input vl-default="" id="check_specialPurpose" name="check_specialPurpose" eventId="check_specialPurpose"  type="checkbox"> 专用
+                        </label>
+                        <label>
+                            <input vl-default="" id="check_commonly" name="check_commonly" eventId="check_commonly"  type="checkbox"> 一般
+                        </label>
+                        <label>
+                            <input vl-default="" id="check_temporary" name="check_temporary" eventId="check_temporary"  type="checkbox"> 临时
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label id="lbl_openingLicense" name="lbl_openingLicense" for="inputEmail3" class="col-sm-3 control-label">开户许可证核准号</label>
+                <div class="col-sm-6">
+                    <input vl-default="" id="txt_openingLicense" name="txt_openingLicense" type="text" class="form-control input-sm">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label id="lbl_cancelReason" name="lbl_cancelReason" for="inputEmail3" class="col-sm-3 control-label">销户原因</label>
+                <div class="col-sm-6">
+                    <select vl-default="" id="sle_cancelReason" name="sle_cancelReason" class="form-control"></select>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+                <label for="inputEmail3" class="col-sm-4 control-label">未使用空白重要凭证</label>
+                <div class="col-sm-6">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label for="inputEmail3" class="col-sm-3 control-label">起止号码</label>
+                <div class="col-sm-6">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label for="inputEmail3" class="col-sm-3 control-label">份(张)数</label>
+                <div class="col-sm-6">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+                <label for="inputEmail3" class="col-sm-6 control-label">
+                    <input type="text" class="form-control input-sm" id="voucher">
+                </label>
+                <div class="col-sm-6">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label for="inputEmail3" class="col-sm-6 control-label">
+                    <input type="text" class="form-control input-sm" id="number">
+                </label>
+                <div class="col-sm-6">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label for="inputEmail3" class="col-sm-6 control-label">
+                    <input type="text" class="form-control input-sm" id="pageNumber">
+                </label>
+                <div class="col-sm-6">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+                <label for="inputEmail3" class="col-sm-6 control-label">
+                    <input type="text" class="form-control input-sm" id="voucher1">
+                </label>
+                <div class="col-sm-6">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label for="inputEmail3" class="col-sm-6 control-label">
+                    <input type="text" class="form-control input-sm" id="number2">
+                </label>
+                <div class="col-sm-6">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label for="inputEmail3" class="col-sm-6 control-label">
+                    <input type="text" class="form-control input-sm" id="pageNumber3">
+                </label>
+                <div class="col-sm-6">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+                <label for="inputEmail3" class="col-sm-6 control-label">
+                    <input type="text" class="form-control input-sm" id="voucher2">
+                </label>
+                <div class="col-sm-6">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label for="inputEmail3" class="col-sm-6 control-label">
+                    <input type="text" class="form-control input-sm" id="number2">
+                </label>
+                <div class="col-sm-6">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label for="inputEmail3" class="col-sm-6 control-label">
+                    <input type="text" class="form-control input-sm" id="pageNumber2">
+                </label>
+                <div class="col-sm-6">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+                <label for="inputEmail3" class="col-sm-6 control-label">
+                    <input type="text" class="form-control input-sm" id="voucher3">
+                </label>
+                <div class="col-sm-6">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label for="inputEmail3" class="col-sm-6 control-label">
+                    <input type="text" class="form-control input-sm" id="number3">
+                </label>
+                <div class="col-sm-6">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label for="inputEmail3" class="col-sm-6 control-label">
+                    <input type="text" class="form-control input-sm" id="pageNumber3">
+                </label>
+                <div class="col-sm-6">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+                <label for="inputEmail3" class="col-sm-6 control-label">
+                    <input type="text" class="form-control input-sm" id="voucher4">
+                </label>
+                <div class="col-sm-6">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label for="inputEmail3" class="col-sm-6 control-label">
+                    <input type="text" class="form-control input-sm" id="number4">
+                </label>
+                <div class="col-sm-6">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label for="inputEmail3" class="col-sm-6 control-label">
+                    <input type="text" class="form-control input-sm" id="pageNumber4">
+                </label>
+                <div class="col-sm-6">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/Js/bootstrap-step.js"></script>
+<script>
+    setOptions(['cancelReason']);
+    function doSubmit() {
+        goPage("200014", afterGoPage());
+    }
+    $(function () {
+        initData("200022");
+    });
+</script>

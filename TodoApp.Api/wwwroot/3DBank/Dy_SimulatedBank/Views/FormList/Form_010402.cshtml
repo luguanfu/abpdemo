@@ -1,0 +1,276 @@
+﻿@{
+                    ViewBag.Title = "Form_010402";
+                    Layout = "~/Views/Shared/_StutentLayoutIsNull.cshtml";
+                }
+               <form id="form1" onsubmit="return false" action="##" method="post">
+                   <input type="hidden" id="FormType" name="FormType" value="@Request["FormType"]" />
+                   <input type="hidden" id="FormId" name="FormId" value="@Request["FormId"]" />
+                   <input type="hidden" id="TRId" name="TRId" value="@Request["TotalResultId"]" />
+                   <input type="hidden" id="ExamId" name="ExamId" value="@Request["ExamId"]" />
+                   <input type="hidden" id="TaskId" name="TaskId" value="@Request["TaskId"]" />
+                   <input type="hidden" id="CustomerId" name="CustomerId" value="@Request["CustomerId"]" />
+                   <input type="hidden" id="LinkId" name="LinkId" value="@Request["LinkId"]" />
+                   <input type="hidden" id="Types" name="Types" value="2" />
+                <!--内容表单区域开始-->
+            <div class="tables bankmap">
+			<div class="banktop">
+				<span class="toolbar-title-img"> <img src="../busi/img/topleft.png">02412-查询密码维护
+			</span> <span class="toolbar-title-close" style="display: none;"> </span>
+			</div>
+			<div class="con-map2 selected">
+				<table id="qv" class="con-map2-table">
+					<tbody>
+						<tr>
+							<td class="" colspan="1" style="width: 78px;">
+								<label vl-default="" id="label_czlx" vtitle="操s作s类s型" class="form-item text-left" vl-tipsid="label_czlx_tips" title="label_czlx" name="label_czlx">操
+                                <s></s>作
+                                <s></s>类
+                                <s></s>型
+                            </label>
+								<div id="label_czlx_tips" class="tipsmsg"></div>
+							</td>
+							<td class="" rowspan="1" colspan="3">
+								<div class="slectstyle">
+									<select vl-default="2" id="sle_czlx" vtitle="操作类型" class="form-item text-left" vl-tipsid="sle_czlx_tips" vl-regex="['require']" vl-message="['操作类型不能为空！']" style="width: 600px;" title="sle_czlx" vl-slemodel="pwd_ycxmm,pwd_ycxmm,pwd_ycxmm,pwd_ycxmm,pwd_xcxmm" name="sle_czlx">
+										<option disabled="" style="background-color: blue; color: #fff;" value="">操作类型值含义</option>
+										<option sle-require="[{'id':'pwd_ycxmm','regex':['number'],'tips':[''],'disabled':'true','default':''},{'id':'pwd_xcxmm','regex':['require','minlength6','maxlength6','number'],'tips':['新查询密码不能为空！','新查询密码长度为:[6]!','新查询密码长度为:[6]!',''],'disabled':'true*true*true','default':''}]" value="1">1-增加</option>
+										<option sle-require="[{'id':'pwd_ycxmm','regex':['require','maxlength6','minlength6','number'],'tips':['原查询密码不能为空！','原查询密码长度为:[6]!','原查询密码长度为:[6]!','原查询密码输入错误！'],'disabled':'false','default':''},{'id':'pwd_xcxmm','regex':['require','minlength6','maxlength6','number'],'tips':['新查询密码不能为空！','新查询密码长度为:[6]!','新查询密码长度为:[6]!',''],'disabled':'false','default':''}]" value="2">2-修改</option>
+										<option sle-require="[{'id':'pwd_ycxmm','regex':['maxlength6','minlength6','number'],'tips':['原查询密码长度为:[6]!','原查询密码长度为:[6]!','原查询密码输入错误！'],'disabled':'true','default':''},{'id':'pwd_xcxmm','regex':['require','minlength6','maxlength6','number'],'tips':['新查询密码不能为空！','新查询密码长度为:[6]!','新查询密码长度为:[6]!',''],'disabled':'true*true*true','default':''}]" value="3">3-重置</option>
+										<option sle-require="[{'id':'pwd_ycxmm','regex':['maxlength6','minlength6','number'],'tips':['原查询密码长度为:[6]!','原查询密码长度为:[6]!','原查询密码输入错误！'],'disabled':'false','default':''},{'id':'pwd_xcxmm','regex':['minlength6','maxlength6','number'],'tips':['新查询密码长度为:[6]!','新查询密码长度为:[6]!',''],'disabled':'true','default':''}]" value="5">5-删除</option>
+									</select>
+									<input type="text" oncopy="return false" onpaste="return false" oncut="return false" style="width: 577px;" id="mb1_sleinput_CaoZuoLeiXing_2" name="mb1_sleinput_CaoZuoLeiXing_2">
+								</div>
+								<div id="sle_czlx_tips" class="tipsmsg"></div>
+							</td>
+						</tr>
+						<tr>
+							<td rowspan="1" colspan="1" class="" style="width: 64px;">
+								<label vl-default="" id="label_zkh" vtitle="帐s/s卡i号" class="form-item text-left" vl-tipsid="label_zkh_tips" name="label_zkh">帐
+                                <s></s>/
+                                <s></s>卡<i></i>号
+                            </label>
+								<div id="label_zkh_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="3" class="">
+								<input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_zkh" vtitle="账卡号" class="form-item text-left" kuaicha="true" vl-tipsid="txt_zkh_tips" vl-regex="['require', 'maxlength32', 'number']" vl-message="['帐/卡号不能为空！','账/卡号长度超过最大长度:[32]！','账/卡号只能为数字！']" style="width: 600px;" title="txt_zkh" onpaste="return false" name="txt_zkh"><img class="sousuo" src="/Js/Student/GetDefaultValue/img/banksousuo.png" vl-select="txt_hm|1|0,sle_jzzl|1|0,txt_pzhm|1|0" vl-exec="false" vl-message="['账卡号查询未执行！']" title="执行快查！"><span class="text-red redtip">!</span>
+								<div id="txt_zkh_tips" class="tipsmsg"></div>
+							</td>
+						</tr>
+						<tr>
+							<td rowspan="1" colspan="1" class="" style="width: 57px;">
+								<label vl-default="户名" id="label_Name" vtitle="账s户s名s称" class="form-item text-left" vl-tipsid="label_Name_tips" style="width: 60px;" title="label_Name" name="label_Name">账
+                                <s></s>户
+                                <s></s>名
+                                <s></s>称
+                            </label>
+								<div id="label_Name_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="3" class="">
+								<input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_hm" vtitle="卡号" class="form-item text-left on" vl-disabled="true" vl-tipsid="txt_hm_tips" style="width: 600px;" title="txt_hm" onpaste="return false" disabled="disabled" name="txt_hm">
+								<div id="txt_hm_tips" class="tipsmsg"></div>
+							</td>
+						</tr>
+						<tr>
+							<td rowspan="1" colspan="1" class="" style="width: 57px;">
+								<label vl-default="" id="label_jzzl" vtitle="介s质s种s类" class="form-item text-left" vl-tipsid="label_jzzl_tips" title="label_jzzl" name="label_jzzl">介
+                                <s></s>质
+                                <s></s>种
+                                <s></s>类
+                            </label>
+								<div id="label_jzzl_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="">
+								<div class="slectstyle">
+									<select vl-default="" id="sle_jzzl" vtitle="介质种类" class="form-item text-left on" vl-disabled="true" vl-tipsid="sle_jzzl_tips" style="width: 180px;" title="sle_jzzl" vl-slemodel="" disabled="disabled" name="sle_jzzl">
+										<option disabled="" style="background-color: blue; color: #fff;" value="" selected="selected">介质种类值含义</option>
+										<option value="005">005 - 信合借记IC卡</option>
+									</select>
+									<input type="text" oncopy="return false" onpaste="return false" oncut="return false" disabled="disabled" style="width: 157px;" id="mb1_sleinput_JieZhiZhongLei_8" name="mb1_sleinput_JieZhiZhongLei_8">
+								</div>
+								<div id="sle_jzzl_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="" style="width: 78px;">
+								<label vl-default="" id="label_Voucher+number" vtitle="凭s证s号s码" class="form-item text-left" vl-tipsid="label_Voucher+number_tips" style="width: 160px;" title="label_Voucher+number" name="label_Voucher+number">凭
+                                <s></s>证
+                                <s></s>号
+                                <s></s>码
+                            </label>
+								<div id="label_Voucher+number_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="">
+								<input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_pzhm" vtitle="凭证号码" class="form-item text-left on" vl-disabled="true" vl-tipsid="txt_pzhm_tips" style="width: 180px;" title="txt_pzhm" onpaste="return false" disabled="disabled" name="txt_pzhm">
+								<div id="txt_pzhm_tips" class="tipsmsg"></div>
+							</td>
+						</tr>
+						<tr>
+							<td rowspan="1" colspan="1" class="" style="width: 57px;">
+								<label vl-default="" id="label_Document+type" vtitle="证s件s类s型" class="form-item text-left" vl-tipsid="label_Document+type_tips" style="width: 160px;" title="label_Document+type" name="label_Document+type">证
+                                <s></s>件
+                                <s></s>类
+                                <s></s>型
+                            </label>
+								<div id="label_Document+type_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="">
+								<div class="slectstyle">
+									<select vl-default="1" id="sle_zjlx" vtitle="证件类型" class="form-item text-left" vl-tipsid="sle_zjlx_tips" vl-regex="['require']" vl-message="['证件类型输入不正确']" style="width: 180px;" title="sle_zjlx" vl-slemodel="txt_IDnumber,txt_IDnumber,txt_IDnumber,txt_IDnumber,txt_IDnumber,txt_IDnumber,txt_IDnumber,txt_IDnumber,txt_IDnumber,txt_IDnumber,txt_IDnumber,txt_IDnumber,txt_IDnumber,txt_IDnumber,txt_IDnumber,txt_IDnumber,txt_IDnumber,txt_IDnumber,txt_IDnumber,txt_IDnumber,txt_IDnumber,txt_IDnumber" name="sle_zjlx">
+										<option disabled="" style="background-color: blue; color: #fff;" value="">证件类型值含义</option>
+										<option sle-require="[{'id':'txt_IDnumber','regex':['require','maxlength20','idcard'],'tips':['证件号码身份证位数不正确（应为15位或18位）！','证件号码长度大于最大长度:[20]！','证件号码身份证位数不正确(应为15位或者18位)！'],'disabled':'false*false*false','default':''}]" value="1">1 - 居民身份证</option>
+										<option sle-require="[{'id':'txt_IDnumber','regex':['require','maxlength20','idcard'],'tips':['证件号码身份证位数不正确（应为15位或18位）！','证件号码长度大于最大长度:[20]！','证件号码身份证位数不正确(应为15位或者18位)！'],'disabled':'false*false*false','default':''}]" value="2">2 - 临时居民身份证</option>
+										<option sle-require="[{'id':'txt_IDnumber','regex':['require','maxlength20','idcard'],'tips':['证件号码身份证位数不正确（应为15位或18位）！','证件号码长度大于最大长度:[20]！','证件号码身份证位数不正确(应为15位或者18位)！'],'disabled':'false*false*false','default':''}]" value="3">3 - 居民户口簿（16周岁以下）</option>
+										<option sle-require="[{'id':'txt_IDnumber','regex':['require','maxlength40'],'tips':['证件号码不能为空！','证件号码长度大于最大长度:[40]！'],'disabled':'false*false','default':''}]" value="4">4 - 军官证</option>
+										<option sle-require="[{'id':'txt_IDnumber','regex':['require','maxlength40'],'tips':['证件号码不能为空！','证件号码长度大于最大长度:[40]！'],'disabled':'false*false','default':''}]" value="5">5 - 警官证</option>
+										<option sle-require="[{'id':'txt_IDnumber','regex':['require','maxlength40'],'tips':['证件号码不能为空！','证件号码长度大于最大长度:[40]！'],'disabled':'false*false','default':''}]" value="6">6 - 士兵证</option>
+										<option sle-require="[{'id':'txt_IDnumber','regex':['require','maxlength40'],'tips':['证件号码不能为空！','证件号码长度大于最大长度:[40]！'],'disabled':'false*false','default':''}]" value="7">7 - 军队学员证</option>
+										<option sle-require="[{'id':'txt_IDnumber','regex':['require','maxlength40'],'tips':['证件号码不能为空！','证件号码长度大于最大长度:[40]！'],'disabled':'false*false','default':''}]" value="8">8 - 军队文职干部证</option>
+										<option sle-require="[{'id':'txt_IDnumber','regex':['require','maxlength40'],'tips':['证件号码不能为空！','证件号码长度大于最大长度:[40]！'],'disabled':'false*false','default':''}]" value="9">9 - 军队离退休干部证和军队职员证</option>
+										<option sle-require="[{'id':'txt_IDnumber','regex':['require','maxlength40'],'tips':['证件号码不能为空！','证件号码长度大于最大长度:[40]！'],'disabled':'false*false','default':''}]" value="10">10 - 中国护照</option>
+										<option sle-require="[{'id':'txt_IDnumber','regex':['require','maxlength40'],'tips':['证件号码不能为空！','证件号码长度大于最大长度:[40]！'],'disabled':'false*false','default':''}]" value="11">11 - 护照（外国公民）</option>
+										<option sle-require="[{'id':'txt_IDnumber','regex':['require','maxlength40'],'tips':['证件号码不能为空！','证件号码长度大于最大长度:[40]！'],'disabled':'false*false','default':''}]" value="12">12 - 海员证</option>
+										<option sle-require="[{'id':'txt_IDnumber','regex':['require','maxlength40'],'tips':['证件号码不能为空！','证件号码长度大于最大长度:[40]！'],'disabled':'false*false','default':''}]" value="13">13 - 港澳同胞回乡证</option>
+										<option sle-require="[{'id':'txt_IDnumber','regex':['require','maxlength40'],'tips':['证件号码不能为空！','证件号码长度大于最大长度:[40]！'],'disabled':'false*false','default':''}]" value="14">14 - 港澳居民来往大陆通行证</option>
+										<option sle-require="[{'id':'txt_IDnumber','regex':['require','maxlength40'],'tips':['证件号码不能为空！','证件号码长度大于最大长度:[40]！'],'disabled':'false*false','default':''}]" value="15">15 - 中华人民共和国网络港澳通行证</option>
+										<option sle-require="[{'id':'txt_IDnumber','regex':['require','maxlength40'],'tips':['证件号码不能为空！','证件号码长度大于最大长度:[40]！'],'disabled':'false*false','default':''}]" value="16">16 - 台湾居民来往大陆通行证</option>
+										<option sle-require="[{'id':'txt_IDnumber','regex':['require','maxlength40'],'tips':['证件号码不能为空！','证件号码长度大于最大长度:[40]！'],'disabled':'false*false','default':''}]" value="17">17 - 大陆居民往来台湾通行证</option>
+										<option sle-require="[{'id':'txt_IDnumber','regex':['require','maxlength40'],'tips':['证件号码不能为空！','证件号码长度大于最大长度:[40]！'],'disabled':'false*false','default':''}]" value="18">18 - 外国人居留证</option>
+										<option sle-require="[{'id':'txt_IDnumber','regex':['require','maxlength40'],'tips':['证件号码不能为空！','证件号码长度大于最大长度:[40]！'],'disabled':'false*false','default':''}]" value="19">19 - 外国人出入境证</option>
+										<option sle-require="[{'id':'txt_IDnumber','regex':['require','maxlength40'],'tips':['证件号码不能为空！','证件号码长度大于最大长度:[40]！'],'disabled':'false*false','default':''}]" value="20">20 - 外交官证</option>
+										<option sle-require="[{'id':'txt_IDnumber','regex':['require','maxlength40'],'tips':['证件号码不能为空！','证件号码长度大于最大长度:[40]！'],'disabled':'false*false','default':''}]" value="21">21 - 领事馆证</option>
+										<option sle-require="[{'id':'txt_IDnumber','regex':['require','maxlength40'],'tips':['证件号码不能为空！','证件号码长度大于最大长度:[40]！'],'disabled':'false*false','default':''}]" value="22">22 - 其他</option>
+									</select>
+									<input type="text" oncopy="return false" onpaste="return false" oncut="return false" style="width: 157px;" id="mb1_sleinput_ZhengJianLeiXing_12" name="mb1_sleinput_ZhengJianLeiXing_12">
+								</div>
+								<div id="sle_zjlx_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="" style="width: 57px;">
+								<label vl-default="" id="label_IDnumber" vtitle="证s件s号s码" class="form-item text-left" vl-tipsid="label_IDnumber_tips" style="width: 160px;" title="label_IDnumber" name="label_IDnumber">证
+                                <s></s>件
+                                <s></s>号
+                                <s></s>码
+                            </label>
+								<div id="label_IDnumber_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="">
+								<input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_IDnumber" vtitle="证件号码" class="form-item text-left" kuaicha="true" vl-tipsid="txt_IDnumber_tips" vl-regex="['require', 'maxlength20', 'idcard']" vl-message="['证件号码身份证位数不正确（应为15位或18位）！','证件号码长度大于最大长度:[20]！','证件号码身份证位数不正确（应为15位或18位）！']" style="width: 180px;" title="txt_IDnumber" onpaste="return false" name="txt_IDnumber"><img class="sousuo" src="/Js/Student/GetDefaultValue/img/banksousuo.png" vl-exec="false" vl-message="['证件号码查询未执行！']" title="执行快查！"><span class="text-red redtip">!</span>
+								<div id="txt_IDnumber_tips" class="tipsmsg"></div>
+							</td>
+						</tr>
+						<tr>
+							<td rowspan="1" colspan="1" class="" style="width: 69px;">
+								<label vl-default="" id="label_Original+query+password" vtitle="原s查询密码" class="form-item text-left" vl-tipsid="label_Original+query+password_tips" style="width: 160px;" title="label_Original+query+password" name="label_Original+query+password">原
+                                <s></s>查询密码
+                            </label>
+								<div id="label_Original+query+password_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="">
+								<input type="password" oncopy="return false" onpaste="return false" oncut="return false" vl-default="" id="pwd_ycxmm" vtitle="原查询密码" vl-regex="['require', 'minlength6', 'maxlength6', 'number']" vl-message="['原查询密码不能为空！','原查询密码长度为:[6]！','原查询密码长度为:[6]！','']" class="form-item text-left" vl-tipsid="pwd_ycxmm_tips" style="width: 180px;" title="pwd_ycxmm" name="pwd_ycxmm"><img class="sousuo" src="/Js/Student/GetDefaultValue/img/banksousuo.png" vl-message="['原查询密码查询未执行！']" title="执行快查！"><span class="text-red redtip">!</span>
+								<div id="pwd_ycxmm_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="" style="width: 69px;">
+								<label vl-default="" id="label_new+pwd" vtitle="新s查询密码" class="form-item text-left" vl-tipsid="label_new+pwd_tips" style="width: 160px;" title="label_new+pwd" name="label_new+pwd">新
+                                <s></s>查询密码
+                            </label>
+								<div id="label_new+pwd_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="">
+								<input type="password" oncopy="return false" onpaste="return false" oncut="return false" vl-default="" id="pwd_xcxmm" vtitle="新查询密码" class="form-item text-left" vl-tipsid="pwd_xcxmm_tips" vl-regex="['require', 'minlength6', 'maxlength6', 'number']" vl-message="['新查询密码不能为空！','新查询密码长度为:[6]！','新查询密码长度为:[6]！','']" style="width: 180px;" title="pwd_xcxmm" name="pwd_xcxmm"><span class="text-red redtip">!</span>
+								<div id="pwd_xcxmm_tips" class="tipsmsg"></div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="con-map2">
+				<table id="qv" class="con-map2-table">
+					<tbody>
+						<tr>
+							<td class="" style="width: 112px;">
+								<label vl-default="" id="label_Card+number" vtitle="代理人证件类型" class="form-item text-left on" vl-tipsid="label_Card+number_tips" style="width: 160px;" title="label_Card+number" name="label_Card+number">代理人证件类型</label>
+								<div id="label_Card+number_tips" class="tipsmsg" style="width: 160px;"></div>
+							</td>
+							<td class="">
+								<div class="slectstyle">
+									<select vl-default="" id="sle_dlrzjlx" vtitle="代理人证件类型" class="form-item text-left" vl-tipsid="sle_dlrzjlx_tips" style="width: 180px;" title="sle_dlrzjlx" vl-slemodel="txt_dlrzjhm,txt_dlrxm,txt_telephone,txt_dlrzjhm,txt_dlrxm,txt_telephone,txt_dlrzjhm,txt_dlrxm,txt_telephone,txt_dlrzjhm,txt_dlrxm,txt_telephone,txt_dlrzjhm,txt_dlrxm,txt_telephone,txt_dlrzjhm,txt_dlrxm,txt_telephone,txt_dlrzjhm,txt_dlrxm,txt_telephone,txt_dlrzjhm,txt_dlrxm,txt_telephone,txt_dlrzjhm,txt_dlrxm,txt_telephone,txt_dlrzjhm,txt_dlrxm,txt_telephone,txt_dlrzjhm,txt_dlrxm,txt_telephone,txt_dlrzjhm,txt_dlrxm,txt_telephone,txt_dlrzjhm,txt_dlrxm,txt_telephone,txt_dlrzjhm,txt_dlrxm,txt_telephone,txt_dlrzjhm,txt_dlrxm,txt_telephone,txt_dlrzjhm,txt_dlrxm,txt_telephone,txt_dlrzjhm,txt_dlrxm,txt_telephone,txt_dlrzjhm,txt_dlrxm,txt_telephone,txt_dlrzjhm,txt_dlrxm,txt_telephone,txt_dlrzjhm,txt_dlrxm,txt_telephone,txt_dlrzjhm,txt_dlrxm,txt_telephone,txt_dlrzjhm,txt_dlrxm,txt_telephone" name="sle_dlrzjlx">
+										<option disabled="" style="background-color: blue; color: #fff;" value="" selected="selected">代理人证件类型值含义</option>
+										<option sle-require="[{'id':'txt_dlrzjhm','regex':['require','maxlength20','idcard'],'tips':['代理人证件号码不能为空！','代理人证件号码长度大于最大长度:[20]！','代理人证件号码身份证位数不正确(应为15位或者18位)！'],'disabled':'false*false*false','default':''},{'id':'txt_dlrxm','regex':['require','maxlength20','hascode'],'tips':['代理人姓名不能为空！','代理人姓名长度大于最大长度:[20]！','代理人姓名不能全为数字！'],'disabled':'false*false*false','default':''},{'id':'txt_telephone','regex':['maxlength15','connect'],'tips':['代理人联系方式长度大于最大长度:[15]！'],'disabled':'false*false','default':''}]" value="1">1 - 居民身份证</option>
+										<option sle-require="[{'id':'txt_dlrzjhm','regex':['require','maxlength20','idcard'],'tips':['代理人证件号码不能为空！','代理人证件号码长度大于最大长度:[20]！','代理人证件号码身份证位数不正确(应为15位或者18位)！'],'disabled':'false*false*false','default':''},{'id':'txt_dlrxm','regex':['require','maxlength20','hascode'],'tips':['代理人姓名不能为空！','代理人姓名长度大于最大长度:[20]！','代理人姓名不能全为数字！'],'disabled':'false*false*false','default':''},{'id':'txt_telephone','regex':['maxlength15','connect'],'tips':['代理人联系方式长度大于最大长度:[15]！'],'disabled':'false*false','default':''}]" value="2">2 - 临时居民身份证</option>
+										<option sle-require="[{'id':'txt_dlrzjhm','regex':['require','maxlength20','idcard'],'tips':['代理人证件号码不能为空！','代理人证件号码长度大于最大长度:[20]！','代理人证件号码身份证位数不正确(应为15位或者18位)！'],'disabled':'false*false*false','default':''},{'id':'txt_dlrxm','regex':['require','maxlength20','hascode'],'tips':['代理人姓名不能为空！','代理人姓名长度大于最大长度:[20]！','代理人姓名不能全为数字！'],'disabled':'false*false*false','default':''},{'id':'txt_telephone','regex':['maxlength15','connect'],'tips':['代理人联系方式长度大于最大长度:[15]！'],'disabled':'false*false','default':''}]" value="3">3 - 居民户口簿（16周岁以下）</option>
+										<option sle-require="[{'id':'txt_dlrzjhm','regex':['require','maxlength40'],'tips':['代理人证件号码不能为空！','代理人证件号码长度大于最大长度:[40]！'],'disabled':'false*false','default':''},{'id':'txt_dlrxm','regex':['require','maxlength20','hascode'],'tips':['代理人姓名不能为空！','代理人姓名长度大于最大长度:[20]！','代理人姓名不能全为数字！'],'disabled':'false*false*false','default':''},{'id':'txt_telephone','regex':['maxlength15','connect'],'tips':['代理人联系方式长度大于最大长度:[15]！'],'disabled':'false*false','default':''}]" value="4">4 - 军官证</option>
+										<option sle-require="[{'id':'txt_dlrzjhm','regex':['require','maxlength40'],'tips':['代理人证件号码不能为空！','代理人证件号码长度大于最大长度:[40]！'],'disabled':'false*false','default':''},{'id':'txt_dlrxm','regex':['require','maxlength20','hascode'],'tips':['代理人姓名不能为空！','代理人姓名长度大于最大长度:[20]！','代理人姓名不能全为数字！'],'disabled':'false*false*false','default':''},{'id':'txt_telephone','regex':['maxlength15','connect'],'tips':['代理人联系方式长度大于最大长度:[15]！'],'disabled':'false*false','default':''}]" value="5">5 - 警官证</option>
+										<option sle-require="[{'id':'txt_dlrzjhm','regex':['require','maxlength40'],'tips':['代理人证件号码不能为空！','代理人证件号码长度大于最大长度:[40]！'],'disabled':'false*false','default':''},{'id':'txt_dlrxm','regex':['require','maxlength20','hascode'],'tips':['代理人姓名不能为空！','代理人姓名长度大于最大长度:[20]！','代理人姓名不能全为数字！'],'disabled':'false*false*false','default':''},{'id':'txt_telephone','regex':['maxlength15','connect'],'tips':['代理人联系方式长度大于最大长度:[15]！'],'disabled':'false*false','default':''}]" value="6">6 - 士兵证</option>
+										<option sle-require="[{'id':'txt_dlrzjhm','regex':['require','maxlength40'],'tips':['代理人证件号码不能为空！','代理人证件号码长度大于最大长度:[40]！'],'disabled':'false*false','default':''},{'id':'txt_dlrxm','regex':['require','maxlength20','hascode'],'tips':['代理人姓名不能为空！','代理人姓名长度大于最大长度:[20]！','代理人姓名不能全为数字！'],'disabled':'false*false*false','default':''},{'id':'txt_telephone','regex':['maxlength15','connect'],'tips':['代理人联系方式长度大于最大长度:[15]！'],'disabled':'false*false','default':''}]" value="7">7 - 军队学员证</option>
+										<option sle-require="[{'id':'txt_dlrzjhm','regex':['require','maxlength40'],'tips':['代理人证件号码不能为空！','代理人证件号码长度大于最大长度:[40]！'],'disabled':'false*false','default':''},{'id':'txt_dlrxm','regex':['require','maxlength20','hascode'],'tips':['代理人姓名不能为空！','代理人姓名长度大于最大长度:[20]！','代理人姓名不能全为数字！'],'disabled':'false*false*false','default':''},{'id':'txt_telephone','regex':['maxlength15','connect'],'tips':['代理人联系方式长度大于最大长度:[15]！'],'disabled':'false*false','default':''}]" value="8">8 - 军队文职干部证</option>
+										<option sle-require="[{'id':'txt_dlrzjhm','regex':['require','maxlength40'],'tips':['代理人证件号码不能为空！','代理人证件号码长度大于最大长度:[40]！'],'disabled':'false*false','default':''},{'id':'txt_dlrxm','regex':['require','maxlength20','hascode'],'tips':['代理人姓名不能为空！','代理人姓名长度大于最大长度:[20]！','代理人姓名不能全为数字！'],'disabled':'false*false*false','default':''},{'id':'txt_telephone','regex':['maxlength15','connect'],'tips':['代理人联系方式长度大于最大长度:[15]！'],'disabled':'false*false','default':''}]" value="9">9 - 军队离退休干部证和军队职员证</option>
+										<option sle-require="[{'id':'txt_dlrzjhm','regex':['require','maxlength40'],'tips':['代理人证件号码不能为空！','代理人证件号码长度大于最大长度:[40]！'],'disabled':'false*false','default':''},{'id':'txt_dlrxm','regex':['require','maxlength20','hascode'],'tips':['代理人姓名不能为空！','代理人姓名长度大于最大长度:[20]！','代理人姓名不能全为数字！'],'disabled':'false*false*false','default':''},{'id':'txt_telephone','regex':['maxlength15','connect'],'tips':['代理人联系方式长度大于最大长度:[15]！'],'disabled':'false*false','default':''}]" value="10">10 - 中国护照</option>
+										<option sle-require="[{'id':'txt_dlrzjhm','regex':['require','maxlength40'],'tips':['代理人证件号码不能为空！','代理人证件号码长度大于最大长度:[40]！'],'disabled':'false*false','default':''},{'id':'txt_dlrxm','regex':['require','maxlength20','hascode'],'tips':['代理人姓名不能为空！','代理人姓名长度大于最大长度:[20]！','代理人姓名不能全为数字！'],'disabled':'false*false*false','default':''},{'id':'txt_telephone','regex':['maxlength15','connect'],'tips':['代理人联系方式长度大于最大长度:[15]！'],'disabled':'false*false','default':''}]" value="11">11 - 护照（外国公民）</option>
+										<option sle-require="[{'id':'txt_dlrzjhm','regex':['require','maxlength40'],'tips':['代理人证件号码不能为空！','代理人证件号码长度大于最大长度:[40]！'],'disabled':'false*false','default':''},{'id':'txt_dlrxm','regex':['require','maxlength20','hascode'],'tips':['代理人姓名不能为空！','代理人姓名长度大于最大长度:[20]！','代理人姓名不能全为数字！'],'disabled':'false*false*false','default':''},{'id':'txt_telephone','regex':['maxlength15','connect'],'tips':['代理人联系方式长度大于最大长度:[15]！'],'disabled':'false*false','default':''}]" value="12">12 - 海员证</option>
+										<option sle-require="[{'id':'txt_dlrzjhm','regex':['require','maxlength40'],'tips':['代理人证件号码不能为空！','代理人证件号码长度大于最大长度:[40]！'],'disabled':'false*false','default':''},{'id':'txt_dlrxm','regex':['require','maxlength20','hascode'],'tips':['代理人姓名不能为空！','代理人姓名长度大于最大长度:[20]！','代理人姓名不能全为数字！'],'disabled':'false*false*false','default':''},{'id':'txt_telephone','regex':['maxlength15','connect'],'tips':['代理人联系方式长度大于最大长度:[15]！'],'disabled':'false*false','default':''}]" value="13">13 - 港澳同胞回乡证</option>
+										<option sle-require="[{'id':'txt_dlrzjhm','regex':['require','maxlength40'],'tips':['代理人证件号码不能为空！','代理人证件号码长度大于最大长度:[40]！'],'disabled':'false*false','default':''},{'id':'txt_dlrxm','regex':['require','maxlength20','hascode'],'tips':['代理人姓名不能为空！','代理人姓名长度大于最大长度:[20]！','代理人姓名不能全为数字！'],'disabled':'false*false*false','default':''},{'id':'txt_telephone','regex':['maxlength15','connect'],'tips':['代理人联系方式长度大于最大长度:[15]！'],'disabled':'false*false','default':''}]" value="14">14 - 港澳居民来往大陆通行证</option>
+										<option sle-require="[{'id':'txt_dlrzjhm','regex':['require','maxlength40'],'tips':['代理人证件号码不能为空！','代理人证件号码长度大于最大长度:[40]！'],'disabled':'false*false','default':''},{'id':'txt_dlrxm','regex':['require','maxlength20','hascode'],'tips':['代理人姓名不能为空！','代理人姓名长度大于最大长度:[20]！','代理人姓名不能全为数字！'],'disabled':'false*false*false','default':''},{'id':'txt_telephone','regex':['maxlength15','connect'],'tips':['代理人联系方式长度大于最大长度:[15]！'],'disabled':'false*false','default':''}]" value="15">15 - 中华人民共和国网络港澳通行证</option>
+										<option sle-require="[{'id':'txt_dlrzjhm','regex':['require','maxlength40'],'tips':['代理人证件号码不能为空！','代理人证件号码长度大于最大长度:[40]！'],'disabled':'false*false','default':''},{'id':'txt_dlrxm','regex':['require','maxlength20','hascode'],'tips':['代理人姓名不能为空！','代理人姓名长度大于最大长度:[20]！','代理人姓名不能全为数字！'],'disabled':'false*false*false','default':''},{'id':'txt_telephone','regex':['maxlength15','connect'],'tips':['代理人联系方式长度大于最大长度:[15]！'],'disabled':'false*false','default':''}]" value="16">16 - 台湾居民来往大陆通行证</option>
+										<option sle-require="[{'id':'txt_dlrzjhm','regex':['require','maxlength40'],'tips':['代理人证件号码不能为空！','代理人证件号码长度大于最大长度:[40]！'],'disabled':'false*false','default':''},{'id':'txt_dlrxm','regex':['require','maxlength20','hascode'],'tips':['代理人姓名不能为空！','代理人姓名长度大于最大长度:[20]！','代理人姓名不能全为数字！'],'disabled':'false*false*false','default':''},{'id':'txt_telephone','regex':['maxlength15','connect'],'tips':['代理人联系方式长度大于最大长度:[15]！'],'disabled':'false*false','default':''}]" value="17">17 - 大陆居民往来台湾通行证</option>
+										<option sle-require="[{'id':'txt_dlrzjhm','regex':['require','maxlength40'],'tips':['代理人证件号码不能为空！','代理人证件号码长度大于最大长度:[40]！'],'disabled':'false*false','default':''},{'id':'txt_dlrxm','regex':['require','maxlength20','hascode'],'tips':['代理人姓名不能为空！','代理人姓名长度大于最大长度:[20]！','代理人姓名不能全为数字！'],'disabled':'false*false*false','default':''},{'id':'txt_telephone','regex':['maxlength15','connect'],'tips':['代理人联系方式长度大于最大长度:[15]！'],'disabled':'false*false','default':''}]" value="18">18 - 外国人居留证</option>
+										<option sle-require="[{'id':'txt_dlrzjhm','regex':['require','maxlength40'],'tips':['代理人证件号码不能为空！','代理人证件号码长度大于最大长度:[40]！'],'disabled':'false*false','default':''},{'id':'txt_dlrxm','regex':['require','maxlength20','hascode'],'tips':['代理人姓名不能为空！','代理人姓名长度大于最大长度:[20]！','代理人姓名不能全为数字！'],'disabled':'false*false*false','default':''},{'id':'txt_telephone','regex':['maxlength15','connect'],'tips':['代理人联系方式长度大于最大长度:[15]！'],'disabled':'false*false','default':''}]" value="19">19 - 外国人出入境证</option>
+										<option sle-require="[{'id':'txt_dlrzjhm','regex':['require','maxlength40'],'tips':['代理人证件号码不能为空！','代理人证件号码长度大于最大长度:[40]！'],'disabled':'false*false','default':''},{'id':'txt_dlrxm','regex':['require','maxlength20','hascode'],'tips':['代理人姓名不能为空！','代理人姓名长度大于最大长度:[20]！','代理人姓名不能全为数字！'],'disabled':'false*false*false','default':''},{'id':'txt_telephone','regex':['maxlength15','connect'],'tips':['代理人联系方式长度大于最大长度:[15]！'],'disabled':'false*false','default':''}]" value="20">20 - 外交官证</option>
+										<option sle-require="[{'id':'txt_dlrzjhm','regex':['require','maxlength40'],'tips':['代理人证件号码不能为空！','代理人证件号码长度大于最大长度:[40]！'],'disabled':'false*false','default':''},{'id':'txt_dlrxm','regex':['require','maxlength20','hascode'],'tips':['代理人姓名不能为空！','代理人姓名长度大于最大长度:[20]！','代理人姓名不能全为数字！'],'disabled':'false*false*false','default':''},{'id':'txt_telephone','regex':['maxlength15','connect'],'tips':['代理人联系方式长度大于最大长度:[15]！'],'disabled':'false*false','default':''}]" value="21">21 - 领事馆证</option>
+										<option sle-require="[{'id':'txt_dlrzjhm','regex':['require','maxlength40'],'tips':['代理人证件号码不能为空！','代理人证件号码长度大于最大长度:[40]！'],'disabled':'false*false','default':''},{'id':'txt_dlrxm','regex':['require','maxlength20','hascode'],'tips':['代理人姓名不能为空！','代理人姓名长度大于最大长度:[20]！','代理人姓名不能全为数字！'],'disabled':'false*false*false','default':''},{'id':'txt_telephone','regex':['maxlength15','connect'],'tips':['代理人联系方式长度大于最大长度:[15]！'],'disabled':'false*false','default':''}]" value="22">22 - 其他</option>
+									</select>
+									<input type="text" oncopy="return false" onpaste="return false" oncut="return false" style="width: 157px;" id="mb2_sleinput_DaiLiRenZhengJianLeiXing_2" name="mb2_sleinput_DaiLiRenZhengJianLeiXing_2">
+								</div>
+								<div id="sle_dlrzjlx_tips" class="tipsmsg"></div>
+							</td>
+							<td class="" style="width: 112px;">
+								<label vl-default="" id="label_dlrzjhm" vtitle="代理人证件号码" class="form-item text-left" vl-tipsid="label_dlrzjhm_tips" style="width: 160px;" title="label_dlrzjhm" name="label_dlrzjhm">代理人证件号码</label>
+								<div id="label_dlrzjhm_tips" class="tipsmsg"></div>
+							</td>
+							<td class="">
+								<input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_dlrzjhm" vtitle="证件号码" class="form-item text-left" vl-disabled="true" vl-tipsid="txt_dlrzjhm_tips" vl-regex="['maxlength40']" vl-message="['代理人证件号码长度大于最大长度:[40]!']" style="width: 180px;" title="txt_dlrzjhm" onpaste="return false" name="txt_dlrzjhm">
+								<div id="txt_dlrzjhm_tips" class="tipsmsg"></div>
+							</td>
+						</tr>
+						<tr>
+							<td rowspan="1" colspan="1" class="" style="width: 99px;">
+								<label vl-default="" id="label_Name+of+agent" vtitle="代s理s人s姓s名" class="form-item text-left" vl-tipsid="label_Name+of+agent_tips" style="width: 160px;" title="label_Name+of+agent" name="label_Name+of+agent">代
+                                <s></s>理
+                                <s></s>人
+                                <s></s>姓
+                                <s></s>名
+                            </label>
+								<div id="label_Name+of+agent_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="">
+								<input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_dlrxm" vtitle="代理人姓名" class="form-item text-left" vl-disabled="true" vl-tipsid="txt_dlrxm_tips" style="width: 180px;" title="txt_dlrxm" onpaste="return false"  name="txt_dlrxm">
+								<div id="txt_dlrxm_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="" style="width: 112px;">
+								<label vl-default="" id="label_telephone" vtitle="代理人联系方式" class="form-item text-left" vl-tipsid="label_telephone_tips" style="width: 160px;" title="label_telephone" name="label_telephone">代理人联系方式</label>
+								<div id="label_telephone_tips" class="tipsmsg" style="width: 160px;"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="">
+								<input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_telephone" vtitle="代理人联系方式" class="form-item text-left" vl-disabled="true" vl-tipsid="txt_telephone_tips" style="width: 180px;" title="txt_telephone" onpaste="return false"  name="txt_telephone">
+								<div id="txt_telephone_tips" class="tipsmsg"></div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="foot ">
+				<span>
+				<button>退出（F3）</button>
+				<button>帮助（F1）</button>
+				<button>辅助（F4）</button>
+				<button type="button" onclick="FormReset()">重置（F5）</button>
+			</span> <span style="float: right;">
+				<button type="button" style="margin-right: 0px;" vl-submit="true" id="btnsubmit" onclick="SubmitForm()">提交</button>
+			</span>
+			</div>
+			<input type="hidden" class="hidmainwidth" value="1000" oncopy="return false" onpaste="return false" oncut="return false">
+		</div><script src="~/Js/Student/GetDefaultValue/common.bank.js"></script>
+              <script src="~/Js/Student/GetDefaultValue/lodash.min.js"></script>
+              <script src="~/Js/Student/GetDefaultValue/common.regex.cz.js"></script>
+              <script src="~/Js/Student/GetDefaultValue/common.regex.js"></script>
+<script src="~/Js/Student/GetDefaultValue/js/cxmmwh.js"></script>
+<script src="~/Js/Student/GetDefaultValue/js/layer.js"></script>
+<script src="~/Js/Student/GetDefaultValue/js/My97DatePicker/WdatePicker.js"></script>
+<link href="~/Js/Student/GetDefaultValue/js/common.bank.css" rel="stylesheet" />
+              </form>

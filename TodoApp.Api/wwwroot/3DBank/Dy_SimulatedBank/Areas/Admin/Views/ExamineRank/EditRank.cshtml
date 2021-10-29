@@ -1,0 +1,234 @@
+﻿@{
+    ViewBag.Title = "跨境电商综合实训平台";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewData["nvc"] = "排名管理";
+}
+<link href="~/CSS/Public_img.css" rel="stylesheet" />
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-sm-12">
+        <ol class="breadcrumb">
+            <li>
+                <h2>考试管理</h2>
+            </li>
+            <li>
+                <a href="/Admin/ExamineRank">排名管理</a>
+            </li>
+            <li>
+                <strong>统计范围</strong>
+            </li>
+        </ol>
+
+    </div>
+</div>
+<div class="ibox-content">
+
+
+    <div class="row">
+        <input hidden="hidden" id="Schoolid" name="Schoolid" value="@ViewData["Schoolid"]" />
+        <div class="pull-right">
+            <button onclick="AddInfo()" class="btn btn-primary btn-sm" type="button"><i class="fa fa-plus  m-r-xs"></i><span class="bold">添加考核</span></button>
+            <button onclick="del_all()" type="button" class="btn btn-warning btn-sm"><i class="fa fa-trash  m-r-xs"></i><span class="bold">删除所选</span></button>
+
+        </div>
+    </div>
+    <div class="row  m-t-sm ">
+        <input type="text" hidden="hidden" id="ModeId" name="ModeId" value="@Request["ModeId"]" />
+        <input type="text" hidden="hidden" id="id" name="id" value="@Request["id"]" />
+        <div class="col-sm-12">
+            <table class="table text-center table-bordered ">
+                <thead>
+                    <tr>
+                        <th class="text-center">
+                            <input type="Checkbox" id="select_all" name="select_all" class="i-checks checkbox-all">
+                        </th>
+                        <th class="text-center">考核名称</th>
+                        <th class="text-center">开始时间</th>
+                        <th class="text-center">结束时间</th>
+                        <th class="text-center">考试类型</th>
+                        @*<th class="text-center">对应能力</th>*@
+                        <th class="text-center">及格人数</th>
+                        <th class="text-center">及格率</th>
+                        <th class="text-center">最高分</th>
+                        <th class="text-center">操作</th>
+                    </tr>
+                </thead>
+                <tbody class="new_table text-center" id="tablelist"></tbody>
+            </table>
+        </div>
+    </div>
+
+    <!--分页开始-->
+    <div class="row text-center m-t-md" id="PaginatorLibrary">
+    </div>
+    <!--分页结束-->
+    <div class="text-center m-t-md">
+
+        @*<div class="form-group">
+                <a href="/Admin/ExamineRank/Index" class="btn btn-w-m btn-primary m-r-lg">完成</a>
+            </div>*@
+    </div>
+</div>
+
+
+
+
+<div id="Choiceid1" class="ibox-content" style="display: none;padding:5px 30px;">
+    <div class="panel blank-panel">
+        <div class="panel-heading">
+            <div class="panel-options">
+                <ul class="nav nav-tabs">
+                    <li class="active">
+                        <a data-toggle="tab" href="tabs_panels.html#tab-1">个人实训考核</a>
+                    </li>
+                    <li class="">
+                        <a data-toggle="tab" href="tabs_panels.html#tab-2">团队实训考核</a>
+                    </li>
+                    <li class="">
+                        <a data-toggle="tab" href="tabs_panels.html#tab-3">知识考核</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="tab-content">
+                <div id="tab-1" class="tab-pane active">
+
+                    <div class="row m-t-sm">
+                        <div class="col-sm-3">
+                            <div class="input-group">
+                                <input type="text" placeholder="输入考核名称" id="P_Name" class="form-control" name="P_Name">
+                                <span class="input-group-btn">
+                                    <button type="button" onclick="loadExam1()" class="btn btn-primary"><i class="fa fa-search "></i></button>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="pull-right">
+                            <button onclick="updateClass1()" class="btn btn-primary btn-sm" type="button"><i class="fa fa-plus  m-r-xs"></i><span class="bold">添加所选</span></button>
+
+                        </div>
+
+                    </div>
+                    <div class=" m-t-sm ">
+                        <table class="col-sm-12 table text-center table-bordered ">
+                            <thead>
+                                <tr>
+                                    <th class="text-center">
+                                        <input type="Checkbox" id="class" name="classall" onclick="selectAll(this.checked)" >
+                                    </th>
+                                    <th class="text-center">考核名称</th>
+                                    <th class="text-center">开始时间</th>
+                                    <th class="text-center">结束时间</th>
+                                    @*<th class="text-center">对应能力</th>
+                                        <th class="text-center">及格人数</th>
+                                        <th class="text-center">及格率</th>
+                                        <th class="text-center">最高分</th>*@
+                                </tr>
+                            </thead>
+
+                            <tbody class="new_table text-center" id="Curriculumtablelist"></tbody>
+
+                        </table>
+                    </div>
+
+                    <!--分页开始-->
+                    <div class="row text-center m-t-md" id="CurriculumPaginatorLibrary">
+                    </div>
+                    <!--分页结束-->
+
+                </div>
+                <div id="tab-2" class="tab-pane">
+                    <div class="row m-t-sm">
+                        <div class="col-sm-3">
+                            <div class="input-group">
+                                <input type="text" placeholder="输入考核名称" id="P_Name1" class="form-control" name="P_Name1">
+                                <span class="input-group-btn">
+                                    <button type="button" onclick="loadExam2()" class="btn btn-primary"><i class="fa fa-search "></i></button>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="pull-right">
+                            <button onclick="updateClass2()" class="btn btn-primary btn-sm" type="button"><i class="fa fa-plus  m-r-xs"></i><span class="bold">添加所选</span></button>
+
+                        </div>
+
+                    </div>
+
+                    <div class=" m-t-sm ">
+                        <table class="col-sm-12 table text-center table-bordered ">
+                            <thead>
+                                <tr>
+                                <tr>
+                                    <th class="text-center">
+                                        <input type="Checkbox" id="select_exam" name="select_exam" onclick="selectAll2(this.checked)">
+                                    </th>
+                                    <th class="text-center">考核名称</th>
+                                    <th class="text-center">开始时间</th>
+                                    <th class="text-center">结束时间</th>
+                                    @*<th class="text-center">对应能力</th>
+                                        <th class="text-center">及格人数</th>
+                                        <th class="text-center">及格率</th>
+                                        <th class="text-center">最高分</th>*@
+                                </tr>
+                            </thead>
+
+                            <tbody class="new_table text-center" id="Curriculumtablelist1"></tbody>
+
+                        </table>
+                    </div>
+                    <!--分页开始-->
+                    <div class="row text-center m-t-md" id="CurriculumPaginatorLibrary1">
+                    </div>
+                    <!--分页结束-->
+                </div>
+
+                <div id="tab-3" class="tab-pane">
+                    <div class="row m-t-sm">
+                        <div class="col-sm-3">
+                            <div class="input-group">
+                                <input type="text" placeholder="输入考核名称" id="P_Name2" class="form-control" name="P_Name2">
+                                <span class="input-group-btn">
+                                    <button type="button" onclick="loadExam()" class="btn btn-primary"><i class="fa fa-search "></i></button>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="pull-right">
+                            <button onclick="updateClass()" class="btn btn-primary btn-sm" type="button"><i class="fa fa-plus  m-r-xs"></i><span class="bold">添加所选</span></button>
+
+                        </div>
+
+                    </div>
+
+                    <div class=" m-t-sm ">
+                        <table class="col-sm-12 table text-center table-bordered ">
+                            <thead>
+                                <tr>
+                                <tr>
+                                    <th class="text-center">
+                                        <input type="Checkbox" id="select_exam" name="select_exam" onclick="selectAll1(this.checked)">
+                                    </th>
+                                    <th class="text-center">考核名称</th>
+                                    <th class="text-center">开始时间</th>
+                                    <th class="text-center">结束时间</th>
+                                    @*<th class="text-center">对应能力</th>
+                                        <th class="text-center">及格人数</th>
+                                        <th class="text-center">及格率</th>
+                                        <th class="text-center">最高分</th>*@
+                                </tr>
+                            </thead>
+
+                            <tbody class="new_table text-center" id="Curriculumtablelist3"></tbody>
+
+                        </table>
+                    </div>
+                    <!--分页开始-->
+                    <div class="row text-center m-t-md" id="CurriculumPaginatorLibrary3">
+                    </div>
+                    <!--分页结束-->
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/Scripts/String/StringFormat.js"></script>
+<script src="~/Js/Admin/ExamineRank/EditRank.js"></script>

@@ -1,0 +1,168 @@
+﻿
+<link href="~/CSS/bootstrap-table.min.css" rel="stylesheet" />
+<script src="~/Scripts/bootstrap.min.js"></script>
+
+<!--活期型智能存款-->
+<div class="pull-left">
+    <img src="/img/card.png" style="width:250px;height:150px;" alt="">
+</div>
+<div class="row">
+    <div class="col-md-4">
+        <div class="form-group">
+            <label id="lbl_cardcode" name="lbl_cardcode" for="inputEmail3" class="col-sm-4 control-label">账&nbsp;号</label>
+            <div class="col-sm-8">
+                <input vl-default="" id="txt_cancelReason" name="txt_cancelReason" type="text" class="form-control input-sm">
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="form-group">
+            <label id="lbl_accountType" name="lbl_accountType" for="inputEmail3" class="col-sm-4 control-label">账户类型</label>
+            <div class="col-sm-8">
+                <select vl-default="" id="sle_accountType2" name="sle_accountType2" class="form-control">
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="form-group">
+            <label id="lbl_cardname" name="lbl_cardname" for="inputEmail3" class="col-sm-4 control-label">账户名称</label>
+            <div class="col-sm-8">
+                <input vl-default="" id="txt_cardname" name="txt_cardname" type="text" class="form-control input-sm" />
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="form-group">
+            <label id="lbl_mechanism" name="lbl_mechanism" for="inputEmail3" class="col-sm-4 control-label">开户机构</label>
+            <div class="col-sm-8">
+                <input vl-default="" id="txt_mechanism" name="txt_mechanism" type="text" class="form-control input-sm">
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="form-group">
+            <label id="lbl_accountGrade" name="lbl_accountGrade" for="inputEmail3" class="col-sm-4 control-label">账户性质</label>
+            <div class="col-sm-8">
+                <select vl-default="" id="sle_accountNature2" name="sle_accountNature2" class="form-control">
+                </select>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="divider divider-horizontal"><div class="divider-text is-left"></div></div>
+<div class="row" style="margin-bottom:10px;">
+    <div class="col-md-7">
+        <div class="form-group">
+            <label for="inputEmail3" class="col-sm-3 control-label">操作类型：</label>
+            <div class="col-sm-9">
+                <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation" class="active"><a class="btn btn-default" id="btnQianyue" aria-controls="signCash" role="tab" data-toggle="tab">签约</a></li>
+                    <li role="presentation"><a class="btn btn-default" style="cursor:not-allowed;background-color:#ede8e8;">修改</a></li>
+                    <li role="presentation"><a class="btn btn-default" id="btnCancel" aria-controls="importCash" role="tab" data-toggle="tab">解约</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row" id="div2">
+    <div class="col-md-6">
+        <div class="form-group">
+            <label id="lbl_currency" name="lbl_currency" for="inputEmail3" class="col-sm-3 control-label">币种钞汇</label>
+            <div class="col-sm-8" style="display: flex;">
+                <div><select vl-default="" id="sle_currency" name="sle_currency" class="form-control"></select></div>
+                <div><select vl-default="" id="sle_remittance" name="sle_remittance" class="form-control"></select></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <label id="lbl_productName3" name="lbl_productName3" for="inputEmail3" class="col-sm-3 control-label">产品名称</label>
+            <div class="col-sm-8">
+                <select vl-default="" id="sle_huoqiProductName" name="sle_huoqiProductName" class="form-control">
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <label id="lbl_retentionAmount" name="lbl_retentionAmount" for="inputEmail3" class="col-sm-3 control-label">活期留存金额</label>
+            <div class="col-sm-8">
+                <input vl-default="" id="txt_retentionAmount" name="txt_retentionAmount" type="text" class="form-control input-sm">
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <label id="lbl_productBase" name="lbl_productBase" for="inputEmail3" class="col-sm-3 control-label">产品基数</label>
+            <div class="col-sm-8">
+                <input vl-default="" id="txt_productBase" name="txt_productBase" type="text" class="form-control input-sm">
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <label id="lbl_productStartAmount" name="lbl_productStartAmount" for="inputEmail3" class="col-sm-3 control-label">产品起点金额</label>
+            <div class="col-sm-8">
+                <input vl-default="" id="txt_productStartAmount" name="txt_productStartAmount" type="text" class="form-control input-sm">
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 hidediv">
+        <div class="form-group">
+            <label id="lbl_productMinAmount" name="lbl_productMinAmount" for="inputEmail3" class="col-sm-3 control-label">产品最低金额</label>
+            <div class="col-sm-8">
+                <input vl-default="" id="txt_productMinAmount" name="txt_productMinAmount" type="text" class="form-control input-sm">
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 hidediv">
+        <div class="form-group">
+            <label id="lbl_retentionMaxAmount" name="lbl_retentionMaxAmount" for="inputEmail3" class="col-sm-3 control-label">活期留存最高金额</label>
+            <div class="col-sm-8">
+                <input vl-default="" id="txt_retentionMaxAmount" name="txt_retentionMaxAmount" type="text" class="form-control input-sm">
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/Js/Popt.js"></script>
+
+<script type="text/javascript">
+    setOptions(['huoqiProductName', 'accountType2', 'currency', 'remittance', 'accountGrade','accountNature2']);
+    function doSubmit() {
+        window.location.href = "javascript:history.go(-1)";
+    }
+    function changeProductName() {
+        var optionArr = [], items = options['gerenProductName'];
+        for (let i = 0; i < items.length; i++) {
+            optionArr.push('<option value=' + items[i].value + '>' + items[i].label + '</option>');
+        }
+        $("#sle_huoqiProductName").empty();
+        $("#sle_huoqiProductName").append(optionArr);
+    }
+    $(function () {
+        initData("200015");
+
+        $("#sle_huoqiProductName").change(function () {
+            if ($(this).val() == "888FSC806060100001") {
+                $(".hidediv").hide();
+            } else {
+                $(".hidediv").show();
+            }
+        })
+        $("#btnQianyue").click(function () {
+            $("#btnjieyue").remove();
+        });
+        $("#btnCancel").click(function () {
+            $("#btnjieyue").remove();
+            $("#btnsubmit").before('<button id="btnjieyue" onclick="jieyue()">解约</button>');
+        });
+    });
+    function jieyue() {
+        layer.msg("解约成功", { icon: 1, time: 1000 }, function () {
+            checkEmpowe();
+        });
+    }
+</script>

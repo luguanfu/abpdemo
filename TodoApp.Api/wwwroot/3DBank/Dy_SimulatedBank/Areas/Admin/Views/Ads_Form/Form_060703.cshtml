@@ -1,0 +1,342 @@
+﻿@{
+    ViewBag.Title = "Form_060703";
+    Layout = "~/Views/Shared/_AdminLayoutIsNull.cshtml";
+}
+<script src="~/Js/Admin/AdminForm.js"></script>
+<script src="~/Js/Admin/CaseManagement/AddDefaultValue.js"></script>
+<form id="form1" onsubmit="return false" action="##" method="post">
+    <input type="hidden" id="TaskId" name="TaskId" value="@Request["TaskId"]" />
+    <input type="hidden" id="CustomerId" name="CustomerId" value="@Request["CustomerId"]" />
+    <input type="hidden" id="FormId" name="FormId" value="@Request["FormId"]" />
+    <input type="hidden" id="Types" name="Types" value="@Request["Types"]" />
+    <!--内容表单区域开始-->
+    <div class="tables bankmap">
+        <div class="banktop">
+            <ul class="mbx clearfix">
+                <li>二代支付业务</li>
+                <li>&gt;</li>
+                <li>汇兑业务</li>
+                <li>&gt;</li>
+                <li>汇入业务管理</li>
+                <li>&gt;</li>
+                <li>解付</li>
+            </ul>
+        </div>
+        <div class="con-map">
+            <span class="top-title">基本信息 <span id="dianji_con" style="cursor: pointer;">▼</span></span>
+            <table id="qv" class="con-map2-table qv">
+                <tbody>
+                    <tr>
+                        <td class="" style="width: 64px;">
+                            <label vl-default="" id="label_zfqd" vtitle="支付渠道" class="form-item text-left on" vl-tipsid="label_zfqd_tips" title="label_zfqd">支付渠道</label>
+                            <div id="label_zfqd_tips" class="tipsmsg"></div>
+                        </td>
+                        <td class="" colspan="2">
+                            <div class="slectstyle">
+                                <select vl-default="0" id="sle_zfqd" vtitle="支付渠道" class="form-item text-left clear-control" vl-tipsid="sle_zfqd_tips" vl-regex="['require']" vl-message="['支付渠道不能为空!']" style="width: 180px;" title="sle_zfqd" vl-slemodel="">
+                                    <option disabled="" style="background-color: blue; color: #fff;" value="">支付渠道值含义</option>
+                                    <option value="0">0 - 全部</option>
+                                    <option value="2">2 - 大额支付系统</option>
+                                    <option value="3">3 - 小额支付系统</option>
+                                </select><input type="text" oncopy="return false" onpaste="return false" oncut="return false" style="width: 157px;">
+                            </div>
+                            <div id="sle_zfqd_tips" class="tipsmsg"></div>
+                        </td>
+                        <td rowspan="1" colspan="1" class="" style="width: 80px;">
+                            <label vl-default="" id="label_hcssh" vtitle="汇出社社号" class="form-item text-left on" vl-tipsid="label_hcssh_tips" title="label_hcssh">汇出社社号</label>
+                            <div id="label_hcssh_tips" class="tipsmsg"></div>
+                        </td>
+                        <td class="" colspan="2">
+                            <input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_hcssh" vtitle="汇出社社号" class="form-item text-left clear-control" vl-tipsid="txt_hcssh_tips" style="width: 180px;" title="txt_hcssh" onpaste="return false">
+                            <div id="txt_hcssh_tips" class="tipsmsg"></div>
+                        </td>
+                        <td rowspan="1" colspan="2" class="" style="width: 64px;">
+                            <label vl-default="" id="label_fsrq" vtitle="发送s日期" class="form-item text-left" vl-tipsid="label_fsrq_tips" title="label_fsrq">发送<s></s>日期</label>
+                            <div id="label_fsrq_tips" class="tipsmsg"></div>
+                        </td>
+                        <td class="" rowspan="1" colspan="4">
+                            <input type="text" class="date form-item text-left clear-control" vl-default="" id="date_fsrq" vtitle="发送日期" vl-tipsid="date_fsrq_tips" vl-regex="['maxlength8', 'tdate', 'number']" vl-message="['发送日期长度大于最大长度:[8]!','请输入正确的日期格式(如:19000101)!','']" style="width: 180px;" title="date_fsrq" oncopy="return false" onpaste="return false" oncut="return false"><img onclick="WdatePicker({el:'date_fsrq',dateFmt:'yyyyMMdd'})" src="/js/My97DatePicker/skin/datePicker.gif" align="absmiddle" style="width:16px;height:22px;margin-left:6px;">
+                            <div id="date_fsrq_tips" class="tipsmsg"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td rowspan="1" colspan="1" class="" style="width: 64px;">
+                            <label vl-default="" id="label_hcje" vtitle="汇出金额" class="form-item text-left on" vl-tipsid="label_hcje_tips" title="label_hcje">汇出金额</label>
+                            <div id="label_hcje_tips" class="tipsmsg"></div>
+                        </td>
+                        <td rowspan="1" colspan="2" class="">
+                            <div class="moneystyle"><input type="text" oncopy="return false" onpaste="return false" oncut="return false" vl-type="money" vl-default="" id="money_hcje" vtitle="汇出金额" class="form-item text-left clear-control money" jinejiaoyan="true" vl-tipsid="money_hcje_tips" vl-regex="['decimal', 'maxlength16']" vl-message="['汇出金额输入错误!','汇出金额长度大于最大长度:[16]!']" style="width: 180px;" title="money_hcje"><label class="moneytips hide green">人民币CNY￥<span class="num">0.00</span><span class="cn">零元整</span></label></div>
+                            <div id="money_hcje_tips" class="tipsmsg"></div>
+                        </td>
+                        <td rowspan="1" colspan="1" class="" style="width: 80px;">
+                            <label vl-default="" id="label_hkrmc" vtitle="汇款人名称" class="form-item text-left on" vl-tipsid="label_hkrmc_tips" title="label_hkrmc">汇款人名称</label>
+                            <div id="label_hkrmc_tips" class="tipsmsg"></div>
+                        </td>
+                        <td rowspan="1" colspan="2" class="">
+                            <input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_hkrmc" vtitle="汇款人名称" class="form-item text-left clear-control" vl-tipsid="txt_hkrmc_tips" vl-regex="['maxlength40']" vl-message="['汇款人名称长度大于最大长度:[40]!']" style="width: 180px;" title="txt_hkrmc" onpaste="return false">
+                            <div id="txt_hkrmc_tips" class="tipsmsg"></div>
+                        </td>
+                        <td rowspan="1" colspan="2" class="" style="width: 80px;">
+                            <label vl-default="" id="label_skrmc" vtitle="收款人名称" class="form-item text-left" vl-tipsid="label_skrmc_tips" title="label_skrmc">收款人名称</label>
+                            <div id="label_skrmc_tips" class="tipsmsg"></div>
+                        </td>
+                        <td rowspan="1" colspan="4" class="">
+                            <input type="text" oncopy="return false" oncut="return false" vl-keyup="wwww" vl-default="" id="txt_skrmc1" vtitle="收款人名称_mb1" class="form-item text-left clear-control" vl-tipsid="txt_skrmc1_tips" vl-regex="['maxlength40']" vl-message="['收款人长度大于最大长度:[40]!']" style="width: 180px;" title="txt_skrmc1" onpaste="return false">
+                            <div id="txt_skrmc1_tips" class="tipsmsg"></div>
+                        </td>
+                    </tr>
+                    <!-- <tr>
+                        <td rowspan="1" colspan="1" class=""><label vl-default="" id="label_zfqd1" vtitle='支付渠道' class="form-item text-left" vl-tipsid="label_zfqd1_tips" title="label_zfqd1">支付渠道</label>
+                            <div id="label_zfqd1_tips" class="tipsmsg"></div>
+                        </td>
+                        <td rowspan="1" colspan="1" class=""><label vl-default="" id="label_hnxh1" vtitle='行内序号' class="form-item text-left" vl-tipsid="label_hnxh1_tips" title="label_hnxh1">行内序号</label>
+                            <div id="label_hnxh1_tips" class="tipsmsg"></div>
+                        </td>
+                        <td rowspan="1" colspan="1" class=""><label vl-default="" id="label_fqhhh1" vtitle='发起行行号' class="form-item text-left" vl-tipsid="label_fqhhh1_tips" title="label_fqhhh1">发起行行号</label>
+                            <div id="label_fqhhh1_tips" class="tipsmsg"></div>
+                        </td>
+                        <td rowspan="1" colspan="1" class=""><label vl-default="" id="label_jshhh1" vtitle='接收行行号' class="form-item text-left" vl-tipsid="label_jshhh1_tips" title="label_jshhh1">接收行行号</label>
+                            <div id="label_jshhh1_tips" class="tipsmsg"></div>
+                        </td>
+                        <td rowspan="1" colspan="1" class=""><label vl-default="" id="label_fkrkhzh1" vtitle='付款人开户帐号' class="form-item text-left" vl-tipsid="label_fkrkhzh1_tips" title="label_fkrkhzh1">付款人开户帐号</label>
+                            <div id="label_fkrkhzh1_tips" class="tipsmsg"></div>
+                        </td>
+                        <td rowspan="1" colspan="1" class=""><label vl-default="" id="label_fkrkhh1" vtitle='付款人开户行' class="form-item text-left" vl-tipsid="label_fkrkhh1_tips" title="label_fkrkhh1">付款人开户行</label>
+                            <div id="label_fkrkhh1_tips" class="tipsmsg"></div>
+                        </td>
+                        <td rowspan="1" colspan="1" class=""><label vl-default="" id="label_fkrzh1" vtitle='付款人帐号' class="form-item text-left" vl-tipsid="label_fkrzh1_tips" title="label_fkrzh1">付款人帐号</label>
+                            <div id="label_fkrzh1_tips" class="tipsmsg"></div>
+                        </td>
+                        <td rowspan="1" colspan="1" class=""><label vl-default="" id="label_fkrmc1" vtitle='付款人名称' class="form-item text-left" vl-tipsid="label_fkrmc1_tips" title="label_fkrmc1">付款人名称</label>
+                            <div id="label_fkrmc1_tips" class="tipsmsg"></div>
+                        </td>
+                        <td rowspan="1" colspan="1" class=""><label vl-default="" id="label_hkje1" vtitle='汇款金额' class="form-item text-left" vl-tipsid="label_hkje1_tips" title="label_hkje1">汇款金额</label>
+                            <div id="label_hkje1_tips" class="tipsmsg"></div>
+                        </td>
+                        <td rowspan="1" colspan="1" class=""><label vl-default="" id="label_ywlx1" vtitle='业务类型' class="form-item text-left" vl-tipsid="label_ywlx1_tips" title="label_ywlx1">业务类型</label>
+                            <div id="label_ywlx1_tips" class="tipsmsg"></div>
+                        </td>
+                        <td rowspan="1" colspan="1" class=""><label vl-default="" id="label_hnzwzt1" vtitle='行内账务状态' class="form-item text-left" vl-tipsid="label_hnzwzt1_tips" title="label_hnzwzt1">行内账务状态</label>
+                            <div id="label_hnzwzt1_tips" class="tipsmsg"></div>
+                        </td>
+                        <td rowspan="1" colspan="1" class=""><label vl-default="" id="label_hrrq1" vtitle='汇入日期' class="form-item text-left" vl-tipsid="label_hrrq1_tips" title="label_hrrq1">汇入日期</label>
+                            <div id="label_hrrq1_tips" class="tipsmsg"></div>
+                        </td>
+                    </tr> -->
+                </tbody>
+            </table>
+        </div>
+        <div class="foot  text-center">
+            <!-- <button vl-submit="true" id="btnsubmit">确定</button>  -->
+            <button id="search">查询</button>
+            <button class="ed-clear">清空</button>
+            <button type="button" onclick="FormReset()">重置</button>
+            <button type="button " style="margin-right: 0px; " vl-submit="true" id="btnsubmit" onclick="SubmitForm()"> 提交</button>
+        </div>
+        <div class="l-box">
+            <!-- <div class="toolbar">
+                    <a class="detail" href="javascript:void(0);">详细信息</a>
+                </div> -->
+            <table id="aaa" cellspacing="0" cellpadding="0">
+                <tbody>
+                    <tr class="bold">
+                        <td>支付渠道</td>
+                        <td>行内序号</td>
+                        <td>发起行行号</td>
+                        <td>接收行行号</td>
+                        <td>付款人开...</td>
+                        <td>付款人开...</td>
+                        <td>付款人账号</td>
+                        <td>付款人名称</td>
+                        <td>汇款金额</td>
+                        <td>业务类型</td>
+                        <td>行内账务状态</td>
+                    </tr>
+                    <tr index="1">
+                        <td>2-大额支付系统</td>
+                        <td></td>
+                        <td>2460001</td>
+                        <td>2060001</td>
+                        <td>30829000...</td>
+                        <td></td>
+                        <td>12191725...</td>
+                        <td>小蜜蜂融资...</td>
+                        <td>173400.00</td>
+                        <td>A100-普通...</td>
+                        <td>32-已审核...</td>
+                    </tr>
+                    <!-- <tr index="2">
+                        <td>2-大额支付系统</td>
+                        <td></td>
+                        <td>30829000...</td>
+                        <td>31470101...</td>
+                        <td>30829000...</td>
+                        <td></td>
+                        <td>12191725...</td>
+                        <td>重庆綦航钢...</td>
+                        <td>173400.00</td>
+                        <td>A100-普通...</td>
+                        <td>32-已审核...</td>
+                    </tr>
+                    <tr index="3">
+                        <td>2-大额支付系统</td>
+                        <td></td>
+                        <td>30829000...</td>
+                        <td>31470101...</td>
+                        <td>30829000...</td>
+                        <td></td>
+                        <td>12191725...</td>
+                        <td>重庆綦航钢...</td>
+                        <td>173400.00</td>
+                        <td>A100-普通...</td>
+                        <td>32-已审核...</td>
+                    </tr> -->
+                </tbody>
+            </table>
+        </div>
+        <div class="l-box" style="display:block;">
+            <!-- <div class="toolbar">
+                <a class="detail" href="javascript:void(0);">详细信息</a>
+            </div> -->
+            <table id="aaa" cellspacing="0" cellpadding="0">
+                <tbody>
+                    <tr class="bold">
+                        <td>支付渠道</td>
+                        <td>行内序号</td>
+                        <td>发起行行号</td>
+                        <td>接收行行号</td>
+                        <td>付款人开...</td>
+                        <td>付款人开...</td>
+                        <td>付款人账号</td>
+                        <td>付款人名称</td>
+                        <td>汇款金额</td>
+                        <td>业务类型</td>
+                        <td>行内账务状态</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script src="~/Js/Student/GetDefaultValue/js/common.bank.ed.js"></script>
+    <script src="~/Js/Student/GetDefaultValue/js/ed.common.js"></script>
+    @*<script src="~/Js/Student/GetDefaultValue/js/ready060703.js"></script>*@
+    @*<script type="text/javascript">
+        $(function () {
+
+            var is_review = $("#review").text();
+            //jt();
+            render();
+            loadPrevData();
+            $("#btnsubmit").click(function () {
+                var values = $(".zhanghao").val();
+                $("#txt_lsh2").val(values);
+
+            });
+            $("#search").click(function () {
+                var controls = $("div[data-yw=1]").find(".form-item");
+                var errormsg = "";
+                for (var i = 0; i < controls.length; i++) {
+                    var result = checkRegex($(controls[i]).get(0));
+                    if (!result.isCheck) {
+                        errormsg += result.errormsg;
+                    }
+                }
+                if (errormsg != "") {
+                    layer.alert(errormsg);
+                    return;
+                }
+                var data = lineEdPrevYwData(controls);
+                sessionStorage.PrevData = data;
+                $(".l-box").first().show();
+                $(".l-box").last().hide();
+                $("#qv").hide();
+            });
+            $("#aaa tr").dblclick(function () {
+                var row_index = $(this).attr("index");
+                edNextNewWin("/user/indexone?row=" + row_index + "&", "2");
+                return $('#txt_jfzh').next('img').click();
+            });
+            // $("#money_hcje").blur(function () {
+
+            // });
+
+            //二代解付业务的返现数据功能
+            $("#search")[0].addEventListener("click", function () {
+                var num = getCgbs("060703", "txt_hrqd").length;
+                for (var i = 0; i < num; i++) {
+                    var arr = $("#aaa tr").eq(i + 1).find("td");
+                    if (arr.length > 0) {
+                        arr.eq(0).html(hideOut(getCgbs("060703", "txt_hrqd")[i].toString(), 8));
+                        arr.eq(6).html(hideOut(getCgbs("060703", "txt_fkrzh2")[i].toString(), 8));
+                        arr.eq(7).html(hideOut(getCgbs("060703", "txt_fkrmc")[i].toString(), 8));
+                        arr.eq(8).html(hideOut(getCgbs("060703", "money_hkje")[i].toString(), 8));
+                    }
+                }
+            })
+            //超出隐藏
+            function hideOut(str, num) {
+                if (str.length > num) {
+                    var new_str = str.substring(0, num);
+                    return new_str + "...";
+                } else {
+                    return str;
+                }
+            }
+            function getCgbs(tab, id) {
+                var html = $("#DefaultValue").html();
+                var otab = html.split("$");
+                var bb = [];
+                var mnew = [];
+                var thisTab = otab.filter(function (item, i) {
+                    return item.indexOf(tab) != -1;
+                })
+                thisTab.forEach(function (item) {
+                    var aa = item.split(";").filter(function (a) {
+                        return a.indexOf(id) != -1;
+                    });
+                    bb.push(aa);
+                })
+                // alert(bb)
+                bb.forEach(function (item) {
+                    item.forEach(function (a) {
+                        if (a.indexOf(id) != -1) {
+                            mnew.push(a.substring(a.lastIndexOf("#") + 1));
+                        }
+                    })
+                })
+                return mnew;
+            }
+
+        });
+
+        var handel = function () {
+            catchSuccess(function () {
+                //window.opener.authCloseCall("print");
+                //window.close();
+                printEdWin();
+            });
+        }
+
+        function Submit(formid, auth_ids) {
+            var is_review = $("#review").text();
+
+            var l_i = layer.confirm("记账成功！<br/>点击“确定”开始复核操作",
+                {
+                    btn: ['确定', '取消']
+                },
+                function () {
+                    layer.close(l_i);
+                    if (is_review != "true") {
+                        //跳转到复核页面
+                        review(formid, auth_ids);
+                    } else {
+                        //复核页面 进行复核验证
+                        $("#btnsubmit").click();
+                    }
+                });
+        }
+
+    </script>*@
+    <link href="~/Js/Student/GetDefaultValue/js/common.bank.ed.css" rel="stylesheet" />
+    <link href="~/Js/Student/GetDefaultValue/js/ed.common.css" rel="stylesheet" />
+</form>

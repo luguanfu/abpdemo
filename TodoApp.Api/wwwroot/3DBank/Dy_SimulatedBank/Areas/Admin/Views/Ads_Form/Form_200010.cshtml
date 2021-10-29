@@ -1,0 +1,774 @@
+﻿<div class="main-container">
+    <!--对公活期开户-->
+    <div class="col-md-6">
+        <div class="form-group">
+            <label for="inputEmail3" class="col-sm-3 control-label"></label>
+            <div class="col-sm-8">
+                <input type="checkbox" id="check_cancelLicense" name="check_cancelLicense"> <strong>取消开户许可证核发</strong>
+            </div>
+        </div>
+    </div>
+    <h2>
+        <strong>客户信息</strong>
+    </h2>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label id="lbl_customer" for="inputEmail3" class="col-sm-4 control-label">客户名称</label>
+                <div class="col-sm-8">
+                    <input vl-default="" id="txt_customer" name="txt_customer" type="text" class="form-control input-sm">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+
+        <div class="col-md-6">
+            <div class="form-group">
+                <label id="lbl_customerType" for="inputEmail3" class="col-sm-4 control-label">客户类别</label>
+                <div class="col-sm-8">
+                    <select vl-default="" id="sle_customerType" name="sle_customerType" class="form-control">
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label id="lbl_accountName" for="inputEmail3" class="col-sm-4 control-label">公司客户类别名称</label>
+                <div class="col-sm-8">
+                    <select vl-default="" id="sle_accountName" name="sle_accountName" class="form-control">
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label id="lbl_depositType" for="inputEmail3" class="col-sm-4 control-label">存款人类别</label>
+                <div class="col-sm-8">
+                    <select vl-default="" id="sle_depositType" name="sle_depositType" class="form-control">
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label id="lbl_customerNumber" for="inputEmail3" class="col-sm-4 control-label">客户编号</label>
+                <div class="col-sm-8">
+                    <input vl-default="" id="txt_customerNumber" name="txt_customerNumber" type="text" class="form-control input-sm">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label id="lbl_mainType" name="lbl_mainType" for="inputEmail3" class="col-sm-4 control-label">主证件类型</label>
+                <div class="col-sm-8">
+                    <select vl-default="" id="sle_mainType" name="sle_mainType" class="form-control">
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label id="lbl_mainCode" for="inputEmail3" class="col-sm-4 control-label">主证件号码</label>
+                <div class="col-sm-8">
+                    <input vl-default="" id="txt_mainCode" name="txt_mainCode" type="text" class="form-control input-sm">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label id="lbl_mainDue" for="inputEmail3" class="col-sm-4 control-label">主证件到期日</label>
+                <div class="col-sm-8">
+                    <input vl-default="" id="date_mainDue" name="date_mainDue" type="date" max="9999-12-31" class="form-control input-sm">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="inputEmail3" class="col-sm-4 control-label">法人/单位负责人标志</label>
+                <div class="col-sm-8">
+                    <select vl-default="" id="sle_personMark" name="sle_personMark" class="form-control">
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="inputEmail3" class="col-sm-4 control-label">法人/单位负责人姓名</label>
+                <div class="col-sm-8">
+                    <input vl-default="" id="txt_person" name="txt_person" type="text" class="form-control input-sm">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="inputEmail3" class="col-sm-4 control-label">个人证件类型</label>
+                <div class="col-sm-8">
+                    <select vl-default="" id="sle_personCertificateType" name="sle_personCertificateType" class="form-control">
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="inputEmail3" class="col-sm-4 control-label">个人证件号码</label>
+                <div class="col-sm-8">
+                    <input vl-default="" id="txt_certificateCode" name="txt_certificateCode" type="text" class="form-control input-sm">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="inputEmail3" class="col-sm-4 control-label">个人证件有效期</label>
+                <div class="col-sm-8">
+                    <input vl-default="" id="date_certificateValidity" name="date_certificateValidity" type="date" max="9999-12-31" class="form-control input-sm">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label id="lbl_corporateNationality" name="lbl_corporateNationality" for="inputEmail3" class="col-sm-4 control-label">法人国籍</label>
+                <div class="col-sm-8">
+                    <input vl-default="" id="txt_corporateNationality" name="txt_corporateNationality" type="text" class="form-control input-sm">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label id="lbl_personMobile" name="lbl_personMobile" for="inputEmail3" class="col-sm-4 control-label">法人/单位负责人手机号码</label>
+                <div class="col-sm-8">
+                    <input vl-default="" id="txt_personMobile" name="txt_personMobile" type="text" class="form-control input-sm">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label id="lbl_mobileResults" name="lbl_mobileResults" for="inputEmail3" class="col-sm-4 control-label">手机号码核查结果</label>
+                <div class="col-sm-8">
+                    <select vl-default="" id="sle_mobileResults" name="sle_mobileResults" class="form-control">
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label id="lbl_personResults" name="lbl_personResults" for="inputEmail3" class="col-sm-4 control-label">法人身份核查结果</label>
+                <div class="col-sm-8">
+                    <select vl-default="" id="sle_personResults" name="sle_personResults" class="form-control">
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label id="lbl_idType" name="lbl_idType" for="inputEmail3" class="col-sm-4 control-label">联系人证件类型</label>
+                <div class="col-sm-8">
+                    <select vl-default="" id="sle_idType" name="sle_idType" class="form-control">
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label id="lbl_contactName" name="lbl_contactName" for="inputEmail3" class="col-sm-4 control-label">联系人名称</label>
+                <div class="col-sm-8">
+                    <input vl-default="" id="txt_contactName" name="txt_contactName" type="text" class="form-control input-sm">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label id="lbl_contactCode" name="lbl_contactCode" for="inputEmail3" class="col-sm-4 control-label">联系人证件号码</label>
+                <div class="col-sm-8">
+                    <input vl-default="" id="txt_contactCode" name="txt_contactCode" type="text" class="form-control input-sm">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label id="lbl_contactDue" name="lbl_contactDue" for="inputEmail3" class="col-sm-4 control-label">联系人证件有效期</label>
+                <div class="col-sm-8">
+                    <input vl-default="" id="date_contactDue" name="date_contactDue" type="date" max="9999-12-31" class="form-control input-sm">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label id="lbl_contactResults" name="lbl_contactResults" for="inputEmail3" class="col-sm-4 control-label">联系人身份核查结果</label>
+                <div class="col-sm-8">
+                    <select vl-default="" id="sle_contactResults" name="sle_contactResults" class="form-control">
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label id="lbl_oneSignMark" name="lbl_oneSignMark" for="inputEmail3" class="col-sm-4 control-label">证件合一标志</label>
+                <div class="col-sm-8">
+                    <select vl-default="" id="sle_oneSignMark" name="sle_oneSignMark" class="form-control">
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label id="lbl_industryCategory" name="lbl_industryCategory" for="inputEmail3" class="col-sm-4 control-label">行业类别</label>
+                <div class="col-sm-8">
+                    <select vl-default="" id="sle_industryCategory" name="sle_industryCategory" class="form-control">
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label id="lbl_system" name="lbl_system" for="inputEmail3" class="col-sm-4 control-label">所属系统</label>
+                <div class="col-sm-8">
+                    <select vl-default="" id="sle_system" name="sle_system" class="form-control">
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label id="lbl_registeredCapital" name="lbl_registeredCapital" for="inputEmail3" class="col-sm-4 control-label">注册资金币别</label>
+                <div class="col-sm-8">
+                    <select vl-default="" id="sle_registeredCapital" name="sle_registeredCapital" class="form-control">
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label id="lbl_registeredCapital1" name="lbl_registeredCapital1" for="inputEmail3" class="col-sm-4 control-label">注册资金(元)</label>
+                <div class="col-sm-8">
+                    <input vl-default="" id="txt_registeredCapital" name="txt_registeredCapital" type="text" class="form-control input-sm">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label id="lbl_enterpriseAttribute" name="lbl_enterpriseAttribute" for="inputEmail3" class="col-sm-4 control-label">企业属性</label>
+                <div class="col-sm-8">
+                    <select vl-default="" id="sle_enterpriseAttribute" name="sle_enterpriseAttribute" class="form-control">
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label id="lbl_registrationDate" name="lbl_registrationDate" for="inputEmail3" class="col-sm-4 control-label">注册日期</label>
+                <div class="col-sm-8">
+                    <input vl-default="" id="date_registrationDate" name="date_registrationDate" type="date" max="9999-12-31" class="form-control input-sm">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label id="lbl_businessScope" name="lbl_businessScope" for="inputEmail3" class="col-sm-4 control-label">经营/业务范围</label>
+                <div class="col-sm-8">
+                    <input vl-default="" id="txt_businessScope" name="txt_businessScope" type="text" class="form-control input-sm">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label id="lbl_organizationCode" name="lbl_organizationCode" for="inputEmail3" class="col-sm-4 control-label">企业组织机构代码</label>
+                <div class="col-sm-8">
+                    <input vl-default="" id="txt_organizationCode" name="txt_organizationCode" type="text" class="form-control input-sm">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label id="lbl_stateTax" name="lbl_stateTax" for="inputEmail3" class="col-sm-4 control-label">国税</label>
+                <div class="col-sm-8">
+                    <input vl-default="" id="txt_stateTax" name="txt_stateTax" type="text" class="form-control input-sm">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label id="lbl_localTax" name="lbl_localTax" for="inputEmail3" class="col-sm-4 control-label">地税</label>
+                <div class="col-sm-8">
+                    <input vl-default="" id="txt_localTax" name="txt_localTax" type="text" class="form-control input-sm">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label id="lbl_registrationCountry" name="lbl_registrationCountry" for="inputEmail3" class="col-sm-4 control-label">注册国家</label>
+                <div class="col-sm-8">
+                    <select vl-default="" id="sle_registrationCountry" name="sle_registrationCountry" class="form-control">
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label id="lbl_hostCountry" name="lbl_hostCountry" for="inputEmail3" class="col-sm-4 control-label">所在国</label>
+                <div class="col-sm-8">
+                    <select vl-default="" id="sle_hostCountry" name="sle_hostCountry" class="form-control">
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label id="lbl_registeredAddress" name="lbl_registeredAddress" for="inputEmail3" class="col-sm-4 control-label">注册地址</label>
+                <div class="col-sm-8">
+                    <input vl-default="" id="txt_registeredAddress" name="txt_registeredAddress" type="text" class="form-control input-sm">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label id="lbl_businessPremises" name="lbl_businessPremises" for="inputEmail3" class="col-sm-4 control-label">经营场所核实</label>
+                <div class="col-sm-8">
+                    <select vl-default="" id="sle_businessPremises" name="sle_businessPremises" class="form-control">
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label id="lbl_mobile" name="lbl_mobile" for="inputEmail3" class="col-sm-4 control-label">电话</label>
+                <div class="col-sm-8">
+                    <input vl-default="" id="txt_mobile" name="txt_mobile" type="text" class="form-control input-sm">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label id="lbl_registeredCode" name="lbl_registeredCode" for="inputEmail3" class="col-sm-4 control-label">注册邮政编码</label>
+                <div class="col-sm-8">
+                    <input vl-default="" id="txt_registeredCode" name="txt_registeredCode" type="text" class="form-control input-sm">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label id="lbl_officeAddress" name="lbl_officeAddress" for="inputEmail3" class="col-sm-4 control-label">办公地址</label>
+                <div class="col-sm-8">
+                    <input vl-default="" id="txt_officeAddress" name="txt_officeAddress" type="text" class="form-control input-sm">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label id="lbl_officeCode" name="lbl_officeCode" for="inputEmail3" class="col-sm-4 control-label">办公邮政编码</label>
+                <div class="col-sm-8">
+                    <input vl-default="" id="txt_officeCode" name="txt_officeCode" type="text" class="form-control input-sm">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label id="lbl_taxResidentSign" name="lbl_taxResidentSign" for="inputEmail3" class="col-sm-4 control-label">税收居民标志</label>
+                <div class="col-sm-8">
+                    <select vl-default="" id="sle_taxResidentSign" name="sle_taxResidentSign" class="form-control">
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label id="lbl_registrationAreaCode" name="lbl_registrationAreaCode" for="inputEmail3" class="col-sm-4 control-label">注册地地区代码</label>
+                <div class="col-sm-8">
+                    <input vl-default="" id="txt_registrationAreaCode" name="txt_registrationAreaCode" type="text" class="form-control input-sm">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label id="lbl_nationalSector" name="lbl_nationalSector" for="inputEmail3" class="col-sm-4 control-label">国民经济部门</label>
+                <div class="col-sm-8">
+                    <select vl-default="" id="sle_nationalSector" name="sle_nationalSector" class="form-control">
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label id="lbl_selfCertification" name="lbl_selfCertification" for="inputEmail3" class="col-sm-4 control-label">是否取得自证声明</label>
+                <div class="col-sm-8">
+                    <select vl-default="" id="sle_selfCertification" name="sle_selfCertification" class="form-control">
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label id="lbl_largeVerifier" name="lbl_largeVerifier" for="inputEmail3" class="col-sm-2 control-label">法人身份用途</label>
+                <div class="col-sm-10">
+                    <div class="checkbox">
+                        <label>
+                            <input id="check_largeVerifier" name="check_largeVerifier" type="checkbox" value="">大额核实人
+                        </label>
+                        <label>
+                            <input id="check_reconciliationContact" name="check_reconciliationContact" type="checkbox" value="">对账联系人
+                        </label>
+                        <label>
+                            <input id="check_actualController" name="check_actualController" type="checkbox" value="">实际控制人
+                        </label>
+                        <label>
+                            <input id="check_beneficialOwner" name="check_beneficialOwner" type="checkbox" value="">收益所有人
+                        </label>
+                        <label>
+                            <input id="check_controllingShareholder" name="check_controllingShareholder" type="checkbox" value="">控股股东
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label id="lbl_shareholdingRatio" name="lbl_shareholdingRatio" for="inputEmail3" class="col-sm-4 control-label">控股比例(%)</label>
+                <div class="col-sm-8">
+                    <input vl-default="" id="txt_shareholdingRatio" name="txt_shareholdingRatio" type="text" class="form-control input-sm">
+                </div>
+            </div>
+        </div>
+    </div>
+    <h2 class="text-center">
+        <strong>涉税信息</strong>
+    </h2>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label id="lbl_organizationCategory" name="lbl_organizationCategory" for="inputEmail3" class="col-sm-4 control-label">机构类别</label>
+                <div class="col-sm-8">
+                    <select vl-default="" id="sle_organizationCategory" name="sle_organizationCategory" class="form-control">
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+    <h2 class="text-center">
+        <strong>账户信息</strong>
+    </h2>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label id="lbl_accountName1" name="lbl_accountName1" for="inputEmail3" class="col-sm-4 control-label">账户名称</label>
+                <div class="col-sm-8">
+                    <input vl-default="" id="txt_accountName" name="txt_accountName" type="text" class="form-control input-sm">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label id="lbl_optionalModel" name="lbl_optionalModel" for="inputEmail3" class="col-sm-4 control-label">自选账号</label>
+                <div class="col-sm-8">
+                    <select vl-default="" id="sle_optionalModel" name="sle_optionalModel" class="form-control">
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label id="lbl_productType" name="lbl_productType" for="inputEmail3" class="col-sm-4 control-label">产品类别</label>
+                <div class="col-sm-8">
+                    <select vl-default="" id="sle_productType" name="sle_productType" class="form-control">
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label id="lbl_productCode" name="lbl_productCode" for="inputEmail3" class="col-sm-4 control-label">产品代码</label>
+                <div class="col-sm-8">
+                    <select vl-default="" id="sle_productCode" name="sle_productCode" class="form-control">
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label id="lbl_currency" name="lbl_currency" for="inputEmail3" class="col-sm-4 control-label">币别</label>
+                <div class="col-sm-8">
+                    <select vl-default="" id="sle_currency" name="sle_currency" class="form-control">
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label id="lbl_currencyType" name="lbl_currencyType" for="inputEmail3" class="col-sm-4 control-label">币别类型</label>
+                <div class="col-sm-8">
+                    <select vl-default="" id="sle_currencyType" name="sle_currencyType" class="form-control">
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label id="lbl_remittanceType" name="lbl_remittanceType" for="inputEmail3" class="col-sm-4 control-label">钞汇鉴别</label>
+                <div class="col-sm-8">
+                    <select class="form-control" id="sle_remittance" name="sle_remittance"></select>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label id="lbl_accountNature" name="lbl_accountNature" for="inputEmail3" class="col-sm-4 control-label">账户性质</label>
+                <div class="col-sm-8">
+                    <select vl-default="" id="sle_accountNature" name="sle_accountNature" class="form-control">
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label id="lbl_approvalType" name="lbl_approvalType" for="inputEmail3" class="col-sm-4 control-label">审批类型</label>
+                <div class="col-sm-8">
+                    <select vl-default="" id="sle_approvalType" name="sle_approvalType" class="form-control">
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="inputEmail3" class="col-sm-4 control-label">特殊账户标识</label>
+                <div class="col-sm-8">
+                    <select class="form-control" id="sle_specialAccount" name="sle_specialAccount"></select>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="inputEmail3" class="col-sm-4 control-label">特殊账户类别</label>
+                <div class="col-sm-8">
+                    <select class="form-control" id="sle_specialAccountType" name="sle_specialAccountType"></select>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label id="lbl_withdrawalMethod" name="lbl_withdrawalMethod" for="inputEmail3" class="col-sm-4 control-label">支取方式</label>
+                <div class="col-sm-8">
+                    <select vl-default="" id="sle_withdrawalMethod1" name="sle_withdrawalMethod1" class="form-control">
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label id="lbl_withdrawalMark" name="lbl_withdrawalMark" for="inputEmail3" class="col-sm-4 control-label">取现标志</label>
+                <div class="col-sm-8">
+                    <select vl-default="" id="sle_withdrawalMark" name="sle_withdrawalMark" class="form-control">
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label id="lbl_interestMark" name="lbl_interestMark" for="inputEmail3" class="col-sm-4 control-label">计息标志</label>
+                <div class="col-sm-8">
+                    <select vl-default="" id="sle_interestMark" name="sle_interestMark" class="form-control">
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label id="lbl_accountOpening" name="lbl_accountOpening" for="inputEmail3" class="col-sm-4 control-label">本/异地开户</label>
+                <div class="col-sm-8">
+                    <select vl-default="" id="sle_accountOpening" name="sle_accountOpening" class="form-control">
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label id="lbl_exchange" name="lbl_exchange" for="inputEmail3" class="col-sm-4 control-label">通兑范围</label>
+                <div class="col-sm-8">
+                    <select vl-default="" id="sle_exchange" name="sle_exchange" class="form-control">
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label id="lbl_storageRange" name="lbl_storageRange" for="inputEmail3" class="col-sm-4 control-label">通存范围</label>
+                <div class="col-sm-8">
+                    <select vl-default="" id="sle_storageRange" name="sle_storageRange" class="form-control">
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label id="lbl_rateBasis" name="lbl_rateBasis" for="inputEmail3" class="col-sm-4 control-label">利率依据</label>
+                <div class="col-sm-8">
+                    <select vl-default="" id="sle_rateBasis" name="sle_rateBasis" class="form-control">
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label id="lbl_accountCertificateType" name="lbl_accountCertificateType" for="inputEmail3" class="col-sm-4 control-label">账户证件类型</label>
+                <div class="col-sm-8">
+                    <select vl-default="" id="sle_accountCertificateType" name="sle_accountCertificateType" class="form-control">
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label id="lbl_certificateNumber" name="lbl_certificateNumber" for="inputEmail3" class="col-sm-4 control-label">账户证件号码</label>
+                <div class="col-sm-8">
+                    <input vl-default="" id="txt_certificateNumber" name="txt_certificateNumber" class="form-control input-sm">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label id="lbl_expiryDate" name="lbl_expiryDate" for="inputEmail3" class="col-sm-4 control-label">账户证件到期日</label>
+                <div class="col-sm-8">
+                    <input vl-default="" id="date_expiryDate" name="date_expiryDate" type="date" max="9999-12-31" class="form-control input-sm">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label id="lbl_operatorLogo" name="lbl_operatorLogo" for="inputEmail3" class="col-sm-4 control-label">经办人标志</label>
+                <div class="col-sm-8">
+                    <select vl-default="" id="sle_operatorLogo" name="sle_operatorLogo" class="form-control">
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label id="lbl_accountNo" name="lbl_accountNo" for="inputEmail3" class="col-sm-4 control-label">原基本存款账号编号</label>
+                <div class="col-sm-8">
+                    <input vl-default="" id="txt_accountNo" name="txt_accountNo" type="text" class="form-control input-sm">
+                </div>
+            </div>
+        </div>
+    </div>
+    <h2 class="text-center">
+        <strong>存款人上级法人或主管单位信息</strong>
+    </h2>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="inputEmail3" class="col-sm-4 control-label">上级法人或主管单位名称</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control input-sm" id="txt_unitName" name="txt_unitName">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="inputEmail3" class="col-sm-4 control-label">基本存款账户开户许可证标准号/编号</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control input-sm" id="txt_license" name="txt_license">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="inputEmail3" class="col-sm-4 control-label">主证件编号</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control input-sm" id="txt_masterNo" name="txt_masterNo">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="inputEmail3" class="col-sm-4 control-label">法人/单位负责人类别</label>
+                <div class="col-sm-8">
+                    <select class="form-control" id="sle_categoryType" name="sle_categoryType"></select>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="inputEmail3" class="col-sm-4 control-label">姓名</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control input-sm" id="txt_name" name="txt_name">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="inputEmail3" class="col-sm-4 control-label">证件种类</label>
+                <div class="col-sm-8">
+                    <select class="form-control" id="sle_certificateKind" name="sle_certificateKind"></select>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="inputEmail3" class="col-sm-4 control-label">证件号码</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control input-sm" id="txt_idCode" name="txt_idCode">
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        setOptions(['hostCountry', 'specialAccount', 'withdrawalMark', 'operatorLogo', 'remittance', 'specialAccountType', 'categoryType', 'registeredCapital', 'accountCertificateType', 'approvalType', 'currencyType', 'optionalModel', 'organizationCategory', 'system', 'registrationCountry', 'oneSignMark', 'industryCategory', 'contactResults', 'personResults', 'mobileResults', 'depositType', 'personMark', 'customerType', 'accountName', 'certificateKind', 'productType', 'personCertificateType', 'idType', 'mainType', 'exchange', 'storageRange', 'productCode', 'withdrawalMethod1', 'currency', 'interestMark', 'accountNature', 'accountOpening', 'rateBasis', 'enterpriseAttribute', 'businessPremises', 'selfCertification', 'taxResidentSign', 'nationalSector']);
+        function doSubmit() {
+            //goPage('200055')
+            checkEmpowe();
+        }
+        $(function () {
+            initData("200057");
+        });
+    </script>
+</div>

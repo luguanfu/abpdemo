@@ -1,0 +1,502 @@
+.from_map01 {
+    width: 1100px;
+    margin: auto;
+    margin-top: 20px;
+    position: relative;
+    background: url(../img/danjuimg/menu01.jpg)no-repeat top;
+    width: 1100px;
+    height: 750px;
+    background-size: 100%;
+}
+
+.site1 {
+	width: 15px;
+	height: 15px;
+	left: 39px;
+	top: 49px;
+}
+
+.site2 {
+	width: 15px;
+	height: 15px;
+	left: 125px;
+	top: 49px;
+}
+
+.site3 {
+	width: 50px;
+	height: 20px;
+	left: 306px;
+	top: 49px;
+}
+
+.site4 {
+	width: 30px;
+	height: 20px;
+	left: 375px;
+	top: 49px;
+}
+
+.site5 {
+	width: 30px;
+	height: 20px;
+	left: 420px;
+	top: 49px;
+}
+
+.site6 {
+	width: 180px;
+	height: 20px;
+	left: 574px;
+	top: 49px;
+}
+
+.site7 {
+	width: 230px;
+	height: 25px;
+	left: 165px;
+	top: 76px;
+}
+
+.site8 {
+	width: 250px;
+	height: 25px;
+	left: 501px;
+	top: 76px;
+}
+
+.site9 {
+	width: 230px;
+	height: 25px;
+	left: 165px;
+	top: 106px;
+}
+
+.site10 {
+	width: 250px;
+	height: 25px;
+	left: 501px;
+	top: 106px;
+}
+
+.site11 {
+	width: 230px;
+	height: 25px;
+	left: 165px;
+	top: 135px;
+}
+
+.site12 {
+	width: 250px;
+	height: 50px;
+	left: 501px;
+	top: 135px;
+}
+
+.site13 {
+	width: 230px;
+	height: 25px;
+	left: 165px;
+	top: 164px;
+}
+
+.site14 {
+	left: 113px;
+	top: 191px;
+}
+
+.site15 {
+	left: 167px;
+	top: 191px;
+}
+
+.site16 {
+	left: 211px;
+	top: 191px;
+}
+
+.site17 {
+	left: 27px;
+	top: 213px;
+}
+
+.site18 {
+	left: 81px;
+	top: 213px;
+}
+
+.site19 {
+	width: 30px;
+	height: 15px;
+	left: 428px;
+	top: 216px;
+}
+
+.site20 {
+	width: 30px;
+	height: 15px;
+	left: 462px;
+	top: 216px;
+}
+
+.site21 {
+	width: 30px;
+	height: 15px;
+	left: 498px;
+	top: 216px;
+}
+
+.site22 {
+	width: 30px;
+	height: 15px;
+	left: 532px;
+	top: 216px;
+}
+
+.site23 {
+	width: 30px;
+	height: 15px;
+	left: 568px;
+	top: 216px;
+}
+
+.site24 {
+	width: 30px;
+	height: 15px;
+	left: 602px;
+	top: 216px;
+}
+
+.site25 {
+	width: 30px;
+	height: 15px;
+	left: 636px;
+	top: 216px;
+}
+
+.site26 {
+	width: 30px;
+	height: 15px;
+	left: 670px;
+	top: 216px;
+}
+
+.site27 {
+	width: 30px;
+	height: 15px;
+	left: 704px;
+	top: 216px;
+}
+
+.site28 {
+	width: 21px;
+	height: 15px;
+	left: 738px;
+	top: 216px;
+}
+
+.site29 {
+	width: 675px;
+	height: 90px;
+	left: 70px;
+	top: 245px;
+}
+
+.site30 {
+	width: 120px;
+	height: 20px;
+	left: 100px;
+	top: 352px;
+}
+
+.site31 {
+	width: 120px;
+	height: 20px;
+	left: 270px;
+	top: 352px;
+}
+
+.site32 {
+	width: 120px;
+	height: 20px;
+	left: 447px;
+	top: 352px;
+}
+
+.site33 {
+	width: 120px;
+	height: 20px;
+	left: 640px;
+	top: 352px;
+}
+
+.site34 {
+	left: -60px;
+	top: 376px;
+}
+
+.site35 {
+	left: 23px;
+	top: 376px;
+}
+
+.site36 {
+	left: 122px;
+	top: 376px;
+}
+
+.site37 {
+	width: 215px;
+	height: 20px;
+	left: 538px;
+	top: 377px;
+}
+
+.site38 {
+	width: 615px;
+	height: 20px;
+	left: 128px;
+	top: 400px;
+}
+
+.site39 {
+	width: 550px;
+	height: 20px;
+	left: 180px;
+	top: 423px;
+}
+
+.site40 {
+	width: 180px;
+	height: 20px;
+	left: 95px;
+	top: 465px;
+}
+
+.site41 {
+	left: 27px;
+	top: 465px;
+}
+
+.site42 {
+	left: 35px;
+	top: 465px;
+}
+
+.site43 {
+	left: 106px;
+	top: 465px;
+}
+
+.site44 {
+	left: 129px;
+	top: 465px;
+}
+
+.site45 {
+	width: 225px;
+	height: 20px;
+	left: 525px;
+	top: 465px;
+}
+
+.site46 {
+	width: 180px;
+	height: 20px;
+	left: 95px;
+	top: 488px;
+}
+
+.site47 {
+	width: 355px;
+	height: 20px;
+	left: 395px;
+	top: 488px;
+}
+
+.site48 {
+	width: 620px;
+	height: 20px;
+	left: 95px;
+	top: 511px;
+}
+
+.site49 {
+	width: 180px;
+	height: 20px;
+	left: 95px;
+	top: 547px;
+}
+
+.site50 {
+	width: 405px;
+	height: 20px;
+	left: 347px;
+	top: 547px;
+}
+
+.site51 {
+	left: -277px;
+	top: 574px;
+}
+
+.site52 {
+	left: -237px;
+	top: 574px;
+}
+
+.site53 {
+	width: 50px;
+	height: 20px;
+	left: 222px;
+	top: 570px;
+}
+
+.site54 {
+	width: 18px;
+	height: 16px;
+	left: 348px;
+	top: 576px;
+}
+
+.site55 {
+	width: 18px;
+	height: 16px;
+	left: 371px;
+	top: 576px;
+}
+
+.site56 {
+	width: 18px;
+	height: 16px;
+	left: 394px;
+	top: 576px;
+}
+
+.site57 {
+	width: 18px;
+	height: 16px;
+	left: 417px;
+	top: 576px;
+}
+
+.site58 {
+	width: 18px;
+	height: 16px;
+	left: 439px;
+	top: 576px;
+}
+
+.site59 {
+	width: 18px;
+	height: 16px;
+	left: 462px;
+	top: 576px;
+}
+
+.site60 {
+	width: 18px;
+	height: 16px;
+	left: 485px;
+	top: 576px;
+}
+
+.site61 {
+	width: 18px;
+	height: 16px;
+	left: 508px;
+	top: 576px;
+}
+
+.site62 {
+	width: 18px;
+	height: 16px;
+	left: 531px;
+	top: 576px;
+}
+
+.site63 {
+	width: 18px;
+	height: 16px;
+	left: 554px;
+	top: 576px;
+}
+
+.site64 {
+	width: 18px;
+	height: 16px;
+	left: 576px;
+	top: 576px;
+}
+
+.site65 {
+	width: 18px;
+	height: 16px;
+	left: 599px;
+	top: 576px;
+}
+
+.site66 {
+	width: 18px;
+	height: 16px;
+	left: 621px;
+	top: 576px;
+}
+
+.site67 {
+	width: 18px;
+	height: 16px;
+	left: 644px;
+	top: 576px;
+}
+
+.site68 {
+	width: 18px;
+	height: 16px;
+	left: 665px;
+	top: 576px;
+}
+
+.site69 {
+	width: 18px;
+	height: 16px;
+	left: 689px;
+	top: 576px;
+}
+
+.site70 {
+	width: 18px;
+	height: 16px;
+	left: 712px;
+	top: 576px;
+}
+
+.site71 {
+	width: 18px;
+	height: 16px;
+	left: 735px;
+	top: 576px;
+}
+
+.site72 {
+	width: 650px;
+	height: 16px;
+	left: 96px;
+	top: 606px;
+}
+
+.site73 {
+	width: 150px;
+	height: 16px;
+	left: 383px;
+	top: 645px;
+}
+
+
+.site74 {
+	width: 260px;
+	height: 220px;
+	left: 800px;
+	top: 85px;
+}
+

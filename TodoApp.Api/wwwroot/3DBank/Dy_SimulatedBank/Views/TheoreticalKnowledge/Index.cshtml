@@ -1,0 +1,79 @@
+﻿@{
+    
+    //Layout = "~/Views/Shared/_StudentLayout.cshtml";
+    ViewData["nvc"] = "理论学习";
+}
+<script src="~/Scripts/jquery-3.2.0.js"></script>
+
+<link rel="stylesheet" type="text/css" href="~/CSS/study_index.css" />
+<!DOCTYPE html>
+
+<!-------------内容------------->
+<div class="wrapper">
+    <div class="m-t-lg">
+        <label class="dangqian">课程学习 </label>
+
+    </div>
+    <ul class="wrapper_list" id="tablelist" style="margin-top:0px;">
+    </ul>
+</div>
+
+<!--分页开始-->
+<div class="con_bottom" id="PaginatorLibrary">
+</div>
+<!--分页结束	-->
+
+<script>
+    $(function () {
+        Getindexlist()
+    })
+
+    function Getindexlist(page) {
+        var CurriculumName = "";
+        var PageSize = 6;
+        $.ajax({
+            url: '/TheoreticalKnowledge/Getindexlist',
+            Type: "post",
+            dataType: "json", cache: false,
+            contentType: "application/json; charset=utf-8",
+            data: { "page": page, "PageSize": PageSize, "CurriculumName": CurriculumName },
+            success: function (tb) {
+                var html = '';
+                var data = tb.Tb;//转换table
+                if (data != null && data.length > 0) {
+
+                    for (var i = 0; i < data.length; i++) {
+                        var COUResources = data[i]["COUResources"]
+                        var COUResourceRecord = data[i]["COUResourceRecord"]
+                        var complete = 0;
+                        if (parseFloat(COUResourceRecord) > 0 && parseFloat(COUResources) > 0) {
+                             complete = (parseFloat(COUResourceRecord) / parseFloat(COUResources)) * 100;
+                        }
+                        html += '<li>';
+                        html += '<div class="fl list_img"  onclick="Event(' + data[i]["ID"] + ')" >';
+                        html += '<img src="' + data[i]["Cover"] + '" />';
+                        html += '</div>'; 
+                        html += '<div class="fl list_msg">';
+                        html += '<p>' + (i + 1) + '、' + data[i]["CurriculumName"] + '</p>';
+                        html += '<div class="list_courseware">';
+                        html += '共 <span class="redColor">' + data[i]["Section"] + '节</span> 课件';
+                        html += '</div>';
+                        html += '<div class="list_plan">';
+                        html += '已完成 <span class="redColor">' + complete.toFixed(2) + '%</span>';
+                        html += '</div>';
+                        html += '<div class="msg_txt">';
+                        html += data[i]["Synopsis"];
+                        html += '</div></div></li>';
+                    }
+
+                }
+
+                $("#tablelist").html(html);
+                bootstrapPaginator("#PaginatorLibrary", tb, Getindexlist);//分页
+            }
+        });
+    }
+    function Event(ID) {
+        window.location.href = "/TheoreticalKnowledge/Details?CurriculumID=" + ID;
+    }
+</script>

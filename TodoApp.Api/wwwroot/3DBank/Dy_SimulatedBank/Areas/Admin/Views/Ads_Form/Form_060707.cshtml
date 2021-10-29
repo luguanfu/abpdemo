@@ -1,0 +1,257 @@
+﻿@{
+                    ViewBag.Title = "Form_060707";
+                    Layout = "~/Views/Shared/_AdminLayoutIsNull.cshtml";
+                }
+               <script src="~/Js/Admin/AdminForm.js"></script>
+               <script src="~/Js/Admin/CaseManagement/AddDefaultValue.js"></script>
+               <form id="form1" onsubmit="return false" action="##" method="post">
+                  <input type="hidden" id="TaskId" name="TaskId" value="@Request["TaskId"]" />
+                  <input type="hidden" id="CustomerId" name="CustomerId" value="@Request["CustomerId"]" />
+                  <input type="hidden" id="FormId" name="FormId" value="@Request["FormId"]" />
+                  <input type="hidden" id="Types" name="Types" value="@Request["Types"]" />
+                <!--内容表单区域开始-->
+            <div class="tables bankmap">
+        <div class="con-map selected">
+            <span class="top-title">查询要素 <span id="dianji_con" style="cursor: pointer;">▼</span></span>
+            <table id="qv" class="con-map2-table qv">
+                <tbody>
+                    <tr>
+                        <td class="" style="width: 48px;">
+                            <label vl-keyup="wwww" vl-default="" id="label_qxz" vtitle="请选择" class="form-item text-left" vl-tipsid="label_qxz_tips" title="label_qxz">请选择</label>
+                            <div id="label_qxz_tips" class="tipsmsg"></div>
+                        </td>
+                        <td class="">
+                            <input type="radio" vl-keyup="wwww" vl-default="" name="qxz" id="redio_wsh" checked="checked" vtitle="未审核" class="form-item text-left" vl-tipsid="redio_wsh_tips" style="width: 30px;" title="redio_wsh" oncopy="return false" onpaste="return false" oncut="return false" value="">未审核
+                            <div id="redio_wsh_tips" class="tipsmsg"></div>
+                        </td>
+                        <td class="">
+                            <input type="radio" vl-keyup="wwww" vl-default="" name="qxz" id="redio_sd" vtitle="锁定" class="form-item text-left" vl-tipsid="redio_sd_tips" style="width: 30px;" title="redio_sd" oncopy="return false" onpaste="return false" oncut="return false" value="">锁定
+                            <div id="redio_sd_tips" class="tipsmsg"></div>
+                        </td>
+                        <td class="" style="width: 64px;">
+                            <label vl-keyup="wwww" vl-default="" id="label_jyqd" vtitle="交易渠道" class="form-item text-left on" vl-tipsid="label_jyqd_tips" title="label_jyqd">交易渠道</label>
+                            <div id="label_jyqd_tips" class="tipsmsg"></div>
+                        </td>
+                        <td rowspan="1" colspan="1" class="">
+                            <div class="slectstyle">
+                                <select vl-keyup="wwww" vl-default="" id="sle_jyqd" vtitle="交易渠道" class="form-item text-left" vl-tipsid="sle_jyqd_tips" style="width: 156px;" title="sle_jyqd" vl-slemodel="">
+                                    <option disabled="" style="background-color: blue; color: #fff;" value="" selected="selected">交易渠道值含义</option>
+                                    <option value="0">0 - 全部</option>
+                                    <option value="2">2 - 大额支付系统</option>
+                                    <option value="3">3 - 小额支付系统</option>
+                                </select>
+                                <input type="text" oncopy="return false" onpaste="return false" oncut="return false" style="width: 133px;">
+                            </div>
+                            <div id="sle_jyqd_tips" class="tipsmsg"></div>
+                        </td>
+                        <td rowspan="1" colspan="1" class="" style="width: 80px;">
+                            <label vl-keyup="wwww" vl-default="" id="label_fqhhh" vtitle="发起行行号" class="form-item text-left on" vl-tipsid="label_fqhhh_tips" title="label_fqhhh">发起行行号</label>
+                            <div id="label_fqhhh_tips" class="tipsmsg"></div>
+                        </td>
+                        <td rowspan="1" colspan="1" class="">
+                            <input type="text" oncopy="return false" oncut="return false" vl-keyup="wwww" vl-default="" id="txt_fqhhh" vtitle="发起行行号" class="form-item text-left" vl-tipsid="txt_fqhhh_tips" style="width: 150px;" title="txt_fqhhh" onpaste="return false">
+                            <div id="txt_fqhhh_tips" class="tipsmsg"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td rowspan="1" colspan="3" class="" style="width: 64px;">
+                            <label vl-keyup="wwww" vl-default="" id="label_hrrq" vtitle="汇入日期" class="form-item text-left on" vl-tipsid="label_hrrq_tips" title="label_hrrq">汇入日期</label>
+                            <div id="label_hrrq_tips" class="tipsmsg"></div>
+                        </td>
+                        <td rowspan="1" colspan="4" class="">
+                            <input type="text" class="date form-item text-left" vl-keyup="wwww" vl-default="" id="date_hrrq" vtitle="汇入日期" vl-tipsid="date_hrrq_tips" style="width: 156px;" oncopy="return false" onpaste="return false" oncut="return false"><img onclick="WdatePicker({el:'date_hrrq',dateFmt:'yyyyMMdd'})" src="/js/My97DatePicker/skin/datePicker.gif" align="absmiddle" style="width:16px;height:22px;margin-left:6px;">
+                            <div id="date_hrrq_tips" class="tipsmsg"></div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <input type="hidden" class="hidmainwidth" value="1000" oncopy="return false" onpaste="return false" oncut="return false">
+        <div class="foot  text-center">
+            <!--<button vl-submit="true" id="btnsubmit">确定</button>-->
+            <button id="search">查询</button>
+            <button class="ed-clear">清空</button>
+        <button type="button" onclick="FormReset()">重置</button>
+                       <button type="button " style="margin-right: 0px; " vl-submit="true" id="btnsubmit" onclick="SubmitForm()"> 提交</button></div>
+
+        <div class="l-box js"> 
+            <table id="aaa" cellspacing="0" cellpadding="0">
+                <tbody><tr class="bold">
+                    <td>支付渠道</td>
+                    <td>汇款行行号</td>
+                    <td>汇款行名称</td>
+                    <td>接收行行号</td>
+                    <td>接收行名称</td>
+                    <td>付款人账号</td>
+                    <td>付款人名称</td>
+                    <td>收款人账号</td>
+                    <td>收款人名称</td>
+                    <td>汇款金额</td>
+                    <td>业务类型</td>
+                </tr>
+                <tr index="1">
+                    <td>2-大额支付...</td>
+                    <td>10571538...</td>
+                    <td>中国建设银行...</td>
+                    <td>40271534...</td>
+                    <td>贵定县农村...</td>
+                    <td>52001656...</td>
+                    <td>贵定县国库...</td>
+                    <td>24690100...</td>
+                    <td>贵定县财政局</td>
+                    <td>10,525,61...</td>
+                    <td>A100-普通...</td>
+                </tr>
+                <tr index="2">
+                    <td>2-大额支付...</td>
+                    <td>30829000...</td>
+                    <td>招商银行上...</td>
+                    <td>31470101...</td>
+                    <td>贵阳农村商...</td>
+                    <td>12191725...</td>
+                    <td>小蜜蜂融资...</td>
+                    <td>24610100...</td>
+                    <td>贵州农信测...</td>
+                    <td>173,400.00</td>
+                    <td>A100-普通...</td>
+                </tr> 
+            </tbody></table>
+        </div>
+        <div class="l-box sd"> 
+            <table id="bbb" cellspacing="0" cellpadding="0">
+                <tbody><tr class="bold">
+                    <td>支付渠道</td>
+                    <td>汇款行行号</td>
+                    <td>汇款行名称</td>
+                    <td>接收行行号</td>
+                    <td>接收行名称</td>
+                    <td>付款人账号</td>
+                    <td>付款人名称</td>
+                    <td>收款人账号</td>
+                    <td>收款人名称</td>
+                    <td>汇款金额</td>
+                    <td>业务类型</td>
+                </tr>
+                <tr index="1">
+                    <td>2-大额支付...</td>
+                    <td>30829000...</td>
+                    <td>招商银行上...</td>
+                    <td>31470101...</td>
+                    <td>贵阳农村商业银...</td>
+                    <td>12191725...</td>
+                    <td>小蜜蜂融资</td>
+                    <td>24610100...</td>
+                    <td>贵州农信测...</td>
+                    <td>173,400.00</td>
+                    <td>A100-普通...</td>
+                </tr> 
+            </tbody></table>
+        </div>
+
+        <div class="l-box" style="display:block;">
+            <table id="bbb" cellspacing="0" cellpadding="0">
+                <tbody><tr class="bold">
+                    <td>支付渠道</td>
+                    <td>汇款行行号</td>
+                    <td>汇款行名称</td>
+                    <td>接收行行号</td>
+                    <td>接收行名称</td>
+                    <td>付款人账号</td>
+                    <td>付款人名称</td>
+                    <td>收款人账号</td>
+                    <td>收款人名称</td>
+                    <td>汇款金额</td>
+                    <td>业务类型</td>
+                </tr> 
+            </tbody></table>
+        </div>
+    </div>
+<script src="~/Js/Student/GetDefaultValue/js/common.bank.ed.js"></script>
+<script src="~/Js/Student/GetDefaultValue/js/ed.common.js"></script>
+@*<script type="text/javascript">
+        $(function () {
+            //checkOpener();
+            render();
+            loadPrevData(); 
+            var shlx = getQueryString("shlx");
+            if (shlx == "wsh") {
+                $("#btn_js").attr("disabled", "disabled").attr("style", "color:#cccccc");
+                $("#btn_sd").removeAttr("disabled").removeAttr("style");
+                $("#btn_js").unbind("click");
+            } else if (shlx == "sd") {
+                $("#btn_sd").attr("disabled", "disabled").attr("style", "color:#cccccc");
+                $("#btn_js").removeAttr("disabled").removeAttr("style");
+                $("#btn_sd").unbind("click");
+            }
+
+            $("#search").click(function () {
+                if ($("#redio_wsh").is(":checked")) {
+                    $(".sd").hide();
+                    $(".js").show();
+                }
+                if ($("#redio_sd").is(":checked")) {
+                    $(".sd").show();
+                    $(".js").hide();
+                } 
+                $(".l-box").last().hide();
+
+                var controls = $("div[data-yw=1]").find(".form-item");
+                var errormsg = "";
+                for (var i = 0; i < controls.length; i++) {
+                    var result = checkRegex($(controls[i]).get(0));
+                    if (!result.isCheck) {
+                        errormsg += result.errormsg;
+                    }
+                }
+                if (errormsg != "") {
+                    layer.alert(errormsg);
+                    return;
+                }
+                var data = lineEdPrevYwData(controls);
+                sessionStorage.PrevData = data;
+
+            });
+
+            $("#aaa tr").dblclick(function () {
+                var row_index = $(this).attr("index");
+                edNextNewWin("/user/indexone?row=" + row_index + "&shlx=wsh&", "2");
+            });
+
+            $("#bbb tr").dblclick(function () {
+                var row_index = $(this).attr("index");
+                edNextNewWin("/user/indexone?row=" + row_index + "&shlx=sd&", "2");
+            });
+
+            $("#btn_sd").click(function () {
+                layer.confirm("是否进行锁定，请确认！", function () {
+                    layer.alert("操作成功", function () {
+                        var row_index = getQueryString("row");
+                        window.opener.closecall("#aaa", row_index);
+                        window.opener.authCloseCall("submit");
+                        window.close();
+                    });
+
+                });
+            });
+
+            $("#btn_js").click(function () {
+                layer.confirm("是否进行解锁，请确认！", function () {
+                    layer.alert("操作成功", function () {
+                        var row_index = getQueryString("row");
+                        window.opener.closecall("#bbb", row_index);
+                        window.opener.authCloseCall("submit");
+                        window.close();
+                    });
+
+                });
+            });
+        });
+    </script>*@
+<link href="~/Js/Student/GetDefaultValue/js/common.bank.ed.css" rel="stylesheet" />
+<link href="~/Js/Student/GetDefaultValue/js/ed.common.css" rel="stylesheet" />
+<style type="text/css">
+    #fake_btnsubmit {
+     display:none;
+    }
+</style>
+              </form>

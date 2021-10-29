@@ -1,0 +1,62 @@
+﻿@{
+    
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewData["nvc"] = "系统参数";
+}
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-sm-12">
+        <ol class="breadcrumb">
+            <li>
+                <h2>系统管理</h2>
+            </li>
+            <li>
+                <a href="#">参数管理</a>
+            </li>
+            <li>
+
+                <strong>业务授权设置</strong>
+            </li>
+        </ol>
+    </div>
+</div>
+<!--面包屑位置结束-->
+<!--主体内容开始-->
+<div class="ibox-content">
+    <div class="row">
+        <div class="col-sm-3">
+            <div class="input-group">
+                <input type="text" placeholder="请输入业务名称" id="P_Name" class="form-control">
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-primary" onclick="getList()">搜索</button>
+                </span>
+            </div>
+        </div>
+        
+    </div>
+    <div class="row  m-t-sm ">
+        <div class="col-sm-12">
+            <table class="table text-center table-bordered ">
+                <thead>
+                    <tr>
+                        <th width="60" class="text-center">序号</th>
+                        <th width="80" class="text-center">
+                            <input type="Checkbox" class="i-checks checkbox-all">
+                        </th>
+                        <th class="text-center">业务名</th>
+                        <th class="text-center">业务编号</th>
+                        <th class="text-center">设置项</th>
+                        <th class="text-center">操作</th>
+                    </tr>
+                </thead>
+                <tbody class="new_table text-center" id="tablelist"></tbody>
+            </table>
+
+        </div>
+        <!--分页开始-->
+        <div class="row text-center" id="PaginatorLibrary">
+        </div>
+        <!--分页结束-->
+    </div>
+
+</div>
+<script src="~/Js/Admin/SystemParameter/Empowe.js"></script>

@@ -1,0 +1,745 @@
+﻿@{
+    ViewBag.Title = "学员练习中心";
+}
+<!DOCTYPE html>
+<link rel="stylesheet" type="text/css" href="~/CSS/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="~/CSS/font-awesome-4.7.0/css/font-awesome.min.css" />
+<link rel="stylesheet" type="text/css" href="~/CSS/animate.css" />
+<link rel="stylesheet" type="text/css" href="~/CSS/public3D.css" />
+<link rel="stylesheet" type="text/css" href="~/CSS/3Dstudent.css" />
+
+<link href="~/CSS/public3D.css" rel="stylesheet" />
+
+<style type="text/css">
+
+    .body_map {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        height: 100vmin;
+    }
+
+    .bodybg {
+        width: 100%;
+        height: 100%;
+    }
+    /*介质开始*/
+    /*介质开始*/
+
+    .jiezhi {
+        position: absolute;
+        cursor: pointer;
+        /*background-color:rgba(0,0,0,0.5);*/
+        border: none !important;
+    }
+
+    .jiezhi_dyj {
+        border: 1px solid red;
+        width: 18%;
+        height: 16%;
+        top: 57%;
+    }
+
+    .jiezhi_wjj {
+        border: 1px solid green;
+        width: 11%;
+        height: 36%;
+        top: 61%;
+    }
+
+    .jiezhi_diannao {
+        border: 1px solid yellow;
+        width: 19%;
+        height: 27%;
+        left: 19%;
+        top: 41%;
+    }
+
+    .jiezhi_dianhua {
+        border: 1px solid slateblue;
+        width: 10%;
+        height: 10%;
+        left: 13%;
+        top: 72%;
+    }
+
+    .jiezhi_shuaka {
+        border: 1px solid magenta;
+        width: 9%;
+        height: 7%;
+        left: 31%;
+        top: 71%;
+        transform: rotate(-21deg);
+        -ms-transform: rotate(-21deg);
+        -moz-transform: rotate(-21deg);
+        -webkit-transform: rotate(-21deg);
+        -o-transform: rotate(-21deg);
+    }
+
+    .jiezhi_ycj {
+        border: 1px solid darkblue;
+        width: 12%;
+        height: 15%;
+        left: 65%;
+        top: 61%;
+    }
+
+    .jiezhi_zbj {
+        border: 1px solid sienna;
+        width: 9%;
+        height: 23%;
+        left: 78%;
+        top: 52%;
+    }
+
+    .jiezhi_yz {
+        border: 1px solid papayawhip;
+        width: 10%;
+        height: 8%;
+        left: 83%;
+        top: 74%;
+    }
+
+    .jiezhi_kx {
+        border: 1px solid greenyellow;
+        width: 12%;
+        height: 17%;
+        left: 88%;
+        top: 57%;
+    }
+
+    .jiezhi_sfzyz {
+        border: 1px solid blueviolet;
+        width: 9%;
+        height: 18%;
+        left: 41%;
+        top: 57%;
+    }
+
+    #mybrain {
+        height: 100%;
+        background-color: red;
+        background: url(../img/img_mybrain.png) no-repeat top;
+        background-size: 100% 100%;
+        color: white;
+    }
+
+    .layer-mybrain {
+        background: none !important;
+    }
+
+    .diannao_con {
+        margin: auto;
+        width: 98%;
+        margin-top: 3%;
+        height: 60vmin;
+        background: white;
+    }
+    /*.zhiyin4 {
+                display: block;
+                position: absolute;
+                width: 6%;
+                height: 8%;
+                background: url(../img/shouzhi.gif) center no-repeat;
+                background-size: 100% 100%;
+                left: 29%;
+                top: 47%;
+                z-index: 999999;
+            }*/
+
+    .btn_next {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+    }
+</style>
+
+
+<input type="hidden" id="TotalResultId" value="@ViewBag.ErModel.TotalResultId" />
+<input type="hidden" id="ExamId" value="@ViewBag.ErModel.ExamId" />
+<input type="hidden" id="TaskId" value="@ViewBag.ErModel.TaskId" />
+<input type="hidden" id="CustomerId" value="@ViewBag.ErModel.CustomerId" />
+<input type="hidden" id="LinkId" value="@ViewBag.ErModel.LinkId" />
+<input type="hidden" id="Satisfaction" value="@ViewBag.ErModel.Satisfaction" />
+
+
+<div class="body_map">
+
+    <!--当前模式-->
+    <div class="moshi_map">
+        当前模式：<span>@ViewBag.ErModel.Type_AllString</span>
+        <input type="hidden" id="Type_All" value="@ViewBag.ErModel.Type_All" />
+    </div>
+
+
+    <!--系统设置区域-->
+    <div class="shezhi_map">
+        <ul class="shezhi_ul">
+            <li>
+                <img src="/img/public3D/sy_ico_tuichu.png" />
+                <label class="shuxian"></label>
+            </li>
+            @if (ViewBag.ErModel.Type_All == "3" && ViewBag.ErModel.UserType == "3")
+            {
+                <li>
+                    <img src="/img/public3D/sy_ico_shezhi.png" />
+                    <label class="shuxian"></label>
+                </li>
+                <li onclick="xxjd();">
+                    <img src="/img/public3D/sy_ico_xuexi.png" />
+                </li>
+            }
+            else
+            {
+                <li>
+                    <img src="/img/public3D/sy_ico_shezhi.png" />
+                </li>
+            }
+        </ul>
+    </div>
+    <!--设置三块内容-->
+    <div class="shezhi_con">
+        <!--退出实训-->
+        <div class="sehzhi_tab">
+            <div class="xt_out_map">
+                <div class="xt_out_con">
+                    <img class="tc_jiao" src="../img/public3D/sy_ico_sanjiao.png" />
+                    <div class="tc_name">
+                        退出实训
+                    </div>
+                    <ul class="tcxt_ul">
+                        <li onclick="ExitTask()">退出</li>
+                        @if (ViewBag.ErModel.UserType == "3")
+                        {
+                            <li onclick="SubmitTask()">直接结算成绩</li>
+                        }
+                    </ul>
+                    <div>
+                        <button class="tcxt_gb" type="button">关闭</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="sehzhi_tab">
+            <div class="cssz_map">
+                <div class="cssz_con">
+                    <img class="cssz_jiao" src="../img/public3D/sy_ico_sanjiao.png" />
+                    <div class="cssz_name">
+                        环境设置
+                    </div>
+                    <ul class="cssz_ul">
+                        <li>
+                            <span>角色配音</span>
+                            <label class="switch">
+                                <input type="checkbox" name="SwitchSet" data-name="setpeiyin" checked>
+                                <div class="slider round"></div>
+                            </label>
+                        </li>
+                        <li>
+                            <span>操作音效</span>
+                            <label class="switch">
+                                <input type="checkbox" name="SwitchSet" data-name="setyinxiao">
+                                <div class="slider round"></div>
+                            </label>
+                        </li>
+                        <li>
+                            <span>背景音乐</span>
+                            <label class="switch">
+                                <input type="checkbox" name="SwitchSet" data-name="setyinyue">
+                                <div class="slider round"></div>
+                            </label>
+                        </li>
+                        <li>
+                            <span>过场动画</span>
+                            <label class="switch">
+                                <input type="checkbox" name="SwitchSet" data-name="setdonghua">
+                                <div class="slider round"></div>
+                            </label>
+                        </li>
+                    </ul>
+                    <div>
+                        <button class="cssz_zhiyin" type="button" onclick="OpenGuide()">操作指引</button>
+                    </div>
+                    <div>
+                        <button class="cssz_gb" type="button">关闭</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--系统设置区域结束-->
+    <!--底部右下角按钮-->
+    <div class="bot_btn_map">
+        @if (ViewBag.ErModel.LinkId == "1")
+        {
+            <div title="接待客户" class="bot_btn bot1" onclick="NextPart()"></div>
+        }
+    </div>
+    <!--底部右下角按钮结束-->
+    <!--右上角信息样式-->
+    <div class="xinxi_map">
+        <div class="shu_map">
+            <div class="num_rw">
+                任务描述:<span>1</span>
+            </div>
+            <div onclick="rwslmap(this);" title="已完成任务数" data-open="on" class="dqnum_rw" id="currTaskCount"><img src="~/Img/public3D/clicSHOU.png" /></div>
+            @*<div title="已完成任务数" class="dqnum_rw">0</div>*@
+            <div class="khmyd">当前客户满意度</div>
+            <div class="khmyd_num">@ViewBag.ErModel.Satisfaction</div>
+        </div>
+        <div class="dqjdu_map">
+            当前任务进度 <button class="jd_btn"></button>
+        </div>
+        <div id="jd_con" class="jd_con">
+            @if (ViewBag.ErModel.LinkId == "1")
+            {
+                <div class="jd_line">
+                    <div class="jd_left">
+                        开工
+                        @*<div class="ztweizhi zt_lan"></div>*@
+                        <div class="ztweizhi " name="jindutiao" data-jindu="1"></div>
+                    </div>
+                    <div class="jd_right"></div>
+                </div>
+            }
+            else if (ViewBag.ErModel.LinkId == "17")
+            {
+                <div class="jd_line">
+                    <div class="jd_left">
+                        完工
+                        @*<div class="ztweizhi zt_lan"></div>*@
+                        <div class="ztweizhi " name="jindutiao" data-jindu="17"></div>
+                    </div>
+                    <div class="jd_right"></div>
+                </div>
+            }
+
+
+
+        </div>
+    </div>
+    <!--右上角信息样式结束-->
+    <!--左侧物品栏-->
+    <div id="wupinlan" class="wupin_map" hidden>
+        <div id="wupin_con" class="wupin__con">
+            <div class="zanwu">暂无物品</div>
+        </div>
+        <div id="wupin_btn" class="wupin_btn">物<br />品<br />栏</div>
+    </div>
+    <!--左侧物品栏结束-->
+
+
+
+
+    <div class="videos_res">
+        <!-- autoplay="autoplay"自动播放 loop="loop"控制循环播放-->
+        @*<video id="flash" preload="metadata" autoplay onended="showImg()">
+                <source src="../flash/dome.mp4" type="video/mp4">
+            </video>*@
+
+        <img class="bodybg" src="~/Images/img_gaogui.jpg" />
+
+
+    </div>
+
+    @*<img class="bodybg" src="~/Images/img_gaogui.jpg" />*@
+    @*<div class="zhiyin4"></div>*@
+
+
+    <!--各个介质 media-->
+    <!--电脑-->
+    <div onclick="mybrain();" class="jiezhi  jiezhi_diannao"></div>
+
+
+</div>
+
+<!--操作指引-->
+<div id="zhiyincao" style="display: none;">
+
+    <div onclick="layerCloseZdy(this)" class="btn_guanti"></div>
+    <button id="BtnGuidePrev" onclick="GuidePrev();" class="btn btn-primary btn_shang">上一步</button>
+    <button id="BtnGuideNext" onclick="GuideNext();" class="btn btn-info btn_xia">下一步</button>
+
+    <img id="buzhoutu" style="width: 100%;height: 100%;" src="" />
+</div>
+
+
+<div id="mybrain" style="display: none;">
+    <div class="col-sm-12">
+        <div class="diannao_con">
+            <iframe src="/ServiceRecord/Index?FormType=1&TotalResultId=@ViewBag.ErModel.TotalResultId&ExamId=@ViewBag.ErModel.ExamId&TaskId=@ViewBag.ErModel.TaskId&CustomerId=@ViewBag.ErModel.CustomerId&LinkId=@ViewBag.ErModel.LinkId&Satisfaction=@ViewBag.ErModel.Satisfaction"
+                    style="width:100%;height:530px;margin:auto;"></iframe>
+
+        </div>
+    </div>
+</div>
+
+
+<!--学习进度弹窗-->
+<div id="xxjd" style="display: none;">
+    <div class="moshi_con">
+        <!--弹窗头部标题加关闭区域-->
+        <div class="pub_titele">
+            学习进度
+            <img class="ms_xxjd_gb" src="../img/public3D/ms_ico_guanbi.png" />
+        </div>
+
+        <div class="stu_jindu_map">
+            <ul class="stu_jindu">
+                <li class="stu_jd  jd1 renxuan" data_value="1"></li>
+                <li class="stu_jd  jd2 " data_value="2"></li>
+                <li class="stu_jd  jd3 " data_value="3"></li>
+                <li class="stu_jd  jd4 " data_value="4"></li>
+            </ul>
+
+
+            <div class="stu_jindu_right">
+                <!-----课程目录列表----->
+                <div>
+                    <p class="list_title">课程目录</p>
+                    <!---目录--->
+                    <div class="list_tabbar" id="tablelist">
+                        <!--章节模快1-->
+                        <div>
+                            <p class="tabbar_name">
+                                <span>第一章、典阅银行模拟真实训</span>
+                                <img src="../img/z_oval.png" />
+                                <span class="plans">
+                                    已观看<span>40%</span>
+                                </span>
+                            </p>
+                            <div class="tabbar_knobble">
+                                <p class="knobble_name">
+                                    <span class="fl"><span class="yikai">【已开课】</span> 第一节：银行工作中的沟通</span>
+                                    <span class="pack_down pack_tab fr">收起</span>
+                                </p>
+                                <div class="knobble_txt disBlock">
+                                    <div class="leixing">课件学习</div>
+                                    <p>
+                                        <span class="videoColor">视频</span>
+                                        <a href="study_kechen.html">跨境电商中的沟通</a>
+                                        <span class="study_learn"><img src="../img/ico_wan.png" /></span>
+                                    </p>
+                                    <p>
+                                        <span class="pptColor">PPT</span>
+                                        <a href="study_kechen.html">跨境电商中的沟通</a>
+                                        <span class="study_learn"><img src="../img/ico_weiwan.png" /></span>
+                                    </p>
+                                    <div class="leixing">案例实操</div>
+                                    <p>
+                                        <span class="anliColor">案例</span>
+                                        <a href="study_kechen.html">开工管理实操案例</a>
+                                        <span class="study_learn"><img src="../img/ico_wan.png" /></span>
+                                    </p>
+                                    <p>
+                                        <span class="anliColor">案例</span>
+                                        <a href="study_kechen.html">模拟银行高柜业务实操案例</a>
+                                        <span class="study_learn"><img src="../img/ico_wan.png" /></span>
+                                    </p>
+                                    <div class="leixing">课后习题</div>
+                                    <p>
+                                        <span class="xitiColor">习题</span>
+                                        <a href="study_kechen.html">新员工基本职业素养练习题</a>
+                                        <span class="study_learn"><img src="../img/ico_wan.png" /></span>
+                                    </p>
+                                    <p>
+                                        <span class="xitiColor">习题</span>
+                                        <a href="study_kechen.html">单位开会存款过程中需要注意的事项</a>
+                                        <span class="study_learn"><img src="../img/ico_weiwan.png" /></span>
+                                    </p>
+                                    <p>
+                                        <span class="xitiColor">习题</span>
+                                        <a href="study_kechen.html">如何做好银行大厅突发事件的处理</a>
+                                        <span class="study_learn"><img src="../img/ico_weiwan.png" /></span>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="tabbar_knobble">
+                                <p class="knobble_name">
+                                    <span class="fl"><span class="weikai">【未开课】</span> 第二节：单位开户业务及单位存款业务办理要点</span>
+                                    <span class="pack_up pack_tab fr">展开</span>
+                                </p>
+                                <div class="knobble_txt">
+                                    <div class="leixing">课件学习</div>
+                                    <p>
+                                        <span class="videoColor">视频</span>
+                                        <a href="study_kechen.html">跨境电商中的沟通</a>
+                                        <span class="study_learn"><img src="../img/ico_weiwan.png" /></span>
+                                    </p>
+                                    <p>
+                                        <span class="pptColor">PPT</span>
+                                        <a href="study_kechen.html">跨境电商中的沟通</a>
+                                        <span class="study_learn"><img src="../img/ico_wan.png" /></span>
+                                    </p>
+                                    <div class="leixing">案例实操</div>
+                                    <p>
+                                        <span class="anliColor">案例</span>
+                                        <a href="study_kechen.html">开工管理实操案例</a>
+                                        <span class="study_learn"><img src="../img/ico_weiwan.png" /></span>
+                                    </p>
+                                    <p>
+                                        <span class="anliColor">案例</span>
+                                        <a href="study_kechen.html">模拟银行高柜业务实操案例</a>
+                                        <span class="study_learn"><img src="../img/ico_wan.png" /></span>
+                                    </p>
+                                    <div class="leixing">课后习题</div>
+                                    <p>
+                                        <span class="xitiColor">习题</span>
+                                        <a href="study_kechen.html">新员工基本职业素养练习题</a>
+                                        <span class="study_learn"><img src="../img/ico_weiwan.png" /></span>
+                                    </p>
+                                    <p>
+                                        <span class="xitiColor">习题</span>
+                                        <a href="study_kechen.html">单位开会存款过程中需要注意的事项</a>
+                                        <span class="study_learn"><img src="../img/ico_wan.png" /></span>
+                                    </p>
+                                    <p>
+                                        <span class="xitiColor">习题</span>
+                                        <a href="study_kechen.html">如何做好银行大厅突发事件的处理</a>
+                                        <span class="study_learn"><img src="../img/ico_weiwan.png" /></span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <!--章节二-->
+                        <div>
+                            <p class="tabbar_name">
+                                <span>第二章、银行单据打印过程中遇到的问题如何处理</span>
+                                <img src="../img/z_oval.png" />
+                                <span class="plans">
+                                    已观看<span>40%</span>
+                                </span>
+                            </p>
+                            <div class="tabbar_knobble">
+                                <p class="knobble_name">
+                                    <span class="fl"><span class="yikai">【已开课】</span> 第一节：如何使用单据打印机</span>
+                                    <span class="pack_up pack_tab fr">展开</span>
+                                </p>
+                                <div class="knobble_txt">
+                                    <div class="leixing">课件学习</div>
+                                    <p>
+                                        <span class="videoColor">视频</span>
+                                        <a href="study_kechen.html">跨境电商中的沟通</a>
+                                        <span class="study_learn"><img src="../img/ico_wan.png" /></span>
+                                    </p>
+                                    <p>
+                                        <span class="pptColor">PPT</span>
+                                        <a href="study_kechen.html">跨境电商中的沟通</a>
+                                        <span class="study_learn"><img src="../img/ico_weiwan.png" /></span>
+                                    </p>
+                                    <div class="leixing">案例实操</div>
+                                    <p>
+                                        <span class="anliColor">案例</span>
+                                        <a href="study_kechen.html">开工管理实操案例</a>
+                                        <span class="study_learn"><img src="../img/ico_wan.png" /></span>
+                                    </p>
+                                    <p>
+                                        <span class="anliColor">案例</span>
+                                        <a href="study_kechen.html">模拟银行高柜业务实操案例</a>
+                                        <span class="study_learn"><img src="../img/ico_wan.png" /></span>
+                                    </p>
+                                    <div class="leixing">课后习题</div>
+                                    <p>
+                                        <span class="xitiColor">习题</span>
+                                        <a href="study_kechen.html">新员工基本职业素养练习题</a>
+                                        <span class="study_learn"><img src="../img/ico_wan.png" /></span>
+                                    </p>
+                                    <p>
+                                        <span class="xitiColor">习题</span>
+                                        <a href="study_kechen.html">单位开会存款过程中需要注意的事项</a>
+                                        <span class="study_learn"><img src="../img/ico_weiwan.png" /></span>
+                                    </p>
+                                    <p>
+                                        <span class="xitiColor">习题</span>
+                                        <a href="study_kechen.html">如何做好银行大厅突发事件的处理</a>
+                                        <span class="study_learn"><img src="../img/ico_weiwan.png" /></span>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="tabbar_knobble">
+                                <p class="knobble_name">
+                                    <span class="fl"><span class="weikai">【未开课】</span> 第二节：需要单独盖章的打印单据有哪些？</span>
+                                    <span class="pack_up pack_tab fr">展开</span>
+                                </p>
+                                <div class="knobble_txt">
+                                    <div class="leixing">课件学习</div>
+                                    <p>
+                                        <span class="videoColor">视频</span>
+                                        <a href="study_kechen.html">跨境电商中的沟通</a>
+                                        <span class="study_learn"><img src="../img/ico_weiwan.png" /></span>
+                                    </p>
+                                    <p>
+                                        <span class="pptColor">PPT</span>
+                                        <a href="study_kechen.html">跨境电商中的沟通</a>
+                                        <span class="study_learn"><img src="../img/ico_wan.png" /></span>
+                                    </p>
+                                    <div class="leixing">案例实操</div>
+                                    <p>
+                                        <span class="anliColor">案例</span>
+                                        <a href="study_kechen.html">开工管理实操案例</a>
+                                        <span class="study_learn"><img src="../img/ico_weiwan.png" /></span>
+                                    </p>
+                                    <p>
+                                        <span class="anliColor">案例</span>
+                                        <a href="study_kechen.html">模拟银行高柜业务实操案例</a>
+                                        <span class="study_learn"><img src="../img/ico_wan.png" /></span>
+                                    </p>
+                                    <div class="leixing">课后习题</div>
+                                    <p>
+                                        <span class="xitiColor">习题</span>
+                                        <a href="study_kechen.html">新员工基本职业素养练习题</a>
+                                        <span class="study_learn"><img src="../img/ico_weiwan.png" /></span>
+                                    </p>
+                                    <p>
+                                        <span class="xitiColor">习题</span>
+                                        <a href="study_kechen.html">单位开会存款过程中需要注意的事项</a>
+                                        <span class="study_learn"><img src="../img/ico_wan.png" /></span>
+                                    </p>
+                                    <p>
+                                        <span class="xitiColor">习题</span>
+                                        <a href="study_kechen.html">如何做好银行大厅突发事件的处理</a>
+                                        <span class="study_learn"><img src="../img/ico_weiwan.png" /></span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+
+<!--当前任务弹窗-->
+<div class="rwsl_map">
+    <div class="rwsl_con_map">
+        <div class="xt_out_con">
+            <div class="tc_name">
+                当前剩余任务
+            </div>
+            <div class="renwu_num">
+                <p>开工管理：<span class="lanse" id="syrw_kaigong"></span></p>
+
+                <p>待处理客户：<span class="lanse" id="syrw_daichulikehu"></span> </p>
+
+                <p>完工管理：<span class="lanse" id="syrw_wangong"></span> </p>
+            </div>
+
+            <div>
+                <button class="rwsl_gb" type="button">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<script src="~/Scripts/jquery-3.2.0.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<script src="~/Scripts/layer/layer.js"></script>
+<script src="~/Js/Student/StuHome/CjPublic.js"></script>
+<script src="~/Js/Student/HallProcess/jindutiao.js"></script>
+<script src="~/Js/Student/StuHome/KaigongCj.js"></script>
+<script src="~/Js/Student/StuHome/ShengyuRenwu.js"></script>
+<script src="~/Js/Student/StuHome/AudioManage.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $(".jd_btn").click(function () {
+            $("#jd_con").slideToggle("slow");
+            $(this).toggleClass("qie");
+            return false;
+        });
+
+    });
+    function NextPart() {
+
+        $.ajax({
+            type: "POST",//方法类型
+            dataType: "text",//预期服务器返回的数据类型
+            url: "/StuHome/KaigongToTingtang",//url
+            data: { TRId: $("#TotalResultId").val(), ExamId: $("#ExamId").val(), TaskId: $("#TaskId").val(), CustomerId: $("#CustomerId").val(), LinkId: $("#LinkId").val(), },
+            async: false,
+            success: function (result) {
+
+                if (result == "1") {
+                    layer.closeAll();//关闭所有弹出框
+                    window.location.href = `/StuHome/StudentHome?TotalResultId=${$("#TotalResultId").val()}&TaskId=${$("#TaskId").val()}`;
+
+                }
+                else if (result == "-1") {
+                    layer.closeAll();//关闭所有弹出框
+                    layer.msg('执行失败', { icon: 2 });
+                } else if (result == "-2") {
+                    layer.closeAll();//关闭所有弹出框
+                    layer.msg('您没有此环节的操作权限！', { icon: 2 });
+                } else {
+                    layer.closeAll();//关闭所有弹出框
+                    layer.msg(result, { icon: 2 });
+                }
+            },
+            error: function (result) {
+                layer.closeAll();//关闭所有弹出框
+                layer.msg(result, { icon: 2 });
+            }
+        });
+
+
+
+    }
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $(".jd_btn").click(function () {
+            $("#jd_con").slideToggle("slow");
+            $(this).toggleClass("qie"); return false;
+        });
+        showImg();
+
+
+    });
+
+
+    ////介质我的电脑桌面
+    //function mybrain() {
+    //    layer.open({
+    //        title: '我的电脑',
+    //        //btn: ['确定'],
+    //        area: ['1000px', 'auto'],
+    //        type: 1,
+    //        skin: 'layui-layer-lan', //样式类名
+    //        closeBtn: 1, //显示关闭按钮
+    //        anim: 2,
+    //        shadeClose: false, //开启遮罩关闭
+    //        content: $("#mybrain")
+    //    });
+    //}
+
+    function mybrain() {
+        var TotalResultId = $("#TotalResultId").val();
+        var ExamId = $("#ExamId").val();
+        var TaskId = $("#TaskId").val();
+        var CustomerId = $("#CustomerId").val();
+        var LinkId = $("#LinkId").val();
+        var Satisfaction = $("#Satisfaction").val();
+
+        window.open("/ServiceRecord/Index?FormType=1&TotalResultId=" + TotalResultId + "&ExamId=" + ExamId + "&TaskId=" + TaskId + "&CustomerId=" + CustomerId + "&LinkId=" + LinkId + "&Satisfaction=" + Satisfaction + "");
+    }
+    function showImg() {
+        $("#bj").show();
+        $(".btn_class").show();
+        $("#flash").hide();
+
+    }
+</script>
+
+<script src="~/Js/Student/StuHome/OperationGuide.js"></script>
+<script src="~/Js/CheckTimeOut.js"></script>

@@ -1,0 +1,108 @@
+﻿<!--经办人信息-->
+<div class="main-container">
+    <div class="search-info form-horizontal">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-3 control-label">证件种类</label>
+                    <div class="col-sm-6">
+                        <select class="form-control" id="sle_certificateKind" name="sle_certificateKind"></select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-3 control-label">证件号码</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control input-sm" id="txt_idCode" name="txt_idCode">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-3 control-label">经办人姓名</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control input-sm" id="txt_operatorName" name="txt_operatorName">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-3 control-label">证件有效期</label>
+                    <div class="col-sm-6" style="display: flex;">
+                        <div>
+                            <input type="date" class="form-control input-sm" id="date_certificateValidity" max="9999-12-31" name="date_certificateValidity">
+                        </div>                        
+                        <div>
+                            <input type="date" class="form-control input-sm" id="date_certificateValidity1" max="9999-12-31" name="date_certificateValidity1">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-3 control-label">性别</label>
+                    <div class="col-sm-6">
+                        <select class="form-control" id="sle_sex" name="sle_sex"></select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-3 control-label">经办人电话</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control input-sm" id="txt_operatorPhone" name="txt_operatorPhone">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-3 control-label">国籍</label>
+                    <div class="col-sm-6">
+                        <select class="form-control" id="sle_nationality" name="sle_nationality"></select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-3 control-label">职务</label>
+                    <div class="col-sm-6">
+                        <select class="form-control" id="sle_post" name="sle_post"></select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-9">
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-2 control-label">地址</label>
+                    <div class="col-sm-6">
+                        <input type="text" class="form-control input-sm" id="txt_address" name="txt_address">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-3 control-label">核查结果</label>
+                    <div class="col-sm-6">
+                        <select class="form-control" id="sle_results" name="sle_results"></select>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    setOptions(['certificateKind', 'sex', 'nationality', 'results','post']);
+    function doSubmit() {
+        layer.msg('保存成功', { icon: 1, time: 1000 }, function () {
+            parent.layer.closeAll();
+        });
+    }
+</script>

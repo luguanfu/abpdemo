@@ -1,0 +1,254 @@
+﻿@{
+    
+    Layout = "~/Views/Shared/_StudentLayout.cshtml";
+    ViewData["nvc"] = "理论学习";
+}
+<!DOCTYPE html>
+<style>
+    /*视频播放区域样式*/
+    .play_falsh {
+        margin-bottom: 10px;
+        position: relative;
+        text-align: center;
+        /*height: 65vmin;*/
+        background-color: #131212;
+        width: 1000px;
+        margin: auto;
+        margin-bottom: 10px;
+        margin-top:15px;
+    }
+
+    .play_flash_top {
+        position: absolute;
+        top: 0px;
+        height: 40px;
+        line-height: 40px;
+        width: 100%;
+        color: white;
+        font-size: 16px;
+        text-indent: 25px;
+        background-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .play_flash_bottom {
+        position: absolute;
+        bottom: 0px;
+        height: 40px;
+        line-height: 40px;
+        width: 100%;
+        color: white;
+        font-size: 16px;
+        text-indent: 25px;
+        background-color: rgba(255, 255, 255, 0.2);
+    }
+
+        .play_flash_bottom img {
+            cursor: pointer;
+            margin-right: 20px;
+        }
+
+    .play_flash_ico {
+        position: absolute;
+        top: 35%;
+        left: 40%;
+        cursor: pointer;
+    }
+
+    .xue_con {
+        margin-top: 30px;
+        background: #fefefe;
+        min-height: 65vmin;
+        padding: 20px;
+    }
+
+    .name {
+        width: 1200px;
+        margin: auto;
+        height: 30px;
+        line-height: 30px;
+        margin-bottom: 10px;
+        font-size: 20px;
+        text-indent: 10px;
+        border-left: 5px solid #32acf2;
+    }
+
+    video::-internal-media-controls-download-button {
+        display: none;
+    }
+
+    video::-webkit-media-controls-enclosure {
+        overflow: hidden;
+    }
+
+    video::-webkit-media-controls-panel {
+        width: calc(100% + 30px);
+    }
+</style>
+@{
+    var tb = ViewData["tb"] as System.Data.DataTable;
+    string CurriculumName = "空";
+    string ChapterName = "空";
+    string SectionName = "空";
+    string ResourcesName = "空";
+    string Type = "";
+    string URL = "";
+    if (tb != null && tb.Rows.Count > 0)
+    {
+        CurriculumName = tb.Rows[0]["CurriculumName"].ToString();
+        ChapterName = tb.Rows[0]["ChapterName"].ToString();//章
+        SectionName = tb.Rows[0]["SectionName"].ToString();//节
+        ResourcesName = tb.Rows[0]["ResourcesName"].ToString();//课
+        Type = tb.Rows[0]["Type"].ToString();
+        URL = tb.Rows[0]["URL"].ToString();
+    }
+}
+
+<link rel="stylesheet" type="text/css" href="~/CSS/study_kechen.css" />
+<!-------------内容------------->
+<div class="wrapper">
+
+    <!--面包屑导航-->
+    <!--面包屑开始-->
+    <div class="crumbs_map">
+        你当前所在的位置：
+				<a href="/TheoreticalKnowledge">首页</a>＞
+				<a href="/TheoreticalKnowledge">理论学习</a> ＞ <span>课程播放</span>
+
+    </div>
+    <!--面包屑结束-->
+
+
+    <!--------展示网页,PPT-------->
+    <div class="wrapper_web">
+        <p class="ke_name">@CurriculumName&nbsp;—&nbsp;@ChapterName&nbsp;—&nbsp;@ResourcesName</p>
+
+        <div class="play_falsh" id="play_falsh">
+            @{
+                if (Type == ".mp4" || Type == ".MP4" || Type == ".mP4" || Type == ".Mp4")
+                {
+@*<img style="position: absolute; height: 60vmin; width: 1200px;" src="~/img/student/imgmp3.png" />*@
+    <video controlslist="nodownload" id="mp3id" class="video" autoplay="autoplay" poster="" width="1000" height="100%" style="text-align: -webkit-center; margin: 0 auto;" controls="" preload="">
+        <source src="@URL" type="video/mp4">
+    </video>
+@*<video id="videoPlay" class="video" autoplay="autoplay" poster="" width="1200" height="100%" style="text-align: -webkit-center; margin: 0 auto;" controls="" preload="">
+                    <source src="@URL" type="video/mp4">
+                </video>*@
+                }
+                else if (Type == ".wmv" || Type == ".WMV")
+                {
+                <object id="MediaPlayer" classid="clsid:22D6F312-B0F6-11D0-94AB-0080C74C7E95" width="800" height="600" standby="Loading Windows Media Player components…" type="application/x-oleobject" codebase="http://activex.microsoft.com/activex/controls/mplayer/en/nsmp2inf.cab#Version=6,4,7,1112">
+                    <param name="FileName" value="@URL">
+                    <param name="AutoStart" value="true">
+                    <param name="ShowControls" value="true">
+                    <param name="BufferingTime" value="2">
+                    <param name="ShowStatusBar" value="true">
+                    <param name="AutoSize" value="true">
+                    <param name="InvokeURLs" value="false">
+                    <param name="AnimationatStart" value="1">
+                    <param name="TransparentatStart" value="1">
+                    <param name="Loop" value="1">
+                    <embed type="application/x-mplayer2" src="@URL" name="MediaPlayer" autostart="1" showstatusbar="1" showdisplay="1" showcontrols="1" loop="0" videoborder3d="0" pluginspage="http://www.microsoft.com/Windows/MediaPlayer/" width="800" height="600"></embed>
+                </object>
+                }
+                else
+                {
+                <div class="web_pagefile"  style="padding-top:8px;">
+                    <img id="pptImg" style="width:98%;height:98%;  display: none;" src="" />
+                </div>
+                }
+            }
+        </div>
+
+        @if (Type == ".PPT" || Type == ".ppt" || Type == ".pptx" || Type == ".PPTX")
+        {
+            <div class="web_page">
+                <button class="page_prev" onclick="PageClick(0)">上一页</button>
+                <p class="page_now">
+                    第<span id="page">0</span>页
+                </p>
+                <p class="page_oll">
+                    /共<span id="total">200</span>页
+                </p>
+                <button class="page_down" onclick="PageClick(1)">下一页</button>
+                <div class="page_to">
+                    到第<input type="text" id="inputPage" onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')" />页
+                </div>
+                <button class="page_go" onclick="PageClick(2)">GO</button>
+            </div>
+        }
+    </div>
+
+
+    <!--------视频播放-------->
+    <div class="wrapper_video">
+
+    </div>
+
+    <input type="hidden" value="@(Type)" id="Type" />
+    <input type="hidden" value="@(URL)" id="URL" />
+</div>
+<script type="text/javascript">
+    //根据渲染出来的数据，动态设置底部
+
+    //文档body的高度
+    var bodyHeight = $(document.body).height()
+    //当前窗口可视区域高度
+    var winHeight = $(window).height()
+    if (bodyHeight > winHeight) {
+        $(".footer").removeClass("fid")
+    } else {
+        $(".footer").addClass("fid")
+    }
+    $(function () {
+        PPTPay();
+    })
+    var page = 0;
+    var z = null;
+    function PPTPay() {
+        var Type = $("#Type").val();
+        var URL = $("#URL").val();
+        if (Type == ".PPT" || Type == ".ppt" || Type == ".PPTX" || Type == ".pptx") {
+            z = URL.split('|');
+            $("#total").html(z.length);
+            PageClick(0);
+        }
+    }
+    function PageClick(t) {
+        if (z != null) {
+            $("#pptImg").show();
+            if (t == 0) {
+                if (page == 0) {
+                    $("#pptImg").attr("src", z[page]);
+                } else {
+                    page = page - 1;
+                    $("#pptImg").attr("src", z[page]);
+                }
+            } else if (t == 1) {
+                if (page >= z.length - 1) {
+                    $("#pptImg").attr("src", z[page]);
+                } else {
+                    page = page + 1;
+                    $("#pptImg").attr("src", z[page]);
+                }
+            } else {
+                var inputPage = $("#inputPage").val()
+                if (parseInt(inputPage) <= (z.length + 1)) {
+                    page = (parseInt(inputPage) - 1);
+                    $("#pptImg").attr("src", z[page]);
+                } else {
+                    layer.msg("请输入正确的码数!", { icon: 2 });
+                    return;
+                }
+            }
+
+            $("#page").html((page + 1));
+        } else {
+            layer.msg("暂无数据!", { icon: 2 });
+            return;
+        }
+    }
+
+    //屏蔽视频右键功能
+    $('#mp3id').bind('contextmenu', function () { return false; });
+    $('#pptImg').bind('contextmenu', function () { return false; });
+</script>

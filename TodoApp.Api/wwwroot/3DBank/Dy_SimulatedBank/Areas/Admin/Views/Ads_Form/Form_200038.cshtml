@@ -1,0 +1,148 @@
+﻿
+<link href="~/CSS/bootstrap-table.min.css" rel="stylesheet" />
+<!--印鉴卡关联-->
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <label id="lbl_sealCardNumber" name="lbl_sealCardNumber" for="inputEmail3" class="col-sm-3 control-label">帐(卡)号</label>
+            <div class="col-sm-6">
+                <input vl-default="" id="txt_cancelReason" name="txt_cancelReason" type="text" class="form-control input-sm">
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <label id="lbl_sealCardStatus" name="lbl_sealCardStatus" for="inputEmail3" class="col-sm-3 control-label">印鉴卡状态</label>
+            <div class="col-sm-6">
+                <select vl-default="" id="sle_sealCardStatus" name="sle_sealCardStatus" class="form-control">
+                </select>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <label id="lbl_creationDate" name="lbl_creationDate" for="inputEmail3" class="col-sm-3 control-label">建立日期</label>
+            <div class="col-sm-6">
+                <input vl-default="" id="date_creationDate" name="date_creationDate" type="date" max="9999-12-31"  class="form-control input-sm">
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <label id="lbl_establishTeller" name="lbl_establishTeller" for="inputEmail3" class="col-sm-3 control-label">建立柜员</label>
+            <div class="col-sm-6">
+                <input vl-default="" id="txt_establishTeller" name="txt_establishTeller" type="text" class="form-control input-sm">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="text-right">
+    <button type="button" class="btn btn-primary btn-sm" onclick="doSearch()">查询</button>
+    <button type="button" class="btn btn-primary btn-sm" onclick="addRelation()">新增关联</button>
+    <button type="button" class="btn btn-default btn-sm">退出</button>
+</div>
+<div class="divider divider-horizontal"><div class="divider-text is-left"><strong>关联账户清单</strong></div></div>
+<table class="table table-hover" id="tbl"></table>
+<div id="DivTabValue" style="display:none;">
+    <div class="divider divider-horizontal"><div class="divider-text is-left"><strong>关联账户清单反显值</strong></div></div>
+<textarea rows="5" id="tb1Value" name="tb1Value" style="width:100%;"></textarea>
+</div>
+
+<script src="~/Scripts/bootstrap-table.min.js"></script>
+<script src="~/Scripts/bootstrap-table-zh-CN.js"></script>
+
+<script>
+    setOptions(['sealCardStatus']);
+    var data = [];
+    function setTableValue(values) {
+        var vals = values.split('\n');
+        data = [{
+            'account': vals[0],
+            'accountName': vals[1],
+            'mainSign': vals[2],
+            'accountStatus': vals[3],
+            'startDate': vals[4],
+            'cancelDate': vals[5],
+        }];
+        $("#tbl").bootstrapTable('load', data);
+    }
+    $('#tbl').bootstrapTable({
+        data,
+        paginationHAlign: 'left',
+        columns: [{
+            checkbox: true,
+            align: 'center',
+        },
+        {
+            title: '序号',
+            align: 'center',
+            formatter: function (value, row, index) {
+                return index + 1;
+            }
+        },
+        {
+            title: '账号',
+            field: 'account',
+            align: 'center'
+        },
+        {
+            title: '账号名称',
+            field: 'accountName',
+            align: 'center'
+        },
+        {
+            title: '主账号标识',
+            field: 'mainSign',
+            align: 'center'
+        },
+        {
+            title: '账号状态',
+            field: 'accountStatus',
+            align: 'center'
+        },
+        {
+            title: '启用日期',
+            field: 'startDate',
+            align: 'center'
+        },
+        {
+            title: '注销日期',
+            field: 'cancelDate',
+            align: 'center'
+        },
+        ]
+    });
+    function doSearch() {
+        data = [{
+            'account': "806010801421009008",
+            'accountName': '诚旭建筑有限公司',
+            'mainSign': 'dfgdfd',
+            'accountStatus': '正常',
+            'startDate': '2021/9/16',
+            'cancelDate': '2021/9/16',
+        },];
+        $("#tbl").bootstrapTable('append', data);
+    }
+    function addRelation() {
+        goPage("200039", afterGoPage());
+    }
+    function doSubmit() {
+        checkEmpowe();
+    }
+    $(function () {
+        initData("200015");
+
+        var init = getQueryString("init");
+        if (init != null && init != undefined && init.length > 0) {
+            doSearch();
+        } else {
+            if (window.performance.navigation.type == 0) {
+                layer.alert('请输入经办人信息', function () {
+                    inConnectForm("200059");
+                })
+            }
+        }
+    });
+</script>

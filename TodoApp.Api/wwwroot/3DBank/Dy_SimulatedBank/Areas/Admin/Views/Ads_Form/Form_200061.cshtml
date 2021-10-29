@@ -1,0 +1,201 @@
+﻿<link href="~/CSS/jquery.treegrid.css" rel="stylesheet" />
+<link href="~/CSS/bootstrap-table.min.css" rel="stylesheet" />
+<!--企业网银客户签约管理[添加账户]-->
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <label for="inputEmail3" class="col-sm-3 control-label">账号</label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control input-sm" id="txt_account" name="txt_account">
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <label for="inputEmail3" class="col-sm-3 control-label">账户名称</label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control input-sm" id="txt_accountName" name="txt_accountName">
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <label for="inputEmail3" class="col-sm-3 control-label">账户权限</label>
+            <div class="col-sm-6">
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" id="check_search" name="check_search"> 查询
+                    </label>
+                    <label>
+                        <input type="checkbox" id="check_payment" name="check_payment"> 付款
+                    </label>
+                    <label>
+                        <input type="checkbox" id="check_issuingWithholding" name="check_issuingWithholding"> 代发代扣
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <label for="inputEmail3" class="col-sm-3 control-label">单笔限额</label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control input-sm" id="txt_singleLimit" name="txt_singleLimit">
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <label for="inputEmail3" class="col-sm-3 control-label">日累计限额</label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control input-sm" id="txt_dailyLimit" name="txt_dailyLimit">
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <label for="inputEmail3" class="col-sm-3 control-label">扣费账户标识</label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control input-sm" id="txt_deductionID" name="txt_deductionID">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="divider divider-horizontal"><div class="divider-text is-left"><strong>可操作的账号</strong></div></div>
+<table class="table table-hover" id="tbl"></table>
+<div id="DivTabValue" style="display:none;">
+    <div class="divider divider-horizontal"><div class="divider-text is-left"><strong>可操作的账号反显值</strong></div></div>
+<textarea rows="5" id="tb1Value" name="tb1Value" style="width:100%;"></textarea>
+</div>
+<table class="table table-hover" id="tbl1"></table>
+
+<script src="~/Scripts/jquery.treegrid.min.js"></script>
+<script src="~/Scripts/bootstrap-table.min.js"></script>
+<script src="~/Scripts/bootstrap-table-treegrid.min.js"></script>
+
+<script>
+    var data = [];
+    function setTableValue(values) {
+        var vals = values.split('\n');
+        data = [{
+            'account': vals[0],
+            'accountName': vals[1],
+            'openingAgency': vals[2],
+            'deductionID': vals[3],
+        }];
+        $("#tbl").bootstrapTable('load', data);
+    }
+    $('#tbl').bootstrapTable({
+        data: data,
+        columns: [{
+            checkbox: true,
+            align: 'center',
+            valign: 'middle'
+        },
+        {
+            title: '序号',
+            align: 'center',
+            formatter: function (value, row, index) {
+                return index + 1;
+            }
+        },
+        {
+            title: '账号',
+            field: 'account',
+            align: 'center'
+        },
+        {
+            title: '户名',
+            field: 'accountName',
+            align: 'center'
+        },
+        {
+            title: '开户机构',
+            field: 'openingAgency',
+            align: 'center',
+        },
+        {
+            title: '扣费账户标识',
+            field: 'deductionID',
+            align: 'center',
+        },
+        ]
+    });
+    $('#tbl1').bootstrapTable({
+        data: options.menus,
+        idField: 'id',
+        treeShowField: 'name',
+        parentIdField: 'pid',
+        columns: [
+            {
+                checkbox: true,
+                align: 'center',
+            },
+            {
+                title: '选择开通的业务',
+                field: 'name',
+            }
+        ],
+        onPostBody: function () {
+            var columns = $('#tbl1').bootstrapTable('getOptions').columns
+
+            if (columns && columns[0][1].visible) {
+                $('#tbl1').treegrid({
+                    treeColumn: 1,
+                    onChange: function () {
+                        $('#tbl1').bootstrapTable('resetView')
+                    }
+                })
+            }
+        }
+    });
+    $('#tbl2').bootstrapTable({
+        data: [{
+            'account': "564565342432423",
+            'accountName': '西安市长宁',
+            'openingAgency': '长安银行股份有限公司',
+            'deductionID': '是'
+        }],
+        columns: [{
+            checkbox: true,
+            align: 'center',
+            valign: 'middle'
+        },
+        {
+            title: '序号',
+            align: 'center',
+            formatter: function (value, row, index) {
+                return index + 1;
+            }
+        },
+        {
+            title: '用户编号',
+            field: 'userNumber',
+            align: 'center'
+        },
+        {
+            title: '姓名',
+            field: 'name',
+            align: 'center'
+        },
+        {
+            title: '证件类型',
+            field: 'certificateType',
+            align: 'center',
+        },
+        {
+            title: '证件号码',
+            field: 'certificateNumber',
+            align: 'center',
+        },
+        {
+            title: '用户权限',
+            field: 'userAuth',
+            align: 'center',
+        },
+        ]
+    });
+    function doSubmit() {
+        goPage("200060")
+    }
+</script>

@@ -1,0 +1,348 @@
+﻿@{
+    ViewBag.Title = "学员练习中心";
+}
+<!DOCTYPE html>
+<link rel="stylesheet" type="text/css" href="~/CSS/bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="~/CSS/font-awesome-4.7.0/css/font-awesome.min.css" />
+<link rel="stylesheet" type="text/css" href="~/CSS/animate.css" />
+
+<link href="~/CSS/public3D.css" rel="stylesheet" />
+
+<style type="text/css">
+
+    .body_map {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        height: 100vmin;
+    }
+
+    .bodybg {
+        width: 100%;
+        height: 100%;
+    }
+
+
+    /*介质开始*/
+
+    .jiezhi {
+        position: absolute;
+        cursor: pointer;
+        /*	background-color:rgba(0,0,0,0.5);*/
+    }
+
+
+    .jiezhi_diannao {
+        /* border: 1px solid yellow;*/
+        width: 19%;
+        height: 27%;
+        left: 19%;
+        top: 41%;
+    }
+
+
+
+    /*#mybrain {
+        height: 100%;
+        background-color: red;
+        background: url(../../Images/img_mybrain.png) no-repeat top;
+        background-size: 100% 100%;
+        color: white;
+    }*/
+
+
+    .layer-mybrain {
+        background: none !important;
+    }
+
+    .diannao_con {
+    }
+
+    .zhiyin4 {
+        display: block;
+        position: absolute;
+        width: 6%;
+        height: 8%;
+        //background: url(../../Images/shouzhi.gif) center no-repeat;
+        background-size: 100% 100%;
+        left: 29%;
+        top: 47%;
+        z-index: 999999;
+    }
+
+    .btn_next {
+        position: fixed;
+        bottom: 30px;
+        right: 30px;
+    }
+</style>
+
+<input type="hidden" id="TotalResultId" value="@ViewBag.ErModel.TotalResultId" />
+<input type="hidden" id="ExamId" value="@ViewBag.ErModel.ExamId" />
+<input type="hidden" id="TaskId" value="@ViewBag.ErModel.TaskId" />
+<input type="hidden" id="CustomerId" value="@ViewBag.ErModel.CustomerId" />
+<input type="hidden" id="LinkId" value="@ViewBag.ErModel.LinkId" />
+<input type="hidden" id="Satisfaction" value="@ViewBag.ErModel.Satisfaction" />
+axaxaxaxa
+
+<div class="body_map">
+    <!--当前模式-->
+
+    <div class="moshi_map">
+        当前模式：<span>@ViewBag.ErModel.Type_AllString</span>
+    </div>
+
+
+    <!--系统设置区域-->
+    <div class="shezhi_map">
+        <div class="szbj">	</div>
+        <div class="sz_con">
+            <div class="sz_line">
+                <div class="szleftimg">
+                    <img src="../img/public3D/icopub1.png" />
+                </div>
+                <div class="szright">
+                    <div class="szright_con">
+                        退出实训
+                    </div>
+
+                </div>
+            </div>
+            <div class="sz_line">
+                <div class="szleftimg">
+                    <img src="../img/public3D/icopub2.png" />
+                </div>
+                <div class="szright">
+                    <div class="szright_con">
+                        关于案例
+                    </div>
+
+                </div>
+            </div>
+            <div class="sz_line">
+                <div class="szleftimg">
+                    <img src="../img/public3D/icopub3.png" />
+                </div>
+                <div class="szright">
+                    <div class="szright_con">
+                        环境设置
+                    </div>
+
+                </div>
+            </div>
+            <div class="sz_line">
+                <div class="szleftimg" style="padding-bottom: 0px;">
+                    <img src="../img/public3D/icopub4.png" />
+                </div>
+                <div class="szright">
+                    <div class="szright_con" onclick="openStudy()">
+                        边学边练
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--系统设置区域结束-->
+    <!--底部右下角按钮-->
+    <div class="bot_btn_map">
+
+        @*<div class="bot_btn">
+            <div class="bot_btn_con  btn_bjred">
+                下一位<br />
+                客户
+            </div>
+        </div>*@
+        <div class="bot_btn">
+            <div class="bot_btn_con" onclick="NextPart()">
+                下一个<br />
+                场景
+            </div>
+        </div>
+    </div>
+    <!--底部右下角按钮结束-->
+    <!--右上角信息样式-->
+    <div class="xinxi_map">
+        <div class="shu_map">
+            <div class="shu_text">任务描述</div>
+            <div class="num_map">
+                <span>4</span>/11
+            </div>
+        </div>
+
+        <div class="shu_map">
+            <div class="manyi_text">
+                当前客户
+                <br />	满意度
+            </div>
+            <div class="num_map">
+                <span>86</span>
+            </div>
+        </div>
+
+
+        <div class="dqjdu_map">
+            当前任务进度 <button class="jd_btn"></button>
+        </div>
+
+        <div id="jd_con" class="jd_con">
+            <div class="jd_line">
+                <div class="jd_left">
+                    开工管理
+                    <div class="ztweizhi zt_huang"></div>
+
+                </div>
+                <div class="jd_right" style="height:100%"></div>
+            </div>
+        </div>
+    </div>
+    <!--右上角信息样式结束-->
+    <!--左侧物品栏-->
+    <div id="wupinlan" class="wupin_map">
+        <div id="wupin_con" class="wupin__con">
+            <div class="zanwu">暂无物品</div>
+        </div>
+        <div id="wupin_btn" class="wupin_btn">物品栏</div>
+    </div>
+    <!--左侧物品栏结束-->
+
+
+
+
+    <div class="videos_res">
+        <!-- autoplay="autoplay"自动播放 loop="loop"控制循环播放-->
+        @*<video id="flash" preload="metadata" autoplay onended="showImg()">
+            <source src="../flash/dome.mp4" type="video/mp4">
+        </video>*@
+
+        <img class="bodybg" src="~/Images/img_gaogui.jpg" />
+
+
+    </div>
+
+    @*<img class="bodybg" src="~/Images/img_gaogui.jpg" />*@
+    @*<div class="zhiyin4"></div>*@
+
+
+    <!--各个介质 media-->
+    <!--电脑-->
+    <div onclick="mybrain();" class="jiezhi  jiezhi_diannao"></div>
+
+
+</div>
+
+
+<div id="mybrain" style="display: none;">
+    <div class="col-sm-12">
+        <div class="diannao_con">
+            @*<iframe src="/ServiceRecord/Index" style="width:100%;height:530px;margin:auto;"></iframe>*@
+
+        </div>
+    </div>
+</div>
+
+<div id="mystudy" style="display: none;">
+    <div class="col-sm-12">
+        <div class="diannao_con">
+            <iframe src="/TheoreticalKnowledge/Details?CurriculumID=19" style="width:100%;height:530px;margin:auto;"></iframe>
+
+        </div>
+    </div>
+</div>
+
+
+<script src="~/Scripts/jquery-3.2.0.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<script src="~/Scripts/layer/layer.js"></script>
+
+<script src="~/Scripts/jquery-3.2.0.js"></script>
+
+<script type="text/javascript">
+    var divShow = false;
+    var withoutMargin = $("#wupin_con").outerWidth();
+
+    var wpnumber = withoutMargin;
+    $(function () {
+        $("#wupin_btn").click(function () {
+            var thisObj = $("#wupinlan");
+            if (divShow) {
+                thisObj.each(function () {
+                    $(this).animate({ left: "0" }, 300);
+                });
+                divShow = false;
+            } else {
+                thisObj.each(function () {
+                    $(this).animate({ left: wpnumber }, 300);
+                });
+                divShow = true;
+            }
+        });
+    });
+    function NextPart() {
+        window.location.href = "/HallProcess"
+    }
+</script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $(".jd_btn").click(function () {
+            $("#jd_con").slideToggle("slow");
+            $(this).toggleClass("qie"); return false;
+        });
+
+
+    });
+
+
+    ////介质我的电脑桌面(小窗模式)
+    //function mybrain() {
+    //    layer.open({
+    //        title: '我的电脑',
+    //        //btn: ['确定'],
+    //        area: ['1000px', 'auto'],
+    //        type: 1,
+    //        skin: 'layui-layer-lan', //样式类名
+    //        closeBtn: 1, //显示关闭按钮
+    //        anim: 2,
+    //        shadeClose: false, //开启遮罩关闭
+    //        content: $("#mybrain")
+    //    });
+    //}
+
+
+    //介质我的电脑桌面(打开新窗口)
+    function mybrain() {
+        var TotalResultId = $("#TotalResultId").val();
+        var ExamId = $("#ExamId").val();
+        var TaskId = $("#TaskId").val();
+        var CustomerId = $("#CustomerId").val();
+        var LinkId = $("#LinkId").val();
+        var Satisfaction = $("#Satisfaction").val();
+
+        window.open("/ServiceRecord/Index?FormType=1&TotalResultId=" + TotalResultId + "&ExamId=" + ExamId + "&TaskId=" + TaskId + "&CustomerId=" + CustomerId + "&LinkId=" + LinkId + "&Satisfaction=" + Satisfaction + "");
+    }
+
+
+    function showImg() {
+        $("#bj").show();
+        $(".btn_class").show();
+        $("#flash").hide();
+
+    }
+
+    function openStudy() {
+        layer.open({
+            title: '学习进度',
+            //btn: ['确定'],
+            area: ['1000px', 'auto'],
+            type: 1,
+            skin: 'layui-layer-lan', //样式类名
+            closeBtn: 1, //显示关闭按钮
+            anim: 2,
+            shadeClose: false, //开启遮罩关闭
+            content: $("#mystudy")
+        });
+        //window.location.href = "/HallProcess"
+    }
+</script>

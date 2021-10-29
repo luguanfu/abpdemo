@@ -1,0 +1,458 @@
+﻿@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewData["nvc"] = "课程管理";
+}
+<style>
+    /******课程目录列表******/
+
+    .fr {
+        float: right;
+    }
+
+    .catalog_list {
+        width: inherit;
+        margin-left: 28px;
+        border: 1px solid #E4E4E4;
+        margin-top: 50px;
+        margin-bottom: 40px;
+        /*border-top: none;*/
+    }
+
+    .list_title {
+        height: 54px;
+        line-height: 54px;
+        text-align: center;
+        font-size: 18px;
+        color: #333333;
+        background-color: #FAFAFA;
+    }
+
+    .list_tabbar {
+        border-left: 1px solid #D9DCE1;
+        border-top-left-radius: 10px;
+        margin: 30px 36px;
+    }
+
+        .list_tabbar p {
+            margin-bottom: 18px;
+        }
+
+    .tabbar_name {
+        font-size: 18px;
+        position: relative;
+        padding-left: 30px;
+        color: #444444;
+        font-weight: 600;
+    }
+
+    .yikai {
+        color: #35a535;
+        font-weight: 600;
+    }
+
+    .weikai {
+        color: #bd4f46;
+        font-weight: 600;
+    }
+
+    .tabbar_name img {
+        position: absolute;
+        top: 3px;
+        left: -8px;
+    }
+
+    .tabbar_name .plans {
+        float: right;
+        font-size: 16px;
+        padding-top: 4px;
+        letter-spacing: 1px;
+    }
+
+    .knobble_name {
+        overflow: hidden;
+        padding-left: 42px;
+        margin-top: 20px;
+    }
+
+    .pack_up,
+    .pack_down {
+        cursor: pointer;
+        color: #A0A0A0;
+        padding-left: 22px;
+        margin-right: 20px;
+        font-size: 14px;
+    }
+
+    .pack_down {
+        background: url(../img/z_up_samil.png) no-repeat 0 center;
+    }
+
+    .knobble_txt {
+        font-size: 15px;
+        display: none;
+    }
+
+        .knobble_txt p {
+            cursor: pointer;
+            height: 38px;
+            padding-top: 7px;
+            margin-bottom: 8px;
+            padding-left: 85px;
+        }
+
+            .knobble_txt p:hover {
+                background-color: #FFF9F3;
+            }
+
+        .knobble_txt a:hover {
+            color: #cf9354;
+        }
+
+        .knobble_txt span {
+            display: inline-block;
+            padding: 2px 10px;
+            margin-right: 8px;
+            border-radius: 4px;
+        }
+
+        .knobble_txt .videoColor {
+            width: 52px;
+            color: #348CF7;
+            border: 1px solid #348CF7;
+        }
+
+        .knobble_txt .pptColor {
+            width: 52px;
+            color: #F95E45;
+            border: 1px solid #F95E45;
+        }
+
+        .knobble_txt .anliColor {
+            width: 52px;
+            color: #9C27B0;
+            border: 1px solid #9C27B0;
+        }
+
+        .knobble_txt .xitiColor {
+            width: 52px;
+            color: #009688;
+            border: 1px solid #009688;
+        }
+
+        .knobble_txt .study_learn {
+            float: right;
+            font-size: 14px;
+            color: #CF9354;
+        }
+
+        .knobble_txt .study_ok {
+            float: right;
+            font-size: 14px;
+            padding-left: 20px;
+            background: url(../img/is_ok.png) no-repeat 0 center;
+            background-size: 18px;
+        }
+
+    .leixing {
+        margin-left: 50px;
+        border-bottom: 1px solid #e2dede;
+        color: #999999;
+        padding-bottom: 5px;
+        margin-bottom: 10px;
+    }
+</style>
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-sm-12">
+        <ol class="breadcrumb">
+            <li>
+                <h2>实务教学管理</h2>
+            </li>
+            <li>
+                <a href="#">课程管理</a>
+            </li>
+            <li>
+                <strong>课程列表</strong>
+            </li>
+        </ol>
+
+    </div>
+</div>
+<!--面包屑位置结束-->
+<!--主体内容开始-->
+<div class="ibox-content">
+    <div class="row m-t">
+        <div class="col-sm-3">
+            <div class="input-group">
+                <input type="text" placeholder="请输入关键字搜索……" id="SelectTeacherNameid" class="form-control" name="SelectTeacherName">
+                <span class="input-group-btn">
+                    <button type="button" onclick="GetList()" class="btn btn-primary"><i class="fa fa-search "></i></button>
+                </span>
+            </div>
+        </div>
+        <div class=" col-sm-9 text-right">
+            <button onclick="AddJump();" class="btn btn-primary btn-sm " type="button"><i class="fa fa-plus m-r-xs"></i><span class="bold">新增课程</span></button>
+            <button onclick="Enable('启用', 1);" class="btn btn-success btn-sm " type="button"><i class="fa fa-check  m-r-xs"></i><span class="bold">启用所选</span></button>
+            <button onclick="Enable('禁用', 0);" class="btn btn-danger btn-sm " type="button"><i class="fa fa-times m-r-xs"></i><span class="bold">禁用所选</span></button>
+        </div>
+    </div>
+    <div class="row  m-t-sm ">
+        <div class="col-sm-12">
+            <table class="table text-center table-bordered ">
+                <thead>
+                    <tr>
+                        <th class="text-center">
+                            <input type="Checkbox" class="i-checks checkbox-all">
+                        </th>
+                        <th class="text-center">序号</th>
+                        <th class="text-center">课程名称</th>
+                        <th class="text-center">状态</th>
+                        <th width="80" class="text-center">上移</th>
+                        <th width="80" class="text-center">下移</th>
+                        <th width="400" class="text-center">操作</th>
+
+                    </tr>
+                </thead>
+                <tbody class="new_table text-center" id="tablelist"></tbody>
+            </table>
+
+        </div>
+
+    </div>
+
+
+    <!--分页开始-->
+    <div class=" text-center">
+        <div class="dataTables_paginate paging_simple_numbers" id="PaginatorLibrary">
+
+        </div>
+
+    </div>
+    <!--分页结束-->
+</div>
+
+
+
+<!--学习进度弹窗-->
+<div id="xxjd" style="display: none;">
+    <div class="moshi_con">
+        <div class="stu_jindu_map">
+            <div class="stu_jindu_right">
+                <!-----课程目录列表----->
+                <div>
+                    <p class="list_title">课程目录</p>
+                    <!---目录--->
+                    <div class="list_tabbar" id="tablelist1">
+                        <!--章节模快1-->
+                        <div>
+                            <p class="tabbar_name">
+                                <span>第一章、典阅银行模拟真实训</span>
+                                <img src="../img/z_oval.png" />
+                                <span class="plans">
+                                    已观看<span>40%</span>
+                                </span>
+                            </p>
+                            <div class="tabbar_knobble">
+                                <p class="knobble_name">
+                                    <span class="fl"><span class="yikai">【已开课】</span> 第一节：银行工作中的沟通</span>
+                                    <span class="pack_down pack_tab fr">收起</span>
+                                </p>
+                                <div class="knobble_txt disBlock">
+                                    <div class="leixing">课件学习</div>
+                                    <p>
+                                        <span class="videoColor">视频</span>
+                                        <a href="study_kechen.html">跨境电商中的沟通</a>
+                                        <span class="study_learn"><img src="../img/ico_wan.png" /></span>
+                                    </p>
+                                    <p>
+                                        <span class="pptColor">PPT</span>
+                                        <a href="study_kechen.html">跨境电商中的沟通</a>
+                                        <span class="study_learn"><img src="../img/ico_weiwan.png" /></span>
+                                    </p>
+                                    <div class="leixing">案例实操</div>
+                                    <p>
+                                        <span class="anliColor">案例</span>
+                                        <a href="study_kechen.html">开工管理实操案例</a>
+                                        <span class="study_learn"><img src="../img/ico_wan.png" /></span>
+                                    </p>
+                                    <p>
+                                        <span class="anliColor">案例</span>
+                                        <a href="study_kechen.html">模拟银行高柜业务实操案例</a>
+                                        <span class="study_learn"><img src="../img/ico_wan.png" /></span>
+                                    </p>
+                                    <div class="leixing">课后习题</div>
+                                    <p>
+                                        <span class="xitiColor">习题</span>
+                                        <a href="study_kechen.html">新员工基本职业素养练习题</a>
+                                        <span class="study_learn"><img src="../img/ico_wan.png" /></span>
+                                    </p>
+                                    <p>
+                                        <span class="xitiColor">习题</span>
+                                        <a href="study_kechen.html">单位开会存款过程中需要注意的事项</a>
+                                        <span class="study_learn"><img src="../img/ico_weiwan.png" /></span>
+                                    </p>
+                                    <p>
+                                        <span class="xitiColor">习题</span>
+                                        <a href="study_kechen.html">如何做好银行大厅突发事件的处理</a>
+                                        <span class="study_learn"><img src="../img/ico_weiwan.png" /></span>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="tabbar_knobble">
+                                <p class="knobble_name">
+                                    <span class="fl"><span class="weikai">【未开课】</span> 第二节：单位开户业务及单位存款业务办理要点</span>
+                                    <span class="pack_up pack_tab fr">展开</span>
+                                </p>
+                                <div class="knobble_txt">
+                                    <div class="leixing">课件学习</div>
+                                    <p>
+                                        <span class="videoColor">视频</span>
+                                        <a href="study_kechen.html">跨境电商中的沟通</a>
+                                        <span class="study_learn"><img src="../img/ico_weiwan.png" /></span>
+                                    </p>
+                                    <p>
+                                        <span class="pptColor">PPT</span>
+                                        <a href="study_kechen.html">跨境电商中的沟通</a>
+                                        <span class="study_learn"><img src="../img/ico_wan.png" /></span>
+                                    </p>
+                                    <div class="leixing">案例实操</div>
+                                    <p>
+                                        <span class="anliColor">案例</span>
+                                        <a href="study_kechen.html">开工管理实操案例</a>
+                                        <span class="study_learn"><img src="../img/ico_weiwan.png" /></span>
+                                    </p>
+                                    <p>
+                                        <span class="anliColor">案例</span>
+                                        <a href="study_kechen.html">模拟银行高柜业务实操案例</a>
+                                        <span class="study_learn"><img src="../img/ico_wan.png" /></span>
+                                    </p>
+                                    <div class="leixing">课后习题</div>
+                                    <p>
+                                        <span class="xitiColor">习题</span>
+                                        <a href="study_kechen.html">新员工基本职业素养练习题</a>
+                                        <span class="study_learn"><img src="../img/ico_weiwan.png" /></span>
+                                    </p>
+                                    <p>
+                                        <span class="xitiColor">习题</span>
+                                        <a href="study_kechen.html">单位开会存款过程中需要注意的事项</a>
+                                        <span class="study_learn"><img src="../img/ico_wan.png" /></span>
+                                    </p>
+                                    <p>
+                                        <span class="xitiColor">习题</span>
+                                        <a href="study_kechen.html">如何做好银行大厅突发事件的处理</a>
+                                        <span class="study_learn"><img src="../img/ico_weiwan.png" /></span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <!--章节二-->
+                        <div>
+                            <p class="tabbar_name">
+                                <span>第二章、银行单据打印过程中遇到的问题如何处理</span>
+                                <img src="../img/z_oval.png" />
+                                <span class="plans">
+                                    已观看<span>40%</span>
+                                </span>
+                            </p>
+                            <div class="tabbar_knobble">
+                                <p class="knobble_name">
+                                    <span class="fl"><span class="yikai">【已开课】</span> 第一节：如何使用单据打印机</span>
+                                    <span class="pack_up pack_tab fr">展开</span>
+                                </p>
+                                <div class="knobble_txt">
+                                    <div class="leixing">课件学习</div>
+                                    <p>
+                                        <span class="videoColor">视频</span>
+                                        <a href="study_kechen.html">跨境电商中的沟通</a>
+                                        <span class="study_learn"><img src="../img/ico_wan.png" /></span>
+                                    </p>
+                                    <p>
+                                        <span class="pptColor">PPT</span>
+                                        <a href="study_kechen.html">跨境电商中的沟通</a>
+                                        <span class="study_learn"><img src="../img/ico_weiwan.png" /></span>
+                                    </p>
+                                    <div class="leixing">案例实操</div>
+                                    <p>
+                                        <span class="anliColor">案例</span>
+                                        <a href="study_kechen.html">开工管理实操案例</a>
+                                        <span class="study_learn"><img src="../img/ico_wan.png" /></span>
+                                    </p>
+                                    <p>
+                                        <span class="anliColor">案例</span>
+                                        <a href="study_kechen.html">模拟银行高柜业务实操案例</a>
+                                        <span class="study_learn"><img src="../img/ico_wan.png" /></span>
+                                    </p>
+                                    <div class="leixing">课后习题</div>
+                                    <p>
+                                        <span class="xitiColor">习题</span>
+                                        <a href="study_kechen.html">新员工基本职业素养练习题</a>
+                                        <span class="study_learn"><img src="../img/ico_wan.png" /></span>
+                                    </p>
+                                    <p>
+                                        <span class="xitiColor">习题</span>
+                                        <a href="study_kechen.html">单位开会存款过程中需要注意的事项</a>
+                                        <span class="study_learn"><img src="../img/ico_weiwan.png" /></span>
+                                    </p>
+                                    <p>
+                                        <span class="xitiColor">习题</span>
+                                        <a href="study_kechen.html">如何做好银行大厅突发事件的处理</a>
+                                        <span class="study_learn"><img src="../img/ico_weiwan.png" /></span>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="tabbar_knobble">
+                                <p class="knobble_name">
+                                    <span class="fl"><span class="weikai">【未开课】</span> 第二节：需要单独盖章的打印单据有哪些？</span>
+                                    <span class="pack_up pack_tab fr">展开</span>
+                                </p>
+                                <div class="knobble_txt">
+                                    <div class="leixing">课件学习</div>
+                                    <p>
+                                        <span class="videoColor">视频</span>
+                                        <a href="study_kechen.html">跨境电商中的沟通</a>
+                                        <span class="study_learn"><img src="../img/ico_weiwan.png" /></span>
+                                    </p>
+                                    <p>
+                                        <span class="pptColor">PPT</span>
+                                        <a href="study_kechen.html">跨境电商中的沟通</a>
+                                        <span class="study_learn"><img src="../img/ico_wan.png" /></span>
+                                    </p>
+                                    <div class="leixing">案例实操</div>
+                                    <p>
+                                        <span class="anliColor">案例</span>
+                                        <a href="study_kechen.html">开工管理实操案例</a>
+                                        <span class="study_learn"><img src="../img/ico_weiwan.png" /></span>
+                                    </p>
+                                    <p>
+                                        <span class="anliColor">案例</span>
+                                        <a href="study_kechen.html">模拟银行高柜业务实操案例</a>
+                                        <span class="study_learn"><img src="../img/ico_wan.png" /></span>
+                                    </p>
+                                    <div class="leixing">课后习题</div>
+                                    <p>
+                                        <span class="xitiColor">习题</span>
+                                        <a href="study_kechen.html">新员工基本职业素养练习题</a>
+                                        <span class="study_learn"><img src="../img/ico_weiwan.png" /></span>
+                                    </p>
+                                    <p>
+                                        <span class="xitiColor">习题</span>
+                                        <a href="study_kechen.html">单位开会存款过程中需要注意的事项</a>
+                                        <span class="study_learn"><img src="../img/ico_wan.png" /></span>
+                                    </p>
+                                    <p>
+                                        <span class="xitiColor">习题</span>
+                                        <a href="study_kechen.html">如何做好银行大厅突发事件的处理</a>
+                                        <span class="study_learn"><img src="../img/ico_weiwan.png" /></span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+<input type="hidden" value="@Session["UserId"]" id="UserId" />
+<script src="~/Js/Admin/Curriculum/Curriculum.js"></script>

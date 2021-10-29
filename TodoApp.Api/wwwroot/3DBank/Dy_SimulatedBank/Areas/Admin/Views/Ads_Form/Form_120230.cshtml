@@ -1,0 +1,83 @@
+﻿@{
+    ViewBag.Title = "Form_120218";
+    Layout = "~/Views/Shared/_AdminLayoutIsNull.cshtml";
+}
+
+
+<script src="~/Js/Admin/AdminForm.js"></script>
+<script src="~/Js/Admin/CaseManagement/AddDefaultValue.js"></script>
+<link href="~/CSS/danju/css/menupublic.css" rel="stylesheet" />
+<style type="text/css">
+    .from_map022 {
+        width: 580px;
+        margin: auto;
+        position: relative;
+        background: url(/CSS/danju/img/danjuimg/menu022hui.jpg) no-repeat top;
+        height: 840px;
+    }
+
+    .site1 {
+        width: 150px;
+        height: 25px;
+        left: 141px;
+        top: 515px;
+    }
+
+    .site2 {
+        width: 150px;
+        height: 25px;
+        left: 141px;
+        top: 572px;
+    }
+
+    .site3 {
+        width: 150px;
+        height: 25px;
+        left: 141px;
+        top: 627px;
+    }
+
+    .site4 {
+        width: 150px;
+        height: 25px;
+        left: 141px;
+        top: 696px;
+    }
+
+    .site5 {
+        width: 139px;
+        height: 25px;
+        left: 408px;
+        top: 696px;
+    }
+
+    .btn_chongzhi {
+        left: 10%;
+    }
+
+    .btn_tijiao {
+        right: 10%;
+    }
+</style>
+
+
+<form id="form1" onsubmit="return false" action="##" method="post">
+    <input type="hidden" id="TaskId" name="TaskId" value="@Request["TaskId"]" />
+    <input type="hidden" id="CustomerId" name="CustomerId" value="@Request["CustomerId"]" />
+    <input type="hidden" id="FormId" name="FormId" value="@Request["FormId"]" />
+    <input type="hidden" id="Types" name="Types" value="@Request["Types"]" />
+    <!--内容表单区域开始-->
+    <div class="from_map022">
+        <input class="inputall site1 " type="text" name="dy01" id="dy01" value="" />
+        <input class="inputall site2 " type="text" name="dy02" id="dy02" value="" />
+        <input class="inputall site3 " type="text" name="dy03" id="dy03" value="" />
+        <input class="inputall site4" type="text" name="dy04" id="dy04" value="" />
+        <input class="inputall site5 " type="text" name="dy05" id="dy05" value="" />
+
+        <button class="btn_chongzhi" type="button" value="重置" onclick="FormReset()">重置</button>
+        <button class="btn_tijiao" type="button" value="提交" onclick="SubmitForm()">提交</button>
+
+    </div>
+
+
+</form>

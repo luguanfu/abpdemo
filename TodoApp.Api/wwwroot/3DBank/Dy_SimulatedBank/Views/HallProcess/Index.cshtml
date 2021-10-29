@@ -1,0 +1,489 @@
+﻿@{
+    //ViewBag.Title = "Index";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>银行虚拟仿真——接待客户</title>
+    <link rel="stylesheet" type="text/css" href="~/CSS/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="~/CSS/font-awesome-4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="~/CSS/animate.css" />
+    <link rel="stylesheet" type="text/css" href="~/CSS/form_public.css" />
+    <link rel="stylesheet" type="text/css" href="~/CSS/public3D.css" />
+    <link rel="stylesheet" href="~/CSS/icheck-pub/skins/flat/blue.css">
+    <style type="text/css">
+
+        .body_map {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            height: 100vmin;
+        }
+
+        .bodybg {
+            width: 100%;
+            height: 100%;
+        }
+
+
+        /*介质开始*/
+
+        .jiezhi {
+            position: absolute;
+            cursor: pointer;
+            /*background-color: rgba(0, 0, 0, 0.5);*/
+        }
+
+        .jiezhi_quhao {
+            /*border: 1px solid yellow;*/
+            width: 21%;
+            height: 20%;
+            left: 7%;
+            top: 63%;
+            transform: rotate(40deg);
+            -ms-transform: rotate(40deg);
+            -moz-transform: rotate(40deg);
+            -webkit-transform: rotate(40deg);
+            -o-transform: rotate(40deg);
+        }
+
+
+        .jiezhi_kehu {
+            border: 1px solid green;
+            width: 10%;
+            height: 47%;
+            left: 38%;
+            top: 43%;
+        }
+
+
+
+        .zhiyin4 {
+            display: block;
+            position: absolute;
+            width: 6%;
+            height: 8%;
+            background: url(/Img/shouzhi.gif) center no-repeat;
+            background-size: 100% 100%;
+            left: 20%;
+            top: 77%;
+            z-index: 999999;
+        }
+
+        .youxia {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+        }
+
+        .quhao_map {
+            padding: 15px 40px;
+        }
+
+        .sbyw {
+            font-size: 18px;
+        }
+
+
+        .quhaopai {
+            margin: auto;
+            font-size: 24px;
+            text-align: center;
+            border: 1px solid #3487f5;
+            padding: 15px;
+            margin: 10px auto;
+            border-radius: 15px;
+            width: 300px;
+        }
+
+
+        .jieguo_map {
+            text-align: center;
+        }
+
+            .jieguo_map h2 {
+                margin-top: 40px;
+                color: #3487f5;
+            }
+    </style>
+</head>
+<body>
+    <div class="body_map">
+        <!--当前模式-->
+
+        <div class="moshi_map">
+            当前模式：<span>教学模式</span>
+        </div>
+
+        <!--视频和背景图转换区域-->
+
+        <div class="videos_res" id="videoParent">
+            <!-- autoplay="autoplay"自动播放 loop="loop"控制循环播放-->
+            <video id="flash" preload="metadata" onended="showImg()">
+                <source id="videoPath" src="/flash/quhao.mp4" type="video/mp4">
+            </video>
+
+            <img id="bj" class="bodybg" src="../img/jiedai_bj.jpg" />
+
+            @*<video style="display: none;" id="flash2" loop="loop" autoplay onended="showImg()">
+                    <source src="../flash/dome.mp4" type="video/mp4">
+                </video>*@
+        </div>
+
+
+        <!--视频和背景图转换区域结束-->
+
+
+
+        @*<div class="zhiyin4"></div>*@
+
+        <!--系统设置区域-->
+        <div class="shezhi_map">
+            <div class="szbj">	</div>
+            <div class="sz_con">
+                <div class="sz_line">
+                    <div class="szleftimg">
+                        <img src="/img/public3D/icopub1.png" />
+                    </div>
+                    <div class="szright">
+                        <div class="szright_con">
+                            退出实训
+                        </div>
+
+                    </div>
+                </div>
+                <div class="sz_line">
+                    <div class="szleftimg">
+                        <img src="/img/public3D/icopub2.png" />
+                    </div>
+                    <div class="szright">
+                        <div class="szright_con">
+                            关于案例
+                        </div>
+
+                    </div>
+                </div>
+                <div class="sz_line">
+                    <div class="szleftimg">
+                        <img src="/img/public3D/icopub3.png" />
+                    </div>
+                    <div class="szright">
+                        <div class="szright_con">
+                            环境设置
+                        </div>
+
+                    </div>
+                </div>
+                <div class="sz_line">
+                    <div class="szleftimg" style="padding-bottom: 0px;">
+                        <img src="/img/public3D/icopub4.png" />
+                    </div>
+                    <div class="szright">
+                        <div class="szright_con">
+                            边学边练
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--系统设置区域结束-->
+        <!--底部右下角按钮-->
+        <div class="bot_btn_map">
+            <div class="bot_btn">
+                <div class="bot_btn_con" onclick="jiedai();">
+                    接待<br />
+                    客户
+                </div>
+            </div>
+            <div class="bot_btn">
+                <div class="bot_btn_con" onclick="quhaohouyindao()">
+                    引导<br />
+                    客户
+                </div>
+            </div>
+            <div class="bot_btn">
+                <div class="bot_btn_con">
+                    营销<br />
+                    转介
+                </div>
+            </div>
+            <div class="bot_btn">
+                <div class="bot_btn_con">
+                    送别<br />
+                    客户
+                </div>
+            </div>
+
+            <div class="bot_btn">
+                <div class="bot_btn_con  btn_bjred">
+                    下一位<br />
+                    客户
+                </div>
+            </div>
+        </div>
+        <!--底部右下角按钮结束-->
+        <!--右上角信息样式-->
+        <div class="xinxi_map">
+            <div class="shu_map">
+                <div class="shu_text">任务描述</div>
+                <div class="num_map">
+                    <span id="currTaskCount">1</span>/11
+                </div>
+            </div>
+
+            <div class="shu_map">
+                <div class="manyi_text">
+                    当前客户
+                    <br />	满意度
+                </div>
+                <div class="num_map">
+                    <span id="manyidu">100</span>
+                </div>
+            </div>
+
+
+            <div class="dqjdu_map">
+                当前任务进度 <button class="jd_btn"></button>
+            </div>
+
+            <div id="jd_con" class="jd_con">
+                <div class="jd_line">
+                    <div class="jd_left">
+                        接待
+                        <div class="ztweizhi zt_lan" name="jindutiao" data-jindu="2"></div>
+
+                    </div>
+                    <div class="jd_right jd_ok"></div>
+                </div>
+
+                <div class="jd_line">
+                    <div class="jd_left">
+                        取号
+                        <div class="ztweizhi zt_lan" name="jindutiao" data-jindu="3"></div>
+                    </div>
+                    <div class="jd_right jd_ok"></div>
+                </div>
+
+                <div class="jd_line">
+                    <div class="jd_left">
+                        取号后引导
+                        <div class="ztweizhi zt_huang" name="jindutiao" data-jindu="4"></div>
+                    </div>
+                    <div class="jd_right"></div>
+                </div>
+
+                <div class="jd_line">
+                    <div class="jd_left">
+                        填单
+                        <div class="ztweizhi " name="jindutiao" data-jindu="5"></div>
+                    </div>
+                    <div class="jd_right"></div>
+                </div>
+
+                <div class="jd_line">
+                    <div class="jd_left">
+                        填单后引导
+                        <div class="ztweizhi " name="jindutiao" data-jindu="6"></div>
+                    </div>
+                    <div class="jd_right"></div>
+                </div>
+
+
+                <div class="jd_line">
+                    <div class="jd_left">
+                        送别
+                        <div class="ztweizhi " name="jindutiao" data-jindu="16"></div>
+                    </div>
+                    <div class="jd_right"></div>
+                </div>
+
+            </div>
+
+
+
+
+
+
+        </div>
+        <!--右上角信息样式结束-->
+        <!--左侧物品栏-->
+        <div id="wupinlan" class="wupin_map">
+            <div id="wupin_con" class="wupin__con">
+                <div class="zanwu">暂无物品</div>
+            </div>
+            <div id="wupin_btn" class="wupin_btn">物品栏</div>
+        </div>
+        <!--左侧物品栏结束-->
+        <!--各个介质 media-->
+        <!--取号机-->
+        <div onclick="quhao();" class="jiezhi  jiezhi_quhao"></div>
+
+
+
+
+    </div>
+</body>
+</html>
+
+
+
+<!--接待弹窗-->
+<div id="jiedai" style="display: none;">
+    <div class="" style="padding: 0px 20px 10px 20px;">
+
+        <h2 class="m-t-lg" id="doBusinessText">
+            您好，我想要办理个人开卡业务。
+        </h2>
+        <div class="m-t-xl text-center">
+            <button onclick="jiedaiEnd();" class="btn btn_orange">好的</button>
+        </div>
+    </div>
+</div>
+
+<div id="quhao" style="display: none;">
+    <div class="quhao_map">
+        <div class="">
+            您的编号为：
+        </div>
+        <h2 class="quhaopai" id="getNumberText">对公业务：483652</h2>
+        <div class="m-t-sm text-right">
+            <button onclick="geikehu();" class="btn btn-sm btn-primary">确定</button>
+        </div>
+    </div>
+</div>
+
+<!--办理的什么业务-->
+<div id="digei" style="display: none;">
+    <div class="quhao_map">
+        <div class="sbyw">
+            你办理的是：
+            <select style="width: 200px;" class="select_public" name="yewu" id="yewuSel" onchange="GetBusinessByType()">
+                <option value="">请选择业务类型</option>
+                <option value="对公业务">对公业务</option>
+                <option value="零售业务">零售业务</option>
+            </select>
+
+            <select style="width: 200px;" class="select_public" name="yewu" id="yewuSubSel">
+                <option value="请选择业务">请选择业务</option>
+
+            </select>
+            业务，这是您的取号牌，请您收好：
+        </div>
+        <h2 class="quhaopai" id="getNumber2Text">对公业务：483652</h2>
+        <div class="m-t-lg text-center">
+            <button onclick="quhaojieguo();" class="btn  btn_orange">递给客户</button>
+        </div>
+    </div>
+</div>
+
+<!--区号后引导-->
+<div id="quhaohouyindao" style="display: none;">
+    <div class="quhao_map">
+        <div class="sbyw">
+            你办理的是<span id="doBusinessName"></span>业务，请您到以下区域等候办理：
+        </div>
+
+        <div class="m-t-lg">
+            <input class="i-checks" type="radio" name="denghouqu" value="对公等候区" /><span style="margin:0px 15px">对公等候区</span>
+            <input class="i-checks" type="radio" name="denghouqu" value="零售等候区" /><span style="margin:0px 15px">零售等候区</span>
+        </div>
+        <div class="m-t-lg">
+            或者先：<br /><br />
+            <input  class="i-checks" type="radio" name="denghouqu" value="填写单据" /><span style="margin:0px 15px">填写单据</span>
+        </div>
+
+        <div class="m-t-lg text-center">
+            <button onclick="quhaohouyindaoEnd();" class="btn btn_orange">确定</button>
+        </div>
+    </div>
+</div>
+
+
+<div id="jieguo" style="display: none;">
+
+    <div class="jieguo_map">
+
+        <h2 id="jieguoMessage1">操作不正确，请重新选择</h2>
+
+        <div class="m-t-lg" id="jieguoMessage2">
+            已出错
+        </div>
+
+
+        <div class="m-t-lg text-center">
+            <button id="jieguoBtn" class="btn  btn_orange">重新选择</button>
+        </div>
+    </div>
+
+</div>
+
+
+
+<script src="~/Scripts/jquery-3.2.0.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<script src="~/Scripts/layerScene/layer.js"></script>
+<!-- 复选框单选框js -->
+<script src="~/Scripts/iCheck-new/icheck.min.js"></script>
+
+<script type="text/javascript">
+
+    //radio选中样式
+    $(document).ready(function () {
+        $('input').iCheck({
+            checkboxClass: 'icheckbox_flat-blue',
+            radioClass: 'iradio_flat-blue'
+        });
+    });
+
+    //物品栏js
+    var divShow = false;
+    var withoutMargin = $("#wupin_con").outerWidth();
+
+    var wpnumber = withoutMargin;
+    $(function () {
+        $("#wupin_btn").click(function () {
+            var thisObj = $("#wupinlan");
+            if (divShow) {
+                thisObj.each(function () {
+                    $(this).animate({
+                        left: "0"
+                    }, 300);
+                });
+                divShow = false;
+            } else {
+                thisObj.each(function () {
+                    $(this).animate({
+                        left: wpnumber
+                    }, 300);
+                });
+                divShow = true;
+            }
+        });
+    });
+
+
+
+    $(document).ready(function () {
+
+        $(".jd_btn").click(function () {
+            $("#jd_con").slideToggle("slow");
+            $(this).toggleClass("qie"); return false;
+        });
+    });
+
+
+
+
+
+   
+
+
+
+</script>
+
+<script src="~/Js/Student/HallProcess/VideoPlay.js"></script>
+<script src="~/Js/Student/HallProcess/Index.js"></script>
+<script src="~/Js/Student/HallProcess/jindutiao.js"></script>

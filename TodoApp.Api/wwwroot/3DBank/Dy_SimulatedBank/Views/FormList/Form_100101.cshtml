@@ -1,0 +1,266 @@
+﻿@{
+                    ViewBag.Title = "Form_100101";
+                    Layout = "~/Views/Shared/_StutentLayoutIsNull.cshtml";
+                }
+               <form id="form1" onsubmit="return false" action="##" method="post">
+                   <input type="hidden" id="FormType" name="FormType" value="@Request["FormType"]" />
+                   <input type="hidden" id="FormId" name="FormId" value="@Request["FormId"]" />
+                   <input type="hidden" id="TRId" name="TRId" value="@Request["TotalResultId"]" />
+                   <input type="hidden" id="ExamId" name="ExamId" value="@Request["ExamId"]" />
+                   <input type="hidden" id="TaskId" name="TaskId" value="@Request["TaskId"]" />
+                   <input type="hidden" id="CustomerId" name="CustomerId" value="@Request["CustomerId"]" />
+                   <input type="hidden" id="LinkId" name="LinkId" value="@Request["LinkId"]" />
+                   <input type="hidden" id="Types" name="Types" value="2" />
+                <!--内容表单区域开始-->
+            <div class="tables bankmap">
+			<div class="con-map selected"> <span class="top-title">基本信息 <span id="dianji_con" style="cursor: pointer;">▼</span></span>
+				<table id="qv" class="con-map2-table qv">
+					<tbody>
+						<tr>
+							<td class="" style="width: 64px;"><label vl-default="" id="label_xysh" vtitle="协议书号" class="form-item text-left on" vl-tipsid="label_xysh_tips" title="label_xysh">协议书号</label>
+								<div id="label_xysh_tips" class="tipsmsg"></div>
+							</td>
+							<td class=""><input oncopy="return false" oncut="return false" vl-keyup="wwww" vl-default="" id="txt_xysh" vtitle="协议书号" class="form-item text-left" style="width: 150px;" vl-tipsid="txt_xysh_tips" vl-regex="['maxlength40']" vl-message="['协议书号长度大于最大长度:[40]!']" type="text" onpaste="return false">
+								<div id="txt_xysh_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="" style="width: 80px;"><label vl-default="" id="label_nsrbm" vtitle="纳税人编码" class="form-item text-left on" vl-tipsid="label_nsrbm_tips" title="label_nsrbm">纳税人编码</label>
+								<div id="label_nsrbm_tips" class="tipsmsg"></div>
+							</td>
+							<td class=""><input oncopy="return false" oncut="return false" vl-default="" id="txt_nsrbm" vtitle="纳税人编码" class="form-item text-left on" vl-tipsid="txt_nsrbm_tips" vl-regex="['maxlength40']" vl-message="['纳税人编码长度大于最大长度:[40]!']" style="width: 150px;" title="txt_nsrbm" type="text" onpaste="return false">
+								<div id="txt_nsrbm_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="" style="width: 80px;"><label vl-default="" id="label_nsrmc" vtitle="纳税人名称" class="form-item text-left on" vl-tipsid="label_nsrmc_tips" title="label_nsrmc">纳税人名称</label>
+								<div id="label_nsrmc_tips" class="tipsmsg"></div>
+							</td>
+							<td class=""><input oncopy="return false" oncut="return false" vl-default="" id="txt_nsrmc" vtitle="纳税人名称" class="form-item text-left on" vl-tipsid="txt_nsrmc_tips" vl-regex="['maxlength40']" vl-message="['纳税人名称长度大于最大长度:[40]!']" style="width: 150px;" title="txt_nsrmc" type="text" onpaste="return false">
+								<div id="txt_nsrmc_tips" class="tipsmsg"></div>
+							</td>
+						</tr>
+						<tr>
+							<td rowspan="1" colspan="1" class="" style="width: 64px;"><label vl-default="" id="label_fkzh" vtitle="付款账户" class="form-item text-left on" vl-tipsid="label_fkzh_tips" title="label_fkzh">付款账户</label>
+								<div id="label_fkzh_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class=""><input oncopy="return false" oncut="return false" vl-default="" id="txt_fkzh" vtitle="付款账户" class="form-item text-left on" vl-tipsid="txt_fkzh_tips" vl-regex="['maxlength40', 'number']" vl-message="['付款账户长度大于最大长度:[40]!','付款账户输入错误!']" style="width: 150px;" title="txt_fkzh" type="text" onpaste="return false">
+								<div id="txt_fkzh_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="" style="width: 64px;"><label vl-default="" id="label_zhlx" vtitle="账号类型" class="form-item text-left on" vl-tipsid="label_zhlx_tips" title="label_zhlx">账号类型</label>
+								<div id="label_zhlx_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="">
+								<div class="slectstyle">
+									<select vl-default="zhlx" id="sle_zhlx" vtitle="账号类型" class="form-item text-left on" vl-tipsid="sle_zhlx_tips" style="width: 150px;" title="sle_zhlx" vl-slemodel="">
+										<option disabled="" style="background-color: blue; color: #fff;" value="">账户类型值含义</option>
+										<option value="1">1-个人存折</option>
+										<option value="2">2-磁条借记卡</option>
+										<option value="3">03-对公账户</option>
+										<option value="4">4-IC借记卡</option>
+										<option value="6">6-单位结算户</option>
+									</select><input type="text" oncopy="return false" onpaste="return false" oncut="return false" style="width: 127px;"></div>
+								<div id="sle_zhlx_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="" style="width: 64px;"><label vl-default="" id="label_yzbz" vtitle="验证标志" class="form-item text-left on" vl-tipsid="label_yzbz_tips" title="label_yzbz">验证标志</label>
+								<div id="label_yzbz_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="">
+								<div class="slectstyle">
+									<select vl-default="" id="sle_yzbz" vtitle="验证标志" class="form-item text-left on" vl-tipsid="sle_yzbz_tips" style="width: 150px;" title="sle_yzbz" vl-slemodel="">
+										<option disabled="" style="background-color: blue; color: #fff;" value="" selected="selected">验证标志值含义</option>
+									</select><input type="text" oncopy="return false" onpaste="return false" oncut="return false" style="width: 127px;"></div>
+								<div id="sle_yzbz_tips" class="tipsmsg"></div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+            <div class="foot  text-center">
+                <!--<button vl-submit="true" id="btnsubmit">确定</button>-->
+                <button id="search">查询</button>
+                <button id="close">关闭</button>
+            <button type="button" onclick="FormReset()">重置</button>
+                       <button type="button " style="margin-right: 0px; " vl-submit="true" id="btnsubmit" onclick="SubmitForm()"> 提交</button></div>
+            <div class="l-box" style="display:block;"> 
+                <div style="min-height:300px;">  
+                    <table id="aaa" cellspacing="0" cellpadding="0">
+                        <tbody><tr class="bold">
+                            <td>网点代号</td>
+                            <td>纳税人编码</td>
+                            <td>协议书号</td>
+                            <td>清算行行号</td>
+                            <td>账户开户行</td>
+                            <td>付款账户</td>
+                            <td>验证撤销结果</td>
+                            <td>账号类型</td>
+                            <td>纳税人名称</td>
+                            <td>账户开户名称</td>
+                            <td>征收机关...</td>
+                            <td>征收机关名称</td>
+                            <td>验证日期</td>
+                            <td>维护日期</td>
+                            <td>操作员</td>
+                        </tr>
+                    </tbody></table>
+                </div>
+                <div class="foot  text-center">
+                    <!--<button vl-submit="true" id="btnsubmit">确定</button>-->
+                    <button id="add">添加</button>
+                    <button id="delete">删除</button>
+                    <button id="xyyz">协议验证</button>
+                    <button id="xycx">协议撤销</button>
+                    <button vl-submit="true" id="btnsubmit">提交</button> 
+                </div>
+            </div>  
+            
+            <input type="hidden" class="hidmainwidth" value="1000/" oncopy="return false" onpaste="return false" oncut="return false"> 
+		</div><script src="~/Js/Student/GetDefaultValue/common.bank.js"></script>
+              <script src="~/Js/Student/GetDefaultValue/lodash.min.js"></script>
+              <script src="~/Js/Student/GetDefaultValue/common.regex.cz.js"></script>
+              <script src="~/Js/Student/GetDefaultValue/common.regex.js"></script>
+<script src="~/Js/Student/GetDefaultValue/js/common.bank.ed.js"></script>
+<script src="~/Js/Student/GetDefaultValue/js/ed.common.js"></script>
+<script src="~/Js/Student/GetDefaultValue/js/layer.js"></script>
+<script src="~/Js/Student/GetDefaultValue/js/My97DatePicker/WdatePicker.js"></script>
+<script src="~/Js/Student/GetDefaultValue/js/sfxyqd.js"></script>
+<script type="text/javascript">
+    $(function () {
+        //checkOpener();
+        render();
+        loadPrevData();
+        $("#txt_xyyz").remove();
+        //$("#search").click(function () {
+            
+        //    $("#qv").hide();
+        //    $(".l-box").show();
+        //});
+        //$("#close").click(function () {
+        //    $("#qv").show();
+        //    $(".l-box").hide();
+        //});
+        $("#add").click(function () {
+
+            var controls = $("div[data-yw=1]").find(".form-item");
+            for (var i = 0; i < controls.length; i++) {
+                var result = checkRegex($(controls[i]).get(0));
+                if (!result.isCheck) {
+                    layer.alert(result.errormsg);
+                    return;
+                }
+            }
+            var data = lineEdPrevYwData(controls);
+            sessionStorage.PrevData = data;  
+
+            edNextNewWin("/user/indexone?", "2");
+        });
+        $("#save").click(function () {
+            var controls = $("div[data-yw=2]").find(".form-item");
+            for (var i = 0; i < controls.length; i++) {
+                var result = checkRegex($(controls[i]).get(0));
+                if (!result.isCheck) {
+                    layer.alert(result.errormsg);
+                    return;
+                }
+            }
+
+            var row = {};
+            row.xysh = $("#txt_xysh2").val();
+            row.nsrbm = $("#txt_nsrbm2").val();
+            row.nsrmc = $("#txt_nsrmc2").val();
+            row.zsjgdm = $("#txt_jgzsdm").val();
+            row.zsjgmc = $("#txt_zsjgmc").val();
+            row.zhlx = $("#sle_zhlx2").val();
+            row.zhlxtxt = $("#sle_zhlx2 option:checked").text();
+            row.fkzh = $("#txt_fkzh2").val();
+            row.zhkhh = $("#txt_zhkhh").val();
+            row.khhhh = $("#txt_khhhh").val();
+            row.zhkhmc = $("#txt_zhkhmc").val();
+            row.qshhh = $("#txt_qshhh").val();
+            row.fqjgdm = $("#txt_fqjgdm").val();
+            row.wddm = $("#txt_wddm").val();
+            row.fkkhhm = $("#txt_fkkhhm").val();
+            row.yzcxjg = $("#txt_ycxjg").val();
+            row.fy = $("#txt_fy").val(); 
+            window.opener.createTr(row);
+            window.opener.CdPrev(row);
+            layer.alert("保存数据成功");
+        });
+
+        $("#delete").click(function () {
+            $("#aaa .aaa_selected").remove();
+        });
+
+        $("#xyyz").click(function () {
+            var tr = $("#aaa .aaa_selected");
+            if (tr == null || tr.length == 0) {
+                layer.alert("请选择一条数据");
+                return;
+            }
+            layer.confirm("是否要对选择的数据进行三方协议验证！", function () {
+                var xyyz_html = "<input type=\"hidden\" id=\"txt_xyyz\" class=\"form-item\" value=\"1-已验证\"/>";
+                $("body").append(xyyz_html);
+
+                window.authCloseCall("print");
+            });
+        });
+    });
+
+    window.createTr = function(row) { 
+        var html = "<tr onclick=\"select(this)\">";
+        html += "<td>" + row.wddm + "</td>";
+        html += "<td>" + row.nsrbm + "</td>";
+        html += "<td>" + row.xysh + "</td>";
+        html += "<td>" + row.qshhh + "</td>";
+        html += "<td>" + row.zhkhh + "</td>";
+        html += "<td>" + row.fkzh + "</td>";
+        html += "<td>" + row.yzcxjg + "</td>";
+        html += "<td>" + row.zhlxtxt + "</td>";
+        html += "<td>" + row.nsrmc + "</td>";
+        html += "<td>" + row.zhkhmc + "</td>";
+        html += "<td>" + row.zsjgdm + "</td>";
+        html += "<td>" + row.zsjgmc + "</td>";
+        html += "<td>" + new Date().toLocaleDateString() + "</td>";
+        html += "<td>" + new Date().toLocaleDateString() + "</td>";
+        html += "<td>127336</td>";
+        html += "</tr>";
+        $("#aaa").append(html);
+    }
+
+    window.CdPrev = function (row) { 
+        $("#txt_xysh2").val(row.xysh);
+        $("#txt_nsrbm2").val(row.nsrbm);
+        $("#txt_nsrmc2").val(row.nsrmc);
+        $("#txt_jgzsdm").val(row.zsjgdm);
+        $("#txt_zsjgmc").val(row.zsjgmc);
+        $("#sle_zhlx2").val(row.zhlx); 
+        $("#sle_zhlx2").next().val(row.zhlxtxt);
+        $("#txt_fkzh2").val(row.fkzh);
+        $("#txt_zhkhh").val(row.zhkhh);
+        $("#txt_khhhh").val(row.khhhh);
+        $("#txt_zhkhmc").val(row.zhkhmc);
+        $("#txt_qshhh").val(row.qshhh);
+        $("#txt_fqjgdm").val(row.fqjgdm);
+        $("#txt_wddm").val(row.wddm);
+        $("#txt_fkkhhm").val(row.fkkhhm);
+        $("#txt_ycxjg").val(row.yzcxjg);
+        $("#txt_fy").val(row.fy); 
+    }
+
+    function select(obj) {
+        $(obj).addClass("aaa_selected").siblings().removeClass("aaa_selected");
+    }
+
+    function handel() {
+        catchSuccess(function () {
+            printEdWin();
+        });
+    }
+ </script>
+<link href="~/Js/Student/GetDefaultValue/js/common.bank.ed.css" rel="stylesheet" />
+<link href="~/Js/Student/GetDefaultValue/js/ed.common.css" rel="stylesheet" />
+<style type="text/css">
+    .aaa_selected {
+        background-color: #98c6ff;
+    }
+    #fake_btnsubmit {
+         display:none;
+    }
+</style>
+              </form>

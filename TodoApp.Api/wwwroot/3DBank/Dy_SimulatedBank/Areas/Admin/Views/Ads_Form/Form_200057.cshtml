@@ -1,0 +1,98 @@
+﻿<!--无卡支付-->
+<div class="main-container">
+    <div class="text-right">
+        <input type="checkbox" id="check_newEnterprise" name="check_newEnterprise"> 新企业
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label for="inputEmail3" class="col-sm-3 control-label">账户类型</label>
+                <div class="col-sm-6">
+                    <select class="form-control" id="sle_accountType3" name="sle_accountType3"></select>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label for="inputEmail3" class="col-sm-3 control-label">证件类型</label>
+                <div class="col-sm-6">
+                    <select class="form-control" id="sle_certificateType" name="sle_certificateType"></select>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label for="inputEmail3" class="col-sm-3 control-label">证明文件编号</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control input-sm" id="txt_fileNumber" name="txt_fileNumber">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label for="inputEmail3" class="col-sm-3 control-label">基本存款账户开户许可证核准号/编号</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control input-sm" id="txt_openingLicense" name="txt_openingLicense">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label for="inputEmail3" class="col-sm-3 control-label">客户名称</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control input-sm" id="txt_customer" name="txt_customer">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label for="inputEmail3" class="col-sm-3 control-label">法人/单位负责人姓名</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control input-sm" id="txt_person" name="txt_person">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label for="inputEmail3" class="col-sm-3 control-label">法人/单位负责人证件号码</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control input-sm" id="txt_personnumber" name="txt_personnumber">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+                <label for="inputEmail3" class="col-sm-5 control-label"></label>
+                <div class="col-sm-6">
+                    <input type="checkbox" id="check_partnership" name="check_partnership"> 合伙企业
+                    <button type="button" style="margin-left: 20px;" class="btn btn-primary btn-sm" id="btnsubmit">开户校验</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    setOptions(['accountType3', 'certificateType']);
+    $(function () {
+
+        if (window.performance.navigation.type == 0) {
+            layer.alert('请输入经办人信息', function () {
+                inConnectForm("200059");
+            })
+        }
+    });
+</script>

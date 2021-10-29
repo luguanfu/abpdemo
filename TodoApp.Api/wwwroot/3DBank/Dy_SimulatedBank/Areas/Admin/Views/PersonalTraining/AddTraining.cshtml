@@ -1,0 +1,113 @@
+﻿@{
+    
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    if (Request["AllType"] == "1")
+    {
+        ViewData["nvc"] = "个人实训考核";
+    }
+    else
+    {
+        ViewData["nvc"] = "团队实训考核";
+    }
+}
+
+<div class="row   white-bg dashboard-header">
+
+    <div class="col-sm-12 m-t-sm m-b-lg text-left">
+        <button onclick="bet()" class="btn   btn-lg  btn-outline btn-success m-l-lg m-r-lg">基本信息</button>
+        <i class="fa fa-arrow-circle-right fa-2x m-r-xs"></i>
+
+        <button class="btn  btn-lg  btn-success m-r-lg">考核内容</button>
+
+    </div>
+
+    <div class="ibox-content">
+        <div class="row">
+            <div class="pull-right">
+                <button onclick="AlterArea()" class="btn btn-primary btn-sm " type="button"><i class="fa fa-plus m-r-xs"></i><span class="bold">添加案例</span></button>
+                <button onclick="DeleteTraining()" class="btn btn-warning btn-sm  m-r-md" type="button"><i class="fa fa-trash m-r-xs"></i><span class="bold">移出所选</span></button>
+
+                <button onclick="javascript:window.location.href = '/Admin/PersonalTraining/Index?AllType=@Request["AllType"]';" class="btn btn-info btn-sm m-l-md" type="button"><i class="fa fa-check-square-o m-r-xs"></i><span class="bold">返回</span></button>
+                @*<button onclick="javascript:window.location.href = '/Admin/PersonalTraining/Add?PracticeId=@Request["PracticeId"]&AllType=@Request["AllType"]';" class="btn btn-warning btn-sm " type="button"><i class="fa fa-trash m-r-xs"></i><span class="bold">取消</span></button>*@
+
+            </div>
+
+        </div>
+
+
+        <div class="row m-t-sm table-responsive">
+            <table class="table text-center table-bordered ">
+                <thead>
+                    <tr>
+                        <th class="text-center">
+                            <input type="Checkbox" class="i-checks checkbox-all">
+                        <th class="text-center">案例名称</th>
+                        <th class="text-center">来源</th>
+                        <th class="text-center">开工管理</th>
+                        <th class="text-center">厅堂服务场景</th>
+                        <th class="text-center">柜面服务场景</th>
+                        <th class="text-center">完工管理</th>
+                        <th class="text-center">客户数量</th>
+                        <th class="text-center">公开状态</th>
+                    </tr>
+                </thead>
+                <tbody class="new_table text-center" id="tablelist"></tbody>
+            </table>
+        </div>
+
+        <!--分页开始-->
+        <div class="row text-center" id="PaginatorLibrary">
+        </div>
+        <!--分页结束-->
+    </div>
+</div>
+
+
+
+<!--弹窗-->
+<div class="list_con " id="khxm" style="display: none; overflow:hidden;">
+    <div class="ibox-content">
+        <div class="row form-horizontal">
+
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="input-group">
+                        <input type="text" placeholder="输入考核名称" id="Task_Name" class="form-control">
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-primary" onclick="SearchInfo()">查找</button>
+                        </span>
+
+                    </div>
+                </div>
+                <div class=" col-sm-5   m-r-md text-right">
+                    <button onclick="AddPracticeTasks()" class="btn btn-primary btn-sm " type="button"><i class="fa fa-plus m-r-xs"></i><span class="bold">添加所选</span></button>
+                </div>
+
+            </div>
+
+        </div>
+        <div class="row m-t-sm table-responsive">
+            <table class="table text-center table-bordered ">
+                <thead>
+                    <tr>
+                        <th class="text-center">
+                            <input type="Checkbox" class="i-checks1 checkbox-all1">
+                        <th class="text-center">案例名称</th>
+                        <th class="text-center">来源</th>
+                        <th class="text-center">开工管理</th>
+                        <th class="text-center">厅堂服务场景</th>
+                        <th class="text-center">柜面服务场景</th>
+                        <th class="text-center">完工管理</th>
+                        <th class="text-center">客户数量</th>
+                        <th class="text-center">公开状态</th>
+                    </tr>
+                </thead>
+                <tbody  class="new_table1 text-center" id="tablelist1"></tbody>
+            </table>
+        </div>
+        <!--分页开始-->
+        <div class="con_bottom" id="PaginatorLibrary1">
+        </div>
+    </div>
+</div>
+<script src="~/JS/Admin/PersonalTraining/AddTraining.js"></script>

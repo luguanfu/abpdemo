@@ -1,0 +1,103 @@
+﻿
+<style>
+    .applay-box ul {
+        width: 49%;
+        vertical-align: top;
+        display: inline-block;
+    }
+
+        .applay-box ul li {
+            list-style: none;
+        }
+</style>
+<!--集中授权申请-->
+<div class="applay-box">
+    <ul>
+        <li>
+            <div class="checkbox">
+                <label>
+                    <input vl-default="" type="checkbox" id="check_idCard" name="check_idCard" eventId="check_idCard"> 身份证原件正反面
+                </label>
+            </div>
+        </li>
+        <li>
+            <div class="checkbox">
+                <label>
+                    <input vl-default="" type="checkbox" id="check_customerAvatar" name="check_customerAvatar" eventId="check_customerAvatar"> 现场影像
+                </label>
+            </div>
+        </li>
+        <li>
+            <div class="checkbox">
+                <label>
+                    <input vl-default="" type="checkbox" id="check_bankCard" name="check_bankCard" eventId="check_bankCard"> 银行卡
+                </label>
+            </div>
+        </li>
+        <li>
+            <div class="checkbox">
+                <label>
+                    <input vl-default="" type="checkbox" id="check_passbook" name="check_passbook" eventId="check_passbook"> 存折
+                </label>
+            </div>
+        </li>
+        <li>
+            <div class="checkbox">
+                <label>
+                    <input vl-default="" type="checkbox" id="check_otherVouchers" name="check_otherVouchers" eventId="check_otherVouchers"> 其他凭证
+                </label>
+            </div>
+        </li>
+    </ul>
+    <ul>
+        <li>
+            <div class="checkbox">
+                <label>
+                    <input vl-default="" type="checkbox" id="check_check" name="check_check" eventId="check_check"> 支票正反面
+                </label>
+            </div>
+        </li>
+        <li>
+            <div class="checkbox">
+                <label>
+                    <input vl-default="" type="checkbox" id="check_relatedAgreements" name="check_relatedAgreements" eventId="check_relatedAgreements"> 相关协议
+                </label>
+            </div>
+        </li>
+        <li>
+            <div class="checkbox">
+                <label>
+                    <input vl-default="" type="checkbox" id="check_depositReceipt" name="check_depositReceipt" eventId="check_depositReceipt"> 存单
+                </label>
+            </div>
+        </li>
+        <li>
+            <div class="checkbox">
+                <label>
+                    <input vl-default="" type="checkbox" id="check_cash" name="check_cash" eventId="check_cash"> 现金
+                </label>
+            </div>
+        </li>
+        <li>
+            <div class="checkbox">
+                <label>
+                    <input vl-default="" type="checkbox" id="check_customerresult" name="check_customerresult" eventId="check_customerresult"> 客户身份识别结果
+                </label>
+            </div>
+        </li>
+    </ul>
+</div>
+<script>
+    var backFormId = "";
+    $(function () {
+        backFormId = getQueryString("backform");
+    });
+    function doSubmit() {
+        //goPage("200009");
+        if (backFormId == "" || backFormId == null || backFormId == undefined) {
+            checkEmpowe();
+        } else {
+            goPage(backFormId);
+        }
+    }
+</script>

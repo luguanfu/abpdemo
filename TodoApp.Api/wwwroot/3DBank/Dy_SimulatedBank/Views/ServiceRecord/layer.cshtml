@@ -1,0 +1,232 @@
+﻿@{
+    ViewBag.Title = "layer";
+}
+@model Dy_SimulatedBank.Models.ServiceRecordModel
+<link href="~/CSS/bootstrap.css" rel="stylesheet" />
+
+<link href="~/CSS/student/layer.css?v=20211028" rel="stylesheet" />
+<link rel="stylesheet" href="~/CSS/bootstrap.min.css" />
+<link rel="stylesheet" href="~/Scripts/layer/skin/layer.css?v=20211028" />
+<link rel="stylesheet" type="text/css" href="~/CSS/ddsmoothmenu.css" />
+<link rel="stylesheet" type="text/css" href="~/CSS/ddsmoothmenu-v.css" />
+
+<script src="~/Scripts/jquery-3.2.0.js"></script>
+<script src="~/Scripts/layer/layer.js?v=20210419"></script>
+<script src="~/Scripts/ddsmoothmenu.js"></script>
+<script src="~/Scripts/verifyform.js"></script>
+<script src="~/Js/ServiceRecord/layer.js?v=20211025"></script>
+<script src="~/Js/Student/GetDefaultValue/js/bootstrap.min.js"></script>
+
+<div id="choice_class" style="overflow: hidden;height: 100%;">
+    <input type="hidden" id="CustomerId" value="@(Model.CustomerId)" />
+    <input type="hidden" id="TaskId" value="@(Model.TaskId)" />
+    <input type="hidden" id="tMono" value="@(Model.tMono)" />
+    <input type="hidden" id="ExamId" value="@(Model.ExamId)" />
+    <div>
+        <style>
+            .title {
+                height: 60px;
+                display: flex;
+                align-items: center;
+                margin: 10px 20px;
+            }
+
+                .title .logo {
+                    width: 194px;
+                    height: 45px;
+                }
+
+                .title .space {
+                    font-size: 28px;
+                    line-height: 36px;
+                    vertical-align: center;
+                    margin: 0 10px;
+                }
+
+                .title .name {
+                    font-size: 24px;
+                    font-weight: bold;
+                }
+
+            .info-container {
+                width: 100%;
+                height: 30px;
+                background-color: #d9d9d9;
+                display: flex;
+                align-items: center;
+            }
+
+                .info-container .space {
+                    margin: 0 6px;
+                }
+        </style>
+        <div class="title">
+            <img loading="lazy" src="/img/bank-logo.png" class="logo">
+            <span class="space">|</span>
+            <span class="name">智慧银行系统</span>
+        </div>
+        <div class="info-container">
+            <span style="margin-left: 15px">806010801</span>
+            <span class="space">|</span>
+            <span>长安银行股份有限公司西安支行</span>
+            <span class="space">|</span>
+            <span>800512356</span>
+            <span class="space">|</span>
+            <span>张三</span>
+            <span class="space">|</span>
+            <span>综合柜员</span>
+        </div>
+    </div>
+    <div class="tan_map" style="height: 100%;">
+        <button id="btnb">>></button>
+        <div class="map_left" id="left">
+            <button id="btn"><<</button>
+            <div class="left_sousuo" id="divKeyword">
+                <a class="guanbi" title="内容清除">×</a>
+                <input type="text" name="Keyword" onkeyup="Keyword(this);" id="Keyword" value="" placeholder="输入交易名称/代码查询...">
+            </div>
+            <div class="tan_left" style="" id="div_left">
+                <div class="m-t-sm " style="">
+                    <input type="hidden" value="" id="ParentId" />
+                    @*<ul class="part" id="GetList">
+                        </ul>*@
+                    @*<ul class="part" style="display: none;" id="GetLists"></ul>*@
+                    <div class="panel-group" id="accordion" style="width: 200px;">
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+        <div id="zongtijiao" style="display: none;">
+            <img style="position: fixed; top: -70px; left: 175px;" src="~/img/popUpOk.png" />
+            <div style="font-size: 22px; margin-top: 90px; margin-bottom: 50px; text-align: center;" id="zongtijiaos">提交考试将不能再做答，确认提交？</div>
+            <div class="text-center">
+                <button class="quxiao" onclick="qx()" style="margin-right: 50px; font-size: 18px;">取消</button>
+                <button class="queding" onclick="Tqueding()" style="font-size: 18px;">确定</button>
+            </div>
+        </div>
+        <div id="divtishi" style="display: none;">
+            <img style="position: fixed; top: -70px; left: 175px;" src="~/img/popUp.png" />
+            <div style="font-size: 22px; margin-top: 90px; margin-bottom: 50px; text-align: center;" id="divtitle">提交考试将不能再做答，确认提交？</div>
+            <div class="text-center">
+                <button class="quxiao" onclick="qx()" style="margin-right: 50px; font-size: 18px;">取消</button>
+                <button class="queding" onclick="Kqueding()" style="font-size: 18px;">确定</button>
+            </div>
+        </div>
+        <div id="divtishis" style="display: none;">
+            <img style="position: fixed; top: -70px; left: 175px;" src="~/img/popUpReform.png" />
+            <div style="font-size: 22px; margin-top: 90px; margin-bottom: 50px; text-align: center;" id="divtitles">提交考试将不能再做答，确认提交？</div>
+            <div class="text-center">
+                <button class="quxiao" onclick="qx()" style="margin-right: 50px; font-size: 18px;">取消</button>
+                <button class="queding" onclick="Zqueding()" style="font-size: 18px; ">确定</button>
+            </div>
+        </div>
+        <div class="tan_right" style="height: 100%;" id="div_nr">
+            <input type="hidden" id="HfAnswerTime" />
+            <div id="leftDiv" style="position:absolute;margin-left:240px;width:calc(100% - 620px)">
+                @RenderPage("~/Views/ServiceRecord/Satrt.cshtml")
+            </div>
+            <iframe id="ifrdivData" name="ifrdivData" style="    height: 100%;
+    display: none;
+    width: calc(100% - 620px);
+" frameborder="0" src="/FormList/ToForm?FromTMNO=200003&FormId=200015&FormType=0&TotalResultId=196&ExamId=21&TaskId=74&CustomerId=196&LinkId=12&Satisfaction=100"></iframe>
+            <iframe id="taskData" name="taskData" style="height: 100%;float:right; width: 380px;" frameborder="0" src="/ServiceRecord/Index?viewName=Task&FormType=@(Request["FormType"])&TotalResultId=@(Request["TotalResultId"])&ExamId=@(Request["ExamId"])&LinkId=@(Request["LinkId"])&Satisfaction=@(Request["Satisfaction"])"></iframe>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+
+    $(function () {
+
+        $("#btn").click(function () {
+            $("#left").hide();
+            $("#btnb").show();
+            $("#div_nr").removeClass("tan_right");
+        });
+        $("#btnb").click(function () {
+            $("#btnb").hide();
+            $("#left").show();
+            $("#div_nr").addClass("tan_right");
+        });
+
+    });
+    var width = window.screen.width; //获取屏幕宽度
+    if (width == 1920) {
+        document.getElementsByTagName('body')[0].style.zoom = 1;
+    }
+    if (width < 1920) {
+        if (!isIE()) {
+            document.getElementsByTagName('body')[0].style.zoom = 0.83; //小屏幕左侧菜单高度控制
+        } else {
+            //$("#left").css("zoom",0.76);
+            $("#left").css("width", "200px");
+            $("#div_left").css("width", "200px");
+
+            $("#div_nr").css("margin-left", "210px");
+            $("#div_left").css("height", "450px");
+        }
+
+    }
+
+    function isIE() { //ie?
+        if (!!window.ActiveXObject || "ActiveXObject" in window)
+            return true;
+        else
+            return false;
+    }
+    function setAnswerTime(t) {
+        $("#HfAnswerTime").val(t);
+    }
+</script>
+<script>
+    //$('body').on('paste', e => { e.preventDefault() })
+    $("#form1").attr("autocomplete", "off");
+    document.ondragstart = function () { return false; }
+
+    $(function () {
+        $.ajax({
+            ifModified: true,
+            cache: true,
+            Type: "Post",
+            url: '/ashx/menu.ashx',
+            dataType: 'json',
+            data: { "isTop": "true", "title": decodeURI(getQueryString("title")) },
+            async: true,
+            success: function (data) {
+                var html = "";
+                for (var i = 0; i < data.length; i++) {
+                    html += '<div class="item-bottom">';
+                    html += `<div class="container" onclick="div_topclikc('${data[i]["MenuId"]}','${data[i]["FromDefaultC"]}')">`;
+                    html += '<img loading="lazy" src="' + data[i]["Icon"] + '" class="image">';
+                    html += '<span class="name">' + data[i]["RemarkName"] + '</span>';
+                    html += '</div>';
+                    html += '</div>';
+                }
+                $("#topMenuDiv").html(html);
+            }
+        });
+        $.ajax({
+            ifModified: true,
+            cache: true,
+            Type: "Post",
+            url: '/ashx/menu.ashx',
+            dataType: 'json',
+            data: { "isTop": "false", "title": decodeURI(getQueryString("title")) },
+            async: true,
+            success: function (data) {
+                var html = "";
+                for (var i = 0; i < data.length; i++) {
+                    html += '<div class="item-bottom">';
+                    html += `<div class="container" onclick="div_topclikc('${data[i]["MenuId"]}','${data[i]["FromDefaultC"]}')">`;
+                    html += '<img loading="lazy" src="' + data[i]["Icon"] + '" class="image">';
+                    html += '<span class="name">' + data[i]["RemarkName"] + '</span>';
+                    html += '</div>';
+                    html += '</div>';
+                }
+                $("#bottomMenuDiv").html(html);
+            }
+        });
+    });
+</script>

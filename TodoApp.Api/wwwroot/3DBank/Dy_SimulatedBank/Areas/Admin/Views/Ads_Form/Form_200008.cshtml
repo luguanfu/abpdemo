@@ -1,0 +1,107 @@
+﻿
+<!--定期存款信息录入-->
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <label id="lbl_depositCategory" name="lbl_depositCategory" for="inputEmail3" class="col-sm-3 control-label">存款类别</label>
+            <div class="col-sm-6">
+                <select vl-default="" id="sle_depositCategory" name="sle_depositCategory" class="form-control">
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <label id="lbl_productName" name="lbl_productName" for="inputEmail3" class="col-sm-3 control-label">产品名称</label>
+            <div class="col-sm-6">
+                <select vl-default="" id="sle_productName" name="sle_productName" class="form-control">
+                </select>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <label id="lbl_currency" name="lbl_currency" for="inputEmail3" class="col-sm-3 control-label">币种钞汇</label>
+            <div class="col-sm-8" style="display: flex;">
+                <div><select vl-default="" id="sle_currency" name="sle_currency" class="form-control"></select></div>
+                <div><select vl-default="" id="sle_remittance" name="sle_remittance" class="form-control"></select></div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <label id="lbl_accountAmount" name="lbl_accountAmount" for="inputEmail3" class="col-sm-3 control-label">开户金额</label>
+            <div class="col-sm-6">
+                <input vl-default="" id="txt_accountAmount" name="txt_accountAmount" type="text" class="form-control input-sm">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <label id="lbl_rateType" name="lbl_rateType" for="inputEmail3" class="col-sm-3 control-label">利率类型</label>
+            <div class="col-sm-6">
+                <select vl-default="" id="sle_rateType" name="sle_rateType" class="form-control">
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <label id="lbl_rate" name="lbl_rate" for="inputEmail3" class="col-sm-3 control-label">利率(%)</label>
+            <div class="col-sm-6">
+                <input vl-default="" id="txt_rate" name="txt_rate" type="text" class="form-control input-sm">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <label id="lbl_withdrawalMethod" name="lbl_withdrawalMethod" for="inputEmail3" class="col-sm-3 control-label">支取方式</label>
+            <div class="col-sm-6">
+                <select vl-default="" id="sle_withdrawalMethod" name="sle_withdrawalMethod" class="form-control">
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <label id="lbl_password" name="lbl_password" for="inputEmail3" class="col-sm-3 control-label">密码</label>
+            <div class="col-sm-6">
+                <input vl-default="" id="pwd_password" name="pwd_password" type="password" class="form-control input-sm">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <label id="lbl_universalMark" name="lbl_universalMark" for="inputEmail3" class="col-sm-3 control-label">通存通兑标志</label>
+            <div class="col-sm-6">
+                <select vl-default="" id="sle_universalMark" name="sle_universalMark" class="form-control">
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <label id="lbl_redepositFlag" name="lbl_redepositFlag" for="inputEmail3" class="col-sm-3 control-label">转存标志</label>
+            <div class="col-sm-6">
+                <select vl-default="" id="sle_redepositFlag" name="sle_redepositFlag" class="form-control">
+                </select>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    setOptions(['depositCategory', 'productName', 'redepositFlag', 'universalMark', 'rateType', 'currency', 'remittance', 'withdrawalMethod']);
+    function doSubmit() {
+        goPage("200005");
+    }
+</script>

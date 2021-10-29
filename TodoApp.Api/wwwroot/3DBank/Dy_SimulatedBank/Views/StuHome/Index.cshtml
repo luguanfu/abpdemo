@@ -1,0 +1,958 @@
+﻿@{
+
+}
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" type="text/css" href="~/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="~/css/font-awesome-4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="~/css/animate.css" />
+    <link rel="stylesheet" type="text/css" href="~/css/public3D.css" />
+    <link href="~/CSS/3Dstudent.css" rel="stylesheet" />
+    <link rel="shortcut icon" href="~/UnityPublish/TemplateData/favicon.ico">
+    @*<link rel="stylesheet" href="~/UnityPublish/TemplateData/style.css">*@
+    <script src="~/Scripts/jquery-3.2.0.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/layer/layer.js"></script>
+    <link rel="stylesheet" href="~/UnityPublish/TemplateData/style.css">
+    <script src="~/UnityPublish/TemplateData/UnityProgress.js"></script>
+    <script src="~/UnityPublish/Build/UnityLoader.js"></script>
+
+    <style>
+        .tdshu_k1 {
+            width: 100px;
+        }
+
+        .tdshu_k2 {
+            width: 100px;
+        }
+
+        .tdshu_k3 {
+            width: 100px;
+        }
+
+        .tdshu_k4 {
+            width: 100px;
+        }
+
+        .tdshu_k5 {
+            width: 130px;
+        }
+
+        .tdshu_k6 {
+            width: 100px;
+        }
+
+        .tdshu_k7 {
+            width: 100px;
+        }
+
+
+        .xzlx_k1 {
+            width: 500px;
+        }
+
+        .xzlx_k2 {
+            width: 100px;
+        }
+
+        .xzlx_k3 {
+            width: 100px;
+        }
+
+        label {
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+
+        a.disableds {
+            pointer-events: none;
+            filter: alpha(opacity=50); /*IE滤镜，透明度50%*/
+            -moz-opacity: 0.5; /*Firefox私有，透明度50%*/
+            opacity: 0.5; /*其他，透明度50%*/
+        }
+
+        .gangwei_table {
+            color: white;
+            width: 100%;
+        }
+
+            .gangwei_table tr td {
+                padding: 20px 5px;
+            }
+
+        #goxit {
+            position: absolute;
+            height: 100vmin;
+            top: 0px;
+        }
+
+        .weizhi_jianpan {
+            position: absolute;
+            z-index: 99999999999;
+            bottom: 10px;
+            left: 10px;
+        }
+
+        .weizhi_shijiao {
+            position: absolute;
+            z-index: 99999999999;
+            bottom: 10px;
+            right: 10px;
+        }
+    </style>
+
+
+
+</head>
+<body style="overflow:hidden">
+
+    @*<audio style="display: none;" src="/Flash/home_bgv.mp3" id="aud" autoplay="autoplay" controls="controls" preload="auto"></audio>*@
+
+
+    @*<video id="goxit" preload="metadata" autoplay="autoplay" onclick="showImg()">
+            <source src="~/Flash/goxitong.mp4" type="video/mp4">
+
+        </video>*@
+
+    <div id="unityContainerDiv" class="webgl-content" style="width: 100%; height: 100%;" hidden>
+        <div id="unityContainer"></div>
+        <img class="weizhi_jianpan" src="~/Img/public3D/img_jianpan.png" />
+        <img class="weizhi_shijiao" src="~/Img/public3D/img_shijiao.png" />
+    </div>
+
+
+</body>
+</html>
+
+
+<div id="moshi" style="display: none;">
+
+    <div class="moshi_con">
+        <!--弹窗头部标题加关闭区域-->
+        <div class="pub_titele">
+            <img onclick="layerCloseZdy(this)" class="ms_guanbi" src="/img/public3D/ms_ico_guanbi.png" />
+        </div>
+
+        <!--三个模式-->
+        <div class="three_moshi">
+            <div class="row">
+                <div class="col-sm-4" onclick="jiaoxue()">
+                    <div class="three_one_map">
+                        <div class="one_img ms_img1"></div>
+                        <p class="ms_name">教学模式</p>
+                        <p><img src="/img/public3D/ms_ico_sanjiao.png" /> </p>
+                        <div class="ms_jianjie">
+                            从初级业务到高级业务<br />
+                            逐步掌握银行网点实务
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-4" onclick="zylx()">
+                    <div class="three_one_map">
+                        <div class="one_img ms_img2"></div>
+                        <p class="ms_name">自由练习</p>
+                        <p><img src="/img/public3D/ms_ico_sanjiao.png" /> </p>
+                        <div class="ms_jianjie">
+                            开放式案例库<br />
+                            个人或团队自由练习
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-4" onclick="kaohe()">
+                    <div class="three_one_map">
+                        <div class="one_img ms_img3"></div>
+                        <p class="ms_name">实训考核</p>
+                        <p><img src="/img/public3D/ms_ico_sanjiao.png" /> </p>
+                        <div class="ms_jianjie">
+                            在考核中角逐第一<br />
+                            和团队一起登上榜首
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+        <!--底部主管区域-->
+        <div class="ms_dibu">
+
+            <div class="ms_dibu_text">
+                您想从那个模式进入仿真实训？
+            </div>
+
+            <div class="zhuguan_map">
+                <img src="/img/public3D/ms_img_zg.png" />
+                <p>网点主管</p>
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+</div>
+
+<!--公告栏弹窗-->
+<div id="gonggao" style="display: none;">
+    <div class="moshi_con">
+        <!--弹窗头部标题加关闭区域-->
+        <div class="pub_titele">
+            <img onclick="layerCloseZdy(this)" class="ms_gonggao_gb" src="../img/public3D/ms_ico_guanbi.png" />
+        </div>
+        <!--公告栏内容开始-->
+        <div class="fance_map">
+            <div class="row">
+                <div class="col-sm-7" style="width: 62%;">
+                    <div class="fance_left_map">
+                        <div class="left_top_tit">
+                            <img src="../img/public3D/gg_ico_laba.png" />
+                            公告栏
+                        </div>
+
+                        <div class="fance_left_con">
+                            <ul id="gonggaotablelist"></ul>
+                        </div>
+                        <div class="con_bottom" id="PaginatorLibraryGongGao">
+
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-5" style="width: 38%;">
+                    <div class="fance_right_map">
+                        <div class="left_top_tit">
+                            <img src="../img/public3D/gg_ico_dbsx.png" />
+                            待办事项
+                        </div>
+
+                        <div class="fance_right_con">
+                            <ul>
+                                <li>
+                                    <img src="../img/public3D/gg_ico_db1.png" />
+                                    <span class="db_name">个人练习</span>
+
+                                    <span>-----</span>
+
+                                    <label id="lx_gr" onclick="tiaozhuan(1)">0</label>
+
+                                </li>
+
+                                <li>
+                                    <img src="../img/public3D/gg_ico_db2.png" />
+                                    <span class="db_name">团队练习</span>
+
+                                    <span>-----</span>
+
+                                    <label id="lx_td" onclick="tiaozhuan(2)">0</label>
+
+                                </li>
+
+                                <li>
+                                    <img src="../img/public3D/gg_ico_db3.png" />
+                                    <span class="db_name">知识考核</span>
+
+                                    <span>-----</span>
+
+                                    <label id="zskh" onclick="tiaozhuan2(3)">0</label>
+
+                                </li>
+
+
+                                <li>
+                                    <img src="../img/public3D/gg_ico_db4.png" />
+                                    <span class="db_name">个人考核</span>
+
+                                    <span>-----</span>
+
+                                    <label id="js_gr" onclick="tiaozhuan2(1)">0</label>
+
+                                </li>
+
+
+                                <li>
+                                    <img src="../img/public3D/gg_ico_db5.png" />
+                                    <span class="db_name">团队考核</span>
+
+                                    <span>-----</span>
+
+                                    <label id="js_td" onclick="tiaozhuan2(2)">0</label>
+
+                                </li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+
+    </div>
+
+
+
+</div>
+
+
+<!--考核类型（个人/团队练习）-->
+<input type="hidden" id="PracticeType" />
+<input type="hidden" id="ModelType" />
+<input type="hidden" id="Role" value="@ViewBag.Groupingstate" />
+<!--自由练习弹窗-->
+<div id="zylx" style="display: none;">
+    <div class="moshi_con">
+        <!--弹窗头部标题加关闭区域-->
+        <div class="pub_titele">
+            <img onclick="layerCloseZdy(this)" class="ms_zylx_gb" src="../img/public3D/ms_ico_guanbi.png" />
+        </div>
+        <!--自由练习-->
+        <div class="zylx_map">
+            <div class="left_top_tit">
+                <img src="../img/public3D/lx_ico_zylx.png" /> 自由练习
+            </div>
+            <div class="exe_con">
+                <!--切换开始-->
+                <div class="sou_map">
+                    <span class="tuan_xin">
+                        当前团队名称：<span class="tuan_name">@ViewBag.Groupingname</span> 当前团队角色：
+                        @if (ViewBag.Groupingstate == 1)
+                        {
+                            <span class="tuan_name">小组长</span>
+                        }
+                        else
+                        {
+                            <span class="tuan_name">小组员</span>
+                        }
+                    </span>
+                    <!--搜索区域-->
+                    <div class="sousuo">
+                        <input type="text" name="SearchName" id="SearchName" value="" placeholder="输入案例名称..." />
+                        <button onclick="serchinfo()"></button>
+                    </div>
+                </div>
+                <ul class="list_tab_ul  zylx_tab">
+                    <li class="xuanze" onclick="GetPersonalExercises(null,'1')">个人练习</li>
+                    <li onclick="GetPersonalExercises(null,'2')">团队训练</li>
+                    <li onclick="GetPersonalExercises(null,'3')">理论训练</li>
+                </ul>
+                <!--切换内容-->
+                <div class="tab_con">
+
+                    <div class="list_tab zylx_tab_con disBlock">
+                        <div class="xinxi_btn" id="ziyoulianxi1">
+                            <input id="item1" type="radio" name="zt" value="0" onclick="serchinfo()" checked="checked">
+                            <label class="zt_lable" for="item1"></label>
+                            <span>进行中</span>
+                            <input id="item2" type="radio" name="zt" value="1" onclick="serchinfo()">
+                            <label class="zt_lable" for="item2"></label>
+                            <span>已完成</span>
+
+                            <!--个人练习按钮-->
+                            <span id="grlx">
+                                <button type="button" class="btn_pub" onclick="DelAll()">
+                                    <img src="../img/public3D/lx_ico_shan.png" />
+                                    清空记录
+                                </button>
+                                <button type="button" class="btn_pub " onclick="openToCaseView();">
+                                    <img src="../img/public3D/lx_ico_add.png" />
+                                    新增练习
+                                </button>
+                                <button type="button" class="kuai_go " onclick="GoQuickExercise(1)">
+                                    <img src="../img/public3D/lx_ico_gohui.png" />
+                                    快速开始
+                                </button>
+                            </span>
+
+                            <!--团队练习按钮-->
+                            <span id="tdlx">
+                                @if (ViewBag.Groupingstate == 1)
+                                {
+                                    <button type="button" class="btn_pub" onclick="DelAll()">
+                                        <img src="../img/public3D/lx_ico_shan.png" />
+                                        清空记录
+                                    </button>
+                                    <button type="button" class="btn_pub " onclick="openToCaseView();">
+                                        <img src="../img/public3D/lx_ico_add.png" />
+                                        新增练习
+                                    </button>
+                                    <button type="button" class="kuai_go " onclick="GoQuickExercise(2)">
+                                        <img src="../img/public3D/lx_ico_gohui.png" />
+                                        快速开始
+                                    </button>
+                                }
+                                else if (ViewBag.Groupingstate == 0)
+                                {
+                                    <button type="button" class="btn_pub " onclick="openToCaseView();">
+                                        <img src="../img/public3D/lx_ico_add.png" />
+                                        查看案例
+                                    </button>
+                                }
+                            </span>
+
+                        </div>
+                        <div class="xinxi_btn" id="ziyoulianxi2" style="display:none;">
+                            <input id="zyms1" type="radio" name="zyms" value="0" onclick="serchinfo()" autocomplete="off">
+                            <label class="zt_lable" for="zyms1"></label>
+                            <span>未开始</span>
+                            <input id="zyms2" type="radio" name="zyms" value="1" checked="checked" onclick="serchinfo()" autocomplete="off">
+                            <label class="zt_lable" for="zyms2"></label>
+                            <span>进行中</span>
+                            <input id="zyms3" type="radio" name="zyms" value="2" onclick="serchinfo()" autocomplete="off">
+                            <label class="zt_lable" for="zyms3"></label>
+                            <span>已结束</span>
+                        </div>
+                        <!--数据区域开始-->
+                        <div class="shuju_map" id="personalTitle">
+
+                        </div>
+                        <div class="shuju_con_map">
+                            <div class="shuju_con" id="personal">
+
+                            </div>
+                        </div>
+                        <!--分页开始-->
+                        <div class="con_bottom" id="personalPageList">
+
+                        </div>
+                        <!--分页结束	-->
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--自由练习案例详情页-->
+<div id="zylxCaseView" style="display: none;">
+    <div class="moshi_con">
+        <!--弹窗头部标题加关闭区域-->
+        <div class="pub_titele">
+            <img onclick="layerCloseZdy(this,1)" class="ms_zylx_gb" src="../img/public3D/ms_ico_guanbi.png" />
+        </div>
+        <!--自由练习-->
+        <div class="zylx_map">
+            <div class="left_top_tit">
+                <img src="../img/public3D/lx_ico_zylx.png" /> 新增练习
+            </div>
+            <div class="exe_con">
+                <!--切换开始-->
+                <div class="sou_map">
+                    <!--搜索区域-->
+                    <div class="sousuo">
+                        <input type="text" name="SearchName" id="SearchName1" value="" placeholder="输入案例名称..." />
+                        <button onclick="serchinfoCase()"></button>
+                    </div>
+                </div>
+                <ul class="list_tab_ul  zylx_tab"></ul>
+                <!--切换内容-->
+                <div class="tab_con">
+
+                    <div class="list_tab zylx_tab_con disBlock">
+
+                        <!--数据区域开始-->
+                        <div class="shuju_map" id="personalCaseListTitle">
+                            <div class="shuju_tit">
+                                <label class="xzlx_k1">案例名称</label>
+                                <label class="xzlx_k2">历史最高分</label>
+                                <label class="xzlx_k3">操作</label>
+                            </div>
+                        </div>
+                        <div class="shuju_con_map">
+                            <div class="shuju_con" id="personalCaseList">
+
+                            </div>
+                        </div>
+                        <!--分页开始-->
+                        <div class="con_bottom" id="personalCasePageList">
+
+                        </div>
+                        <!--分页结束	-->
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--实训考核弹窗-->
+<div id="sxkh" style="display: none;">
+    <div class="moshi_con">
+        <!--弹窗头部标题加关闭区域-->
+        <div class="pub_titele">
+            <img onclick="layerCloseZdy(this)" class="ms_sxkh_gb" src="../img/public3D/ms_ico_guanbi.png" />
+        </div>
+        <!--实训考核-->
+        <div class="zylx_map">
+            <div class="left_top_tit">
+                <img src="../img/public3D/sxkh_ico_sxkh.png" /> 综合柜员
+                <span onclick="changemi()" style="float:right;cursor:pointer;font-size:16px;">修改密码</span>
+            </div>
+            <div class="exe_con">
+                <!--切换开始-->
+                <div class="sou_map">
+                    <!--搜索区域-->
+                    <div class="sousuo">
+                        <input type="text" name="" id="SearchName2" value="" placeholder="输入考核名称" />
+                        <input type="text" name="" id="txt_rank" value="" placeholder="输入排名名称" hidden="hidden" />
+                        <button onclick="serchinfo2()"></button>
+                    </div>
+                </div>
+                <ul class="list_tab_ul sxkh_tab">
+                    <li class="sxxuanze" onclick="TrainingExamination(null, '1',2);">个人练习</li>
+                    <li onclick="TrainingExamination(null, '1',1);">比赛考核</li>
+                    <!--<li onclick="GetKnowledgeAssessment();">知识考核</li>
+                    <li onclick="BindRank();">查看排名</li>-->
+                </ul>
+                <!--切换内容-->
+                <div class="tab_con">
+                    <div class="list_tab sxkh_con disBlock" id="tuandui">
+                        <!-- <div class="xinxi_btn" id="tuanduiStatus">
+                             <input id="grsx1" type="radio" name="grsx" value="2" onclick="TrainingExamination()">
+                             <label class="zt_lable" for="grsx1"></label>
+                             <span>未开始</span>
+                             <input id="grsx2" type="radio" name="grsx" value="0" checked="checked" onclick="TrainingExamination()">
+                             <label class="zt_lable" for="grsx2"></label>
+                             <span>进行中</span>
+                             <input id="grsx3" type="radio" name="grsx" value="1" onclick="TrainingExamination()">
+                             <label class="zt_lable" for="grsx3"></label>
+                             <span>已结束</span>
+
+
+                             <span class="tuan_xin2" style="font-size:14px;float:right;margin-top: 5px;">
+                                 当前团队名称：<span style="margin-right:15px;" class="tuan_name2">@ViewBag.Groupingname</span> 当前团队角色：
+                                 @if (ViewBag.Groupingstate == 1)
+                                 {
+                                     <span class="tuan_name2">小组长</span>
+                                 }
+                                 else
+                                 {
+                                     <span class="tuan_name2">小组员</span>
+                                 }
+                             </span>
+
+                         </div>-->
+                        <!--数据区域开始-->
+                        <div class="shuju_map" id="personalExaminationTitle">
+                            <div class="shuju_tit">
+                                <label class="shixun_k3">编号</label>
+                                <label class="shixun_k1">任务名称</label>
+                                <label class="shixun_k2">开始时间</label>
+                                <label class="shixun_k2">结束时间</label>
+                                <label class="shixun_k8">操作</label>
+                            </div>
+                        </div>
+                        <div class="shuju_con_map">
+                            <div class="shuju_con" id="personalExamination">
+
+                            </div>
+                        </div>
+                        <!--分页开始-->
+                        <div class="con_bottom" id="personalExaminationPage">
+
+                        </div>
+                        <!--分页结束	-->
+                    </div>
+
+
+
+
+                    <!--知识考核-->
+                    <div class="list_tab sxkh_con" id="zhishi">
+                        <div class="xinxi_btn" id="zhishiStatus">
+                            <input id="zskh1" type="radio" name="zskh" value="0" onclick="GetKnowledgeAssessment()">
+                            <label class="zt_lable" for="zskh1"></label>
+                            <span>未开始</span>
+                            <input id="zskh2" type="radio" name="zskh" value="1" checked="checked" onclick="GetKnowledgeAssessment()">
+                            <label class="zt_lable" for="zskh2"></label>
+                            <span>进行中</span>
+                            <input id="zskh3" type="radio" name="zskh" value="2" onclick="GetKnowledgeAssessment()">
+                            <label class="zt_lable" for="zskh3"></label>
+                            <span>已结束</span>
+                        </div>
+                        <!--数据区域开始-->
+                        <div class="shuju_map">
+                            <div class="shuju_tit">
+                                <label class="shixun_k1">考核名称</label>
+                                <label class="shixun_k2">开始时间</label>
+                                <label class="shixun_k3">考试时长</label>
+                                <label class="shixun_k4">状态</label>
+                                <label class="shixun_k5">总分</label>
+                                <label class="shixun_k6">及格线</label>
+                                <label class="shixun_k7">我的成绩</label>
+                                <label class="shixun_k8">操作</label>
+                            </div>
+                        </div>
+                        <div class="shuju_con_map">
+                            <div class="shuju_con" id="KnowledgeAssessment">
+
+                            </div>
+                        </div>
+                        <!--分页开始-->
+                        <div class="con_bottom" id="KnowledgeAssessmentPageList">
+
+                        </div>
+                        <!--分页结束	-->
+                    </div>
+
+
+                    <!--查看排名-->
+                    <div class="list_tab sxkh_con" id="chakanpaiming">
+                        <!--数据区域开始-->
+                        <div class="shuju_map">
+                            <div class="shuju_tit">
+                                <label class="paim_k1">排名名称</label>
+                                <label class="paim_k2">发布时间</label>
+                                <label class="paim_k3">我的排名</label>
+                                <label class="paim_k4">操作</label>
+                            </div>
+                        </div>
+                        <div class="shuju_con_map">
+                            <div class="shuju_con" id="rankingContent">
+
+                            </div>
+                        </div>
+                        <!--分页开始-->
+                        <div class="con_bottom" id="RankPage">
+
+                        </div>
+                        <!--分页结束	-->
+
+                    </div>
+
+
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--岗位设置-->
+<div id="ShowContent" style="display: none;">
+    <!--弹窗头部标题加关闭区域-->
+    <div class="pub_titele">
+        岗位设置
+        <img onclick="layerCloseZdy(this)" class="ms_sxkh_gb" src="../img/public3D/ms_ico_guanbi.png" />
+    </div>
+
+    <div class="moshi_con" style="color:white;padding:15px;">
+        <form id="form1">
+            <input type="hidden" id="examId" />
+            <input type="hidden" id="taskId" />
+            <table class="gangwei_table" id="tablelist2">
+                <tr>
+                    <td>岗位</td>
+                    <td>成员</td>
+                </tr>
+                <tr>
+                    <td>大堂经理</td>
+                    <td><select style="background: #2c3a53;height:40px; color: #f3f4f7;width: 200px;padding: 5px;border-radius: 5px;" id="stu1" name="studentName"></select></td>
+                </tr>
+                <tr>
+                    <td>高柜柜员</td>
+                    <td><select style="background: #2c3a53;height:40px; color: #f3f4f7;width: 200px;padding: 5px;border-radius: 5px;" id="stu2" name="studentName"></select></td>
+                </tr>
+                <tr>
+                    <td>低柜柜员</td>
+                    <td><select style="background: #2c3a53;height:40px; color: #f3f4f7;width: 200px;padding: 5px;border-radius: 5px;" id="stu3" name="studentName"></select></td>
+                </tr>
+            </table>
+            <div class="text-center" style="margin-top:50px;">
+                <button type="button" class="wan_ok" onclick="AllocationOfPosts();">开始案例</button>
+
+                <button style="margin-left: 30px;" onclick="javascript:$('#form1')[0].reset()" type="button" class="wan_ok_kong">重新设置</button>
+
+            </div>
+        </form>
+        <div style="text-align:center"><span>提示：以上内容在本案例模拟过程中无法进行修改</span></div>
+
+    </div>
+
+
+</div>
+
+<div id="update-pwd" style="display:none;">
+    <form class="form-horizontal" role="form">
+        <div class="form-group">
+            <label for="firstname" class="col-sm-2 control-label">新密码</label>
+            <div class="col-sm-10">
+                <input type="password" class="form-control" id="newpwd1"
+                       placeholder="请输入新密码">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="lastname" class="col-sm-2 control-label">重复密码</label>
+            <div class="col-sm-10">
+                <input type="password" class="form-control" id="newpwd2"
+                       placeholder="请再输入密码">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button type="button" class="btn btn-default" onclick="changePWd()">确认修改密码</button>
+            </div>
+        </div>
+    </form>
+
+</div>
+
+<!--公告内容弹窗-->
+<div id="gonggao_con" style="display:none;">
+    <div class="moshi_con">
+        <!--弹窗头部标题加关闭区域-->
+        <div class="pub_titele">
+            公告详情
+            <img onclick="layerCloseZdy(this)" class="ms_gonggao_gb" src="../img/public3D/ms_ico_guanbi.png" />
+        </div>
+
+        <div class="gg_con_map">
+            <h2 id="NoticeTitle"></h2>
+
+            <div class="gg_time">
+                来自：<span id="lyname"></span>
+                <span class="gg_time_right" id="NoticeTime"></span>
+            </div>
+            <div class="neirong_con" id="NoticeContent">
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+<!--公告内容弹窗-->
+<div id="chagepwd_con" style="display:none;">
+    <div class="moshi_con">
+
+        <div class="gg_con_map">
+            <h2 id="NoticeTitle">新密码：</h2>
+
+            <div class="gg_time">
+                <input type="password" id="newpwd1">
+            </div>
+            <div class="neirong_con">
+            </div>
+        </div>
+        <div class="gg_con_map">
+            <h2 id="NoticeTitle"> 再次密码：</h2>
+
+            <div class="gg_time">
+                <input type="password" id="newpwd2">
+            </div>
+            <div class="neirong_con">
+            </div>
+        </div>
+
+        <div class="gg_con_map">
+            <input type="button" value="确认修改密码" onclick="changePWd()" />
+        </div>
+    </div>
+</div>
+
+<div class="countdown_mask">
+    <div class="countdown_inner">
+        <p class="t1">大赛时间（6月10日 - 6月11日）</p>
+        <div class="title">@ViewBag.Title “银行业务综合技能”竞赛</div>
+        <p class="t2">距离大赛开始还剩余</p>
+        <div class="timer">
+            <div class="item item1">
+                <span id="time1">-</span>
+                <i>时</i>
+            </div>
+            <div class="item item2">
+                <span id="time2">-</span>
+                <i>分</i>
+            </div>
+            <div class="item item3">
+                <span id="time3">-</span>
+                <i>秒</i>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .countdown_mask {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(255, 255, 255, 1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 99999999;
+        visibility: hidden;
+    }
+
+        .countdown_mask.visible {
+            visibility: visible;
+        }
+
+        .countdown_mask .countdown_inner {
+            width: 740px;
+            height: 631px;
+            background-image: url(/Img/countdown_inner.png);
+            background-size: 100% auto;
+            padding: 90px 71px 0 71px;
+            box-sizing: border-box;
+        }
+
+        .countdown_mask p {
+            color: #FFAA3F;
+            text-align: center;
+        }
+
+        .countdown_mask .t1 {
+            height: 18px;
+            font-size: 18px;
+            line-height: 18px;
+            margin-bottom: 26px;
+        }
+
+        .countdown_mask .title {
+            font-weight: bold;
+            color: #fff;
+            width: 569px;
+            height: 97px;
+            font-size: 40px;
+            color: #FFFFFF;
+            line-height: 50px;
+            text-shadow: 6px 8px 9px rgb(82 82 82 / 19%);
+            text-align: center;
+        }
+
+        .countdown_mask .t2 {
+            height: 22px;
+            line-height: 22px;
+            font-size: 22px;
+            font-weight: 400;
+            margin-top: 25px;
+            margin-bottom: 15px;
+        }
+
+        .countdown_mask .timer {
+            width: 595px;
+            height: 237px;
+            margin: 0 auto;
+            background-image: url(/Img/countdown_item.png);
+        }
+
+            .countdown_mask .timer .item {
+                float: left;
+                width: 174px;
+                height: 208px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-size: 100px;
+                color: #f7a135;
+                position: relative;
+            }
+
+            .countdown_mask .timer .item1 {
+                margin-left: 9px;
+            }
+
+            .countdown_mask .timer .item2 {
+                margin-left: 30px;
+            }
+
+            .countdown_mask .timer .item3 {
+                margin-left: 29px;
+            }
+
+            .countdown_mask .timer .item i {
+                display: block;
+                position: absolute;
+                font-size: 16px;
+                bottom: 35px;
+                font-style: normal;
+                width: 100%;
+                text-align: center;
+            }
+</style>
+
+<script src="~/Js/Student/StuHome/Index.js?v=20191017"></script>
+<script src="~/Scripts/String/StringFormat.js"></script>
+<!--自由练习(个人/团队)-->
+<script src="~/Js/Student/StuHome/FreePractice.js?v=20191017"></script>
+<script src="~/Scripts/StudentPage.js"></script>
+<!--考核(个人/团队)-->
+<script src="~/Js/Student/StuHome/PracticeAssessment.js?v=20191018"></script>
+<!--考核(查看排名)-->
+<script src="~/Js/Student/Examination.js?v=20191017"></script>
+<!--自由练习(个人/团队)内页弹窗-->
+<script src="~/Js/Student/StuHome/PracticeCaseView.js?v=20191017"></script>
+<script type="text/javascript">
+    $(function () {
+        TrainingExamination(null, '1', 2);
+    });    
+    function showImg() {
+        $("#unityContainerDiv").show();
+        $("#goxit").hide();
+        //initUnity();
+        kaohe();
+    }
+    showImg();
+    var indexa;
+    function changemi() {
+
+        indexa = layer.open({
+            type: 1, area: ['500px', '300px'],
+            title: "修改密码",
+            content: $('#update-pwd')   //这里content是一个DOM，注意：最好该元素要存放在body最外层，否则可能被其它的相对元素所影响
+        });
+    }
+    function changePWd() {
+        var pwd1 = $("#newpwd1").val();
+        var pwd2 = $("#newpwd2").val();
+        if (pwd1 == "" || pwd2 == "") {
+            alert("请输入密码");
+            return;
+        }
+        if (pwd1 != pwd2) {
+            alert("两次输入密码不一致");
+            return;
+        }
+        $.ajax({
+            dataType: "text",
+            contentType: "application/json; charset=utf-8",
+            url: '/StuHome/ChangePWD',
+            data: { "pwd1": pwd1, "pwd2": pwd2 },
+            success: function (tb) {
+                if (tb == "1") {
+                    alert("密码修改成功");
+                } else {
+                    alert(tb);
+                }
+                layer.close(indexa);
+            }
+        });
+    }
+    TrainingExamination(null, '1', 1);
+    // 调用倒计时
+    countdown('2021-05-28 17:00:00', function () {
+        // 倒计时结束回调
+        window.location.reload(); // 刷新
+    })
+
+</script>

@@ -1,0 +1,131 @@
+﻿@{
+    
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewData["nvc"] = "案例管理";
+}
+
+<style type="text/css">
+    .note-editor {
+        min-height: 100px;
+        height: 200px;
+    }
+
+    a.disabled {
+        pointer-events: none;
+        filter: alpha(opacity=50); /*IE滤镜，透明度50%*/
+        -moz-opacity: 0.5; /*Firefox私有，透明度50%*/
+        opacity: 0.5; /*其他，透明度50%*/
+    }
+</style>
+<!--面包屑位置开始-->
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-sm-12">
+        <ol class="breadcrumb">
+            <li>
+                <h2><a href="/Admin/CaseManagement">案例管理</a></h2>
+            </li>
+            <li>
+                <a href="/admin/Customer?taskid=@ViewBag.taskid">客户管理</a>
+            </li>
+            <li>
+                <strong>客户列表</strong>
+            </li>
+        </ol>
+
+        <div class="col-sm-12 m-t-sm m-b-lg text-center">
+            <button class="btn   btn-lg  btn-outline btn-success m-l-lg m-r-lg" name="senceSelect" value="1" onclick="selectScene(this)">基本信息</button>
+            <i class="fa fa-arrow-circle-right fa-2x m-r-xs"></i>
+            <button class="btn   btn-lg  btn-outline btn-success m-l-lg m-r-lg" name="senceSelect" value="2" onclick="selectScene(this)">业务场景设置</button>
+            <i class="fa fa-arrow-circle-right fa-2x m-r-xs"></i>
+            <button class="btn  btn-lg  btn-success m-r-lg">客户列表</button>
+            <i class="fa fa-arrow-circle-right fa-2x m-r-xs"></i>
+            <button class="btn   btn-lg  btn-outline btn-success m-l-lg m-r-lg" name="senceSelect" value="4" onclick="selectScene(this)">能力分值设置</button>
+        </div>
+
+
+    </div>
+</div>
+<!--面包屑位置结束-->
+<!--主体内容开始-->
+<div class="ibox-content">
+
+    <div class="row m-t">
+        <div class="col-sm-3">
+            <div class="input-group">
+                <input type="text" placeholder="请输入关键字" id="Keyword" class="form-control" name="Keyword">
+                <span class="input-group-btn">
+                    <button type="button" onclick="SearchInfo()" class="btn btn-primary"><i class="fa fa-search "></i></button>
+                </span>
+            </div>
+        </div>
+        <div class=" col-sm-9 text-right">
+            <button onclick="Add_Customer();" class="btn btn-primary btn-sm " type="button" id="newBtn"><i class="fa fa-plus m-r-xs"></i><span class="bold">新增客户(<span id="NumOne">0</span>/<span id="NumTwo">20</span>)</span></button>
+            <button onclick="del_all();" class="btn btn-warning btn-sm " type="button"><i class="fa fa-trash m-r-xs"></i><span class="bold">删除所选</span></button>
+        </div>
+    </div>
+    <div class="row  m-t-sm ">
+        <div class="col-sm-12">
+            <table class="table text-center table-bordered ">
+                <thead>
+                    <tr>
+                        <th class="text-center">
+                            <input type="Checkbox" class="i-checks checkbox-all">
+                        </th>
+                        <th class="text-center">客户姓名</th>
+                        @*<th class="text-center">出场优先级</th>*@
+                        <th class="text-center">客户情况设置</th>
+                        <th class="text-center">厅堂服务设置</th>
+                        <th class="text-center">柜面服务设置</th>
+                        <th class="text-center">客户质询设置</th>
+                        <th class="text-center">操作</th>
+                    </tr>
+                </thead>
+                <tbody class="new_table text-center" id="tablelist"></tbody>
+            </table>
+
+        </div>
+
+    </div>
+
+
+    <!--分页开始-->
+    <div class=" text-center">
+        <div class="dataTables_paginate paging_simple_numbers" id="PaginatorLibrary">
+
+        </div>
+
+    </div>
+    <!--分页结束-->
+
+</div>
+
+<!--新增弹框-->
+<div id="Add_Customer" style="display: none;" class="form-inline">
+    <form name="Add_Customerform" id="Add_Customerform">
+        <div class="col-sm-12">
+            <div class="form-horizontal  m-t-lg">
+                <label for="firstname" class="col-sm-3 control-label"><span style="color: red;">*</span>客户姓名：</label>
+                <div class="col-sm-9">
+                    <input style="width: 100%;" autocomplete="off" type="text" class="form-control" id="txtAddCustomerName" name="txtAddCustomerName" placeholder="请输入客户姓名" maxlength="30">
+                </div>
+            </div>
+        </div>
+
+    </form>
+</div>
+
+<!--编辑弹框-->
+<div id="Edit_Customer" style="display: none;" class="form-inline">
+    <form name="Edit_Customerform" id="Edit_Customerform">
+        <div class="col-sm-12">
+            <div class="form-horizontal  m-t-lg">
+                <label for="firstname" class="col-sm-3 control-label"><span style="color: red;">*</span>客户姓名：</label>
+                <div class="col-sm-9">
+                    <input style="width: 100%;" autocomplete="off" type="text" class="form-control" id="txtEditCustomerName" name="" placeholder="请输入客户姓名" maxlength="30">
+                </div>
+            </div>
+        </div>
+
+    </form>
+</div>
+<script src="~/Js/Admin/Customer/Customer.js"></script>

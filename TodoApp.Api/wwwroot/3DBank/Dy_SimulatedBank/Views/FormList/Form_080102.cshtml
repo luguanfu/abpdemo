@@ -1,0 +1,1029 @@
+﻿@{
+                    ViewBag.Title = "Form_080102";
+                    Layout = "~/Views/Shared/_StutentLayoutIsNull.cshtml";
+                }
+               <form id="form1" onsubmit="return false" action="##" method="post">
+                   <input type="hidden" id="FormType" name="FormType" value="@Request["FormType"]" />
+                   <input type="hidden" id="FormId" name="FormId" value="@Request["FormId"]" />
+                   <input type="hidden" id="TRId" name="TRId" value="@Request["TotalResultId"]" />
+                   <input type="hidden" id="ExamId" name="ExamId" value="@Request["ExamId"]" />
+                   <input type="hidden" id="TaskId" name="TaskId" value="@Request["TaskId"]" />
+                   <input type="hidden" id="CustomerId" name="CustomerId" value="@Request["CustomerId"]" />
+                   <input type="hidden" id="LinkId" name="LinkId" value="@Request["LinkId"]" />
+                   <input type="hidden" id="Types" name="Types" value="2" />
+                <!--内容表单区域开始-->
+            <div class="tables bankmap">
+			<div class="banktop"> <span class="toolbar-title-img">                                    <img src="../busi/img/topleft.png">01102-建立单位客户信息</span> <span class="toolbar-title-close" style="display: none;">                                    </span> </div>
+			<div class="con-map2 selected">
+				<table id="qv" class="con-map2-table qv">
+					<tbody>
+						<tr>
+							<td class="" style="width: 96px;"><label vl-default="" id="label_zmwjlx" vtitle="证明文件类型" class="form-item text-left" vl-tipsid="label_zmwjlx_tips" title="label_zmwjlx" name="label_zmwjlx">证明文件类型</label>
+								<div id="label_zmwjlx_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="">
+								<div class="slectstyle">
+									<select vl-default="C" id="sle_zmwjlx" vtitle="证明文件类型" class="form-item text-left" vl-tipsid="sle_zmwjlx_tips" vl-regex="['require']" vl-message="['证明文件类型不能为空!']" style="width: 156px;" title="sle_zmwjlx" vl-slemodel="" name="sle_zmwjlx">
+										<option disabled="" style="background-color: blue; color: #fff;" value="">证明文件类型值含义</option>
+										<option value="C">C - 营业执照</option>
+										<option value="K">K - 批文</option>
+										<option value="O">0 - 预先核准通知书</option>
+										<option value="P">P - 登记证书</option>
+										<option value="Q">Q - 开户证明</option>
+									</select><input type="text" oncopy="return false" onpaste="return false" oncut="return false" style="width: 133px;" id="mb1_sleinput_ZhengMingWenJianLeiXing_2" name="mb1_sleinput_ZhengMingWenJianLeiXing_2"></div>
+								<div id="sle_zmwjlx_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="" style="width: 96px;"><label vl-default="" id="label_zmwjhm" vtitle="证明文件号码" class="form-item text-left" vl-tipsid="label_zmwjhm_tips" title="label_zmwjhm" name="label_zmwjhm">证明文件号码</label>
+								<div id="label_zmwjhm_tips" class="tipsmsg"></div>
+							</td>
+							<td class="" colspan="1"><input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_zmwjhm" vtitle="证明文件号码" class="form-item text-left" kuaicha="true" vl-tipsid="txt_zmwjhm_tips" vl-regex="['require', 'maxlength40', 'shuziandmu']" vl-message="['证明文件号码不能为空！','证明文件号码长度大于最大长度:[40]! ','证明文件号码输入错误!']" style="width: 156px;" title="txt_zmwjhm" onpaste="return false" name="txt_zmwjhm"><img class="sousuo" src="/Js/Student/GetDefaultValue/img/banksousuo.png" vl-exec="false" vl-message="['证明文件号码查询未执行！']" title="执行快查！"><span class="text-red redtip">!</span>
+								<div id="txt_zmwjhm_tips" class="tipsmsg"></div>
+							</td>
+							<td class="" style="width: 64px;"><label vl-default="" id="label_khlx" vtitle="客i户s类s型" class="form-item text-left" vl-tipsid="label_khlx_tips" title="label_khlx" name="label_khlx">客<i></i>户<s></s>类<s></s>型</label>
+								<div id="label_khlx_tips" class="tipsmsg"></div>
+							</td>
+							<td class="">
+								<div class="slectstyle">
+									<select vl-default="" id="sle_khlx" vtitle="客户类型" class="form-item text-left" vl-tipsid="sle_khlx_tips" vl-regex="['require']" vl-message="['客户类型不能为空！']" style="width: 158px;" title="sle_khlx" vl-slemodel="sle_qygm,sle_qyjjxz" name="sle_khlx">
+										<option disabled="" style="background-color: blue; color: #fff;" value="" selected="selected">开户类型值含义</option>
+										<option sle-require="[{'id':'sle_qygm','regex':['require'],'tips':['企业规模不能为空!'],'disabled':'false','default':''},{'id':'sle_qyjjxz','regex':['require'],'tips':['企业经济性质不能为空!'],'disabled':'false','default':''}]" value="1">1-有限责任公司</option>
+										<option sle-require="[{'id':'sle_qygm','regex':['require'],'tips':['企业规模不能为空!'],'disabled':'false','default':''},{'id':'sle_qyjjxz','regex':['require'],'tips':['企业经济性质不能为空!'],'disabled':'false','default':''}]" value="2">2-股份有限公司</option>
+										<option value="3">3-全民所有制工业企业</option>
+										<option value="4">4-集体所有制企业</option>
+										<option value="5">5-合伙企业</option>
+										<option value="6">6-中外核准经营企业</option>
+										<option value="7">7-个人独资企业</option>
+										<option value="8">8-领取营业执照的分公司、外国公司境内分支机构</option>
+										<option value="9">9-非法人企业</option>
+										<option value="10">10-机关、事业单位</option>
+										<option value="11">11-军队和武警部队</option>
+										<option value="12">12-社会团体</option>
+										<option value="13">13-居民委员会、村民委员会、业主委员会</option>
+										<option value="14">14-律师事务所、司法鉴定机构</option>
+										<option value="15">15-外国驻华机构</option>
+										<option value="16">16-人民法院依法设立的清算组</option>
+										<option value="17">17-境外机构</option>
+										<option value="18">18-农村合作组织</option>
+										<option value="19">19-有字号的个体工商户</option>
+										<option value="20">20-无字号的个体工商户</option>
+										<option value="21">21-宗教组织</option>
+										<option value="22">22-其他</option>
+									</select><input type="text" oncopy="return false" onpaste="return false" oncut="return false" style="width: 135px;" id="mb1_sleinput_KeHuLeiXing_6" name="mb1_sleinput_KeHuLeiXing_6"><span class="text-red redtip">!</span></div>
+								<div id="sle_khlx_tips" class="tipsmsg"></div>
+							</td>
+						</tr>
+						<tr>
+							<td rowspan="1" colspan="1" class="" style="width: 96px;"><label vl-default="" id="label_jgzwmc" vtitle="机构中文名称" class="form-item text-left" vl-tipsid="label_jgzwmc_tips" title="label_jgzwmc" name="label_jgzwmc">机构中文名称</label>
+								<div id="label_jgzwmc_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="3" class=""><input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_jgzwmc" vtitle="机构中文名称" class="form-item text-left" kuaicha="true" vl-tipsid="txt_jgzwmc_tips" vl-regex="['require', 'maxlength40','chinese']" vl-message="['机构中文名称不能为空！','机构中文名称长度超过最大长度:[40]!','机构中文名称只能为中文']" style="width: 430px;" title="txt_jgzwmc" onpaste="return false" name="txt_jgzwmc"><img class="sousuo" src="/Js/Student/GetDefaultValue/img/banksousuo.png" vl-exec="false" vl-message="['机构中文名称查询未执行！']" title="执行快查！"><span class="text-red redtip">!</span>
+								<div id="txt_jgzwmc_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="" style="width: 80px;"><label vl-default="" id="label_sfjwjg" vtitle="是否境外机构" class="form-item text-left" vl-tipsid="label_sfjwjg_tips" title="label_sfjwjg" name="label_sfjwjg">是否境外机构</label>
+								<div id="label_sfjwjg_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="2" class="">
+								<div class="slectstyle">
+									<select vl-default="0" id="sle_sfjwjg" vtitle="是否境外机构" class="form-item text-left" vl-tipsid="sle_sfjwjg_tips" vl-regex="['require']" vl-message="['是否境外机构不能为空!']" style="width: 160px;" title="sle_sfjwjg" vl-slemodel="" name="sle_sfjwjg">
+										<option disabled="" style="background-color: blue; color: #fff;" value="">是否境外机构值含义</option>
+										<option value="0">0-非境外机构</option>
+										<option value="1">1-境外机构</option>
+									</select><input type="text" oncopy="return false" onpaste="return false" oncut="return false" style="width: 137px;" id="mb1_sleinput_ShiFuJingWaiJiGou_10" name="mb1_sleinput_ShiFuJingWaiJiGou_10"></div>
+								<div id="sle_sfjwjg_tips" class="tipsmsg"></div>
+							</td>
+						</tr>
+						<tr>
+							<td rowspan="1" colspan="1" class="" style="width: 96px;">
+								<label vl-default="" id="label_jgywmc" vtitle="机构英文名称" class="form-item text-left on" vl-tipsid="label_jgywmc_tips" title="label_jgywmc" name="label_jgywmc">机构英文名称</label>
+								<div id="label_jgywmc_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="3" class="">
+								<input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_jgywmc" vtitle="机构英文名称" class="form-item text-left" vl-tipsid="txt_jgywmc_tips" vl-regex="['maxlength40', 'shuziandmu','english']" vl-message="['机构英文名称长度大于最大长度:[40]!','机构英文名称输入错误!','机构英文名称只能为英文']" style="width: 430px;" title="txt_jgywmc" onpaste="return false" name="txt_jgywmc">
+								<div id="txt_jgywmc_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="" style="width: 80px;"><label vl-default="" id="label_zjdqr" vtitle="证s件s到s期s日" class="form-item text-left" vl-tipsid="label_zjdqr_tips" title="label_zjdqr" name="label_zjdqr">证<s></s>件<s></s>到<s></s>期<s></s>日</label>
+								<div id="label_zjdqr_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="2" class="">
+								<input type="text" class="date form-item text-left" vl-default="" id="date_zjdqr1" vtitle="证件到期日" vl-tipsid="date_zjdqr_tips" vl-regex="['tdate', 'number']" vl-message="['请输入正确的证件到期日格式（如:19000101）!','证件到期日输入错误！']" style="width: 156px;" title="date_zjdqr" oncopy="return false" onpaste="return false" oncut="return false" name="date_zjdqr1"><img onclick="WdatePicker({el:'date_zjdqr',dateFmt:'yyyyMMdd'})" src="/js/My97DatePicker/skin/datePicker.gif" align="absmiddle" style="width:16px;height:22px;margin-left:6px;">
+								<div id="date_zjdqr_tips" class="tipsmsg"></div>
+							</td>
+						</tr>
+						<tr>
+							<td rowspan="1" colspan="1" class="" style="width: 64px;"><label vl-default="" id="label_hyfl" vtitle="行s业s分s类" class="form-item text-left" vl-tipsid="label_hyfl_tips" title="label_hyfl" name="label_hyfl">行<s></s>业<s></s>分<s></s>类</label>
+								<div id="label_hyfl_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="">
+								<div class="slectstyle">
+									<select vl-default="" id="sle_hyfl" vtitle="行业分类" class="form-item text-left" vl-tipsid="sle_hyfl_tips" vl-regex="['require']" vl-message="['行业分类不能为空！']" style="width: 156px;" title="sle_hyfl" vl-slemodel="" name="sle_hyfl">
+										<option disabled="" style="background-color: blue; color: #fff;" value="" selected="selected">行业分类值含义</option>
+										<option value="1">1-农、林、牧、渔业</option>
+										<option value="2">2-采矿业</option>
+										<option value="3">3-制造业</option>
+										<option value="4">4-电力、热力、燃气及水生产和供应业</option>
+										<option value="5">5-建筑业</option>
+										<option value="6">6-交通运输、仓储和邮政业</option>
+										<option value="7">7-信息传输、软件和信息技术业</option>
+										<option value="8">8-批发和零售业</option>
+										<option value="9">9-住宿和餐饮业</option>
+										<option value="10">10-金融业</option>
+										<option value="11">11-房地产业</option>
+										<option value="12">12-租赁和商务服务业</option>
+										<option value="13">13-科学研究和技术服务业</option>
+										<option value="14">14-水利、环境和公共设施管理业</option>
+										<option value="15">15-居民服务、修理和其他服务业</option>
+										<option value="16">16-教育</option>
+										<option value="17">17-卫生和社会工作</option>
+										<option value="18">18-文化、体育和娱乐业</option>
+										<option value="19">19-公共管理、社会保障和社会组织</option>
+										<option value="20">20-国际组织</option>
+										<option value="21">21-商业/贸易</option>
+										<option value="22">22-其他</option>
+										
+									</select><input type="text" oncopy="return false" onpaste="return false" oncut="return false" style="width: 133px;" id="mb1_sleinput_XingYeFenLei_16" name="mb1_sleinput_XingYeFenLei_16"><span class="text-red redtip">!</span></div>
+								<div id="sle_hyfl_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="" style="width: 64px;"><label vl-default="" id="label_qygm" vtitle="企s业s规s模" class="form-item text-left" vl-tipsid="label_qygm_tips" title="label_qygm" name="label_qygm">企<s></s>业<s></s>规<s></s>模</label>
+								<div id="label_qygm_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="">
+								<div class="slectstyle">
+									<select vl-default="" id="sle_qygm" vtitle="企业规模" class="form-item text-left" vl-tipsid="sle_qygm_tips" vl-message="['企业规模不能为空!']" style="width: 168px;" title="sle_qygm" vl-slemodel="" name="sle_qygm">
+										<option disabled="" style="background-color: blue; color: #fff;" value="" selected="selected">企业规模值含义</option>
+										<option value="1">1-大型企业</option>
+										<option value="2">2-中型企业</option>
+										<option value="3">3-小型企业</option>
+										<option value="4">4-微型企业</option>
+									</select><input type="text" oncopy="return false" onpaste="return false" oncut="return false" style="width: 145px;" id="mb1_sleinput_QiYeGuiMo_18" name="mb1_sleinput_QiYeGuiMo_18"></div>
+								<div id="sle_qygm_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="" style="width: 80px;"><label vl-default="" id="label_qyjjxz" vtitle="企业经济性质" class="form-item text-left" vl-tipsid="label_qyjjxz_tips" title="label_qyjjxz" name="label_qyjjxz">企业经济性质</label>
+								<div id="label_qyjjxz_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="">
+								<div class="slectstyle">
+									<select vl-default="" id="sle_qyjjxz" vtitle="企业经济性质" class="form-item text-left" vl-tipsid="sle_qyjjxz_tips" vl-message="['企业经济性质不能为空!']" style="width: 150px;" title="sle_qyjjxz" vl-slemodel="" name="sle_qyjjxz">
+										<option disabled="" style="background-color: blue; color: #fff;" value="" selected="selected">企业经济性质值含义</option>
+										<option value="A01">A01-国有控股</option>
+										<option value="A0101">A0101-国有相对控股</option>
+										<option value="A0102">A0102-国有绝对控股（默认）</option>
+										<option value="A02">A02-集体控股</option>
+										<option value="A0201">A0201-集体相对控股</option>
+										<option value="A0202">A0202-集体绝对控股（默认）</option>
+										<option value="B01">B01-私人控股</option>
+										<option value="B0101">B0101-私人相对控股</option>
+										<option value="B0102">B0102-私人绝对控股（默认）</option>
+										<option value="B02">B02-港澳台控股</option>
+										<option value="B0201">B0201-港澳台相对控股</option>
+										<option value="B0202">B0202-港澳台绝对控股（默认</option>
+										<option value="B03">B03-外商控股</option>
+										<option value="B0301">B0301-外商相对控股</option>
+										<option value="B0302">B0302-外商绝对控股（默认）</option>
+									</select><input type="text" oncopy="return false" onpaste="return false" oncut="return false" style="width: 127px;" id="mb1_sleinput_QiYeJingJiXingZhi_20" name="mb1_sleinput_QiYeJingJiXingZhi_20"></div>
+								<div id="sle_qyjjxz_tips" class="tipsmsg"></div>
+							</td>
+						</tr>
+						<tr>
+							<td rowspan="1" colspan="1" class="" style="width: 96px;"><label vl-default="" id="label_zzjgdm" vtitle="组织机构代码" class="form-item text-left" vl-tipsid="label_zzjgdm_tips" title="label_zzjgdm" name="label_zzjgdm">组织机构代码</label>
+								<div id="label_zzjgdm_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class=""><input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_zzjgdm" vtitle="组织机构代码" class="form-item text-left" vl-tipsid="txt_zzjgdm_tips" vl-regex="['maxlength40']" vl-message="['组织机构代码长度大于最大长度:[40]!']" style="width: 156px;" title="txt_zzjgdm" onpaste="return false" name="txt_zzjgdm">
+								<div id="txt_zzjgdm_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="" style="width: 96px;"><label vl-default="" id="label_gsdjzh" vtitle="国税登记证号" class="form-item text-left" vl-tipsid="label_gsdjzh_tips" title="label_gsdjzh" name="label_gsdjzh">国税登记证号</label>
+								<div id="label_gsdjzh_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class=""><input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_grdjzh" vtitle="国税登记证号_mb1" class="form-item text-left" vl-tipsid="txt_grdjzh_tips" vl-regex="['maxlength40']" vl-message="['国税登记证号长度大于最大长度:[40]!']" style="width: 150px;" title="txt_grdjzh" onpaste="return false" name="txt_grdjzh">
+								<div id="txt_grdjzh_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="" style="width: 80px;"><label vl-default="" id="label_dsdjzh" vtitle="地税登记证号" class="form-item text-left on" vl-tipsid="label_dsdjzh_tips" title="label_dsdjzh" name="label_dsdjzh">地税登记证号</label>
+								<div id="label_dsdjzh_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class=""><input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_dsdjzh" vtitle="地税登记证号_mb1" class="form-item text-left" vl-tipsid="txt_dsdjzh_tips" vl-regex="['maxlength40']" vl-message="['地税登记证号长度大于最大长度:[40]!']" style="width: 150px;" title="txt_dsdjzh" onpaste="return false" name="txt_dsdjzh">
+								<div id="txt_dsdjzh_tips" class="tipsmsg"></div>
+							</td>
+						</tr>
+						<tr>
+							<td rowspan="1" colspan="1" class="" style="width: 96px;"><label vl-default="" id="label_zzjgdm" vtitle="机构信用代码" class="form-item text-left" vl-tipsid="label_zzjgdm_tips" title="label_zzjgdm" name="label_zzjgdm">机构信用代码</label>
+								<div id="label_zzjgdm_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class=""><input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_jgxydm" vtitle="机构信用代码_mb1" class="form-item text-left" vl-tipsid="txt_jgxydm_tips" vl-regex="['maxlength40']" vl-message="['机构信用代码长度大于最大长度:[40]!']" style="width: 155px;" title="txt_jgxydm" onpaste="return false" name="txt_jgxydm">
+								<div id="txt_jgxydm_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="" style="width: 96px;"><label vl-default="" id="label_zczbbz" vtitle="注册资本币种" class="form-item text-left" vl-tipsid="label_zczbbz_tips" title="label_zczbbz" name="label_zczbbz">注册资本币种</label>
+								<div id="label_zczbbz_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="">
+								<div class="slectstyle">
+									<select vl-default="CNY" id="sle_zczbbz" vtitle="注册资本币种" class="form-item text-left" vl-tipsid="sle_zczbbz_tips" style="width: 168px;" title="sle_zczbbz" vl-slemodel="" name="sle_zczbbz">
+										<option disabled="" style="background-color: blue; color: #fff;" value="">注册资本币种值含义</option>
+										<option value="CNY">CNY - 人民币</option>
+										<option value="USD">USD - 美元</option>
+										<option value="EUR">EUR - 欧元</option>
+										<option value="GBP">GBP - 英镑</option>
+										<option value="HKD">HKD - 港币</option>
+										<option value="JPY">JPY - 日元</option>
+										<option value="CAD">CAD - 加元</option>
+										<option value="AUD">AUD - 澳元</option>
+									</select><input type="text" oncopy="return false" onpaste="return false" oncut="return false" style="width: 145px;" id="mb1_sleinput_ZhuCeZiBenBiZhong_30" name="mb1_sleinput_ZhuCeZiBenBiZhong_30"></div>
+								<div id="sle_zczbbz_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="" style="width: 64px;"><label vl-default="" id="label_zczb" vtitle="注i册s资s本" class="form-item text-left" vl-tipsid="label_zczb_tips" title="label_zczb" name="label_zczb">注<i></i>册<s></s>资<s></s>本</label>
+								<div id="label_zczb_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class=""><input type="text" oncopy="return false" oncut="return false" vl-default="" id="money_zczb" vtitle="注册资本" class="form-item text-left money" vl-type="money" vl-tipsid="money_zczb_tips" vl-regex="['maxlength16', 'decimal']" vl-message="['注册资本长度超过最大长度:[16]!','注册资本输入错误!']" style="width: 150px;" title="money_zczb" onpaste="return false" name="money_zczb">(万元)
+								<div id="txt_zczb_tips" class="tipsmsg"></div>
+							</td>
+						</tr>
+						<tr>
+							<td rowspan="1" colspan="1" class="" style="width: 96px;"><label vl-default="" id="label_djzcdz" vtitle="登记注册地址" class="form-item text-left" vl-tipsid="label_djzcdz_tips" title="label_djzcdz" name="label_djzcdz">登记注册地址</label>
+								<div id="label_djzcdz_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="3" class=""><input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_djzcdz" vtitle="登记注册地址" class="form-item text-left" vl-tipsid="txt_djzcdz_tips" vl-regex="['maxlength40']" vl-message="['登记注册地址长度大于最大长度:[40]!']" style="width: 430px;" title="txt_djzcdz" onpaste="return false" name="txt_djzcdz">
+								<div id="txt_djzcdz_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="" style="width: 32px;"><label vl-default="" id="label_yb" vtitle="邮iiis编" class="form-item text-left" vl-tipsid="label_yb_tips" title="label_yb" name="label_yb">邮<i></i><i></i><i></i><s></s>编</label>
+								<div id="label_yb_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="2" class=""><input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_yb" vtitle="邮编" class="form-item text-left" vl-tipsid="txt_yb_tips" vl-regex="['number', 'zipcode', 'minlength6', 'maxlength6']" vl-message="['邮编输入错误!','邮编输入错误!','邮编长度为:[6]!','邮编长度为:[6]!']" style="width: 150px;" title="txt_yb" onpaste="return false" name="txt_yb">
+								<div id="txt_yb_tips" class="tipsmsg"></div>
+							</td>
+						</tr>
+						<tr>
+							<td rowspan="1" colspan="1" class="" style="width: 64px;"><label vl-default="" id="label_jyfw" vtitle="经s营s范s围" class="form-item text-left" vl-tipsid="label_jyfw_tips" title="label_jyfw" name="label_jyfw">经<s></s>营<s></s>范<s></s>围</label>
+								<div id="label_jyfw_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="3" class=""><input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_jyfw" vtitle="经营范围" class="form-item text-left" vl-tipsid="txt_jyfw_tips" vl-regex="['maxlength40']" vl-message="['经营范围长度大于最大长度:[40]!']" style="width: 430px;" title="txt_jyfw" onpaste="return false" name="txt_jyfw">
+								<div id="txt_jyfw_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="" style="width: 64px;"><label vl-default="" id="label_snbz" vtitle="涉i农s标i志" class="form-item text-left" vl-tipsid="label_snbz_tips" title="label_snbz" name="label_snbz">涉<i></i>农<s></s>标<i></i>志</label>
+								<div id="label_snbz_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="2" class="">
+								<div class="slectstyle">
+									<select vl-default="N" id="sle_snbz" vtitle="涉农标志" class="form-item text-left" vl-tipsid="sle_snbz_tips" style="width: 160px;" title="sle_snbz" vl-slemodel="" name="sle_snbz">
+										<option disabled="" style="background-color: blue; color: #fff;" value="">涉农标志值含义</option>
+										<option value="N">N-非涉农</option>
+										<option value="Y">Y-涉农</option>
+									</select><input type="text" oncopy="return false" onpaste="return false" oncut="return false" style="width: 137px;" id="mb1_sleinput_SheNongBiaoZhi_40" name="mb1_sleinput_SheNongBiaoZhi_40"></div>
+								<div id="sle_snbz_tips" class="tipsmsg"></div>
+							</td>
+						</tr>
+						<tr>
+							<td rowspan="1" colspan="1" class="" style="width: 64px;"><label vl-default="" id="label_bgdz" vtitle="办s公s地s址" class="form-item text-left" vl-tipsid="label_bgdz_tips" title="label_bgdz" name="label_bgdz">办<s></s>公<s></s>地<s></s>址</label>
+								<div id="label_bgdz_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="5" class=""><input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_bgdz" vtitle="办公地址" class="form-item text-left" vl-tipsid="txt_bgdz_tips" vl-regex="['require', 'maxlength100']" vl-message="['办公地址不能为空！','办公地址长度大于最大长度:[100]!']" style="width: 755px;" title="txt_bgdz" onpaste="return false" name="txt_bgdz"><span class="text-red redtip">!</span>
+								<div id="txt_bgdz_tips" class="tipsmsg"></div>
+							</td>
+						</tr>
+						<tr>
+							<td rowspan="1" colspan="1" class="" style="width: 96px;">
+								<label vl-default="" id="label_jbckzhkhxkzhzh" vtitle="基本存款账户开<br>户许可证核准号" class="form-item text-left" vl-tipsid="label_jbckzhkhxkzhzh_tips" title="label_jbckzhkhxkzhzh" name="label_jbckzhkhxkzhzh">基本存款账户开<br>户许可证核准号</label>
+								<div id="label_jbckzhkhxkzhzh_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="3" class="">
+								<input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_jbckzhkhxkzhzh" vtitle="基本存款账户开户许可证核准号" class="form-item text-left" vl-tipsid="txt_jbckzhkhxkzhzh_tips" vl-regex="['maxlength40']" vl-message="['基本存款账户开户许可证核准号长度大于最大长度:[40]!']" style="width: 430px;" title="txt_jbckzhkhxkzhzh" onpaste="return false" name="txt_jbckzhkhxkzhzh">
+								<div id="txt_jbckzhkhxkzhzh_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="" style="width: 80px;"><label vl-default="" id="label_tyshxydm" vtitle="统一社会信用代码" class="form-item text-left" vl-tipsid="label_tyshxydm_tips" title="label_tyshxydm" name="label_tyshxydm">统一社会信用代码</label>
+								<div id="label_tyshxydm_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="2" class=""><input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_tyshxydm" vtitle="统一社会信用代码" class="form-item text-left" vl-tipsid="txt_tyshxydm_tips" vl-regex="['maxlength40']" vl-message="['统一社会信用代码长度大于最大长度:[40]!']" style="width: 151px;" title="txt_tyshxydm" onpaste="return false" name="txt_tyshxydm">
+								<div id="txt_tyshxydm_tips" class="tipsmsg"></div>
+							</td>
+						</tr>
+						<tr>
+							<td rowspan="1" colspan="1" class="" style="width: 96px;"><label vl-default="" id="label_khh" vtitle="开户行（营改增）" class="form-item text-left on" vl-tipsid="label_khh_tips" title="label_khh" name="label_khh">开户行（营改增）</label>
+								<div id="label_khh_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="3" class=""><input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_khh" vtitle="开户行（营改增）" class="form-item text-left" vl-tipsid="txt_khh_tips" vl-regex="['maxlength40']" vl-message="['开户行（营改增）长度大于最大长度:[40]!']" style="width: 430px;" title="txt_khh" onpaste="return false" name="txt_khh">
+								<div id="txt_khh_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="" style="width: 80px;"><label vl-default="" id="label_zh" vtitle="账号（营改增）" class="form-item text-left" vl-tipsid="label_zh_tips" title="label_zh" name="label_zh">账号（营改增）</label>
+								<div id="label_zh_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="2" class=""><input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_zh" vtitle="账号（营改增）" class="form-item text-left" vl-tipsid="txt_zh_tips" vl-regex="['maxlength40']" vl-message="['账号（营改增）长度大于最大长度:[40]!']" style="width: 151px;" title="txt_zh" onpaste="return false" name="txt_zh">
+								<div id="txt_zh_tips" class="tipsmsg"></div>
+							</td>
+						</tr>
+						<tr>
+							<td rowspan="1" colspan="1" class="" style="width: 87px;"><label vl-default="" id="label_frfzrzjlx" vtitle="法人/负责人<br>证件类型" class="form-item text-left" vl-tipsid="label_frfzrzjlx_tips" title="label_frfzrzjlx" name="label_frfzrzjlx">法人/负责人<br>证件类型</label>
+								<div id="label_frfzrzjlx_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="">
+								<div class="slectstyle">
+									<select vl-default="" id="sle_frfzrzjlx" vtitle="法人/负责人证件类型" class="form-item text-left" vl-tipsid="sle_frfzrzjlx_tips" vl-regex="['require']" vl-message="['证件类型不能为空!']" style="width: 150px;" vl-slemodel="txt_zjhm,txt_zjhm,txt_zjhm,txt_zjhm,txt_zjhm,txt_zjhm,txt_zjhm,txt_zjhm,txt_zjhm,txt_zjhm,txt_zjhm,txt_zjhm,txt_zjhm,txt_zjhm,txt_zjhm,txt_zjhm,txt_zjhm,txt_zjhm,txt_zjhm,txt_zjhm,txt_zjhm,txt_zjhm" name="sle_frfzrzjlx">
+										<option disabled="" style="background-color: blue; color: #fff;" value="" selected="selected">法人/负责人证件类型值含义</option>
+										<option sle-require="[{'id':'txt_zjhm','regex':['require','maxlength20','idcard'],'tips':['证件号码不能为空!','证件号码身份证号长度大于最大长度:[20]!','证件号码身份证位数不正确(应为15位或者18位)！'],'disabled':'false*false*false','default':''}]" value="1">1 - 居民身份证</option>
+										<option sle-require="[{'id':'txt_zjhm','regex':['require','maxlength20','idcard'],'tips':['证件号码不能为空!','证件号码身份证号长度大于最大长度:[20]!','证件号码身份证位数不正确(应为15位或者18位)！'],'disabled':'false*false*false','default':''}]" value="2">2 - 临时居民身份证</option>
+										<option sle-require="[{'id':'txt_zjhm','regex':['require','maxlength20','idcard'],'tips':['证件号码不能为空!','证件号码身份证号长度大于最大长度:[20]!','证件号码身份证位数不正确(应为15位或者18位)！'],'disabled':'false*false*false','default':''}]" value="3">3 - 居民户口簿（16周岁以下）</option>
+										<option sle-require="[{'id':'txt_zjhm','regex':['require','maxlength40'],'tips':['证件号码军官证不能为空!','证件号码军官证长度大于最大长度:[40]!'],'disabled':'false*false','default':''}]" value="4">4 - 军官证</option>
+										<option sle-require="[{'id':'txt_zjhm','regex':['require','maxlength40'],'tips':['证件号码警官证不能为空!','证件号码警官证长度大于最大长度:[40]!'],'disabled':'false*false','default':''}]" value="5">5 - 警官证</option>
+										<option sle-require="[{'id':'txt_zjhm','regex':['require','maxlength40'],'tips':['证件号码士兵证不能为空!','证件号码士兵证长度大于最大长度:[40]!'],'disabled':'false*false','default':''}]" value="6">6 - 士兵证</option>
+										<option sle-require="[{'id':'txt_zjhm','regex':['require','maxlength40'],'tips':['证件号码军队学员证不能为空!','证件号码军队学员证长度大于最大长度:[40]!'],'disabled':'false*false','default':''}]" value="7">7 - 军队学员证</option>
+										<option sle-require="[{'id':'txt_zjhm','regex':['require','maxlength40'],'tips':['证件号码军队文职干部证不能为空!','证件号码军队文职干部证长度大于最大长度:[40]!'],'disabled':'false*false','default':''}]" value="8">8 - 军队文职干部证</option>
+										<option sle-require="[{'id':'txt_zjhm','regex':['require','maxlength40'],'tips':['证件号码军队离退休干部证和军队职员证不能为空!','证件号码军队离退休干部证和军队职员证长度大于最大长度:[40]!'],'disabled':'false*false','default':''}]" value="9">9 - 军队离退休干部证和军队职员证</option>
+										<option sle-require="[{'id':'txt_zjhm','regex':['require','maxlength40'],'tips':['证件号码中国护照不能为空!','证件号码中国护照长度大于最大长度:[40]!'],'disabled':'false*false','default':''}]" value="10">10 - 中国护照</option>
+										<option sle-require="[{'id':'txt_zjhm','regex':['require','maxlength40'],'tips':['证件号码护照（外国公民）不能为空!','证件号码护照（外国公民）长度大于最大长度:[40]!'],'disabled':'false*false','default':''}]" value="11">11 - 护照（外国公民）</option>
+										<option sle-require="[{'id':'txt_zjhm','regex':['require','maxlength40'],'tips':['证件号码海员证不能为空!','证件号码海员证长度大于最大长度:[40]!'],'disabled':'false*false','default':''}]" value="12">12 - 海员证</option>
+										<option sle-require="[{'id':'txt_zjhm','regex':['require','maxlength40'],'tips':['证件号码港澳同胞回乡证不能为空!','证件号码港澳同胞回乡证长度大于最大长度:[40]!'],'disabled':'false*false','default':''}]" value="13">13 - 港澳同胞回乡证</option>
+										<option sle-require="[{'id':'txt_zjhm','regex':['require','maxlength40'],'tips':['证件号码港澳居民来往大陆通行证不能为空!','证件号码港澳居民来往大陆通行证长度大于最大长度:[40]!'],'disabled':'false*false','default':''}]" value="14">14 - 港澳居民来往大陆通行证</option>
+										<option sle-require="[{'id':'txt_zjhm','regex':['require','maxlength40'],'tips':['证件号码中华人民共和国网络港澳通行证不能为空!','证件号码中华人民共和国网络港澳通行证长度大于最大长度:[40]!'],'disabled':'false*false','default':''}]" value="15">15 - 中华人民共和国网络港澳通行证</option>
+										<option sle-require="[{'id':'txt_zjhm','regex':['require','maxlength40'],'tips':['证件号码台湾居民来往大陆通行证不能为空!','证件号码台湾居民来往大陆通行证长度大于最大长度:[40]!'],'disabled':'false*false','default':''}]" value="16">16 - 台湾居民来往大陆通行证</option>
+										<option sle-require="[{'id':'txt_zjhm','regex':['require','maxlength40'],'tips':['证件号码大陆居民往来台湾通行证不能为空!','证件号码大陆居民往来台湾通行证长度大于最大长度:[40]!'],'disabled':'false*false','default':''}]" value="17">17 - 大陆居民往来台湾通行证</option>
+										<option sle-require="[{'id':'txt_zjhm','regex':['require','maxlength40'],'tips':['证件号码外国人居留证不能为空!','证件号码外国人居留证长度大于最大长度:[40]!'],'disabled':'false*false','default':''}]" value="18">18 - 外国人居留证</option>
+										<option sle-require="[{'id':'txt_zjhm','regex':['require','maxlength40'],'tips':['证件号码外国人出入境证不能为空!','证件号码外国人出入境证长度大于最大长度:[40]!'],'disabled':'false*false','default':''}]" value="19">19 - 外国人出入境证</option>
+										<option sle-require="[{'id':'txt_zjhm','regex':['require','maxlength40'],'tips':['证件号码外交官证不能为空!','证件号码外交官证长度大于最大长度:[40]!'],'disabled':'false*false','default':''}]" value="20">20 - 外交官证</option>
+										<option sle-require="[{'id':'txt_zjhm','regex':['require','maxlength40'],'tips':['证件号码领事馆证不能为空!','证件号码领事馆证长度大于最大长度:[40]!'],'disabled':'false*false','default':''}]" value="21">21 - 领事馆证</option>
+										<option sle-require="[{'id':'txt_zjhm','regex':['require','maxlength40'],'tips':['证件号码其他不能为空!','证件号码其他长度大于最大长度:[40]!'],'disabled':'false*false','default':''}]" value="22">22 - 其他</option>
+									</select><input type="text" oncopy="return false" onpaste="return false" oncut="return false" style="width: 127px;" id="mb1_sleinput_FaRenFuZeRenZhengJianLeiXing_52" name="mb1_sleinput_FaRenFuZeRenZhengJianLeiXing_52"><span class="text-red redtip">!</span></div>
+								<div id="sle_frfzrzjlx_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="" style="width: 87px;"><label vl-default="" id="label_frfzrzjhm" vtitle="法人/负责人<br>证件号码" class="form-item text-left" vl-tipsid="label_frfzrzjhm_tips" title="label_frfzrzjhm" name="label_frfzrzjhm">法人/负责人<br>证件号码</label>
+								<div id="label_frfzrzjhm_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class=""><input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_zjhm" vtitle="法人/负责人证件号码" class="form-item text-left" kuaicha="true" vl-tipsid="txt_zjhm_tips" vl-regex="['require']" vl-message="['法人/负责人证件号码不能为空!']" style="width: 150px;" title="txt_zjhm" onpaste="return false" name="txt_zjhm"><img class="sousuo" src="/Js/Student/GetDefaultValue/img/banksousuo.png" vl-select="txt_frfzrzwxm|0|0,sle_hcjg|1|0" vl-exec="false" vl-message="['法人/负责人证件号码查询未执行！']" title="执行快查！"><span class="text-red redtip">!</span>
+								<div id="txt_zjhm_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="" style="width: 80px;"><label vl-default="" id="label_frfzrzjdqr" vtitle="法人/负责人<br>证件到期日" class="form-item text-left" vl-tipsid="label_frfzrzjdqr_tips" title="label_frfzrzjdqr" name="label_frfzrzjdqr">法人/负责人<br>证件到期日</label>
+								<div id="label_frfzrzjdqr_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class=""><input type="text" class="date form-item text-left" vl-default="" id="date_frfzrzjdqr" vtitle="法人/负责人证件到期日" vl-tipsid="date_frfzrzjdqr_tips" vl-regex="['tdate', 'number']" vl-message="['请输入正确的法人/负责人证件到期日格式（如:19000101）!','法人/负责人证件到期日输入错误!']" style="width: 117px;" title="date_frfzrzjdqr" oncopy="return false" onpaste="return false" oncut="return false" name="date_frfzrzjdqr"><img onclick="WdatePicker({el:'date_frfzrzjdqr',dateFmt:'yyyyMMdd'})" src="/js/My97DatePicker/skin/datePicker.gif" align="absmiddle" style="width:16px;height:22px;margin-left:6px;">
+								<div id="date_frfzrzjdqr_tips" class="tipsmsg"></div>
+							</td>
+						</tr>
+						<tr>
+							<td rowspan="1" colspan="1" class="" style="width: 87px;"><label vl-default="" id="label_frfzrzwxm" vtitle="法人/负责人<br>中文姓名" class="form-item text-left" vl-tipsid="label_frfzrzwxm_tips" title="label_frfzrzwxm" name="label_frfzrzwxm">法人/负责人<br>中文姓名</label>
+								<div id="label_frfzrzwxm_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class=""><input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_frfzrzwxm" vtitle="法人/负责人中文姓名" class="form-item text-left" vl-disabled="false" vl-tipsid="txt_frfzrzwxm_tips" vl-regex="['require','maxlength40']" vl-message="['法人/负责人中文姓名不能为空!','法人/负责人中文姓名长度大于最大长度:[40]!']" style="width: 150px;" title="txt_frfzrzwxm" onpaste="return false" name="txt_frfzrzwxm"><span class="text-red redtip">!</span>
+								<div id="txt_frfzrzwxm_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="" style="width: 87px;"><label vl-default="" id="label_frfzrywxm" vtitle="法人/负责人<br>英文姓名" class="form-item text-left" vl-tipsid="label_frfzrywxm_tips" title="label_frfzrywxm" name="label_frfzrywxm">法人/负责人<br>英文姓名</label>
+								<div id="label_frfzrywxm_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class=""><input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_frfzrywxm" vtitle="法人/负责人英文姓名" class="form-item text-left" vl-tipsid="txt_frfzrywxm_tips" vl-regex="['maxlength40']" vl-message="['法人/负责人英文姓名长度大于最大长度:[40]!']" style="width: 150px;" title="txt_frfzrywxm" onpaste="return false" name="txt_frfzrywxm">
+								<div id="txt_frfzrywxm_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="" style="width: 64px;"><label vl-default="" id="label_hcjg" vtitle="核s查s结s果" class="form-item text-left" vl-tipsid="label_hcjg_tips" title="label_hcjg" name="label_hcjg">核<s></s>查<s></s>结<s></s>果</label>
+								<div id="label_hcjg_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="">
+								<div class="slectstyle">
+									<select vl-default="" id="sle_hcjg" vtitle="核查结果" class="form-item text-left" vl-disabled="true" vl-tipsid="sle_hcjg_tips" style="width: 116px;" title="sle_hcjg" vl-slemodel="" disabled="disabled" name="sle_hcjg">
+										<option disabled="" style="background-color: blue; color: #fff;" value="" selected="selected">核查结果值含义</option>
+										<option value="00">00-公民身份证号码与姓名一致&amp;且存在照片</option>
+										<option value="11">11-公民身份证号码与姓名一致&amp;不存在照片</option>
+									</select><input type="text" oncopy="return false" onpaste="return false" oncut="return false" disabled="disabled" style="width: 93px;" id="mb1_sleinput_HeChaJieGuo_62" name="mb1_sleinput_HeChaJieGuo_62"></div>
+								<div id="sle_hcjg_tips" class="tipsmsg"></div>
+							</td>
+						</tr>
+						<tr>
+							<td rowspan="1" colspan="1" class="" style="width: 96px;"><label vl-default="" onclick="check()" id="label_frbgdh" vtitle="法人办公电话" class="form-item text-left on" vl-tipsid="label_frbgdh_tips" title="label_frbgdh" name="label_frbgdh">法人办公电话</label>
+								<div id="label_frbgdh_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class=""><input type="text" onblur="check()" oncopy="return false" oncut="return false" vl-default="" id="txt_frbgdh" vtitle="法人办公电话" class="form-item text-left" vl-tipsid="txt_frbgdh_tips" style="width: 150px;" title="txt_frbgdh" onpaste="return false" name="txt_frbgdh">
+								<div id="txt_frbgdh_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="" style="width: 96px;"><label vl-default="" id="label_fryddh" vtitle="法人移动电话" class="form-item text-left" vl-tipsid="label_fryddh_tips" title="label_fryddh" name="label_fryddh">法人移动电话</label>
+								<div id="label_fryddh_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class=""><input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_fryddh" vtitle="法人移动电话" class="form-item text-left" vl-tipsid="txt_fryddh_tips" vl-regex="['require', 'maxlength11', 'number']" vl-message="['法人办公电话和法人移动电话至少有一个不能为空!','法人移动电话输入错误!','法人移动电话输入错误!']" style="width: 150px;" title="txt_fryddh" onpaste="return false" name="txt_fryddh"><span class="text-red redtip">!</span>
+								<div id="txt_fryddh_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="" style="width: 64px;"><label vl-default="" id="label_dzyx" vtitle="电s子s邮s箱" class="form-item text-left" vl-tipsid="label_dzyx_tips" title="label_dzyx" name="label_dzyx">电<s></s>子<s></s>邮<s></s>箱</label>
+								<div id="label_dzyx_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="">
+								<input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_dzyx" vtitle="电子邮箱" class="form-item text-left" vl-tipsid="txt_dzyx_tips" style="width: 115px;" title="txt_dzyx" onpaste="return false" name="txt_dzyx">
+								<div id="txt_dzyx_tips" class="tipsmsg"></div>
+							</td>
+						</tr>
+						<tr>
+							<td rowspan="1" colspan="1" class="" style="width: 48px;"><label vl-default="" id="label_czh" vtitle="传is真is号" class="form-item text-left" vl-tipsid="label_czh_tips" title="label_czh" name="label_czh">传<i></i><s></s>真<i></i><s></s>号</label>
+								<div id="label_czh_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class=""><input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_czh" vtitle="传真号" class="form-item text-left" vl-tipsid="txt_czh_tips" vl-regex="['maxlength40']" vl-message="['传真号长度大于最大长度:[40]!']" style="width: 151px;" title="txt_czh" onpaste="return false" name="txt_czh">
+								<div id="txt_czh_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="" style="width: 96px;"><label vl-default="" id="label_frdbgj" vtitle="法人代表国籍" class="form-item text-left" vl-tipsid="label_frdbgj_tips" title="label_frdbgj" name="label_frdbgj">法人代表国籍</label>
+								<div id="label_frdbgj_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="">
+								<div class="slectstyle">
+									<select vl-default="CHN" id="sle_frdbgj" vtitle="法人代表国籍" class="form-item text-left" vl-tipsid="sle_frdbgj_tips" style="width: 150px;" title="sle_frdbgj" vl-slemodel="" name="sle_frdbgj">
+										<option disabled="" style="background-color: blue; color: #fff;" value="">法人代表国籍值含义</option>
+										<option value="CHN">CHN - 中国</option>
+										<option value="BVT">BVT - 布维岛</option>
+										<option value="BWA">BWA - 博茨瓦纳</option>
+										<option value="CAF">CAF - 中非</option>
+										<option value="CAN">CAN - 加拿大</option>
+										<option value="CCK">CCK - 科科斯( 基林)群岛</option>
+										<option value="CHE">CHE - 瑞士</option>
+										<option value="CHL">CHL - 智利</option>
+										<option value="CIV">CIV - 科特迪瓦</option>
+										<option value="CMR">CMR - 喀麦隆</option>
+										<option value="COD">COD - 刚果（金）</option>
+										<option value="COG">COG - 刚果（布）</option>
+										<option value="COK">COK - 库克群岛</option>
+										<option value="COL">COL - 哥伦比亚</option>
+										<option value="COM">COM - 科摩罗</option>
+										<option value="CPV">CPV - 佛得角</option>
+										<option value="CRI">CRI - 哥斯达黎加</option>
+										<option value="CUB">CUB - 古巴</option>
+										<option value="ABW">ABW - 阿鲁巴</option>
+										<option value="AFG">AFG - 阿富汗</option>
+										<option value="AGO">AGO - 安哥拉</option>
+										<option value="AIA">AIA - 安圭拉</option>
+										<option value="ALB">ALB - 阿尔巴尼亚</option>
+										<option value="AND">AND - 安道尔</option>
+										<option value="ANT">ANT - 荷属安的列斯</option>
+										<option value="ARE">ARE - 阿联酋</option>
+										<option value="ARG">ARG - 阿根廷</option>
+										<option value="ARM">ARM - 亚美尼亚</option>
+										<option value="ASM">ASM - 美属萨摩亚</option>
+										<option value="ATA">ATA - 南极洲</option>
+										<option value="ATF">ATF - 法属南部领地</option>
+										<option value="ATG">ATG - 安提瓜和巴布达</option>
+										<option value="AUS">AUS - 澳大利亚</option>
+										<option value="AUT">AUT - 奥地利</option>
+										<option value="AZE">AZE - 阿塞拜疆</option>
+										<option value="BDI">BDI - 布隆迪</option>
+										<option value="BEL">BEL - 比利时</option>
+										<option value="BEN">BEN - 贝宁</option>
+										<option value="BFA">BFA - 布基纳法索</option>
+										<option value="BGD">BGD - 孟加拉国</option>
+										<option value="BGR">BGR - 保加利亚</option>
+										<option value="BHR">BHR - 巴林</option>
+										<option value="BHS">BHS - 巴哈马</option>
+										<option value="BIH">BIH - 波黑</option>
+										<option value="BLR">BLR - 白俄罗斯</option>
+										<option value="BLZ">BLZ - 伯利兹</option>
+										<option value="BMU">BMU - 百慕大</option>
+										<option value="BOL">BOL - 玻利维亚</option>
+										<option value="BRA">BRA - 巴西</option>
+										<option value="BRB">BRB - 巴巴多斯</option>
+										<option value="BRN">BRN - 文莱</option>
+										<option value="BTN">BTN - 不丹</option>
+										<option value="LTU">LTU - 立陶宛</option>
+										<option value="LUX">LUX - 卢森堡</option>
+										<option value="LVA">LVA - 拉脱维亚</option>
+										<option value="MAC">MAC - 中国澳门</option>
+										<option value="MAR">MAR - 摩洛哥</option>
+										<option value="MCO">MCO - 摩纳哥</option>
+										<option value="MDA">MDA - 摩尔多瓦</option>
+										<option value="MDG">MDG - 马达加斯加</option>
+										<option value="MDV">MDV - 马尔代夫</option>
+										<option value="MEX">MEX - 墨西哥</option>
+										<option value="MHL">MHL - 马绍尔群岛</option>
+										<option value="MKD">MKD - 前南马其顿</option>
+										<option value="MLI">MLI - 马里</option>
+										<option value="MLT">MLT - 马耳他</option>
+										<option value="MMR">MMR - 缅甸</option>
+										<option value="MNE">MNE - 黑山</option>
+										<option value="MNG">MNG - 蒙古</option>
+										<option value="MNP">MNP - 北马里亚纳</option>
+										<option value="MOZ">MOZ - 莫桑比克</option>
+										<option value="MRT">MRT - 毛里塔尼亚</option>
+										<option value="MSR">MSR - 蒙特塞拉特</option>
+										<option value="MTQ">MTQ - 马提尼克</option>
+										<option value="MUS">MUS - 毛里求斯</option>
+										<option value="MWI">MWI - 马拉维</option>
+										<option value="MYS">MYS - 马来西亚</option>
+										<option value="MYT">MYT - 马约特</option>
+										<option value="MAN">NAM - 纳米比亚</option>
+										<option value="NCL">NCL - 新喀里多尼亚</option>
+										<option value="MER">NER - 尼日尔</option>
+										<option value="NFK">NFK - 诺福克岛</option>
+										<option value="NGA">NGA - 尼日利亚</option>
+										<option value="NIC">NIC - 尼加拉瓜</option>
+										<option value="NIU">NIU - 纽埃</option>
+										<option value="NLD">NLD - 荷兰</option>
+										<option value="NOR">NOR - 挪威</option>
+										<option value="NPL">NPL - 尼泊尔</option>
+										<option value="NRU">NRU - 瑙鲁</option>
+										<option value="NZL">NZL - 新西兰</option>
+										<option value="OMN">OMN - 阿曼</option>
+										<option value="PAK">PAK - 巴基斯坦</option>
+										<option value="PAK">PAN - 巴拿马</option>
+										<option value="PCN">PCN - 皮特凯恩</option>
+										<option value="PER">PER - 秘鲁</option>
+										<option value="PHL">PHL - 菲律宾</option>
+										<option value="PLW">PLW - 帕劳</option>
+										<option value="PNG">PNG - 巴布亚新几内亚</option>
+										<option value="POL">POL - 波兰</option>
+										<option value="PRI">PRI - 波多黎各</option>
+										<option value="PRK">PRK - 朝鲜</option>
+										<option value="PRT">PRT - 葡萄牙</option>
+										<option value="PRY">PRY - 巴拉圭</option>
+										<option value="PSE">PSE - 巴勒斯坦</option>
+										<option value="PYF">PYF - 法属波利尼西亚</option>
+										<option value="QAT">QAT - 卡塔尔</option>
+										<option value="REU">REU - 留尼汪</option>
+										<option value="ROM">ROM - 罗马尼亚</option>
+										<option value="RUS">RUS - 俄罗斯联邦</option>
+										<option value="RWA">RWA - 卢旺达</option>
+										<option value="SAU">SAU - 沙特阿拉伯</option>
+										<option value="SDN">SDN - 苏丹</option>
+										<option value="SEN">SEN - 塞内加尔</option>
+										<option value="SGP">SGP - 新加坡</option>
+										<option value="SGS">SGS - 南乔治亚岛和南桑德韦奇岛</option>
+										<option value="SHN">SHN - 圣赫勒拿</option>
+										<option value="SJM">SJM - 斯瓦尔巴岛和扬马延岛</option>
+										<option value="SLB">SLB - 所罗门群岛</option>
+										<option value="SLE">SLE - 塞拉利昂</option>
+										<option value="SLV">SLV - 萨尔瓦多</option>
+										<option value="SMR">SMR - 圣马力诺</option>
+										<option value="SOM">SOM - 索马里</option>
+										<option value="SPM">SPM - 圣皮埃尔和密克隆</option>
+										<option value="SRB">SRB - 塞尔维亚</option>
+										<option value="STP">STP - 圣多美和普林西比</option>
+										<option value="SUR">SUR - 苏里南</option>
+										<option value="SVL">SVK - 斯洛伐克</option>
+										<option value="SVN">SVN - 斯洛文尼亚</option>
+										<option value="SWE">SWE - 瑞典</option>
+										<option value="SWZ">SWZ - 斯威士兰</option>
+										<option value="SYC">SYC - 塞舌尔</option>
+										<option value="SYR">SYR - 叙利亚</option>
+										<option value="TCA">TCA - 特克斯和凯科斯群岛</option>
+										<option value="CXR">CXR - 圣诞岛</option>
+										<option value="CYM">CYM - 开曼群岛</option>
+										<option value="CYP">CYP - 塞浦路斯</option>
+										<option value="CZE">CZE - 捷克</option>
+										<option value="DEU">DEU - 德国</option>
+										<option value="DJI">DJI - 吉布提</option>
+										<option value="DMA">DMA - 多米尼克</option>
+										<option value="DNK">DNK - 丹麦</option>
+										<option value="DOM">DOM - 多米尼加</option>
+										<option value="DZA">DZA - 阿尔及利亚</option>
+										<option value="ECU">ECU - 厄瓜多尔</option>
+										<option value="EGY">EGY - 埃及</option>
+										<option value="ERI">ERI - 厄立特里亚</option>
+										<option value="ESH">ESH - 西撒哈拉</option>
+										<option value="ESP">ESP - 西班牙</option>
+										<option value="EST">EST - 爱沙尼亚</option>
+										<option value="ETH">ETH - 埃塞俄比亚</option>
+										<option value="FIN">FIN - 芬兰</option>
+										<option value="FJI">FJI - 斐济</option>
+										<option value="FLK">FLK - 福克兰群岛（马尔维纳斯群岛）</option>
+										<option value="FRA">FRA - 法国</option>
+										<option value="FRO">FRO - 法罗群岛</option>
+										<option value="FSM">FSM - 密克罗尼西亚联邦</option>
+										<option value="GAB">GAB - 加蓬</option>
+										<option value="GBR">GBR - 英国</option>
+										<option value="GEO">GEO - 格鲁吉亚</option>
+										<option value="GHA">GHA - 加纳</option>
+										<option value="GIB">GIB - 直布罗陀</option>
+										<option value="GIN">GIN - 几内亚</option>
+										<option value="GLP">GLP - 瓜德罗普</option>
+										<option value="GMB">GMB - 冈比亚</option>
+										<option value="GNB">GNB - 几内亚比绍</option>
+										<option value="GNQ">GNQ - 赤道几内亚</option>
+										<option value="GRC">GRC - 希腊</option>
+										<option value="GRD">GRD - 格林纳达</option>
+										<option value="GRL">GRL - 格陵兰</option>
+										<option value="GTM">GTM - 危地马拉</option>
+										<option value="GUF">GUF - 法属圭亚那</option>
+										<option value="GUM">GUM - 关岛</option>
+										<option value="GUY">GUY - 圭亚那</option>
+										<option value="HKG">HKG - 中国香港</option>
+										<option value="HMD">HMD - 赫德岛和麦克唐纳岛</option>
+										<option value="HND">HND - 洪都拉斯</option>
+										<option value="HRV">HRV - 克罗地亚</option>
+										<option value="HTI">HTI - 海地</option>
+										<option value="HUN">HUN - 匈牙利</option>
+										<option value="IDN">IDN - 印度尼西亚</option>
+										<option value="IMN">IMN - 马恩岛</option>
+										<option value="IND">IND - 印度</option>
+										<option value="IOT">IOT - 英属印度洋领</option>
+										<option value="IRL">IRL - 爱尔兰</option>
+										<option value="IRN">IRN - 伊朗</option>
+										<option value="IRQ">IRQ - 伊拉克</option>
+										<option value="ISL">ISL - 冰岛</option>
+										<option value="ISR">ISR - 以色列</option>
+										<option value="ITA">ITA - 意大利</option>
+										<option value="JAN">JAM - 牙买加</option>
+										<option value="JOR">JOR - 约旦</option>
+										<option value="IPN">JPN - 日本</option>
+										<option value="HAZ">KAZ - 哈萨克斯坦</option>
+										<option value="KEN">KEN - 肯尼亚</option>
+										<option value="KGZ">KGZ - 吉尔吉斯斯坦</option>
+										<option value="KHM">KHM - 柬埔寨</option>
+										<option value="KIR">KIR - 基里巴斯</option>
+										<option value="KNA">KNA - 圣基茨和尼维斯</option>
+										<option value="KOR">KOR - 韩国</option>
+										<option value="KWT">KWT - 科威特</option>
+										<option value="LAO">LAO - 老挝</option>
+										<option value="LAN">LBN - 黎巴嫩</option>
+										<option value="LBR">LBR - 利比里亚</option>
+										<option value="LBY">LBY - 利比亚</option>
+										<option value="LCA">LCA - 圣卢西亚</option>
+										<option value="LIE">LIE - 列支敦士登</option>
+										<option value="LKA">LKA - 斯里兰卡</option>
+										<option value="TCD">TCD - 乍得</option>
+										<option value="TGO">TGO - 多哥</option>
+										<option value="THA">THA - 泰国</option>
+										<option value="TJK">TJK - 塔吉克斯坦</option>
+										<option value="LSO">LSO - 莱索托</option>
+										<option value="TKL">TKL - 托克劳</option>
+										<option value="TKM">TKM - 土库曼斯坦</option>
+										<option value="TMP">TMP - 东帝汶</option>
+										<option value="TPN">TON - 汤加</option>
+										<option value="TTO">TTO - 特立尼达和多巴哥</option>
+										<option value="TUN">TUN - 突尼斯</option>
+										<option value="TUR">TUR - 土耳其</option>
+										<option value="TUV">TUV - 图瓦卢</option>
+										<option value="TEN">TWN - 中国台湾</option>
+										<option value="TZA">TZA - 坦桑尼亚</option>
+										<option value="UGA">UGA - 乌干达</option>
+										<option value="UKR">UKR - 乌克兰</option>
+										<option value="UMI">UMI - 美国本土外小岛屿</option>
+										<option value="URY">URY - 乌拉圭</option>
+										<option value="USA">USA - 美国</option>
+										<option value="UZB">UZB - 乌兹别克斯坦</option>
+										<option value="VAT">VAT - 梵蒂冈</option>
+										<option value="VCT">VCT - 圣文森特和格林纳丁斯</option>
+										<option value="VEN">VEN - 委内瑞拉</option>
+										<option value="VGB">VGB - 英属维尔京群岛</option>
+										<option value="VIR">VIR - 美属维尔京群岛</option>
+										<option value="VNM">VNM - 越南</option>
+										<option value="VUT">VUT - 瓦努阿图</option>
+										<option value="WLF">WLF - 瓦利斯和富图纳</option>
+										<option value="WSM">WSM - 萨摩亚</option>
+										<option value="YEM">YEM - 也门</option>
+										<option value="ZAF">ZAF - 南非</option>
+										<option value="ZMB">ZMB - 赞比亚</option>
+										<option value="ZWE">ZWE - 津巴布韦</option>
+									</select><input type="text" oncopy="return false" onpaste="return false" oncut="return false" style="width: 127px;" id="mb1_sleinput_FaRenDaiBiaoGuoJi_72" name="mb1_sleinput_FaRenDaiBiaoGuoJi_72"></div>
+								<div id="sle_frdbgj_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="" style="width: 80px;"><label vl-default="" id="label_nrrlx" vtitle="纳税人类s型" class="form-item text-left" vl-tipsid="label_nrrlx_tips" title="label_nrrlx" name="label_nrrlx">纳税人类<s></s>型</label>
+								<div id="label_nrrlx_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="">
+								<div class="slectstyle">
+									<select vl-default="" id="sle_nsrlx" vtitle="纳税人类型" class="form-item text-left" vl-tipsid="sle_nsrlx_tips" vl-regex="['require']" vl-message="['纳税人类型不能为空！']" style="width: 116px;" title="sle_nsrlx" vl-slemodel="" name="sle_nsrlx">
+										<option disabled="" style="background-color: blue; color: #fff;" value="" selected="selected">纳税人类型值含义</option>
+										<option value="1">1-一般纳税人（非同业）</option>
+										<option value="2">2-一般纳税人（同业）</option>
+										<option value="3">3-小规模纳税人</option>
+										<option value="4">4-个人</option>
+										<option value="5">5-其他</option>
+									</select><input type="text" oncopy="return false" onpaste="return false" oncut="return false" style="width: 93px;" id="mb1_sleinput_NaShuiRenLeiXing_74" name="mb1_sleinput_NaShuiRenLeiXing_74"><span class="text-red redtip">!</span></div>
+								<div id="sle_nsrlx_tips" class="tipsmsg"></div>
+							</td>
+						</tr>
+						<tr>
+							<td rowspan="1" colspan="1" class="" style="width: 80px;"><label vl-default="" id="label_cwryzjlx" vtitle="财务人员证<br>件类型" class="form-item text-left" vl-tipsid="label_cwryzjlx_tips" title="label_cwryzjlx" name="label_cwryzjlx">财务人员证<br>件类型</label>
+								<div id="label_cwryzjlx_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="">
+								<div class="slectstyle">
+									<select vl-default="" id="sle_cwryzjlx" vtitle="财务人员证件类型" class="form-item text-left" vl-tipsid="sle_cwryzjlx_tips" vl-regex="['']" vl-message="['证件类型不能为空!']" style="width: 150px;" title="sle_cwryzjlx" vl-slemodel="txt_zjhm3,txt_zjhm3,txt_zjhm3,txt_zjhm3,txt_zjhm3,txt_zjhm3,txt_zjhm3,txt_zjhm3,txt_zjhm3,txt_zjhm3,txt_zjhm3,txt_zjhm3,txt_zjhm3,txt_zjhm3,txt_zjhm3,txt_zjhm3,txt_zjhm3,txt_zjhm3,txt_zjhm3,txt_zjhm3,txt_zjhm3,txt_zjhm3" name="sle_cwryzjlx">
+										<option disabled="" style="background-color: blue; color: #fff;" value="" selected="selected">财务人员证件类型值含义</option>
+										<option sle-require="[{'id':'txt_zjhm3','regex':['require','maxlength20','idcard'],'tips':['证件号码不能为空!','证件号码身份证号长度大于最大长度:[20]!','证件号码身份证位数不正确(应为15位或者18位)！'],'disabled':'false*false*false','default':''}]" value="1">1 - 居民身份证</option>
+										<option sle-require="[{'id':'txt_zjhm3','regex':['require','maxlength20','idcard'],'tips':['证件号码不能为空!','证件号码身份证号长度大于最大长度:[20]!','证件号码身份证位数不正确(应为15位或者18位)！'],'disabled':'false*false*false','default':''}]" value="2">2 - 临时居民身份证</option>
+										<option sle-require="[{'id':'txt_zjhm3','regex':['require','maxlength20','idcard'],'tips':['证件号码不能为空!','证件号码身份证号长度大于最大长度:[20]!','证件号码身份证位数不正确(应为15位或者18位)！'],'disabled':'false*false*false','default':''}]" value="3">3 - 居民户口簿（16周岁以下）</option>
+										<option sle-require="[{'id':'txt_zjhm3','regex':['require','maxlength40'],'tips':['证件号码军官证不能为空!','证件号码军官证长度大于最大长度:[40]!'],'disabled':'false*false','default':''}]" value="4">4 - 军官证</option>
+										<option sle-require="[{'id':'txt_zjhm3','regex':['require','maxlength40'],'tips':['证件号码警官证不能为空!','证件号码警官证长度大于最大长度:[40]!'],'disabled':'false*false','default':''}]" value="5">5 - 警官证</option>
+										<option sle-require="[{'id':'txt_zjhm3','regex':['require','maxlength40'],'tips':['证件号码士兵证不能为空!','证件号码士兵证长度大于最大长度:[40]!'],'disabled':'false*false','default':''}]" value="6">6 - 士兵证</option>
+										<option sle-require="[{'id':'txt_zjhm3','regex':['require','maxlength40'],'tips':['证件号码军队学员证不能为空!','证件号码军队学员证长度大于最大长度:[40]!'],'disabled':'false*false','default':''}]" value="7">7 - 军队学员证</option>
+										<option sle-require="[{'id':'txt_zjhm3','regex':['require','maxlength40'],'tips':['证件号码军队文职干部证不能为空!','证件号码军队文职干部证长度大于最大长度:[40]!'],'disabled':'false*false','default':''}]" value="8">8 - 军队文职干部证</option>
+										<option sle-require="[{'id':'txt_zjhm3','regex':['require','maxlength40'],'tips':['证件号码军队离退休干部证和军队职员证不能为空!','证件号码军队离退休干部证和军队职员证长度大于最大长度:[40]!'],'disabled':'false*false','default':''}]" value="9">9 - 军队离退休干部证和军队职员证</option>
+										<option sle-require="[{'id':'txt_zjhm3','regex':['require','maxlength40'],'tips':['证件号码中国护照不能为空!','证件号码中国护照长度大于最大长度:[40]!'],'disabled':'false*false','default':''}]" value="10">10 - 中国护照</option>
+										<option sle-require="[{'id':'txt_zjhm3','regex':['require','maxlength40'],'tips':['证件号码护照（外国公民）不能为空!','证件号码护照（外国公民）长度大于最大长度:[40]!'],'disabled':'false*false','default':''}]" value="11">11 - 护照（外国公民）</option>
+										<option sle-require="[{'id':'txt_zjhm3','regex':['require','maxlength40'],'tips':['证件号码海员证不能为空!','证件号码海员证长度大于最大长度:[40]!'],'disabled':'false*false','default':''}]" value="12">12 - 海员证</option>
+										<option sle-require="[{'id':'txt_zjhm3','regex':['require','maxlength40'],'tips':['证件号码港澳同胞回乡证不能为空!','证件号码港澳同胞回乡证长度大于最大长度:[40]!'],'disabled':'false*false','default':''}]" value="13">13 - 港澳同胞回乡证</option>
+										<option sle-require="[{'id':'txt_zjhm3','regex':['require','maxlength40'],'tips':['证件号码港澳居民来往大陆通行证不能为空!','证件号码港澳居民来往大陆通行证长度大于最大长度:[40]!'],'disabled':'false*false','default':''}]" value="14">14 - 港澳居民来往大陆通行证</option>
+										<option sle-require="[{'id':'txt_zjhm3','regex':['require','maxlength40'],'tips':['证件号码中华人民共和国网络港澳通行证不能为空!','证件号码中华人民共和国网络港澳通行证长度大于最大长度:[40]!'],'disabled':'false*false','default':''}]" value="15">15 - 中华人民共和国网络港澳通行证</option>
+										<option sle-require="[{'id':'txt_zjhm3','regex':['require','maxlength40'],'tips':['证件号码台湾居民来往大陆通行证不能为空!','证件号码台湾居民来往大陆通行证长度大于最大长度:[40]!'],'disabled':'false*false','default':''}]" value="16">16 - 台湾居民来往大陆通行证</option>
+										<option sle-require="[{'id':'txt_zjhm3','regex':['require','maxlength40'],'tips':['证件号码大陆居民往来台湾通行证不能为空!','证件号码大陆居民往来台湾通行证长度大于最大长度:[40]!'],'disabled':'false*false','default':''}]" value="17">17 - 大陆居民往来台湾通行证</option>
+										<option sle-require="[{'id':'txt_zjhm3','regex':['require','maxlength40'],'tips':['证件号码外国人居留证不能为空!','证件号码外国人居留证长度大于最大长度:[40]!'],'disabled':'false*false','default':''}]" value="18">18 - 外国人居留证</option>
+										<option sle-require="[{'id':'txt_zjhm3','regex':['require','maxlength40'],'tips':['证件号码外国人出入境证不能为空!','证件号码外国人出入境证长度大于最大长度:[40]!'],'disabled':'false*false','default':''}]" value="19">19 - 外国人出入境证</option>
+										<option sle-require="[{'id':'txt_zjhm3','regex':['require','maxlength40'],'tips':['证件号码外交官证不能为空!','证件号码外交官证长度大于最大长度:[40]!'],'disabled':'false*false','default':''}]" value="20">20 - 外交官证</option>
+										<option sle-require="[{'id':'txt_zjhm3','regex':['require','maxlength40'],'tips':['证件号码领事馆证不能为空!','证件号码领事馆证长度大于最大长度:[40]!'],'disabled':'false*false','default':''}]" value="21">21 - 领事馆证</option>
+										<option sle-require="[{'id':'txt_zjhm3','regex':['require','maxlength40'],'tips':['证件号码其他不能为空!','证件号码其他长度大于最大长度:[40]!'],'disabled':'false*false','default':''}]" value="22">22 - 其他</option>
+									</select><input type="text" oncopy="return false" onpaste="return false" oncut="return false" style="width: 127px;" id="mb1_sleinput_CaiWuRenYuanZhengJianLeiXing_76" name="mb1_sleinput_CaiWuRenYuanZhengJianLeiXing_76"></div>
+								<div id="sle_cwryzjlx_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="" style="width: 64px;"><label vl-default="" id="label_zjhm" vtitle="证s件s号s码" class="form-item text-left" vl-tipsid="label_zjhm_tips" title="label_zjhm" name="label_zjhm">证<s></s>件<s></s>号<s></s>码</label>
+								<div id="label_zjhm_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class=""><input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_zjhm3" vtitle="证件号码_mb1" class="form-item text-left" vl-tipsid="txt_zjhm3_tips" vl-regex="['maxlength40']" vl-message="['证件号码长度大于最大长度:[40]!']" style="width: 150px;" title="txt_zjhm3" onpaste="return false" name="txt_zjhm3">
+								<div id="txt_zjhm3_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="" style="width: 80px;"><label vl-default="" id="label_zjdqr" vtitle="证s件s到s期s日" class="form-item text-left" vl-tipsid="label_zjdqr_tips" title="label_zjdqr" name="label_zjdqr">证<s></s>件<s></s>到<s></s>期<s></s>日</label>
+								<div id="label_zjdqr_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class=""><input type="text" class="date form-item text-left" vl-default="" id="date_zjdqr2" vtitle="证件到期日_mb1" vl-tipsid="date_zjdqr2_tips" vl-regex="['tdate']" vl-message="['请输入正确的证件到期日格式（如:19000101）!']" style="width: 115px;" title="date_zjdqr2" oncopy="return false" onpaste="return false" oncut="return false" name="date_zjdqr2"><img onclick="WdatePicker({el:'date_zjdqr2',dateFmt:'yyyyMMdd'})" src="/js/My97DatePicker/skin/datePicker.gif" align="absmiddle" style="width:16px;height:22px;margin-left:6px;">
+								<div id="date_zjdqr2_tips" class="tipsmsg"></div>
+							</td>
+						</tr>
+						<tr>
+							<td rowspan="1" colspan="1" class="" style="width: 96px;"><label vl-default="" id="label_cwryxm" vtitle="财务人员姓名" class="form-item text-left" vl-tipsid="label_cwryxm_tips" title="label_cwryxm" name="label_cwryxm">财务人员姓名</label>
+								<div id="label_cwryxm_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class=""><input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_cwryxm" vtitle="财务人员姓名" class="form-item text-left" vl-tipsid="txt_cwryxm_tips" vl-regex="['maxlength20', 'hascode']" vl-message="['财务人员姓名长度超过最大长度:[20]!','财务人员姓名不能全为数字!']" style="width: 150px;" title="txt_cwryxm" onpaste="return false" name="txt_cwryxm">
+								<div id="txt_cwryxm_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="" style="width: 96px;"><label vl-default="" id="label_cwbgdh" vtitle="财务办公电话" class="form-item text-left" vl-tipsid="label_cwbgdh_tips" title="label_cwbgdh" name="label_cwbgdh">财务办公电话</label>
+								<div id="label_cwbgdh_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class=""><input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_cwbgdh" vtitle="财务办公电话" class="form-item text-left" vl-tipsid="txt_cwbgdh_tips" vl-regex="['maxlength20']" vl-message="['财务办公电话长度大于最大长度:[20]!']" style="width: 150px;" title="txt_cwbgdh" onpaste="return false" name="txt_cwbgdh">
+								<div id="txt_cwbgdh_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="" style="width: 80px;"><label vl-default="" id="label_cwyddh" vtitle="财务移动电话" class="form-item text-left" vl-tipsid="label_cwyddh_tips" title="label_cwyddh" name="label_cwyddh">财务移动电话</label>
+								<div id="label_cwyddh_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class=""><input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_cwyddh" vtitle="财务移动电话" class="form-item text-left" vl-tipsid="txt_cwyddh_tips" vl-regex="['require', 'minlength11', 'maxlength11', 'number']" vl-message="['财务移动电话不能为空！','财务移动电话输入错误!','财务移动电话输入错误!','财务移动电话输入错误!']" style="width: 115px;" title="txt_cwyddh" onpaste="return false" name="txt_cwyddh"><span class="text-red redtip">!</span>
+								<div id="txt_cwyddh_tips" class="tipsmsg"></div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="con-map2">
+				<table id="qv" class="con-map2-table qv"></table>
+			</div>
+			<div class="con-map2">
+				<div class="box">
+					<ul class="tab">
+						<li title="tab_0_0" id="tab_0_0" class="tab_0_0 one">上级机构</li>
+						<li title="tab_0_1" id="tab_0_1" class="tab_0_1">实际控制人信息</li>
+						<li title="tab_0_2" id="tab_0_2" class="tab_0_2">股东信息</li>
+						<li title="tab_0_3" id="tab_0_3" class="tab_0_3">代理人信息</li>
+						<li title="tab_0_4" id="tab_0_4" class="tab_0_4">辅助信息</li>
+					</ul>
+					<div class="content">
+						<div class="ct" style="display: block;">
+							<table id="qv" class="con-map2-table qv">
+								<tbody>
+									<tr>
+										<td class="" colspan="1" style="width: 64px;"><label vl-default="" id="label_jgmc" vtitle="机s构s名s称" class="form-item text-left" vl-tipsid="label_jgmc_tips" title="label_jgmc" name="label_jgmc">机<s></s>构<s></s>名<s></s>称</label>
+											<div id="label_jgmc_tips" class="tipsmsg"></div>
+										</td>
+										<td rowspan="1" colspan="5" class=""><input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_jgmc" vtitle="机构名称" class="form-item text-left" vl-tipsid="txt_jgmc_tips" vl-regex="['maxlength40']" vl-message="['长度大于最大长度:[40]!']" style="width: 600px;" title="txt_jgmc" onpaste="return false" name="txt_jgmc">
+											<div id="txt_jgmc_tips" class="tipsmsg"></div>
+										</td>
+									</tr>
+									<tr>
+										<td rowspan="1" colspan="1" class="" style="width: 64px;"><label vl-default="" id="label_jgxydm" vtitle="机构信用代码" class="form-item text-left on" vl-tipsid="label_jgxydm_tips" title="label_jgxydm" name="label_jgxydm">机构信用代码</label>
+											<div id="label_jgxydm_tips" class="tipsmsg"></div>
+										</td>
+										<td rowspan="1" colspan="1" class=""><input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_jgxydm" vtitle="机构信用代码_mb2" class="form-item text-left" vl-disabled="true" vl-tipsid="txt_jgxydm_tips" vl-regex="['maxlength40']" vl-message="['长度大于最大长度:[40]!']" style="width: 150px;" title="txt_jgxydm" onpaste="return false" disabled="disabled" name="txt_jgxydm">
+											<div id="txt_jgxydm_tips" class="tipsmsg"></div>
+										</td>
+										<td rowspan="1" colspan="1" class="" style="width: 96px;"><label vl-default="" id="label_gsdjzh" vtitle="国税登记证号" class="form-item text-left" vl-tipsid="label_gsdjzh_tips" title="label_gsdjzh" name="label_gsdjzh">国税登记证号</label>
+											<div id="label_gsdjzh_tips" class="tipsmsg"></div>
+										</td>
+										<td rowspan="1" colspan="1" class=""><input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_gsdjzh" vtitle="国税登记证号_mb2" class="form-item text-left" vl-disabled="true" vl-tipsid="txt_gsdjzh_tips" vl-regex="['maxlength40']" vl-message="['长度大于最大长度:[40]!']" style="width: 150px;" title="txt_gsdjzh" onpaste="return false" disabled="disabled" name="txt_gsdjzh">
+											<div id="txt_gsdjzh_tips" class="tipsmsg"></div>
+										</td>
+										<td rowspan="1" colspan="1" class="" style="width: 96px;"><label vl-default="" id="label_dsdjzh" vtitle="地税登记证号" class="form-item text-left" vl-tipsid="label_dsdjzh_tips" title="label_dsdjzh" name="label_dsdjzh">地税登记证号</label>
+											<div id="label_dsdjzh_tips" class="tipsmsg"></div>
+										</td>
+										<td rowspan="1" colspan="1" class=""><input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_dsdhzh" vtitle="地税登记证号_mb2" class="form-item text-left" vl-disabled="true" vl-tipsid="txt_dsdhzh_tips" vl-regex="['maxlength40']" vl-message="['长度大于最大长度:[40]!']" vl-rely="date_zjdqr,date_zjdqr" style="width: 150px;" title="txt_dsdhzh" onpaste="return false" disabled="disabled" maxlength="0" name="txt_dsdhzh">
+											<div id="txt_dsdhzh_tips" class="tipsmsg"></div>
+										</td>
+									</tr>
+									<tr>
+										<td rowspan="1" colspan="1" class="" style="width: 64px;"><label vl-default="" id="label_djzclx" vtitle="登记注册类型" class="form-item text-left" vl-disabled="true" vl-tipsid="label_djzclx_tips" title="label_djzclx" disabled="disabled" name="label_djzclx">登记注册类型</label>
+											<div id="label_djzclx_tips" class="tipsmsg"></div>
+										</td>
+										<td rowspan="1" colspan="1" class="">
+											<div class="slectstyle">
+												<select vl-default="" id="sle_djzclx" vtitle="登记注册类型" class="form-item text-left" vl-disabled="true" vl-tipsid="sle_djzclx_tips" style="width: 150px;" title="sle_djzclx" vl-slemodel="" disabled="disabled" name="sle_djzclx">
+													<option disabled="" style="background-color: blue; color: #fff;" value="" selected="selected">登记注册类型值含义</option>
+												</select><input type="text" oncopy="return false" onpaste="return false" oncut="return false" disabled="disabled" style="width: 127px;" id="mb3_sleinput_DengJiZhuCeLeiXing_10" name="mb3_sleinput_DengJiZhuCeLeiXing_10"></div>
+											<div id="sle_djzclx_tips" class="tipsmsg"></div>
+										</td>
+										<td rowspan="1" colspan="1" class="" style="width: 96px;"><label vl-default="" id="label_djzchm" vtitle="登记注册号码" class="form-item text-left" vl-tipsid="label_djzchm_tips" title="label_djzchm" name="label_djzchm">登记注册号码</label>
+											<div id="label_djzchm_tips" class="tipsmsg"></div>
+										</td>
+										<td rowspan="1" colspan="1" class=""><input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_djzchm" vtitle="登记注册号码" class="form-item text-left" vl-disabled="true" vl-tipsid="txt_djzchm_tips" vl-regex="['maxlength40']" vl-message="['长度大于最大长度:[40]!']" style="width: 151px;" title="txt_djzchm" onpaste="return false" disabled="disabled" name="txt_djzchm">
+											<div id="txt_djzchm_tips" class="tipsmsg"></div>
+										</td>
+										<td rowspan="1" colspan="1" class="" style="width: 96px;"><label vl-default="" id="label_frdbxm" vtitle="法人代表姓名" class="form-item text-left" vl-tipsid="label_frdbxm_tips" title="label_frdbxm" name="label_frdbxm">法人代表姓名</label>
+											<div id="label_frdbxm_tips" class="tipsmsg"></div>
+										</td>
+										<td rowspan="1" colspan="1" class=""><input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_frdbxm" vtitle="frdbxm" class="form-item text-left" vl-disabled="true" vl-tipsid="txt_frdbxm_tips" vl-regex="['maxlength20']" vl-message="['长度大于最大长度:[20]!']" style="width: 151px;" title="txt_frdbxm" onpaste="return false" disabled="disabled" name="txt_frdbxm">
+											<div id="txt_frdbxm_tips" class="tipsmsg"></div>
+										</td>
+									</tr>
+									<tr>
+										<td rowspan="1" colspan="1" class="" style="width: 64px;"><label vl-default="" id="label_frdjzjlx" vtitle="法人登记证件类型" class="form-item text-left" vl-disabled="true" vl-tipsid="label_frdjzjlx_tips" title="label_frdjzjlx" disabled="disabled" name="label_frdjzjlx">法人登记证件类型</label>
+											<div id="label_frdjzjlx_tips" class="tipsmsg"></div>
+										</td>
+										<td rowspan="1" colspan="1" class="">
+											<div class="slectstyle">
+												<select vl-default="" id="sle_frdjzjlx" vtitle="法人登记证件类型" class="form-item text-left" vl-disabled="true" vl-tipsid="sle_frdjzjlx_tips" style="width: 150px;" title="sle_frdjzjlx" vl-slemodel="" disabled="disabled" name="sle_frdjzjlx">
+													<option disabled="" style="background-color: blue; color: #fff;" value="" selected="selected">法人登记证件类型值含义</option>
+												</select><input type="text" oncopy="return false" onpaste="return false" oncut="return false" disabled="disabled" style="width: 127px;" id="mb3_sleinput_FaRenDengJiZhengJianLeiXing_16" name="mb3_sleinput_FaRenDengJiZhengJianLeiXing_16"></div>
+											<div id="sle_frdjzjlx_tips" class="tipsmsg"></div>
+										</td>
+										<td rowspan="1" colspan="1" class="" style="width: 96px;"><label vl-default="" id="label_frzjhm" vtitle="法人证件号码" class="form-item text-left" vl-tipsid="label_frzjhm_tips" title="label_frzjhm" name="label_frzjhm">法人证件号码</label>
+											<div id="label_frzjhm_tips" class="tipsmsg"></div>
+										</td>
+										<td rowspan="1" colspan="1" class=""><input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_frzjhm" vtitle="法人证件号码" class="form-item text-left" vl-disabled="true" vl-tipsid="txt_frzjhm_tips" style="width: 151px;" title="txt_frzjhm" onpaste="return false" disabled="disabled" name="txt_frzjhm">
+											<div id="txt_frzjhm_tips" class="tipsmsg"></div>
+										</td>
+										<td rowspan="1" colspan="1" class="" style="width: 96px;"><label vl-default="" id="label_frdbzjdqr" vtitle="法人代表证件到期日" class="form-item text-left" vl-tipsid="label_frdbzjdqr_tips" title="label_frdbzjdqr" name="label_frdbzjdqr">法人代表证件到期日</label>
+											<div id="label_frdbzjdqr_tips" class="tipsmsg"></div>
+										</td>
+										<td rowspan="1" colspan="1" class=""><input type="text" class="date form-item text-left" vl-default="" id="date_frdbzjdqr" vtitle="法人代表证件到期日" vl-disabled="true" vl-tipsid="date_frdbzjdqr_tips" style="width: 151px;" title="date_frdbzjdqr" oncopy="return false" onpaste="return false" oncut="return false" disabled="disabled" name="date_frdbzjdqr"><img onclick="WdatePicker({el:'date_frdbzjdqr',dateFmt:'yyyyMMdd'})" src="/js/My97DatePicker/skin/datePicker.gif" align="absmiddle" style="width:16px;height:22px;margin-left:6px;">
+											<div id="date_frdbzjdqr_tips" class="tipsmsg"></div>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<div class="ct" style="display: none;">
+							<table id="qv" class="con-map2-table qv">
+								<tbody>
+									<tr>
+										<td class="" style="width: 0px;"><label vl-default="" id="label_sjkzrlx" vtitle="实际控制人类型" class="form-item text-left" vl-disabled="true" vl-tipsid="label_sjkzrlx_tips" title="label_sjkzrlx" disabled="disabled" name="label_sjkzrlx">实际控制人类型</label>
+											<div id="label_sjkzrlx_tips" class="tipsmsg"></div>
+										</td>
+										<td rowspan="1" colspan="1" class="">
+											<div class="slectstyle">
+												<select vl-default="" id="sle_sjkzrlx" vtitle="实际控制人类型" class="form-item text-left" vl-tipsid="sle_sjkzrlx_tips" style="width: 150px;" title="sle_sjkzrlx" vl-slemodel="" name="sle_sjkzrlx">
+													<option disabled="" style="background-color: blue; color: #fff;" value="" selected="selected">实际控制人类型值含义</option>
+													<option value="1">1-自然人</option>
+													<option value="2">2-机构</option>
+												</select><input type="text" oncopy="return false" onpaste="return false" oncut="return false" style="width: 127px;" id="mb3_sleinput_ShiJiKongZhiRenLeiXing_22" name="mb3_sleinput_ShiJiKongZhiRenLeiXing_22"></div>
+											<div id="sle_sjkzrlx_tips" class="tipsmsg"></div>
+										</td>
+										<td rowspan="1" colspan="1" class="" style="width: 0px;"><label vl-default="" id="label_kzrmc" vtitle="控s制s人s名s称" class="form-item text-left" vl-tipsid="label_kzrmc_tips" title="label_kzrmc" name="label_kzrmc">控<s></s>制<s></s>人<s></s>名<s></s>称</label>
+											<div id="label_kzrmc_tips" class="tipsmsg"></div>
+										</td>
+										<td rowspan="1" colspan="1" class=""><input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_kzrmc" vtitle="控制人名称" class="form-item text-left" vl-disabled="true" vl-tipsid="txt_kzrmc_tips" title="txt_kzrmc" onpaste="return false" disabled="disabled" name="txt_kzrmc">
+											<div id="txt_kzrmc_tips" class="tipsmsg"></div>
+										</td>
+									</tr>
+									<tr>
+										<td rowspan="1" colspan="1" class="" style="width: 0px;"><label vl-default="" id="label_kzrzjlx" vtitle="控制人证件类型" class="form-item text-left" vl-tipsid="label_kzrzjlx_tips" title="label_kzrzjlx" name="label_kzrzjlx">控制人证件类型</label>
+											<div id="label_kzrzjlx_tips" class="tipsmsg"></div>
+										</td>
+										<td rowspan="1" colspan="1" class="">
+											<div class="slectstyle">
+												<select vl-default="" id="sle_kzrzjlx" vtitle="控制人证件类型" class="form-item text-left" vl-disabled="true" vl-tipsid="sle_kzrzjlx_tips" style="width: 150px;" title="sle_kzrzjlx" vl-slemodel="" disabled="disabled" name="sle_kzrzjlx">
+													<option disabled="" style="background-color: blue; color: #fff;" value="" selected="selected">控制人证件类型值含义</option>
+													<option value="1">1 - 居民身份证</option>
+													<option value="2">2 - 临时居民身份证</option>
+													<option value="3">3 - 居民户口簿（16周岁以下）</option>
+													<option value="4">4 - 军官证</option>
+													<option value="5">5 - 警官证</option>
+													<option value="6">6 - 士兵证</option>
+													<option value="7">7 - 军队学员证</option>
+													<option value="8">8 - 军队文职干部证</option>
+													<option value="9">9 - 军队离退休干部证和军队职员证</option>
+													<option value="10">10 - 中国护照</option>
+													<option value="11">11 - 护照（外国公民）</option>
+													<option value="12">12 - 海员证</option>
+													<option value="13">13 - 港澳同胞回乡证</option>
+													<option value="14">14 - 港澳居民来往大陆通行证</option>
+													<option value="15">15 - 中华人民共和国网络港澳通行证</option>
+													<option value="16">16 - 台湾居民来往大陆通行证</option>
+													<option value="17">17 - 大陆居民往来台湾通行证</option>
+													<option value="18">18 - 外国人居留证</option>
+													<option value="19">19 - 外国人出入境证</option>
+													<option value="20">20 - 外交官证</option>
+													<option value="21">21 - 领事馆证</option>
+													<option value="22">22 - 其他</option>
+												</select><input type="text" oncopy="return false" onpaste="return false" oncut="return false" disabled="disabled" style="width: 127px;" id="mb3_sleinput_KongZhiRenZhengJianLeiXing_26" name="mb3_sleinput_KongZhiRenZhengJianLeiXing_26"></div>
+											<div id="sle_kzrzjlx_tips" class="tipsmsg"></div>
+										</td>
+										<td rowspan="1" colspan="1" class="" style="width: 0px;"><label vl-default="" id="label_kzrzjhm" vtitle="控制人证件号码" class="form-item text-left" vl-tipsid="label_kzrzjhm_tips" title="label_kzrzjhm" name="label_kzrzjhm">控制人证件号码</label>
+											<div id="label_kzrzjhm_tips" class="tipsmsg"></div>
+										</td>
+										<td rowspan="1" colspan="1" class=""><input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_kzrzjhm" vtitle="控制人证件号码" class="form-item text-left" vl-disabled="true" vl-tipsid="txt_kzrzjhm_tips" title="txt_kzrzjhm" onpaste="return false" disabled="disabled" name="txt_kzrzjhm">
+											<div id="txt_kzrzjhm_tips" class="tipsmsg"></div>
+										</td>
+									</tr>
+									<tr>
+										<td rowspan="1" colspan="1" class="" style="width: 0px;"><label vl-default="" id="label_zjdqr" vtitle="证件s到s期s日" class="form-item text-left" vl-tipsid="label_zjdqr_tips" title="label_zjdqr" name="label_zjdqr">证件<s></s>到<s></s>期<s></s>日</label>
+											<div id="label_zjdqr_tips" class="tipsmsg"></div>
+										</td>
+										<td rowspan="1" colspan="1" class=""><input type="text" class="date form-item text-left" vl-default="" id="date_zjdqr" vtitle="证件到期日_mb3" vl-disabled="true" vl-tipsid="date_zjdqr_tips" style="width: 150px;" title="date_zjdqr" oncopy="return false" onpaste="return false" oncut="return false" disabled="disabled" name="date_zjdqr"><img onclick="WdatePicker({el:'date_zjdqr',dateFmt:'yyyyMMdd'})" src="/js/My97DatePicker/skin/datePicker.gif" align="absmiddle" style="width:16px;height:22px;margin-left:6px;">
+											<div id="date_zjdqr_tips" class="tipsmsg"></div>
+										</td>
+										<td rowspan="1" colspan="1" class="" style="width: 0px;"><label vl-default="" id="label_khh" vtitle="客ii户ii号" class="form-item text-left" vl-tipsid="label_khh_tips" title="label_khh" name="label_khh">客<i></i><i></i>户<i></i><i></i>号</label>
+											<div id="label_khh_tips" class="tipsmsg"></div>
+										</td>
+										<td rowspan="1" colspan="1" class=""><input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_khh" vtitle="客户号" class="form-item text-left" vl-disabled="true" vl-tipsid="txt_khh_tips" title="txt_khh" onpaste="return false" disabled="disabled" name="txt_khh">
+											<div id="txt_khh_tips" class="tipsmsg"></div>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<div class="ct" style="display: none;">
+								
+						</div>
+						<div class="ct" style="display: none;">
+							<table id="qv" class="con-map2-table qv">
+								<tbody>
+									<tr>
+										<td class="" style="width: 0px;"><label vl-default="" id="label_xm" vtitle="姓ii名" class="form-item text-left" vl-tipsid="label_xm_tips" title="label_xm" name="label_xm">姓<i></i><i></i>名</label>
+											<div id="label_xm_tips" class="tipsmsg"></div>
+										</td>
+										<td rowspan="1" colspan="1" class=""><input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_xm" vtitle="姓名" class="form-item text-left" vl-tipsid="txt_xm_tips" title="txt_xm" onpaste="return false" name="txt_xm">
+											<div id="txt_xm_tips" class="tipsmsg"></div>
+										</td>
+										<td rowspan="1" colspan="1" class="" style="width: 0px;"><label vl-default="" id="label_lxfs" vtitle="联系方式" class="form-item text-left" vl-tipsid="label_lxfs_tips" title="label_lxfs" name="label_lxfs">联系方式</label>
+											<div id="label_lxfs_tips" class="tipsmsg"></div>
+										</td>
+										<td rowspan="1" colspan="1" class=""><input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_lxfs" vtitle="联系方式" class="form-item text-left" vl-disabled="true" vl-tipsid="txt_lxfs_tips" title="txt_lxfs" onpaste="return false" disabled="disabled" name="txt_lxfs">
+											<div id="txt_lxfs_tips" class="tipsmsg"></div>
+										</td>
+									</tr>
+									<tr>
+										<td rowspan="1" colspan="1" class="" style="width: 0px;"><label vl-default="" id="label_zjlx" vtitle="证件类型" class="form-item text-left" vl-tipsid="label_zjlx_tips" title="label_zjlx" name="label_zjlx">证件类型</label>
+											<div id="label_zjlx_tips" class="tipsmsg"></div>
+										</td>
+										<td rowspan="1" colspan="1" class=""><input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_zjlx" vtitle="证件类型" class="form-item text-left on" vl-disabled="true" vl-tipsid="txt_zjlx_tips" title="txt_zjlx" onpaste="return false" disabled="disabled" name="txt_zjlx">
+											<div id="txt_zjlx_tips" class="tipsmsg"></div>
+										</td>
+										<td rowspan="1" colspan="1" class="" style="width: 0px;"><label vl-default="" id="label_zjhm" vtitle="证件号码" class="form-item text-left" vl-tipsid="label_zjhm_tips" title="label_zjhm" name="label_zjhm">证件号码</label>
+											<div id="label_zjhm_tips" class="tipsmsg"></div>
+										</td>
+										<td rowspan="1" colspan="1" class=""><input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_zjhm2" vtitle="证件号码_mb5" class="form-item text-left" vl-disabled="true" vl-tipsid="txt_zjhm2_tips" style="width: 150px;" title="txt_zjhm2" onpaste="return false" disabled="disabled" name="txt_zjhm2">
+											<div id="txt_zjhm2_tips" class="tipsmsg"></div>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<div class="ct" style="display: none;">
+								<iframe id="iframeID" name="iframeID" style="width: 920px;height: 400px; border:none; " src="http://bsi1.occupationedu.com/commontable/?fields=zjlx%7C%E8%AF%81%E4%BB%B6%E7%B1%BB%E5%9E%8B,zjhm%7C%E8%AF%81%E4%BB%B6%E5%8F%B7%E7%A0%81,yxqx%7C%E6%9C%89%E6%95%88%E6%9C%9F%E9%99%90,fzjg%7C%E5%8F%91%E8%AF%81%E6%9C%BA%E6%9E%84,zjdqr%7C%E8%AF%81%E4%BB%B6%E5%88%B0%E6%9C%9F%E6%97%A5,tx%7C%E5%9B%BE%E5%83%8F&amp;table=tb_daily_jldwkhxx&amp;orderby=id&amp;page=1&amp;pagesize=10&amp;is_page=true&amp;toolbar=true&amp;where=%20and%201!=1"></iframe>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="con-map2">
+				<table id="qv" class="con-map2-table qv">
+					<tbody>
+						<tr>
+							<td class="" rowspan="1" colspan="1" style="width: 48px;"><label vl-default="" id="label_khh1" vtitle="客户号" class="form-item text-left" vl-tipsid="label_khh1_tips" title="label_khh1" name="label_khh1">客户号</label>
+								<div id="label_khh1_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class=""><input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_khh1" vtitle="客户号" class="form-item text-left" vl-disabled="true" vl-tipsid="txt_khh1_tips" style="width: 600px;" title="txt_khh1" onpaste="return false" disabled="disabled" name="txt_khh1">
+								<div id="txt_khh1_tips" class="tipsmsg"></div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				
+			</div>
+			<div class="foot "> <span>                                    <button>退出（F3）</button>                                    <button>帮助（F1）</button>                                    <button>辅助（F4）</button>                                    <button type="button" onclick="FormReset()">重置（F5）</button></span> <span style="float: right;">                                    <button type="button" style="margin-right: 0px;" vl-submit="true" id="btnsubmit" onclick="SubmitForm()">提交</button></span> </div> <input type="hidden" class="hidmainwidth" value="1000/" oncopy="return false" onpaste="return false" oncut="return false"> </div><script src="~/Js/Student/GetDefaultValue/common.bank.js"></script>
+              <script src="~/Js/Student/GetDefaultValue/lodash.min.js"></script>
+              <script src="~/Js/Student/GetDefaultValue/common.regex.cz.js"></script>
+              <script src="~/Js/Student/GetDefaultValue/common.regex.js"></script>
+<script src="~/Js/Student/GetDefaultValue/js/layer.js"></script>
+<script src="~/Js/Student/GetDefaultValue/js/My97DatePicker/WdatePicker.js"></script>
+<script type="text/javascript">
+		
+		function check(){
+			 var i=document.getElementById('txt_frbgdh').value;
+			if(i!=""){
+				document.getElementById('txt_fryddh').removeAttribute("vl-regex");
+				$("#txt_fryddh").nextAll(".text-red,.redtip").remove();
+			}else{
+				$("#txt_fryddh").attr({"vl-regex":"['require', 'maxlength11', 'number']"});
+				$("#txt_fryddh").after("<span class='text-red redtip'>!</span>");
+				
+
+			}
+
+		}
+		 
+
+
+		</script>
+<script type="text/javascript">
+			// 至少一人不为空，传参：cona,conb
+			function onlyOneNotNull(conList, msg) {
+				var conarray = conList.split(',');
+				var haveValue = '0';
+				for(var i = 0; i < conarray.length; i++) {
+					if($.trim($("#" + conarray[i]).val() != '')) {
+						haveValue = '1';
+					}
+				}
+
+				if(haveValue == "0") {
+					return msg;
+				} else {
+					return "";
+				}
+
+			}
+		</script>
+<script type="text/javascript">
+                $(function () {
+                    $("#iframeID").attr("src", encodeURI("/commontable/?fields=zjlx|证件类型,zjhm|证件号码,yxqx|有效期限,fzjg|发证机构,zjdqr|证件到期日,tx|图像&table=tb_daily_jldwkhxx&orderby=id&page=1&pagesize=10&is_page=true&toolbar=true&where= and 1!=1"));
+    });
+</script>
+<link href="~/Js/Student/GetDefaultValue/js/common.bank.css" rel="stylesheet" />
+              </form>

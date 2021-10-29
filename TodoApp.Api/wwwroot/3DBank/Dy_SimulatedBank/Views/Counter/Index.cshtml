@@ -1,0 +1,841 @@
+﻿@{
+    //ViewBag.Title = "Index";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>银行虚拟仿真——接待客户</title>
+    <link rel="stylesheet" type="text/css" href="~/CSS/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="~/CSS/font-awesome-4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="~/CSS/animate.css" />
+    <link rel="stylesheet" type="text/css" href="~/CSS/form_public.css" />
+    <link rel="stylesheet" type="text/css" href="~/CSS/public3D.css" />
+    <link rel="stylesheet" href="~/CSS/icheck-pub/skins/flat/blue.css">
+    <style type="text/css">
+
+        .body_map {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            height: 100vmin;
+        }
+
+        .bodybg {
+            width: 100%;
+            height: 100%;
+        }
+
+
+        /*介质开始*/
+
+        .jiezhi {
+            position: absolute;
+            cursor: pointer;
+            background-color: rgba(0,0,0,0.5);
+        }
+
+
+        .jiezhi_dyj {
+            border: 1px solid red;
+            width: 18%;
+            height: 16%;
+            top: 57%;
+        }
+
+
+        .jiezhi_wjj {
+            border: 1px solid green;
+            width: 11%;
+            height: 36%;
+            top: 61%;
+        }
+
+
+        .jiezhi_diannao {
+            border: 1px solid yellow;
+            width: 19%;
+            height: 27%;
+            left: 19%;
+            top: 41%;
+        }
+
+
+        .jiezhi_dianhua {
+            border: 1px solid slateblue;
+            width: 10%;
+            height: 10%;
+            left: 13%;
+            top: 72%;
+        }
+
+        .jiezhi_shuaka {
+            border: 1px solid magenta;
+            width: 9%;
+            height: 7%;
+            left: 31%;
+            top: 71%;
+            transform: rotate(-21deg);
+            -ms-transform: rotate(-21deg);
+            -moz-transform: rotate(-21deg);
+            -webkit-transform: rotate(-21deg);
+            -o-transform: rotate(-21deg);
+        }
+
+
+
+        .jiezhi_ycj {
+            border: 1px solid darkblue;
+            width: 12%;
+            height: 15%;
+            left: 65%;
+            top: 61%;
+        }
+
+
+        .jiezhi_zbj {
+            border: 1px solid sienna;
+            width: 9%;
+            height: 23%;
+            left: 78%;
+            top: 52%;
+        }
+
+        .jiezhi_yz {
+            border: 1px solid papayawhip;
+            width: 10%;
+            height: 8%;
+            left: 83%;
+            top: 74%;
+        }
+
+        .jiezhi_kx {
+            border: 1px solid greenyellow;
+            width: 12%;
+            height: 17%;
+            left: 88%;
+            top: 57%;
+        }
+
+        .jiezhi_sfzyz {
+            border: 1px solid blueviolet;
+            width: 9%;
+            height: 18%;
+            left: 41%;
+            top: 57%;
+        }
+
+
+
+        .zhiyin4 {
+            display: block;
+            position: absolute;
+            width: 6%;
+            height: 8%;
+            background: url(/Img/shouzhi.gif) center no-repeat;
+            background-size: 100% 100%;
+            left: 20%;
+            top: 77%;
+            z-index: 999999;
+        }
+
+        .youxia {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+        }
+
+        .quhao_map {
+            padding: 15px 40px;
+        }
+
+        .sbyw {
+            font-size: 18px;
+        }
+
+
+        .quhaopai {
+            margin: auto;
+            font-size: 24px;
+            text-align: center;
+            border: 1px solid #3487f5;
+            padding: 15px;
+            margin: 10px auto;
+            border-radius: 15px;
+            width: 300px;
+        }
+
+
+        .jieguo_map {
+            text-align: center;
+        }
+
+            .jieguo_map h2 {
+                margin-top: 40px;
+                color: #3487f5;
+            }
+
+
+        .xiandan {
+            position: absolute;
+            left: 779px;
+            top: 800px;
+            z-index: 888;
+        }
+
+
+        .ziliao {
+            position: absolute;
+            left: 979px;
+            top: 800px;
+            z-index: 888;
+        }
+
+
+        .xianjin {
+            position: absolute;
+            left: 1179px;
+            top: 800px;
+            z-index: 888;
+        }
+
+
+        .wu1,
+        .wu2,
+        .wu3 {
+            float: left;
+            border: 1px solid red;
+            margin-left: 5px;
+            height: 100%;
+            width: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div class="body_map">
+        <!--当前模式-->
+
+        <div class="moshi_map">
+            当前模式：<span>教学模式</span>
+        </div>
+
+        <!--视频和背景图转换区域-->
+        <!--视频和背景图转换区域结束-->
+        @*<div class="zhiyin4"></div>*@
+
+        <!--要显示的单据-->
+        <img id="drag1" src="/Img/ico_jia.png" draggable="true" ondragstart="drag(event)" class="xiandan" style="display:none" />
+        <!--要显示的资料-->
+        <img id="drag2" src="/Img/wupin_yhk.png" draggable="true" ondragstart="drag2(event)" class="ziliao" style="display:none" onclick="MissileMaterial()" />
+        <!--要显示的现金-->
+        <img id="drag3" src="/Img/ico_jia.png" draggable="true" ondragstart="drag3(event)" class="xianjin" style="display:none" onclick="openchuangkou()" />
+        <!--要显示的身份证-->
+        @*<img id="drag4" src="/Img/wupin_sfz.png" draggable="true" ondragstart="drag5(event)" class="xianjin" style="display:block" onclick="openchuangkou()" />*@
+
+        <!--背景图片-->
+        <img id="bj" class="bodybg" src="../img/img_gaogui.jpg" />
+
+
+        <!--系统设置区域-->
+        <div class="shezhi_map">
+            <div class="szbj">	</div>
+            <div class="sz_con">
+                <div class="sz_line">
+                    <div class="szleftimg">
+                        <img src="/img/public3D/icopub1.png" />
+                    </div>
+                    <div class="szright">
+                        <div class="szright_con">
+                            退出实训
+                        </div>
+
+                    </div>
+                </div>
+                <div class="sz_line">
+                    <div class="szleftimg">
+                        <img src="/img/public3D/icopub2.png" />
+                    </div>
+                    <div class="szright">
+                        <div class="szright_con">
+                            关于案例
+                        </div>
+
+                    </div>
+                </div>
+                <div class="sz_line">
+                    <div class="szleftimg">
+                        <img src="/img/public3D/icopub3.png" />
+                    </div>
+                    <div class="szright">
+                        <div class="szright_con">
+                            环境设置
+                        </div>
+
+                    </div>
+                </div>
+                <div class="sz_line">
+                    <div class="szleftimg" style="padding-bottom: 0px;">
+                        <img src="/img/public3D/icopub4.png" />
+                    </div>
+                    <div class="szright">
+                        <div class="szright_con">
+                            边学边练
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--系统设置区域结束-->
+        <!--底部右下角按钮-->
+        <div class="bot_btn_map">
+            <div class="bot_btn">
+                <div class="bot_btn_con" onclick="jiedai();">
+                    接待<br />
+                    客户
+                </div>
+            </div>
+            <div class="bot_btn">
+                <div class="bot_btn_con" onclick="shouqdanju()">
+                    收取<br />
+                    单据
+                </div>
+            </div>
+            <div class="bot_btn">
+                <div class="bot_btn_con" onclick="ziliaoshouqu()">
+                    收取<br />
+                    资料
+                </div>
+            </div>
+            <div class="bot_btn">
+                <div class="bot_btn_con" onclick="CashCollection()">
+                    收取<br />
+                    现金
+                </div>
+            </div>
+            <div class="bot_btn">
+                <div class="bot_btn_con">
+                    返还<br />
+                    资料
+                </div>
+            </div>
+            <div class="bot_btn">
+                <div class="bot_btn_con">
+                    营销<br />
+                    转介
+                </div>
+            </div>
+            <div class="bot_btn">
+                <div class="bot_btn_con" onclick="KeHuSongBie()">
+                    送别<br />
+                    客户
+                </div>
+            </div>
+            <div class="bot_btn">
+                <div class="bot_btn_con  btn_bjred">
+                    下一位<br />
+                    客户
+                </div>
+            </div>
+        </div>
+        <!--底部右下角按钮结束-->
+        <!--右上角信息样式-->
+        <div class="xinxi_map">
+            <div class="shu_map">
+                <div class="shu_text">任务描述</div>
+                <div class="num_map">
+                    <span id="currTaskCount">1</span>/11
+                </div>
+            </div>
+
+            <div class="shu_map">
+                <div class="manyi_text">
+                    当前客户
+                    <br />	满意度
+                </div>
+                <div class="num_map">
+                    <span id="manyidu">100</span>
+                </div>
+            </div>
+
+
+            <div class="dqjdu_map">
+                当前任务进度 <button class="jd_btn"></button>
+            </div>
+
+            <div id="jd_con" class="jd_con">
+                <div class="jd_line">
+                    <div class="jd_left">
+                        接待
+                        <div class="ztweizhi zt_lan" name="jindutiao" data-jindu="7"></div>
+
+                    </div>
+                    <div class="jd_right jd_ok"></div>
+                </div>
+
+                <div class="jd_line">
+                    <div class="jd_left">
+                        单据收取
+                        <div class="ztweizhi zt_lan" name="jindutiao" data-jindu="8"></div>
+                    </div>
+                    <div class="jd_right jd_ok"></div>
+                </div>
+
+                <div class="jd_line">
+                    <div class="jd_left">
+                        资料收取与校验
+                        <div class="ztweizhi zt_huang" name="jindutiao" data-jindu="9"></div>
+                    </div>
+                    <div class="jd_right"></div>
+                </div>
+
+                <div class="jd_line">
+                    <div class="jd_left">
+                        柜员填单
+                        <div class="ztweizhi " name="jindutiao" data-jindu="10"></div>
+                    </div>
+                    <div class="jd_right"></div>
+                </div>
+
+                <div class="jd_line">
+                    <div class="jd_left">
+                        现金处理
+                        <div class="ztweizhi " name="jindutiao" data-jindu="11"></div>
+                    </div>
+                    <div class="jd_right"></div>
+                </div>
+
+
+                <div class="jd_line">
+                    <div class="jd_left">
+                        业务办理
+                        <div class="ztweizhi " name="jindutiao" data-jindu="12"></div>
+                    </div>
+                    <div class="jd_right"></div>
+                </div>
+
+                <div class="jd_line">
+                    <div class="jd_left">
+                        单据打印与盖章
+                        <div class="ztweizhi " name="jindutiao" data-jindu="13"></div>
+                    </div>
+                    <div class="jd_right"></div>
+                </div>
+
+                <div class="jd_line">
+                    <div class="jd_left">
+                        返还资料
+                        <div class="ztweizhi " name="jindutiao" data-jindu="14"></div>
+                    </div>
+                    <div class="jd_right"></div>
+                </div>
+
+                <div class="jd_line">
+                    <div class="jd_left">
+                        送别
+                        <div class="ztweizhi " name="jindutiao" data-jindu="15"></div>
+                    </div>
+                    <div class="jd_right"></div>
+                </div>
+
+            </div>
+
+
+
+
+
+        </div>
+        <!--右上角信息样式结束-->
+        <!--左侧物品栏-->
+        <div id="wupinlan" class="wupin_map">
+            <div id="wupin_con" class="wupin__con">
+                <div class="wu1 zanwu" ondrop="drop(event)" ondragover="allowDrop(event)" id="div2">暂无物品</div>
+                <div class="wu2" ondrop="drop2(event)" ondragover="allowDrop2(event)">
+
+                </div>
+                <div class="wu3" ondrop="drop3(event)" ondragover="allowDrop3(event)">
+
+                </div>
+            </div>
+            <div id="wupin_btn" class="wupin_btn" onclick="DoClickWupinLan()">物品栏</div>
+        </div>
+        <!--左侧物品栏结束-->
+        <!--各个介质 media-->
+        <!--打印机-->
+        <div class="jiezhi  jiezhi_dyj"></div>
+        <!--文件夹-->
+        <div class="jiezhi  jiezhi_wjj"></div>
+        <!--电脑-->
+        <div class="jiezhi  jiezhi_diannao" onclick="mybrain()"></div>
+
+        <!--电话-->
+        <div class="jiezhi  jiezhi_dianhua"></div>
+        <!--刷卡器-->
+        <div class="jiezhi  jiezhi_shuaka" onclick="guiyuantiandan()"></div>
+
+        <!--验钞机-->
+        <div class="jiezhi  jiezhi_ycj" ondrop="drop4(event)" ondragover="allowDrop4(event)"></div>
+
+        <!--扎把机-->
+        <div class="jiezhi  jiezhi_zbj"></div>
+
+        <!--印章-->
+        <div class="jiezhi  jiezhi_yz" onclick="openyinzhang()"></div>
+
+        <!--款箱-->
+        <div class="jiezhi  jiezhi_kx"></div>
+
+        <!--身份证刷卡验证-->
+        <div class="jiezhi  jiezhi_sfzyz" ondrop="drop5(event)" ondragover="allowDrop5(event)"></div>
+
+
+    </div>
+</body>
+</html>
+
+
+
+<!--接待弹窗-->
+<div id="jiedai" style="display: none;">
+    <div class="" style="padding: 0px 20px 10px 20px;">
+
+        <h2 class="m-t-lg" id="doBusinessText">
+            您好，我想要办理个人开卡业务。
+        </h2>
+        <div class="m-t-xl text-center">
+            <button onclick="jiedaiEnd();" class="btn btn_orange">好的</button>
+        </div>
+    </div>
+</div>
+
+<!--单据收取-->
+<div id="shouqdanju" style="display: none;">
+    <div class="quhao_map">
+        <div class="sbyw">
+            您办理的是<span id="businessName">xxx</span>业务，请您提交以下单据：
+        </div>
+
+        <div class="row m-t-lg">
+            <div class="col-sm-3">
+                <p><img src="/Img/ico_jia.png" /></p>
+                <p class="m-t-sm"><input type="checkbox" class="i-checks" name="checkForm" value="1"><span class="m-l-sm  ">一般业务申请书</span></p>
+            </div>
+
+            <div class="col-sm-3">
+                <p><img src="/Img/ico_jia.png" /></p>
+                <p class="m-t-sm"><input type="checkbox" class="i-checks" name="checkForm" value="2"><span class="m-l-sm  ">个人开户与银行签约服务申请书</span></p>
+            </div>
+
+            <div class="col-sm-3">
+                <p><img src="/Img/ico_jia.png" /></p>
+                <p class="m-t-sm"><input type="checkbox" class="i-checks" name="checkForm" value="3"><span class="m-l-sm  ">特定业务申请书</span></p>
+            </div>
+
+
+            <div class="col-sm-3">
+                <p><img src="/Img/ico_jia.png" /></p>
+                <p class="m-t-sm"><input type="checkbox" class="i-checks" name="checkForm" value="4"><span class="m-l-sm  ">转账支票</span></p>
+            </div>
+        </div>
+
+
+        <div class="row m-t-lg">
+            <div class="col-sm-3">
+                <p><img src="/Img/ico_jia.png" /></p>
+                <p class="m-t-sm"><input type="checkbox" class="i-checks" name="checkForm" value="5"><span class="m-l-sm  ">进账单</span></p>
+            </div>
+
+            <div class="col-sm-3">
+                <p><img src="/Img/ico_jia.png" /></p>
+                <p class="m-t-sm"><input type="checkbox" class="i-checks" name="checkForm" value="6"><span class="m-l-sm  ">个人转账/汇款凭证</span></p>
+            </div>
+
+            <div class="col-sm-3">
+                <p><img src="/Img/ico_jia.png" /></p>
+                <p class="m-t-sm"><input type="checkbox" class="i-checks" name="checkForm" value="7"><span class="m-l-sm  ">撤销银行结算账户申请书</span></p>
+            </div>
+
+
+            <div class="col-sm-3">
+                <p><img src="/Img/ico_jia.png" /></p>
+                <p class="m-t-sm"><input type="checkbox" class="i-checks" name="checkForm" value="8"><span class="m-l-sm  ">结算业务申请书</span></p>
+            </div>
+        </div>
+
+
+        <div class="m-t-lg text-center">
+            <button onclick="tijiaodanju();" class="btn  btn_orange">请您提交</button>
+        </div>
+    </div>
+</div>
+
+<!--资料收取-->
+<div id="ziliaoshouqu" style="display: none;">
+    <div class="quhao_map">
+        <div class="sbyw">
+            您办理的是<span id="zlbusinessName">xxx</span>业务，请您提交以下单据：
+        </div>
+        <span>身份证类：</span>
+        <div class="row m-t-lg">
+            <div class="col-sm-3">
+                <p><img src="/Img/ico_jia.png" /></p>
+                <p class="m-t-sm"><input type="checkbox" class="i-checks" name="checkForm1" value="1"><span class="m-l-sm  ">一般业务申请书</span></p>
+            </div>
+
+            <div class="col-sm-3">
+                <p><img src="/Img/ico_jia.png" /></p>
+                <p class="m-t-sm"><input type="checkbox" class="i-checks" name="checkForm1" value="2"><span class="m-l-sm  ">个人开户与银行签约服务申请书</span></p>
+            </div>
+
+            <div class="col-sm-3">
+                <p><img src="/Img/ico_jia.png" /></p>
+                <p class="m-t-sm"><input type="checkbox" class="i-checks" name="checkForm1" value="3"><span class="m-l-sm  ">特定业务申请书</span></p>
+            </div>
+
+
+            <div class="col-sm-3">
+                <p><img src="/Img/ico_jia.png" /></p>
+                <p class="m-t-sm"><input type="checkbox" class="i-checks" name="checkForm1" value="4"><span class="m-l-sm  ">转账支票</span></p>
+            </div>
+        </div>
+
+        <span>非身份证类：</span>
+        <div class="row m-t-lg">
+            <div class="col-sm-3">
+                <p><img src="/Img/ico_jia.png" /></p>
+                <p class="m-t-sm"><input type="checkbox" class="i-checks" name="checkForm1" value="5"><span class="m-l-sm  ">进账单</span></p>
+            </div>
+
+            <div class="col-sm-3">
+                <p><img src="/Img/ico_jia.png" /></p>
+                <p class="m-t-sm"><input type="checkbox" class="i-checks" name="checkForm1" value="6"><span class="m-l-sm  ">个人转账/汇款凭证</span></p>
+            </div>
+
+            <div class="col-sm-3">
+                <p><img src="/Img/ico_jia.png" /></p>
+                <p class="m-t-sm"><input type="checkbox" class="i-checks" name="checkForm1" value="7"><span class="m-l-sm  ">撤销银行结算账户申请书</span></p>
+            </div>
+
+
+            <div class="col-sm-3">
+                <p><img src="/Img/ico_jia.png" /></p>
+                <p class="m-t-sm"><input type="checkbox" class="i-checks" name="checkForm1" value="8"><span class="m-l-sm  ">结算业务申请书</span></p>
+            </div>
+        </div>
+
+
+        <div class="m-t-lg text-center">
+            <button onclick="tijiaoziliaosq();" class="btn  btn_orange">请您提交</button>
+        </div>
+    </div>
+</div>
+
+<!--柜员填单-->
+<div id="guiyuantiandan" style="display: none;">
+    <div class="quhao_map">
+        <div class="sbyw">
+            客户办理的是<span id="gytdbusinessName">xxx</span>业务，请选取正确单据进行填写（每次选一张）：
+        </div>
+
+        <div class="row m-t-lg">
+            <div class="col-sm-3">
+                <p><img src="/Img/ico_jia.png" /></p>
+                <p class="m-t-sm"><input type="checkbox" class="i-checks" name="checkForm2" value="1"><span class="m-l-sm  ">一般业务申请书</span></p>
+            </div>
+
+            <div class="col-sm-3">
+                <p><img src="/Img/ico_jia.png" /></p>
+                <p class="m-t-sm"><input type="checkbox" class="i-checks" name="checkForm2" value="2"><span class="m-l-sm  ">个人开户与银行签约服务申请书</span></p>
+            </div>
+
+            <div class="col-sm-3">
+                <p><img src="/Img/ico_jia.png" /></p>
+                <p class="m-t-sm"><input type="checkbox" class="i-checks" name="checkForm2" value="3"><span class="m-l-sm  ">特定业务申请书</span></p>
+            </div>
+
+
+            <div class="col-sm-3">
+                <p><img src="/Img/ico_jia.png" /></p>
+                <p class="m-t-sm"><input type="checkbox" class="i-checks" name="checkForm2" value="4"><span class="m-l-sm  ">转账支票</span></p>
+            </div>
+        </div>
+
+        <div class="m-t-lg text-center">
+            <button onclick="guiyuantiandantijiao();" class="btn  btn_orange">开始填写</button>
+        </div>
+    </div>
+</div>
+<!--柜员填单内容-->
+<div id="guiyuantiandannr" style="display: none;">
+    <div class="quhao_map">
+
+        <div class="row m-t-lg">
+            <div class="col-sm-3">
+                <p><img src="/Img/ico_jia.png" /></p>
+                <p class="m-t-sm"><input type="checkbox" class="i-checks" name="checkForm3" value="1"><span class="m-l-sm  ">一般业务申请书</span></p>
+            </div>
+
+            <div class="col-sm-3">
+                <p><img src="/Img/ico_jia.png" /></p>
+                <p class="m-t-sm"><input type="checkbox" class="i-checks" name="checkForm3" value="2"><span class="m-l-sm  ">个人开户与银行签约服务申请书</span></p>
+            </div>
+
+            <div class="col-sm-3">
+                <p><img src="/Img/ico_jia.png" /></p>
+                <p class="m-t-sm"><input type="checkbox" class="i-checks" name="checkForm3" value="3"><span class="m-l-sm  ">特定业务申请书</span></p>
+            </div>
+
+
+            <div class="col-sm-3">
+                <p><img src="/Img/ico_jia.png" /></p>
+                <p class="m-t-sm"><input type="checkbox" class="i-checks" name="checkForm3" value="4"><span class="m-l-sm  ">转账支票</span></p>
+            </div>
+        </div>
+
+        <div class="m-t-lg text-center">
+            <button onclick="CompleteFillIn();" class="btn  btn_orange">完成填写</button>
+        </div>
+    </div>
+</div>
+
+<!--现金处理-->
+<div id="xianjinchuli" style="display: none;">
+    <div class="quhao_map">
+        <div class="sbyw">
+            请您将现金递交给我。
+        </div>
+
+        <div class="m-t-lg text-center">
+            <button onclick="qingnitijiao();" class="btn  btn_orange">请你提交</button>
+        </div>
+    </div>
+</div>
+
+<!--现金验钞窗口-->
+<div id="openchuangkou" style="display: none;">
+    <div class="quhao_map">
+        <div class="sbyw">
+            您的现金中，
+
+            出现残币 1 张，涉及金额 100 元；
+
+            出现假币 2 张，涉及金额 200 元；
+
+            您交付的金额为 3000 元，实际可兑付的金额为<input type="text" style="width:100px;border:1px;" value="100" id="txtMoney" />元
+
+        </div>
+
+        <div class="m-t-lg text-center">
+            <button onclick="CompleteProcessing();" class="btn  btn_orange">完成处理</button>
+        </div>
+    </div>
+</div>
+
+<!--我的电脑办理业务-->
+<div id="mybrain" style="display: none;">
+    <div class="col-sm-12">
+        <div class="diannao_con">
+            <iframe src="/ServiceRecord/Index" style="width:100%;height:530px;margin:auto;"></iframe>
+
+        </div>
+    </div>
+</div>
+
+<!--银行卡-->
+<div id="yinhangka"></div>
+
+<!--身份证效验弹窗-->
+<div id="shenfenzheng" style="display: none;">
+    <div class="quhao_map">
+        <div class="sbyw">
+
+        </div>
+
+        <div class="m-t-lg text-center">
+            <button onclick="dayinhechajiegou();" class="btn  btn_orange">打印核查结果</button>
+        </div>
+    </div>
+</div>
+<!--身份证效验异常送别弹窗-->
+<div id="shenfenzhengyc" style="display: none;">
+    <div class="quhao_map">
+        <div class="sbyw">
+            您的证件存在       xxxx      的问题，请您前往户口所在地公安局更新身份证信息，或开具个人身份证明，
+            携带至我行进行相关业务的办理。
+        </div>
+
+        <div class="m-t-lg text-center">
+            <button onclick="haode();" class="btn  btn_orange">好的</button>
+        </div>
+    </div>
+</div>
+
+
+<div id="jieguo" style="display: none;">
+
+    <div class="jieguo_map">
+
+        <h2 id="jieguoMessage1">操作不正确，请重新选择</h2>
+
+        <div class="m-t-lg" id="jieguoMessage2">
+            已出错
+        </div>
+
+
+        <div class="m-t-lg text-center">
+            <button id="jieguoBtn" class="btn  btn_orange">重新选择</button>
+        </div>
+    </div>
+
+</div>
+
+
+<script src="~/Scripts/jquery-3.2.0.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<script src="~/Scripts/layerScene/layer.js"></script>
+<!-- 复选框单选框js -->
+<script src="~/Scripts/iCheck-new/icheck.min.js"></script>
+
+<script type="text/javascript">
+
+    //radio选中样式
+    $(document).ready(function () {
+        $('input').iCheck({
+            checkboxClass: 'icheckbox_flat-blue',
+            radioClass: 'iradio_flat-blue'
+        });
+    });
+
+    //物品栏js
+    //var divShow = false;
+    //var withoutMargin = $("#wupin_con").outerWidth();
+    //var wpnumber = withoutMargin;
+   // $(function () {
+
+        //$("#wupin_btn").click(function () {
+        //    var thisObj = $("#wupinlan");
+        //    if (divShow) {
+        //        thisObj.each(function () {
+        //            $(this).animate({
+        //                left: "0"
+        //            }, 300);
+        //        });
+        //        divShow = false;
+        //    } else {
+        //        thisObj.each(function () {
+        //            $(this).animate({
+        //                left: wpnumber
+        //            }, 300);
+        //        });
+        //        divShow = true;
+        //    }
+        //});
+
+    //});
+
+</script>
+
+@*<script src="~/Js/Student/Counter/VideoPlay.js"></script>*@
+<script src="~/Js/Student/Counter/Index.js"></script>
+<script src="~/Js/Student/Counter/jindutiao.js"></script>

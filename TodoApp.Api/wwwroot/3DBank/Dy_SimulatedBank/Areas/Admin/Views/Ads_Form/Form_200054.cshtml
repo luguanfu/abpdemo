@@ -1,0 +1,26 @@
+﻿<!--无卡支付-->
+<div style="display: flex;clear: both;">
+    <div class="row" style="width: 100%;">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label id="lbl_singleLimit" name="lbl_singleLimit" for="inputEmail3" class="col-sm-3 control-label">单笔支付限额</label>
+                <div class="col-sm-6">
+                    <input vl-default="" id="txt_singleLimit" name="txt_singleLimit" type="text" class="form-control input-sm">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label id="lbl_dailyLimit" name="lbl_dailyLimit" for="inputEmail3" class="col-sm-3 control-label">日累计支付限额</label>
+                <div class="col-sm-6">
+                    <input vl-default="" id="txt_dailyLimit" name="txt_dailyLimit" type="text" class="form-control input-sm">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    function doSubmit() {
+        window.location.href = "javascript:history.go(-1)";
+    }
+</script>

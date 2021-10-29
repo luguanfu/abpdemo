@@ -1,0 +1,495 @@
+﻿@{
+    
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewData["nvc"] = "案例管理";
+}
+<style>
+    .btnSelect {
+        background-color: darkseagreen;
+        pointer-events: none;
+        cursor: default;
+        opacity: 0.6;
+    }
+
+    .note-editor {
+        min-height: 100px;
+        height: 150px;
+    }
+</style>
+
+<!--富文本编辑器样式-->
+<link href="~/CSS/plugins/summernote/summernote.css" rel="stylesheet" />
+<link href="~/CSS/plugins/summernote/summernote-bs3.css" rel="stylesheet" />
+<!--富文本编辑器js-->
+<script src="~/Scripts/summernote/summernote.min.js"></script>
+<script src="~/Scripts/summernote/summernote-zh-CN.js"></script>
+
+<!--面包屑位置开始-->
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-sm-12">
+        <ol class="breadcrumb">
+            <li>
+                <h2><a href="/Admin/CaseManagement">案例管理</a></h2>
+            </li>
+            <li>
+                <a href="/Admin/Customer/Index?taskid=@ViewBag.taskid">客户列表</a>
+            </li>
+            <li>
+                <strong>客户质询设置</strong>
+            </li>
+        </ol>
+    </div>
+</div>
+<!--面包屑位置结束-->
+<!--主体内容开始-->
+<div class="ibox-content">
+
+    <div class="row m-t">
+        <div class="col-sm-4">
+            <div class="input-group">
+                <select id="selQuestioning" name="selCount" onchange="onChangeQuestioning()" class="form-control input-s-sm inline">
+                    @*<option value="02">厅堂服务-接待(@ViewData["count2"])</option>
+                        <option value="03">厅堂服务-取号(@ViewData["count3"])</option>
+                        <option value="04">厅堂服务-取号后引导(@ViewData["count4"])</option>
+                        <option value="05">厅堂服务-填单(@ViewData["count5"])</option>
+                        <option value="06">厅堂服务-填单后引导(@ViewData["count6"])</option>
+                        <option value="07">柜面服务-接待(@ViewData["count7"])</option>
+                        <option value="08">柜面服务-单据收取(@ViewData["count8"])</option>
+                        <option value="09">柜面服务-证件收取与效验(@ViewData["count9"])</option>
+                        <option value="10">柜面服务-柜员填单(@ViewData["count10"])</option>
+                        <option value="11">柜面服务-现金处理(@ViewData["count11"])</option>
+                        <option value="12">柜面服务-业务办理(@ViewData["count12"])</option>
+                        <option value="13">柜面服务-单据打印和盖章(@ViewData["count13"])</option>
+                        <option value="14">柜面服务-返还资料(@ViewData["count14"])</option>
+                        <option value="15">柜面服务-送别(@ViewData["count15"])</option>
+                        <option value="16">厅堂服务-送别(@ViewData["count16"])</option>*@
+                </select>
+            </div>
+        </div>
+        <div class=" col-sm-8 text-right">
+            <button onclick="Add_CustomerConsultation();" class="btn btn-primary btn-sm " type="button" id="newBtn"><i class="fa fa-plus m-r-xs"></i><span class="bold" id="sbold">在当前环节新增质询(<span id="NumOne">0</span>/<span id="NumTwo">10</span>)</span></button>
+            <button onclick="del_all();" class="btn btn-warning btn-sm " type="button"><i class="fa fa-trash m-r-xs"></i><span class="bold">删除所选</span></button>
+        </div>
+    </div>
+    <div class="row  m-t-sm ">
+        <div class="col-sm-12">
+            <table class="table text-center table-bordered ">
+                <thead>
+                    <tr>
+                        <th class="text-center">
+                            <input type="Checkbox" class="i-checks checkbox-all">
+                        </th>
+                        <th width="80" class="text-center">排序</th>
+                        <th class="text-center">客户表达</th>
+                        <th width="200" class="text-center">录音</th>
+                        <th width="200" class="text-center">伴随表情与动作</th>
+                        @*<th width="200" class="text-center">处理方式</th>*@
+                        @*<th class="text-center">考核能力</th>*@
+                        <th width="310" class="text-center">操作</th>
+                    </tr>
+                </thead>
+                <tbody class="new_table text-center" id="tablelist"></tbody>
+            </table>
+
+        </div>
+
+    </div>
+
+    <!--分页开始-->
+    @*<div class=" text-center">
+            <div class="dataTables_paginate paging_simple_numbers" id="PaginatorLibrary">
+
+            </div>
+
+        </div>*@
+    <!--分页结束-->
+
+</div>
+
+<!--新增弹框-->
+<div id="Add_CustomerConsultation" style="display: none;" class="form-inline">
+    <form name="Add_CustomerConsultationform" id="Add_CustomerConsultationform">
+        <div class="col-sm-12">
+            <div class="form-horizontal  m-t-lg">
+                <label for="inputEmail3" class="col-sm-2 control-label"><span class="text-danger">*</span>客户表达：</label>
+                <div class="col-sm-7 customer-qa-list">
+                    <input type="hidden" name="inpTxt" class="ipt-customer-question" id="txtCustomerQuestion" />
+                    <div class="customer-qa-item row" style="margin-bottom: 10px;">
+                        <div class="col-sm-1"><span>问</span>：</div>
+                        <div class="col-sm-10"><textarea class="form-control txt-customer-question" qatype="question" qamode="add" name="txt" clos=",5" rows="5" warp="virtual" style="margin: 0px; height: 100px;width:100%; resize:none;" placeholder="最长200个字符。" maxlength="200"></textarea></div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    添加 <select class="form-control input-s-sm inline customer-QA-operation" onchange="changeQAOperation(this.value, 'add')">
+                        <option value="">问题或回答</option>
+                        <option value="question">问题</option>
+                        <option value="answer">回答</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12">
+            <div class="form-horizontal  m-t-lg">
+                <label for="inputEmail3" class="col-sm-2 control-label">视频动画：</label>
+                <div class="col-sm-9">
+                    <input style="width: 100%;" autocomplete="off" type="text" class="form-control" id="txtQuestionViedo" name="AddschoolName" placeholder="请输入视频链接！" oncopy="return true" onpaste="return true" oncut="return true">
+                </div>
+
+            </div>
+        </div>
+        <div class="col-sm-12">
+            <div class="form-horizontal  m-t-lg">
+                <label for="inputEmail3" class="col-sm-2 control-label">收取现金：</label>
+                <div class="col-sm-8">
+                    <label id="CashInfoLabel"></label>
+                    <button type="button" class="btn  btn-success " onclick="EidtCash()">点击编辑收取现金</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12">
+            <div class="form-horizontal  m-t-lg">
+                <label for="inputEmail3" class="col-sm-2 control-label">@*<span class="text-danger">*</span>*@录音上传：</label>
+                <div class="col-sm-8">
+                    <div class="form-horizontal  m-t-sm">
+                        <label for="addRecording" style="position: relative;">
+                            <input type="button" id="selectFileBtn" value="选择文件"><span id="AddRecording" style="">未选择任何文件</span>
+                            <input type="file" id="addRecording" name="addRecording" style="position: absolute;left: 0;top: 0;opacity: 0;">
+                        </label>
+                    </div>
+                    <span style="color:red">请上传大小不超过2M，格式为MP3或M4A的音频文件</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-12">
+            <div class="form-horizontal  m-t-lg">
+                <label for="inputEmail3" class="col-sm-2 control-label">@*<span class="text-danger">*</span>*@伴随表情与动作：</label>
+                <div class="col-sm-8">
+                    <select id="txtMotion" class="form-control input-s-sm inline"></select>
+                    <div class="m-t-sm">
+                        <img src="~/Img/a1.jpg" alt="" style="width:250px;height:250px;" id="gifImages" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </form>
+</div>
+
+<!--编辑弹框-->
+<div id="EditCash" style="display: none;" class="form-inline">
+    <form name="EditCashForm" id="EditCashForm">
+        <input type="hidden" id="TaskDetailIdCash" value="0" />
+        <div class="col-sm-12">
+            <div class="form-horizontal  m-t-lg">
+                <label for="firstname" class="col-sm-4 control-label"><span style="color: red;"></span>业务金额：</label>
+                <div class="col-sm-4">
+                    <input type="number" style="width: 100%;" autocomplete="off" class="form-control" id="ShowAmount" name="ShowAmount" placeholder="请输入业务金额" onchange="AutoCalcAmount()">
+                </div>
+                <div class="col-sm-4">
+                    客户业务述求中需要办理的业务金额
+                </div>
+
+            </div>
+        </div>
+
+
+        <div class="col-sm-12">
+            <div class="form-horizontal  m-t-lg">
+                <label for="firstname1" class="col-sm-4 control-label"><span style="color: red;"></span>残损币（<span id="DamagedMoneyCount">0/5</span>）：</label>
+                <div class="col-sm-5">
+                    <select id="DamagedMoneySelect" class="form-control input-s-sm inline">
+                        <option value="1" selected>01.污损币,全额兑换</option>
+                        <option value="2">02.残损币,全额兑换</option>
+                        <option value="3">03.残损币,半额兑换</option>
+                        <option value="4">04.残损币,无法兑换</option>
+                    </select>
+                </div>
+                <div class="col-sm-3">
+                    <button type="button" class="btn  btn-success " onclick="AddDamagedMoney()">添加</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="DamagedMoneyDiv">
+
+        </div>
+
+
+        <div class="col-sm-12">
+            <div class="form-horizontal  m-t-lg">
+                <label for="firstname2" class="col-sm-4 control-label"><span style="color: red;"></span>疑似假币（<span id="CounterfeitCount">0/5</span>）：</label>
+
+                <div class="col-sm-4">
+                    <select id="CounterfeitSelect" class="form-control input-s-sm inline" onchange="CounterfeitChange(this)">
+                        <option value="1" selected>添加假币</option>
+                        <option value="2">添加真币</option>
+                    </select>
+                </div>
+                <div class="col-sm-4">
+                    <button type="button" class="btn  btn-success " onclick="AddCounterfeit()">添加</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="CounterfeitCheckDiv">
+            <div class="col-sm-12">
+                <div class="form-horizontal  m-t-lg">
+                    <label for="firstname" class="col-sm-4 control-label"></label>
+                    <div class="col-sm-8">
+                        <input class="i-checks" type="checkbox" name="CounterfeitCheck" value="1" /><span>固定水印</span>
+                        <input class="i-checks" type="checkbox" name="CounterfeitCheck" value="2" /><span>隐形面额</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <div class="form-horizontal  m-t-lg">
+                    <label for="firstname" class="col-sm-4 control-label"></label>
+                    <div class="col-sm-8">
+                        <input class="i-checks" type="checkbox" name="CounterfeitCheck" value="3" /><span>油墨数字</span>
+                        <input class="i-checks" type="checkbox" name="CounterfeitCheck" value="4" /><span>白水印</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="CounterfeitDiv">
+
+        </div>
+
+
+
+
+
+
+
+        <div class="col-sm-12">
+            <div class="form-horizontal  m-t-lg">
+                <label for="firstname" class="col-sm-4 control-label"><span style="color: red;"></span>实际可兑付金额：</label>
+                <div class="col-sm-4">
+                    <input type="number" style="width: 100%;" autocomplete="off" class="form-control" id="ActualAmount" name="ActualAmount" placeholder="请输入实际金额" readonly>
+                </div>
+                <div class="col-sm-4">
+
+                </div>
+
+            </div>
+        </div>
+
+    </form>
+</div>
+
+<!--编辑弹框-->
+<div id="Edit_CustomerConsultation" style="display: none;" class="form-inline">
+    <form name="Edit_CustomerConsultationform" id="Edit_CustomerConsultationform">
+        <div class="col-sm-12">
+            <div class="form-horizontal  m-t-lg">
+                <input hidden id="AppearanceName" value="@ViewData["Appearance"]" />
+                <label for="inputEmail3" class="col-sm-2 control-label"><span class="text-danger">*</span>客户表达：</label>
+                <div class="col-sm-7 customer-qa-list">
+                    <input type="hidden" name="inpTxt" class="ipt-customer-question" id="txtEditCustomerQuestion" />
+                    <div class="customer-qa-item row" style="margin-bottom: 10px;">
+                        <div class="col-sm-1"><span>问</span>：</div>
+                        <div class="col-sm-10"><textarea class="form-control txt-customer-question" qatype="question" qamode="edit" name="txt" clos=",5" rows="5" warp="virtual" style="margin: 0px; height: 100px;width:100%; resize:none;" placeholder="最长200个字符。" maxlength="200"></textarea></div>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    添加 <select class="form-control input-s-sm inline customer-QA-operation" onchange="changeQAOperation(this.value, 'edit')">
+                        <option value="">问题或回答</option>
+                        <option value="question">问题</option>
+                        <option value="answer">回答</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12">
+            <div class="form-horizontal  m-t-lg">
+                <label for="inputEmail3" class="col-sm-2 control-label">视频动画：</label>
+                <div class="col-sm-9">
+                    <input style="width: 100%;" autocomplete="off" type="text" class="form-control" id="txtQuestionViedo1" name="AddschoolName" placeholder="请输入视频链接！" oncopy="return true" onpaste="return true" oncut="return true">
+                </div>
+
+            </div>
+        </div>
+        <div class="col-sm-12">
+            <div class="form-horizontal  m-t-lg">
+                <label for="inputEmail3" class="col-sm-2 control-label">收取现金：</label>
+                <div class="col-sm-8">
+                    <label id="CashInfoLabel_"></label>
+                    <button type="button" class="btn  btn-success " onclick="EidtCash()">点击编辑收取现金</button>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12">
+            <div class="form-horizontal  m-t-lg">
+                <label for="inputEmail3" class="col-sm-2 control-label">@*<span class="text-danger">*</span>*@录音上传：</label>
+                <div class="col-sm-8">
+                    <div class="form-horizontal  m-t-sm">
+                        <label for="editRecording" style="position: relative;">
+                            <input type="button" id="selectFileBtn" value="选择文件"><span id="Recording" style="">未选择任何文件</span>
+                            <input type="file" id="editRecording" name="editRecording" style="position: absolute;left: 0;top: 0;opacity: 0;">
+                        </label>
+                    </div>
+                    @*<input class="m-b-sm" type="file" id="editRecording">*@
+                    <span style="color:red">请上传大小不超过2M，格式为MP3或M4A的音频文件</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12">
+            <div class="form-horizontal  m-t-lg">
+                <label for="inputEmail3" class="col-sm-2 control-label">@*<span class="text-danger">*</span>*@伴随表情与动作：</label>
+                <div class="col-sm-8">
+                    <select id="txtEditMotion" class="form-control input-s-sm inline"></select>
+
+                    <div class="m-t-sm">
+                        <img src="~/Img/a1.jpg" alt="" style="width:250px;height:250px;" id="gifImagesEdit" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div id="Setupanswers" style="display: none;" class="form-inline">
+    <form name="Edit_Setupanswersform" id="Edit_Setupanswersform">
+
+        <div class="col-sm-12">
+            <div class="form-horizontal  m-t-lg">
+                <label for="firstname" class="col-sm-3 control-label">
+                    <input class="i-checks" type="checkbox" name="CheckRight" value="A" />
+                    选项A：
+                </label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control m-b-sm" id="OptionA" name="txtTitle" placeholder="" style="width:450px;" value="" maxlength="200">
+                    <div class="form-horizontal  m-t-sm">
+                        <label for="Image1" style="position: relative;">
+                            <input type="button" id="selectFileBtn" value="选择文件"><span id="Pictures_A" style="">未选择任何文件</span>
+                            <input type="file" id="Image1" name="Image1" style="position: absolute;left: 0;top: 0;opacity: 0;">
+                        </label>
+                    </div>
+                    <span style="color:red">小于2M，png、jpg、gif格式图片</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12">
+            <div class="form-horizontal  m-t-lg">
+                <label for="firstname" class="col-sm-3 control-label">
+                    <input class="i-checks" type="checkbox" name="CheckRight" value="B" />
+                    选项B：
+                </label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control m-b-sm" id="OptionB" name="txtTitle" placeholder="" style="width:450px;" value="" maxlength="200">
+                    <div class="form-horizontal  m-t-sm">
+                        <label for="Image2" style="position: relative;">
+                            <input type="button" id="selectFileBtn" value="选择文件"><span id="Pictures_B" style="">未选择任何文件</span>
+                            <input type="file" id="Image2" name="Image2" style="position: absolute;left: 0;top: 0;opacity: 0;">
+                        </label>
+                    </div>
+                    <span style="color:red">小于2M，png、jpg、gif格式图片</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12">
+            <div class="form-horizontal  m-t-lg">
+                <label for="firstname" class="col-sm-3 control-label">
+                    <input class="i-checks" type="checkbox" name="CheckRight" value="C" />
+                    选项C：
+                </label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control m-b-sm" id="OptionC" name="txtTitle" placeholder="" style="width:450px;" value="" maxlength="200">
+                    <div class="form-horizontal  m-t-sm">
+                        <label for="Image3" style="position: relative;">
+                            <input type="button" id="selectFileBtn" value="选择文件"><span id="Pictures_C" style="">未选择任何文件</span>
+                            <input type="file" id="Image3" name="Image3" style="position: absolute;left: 0;top: 0;opacity: 0;">
+                        </label>
+                    </div>
+                    <span style="color:red">小于2M，png、jpg、gif格式图片</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12">
+            <div class="form-horizontal  m-t-lg">
+                <label for="firstname" class="col-sm-3 control-label">
+                    <input class="i-checks" type="checkbox" name="CheckRight" value="D" />
+                    选项D：
+                </label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control m-b-sm" id="OptionD" name="txtTitle" placeholder="" style="width:450px;" value="" maxlength="200">
+                    <div class="form-horizontal  m-t-sm">
+                        <label for="Image4" style="position: relative;">
+                            <input type="button" id="selectFileBtn" value="选择文件"><span id="Pictures_D" style="">未选择任何文件</span>
+                            <input type="file" id="Image4" name="Image4" style="position: absolute;left: 0;top: 0;opacity: 0;">
+                        </label>
+                    </div>
+                    <span style="color:red">小于2M，png、jpg、gif格式图片</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12">
+            <div class="form-horizontal  m-t-lg">
+                <label for="firstname" class="col-sm-3 control-label">
+                    <input class="i-checks" type="checkbox" name="CheckRight" value="E" />
+                    选项E：
+                </label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control m-b-sm" id="OptionE" name="txtTitle" placeholder="" style="width:450px;" value="" maxlength="200">
+                    <div class="form-horizontal  m-t-sm">
+                        <label for="Image5" style="position: relative;">
+                            <input type="button" id="selectFileBtn" value="选择文件"><span id="Pictures_E" style="">未选择任何文件</span>
+                            <input type="file" id="Image5" name="Image5" style="position: absolute;left: 0;top: 0;opacity: 0;">
+                        </label>
+                    </div>
+                    <span style="color:red">小于2M，png、jpg、gif格式图片</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12">
+            <div class="form-horizontal  m-t-lg">
+                <label for="firstname" class="col-sm-3 control-label">
+                    <input class="i-checks" type="checkbox" name="CheckRight" value="F" />
+                    选项F：
+                </label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control m-b-sm" id="OptionF" name="txtTitle" placeholder="" style="width:450px;" value="" maxlength="200">
+                    <div class="form-horizontal  m-t-sm">
+                        <label for="Image6" style="position: relative;">
+                            <input type="button" id="selectFileBtn" value="选择文件"><span id="Pictures_F" style="">未选择任何文件</span>
+                            <input type="file" id="Image6" name="Image6" style="position: absolute;left: 0;top: 0;opacity: 0;">
+                        </label>
+                    </div>
+                    <span style="color:red">小于2M，png、jpg、gif格式图片</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-12" hidden>
+            <div class="form-horizontal  m-t-lg">
+                <label for="inputEmail3" class="col-sm-3 control-label">处理方式：</label>
+                <div class="col-sm-8">
+                    <select id="txtMethods" class="form-control input-s-sm inline">
+                        <option value="继续接待">继续接待</option>
+                        <option value="送别客户">送别客户</option>
+                        @*<option value="自助办理">自助办理</option>*@
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-12">
+            <div class="form-horizontal  m-t-lg">
+                <label for="inputEmail3" class="col-sm-3 control-label">题目解析：</label>
+                <div class="col-sm-8">
+                    <!--编辑器开始-->
+                    <div class="ibox-content no-padding">
+                        <div class="summernote" id="txtEditQuestion">
+                        </div>
+                    </div>
+
+                    <!--编辑器结束-->
+                </div>
+            </div>
+        </div>
+
+    </form>
+</div>
+<script src="~/Js/Admin/Customer/CustomerConsultation.js"></script>

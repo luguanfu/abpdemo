@@ -1,0 +1,244 @@
+﻿@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewData["nvc"] = "案例管理";
+}
+
+<style>
+    .btnSelect {
+        background-color: darkseagreen;
+        pointer-events: none;
+        cursor: default;
+        opacity: 0.6;
+    }
+</style>
+
+
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-sm-12">
+        <ol class="breadcrumb">
+            <li>
+                <h2><a href="/Admin/CaseManagement">案例管理</a></h2>
+            </li>
+            <li>
+                @((ViewData["addtype"].ToString() == "1") ? "新建案例" : "编辑案例")
+            </li>
+        </ol>
+
+
+        <div class="col-sm-12 m-t-sm m-b-lg text-center">
+            <button class="btn  btn-lg btn-outline  btn-success m-r-lg" name="senceSelect" value="1" onclick="selectScene(this)">基本信息</button>
+            <i class="fa fa-arrow-circle-right fa-2x m-r-xs"></i>
+            <button class="btn   btn-lg  btn-success m-l-lg m-r-lg" name="senceSelect" value="2">业务场景设置</button>
+            <i class="fa fa-arrow-circle-right fa-2x m-r-xs"></i>
+            <button class="btn   btn-lg  btn-outline btn-success m-l-lg m-r-lg" name="senceSelect" value="3" onclick="selectScene(this)">客户列表</button>
+            <i class="fa fa-arrow-circle-right fa-2x m-r-xs"></i>
+            <button class="btn   btn-lg btn-outline   btn-success m-l-lg m-r-lg" name="senceSelect" value="4" onclick="selectScene(this)">能力分值设置</button>
+        </div>
+
+        <input type="hidden" id="taskid" value="@ViewData["taskid"]" />
+        <input type="hidden" id="addtype" value="@ViewData["addtype"]" />
+        <input type="hidden" id="operscene" value="@ViewData["operscene"]" />
+    </div>
+</div>
+<!--面包屑位置结束-->
+<!--主体内容开始-->
+<div class="ibox-content">
+    <form class="form-horizontal" name="Addform" id="Addform">
+
+        <div class="form-group">
+            <h3><label for="inputEmail3" class="col-sm-2 control-label">1、开工管理场景：</label></h3>
+        </div>
+
+        <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 control-label">是否开启：</label>
+            <div class="col-sm-8">
+                <input class="i-checks" type="radio" name="StartScene" value="1" />开启
+                <input class="i-checks" type="radio" name="StartScene" value="2" />关闭
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 control-label"></label>
+            <div class="col-sm-8">
+                提示：开工管理场景开启后，需先模拟开工流程后才进行其他业务模拟
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 control-label">开工管理参数设置：</label>
+            <div class="col-sm-8">
+                <select class="form-control input-s-sm inline" style="width: 120px;" id="startForm">
+                    <option value="0">请选择表单</option>
+                    <option value="050503">凭证批量调剂</option>
+                    <option value="050504">凭证调剂</option>
+                    <option value="065401">柜员现金调剂</option>
+                    <option value="080701">机构开工</option>
+                    <option value="080702">柜员开工</option>
+                    <option value="080703">柜员交接</option>
+                </select>
+                <button data-modeid="1" data-alert="表单" data-selectid="startForm" id="startAddBtn" type="button" class="btn  btn-success ">添加表单</button>
+            </div>
+        </div>
+
+        <hr />
+
+        <div class="form-group">
+            <h3><label for="inputEmail3" class="col-sm-2 control-label">2、厅堂服务场景：</label></h3>
+        </div>
+
+        <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 control-label">是否开启：</label>
+            <div class="col-sm-8">
+                <input class="i-checks" type="radio" name="HallScene" value="1" />开启
+                <input class="i-checks" type="radio" name="HallScene" value="2" />关闭
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 control-label"></label>
+            <div class="col-sm-8">
+                提示：厅堂服务场景开启后，需模拟厅堂服务流程
+            </div>
+        </div>
+
+        <hr />
+
+        <div class="form-group">
+            <h3><label for="inputEmail3" class="col-sm-2 control-label">3、柜面服务场景：</label></h3>
+        </div>
+
+        <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 control-label">是否开启：</label>
+            <div class="col-sm-8">
+                <input class="i-checks" type="radio" name="CounterScene" value="1" />开启
+                <input class="i-checks" type="radio" name="CounterScene" value="2" />关闭
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 control-label"></label>
+            <div class="col-sm-8">
+                提示：柜面服务场景开启后，需模拟柜面服务流程
+            </div>
+        </div>
+
+        <hr />
+
+        <div class="form-group">
+            <h3><label for="inputEmail3" class="col-sm-2 control-label">4、完工管理场景：</label></h3>
+        </div>
+
+        <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 control-label">是否开启：</label>
+            <div class="col-sm-8">
+                <input class="i-checks" type="radio" name="EndScene" value="1" />开启
+                <input class="i-checks" type="radio" name="EndScene" value="2" />关闭
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 control-label"></label>
+            <div class="col-sm-8">
+                提示：完工管理场景开启后，处理完所有客户后，需模拟完工管理流程
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 control-label">完工管理参数设置：</label>
+            <div class="col-sm-8">
+
+                <select class="form-control input-s-sm inline" style="width: 120px;" id="endForm">
+                    <option value="0">请选择表单</option>
+                    <option value="080704">现金轧账</option>
+                    <option value="080705">凭证轧账</option>
+                    <option value="080706">流水轧账</option>
+                    <option value="080707">柜员现金卡把</option>
+                    <option value="080708">柜员完工</option>
+                    <option value="080703">柜员交接</option>
+                </select>
+                <button data-modeid="17" data-alert="表单" data-selectid="endForm" id="endAddBtn" type="button" class="btn  btn-success ">添加表单</button>
+            </div>
+        </div>
+
+
+        <hr />
+
+        <div class="form-group">
+            <h3><label for="inputEmail3" class="col-sm-2 control-label">5、开工完工说明：</label></h3>
+        </div>
+
+        <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 control-label">任务说明：</label>
+            <div class="col-sm-8">
+                <!--编辑器开始-->
+                <div class="ibox-content no-padding">
+                    <div class="summernote" id="TaskDescribe" name="TaskDescribe">
+                    </div>
+                </div>
+                <!--编辑器结束-->
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 control-label">重要提示：</label>
+            <div class="col-sm-8">
+                <!--编辑器开始-->
+                <div class="ibox-content no-padding">
+                    <div class="summernote" id="TaskImportant" name="TaskImportant">
+                    </div>
+                </div>
+                <!--编辑器结束-->
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 control-label">操作手册：</label>
+            <div class="col-sm-8">
+                <div class="form-horizontal  m-t-sm">
+                    @*<form name="Importform" id="Importform">*@
+                    <label for="FileName" style="position: relative;">
+                        <input type="button" id="selectFileBtn" value="选择文件"><span id="OperManualName" style="">请上传pdf文档</span>
+                        <input type="file" id="FileName" name="FileName" style="position: absolute;left: 0;top: 0;opacity: 0;">
+                    </label>
+                    @*</form>*@
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 control-label"></label>
+            <div class="col-sm-8">
+                <span style="color:red;">仅支持.pdf文件</span>
+            </div>
+        </div>
+
+
+
+        <hr />
+
+        @*<div class="box-footer">
+                <div class="form-group">
+                    <label class="col-sm-2 control-label"></label>
+                    <div class="col-sm-10">
+                        <a class="btn btn-w-m btn-success m-r-lg" href="javascript:void(0);" onclick="BtnSubmit()">保存</a>
+                        <a class="btn btn-w-m btn-white " href="/Admin/CaseManagement">取消</a>
+                    </div>
+                </div>
+            </div>*@
+    </form>
+
+</div>
+
+
+<!--富文本编辑器样式-->
+<link href="~/CSS/plugins/summernote/summernote.css" rel="stylesheet" />
+<link href="~/CSS/plugins/summernote/summernote-bs3.css" rel="stylesheet" />
+<!--富文本编辑器js-->
+<script src="~/Scripts/summernote/summernote.min.js"></script>
+<script src="~/Scripts/summernote/summernote-zh-CN.js"></script>
+
+
+<script src="~/Js/Admin/CaseManagement/CommonConfig.js"></script>
+<script src="~/Js/Admin/CaseManagement/OperSceneSelect.js"></script>
+<script src="~/Scripts/String/StringFormat.js"></script>
+<script src="~/Js/Admin/CaseManagement/AddOrEditScene.js"></script>
+<script src="~/Js/Admin/CaseManagement/CommonAddForm.js"></script>

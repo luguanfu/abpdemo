@@ -1,0 +1,136 @@
+﻿@{
+    
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewData["nvc"] = "教师管理";
+}
+
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-sm-12">
+        <ol class="breadcrumb">
+            <li>
+                <h2>组织架构管理</h2>
+            </li>
+            <li>
+                <a href="#">教师管理</a>
+            </li>
+            <li>
+                <strong>教师列表</strong>
+            </li>
+        </ol>
+
+    </div>
+</div>
+<!--面包屑位置结束-->
+<!--主体内容开始-->
+<div class="ibox-content">
+    <div class="row m-t">
+        <div class="col-sm-2">
+            <select class=" form-control input-s-sm inline"  id="School">
+                <option value="">请选择学校</option>
+            </select>
+        </div>
+        <div class="col-sm-3">
+            <div class="input-group">
+                <input type="text" placeholder="请输入关键字搜索……" id="TeacherName" class="form-control" name="TeacherName">
+                <span class="input-group-btn">
+                    <button type="button" onclick="bindIngfo()" class="btn btn-primary"><i class="fa fa-search "></i></button>
+                </span>
+            </div>
+        </div>
+        <div class=" col-sm-7 text-right">
+            <button onclick="Add_Teacher();" class="btn btn-primary btn-sm " type="button"><i class="fa fa-plus m-r-xs"></i><span class="bold">新增教师</span></button>
+            <button onclick="EnableTeacher('启用',1);" class="btn btn-success btn-sm " type="button"><i class="fa fa-check  m-r-xs"></i><span class="bold">启用教师</span></button>
+            <button onclick="EnableTeacher('禁用',0);" class="btn btn-danger btn-sm " type="button"><i class="fa fa-times m-r-xs"></i><span class="bold">禁用教师</span></button>
+            <button onclick="del_all();" class="btn btn-warning btn-sm " type="button"><i class="fa fa-trash m-r-xs"></i><span class="bold">删除教师</span></button>
+        </div>
+    </div>
+    <div class="row  m-t-sm ">
+        <div class="col-sm-12">
+            <table class="table text-center table-bordered ">
+                <thead>
+                    <tr>
+                        <th class="text-center">
+                            <input type="Checkbox" class="i-checks checkbox-all"></th>
+                        <th class="text-center">学校名称</th>
+                        <th class="text-center">教师帐号</th>
+                        <th class="text-center">姓名</th>
+                        <th class="text-center">密码</th>
+                        <th class="text-center">联系方式</th>
+                        <th class="text-center">邮箱</th>
+                        <th class="text-center">账户状态</th>
+                        <th class="text-center">操作</th>
+                    </tr>
+                </thead>
+                <tbody class="new_table text-center" id="list">
+              
+                </tbody>
+            </table>
+
+        </div>
+
+    </div>
+
+
+    <!--分页开始-->
+    <div class=" text-center">
+        <div class="dataTables_paginate paging_simple_numbers" id="PaginatorLibrary">
+
+        </div>
+
+    </div>
+    <!--分页结束-->
+</div>
+
+<!--新增弹框-->
+
+<div id="Add_Teacher" style="display: none;" class="form-inline">
+    <form name="" id="">
+
+        <div class="col-sm-12">
+            <div class="form-horizontal  m-t-lg">
+                <label for="firstname" class="col-sm-3 control-label"><span style="color: red;">*</span>选择学校：</label>
+                <div class="col-sm-9">
+                     <select class=" form-control input-s-sm inline" style="width:100%;" id="AddSchool">
+                <option value="">请选择学校</option>
+            </select>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12">
+            <div class="form-horizontal  m-t-lg">
+                <label for="firstname" class="col-sm-3 control-label"><span style="color: red;">*</span>教师名称：</label>
+                <div class="col-sm-9">
+                   <input style="width: 100%;" type="text" class="form-control" id="AddTeacherName" name="AddTeacherName" placeholder="">
+                    <input type="hidden"id="U_ID" name="U_ID" />
+                </div>
+            </div>
+        </div> 
+        <div class="col-sm-12">
+            <div class="form-horizontal  m-t-lg">
+                <label for="firstname" class="col-sm-3 control-label"><span style="color: red;">*</span>教师账号：</label>
+                <div class="col-sm-9">
+                   <input style="width: 100%;" type="text" class="form-control" id="AddLoginNo" name="AddLoginNo" placeholder="" >
+                </div>
+            </div>
+        </div> 
+        <div class="col-sm-12">
+            <div class="form-horizontal  m-t-lg">
+                <label for="firstname" class="col-sm-3 control-label">联系方式：</label>
+                <div class="col-sm-9">
+                   <input style="width: 100%;" type="text" class="form-control" id="Contact" name="Contact" placeholder="" >
+                </div>
+            </div>
+        </div> 
+        <div class="col-sm-12">
+            <div class="form-horizontal  m-t-lg">
+                <label for="firstname" class="col-sm-3 control-label">邮箱：</label>
+                <div class="col-sm-9">
+                   <input style="width: 100%;" type="text" class="form-control" id="Email" name="Email" placeholder="" >
+                </div>
+            </div>
+        </div> 
+
+    </form>
+</div>
+
+<script src="~/JS/Admin/MajorOrTeacher/Teacher.js"></script>

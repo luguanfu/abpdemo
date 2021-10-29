@@ -1,0 +1,475 @@
+﻿@{
+    
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewData["nvc"] = "案例管理";
+}
+
+
+
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-sm-12">
+        <ol class="breadcrumb">
+            <li>
+                <h2><a href="/Admin/CaseManagement">案例管理</a></h2>
+            </li>
+            <li>
+                <a href="/Admin/Customer/Index?taskid=@ViewData["taskid"]">客户列表</a>
+            </li>
+            <li>
+                @ViewData["customername"]
+            </li>
+        </ol>
+
+        <input type="hidden" id="taskid" value="@ViewData["taskid"]" />
+        <input type="hidden" id="addtype" value="@ViewData["addtype"]" />
+        <input type="hidden" id="customerid" value="@ViewData["customerid"]" />
+    </div>
+</div>
+<!--面包屑位置结束-->
+<!--主体内容开始-->
+<div class="ibox-content">
+    <form class="form-horizontal" name="Addform" id="Addform">
+
+        <div class="form-group" style="display:none;">
+            <h3><label for="inputEmail3" class="col-sm-2 control-label">单据与资料收取、校验</label></h3>
+        </div>
+
+        <div class="form-group" style="display:none;">
+            <label for="inputEmail3" class="col-sm-2 control-label">需要收取的单据：</label>
+            <div class="col-sm-8">
+
+
+                <select data-modeid="8" class="form-control input-s-sm inline" style="width: 180px;" id="Names_8" name="Names_8">
+                    <option value="0">请选择单据</option>
+                </select>
+                <button data-modeid="8" data-alert="单据" data-selectid="Names_8" type="button" class="btn  btn-success ">添加单据</button>
+            </div>
+        </div>
+
+        <div class="form-group" style="display:none;">
+            <label for="inputEmail3" class="col-sm-2 control-label">身份证：</label>
+            <div class="col-sm-8">
+                <select data-modeid="91" class="form-control input-s-sm inline" style="width: 180px;" id="Names_9-1" name="Names_9-1">
+                    <option value="0">请选择证件</option>
+                </select>
+                <button data-modeid="91" data-alert="资料" data-selectid="Names_9-1" type="button" class="btn  btn-success ">添加资料</button>
+            </div>
+        </div>
+
+        <div class="form-group" style="display:none;">
+            <label for="inputEmail3" class="col-sm-2 control-label">非身份证：</label>
+            <div class="col-sm-8">
+                <select data-modeid="92" class="form-control input-s-sm inline" style="width: 180px;" id="Names_9-2" name="Names_9-2">
+                    <option value="0">请选择证件</option>
+                </select>
+                <button data-modeid="92" data-alert="资料" data-selectid="Names_9-2" type="button" class="btn  btn-success ">添加资料</button>
+            </div>
+        </div>
+
+        <!--<hr />-->
+
+
+
+
+
+
+        <div class="form-group" style="display:none;">
+            <h3><label for="inputEmail3" class="col-sm-2 control-label">现金处理</label></h3>
+        </div>
+
+        <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 control-label">收取现金：</label>
+            <div class="col-sm-8">
+                <label id="CashInfoLabel"></label>
+                <button type="button" class="btn  btn-success " onclick="EidtCash()">点击编辑收取现金</button>
+            </div>
+        </div>
+
+        <!--<hr />-->
+
+        <div class="form-group" style="display:none;">
+            <h3><label for="inputEmail3" class="col-sm-2 control-label">柜员填单</label></h3>
+        </div>
+
+        <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 control-label">柜员填单内容：</label>
+            <div class="col-sm-8">
+
+
+                <select data-modeid="11" class="form-control input-s-sm inline" style="width: 180px;" id="Names_11" name="Names_11">
+                    <option value="0">请选择单据</option>
+                </select>
+                <button data-modeid="11" data-alert="单据" data-selectid="Names_11" type="button" class="btn  btn-success ">添加单据</button>
+            </div>
+        </div>
+
+        <!--<hr />-->
+
+        <div class="form-group">
+            <h3><label for="inputEmail3" class="col-sm-2 control-label">业务办理</label></h3>
+        </div>
+
+        <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 control-label">业务办理：</label>
+            <div class="col-sm-8">
+
+
+                <select data-modeid="12" class="form-control input-s-sm inline" style="width: 180px;" id="Names_12" name="Names_12">
+                    <option value="0">请选择表单</option>
+                </select>
+                <button data-modeid="12" data-alert="表单" data-selectid="Names_12" type="button" class="btn  btn-success ">添加表单</button>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 control-label">任务说明：</label>
+            <div class="col-sm-8">
+                <!--编辑器开始-->
+                <div class="ibox-content no-padding">
+                    <div class="summernote" id="TaskDescribe" name="TaskDescribe">
+                    </div>
+                </div>
+                <!--编辑器结束-->
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 control-label">重要提示：</label>
+            <div class="col-sm-8">
+                <!--编辑器开始-->
+                <div class="ibox-content no-padding">
+                    <div class="summernote" id="TaskImportant" name="TaskImportant">
+                    </div>
+                </div>
+                <!--编辑器结束-->
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 control-label">操作手册：</label>
+            <div class="col-sm-8">
+                <div class="form-horizontal  m-t-sm">
+                    @*<form name="Importform" id="Importform">*@
+                    <label for="FileName" style="position: relative;">
+                        <input type="button" id="selectFileBtn" value="选择文件"><span id="OperManualName" style="">请上传pdf文档</span>
+                        <input type="file" id="FileName" name="FileName" style="position: absolute;left: 0;top: 0;opacity: 0;">
+                    </label>
+                    @*</form>*@
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 control-label"></label>
+            <div class="col-sm-8">
+                <span style="color:red;">仅支持.pdf文件</span>
+            </div>
+        </div>
+
+
+
+        <!--<hr />-->
+
+        <div class="form-group" style="display:none;">
+            <h3><label for="inputEmail3" class="col-sm-2 control-label">单据盖章与签字</label></h3>
+        </div>
+
+        <div class="form-group" style="display:none;">
+            <label for="inputEmail3" class="col-sm-2 control-label">需打印单据：</label>
+            <div class="col-sm-8">
+                <select data-modeid="13" class="form-control input-s-sm inline" style="width: 180px;" id="Names_13" name="Names_13">
+                    <option value="0">请选择单据</option>
+                </select>
+                <button data-modeid="13" data-alert="单据" data-selectid="Names_13" type="button" class="btn  btn-success ">添加单据</button>
+            </div>
+        </div>
+
+        <div class="form-group" style="display:none;">
+            <label for="inputEmail3" class="col-sm-2 control-label">需盖章资料：</label>
+            <div class="col-sm-8">
+                <select data-modeid="133" class="form-control input-s-sm inline" style="width: 180px;" id="Names_133" name="Names_133">
+                    <option value="0">请选择单据</option>
+                </select>
+                <button data-modeid="133" data-alert="单据" data-selectid="Names_133" type="button" class="btn  btn-success ">添加单据</button>
+            </div>
+        </div>
+
+        <div class="form-group" style="display:none;">
+            <label for="inputEmail3" class="col-sm-2 control-label">需签字资料：</label>
+            <div class="col-sm-8">
+                <select data-modeid="134" class="form-control input-s-sm inline" style="width: 180px;" id="Names_134" name="Names_134">
+                    <option value="0">请选择单据</option>
+                </select>
+                <button data-modeid="134" data-alert="单据" data-selectid="Names_134" type="button" class="btn  btn-success ">添加单据</button>
+            </div>
+        </div>
+
+        <!--<hr />-->
+
+        <div class="form-group" style="display:none;">
+            <h3><label for="inputEmail3" class="col-sm-2 control-label">资料返还</label></h3>
+        </div>
+
+        <div class="form-group" style="display:none;">
+            <label for="inputEmail3" class="col-sm-2 control-label">需返还资料：</label>
+            <div class="col-sm-8">
+
+
+                <select data-modeid="14" class="form-control input-s-sm inline" style="width: 180px;" id="Names_14" name="Names_14">
+                    <option value="0">请选择返还资料</option>
+                </select>
+                <button data-modeid="14" data-alert="单据" data-selectid="Names_14" type="button" class="btn  btn-success ">添加单据</button>
+            </div>
+        </div>
+
+        <!--<hr />-->
+        @*<div class="form-group">
+            <h3><label for="inputEmail3" class="col-sm-2 control-label">单据打印与资料盖章</label></h3>
+        </div>*@
+
+        <div class="form-group" style="display:none;">
+            <h3><label for="inputEmail3" class="col-sm-2 control-label">送别</label></h3>
+        </div>
+
+        <div class="form-group" style="display:none;">
+            <label for="inputEmail3" class="col-sm-2 control-label">意向理财产品：</label>
+            <div class="col-sm-8">
+                <select data-modeid="15" class="form-control input-s-sm inline" style="width: 180px;" id="Names_15" name="Names_15" data-LinkId="15">
+                    <option value="">请选择</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group" style="display:none;">
+            <label for="inputEmail3" class="col-sm-2 control-label">柜台送别：</label>
+            <div class="col-sm-8">
+                <input class="i-checks" type="checkbox" id="Names_151" name="Names_151" value="1" data-LinkId="151" />
+            </div>
+
+        </div>
+
+        <!--<hr />-->
+        @*<div class="box-footer">
+            <div class="form-group">
+                <label class="col-sm-2 control-label"></label>
+                <div class="col-sm-10">
+                    <a class="btn btn-w-m btn-success m-r-lg" href="javascript:void(0);" onclick="BtnSubmit()">保存</a>
+                    <a class="btn btn-w-m btn-white " href="javascript:void(0);" onclick="history.go(-1)">取消</a>
+                </div>
+            </div>
+        </div>*@
+    </form>
+
+</div>
+
+
+<!--编辑弹框-->
+<div id="EditCash" style="display: none;" class="form-inline">
+    <form name="EditCashForm" id="EditCashForm">
+        <input type="hidden" id="TaskDetailIdCash" value="0" />
+        <div class="col-sm-12">
+            <div class="form-horizontal  m-t-lg">
+                <label for="firstname" class="col-sm-4 control-label"><span style="color: red;"></span>业务金额：</label>
+                <div class="col-sm-4">
+                    <input type="number" style="width: 100%;" autocomplete="off" class="form-control" id="ShowAmount" name="ShowAmount" placeholder="请输入业务金额" onchange="AutoCalcAmount()">
+                </div>
+                <div class="col-sm-4">
+                    客户业务述求中需要办理的业务金额
+                </div>
+
+            </div>
+        </div>
+
+
+        <div class="col-sm-12">
+            <div class="form-horizontal  m-t-lg">
+                <label for="firstname1" class="col-sm-4 control-label"><span style="color: red;"></span>残损币（<span id="DamagedMoneyCount">0/5</span>）：</label>
+                <div class="col-sm-5">
+                    <select id="DamagedMoneySelect" class="form-control input-s-sm inline">
+                        <option value="1" selected>01.污损币,全额兑换</option>
+                        <option value="2">02.残损币,全额兑换</option>
+                        <option value="3">03.残损币,半额兑换</option>
+                        <option value="4">04.残损币,无法兑换</option>
+                    </select>
+                </div>
+                <div class="col-sm-3">
+                    <button type="button" class="btn  btn-success " onclick="AddDamagedMoney()">添加</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="DamagedMoneyDiv">
+
+        </div>
+
+
+        <div class="col-sm-12">
+            <div class="form-horizontal  m-t-lg">
+                <label for="firstname2" class="col-sm-4 control-label"><span style="color: red;"></span>疑似假币（<span id="CounterfeitCount">0/5</span>）：</label>
+
+                <div class="col-sm-4">
+                    <select id="CounterfeitSelect" class="form-control input-s-sm inline" onchange="CounterfeitChange(this)">
+                        <option value="1" selected>添加假币</option>
+                        <option value="2">添加真币</option>
+                    </select>
+                </div>
+                <div class="col-sm-4">
+                    <button type="button" class="btn  btn-success " onclick="AddCounterfeit()">添加</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="CounterfeitCheckDiv">
+            <div class="col-sm-12">
+                <div class="form-horizontal  m-t-lg">
+                    <label for="firstname" class="col-sm-4 control-label"></label>
+                    <div class="col-sm-8">
+                        <input class="i-checks" type="checkbox" name="CounterfeitCheck" value="1" /><span>固定水印</span>
+                        <input class="i-checks" type="checkbox" name="CounterfeitCheck" value="2" /><span>隐形面额</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12">
+                <div class="form-horizontal  m-t-lg">
+                    <label for="firstname" class="col-sm-4 control-label"></label>
+                    <div class="col-sm-8">
+                        <input class="i-checks" type="checkbox" name="CounterfeitCheck" value="3" /><span>油墨数字</span>
+                        <input class="i-checks" type="checkbox" name="CounterfeitCheck" value="4" /><span>白水印</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="CounterfeitDiv">
+
+        </div>
+
+
+
+
+
+
+
+        <div class="col-sm-12">
+            <div class="form-horizontal  m-t-lg">
+                <label for="firstname" class="col-sm-4 control-label"><span style="color: red;"></span>实际可兑付金额：</label>
+                <div class="col-sm-4">
+                    <input type="number" style="width: 100%;" autocomplete="off" class="form-control" id="ActualAmount" name="ActualAmount" placeholder="请输入实际金额" readonly>
+                </div>
+                <div class="col-sm-4">
+
+                </div>
+
+            </div>
+        </div>
+
+    </form>
+</div>
+
+
+<!--编辑弹框-->
+<div id="EditSeal" style="display: none;" class="form-inline">
+    <form name="EditSealForm" id="EditSealForm">
+        <input type="hidden" id="TaskDetailIdSeal" value="0" />
+        <div class="col-sm-12">
+            <div class="form-horizontal  m-t-lg">
+                <label for="firstname" class="col-sm-12 "><span style="color: red;"></span>请勾选该资料需盖的印章类型：</label>
+            </div>
+        </div>
+        <div class="col-sm-12">
+            <div class="form-horizontal  m-t-lg">
+                <div class="col-sm-4">
+                    <input class="i-checks" type="checkbox" name="SealCheck" value="1" />假币收缴专用章
+                </div>
+                <div class="col-sm-4">
+                    <input class="i-checks" type="checkbox" name="SealCheck" value="2" />附件章
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-12">
+            <div class="form-horizontal  m-t-lg">
+                <div class="col-sm-4">
+                    <input class="i-checks" type="checkbox" name="SealCheck" value="3" />柜员私章
+                </div>
+                <div class="col-sm-4">
+                    <input class="i-checks" type="checkbox" name="SealCheck" value="4" />现讫章
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-12">
+            <div class="form-horizontal  m-t-lg">
+                <div class="col-sm-4">
+                    <input class="i-checks" type="checkbox" name="SealCheck" value="5" />假币章
+                </div>
+                <div class="col-sm-4">
+                    <input class="i-checks" type="checkbox" name="SealCheck" value="6" />银行业务公章
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-12">
+            <div class="form-horizontal  m-t-lg">
+                <div class="col-sm-4">
+                    <input class="i-checks" type="checkbox" name="SealCheck" value="7" />转讫章
+                </div>
+                <div class="col-sm-4">
+                    <input class="i-checks" type="checkbox" name="SealCheck" value="8" />账户管理专用章
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-12">
+            <div class="form-horizontal  m-t-lg">
+                <div class="col-sm-4">
+                    <input class="i-checks" type="checkbox" name="SealCheck" value="9" />销户章
+                </div>
+                <div class="col-sm-4">
+                    @*<input class="i-checks" type="checkbox" name="SealCheck" value="8" />账户管理专用章*@
+                </div>
+            </div>
+        </div>
+
+    </form>
+</div>
+
+<!--编辑弹窗-->
+<div id="EditScore" style="display: none;" class="form-inline">
+    <form name="EditSealForm" id="EditSealForm">
+        <input type="hidden" id="TaskDetailIdSeal" value="0" />
+        <div class="col-sm-12">
+            <div class="form-horizontal  m-t-lg">
+                <label for="firstname" class="col-sm-12 "><span style="color: red;"></span>设置分数：</label>
+            </div>
+        </div>
+        <div class="col-sm-12">
+            <div class="form-horizontal  m-t-lg">
+                <label for="firstname" class="col-sm-4 control-label"><span style="color: red;"></span>分数设置：</label>
+                <div class="col-sm-4">
+                    <input type="number" style="width: 100%;" autocomplete="off" class="form-control" id="taskSocre" name="taskSocre" placeholder="请输入分数">
+                </div>
+                <div class="col-sm-4">
+
+                </div>
+
+            </div>
+        </div>
+
+    </form>
+</div>
+
+
+<!--富文本编辑器样式-->
+<link href="~/CSS/plugins/summernote/summernote.css" rel="stylesheet" />
+<link href="~/CSS/plugins/summernote/summernote-bs3.css" rel="stylesheet" />
+<!--富文本编辑器js-->
+<script src="~/Scripts/summernote/summernote.min.js"></script>
+<script src="~/Scripts/summernote/summernote-zh-CN.js"></script>
+
+
+<script src="~/Js/Admin/CaseManagement/CommonConfig.js"></script>
+<script src="~/Scripts/String/StringFormat.js"></script>
+<script src="~/Js/Admin/CaseManagement/CommonAddForm.js?v=20210928"></script>
+<script src="~/Js/Admin/CaseManagement/CounterScene.js"></script>
+<link href="~/Scripts/select2/css/select2.min.css" rel="stylesheet" />
+<script src="~/Scripts/select2/js/select2.min.js"></script>

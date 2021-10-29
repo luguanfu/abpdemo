@@ -1,0 +1,204 @@
+﻿@{
+    
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewData["nvc"] = "我的班级";
+}
+<input type="hidden" value="@ViewBag.id" id="Classhiddenid" />
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-sm-12">
+        <ol class="breadcrumb">
+            <li>
+                <h2>组织架构管理 </h2>
+            </li>
+            <li>
+                <a href="/Admin/TeacherClassManagement">班级管理</a>
+            </li>
+            <li>
+                <strong>学生管理</strong>
+            </li>
+        </ol>
+
+    </div>
+</div>
+<!--面包屑位置结束-->
+<!--主体内容开始-->
+<div class="ibox-content">
+    <div class="row m-t">
+
+        <div class="col-sm-6">
+            <div class="input-group">
+                <input type="text" placeholder="请输入关键字搜索……" id="ClassNameid" class="form-control" name="ClassName">
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-primary" onclick="Select()"><i class="fa fa-search "></i></button>
+                </span>
+            </div>
+        </div>
+
+
+        <div class="col-sm-6 text-right">
+            <button onclick="Add_Student()" class="btn btn-primary btn-sm " type="button"><i class="fa fa-plus m-r-xs"></i><span class="bold">新增学生</span></button>
+            <button onclick="AllAdd()" class="btn btn-info btn-sm " type="button"><i class="fa fa-plus m-r-xs"></i><span class="bold">批量新增</span></button>
+            <button onclick="Enable()" class="btn btn-success btn-sm " type="button"><i class="fa fa-check m-r-xs"></i><span class="bold">启用账户</span></button>
+            <button onclick="Disable()" class="btn btn-danger btn-sm " type="button"><i class="fa fa-times m-r-xs"></i><span class="bold">禁用账户</span></button>
+            <button onclick="Delete()" class="btn btn-warning btn-sm " type="button"><i class="fa fa-trash m-r-xs"></i><span class="bold">删除账户</span></button>
+            <button onclick="AllEvaluate()" class="btn btn-success btn-sm " type="button"><i class="fa fa-check m-r-xs"></i><span class="bold">导入评价</span></button>
+        </div>
+
+
+    </div>
+    <div class="row  m-t-sm ">
+        <div class="col-sm-12">
+            <table class="table text-center table-bordered ">
+                <thead>
+                    <tr>
+                        <th class="text-center">
+                            <input type="Checkbox" class="i-checks checkbox-all">
+                        </th>
+                        <th class="text-center">学号</th>
+                        <th class="text-center">姓名</th>
+                        <th class="text-center">账号</th>
+                        <th class="text-center">性别</th>
+                        <th class="text-center">密码</th>
+                        <th class="text-center">手机</th>
+                        <th class="text-center">邮箱</th>
+                        <th class="text-center">用户状态</th>
+                        <th class="text-center">操作</th>
+                    </tr>
+                </thead>
+                <tbody class="new_table text-center" id="tablelist"></tbody>
+            </table>
+        </div>
+    </div>
+
+    <!--分页开始-->
+    <div class="row text-center m-t-md" id="PaginatorLibrary">
+    </div>
+    <!--分页结束-->
+</div>
+<!--新增弹框-->
+<div id="Add_Student" style="display: none;" class="form-inline">
+    <form name="" id="">
+        <div class="col-sm-10">
+            <div class="form-horizontal  m-t-lg">
+                <label for="firstname" class="col-sm-4 control-label"><span style="color: red;">*</span>学生姓名：</label>
+                <div class="col-sm-8">
+                    <input style="width: 100%;" type="text" class="form-control" id="AddStudentNameid" name="AddStudentName" placeholder="">
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-10">
+            <div class="form-horizontal  m-t-lg">
+                <label for="firstname" class="col-sm-4 control-label"><span style="color: red;">*</span>学生账号：</label>
+                <div class="col-sm-8">
+                    <input style="width: 100%;" type="text" class="form-control" id="AddLoginNoid" name="AddLoginNoName" placeholder="">
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<!--批量新增-->
+<div id="AllAdd_Student" style="display: none;" class="form-inline">
+    <div class="box-body ">
+        <div class="col-sm-12 m-t-sm ">
+            <form id="form_Execl" class="form-horizontal " enctype="multipart/form-data">
+                <div class="col-sm-12 m-t-sm">
+                    <div class="col-sm-12 text-center m-t-sm">
+                        <button type="button" onclick="but_Execl()" class="btn  btn-success ">
+                            <i class="fa fa-arrow-circle-o-up mr5" aria-hidden="true"></i>
+                            上传样式表格
+                        </button>
+                        <p><input id="file_excel" name="file_excel" type="file" style="display: none" /></p>
+                    </div>
+                </div>
+
+                <div class="col-sm-12 m-t-sm text-center">
+                    <span style="color: red" id="ExcelName"></span>
+                </div>
+                <div class="col-sm-12 text-right">
+                    <div class="form-group ">
+                        <div class="col-sm-12 ">
+                            <a href="~/ExcelTemplate/导入学生模版.xlsx" class=" btn-primary btn-sm  "><i class="fa  fa-level-down m-r-xs"></i>下载表格</a>
+                        </div>
+                    </div>
+                </div>
+
+
+            </form>
+
+        </div>
+    </div>
+</div>
+
+<!--新增评价-->
+<div id="Add_case" style="display: none;" class="form-inline">
+
+    <form name="Add_schoolform" id="Add_schoolform">
+        <input type="hidden" id="StudentID">
+        <div class="col-sm-12">
+            <div class="form-horizontal  m-t-lg">
+                <label for="inputEmail3" class="col-sm-3 control-label">@*<span class="text-danger">*</span>*@教师评级：</label>
+                <div class="col-sm-9" id="seleid">
+                    <select id="AddTeamId" class="form-control input-s-sm inline" style="width: 350px;">
+                        <option value="">请选择评级</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-12">
+            <div class="form-horizontal  m-t-lg">
+                <label for="inputEmail3" class="col-sm-3 control-label">@*<span class="text-danger">*</span>*@ 教师评语：</label>
+                <div class="col-sm-9">
+                    <textarea class="form-control" id="Bulletincontent" name="txt" clos=",5" rows="5" warp="virtual" style="margin: 0px; width: 350px; height: 95px;" placeholder="最长500个字符"></textarea>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-12 text-center">
+            <div class="form-horizontal  m-t-lg">
+                <div class="inputEmail3">
+                    <a class="btn btn-w-m btn-success m-r-lg" onclick="DoingAddEdit()">保存</a>
+                </div>
+            </div>
+        </div>
+    </form>
+
+</div>
+
+<!--批量导入评价-->
+<div id="AllAdd_Evaluate" style="display: none;" class="form-inline">
+    <div class="box-body ">
+        <div class="col-sm-12 m-t-sm ">
+            <form id="form_Evaluate" class="form-horizontal " enctype="multipart/form-data">
+                <div class="col-sm-12 m-t-sm">
+                    <div class="col-sm-12 text-center m-t-sm">
+                        <button type="button" onclick="but_Execl_Evaluate()" class="btn  btn-success ">
+                            <i class="fa fa-arrow-circle-o-up mr5" aria-hidden="true"></i>
+                            上传样式表格
+                        </button>
+                        <p><input id="file_excel_Evaluate" name="file_excel_Evaluate" type="file" style="display: none" /></p>
+                    </div>
+                </div>
+
+                <div class="col-sm-12 m-t-sm text-center">
+                    <span style="color: red" id="ExcelEvaluateName"></span>
+                </div>
+                <div class="col-sm-12 text-right">
+                    <div class="form-group ">
+                        <div class="col-sm-12 ">
+                            <a  class=" btn-primary btn-sm  " onclick="Export()"><i class="fa  fa-level-down m-r-xs"></i>下载表格</a>
+                        </div>
+                    </div>
+                </div>
+
+
+            </form>
+
+        </div>
+    </div>
+</div>
+<a id='downFile' href="" style="display: none"><span id='tf'></span></a>
+<script src="~/JS/Teacher/TeacherClassManagement/TeacherClassMember.js"></script>
+<script src="~/Scripts/jquery.form.js"></script>
+

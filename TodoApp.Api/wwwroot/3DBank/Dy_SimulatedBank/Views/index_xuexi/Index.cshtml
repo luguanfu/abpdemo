@@ -1,0 +1,210 @@
+﻿@{
+    
+    Layout = "~/Views/Shared/_StudentLayout.cshtml";
+}
+
+    <style type="text/css">
+
+        .db_map {
+            min-height: 500px;
+        }
+
+        .item_name {
+            text-align: center;
+            font-size: 20px;
+            margin-top: 15px;
+            color: #333333;
+        }
+
+        .hr_item {
+            width: 50px;
+            height: 1px;
+            border: 2px solid #3487f5;
+            margin: auto;
+            margin-top: 3px;
+        }
+
+        .jj_text {
+            text-indent: 2em;
+            color: #666666;
+        }
+
+        .kecheng_map {
+            cursor: pointer;
+            border: 1px solid #dddddd;
+            min-height: 200px;
+        }
+
+            .kecheng_map:hover {
+                border: 1px solid #3487f5;
+            }
+
+            .kecheng_map img {
+                width: 100%;
+            }
+
+        .kecheng_text {
+            margin: 10px 5px;
+        }
+
+        .kecheng_name {
+            font-size: 18px;
+            color: #333333;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .zj_text {
+            font-size: 16px;
+            color: #666666;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+    </style>
+    <!DOCTYPE html>
+    <!-------------内容------------->
+    <div class="index_con">
+
+        <!--面包屑开始-->
+        <div class="crumbs_map">
+            你当前所在的位置：
+            <a href="index_one.html">首页</a>＞
+            <span>最近学习</span>
+        </div>
+        <!--面包屑结束-->
+        <!--切换内容区域-->
+        <div class="db_map">
+            <div class="item_name">
+                最近学习
+            </div>
+            <div class="hr_item"></div>
+            <div class="m-t-lg m-l-sm m-r-sm m-b-sm">
+                <div class="row">
+                    <div class="col-sm-3 m-b-lg">
+                        <div onclick="window.open('study_details_two.html','_self');" class="kecheng_map">
+                            <img src="../img/ziyuanfeng2.png" />
+                            <div class="kecheng_text">
+                                <p class="kecheng_name">运营推广能力</p>
+                                <p title="关键字研究是做亚马逊的基础" class="zj_text m-t-xs">章名称：关键字研究是做亚马逊的基础</p>
+                                <p title="怎样使用关键字研究优化亚马逊站内Listing" class="zj_text m-t-xs">节名称：怎样使用关键字研究优化亚马逊站内Listing</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3 m-b-lg">
+                        <div onclick="window.open('study_details_two.html','_self');" class="kecheng_map">
+                            <img src="../img/ziyuanfeng3.png" />
+                            <div class="kecheng_text">
+                                <p class="kecheng_name">运营推广能力</p>
+                                <p title="关键字研究是做亚马逊的基础" class="zj_text m-t-xs">章名称：关键字研究是做亚马逊的基础</p>
+                                <p title="怎样使用关键字研究做亚马逊站内竞争程度分析" class="zj_text m-t-xs">节名称：怎样使用关键字研究做亚马逊站内竞争程度分析</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3 m-b-lg">
+                        <div onclick="window.open('study_details_two.html','_self');" class="kecheng_map">
+                            <img src="../img/ziyuanfeng2.png" />
+                            <div class="kecheng_text">
+                                <p class="kecheng_name">运营推广能力</p>
+                                <p title="关键字研究是做亚马逊的基础" class="zj_text m-t-xs">章名称：关键字研究是做亚马逊的基础</p>
+                                <p title="怎样使用关键字研究做产品市场容量分析" class="zj_text m-t-xs">节名称：怎样使用关键字研究做产品市场容量分析</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3 m-b-lg">
+                        <div onclick="window.open('study_details.html','_self');" class="kecheng_map">
+                            <img src="../img/ziyuanfeng1.png" />
+                            <div class="kecheng_text">
+                                <p class="kecheng_name">跨文化沟通能力</p>
+                                <p class="zj_text m-t-xs">章名称：客户回访</p>
+                                <p class="zj_text m-t-xs">节名称：客户消费行为数据分析</p>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-sm-3 m-b-lg">
+                        <div onclick="window.open('study_details.html','_self');" class="kecheng_map">
+                            <img src="../img/ziyuanfeng1.png" />
+                            <div class="kecheng_text">
+                                <p class="kecheng_name">跨文化沟通能力</p>
+                                <p class="zj_text m-t-xs">章名称：客户回访</p>
+                                <p class="zj_text m-t-xs">节名称：客户消费行为数据分析</p>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-sm-3 m-b-lg">
+                        <div onclick="window.open('study_details_two.html','_self');" class="kecheng_map">
+                            <img src="../img/ziyuanfeng2.png" />
+                            <div class="kecheng_text">
+                                <p class="kecheng_name">运营推广能力</p>
+                                <p title="关键字研究是做亚马逊的基础" class="zj_text m-t-xs">章名称：关键字研究是做亚马逊的基础</p>
+                                <p title="怎样使用关键字研究做产品市场容量分析" class="zj_text m-t-xs">节名称：怎样使用关键字研究做产品市场容量分析</p>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div class="col-sm-3 m-b-lg">
+                        <div onclick="window.open('study_details_two.html','_self');" class="kecheng_map">
+                            <img src="../img/ziyuanfeng3.png" />
+                            <div class="kecheng_text">
+                                <p class="kecheng_name">运营推广能力</p>
+                                <p title="关键字研究是做亚马逊的基础" class="zj_text m-t-xs">章名称：关键字研究是做亚马逊的基础</p>
+                                <p title="怎样使用关键字研究做亚马逊站内竞争程度分析" class="zj_text m-t-xs">节名称：怎样使用关键字研究做亚马逊站内竞争程度分析</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-3 m-b-lg">
+                        <div onclick="window.open('study_details_two.html','_self');" class="kecheng_map">
+                            <img src="../img/ziyuanfeng2.png" />
+                            <div class="kecheng_text">
+                                <p class="kecheng_name">运营推广能力</p>
+                                <p title="关键字研究是做亚马逊的基础" class="zj_text m-t-xs">章名称：关键字研究是做亚马逊的基础</p>
+                                <p title="怎样使用关键字研究优化亚马逊站内Listing" class="zj_text m-t-xs">节名称：怎样使用关键字研究优化亚马逊站内Listing</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+<script type="text/javascript">//根据渲染出来的数据，动态设置底部
+
+	//文档body的高度
+	var bodyHeight = $(document.body).height()
+		//当前窗口可视区域高度
+	var winHeight = $(window).height()
+	if(bodyHeight > winHeight) {
+		$(".footer").removeClass("fid")
+	} else {
+		$(".footer").addClass("fid")
+	}
+ 
+	//退出系统
+	function out_xitong() {
+		layer.confirm('您确定要退出系统吗？', {
+				title: '退出系统',
+				btn: ['确定', '取消'],
+				 offset: 'auto',//定义弹窗位置垂直居中
+				shadeClose: false, //遮罩关闭控制
+				skin: 'layui-layer-lan'
+					//按钮
+			},
+			function() {
+				layer.msg('退出成功', {
+					time: 10000,
+					icon: 1,
+				});
+				window.location.href="login.html"
+			});
+
+	}</script>

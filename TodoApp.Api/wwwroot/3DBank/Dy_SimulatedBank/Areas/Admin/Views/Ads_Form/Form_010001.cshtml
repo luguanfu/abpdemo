@@ -1,0 +1,650 @@
+﻿@{
+                    ViewBag.Title = "Form_010001";
+                    Layout = "~/Views/Shared/_AdminLayoutIsNull.cshtml";
+                }
+               <script src="~/Js/Admin/AdminForm.js"></script>
+               <form id="form1" onsubmit="return false" action="##" method="post">
+                  <input type="hidden" id="TaskId" name="TaskId" value="@Request["TaskId"]" />
+                  <input type="hidden" id="CustomerId" name="CustomerId" value="@Request["CustomerId"]" />
+                  <input type="hidden" id="FormId" name="FormId" value="@Request["FormId"]" />
+                  <input type="hidden" id="Types" name="Types" value="@Request["Types"]" />
+                <!--内容表单区域开始-->
+            <div class="tables bankmap">
+		<div class="banktop"> <span class="toolbar-title-img"> <img src="../busi/img/topleft.png">010001-集中授权申请</span>			<span class="toolbar-title-close" style="display: none;">                                        </span> </div>
+		<div class="con-map2 selected">
+			<table id="qv" class="con-map2-table qv">
+                <tbody>
+                    <!--第一行数据-->
+                    <tr>
+                        <td colspan="2" class="" style="width: 64px;">
+                            <label vl-default="" id="label_sqdm" vtitle="授权代码" class="form-item text-left" vl-tipsid="label_sqdm_tips" title="label_sqdm" name="label_sqdm">授权代码</label>
+                            <div id="label_sqdm_tips" class="tipsmsg"></div>
+                            <label>6B6151</label>
+                            <div id="txt_sqdm_tips" class="tipsmsg"></div>
+                        </td>
+                        <td colspan="2" class="" style="width: 64px;">
+                            <label vl-default="" id="label_sqjb" vtitle="授权级别" class="form-item text-left" vl-tipsid="label_sqjb_tips" title="label_sqjb" name="label_sqjb">授权级别</label>
+                            <div id="label_sqjb_tips" class="tipsmsg"></div>
+                            <label>C5-五级</label>
+                            <!-- <input type="text" oncopy="return false;" oncut="return false;" vl-default=""  title="txt_sqjb"> -->
+                            <div id="txt_sqjb_tips" class="tipsmsg"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="2" class="" style="width: 64px;">
+                            <label vl-default="" id="label_sqjy" vtitle="申请交易" class="form-item text-left" vl-tipsid="label_sqjy_tips" title="label_sqjy" name="label_sqjy">申请交易</label>
+                            <div id="label_sqjy_tips" class="tipsmsg"></div>
+                            <!-- <input type="text" oncopy="return false;" oncut="return false;" vl-default="" id="txt_sqjy" vtitle='申请交易' class="form-item text-left" vl-tipsid="txt_sqjy_tips"  title="txt_sqjy"> -->
+                            <div id="txt_sqjy_tips" class="tipsmsg"></div>
+                        </td>
+                        <td colspan="2" class="" style="width: 64px;">
+                            <label vl-default="" id="label_zxdh" vtitle="中心电话" class="form-item text-left on" vl-tipsid="label_zxdh_tips" title="label_zxdh" name="label_zxdh">中心电话</label>
+                            <div id="label_zxdh_tips" class="tipsmsg"></div>
+                            <!-- <input type="text" oncopy="return false;" oncut="return false;" vl-default="" id="txt_zxdh" vtitle='中心电话' class="form-item text-left" vl-tipsid="txt_zxdh_tips"  title="txt_zxdh"> -->
+                            <div id="txt_zxdh_tips" class="tipsmsg"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="">
+                            <label vl-default="" id="label_khtx" vtitle='客户头像' class="form-item text-left" vl-tipsid="label_khtx_tips" title="label_khtx">客户头像</label>
+                            <div id="label_khtx_tips" class="tipsmsg"></div>
+                        </td>
+                        <td>
+                            <input type="checkbox" vl-default="" id="check_khtx" vtitle='客户头像' class="form-item text-left" vl-tipsid="check_khtx_tips" style="width: 60px;" title="check_khtx">
+                            <div id="check_khtx_tips" class="tipsmsg"></div>
+                        </td>
+                        <td class="">
+                            <label vl-default="" id="label_xy" vtitle='协议' class="form-item text-left" vl-tipsid="label_xy_tips" title="label_xy">协议</label>
+                            <div id="label_xy_tips" class="tipsmsg"></div>
+                        </td>
+                        <td class="">
+                            <input type="checkbox" vl-default="" id="check_xy" vtitle='协议' class="form-item text-left" vl-tipsid="check_xy_tips"
+                                   style="width: 60px;" title="check_xy">
+                            <div id="check_xy_tips" class="tipsmsg"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="">
+                            <label vl-default="" id="label_brsfzyjzm" vtitle='本人身份证原件正面' class="form-item text-left" vl-tipsid="label_brsfzyjzm_tips"
+                                   title="label_brsfzyjzm">本人身份证原件正面</label>
+                            <div id="label_brsfzyjzm_tips" class="tipsmsg"></div>
+                        </td>
+                        <td class="">
+                            <input type="checkbox" vl-default="" id="check_brsfzyjzm" vtitle='本人身份证原件正面' class="form-item text-left" vl-tipsid="check_brsfzyjzm_tips"
+                                   style="width: 60px;" title="check_brsfzyjzm">
+                            <div id="check_brsfzyjzm_tips" class="tipsmsg"></div>
+                        </td>
+                        <td class="">
+                            <label vl-default="" id="label_khryjzm" vtitle='开户人身份证原件正面' class="form-item text-left" vl-tipsid="label_khryjzm_tips"
+                                   title="label_khryjzm">开户人身份证原件正面</label>
+                            <div id="label_khryjzm_tips" class="tipsmsg"></div>
+                        </td>
+                        <td class="">
+                            <input type="checkbox" vl-default="" id="check_khryjzm" vtitle='开户人身份证原件正面' class="form-item text-left on" vl-tipsid="check_khryjzm_tips"
+                                   style="width: 60px;" title="check_khryjzm">
+                            <div id="check_khryjzm_tips" class="tipsmsg"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="">
+                            <label vl-default="" id="label_brsfzyjfm" vtitle='本人身份证原件反面' class="form-item text-left" vl-tipsid="label_brsfzyjfm_tips"
+                                   title="label_brsfzyjfm">本人身份证原件反面</label>
+                            <div id="label_brsfzyjfm_tips" class="tipsmsg"></div>
+                        </td>
+                        <td class="">
+                            <input type="checkbox" vl-default="" id="check_brsfmyjfm" vtitle='本人身份证原件反面' class="form-item text-left" vl-tipsid="check_brsfmyjfm_tips"
+                                   style="width: 60px;" title="check_brsfmyjfm">
+                            <div id="check_brsfmyjfm_tips" class="tipsmsg"></div>
+                        </td>
+                        <td class="">
+                            <label vl-default="" id="label_khrsfzyjfm" vtitle='开户人身份证原件反面' class="form-item text-left" vl-tipsid="label_khrsfzyjfm_tips"
+                                   title="label_khrsfzyjfm">开户人身份证原件反面</label>
+                            <div id="label_khrsfzyjfm_tips" class="tipsmsg"></div>
+                        </td>
+                        <td class="">
+                            <input type="checkbox" vl-default="" id="check_khryjfm" vtitle='开户人身份证原件反面' class="form-item text-left" vl-tipsid="check_khryjfm_tips"
+                                   style="width: 60px;" title="check_khryjfm">
+                            <div id="check_khryjfm_tips" class="tipsmsg"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="">
+                            <label vl-default="" id="label_brsfhcjg" vtitle='本人身份核查结果' class="form-item text-left on" vl-tipsid="label_brsfhcjg_tips"
+                                   title="label_brsfhcjg">本人身份核查结果</label>
+                            <div id="label_brsfhcjg_tips" class="tipsmsg"></div>
+                        </td>
+                        <td class="">
+                            <input type="checkbox" vl-default="" id="check_brsfhcjg" vtitle='本人身份核查结果' class="form-item text-left on" vl-tipsid="check_brsfhcjg_tips"
+                                   style="width: 60px;" title="check_brsfhcjg">
+                            <div id="check_brsfhcjg_tips" class="tipsmsg"></div>
+                        </td>
+                        <td class="">
+                            <label vl-default="" id="label_khrsfhcjg" vtitle='开户人身份核查结果' class="form-item text-left" vl-tipsid="label_khrsfhcjg_tips"
+                                   title="label_khrsfhcjg">开户人身份核查结果</label>
+                            <div id="label_khrsfhcjg_tips" class="tipsmsg"></div>
+                        </td>
+                        <td class="">
+                            <input type="checkbox" vl-default="" id="check_khrsfhcjg" vtitle='开户人身份核查结果' class="form-item text-left" vl-tipsid="check_khrsfhcjg_tips"
+                                   style="width: 60px;" title="check_khrsfhcjg">
+                            <div id="check_khrsfhcjg_tips" class="tipsmsg"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="">
+                            <label vl-default="" id="label_jz" vtitle='介质' class="form-item text-left on" vl-tipsid="label_jz_tips" title="label_jz">介质</label>
+                            <div id="label_jz_tips" class="tipsmsg"></div>
+                        </td>
+                        <td class="">
+                            <input type="checkbox" vl-default="" id="check_jz" vtitle='介质' class="form-item text-left on" vl-tipsid="check_jz_tips"
+                                   style="width: 60px;" title="check_jz">
+                            <div id="check_jz_tips" class="tipsmsg"></div>
+                        </td>
+                        <td class="">
+                            <label vl-default="" id="label_zcjz" vtitle='转出介质' class="form-item text-left" vl-tipsid="label_zcjz_tips" title="label_zcjz">转出介质</label>
+                            <div id="label_zcjz_tips" class="tipsmsg"></div>
+                        </td>
+                        <td class="">
+                            <input type="checkbox" vl-default="" id="check_zcjz" vtitle='转出介质' class="form-item text-left" vl-tipsid="check_zcjz_tips"
+                                   style="width: 60px;" title="check_zcjz">
+                            <div id="check_zcjz_tips" class="tipsmsg"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="">
+                            <label vl-default="" id="label_xkjz" vtitle='新开介质' class="form-item text-left" vl-tipsid="label_xkjz_tips" title="label_xkjz">新开介质</label>
+                            <div id="label_xkjz_tips" class="tipsmsg"></div>
+                        </td>
+                        <td class="">
+                            <input type="checkbox" vl-default="" id="check_xkjz" vtitle='新开介质' class="form-item text-left" vl-tipsid="check_xkjz_tips"
+                                   style="width: 60px;" title="check_xkjz">
+                            <div id="check_xkjz_tips" class="tipsmsg"></div>
+                        </td>
+                        <td class="">
+                            <label vl-default="" id="label_zxrlr" vtitle='执行人两人（含）以上执行公务证' class="form-item text-left on" vl-tipsid="label_zxrlr_tips"
+                                   title="label_zxrlr">执行人两人（含）以上执行公务证</label>
+                            <div id="label_zxrlr_tips" class="tipsmsg"></div>
+                        </td>
+                        <td class="">
+                            <input type="checkbox" vl-default="" id="check_zxrlrgwz" vtitle='执行人两人（含）以上执行公务证' class="form-item text-left" vl-tipsid="check_zxrlrgwz_tips"
+                                   style="width: 60px;" title="check_zxrlrgwz">
+                            <div id="check_zxrlrgwz_tips" class="tipsmsg"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="">
+                            <label vl-default="" id="label_yjypz" vtitle='原交易凭证' class="form-item text-left" vl-tipsid="label_yjypz_tips" title="label_yjypz">原交易凭证</label>
+                            <div id="label_yjypz_tips" class="tipsmsg"></div>
+                        </td>
+                        <td class="">
+                            <input type="checkbox" vl-default="" id="check_yjypz" vtitle='原交易凭证' class="form-item text-left" vl-tipsid="check_yjypz_tips"
+                                   style="width: 60px;" title="check_yjypz">
+                            <div id="check_yjypz_tips" class="tipsmsg"></div>
+                        </td>
+                        <td class="">
+                            <label vl-default="" id="label_zxrlrgzz" vtitle='执行人两人（含）以上工作证' class="form-item text-left on" vl-tipsid="label_zxrlrgzz_tips"
+                                   title="label_zxrlrgzz">执行人两人（含）以上工作证</label>
+                            <div id="label_zxrlrgzz_tips" class="tipsmsg"></div>
+                        </td>
+                        <td class="">
+                            <input type="checkbox" vl-default="" id="check_zxrlrgzz" vtitle='执行人两人（含）以上工作证' class="form-item text-left" vl-tipsid="check_zxrlrgzz_tips"
+                                   style="width: 60px;" title="check_zxrlrgzz">
+                            <div id="check_zxrlrgzz_tips" class="tipsmsg"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="">
+                            <label vl-default="" id="label_sqsqs" vtitle='授权申请书' class="form-item text-left" vl-tipsid="label_sqsqs_tips" title="label_sqsqs">授权申请书</label>
+                            <div id="label_sqsqs_tips" class="tipsmsg"></div>
+                        </td>
+                        <td class="">
+                            <input type="checkbox" vl-default="" id="check_sqsqs" vtitle='授权申请书' class="form-item text-left" vl-tipsid="check_sqsqs_tips"
+                                   style="width: 60px;" title="check_sqsqs">
+                            <div id="check_sqsqs_tips" class="tipsmsg"></div>
+                        </td>
+                        <td class="">
+                            <label vl-default="" id="label_cds" vtitle='裁定书' class="form-item text-left on" vl-tipsid="label_cds_tips" title="label_cds">裁定书</label>
+                            <div id="label_cds_tips" class="tipsmsg"></div>
+                        </td>
+                        <td class="">
+                            <input type="checkbox" vl-default="" id="check_cds" vtitle='裁定书' class="form-item text-left" vl-tipsid="check_cds_tips"
+                                   style="width: 60px;" title="check_cds">
+                            <div id="check_cds_tips" class="tipsmsg"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="">
+                            <label vl-default="" id="label_xcsh" vtitle='现场审核' class="form-item text-left" vl-tipsid="label_xcsh_tips" title="label_xcsh">现场审核</label>
+                            <div id="label_xcsh_tips" class="tipsmsg"></div>
+                        </td>
+                        <td class="">
+                            <input type="checkbox" vl-default="" id="check_xcsh" vtitle='现场审核' class="form-item text-left" vl-tipsid="check_xcsh_tips"
+                                   style="width: 60px;" title="check_xcsh">
+                            <div id="check_xcsh_tips" class="tipsmsg"></div>
+                        </td>
+                        <td class="">
+                            <label vl-default="" id="label_tzs" vtitle='通知书' class="form-item text-left on" vl-tipsid="label_tzs_tips" title="label_tzs">通知书</label>
+                            <div id="label_tzs_tips" class="tipsmsg"></div>
+                        </td>
+                        <td class="">
+                            <input type="checkbox" vl-default="" id="check_tzs" vtitle='通知书' class="form-item text-left" vl-tipsid="check_tzs_tips"
+                                   style="width: 60px;" title="check_tzs">
+                            <div id="check_tzs_tips" class="tipsmsg"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="">
+                            <label vl-default="" id="label_khsqs" vtitle='扣划申请书' class="form-item text-left" vl-tipsid="label_khsqs_tips" title="label_khsqs">扣划申请书</label>
+                            <div id="label_khsqs_tips" class="tipsmsg"></div>
+                        </td>
+                        <td class="">
+                            <input type="checkbox" vl-default="" id="check_khsqs" vtitle='扣划申请书' class="form-item text-left" vl-tipsid="check_khsqs_tips"
+                                   style="width: 60px;" title="check_khsqs">
+                            <div id="check_khsqs_tips" class="tipsmsg"></div>
+                        </td>
+                        <td class="">
+                            <label vl-default="" id="label_dwxjckpz" vtitle='单位现金存款业务凭证' class="form-item text-left on" vl-tipsid="label_dwxjckpz_tips"
+                                   title="label_dwxjckpz">单位现金存款业务凭证</label>
+                            <div id="label_dwxjckpz_tips" class="tipsmsg"></div>
+                        </td>
+                        <td class="">
+                            <input type="checkbox" vl-default="" id="check_dwxjckpz" vtitle='单位现金存款业务凭证' class="form-item text-left" vl-tipsid="check_dwxjckpz_tips"
+                                   style="width: 60px;" title="check_dwxjckpz">
+                            <div id="check_dwxjckpz_tips" class="tipsmsg"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="">
+                            <label vl-default="" id="label_sqwts" vtitle='授权委托书' class="form-item text-left on" vl-tipsid="label_sqwts_tips" title="label_sqwts">授权委托书</label>
+                            <div id="label_sqwts_tips" class="tipsmsg"></div>
+                        </td>
+                        <td class="">
+                            <input type="checkbox" vl-default="" id="check_sqwts" vtitle='授权委托书' class="form-item text-left" vl-tipsid="check_sqwts_tips"
+                                   style="width: 60px;" title="check_sqwts">
+                            <div id="check_sqwts_tips" class="tipsmsg"></div>
+                        </td>
+                        <td class="">
+                            <label vl-default="" id="label_jzjxjz" vtitle='介质及新介质' class="form-item text-left on" vl-tipsid="label_jzjxjz_tips"
+                                   title="label_jzjxjz">介质及新介质</label>
+                            <div id="label_jzjxjz_tips" class="tipsmsg"></div>
+                        </td>
+                        <td class="">
+                            <input type="checkbox" vl-default="" id="check_jzjxjz" vtitle='介质及新介质' class="form-item text-left" vl-tipsid="check_jzjxjz_tips"
+                                   style="width: 60px;" title="check_jzjxjz">
+                            <div id="check_jzjxjz_tips" class="tipsmsg"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="">
+                            <label vl-default="" id="label_jbrsfzyjzm" vtitle='经办人身份证原件正面' class="form-item text-left on" vl-tipsid="label_jbrsfzyjzm_tips"
+                                   title="label_jbrsfzyjzm">经办人身份证原件正面</label>
+                            <div id="label_jbrsfzyjzm_tips" class="tipsmsg"></div>
+                        </td>
+                        <td class="">
+                            <input type="checkbox" vl-default="" id="check_jbrsfzyjzm" vtitle='经办人身份证原件正面' class="form-item text-left on" vl-tipsid="check_jbrsfzyjzm_tips"
+                                   style="width: 60px;" title="check_jbrsfzyjzm">
+                            <div id="check_jbrsfzyjzm_tips" class="tipsmsg"></div>
+                        </td>
+                        <td class="">
+                            <label vl-default="" id="label_khsfzyjzm" vtitle='客户身份证原件正面' class="form-item text-left" vl-tipsid="label_khsfzyjzm_tips"
+                                   title="label_khsfzyjzm">客户身份证原件正面</label>
+                            <div id="label_khsfzyjzm_tips" class="tipsmsg"></div>
+                        </td>
+                        <td class="">
+                            <input type="checkbox" vl-default="" id="check_khsfzyjzm" vtitle='客户身份证原件正面' class="form-item text-left" vl-tipsid="check_khsfzyjzm_tips"
+                                   style="width: 60px;" title="check_khsfzyjzm">
+                            <div id="check_khsfzyjzm_tips" class="tipsmsg"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="">
+                            <label vl-default="" id="label_jbrsfzyjfm" vtitle='经办人身份证原件反面' class="form-item text-left on" vl-tipsid="label_jbrsfzyjfm_tips"
+                                   title="label_jbrsfzyjfm">经办人身份证原件反面</label>
+                            <div id="label_jbrsfzyjfm_tips" class="tipsmsg"></div>
+                        </td>
+                        <td class="">
+                            <input type="checkbox" vl-default="" id="check_jbrsfzyjfm" vtitle='经办人身份证原件反面' class="form-item text-left on" vl-tipsid="check_jbrsfzyjfm_tips"
+                                   style="width: 60px;" title="check_jbrsfzyjfm">
+                            <div id="check_jbrsfzyjfm_tips" class="tipsmsg"></div>
+                        </td>
+                        <td class="">
+                            <label vl-default="" id="label_khsfzyjfm" vtitle='客户身份证原件反面' class="form-item text-left" vl-tipsid="label_khsfzyjfm_tips"
+                                   title="label_khsfzyjfm">客户身份证原件反面</label>
+                            <div id="label_khsfzyjfm_tips" class="tipsmsg"></div>
+                        </td>
+                        <td class="">
+                            <input type="checkbox" vl-default="" id="check_khsfzyjfm" vtitle='客户身份证原件反面' class="form-item text-left" vl-tipsid="check_khsfzyjfm_tips"
+                                   style="width: 60px;" title="check_khsfzyjfm">
+                            <div id="check_khsfzyjfm_tips" class="tipsmsg"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="">
+                            <label vl-default="" id="label_jbrsfhcjg" vtitle='经办人身份核查结果' class="form-item text-left on" vl-tipsid="label_jbrsfhcjg_tips"
+                                   title="label_jbrsfhcjg">经办人身份核查结果</label>
+                            <div id="label_jbrsfhcjg_tips" class="tipsmsg"></div>
+                        </td>
+                        <td class="">
+                            <input type="checkbox" vl-default="" id="check_jbrsfhcjg" vtitle='经办人身份核查结果' class="form-item text-left on" vl-tipsid="check_jbrsfhcjg_tips"
+                                   style="width: 60px;" title="check_jbrsfhcjg">
+                            <div id="check_jbrsfhcjg_tips" class="tipsmsg"></div>
+                        </td>
+                        <td class="">
+                            <label vl-default="" id="label_khsfhcjg" vtitle='客户身份核查结果' class="form-item text-left" vl-tipsid="label_khsfhcjg_tips"
+                                   title="label_khsfhcjg">客户身份核查结果</label>
+                            <div id="label_khsfhcjg_tips" class="tipsmsg"></div>
+                        </td>
+                        <td class="">
+                            <input type="checkbox" vl-default="" id="check_khsfhcjg" vtitle='客户身份核查结果' class="form-item text-left" vl-tipsid="check_khsfhcjg_tips"
+                                   style="width: 60px;" title="check_khsfhcjg">
+                            <div id="check_khsfhcjg_tips" class="tipsmsg"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="">
+                            <label vl-default="" id="label_jypz" vtitle='交易凭证' class="form-item text-left" vl-tipsid="label_jypz_tips" title="label_jypz">交易凭证</label>
+                            <div id="label_jypz_tips" class="tipsmsg"></div>
+                        </td>
+                        <td class="">
+                            <input type="checkbox" vl-default="" id="check_jypz" vtitle='交易凭证' class="form-item text-left" vl-tipsid="check_jypz_tips"
+                                   style="width: 60px;" title="check_jypz">
+                            <div id="check_jypz_tips" class="tipsmsg"></div>
+                        </td>
+                        <td class="">
+                            <label vl-default="" id="label_khzmwj" vtitle='开户证明文件' class="form-item text-left on" vl-tipsid="label_khzmwj_tips"
+                                   title="label_khzmwj">开户证明文件</label>
+                            <div id="label_khzmwj_tips" class="tipsmsg"></div>
+                        </td>
+                        <td class="">
+                            <input type="checkbox" vl-default="" id="check_khzmwj" vtitle='开户证明文件' class="form-item text-left" vl-tipsid="check_khzmwj_tips"
+                                   style="width: 60px;" title="check_khzmwj">
+                            <div id="check_khzmwj_tips" class="tipsmsg"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="">
+                            <label vl-default="" id="label_dwfzrzm" vtitle='单位负责人及经办人身份证原件正面' class="form-item text-left" vl-tipsid="label_dwfzrzm_tips"
+                                   title="label_dwfzrzm">单位负责人及经办人身份证原件正面</label>
+                            <div id="label_dwfzrzm_tips" class="tipsmsg"></div>
+                        </td>
+                        <td class="">
+                            <input type="checkbox" vl-default="" id="check_dwfzrzm" vtitle='单位负责人及经办人身份证原件正面' class="form-item text-left" vl-tipsid="check_dwfzrzm_tips"
+                                   style="width: 60px;" title="check_dwfzrzm">
+                            <div id="check_dwfzrzm_tips" class="tipsmsg"></div>
+                        </td>
+                        <td class="">
+                            <label vl-default="" id="label_khsqs2" vtitle='开户申请书' class="form-item text-left" vl-tipsid="label_khsqs2_tips" title="label_khsqs2">开户申请书</label>
+                            <div id="label_khsqs2_tips" class="tipsmsg"></div>
+                        </td>
+                        <td class="">
+                            <input type="checkbox" vl-default="" id="check_khsqs2" vtitle='开户申请书' class="form-item text-left" vl-tipsid="check_khsqs2_tips"
+                                   style="width: 60px;" title="check_khsqs2">
+                            <div id="check_khsqs2_tips" class="tipsmsg"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="">
+                            <label vl-default="" id="label_dwfzrfm" vtitle='单位负责人及经办人身份证原件反面' class="form-item text-left" vl-tipsid="label_dwfzrfm_tips"
+                                   title="label_dwfzrfm">单位负责人及经办人身份证原件反面</label>
+                            <div id="label_dwfzrfm_tips" class="tipsmsg"></div>
+                        </td>
+                        <td class="">
+                            <input type="checkbox" vl-default="" id="check_dwfzrfm" vtitle='单位负责人及经办人身份证原件反面' class="form-item text-left" vl-tipsid="check_dwfzrfm_tips"
+                                   style="width: 60px;" title="check_dwfzrfm">
+                            <div id="check_dwfzrfm_tips" class="tipsmsg"></div>
+                        </td>
+                        <td class="">
+                            <label vl-default="" id="label_xjzpzm" vtitle='现金支票正面' class="form-item text-left on" vl-tipsid="label_xjzpzm_tips"
+                                   title="label_xjzpzm">现金支票正面</label>
+                            <div id="label_xjzpzm_tips" class="tipsmsg"></div>
+                        </td>
+                        <td class="">
+                            <input type="checkbox" vl-default="" id="check_xjzpzm" vtitle='现金支票正面' class="form-item text-left" vl-tipsid="check_xjzpzm_tips"
+                                   style="width: 60px;" title="check_xjzpzm">
+                            <div id="check_xjzpzm_tips" class="tipsmsg"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="">
+                            <label vl-default="" id="label_dwfzrhc" vtitle='单位负责人及经办人身份核查结果' class="form-item text-left on" vl-tipsid="label_dwfzrhc_tips"
+                                   title="label_dwfzrhc">单位负责人及经办人身份核查结果</label>
+                            <div id="label_dwfzrhc_tips" class="tipsmsg"></div>
+                        </td>
+                        <td class="">
+                            <input type="checkbox" vl-default="" id="check_dwfzrhc" vtitle='单位负责人及经办人身份核查结果' class="form-item text-left" vl-tipsid="check_dwfzrhc_tips"
+                                   style="width: 60px;" title="check_dwfzrhc">
+                            <div id="check_dwfzrhc_tips" class="tipsmsg"></div>
+                        </td>
+                        <td class="">
+                            <label vl-default="" id="label_xjzpfm" vtitle='现金支票反面' class="form-item text-left on" vl-tipsid="label_xjzpfm_tips"
+                                   title="label_xjzpfm">现金支票反面</label>
+                            <div id="label_xjzpfm_tips" class="tipsmsg"></div>
+                        </td>
+                        <td class="">
+                            <input type="checkbox" vl-default="" id="check_zjzpfm" vtitle='现金支票反面' class="form-item text-left" vl-tipsid="check_zjzpfm_tips"
+                                   style="width: 60px;" title="check_zjzpfm">
+                            <div id="check_zjzpfm_tips" class="tipsmsg"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="">
+                            <label vl-default="" id="label_dwsqd" vtitle='代发申请单' class="form-item text-left" vl-tipsid="label_dwsqd_tips" title="label_dwsqd">代发申请单</label>
+                            <div id="label_dwsqd_tips" class="tipsmsg"></div>
+                        </td>
+                        <td class="">
+                            <input type="checkbox" vl-default="" id="check_dfsqd" vtitle='代发申请单' class="form-item text-left" vl-tipsid="check_dfsqd_tips"
+                                   style="width: 60px;" title="check_dfsqd">
+                            <div id="check_dfsqd_tips" class="tipsmsg"></div>
+                        </td>
+                        <td class="">
+                            <label vl-default="" id="label_zzzpzm" vtitle='转账支票正面' class="form-item text-left" vl-tipsid="label_zzzpzm_tips" title="label_zzzpzm">转账支票正面</label>
+                            <div id="label_zzzpzm_tips" class="tipsmsg"></div>
+                        </td>
+                        <td class="">
+                            <input type="checkbox" vl-default="" id="check_zzzpzm" vtitle='转账支票正面' class="form-item text-left" vl-tipsid="check_zzzpzm_tips"
+                                   style="width: 60px;" title="check_zzzpzm">
+                            <div id="check_zzzpzm_tips" class="tipsmsg"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="">
+                            <label vl-default="" id="label_wsnxscz" vtitle='外省农信社存折' class="form-item text-left" vl-tipsid="label_wsnxscz_tips"
+                                   title="label_wsnxscz">外省农信社存折</label>
+                            <div id="label_wsnxscz_tips" class="tipsmsg"></div>
+                        </td>
+                        <td class="">
+                            <input type="checkbox" vl-default="" id="check_wsnxscz" vtitle='外省农信社存折' class="form-item text-left" vl-tipsid="check_wsnxscz_tips"
+                                   style="width: 60px;" title="check_wsnxscz">
+                            <div id="check_wsnxscz_tips" class="tipsmsg"></div>
+                        </td>
+                        <td class="">
+                            <label vl-default="" id="label_zzzpfm" vtitle='转账支票反面' class="form-item text-left" vl-tipsid="label_zzzpfm_tips" title="label_zzzpfm">转账支票反面</label>
+                            <div id="label_zzzpfm_tips" class="tipsmsg"></div>
+                        </td>
+                        <td class="">
+                            <input type="checkbox" vl-default="" id="check_zzzpfm" vtitle='转账支票反面' class="form-item text-left" vl-tipsid="check_zzzpfm_tips"
+                                   style="width: 60px;" title="check_zzzpfm">
+                            <div id="check_zzzpfm_tips" class="tipsmsg"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="">
+                            <label vl-default="" id="label_jsywsqs" vtitle='结算业务申请书' class="form-item text-left" vl-tipsid="label_jsywsqs_tips"
+                                   title="label_jsywsqs">结算业务申请书</label>
+                            <div id="label_jsywsqs_tips" class="tipsmsg"></div>
+                        </td>
+                        <td class="">
+                            <input type="checkbox" vl-default="" id="check_jsywsqs" vtitle='结算业务申请书' class="form-item text-left" vl-tipsid="check_jsywsqs_tips"
+                                   style="width: 60px;" title="check_jsywsqs">
+                            <div id="check_jsywsqs_tips" class="tipsmsg"></div>
+                        </td>
+                        <td class="">
+                            <label vl-default="" id="label_jyjm" vtitle='交易界面' class="form-item text-left" vl-tipsid="label_jyjm_tips" title="label_jyjm">交易界面</label>
+                            <div id="label_jyjm_tips" class="tipsmsg"></div>
+                        </td>
+                        <td class="">
+                            <input type="checkbox" vl-default="" id="check_jyjm" vtitle='交易界面' class="form-item text-left" vl-tipsid="check_jyjm_tips"
+                                   style="width: 60px;">
+                            <div id="check_jyjm_tips" class="tipsmsg"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="">
+                            <label vl-default="" id="label_grywpt" vtitle='个人业务凭条' class="form-item text-left" vl-tipsid="label_grywpt_tips" title="label_grywpt">个人业务凭条</label>
+                            <div id="label_grywpt_tips" class="tipsmsg"></div>
+                        </td>
+                        <td class="">
+                            <input type="checkbox" vl-default="" id="check_grywpt" vtitle='个人业务凭条' class="form-item text-left" vl-tipsid="check_grywpt_tips"
+                                   style="width: 60px;">
+                            <div id="check_grywpt_tips" class="tipsmsg"></div>
+                        </td>
+
+                        <td class="">
+                            <label vl-default="" id="label_jds" vtitle='决定书' class="form-item text-left" vl-tipsid="label_jds_tips" title="label_jds">决定书</label>
+                            <div id="label_jds_tips" class="tipsmsg"></div>
+                        </td>
+                        <td class="">
+                            <input type="checkbox" vl-default="" id="check_jds" vtitle='决定书' class="form-item text-left" vl-tipsid="check_jds_tips"
+                                   style="width: 60px;">
+                            <div id="check_jds_tips" class="tipsmsg"></div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="">
+                            <label vl-default="" id="label_brjdlrsfzyjzm" vtitle='本人及代理人身份证原件正面' class="form-item text-left" vl-tipsid="label_brjdlrsfzyjzm_tips" title="label_brjdlrsfzyjzm">本人及代理人身份证原件正面</label>
+                            <div id="label_brjdlrsfzyjzm_tips" class="tipsmsg"></div>
+                        </td>
+                        <td class="">
+                            <input type="checkbox" vl-default="" id="check_brjdlrsfzyjzm" vtitle='本人及代理人身份证原件正面' class="form-item text-left" vl-tipsid="check_brjdlrsfzyjzm_tips"
+                                   style="width: 60px;">
+                            <div id="check_brjdlrsfzyjzm_tips" class="tipsmsg"></div>
+                        </td>
+
+                        <td class="">
+                            <label vl-default="" id="label_brjdlrsfzyjfm" vtitle='本人及代理人身份证原件反面' class="form-item text-left" vl-tipsid="label_brjdlrsfzyjfm_tips" title="label_brjdlrsfzyjfm">本人及代理人身份证原件反面</label>
+                            <div id="label_brjdlrsfzyjfm_tips" class="tipsmsg"></div>
+                        </td>
+                        <td class="">
+                            <input type="checkbox" vl-default="" id="check_brjdlrsfzyjfm" vtitle='本人及代理人身份证原件反面' class="form-item text-left" vl-tipsid="check_brjdlrsfzyjfm"
+                                   style="width: 60px;">
+                            <div id="check_brjdlrsfzyjfm_tips" class="tipsmsg"></div>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <td class="">
+                            <label vl-default="" id="label_brjdlrsfhcjg" vtitle='本人及代理人身份核查结果' class="form-item text-left" vl-tipsid="label_brjdlrsfhcjg_tips" title="label_brjdlrsfhcjg">本人及代理人身份核查结果</label>
+                            <div id="label_brjdlrsfhcjg_tips" class="tipsmsg"></div>
+                        </td>
+                        <td class="">
+                            <input type="checkbox" vl-default="" id="check_brjdlrsfhcjg" vtitle='本人及代理人身份核查结果' class="form-item text-left" vl-tipsid="check_brjdlrsfhcjg_tips"
+                                   style="width: 60px;">
+                            <div id="check_brjdlrsfhcjg_tips" class="tipsmsg"></div>
+                        </td>
+
+                        <td class="">
+                            <label vl-default="" id="label_dlrblxgzm" vtitle='代理人办理相关证明' class="form-item text-left" vl-tipsid="label_dlrblxgzm_tips" title="label_dlrblxgzm">代理人办理相关证明</label>
+                            <div id="label_dlrblxgzm_tips" class="tipsmsg"></div>
+                        </td>
+                        <td class="">
+                            <input type="checkbox" vl-default="" id="check_dlrblxgzm" vtitle='代理人办理相关证明' class="form-item text-left" vl-tipsid="check_dlrblxgzm"
+                                   style="width: 60px;">
+                            <div id="check_dlrblxgzm_tips" class="tipsmsg"></div>
+                        </td>
+                    </tr>
+
+
+                    <tr>
+                        <td class="">
+                            <label vl-default="" id="label_xhsqs" vtitle='销户申请书' class="form-item text-left" vl-tipsid="label_xhsqs_tips" title="label_xhsqs">销户申请书</label>
+                            <div id="label_brjdlrsfhcjg_tips" class="tipsmsg"></div>
+                        </td>
+                        <td class="">
+                            <input type="checkbox" vl-default="" id="check_xhsqs" vtitle='销户申请书' class="form-item text-left" vl-tipsid="check_xhsqs_tips"
+                                   style="width: 60px;">
+                            <div id="check_xhsqs_tips" class="tipsmsg"></div>
+                        </td>
+
+                        <td class="">
+                            <label vl-default="" id="label_dwgzdhzqc" vtitle='单位盖章的汇总清册' class="form-item text-left" vl-tipsid="label_dwgzdhzqc_tips" title="label_dwgzdhzqc">单位盖章的汇总清册</label>
+                            <div id="label_dwgzdhzqc_tips" class="tipsmsg"></div>
+                        </td>
+                        <td class="">
+                            <input type="checkbox" vl-default="" id="check_dwgzdhzqc" vtitle='单位盖章的汇总清册' class="form-item text-left" vl-tipsid="check_dwgzdhzqc_tips"
+                                   style="width: 60px;">
+                            <div id="check_dwgzdhzqc_tips" class="tipsmsg"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="">
+                            <label vl-default="" id="label_zcjzjxkjzn" vtitle='转出介质及新开介质' class="form-item text-left" vl-tipsid="label_zcjzjxkjzn_tips" title="label_zcjzjxkjzn">转出介质及新开介质</label>
+                            <div id="label_zcjzjxkjzn_tips" class="tipsmsg"></div>
+                        </td>
+                        <td class="">
+                            <input type="checkbox" vl-default="" id="check_zcjzjxkjzn" vtitle='转出介质及新开介质' class="form-item text-left" vl-tipsid="check_zcjzjxkjzn_tips"
+                                   style="width: 60px;">
+                            <div id="check_zcjzjxkjzn_tips" class="tipsmsg"></div>
+                        </td>
+
+                    </tr>
+                    <tr>
+                        <td class="">
+                            <label vl-default="" id="label_zzzpzmjjypz" vtitle='转账支票正面（或交易凭证）及交易凭证' class="form-item text-left" vl-tipsid="label_zzzpzmjjypz_tips" title="label_zzzpzmjjypz">转账支票正面（或交易凭证）及交易凭证</label>
+                            <div id="label_zzzpzmjjypz_tips" class="tipsmsg"></div>
+                        </td>
+                        <td class="">
+                            <input type="checkbox" vl-default="" id="check_zzzpzmjjypz" vtitle='转账支票正面（或交易凭证）及交易凭证' class="form-item text-left" vl-tipsid="check_zzzpzmjjypz_tips"
+                                   style="width: 60px;">
+                            <div id="check_zzzpzmjjypz_tips" class="tipsmsg"></div>
+                        </td>
+
+                    </tr>
+                </tbody>
+			</table>
+		</div>
+		<div class="foot "> <span>                                        <button>退出（F3）</button>                                        <button>帮助（F1）</button>                                        <button>辅助（F4）</button>                                        <button type="button" onclick="FormReset()">重置（F5）</button></span>			<span style="float: right;">                                        <button type="button" style="margin-right: 0px;" vl-submit="true" id="btnsubmit" onclick="addMoreDefaultValue()">提交</button></span>			</div>
+		<input type="hidden" class="hidmainwidth" value="1000/" oncopy="return false" onpaste="return false" oncut="return false"> </div>
+
+            <script src="~/Js/Admin/CaseManagement/EditEmpower.js"></script>
+<script type="text/javascript">
+        $(function () {
+            //if (window.opener == null) {
+            //    layer.alert("请勾选允许弹窗后再打开此页面", function () {
+            //        window.close();
+            //    });
+            //}
+            //jt(); 
+        }); 
+        function jt() {
+            interval = setInterval("handel()", 100);
+        }
+        function handel() {
+            catchSuccess(function () {
+                var is_print = getQueryString("is_print");
+                if (is_print == "true") {
+                    //调用父窗口函数
+                    window.opener.authCloseCall("print");
+                } else {
+                    window.opener.authCloseCall("submit");
+                }
+                window.close();
+
+            });
+        }
+
+    </script>
+<link href="~/Js/Student/GetDefaultValue/js/common.bank.css" rel="stylesheet" />
+<style type="text/css">
+        .bankmap {
+            background-color: #4a6e9e;
+            margin: auto;
+            width: 950px;
+            min-width: 550px;
+        }
+
+        .foot {
+            width: 930px !important;
+            margin: auto;
+        }
+    </style>
+              </form>

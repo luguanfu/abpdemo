@@ -1,0 +1,485 @@
+﻿@{
+                    ViewBag.Title = "Form_080707";
+                    Layout = "~/Views/Shared/_AdminLayoutIsNull.cshtml";
+                }
+               <script src="~/Js/Admin/AdminForm.js"></script>
+               <script src="~/Js/Admin/CaseManagement/AddDefaultValue.js"></script>
+               <form id="form1" onsubmit="return false" action="##" method="post">
+                   <input type="hidden" id="TaskId" name="TaskId" value="@Request["TaskId"]" />
+                   <input type="hidden" id="CustomerId" name="CustomerId" value="@Request["CustomerId"]" />
+                   <input type="hidden" id="FormId" name="FormId" value="@Request["FormId"]" />
+                   <input type="hidden" id="Types" name="Types" value="@Request["Types"]" />
+                   <!--内容表单区域开始-->
+                   <div class="tables bankmap">
+                       <div class="banktop"> <span class="toolbar-title-img">                                        <img src="../busi/img/topleft.png">04414-柜员现金卡把</span> <span class="toolbar-title-close" style="display: none;">                                       </span>            </div>
+                       <div class="con-map2 selected">
+                           <table id="qv" class="con-map2-table qv">
+                               <tbody>
+                                   <tr>
+                                       <td class="" style="width: 64px;">
+                                           <label vl-default="" id="label_dqrq" vtitle="当前日期" class="form-item text-left" vl-tipsid="label_dqrq_tips" title="label_dqrq" name="label_dqrq">当前日期</label>
+                                           <div id="label_dqrq_tips" class="tipsmsg"></div>
+                                       </td>
+                                       <td class="">
+                                           <input type="text" class="date form-item text-left" vl-default="20170630" id="date_dqrq" vtitle="当前日期" vl-tipsid="date_dqrq_tips" vl-regex="['maxlength8', 'tdate', 'number']" vl-message="['','请输入正确的轧账日期（如：19000101）！','']" style="width: 180px;" title="date_dqrq" oncopy="return false" onpaste="return false" oncut="return false" name="date_dqrq"><img onclick="WdatePicker({el:'date_dqrq',dateFmt:'yyyyMMdd'})" src="/js/My97DatePicker/skin/datePicker.gif" align="absmiddle" style="width:16px;height:22px;margin-left:6px;">
+                                           <div id="date_dqrq_tips" class="tipsmsg"></div>
+                                       </td>
+                                       <td class="" style="width: 32px;">
+                                           <label vl-default="" id="label_bz" vtitle="币ii种" class="form-item text-left" vl-tipsid="label_bz_tips" title="label_bz" name="label_bz">币<i></i><i></i>种</label>
+                                           <div id="label_bz_tips" class="tipsmsg"></div>
+                                       </td>
+                                       <td class="">
+                                           <div class="slectstyle">
+                                               <select vl-default="CNY" id="sle_bz" vtitle="币种" class="form-item text-left" vl-disabled="true" vl-tipsid="sle_bz_tips" style="width: 180px;" title="sle_bz" vl-slemodel="" disabled="disabled" name="sle_bz">
+                                                   <option disabled="" style="background-color: blue; color: #fff;" value="">币种值含义</option>
+                                                   <option value="CNY">CNY - 人民币</option>
+                                               </select><input type="text" oncopy="return false" onpaste="return false" oncut="return false" disabled="disabled" style="width: 157px;" id="mb1_sleinput_BiZhong_4" name="mb1_sleinput_BiZhong_4">
+                                           </div>
+                                           <div id="sle_bz_tips" class="tipsmsg"></div>
+                                       </td>
+                                   </tr>
+                                   <tr>
+                                       <td rowspan="1" colspan="1" class="" style="width: 64px;">
+                                           <label vl-default="" id="label_jygy" vtitle="交易柜员" class="form-item text-left" vl-tipsid="label_jygy_tips" title="label_jygy" name="label_jygy">交易柜员</label>
+                                           <div id="label_jygy_tips" class="tipsmsg"></div>
+                                       </td>
+                                       <td rowspan="1" colspan="1" class="">
+                                           <div class="slectstyle">
+                                               <select vl-default="" id="sle_jygy" vtitle="交易柜员" class="form-item text-left" vl-disabled="true" vl-tipsid="sle_jygy_tips" style="width: 200px;" title="sle_jygy" vl-slemodel="" disabled="disabled" name="sle_jygy">
+                                                   <option disabled="" style="background-color: blue; color: #fff;" value="" selected="selected">交易柜员值含义</option>
+                                                   <option value="12726">12726 - 张三</option>
+                                                   <option value="12727">12727 - 张培萌</option>
+                                                   <option value="12728">12728 - 赵小熙</option>
+                                                   <option value="12729">12729 - 孙茜茜</option>
+                                                   <option value="143276">143276 - 凌洪业</option>
+                                                   <option value="624681">624681 - 范标睿</option>
+                                                   <option value="115791">115791 - 盛庚盼</option>
+                                                   <option value="315492">315492 - 周熊界</option>
+                                                   <option value="550038">550038 - 孟天怡</option>
+                                                   <option value="800169">800169 - 周华菘</option>
+                                                   <option value="111654">111654 - 元当娜</option>
+                                                   <option value="200468">200468 - 任悦远</option>
+                                                   <option value="503480">503480 - 石艺宜</option>
+                                                   <option value="776038">776038 - 巫碧晶</option>
+                                                   <option value="671008">671008 - 张杜珍</option>
+                                                   <option value="160544">160544 - 丁素晶</option>
+                                                   <option value="605497">605497 - 武信雪</option>
+                                               </select><input type="text" oncopy="return false" onpaste="return false" oncut="return false" disabled="disabled" style="width: 177px;" id="mb1_sleinput_JiaoYiGuiYuan_6" name="mb1_sleinput_JiaoYiGuiYuan_6">
+                                           </div>
+                                           <div id="sle_jygy_tips" class="tipsmsg"></div>
+                                       </td>
+                                       <td rowspan="1" colspan="1" class="" style="width: 32px;">
+                                           <label vl-default="" id="label_dqye" vtitle="当前余额" class="form-item text-left" vl-tipsid="label_dqye_tips" title="label_dqye" name="label_dqye">当前余额</label>
+                                           <div id="label_dqye_tips" class="tipsmsg"></div>
+                                       </td>
+                                       <td rowspan="1" colspan="1" class="">
+                                           <div class="moneystyle"><input type="text" oncopy="return false" onpaste="return false" oncut="return false" vl-type="money" vl-default="" id="money_dqye" vtitle="当前余额" class="form-item text-left money" vl-disabled="true" vl-tipsid="money_dqye_tips" style="width: 180px;" disabled="disabled" name="money_dqye"><img class="sousuo hide" src="/Js/Student/GetDefaultValue/img/banksousuo.png" vl-select="money_dqye|0|0" vl-exec="true" vl-message="['当前余额查询未执行！']" title="执行快查！"><label class="moneytips hide green">人民币CNY￥<span class="num">0.00</span><span class="cn">零元整</span></label></div>
+                                           <div id="money_dqye_tips" class="tipsmsg"></div>
+                                       </td>
+                                   </tr>
+                               </tbody>
+                           </table>
+                           <div>
+                               <div class="chaxun_map">
+                                   <div class="shoufei_ico">
+                                       <label id="add_xjzb"><img src="/busi/img/shoufei1.png"></label>
+                                       <!-- <label><img src="/Image/shoufei2.png" /></label>
+                        <label><img src="/Image/shoufei3.png" /></label>
+                        <label><img src="/Image/shoufei4.png" /></label> -->
+                                       <label id="delete_xjzb"><img src="/busi/img/shoufei5.png"></label>
+                                       <!-- <label><img src="/Image/shoufei6.png" /></label>
+                        <label><img src="/Image/shoufei7.png" /></label>
+                        <input class="/Image/sousuo" type="text" name="" id="" value="" />
+                        <label><img src="/Image/shoufei8.png" /></label>
+                        <label style="border: none;"><img src="/Image/shoufei9.png" /></label> -->
+                                   </div>
+                                   <div class="sq_table">
+                                       <table border="0" cellspacing="0" cellpadding="0" id="common_table">
+                                           <tbody>
+                                               <tr class="head">
+                                                   <th>序号</th>
+                                                   <th>券别</th>
+                                                   <th>张</th>
+                                                   <th>金额</th>
+                                                   <th></th>
+                                               </tr>
+                                           </tbody>
+                                       </table>
+
+                                   </div>
+                                   <ul class="table-foot">
+                                       <li>合计张：</li>
+                                       <li class="sum_zhang">0</li>
+                                       <li>合计金额：</li>
+                                       <li class="sum_jine">0.00</li>
+                                   </ul>
+                               </div>
+                           </div>
+                       </div>
+                       <div class="foot "> <span>                                        <button>退出（F3）</button>                                        <button>帮助（F1）</button>                                        <button>辅助（F4）</button>                                        <button type="button" onclick="FormReset()">重置（F5）</button></span>            <span style="float: right;">                                        <button type="button" style="margin-right: 0px;" vl-submit="true" id="btnsubmit" onclick="SubmitForm()">提交</button></span> </div>
+                       <input type="hidden" class="hidmainwidth" value="1000/" oncopy="return false" onpaste="return false" oncut="return false">
+                   </div>
+
+                   <input type="hidden" vtitle="类别" class="form-item" id="mon_ey_lb" name="mon_ey_lb" />
+                   <input type="hidden" vtitle="张" class="form-item" id="money_z" name="money_z" />
+                   <input type="hidden" vtitle="金额" class="form-item" id="money_je" name="money_je" />
+                   <script type="text/javascript">
+                       $(function () {
+                           var myDate = new Date();
+                           var year = myDate.getFullYear().toString();
+                           var month = (myDate.getMonth() + 1).toString();
+                           if (parseInt(month) < 10) {
+                               month = "0" + month;
+                           }
+                           var day = myDate.getDate();
+                           if (parseInt(day) < 10) {
+                               day = "0" + day;
+                           }
+                           var dateTimeNow = year + month + day;
+                           $("#date_dqrq").val(dateTimeNow);
+                       })
+                   </script>
+                   <script src="~/Js/Student/GetDefaultValue/js/employeeFinished.js"></script>
+                   <script type="text/javascript">
+                       $(function () {
+                           var myDate = new Date();
+                           var year = myDate.getFullYear().toString();
+                           var month = (myDate.getMonth() + 1).toString();
+                           if (parseInt(month) < 10) {
+                               month = "0" + month;
+                           }
+                           var day = myDate.getDate();
+                           if (parseInt(day) < 10) {
+                               day = "0" + day;
+                           }
+                           var dateTimeNow = year + month + day;
+                           $("#date_dqrq").val(dateTimeNow);
+                           $("#add_xjzb").click(function () {
+                               var l_index = layer.open({
+                                   title: "新增",
+                                   type: 1,
+                                   skin: 'layui-layer-lan', //加上边框
+                                   area: ['420px', '240px'], //宽高
+                                   content: '<div id="win_xjkb"><div id="win_xjkb_case"><ul><li><label>类别：</label><select onchange="lb_change(this)" id="sle_lb_i"><option data-v=\"0\" value="">请选择类别</option><option data-v=\"0.1\" value="0.1_壹角">0.1 - 壹角</option><option data-v=\"0.2\" value="0.2_贰角">0.2 - 贰角</option><option data-v=\"0.5\" value="0.5_伍角">0.5 - 伍角</option><option data-v=\"1\" value="1_壹圆">1 - 壹圆</option><option data-v=\"2\" value="2_贰圆">2 - 贰圆</option><option data-v=\"5\" value="5_伍圆">5 - 伍圆</option><option data-v=\"10\" value="10_壹拾圆">10 - 壹拾圆</option><option data-v=\"20\" value="20_贰拾圆">20 - 贰拾圆</option><option data-v=\"50\" value="50_伍拾圆">50 - 伍拾圆</option><option data-v=\"100\" value="100_壹佰圆">100 - 壹佰圆</option><option data-v=\"0\" value="A_零币">A - 零币</option><option data-v=\"0\" value="B_硬币">B - 硬币</option><option data-v=\"0\" value="C_残损币">C - 残损币</option> </select></li><li><label>张：</label><input type="text" id="money_z_i" onchange=\"calc_money()\" /></li><li><label>金额：</label><input type="text" id="money_je_i" /></li></ul></div></div>',
+                                   btn: ['保存', '退出'],
+                                   yes: function () {
+                                       var sle_lb_i = $("#sle_lb_i option:selected").attr("value");
+                                       var sle_lb_i_text = $("#sle_lb_i option:selected").text();
+                                       var money_z_i = $("#money_z_i").val();
+                                       var money_je_i = parseFloat($("#money_je_i").val()).toFixed(2);
+                                       if (sle_lb_i == "" || sle_lb_i == null) {
+                                           layer.msg("请选择类别");
+                                           return;
+                                       }
+                                       if (money_z_i == "" || money_z_i == null) {
+                                           layer.msg("请输入张数");
+                                           return;
+                                       }
+
+                                       if ($("#money_je_i").val() == "" || $("#money_je_i").val() == null) {
+                                           layer.msg("请输入金额");
+                                           return;
+                                       }
+                                       if (check_lb(sle_lb_i)) {
+                                           layer.msg(sle_lb_i + "已经添加");
+                                           return;
+                                       }
+                                       var html = "<tr>";
+                                       html += "<td><span class=\"xh\"></span></td>";
+                                       html += "<td><span data-value=\"" + sle_lb_i + "\">" + sle_lb_i_text + "</span></td>";
+                                       html += "<td><span class=\"zhang\">" + money_z_i + "</span></td>";
+                                       html += "<td><span class=\"jine\">" + money_je_i + "</span></td>";
+                                       html += "<td><input type=\"checkbox\" name=\"del_checkbox\"/></td>";
+                                       html += "</tr>";
+                                       $("#common_table").append(html);
+                                       join_tr();
+                                       create_xh();
+                                       calc();
+                                       layer.closeAll();
+                                   }
+                               });
+                           });
+
+                           $("#delete_xjzb").click(function () {
+                               var checkboxs = $("input[name=del_checkbox]:checked");
+                               for (var i = 0; i < checkboxs.length; i++) {
+                                   var tr = $(checkboxs[i]).parent().parent();
+                                   tr.remove();
+                               }
+                               join_tr();
+                               create_xh();
+                               calc();
+                           });
+                       });
+
+                       var lb_change = function (obj) {
+                           var val = $(obj).val();
+                           if (val == "A_零币" || val == "B_硬币" || val == "C_残损币") {
+                               $("#money_z_i").attr("disabled", "disabled");
+                               $("#money_z_i").val("0");
+                           } else {
+                               $("#money_z_i").removeAttr("disabled");
+                           }
+                           calc_money();
+                       }
+
+                       var join_tr = function () {
+                           var lb_str = "";
+                           var z_str = "";
+                           var je_str = "";
+
+                           var trs = $("#common_table").find("tr");
+                           for (var i = 0; i < trs.length; i++) {
+                               if ($(trs[i]).hasClass("head")) {
+                                   continue;
+                               }
+                               var tds = $(trs[i]).find("td");
+                               lb_str += "/" + $(tds[1]).find("span").attr("data-value");
+                               z_str += "/" + $(tds[2]).text();
+                               je_str += "/" + $(tds[3]).text();
+                           }
+                           lb_str = lb_str.substring(1);
+                           z_str = z_str.substring(1);
+                           je_str = je_str.substring(1);
+
+                           $("#mon_ey_lb").val(lb_str);
+                           $("#money_z").val(z_str);
+                           $("#money_je").val(je_str);
+                       }
+
+                       var create_xh = function () {
+                           var trs = $("#common_table tr").not(".head");
+                           for (var i = 0; i < trs.length; i++) {
+                               $(trs[i]).find(".xh").text(i + 1);
+                           }
+                       }
+
+                       var calc = function () {
+                           var trs = $("#common_table tr").not(".head");
+                           var sum_zhang = 0;
+                           var sum_jine = 0;
+                           for (var i = 0; i < trs.length; i++) {
+                               var zhang = parseInt($(trs[i]).find(".zhang").text());
+                               var jine = parseFloat($(trs[i]).find(".jine").text());
+                               sum_zhang += zhang;
+                               sum_jine += jine;
+                           }
+                           $(".sum_zhang").text(sum_zhang);
+                           $(".sum_jine").text(sum_jine.toFixed(2));
+                       }
+
+                       var calc_money = function () {
+                           var zhang = parseInt($("#money_z_i").val());
+                           var lb_v = parseFloat($("#sle_lb_i option:checked").attr("data-v"));
+                           if (isNaN(zhang) || isNaN(lb_v)) {
+                               return;
+                           }
+                           $("#money_je_i").val((zhang * lb_v).toFixed(2));
+                       }
+
+                       var check_lb = function (lb) {
+                           var trs = $("#common_table tr").not(".head");
+                           var is_added = false;
+                           for (var i = 0; i < trs.length; i++) {
+                               var temp_lb = $($(trs[i]).find("td")[1]).text();
+                               if (lb == temp_lb) {
+                                   is_added = true;
+                                   break;
+                               }
+                           }
+                           return is_added;
+                       }
+
+                       function LoadingSource() {
+
+                           var mon_ey_lb1 = $("#mon_ey_lb").val();
+                           var money_z1 = $("#money_z").val();
+                           var money_je1 = $("#money_je").val();
+                           var zs = 0;
+
+                           if (mon_ey_lb1 != "") {
+                               if (mon_ey_lb1.indexOf("/") > -1) {
+                                   for (var k = 0; k < mon_ey_lb1.split("/").length; k++) {
+
+                                       LoadSource((k + 1), mon_ey_lb1.split("/")[k], money_z1.split("/")[k], money_je1.split("/")[k]);
+                                       zs += parseInt(money_z1.split("/")[k]);
+                                   }
+                               } else {
+
+                                   LoadSource(1, mon_ey_lb1, money_z1, money_je1);
+                                   zs += parseInt(money_z1);
+                               }
+                           }
+                           $(".sum_zhang").text(zs);
+                           $(".sum_jine").text($("#money_dqye").val());
+                       }
+
+                       function LoadSource(index, ey, zl, jel) {
+                           var html = "<tr>";
+                           html += "<td><span class=\"xh\">" + index + "</span></td>";
+                           html += "<td><span data-value=\"" + ey + "\">" + ey + "</span></td>";
+                           html += "<td><span class=\"zhang\">" + zl + "</span></td>";
+                           html += "<td><span class=\"jine\">" + jel + "</span></td>";
+                           html += "<td><input type=\"checkbox\" name=\"del_checkbox\"/></td>";
+                           html += "</tr>";
+                           $("#common_table").append(html);
+                       }
+                   </script>
+                   <script>
+                       $(function () {
+                           $("#sle_jygy").removeAttr("disabled");
+                           $("#mb1_sleinput_JiaoYiGuiYuan_6").removeAttr("disabled");
+                           $("#sle_bz").removeAttr("disabled");
+                           $("#mb1_sleinput_BiZhong_4").removeAttr("disabled");
+                           $("#money_dqye").removeAttr("disabled");
+                           LoadingSource();
+                       })
+
+                   </script>
+
+                   <link href="~/Js/Student/GetDefaultValue/js/common.bank.css" rel="stylesheet" />
+                   <style type="text/css">
+                       .table-foot {
+                           height: 30px;
+                           line-height: 30px;
+                           padding-left: 10px;
+                       }
+
+                           .table-foot li {
+                               float: left;
+                               height: 30px;
+                               width: 100px;
+                           }
+                   </style>
+                   <style type="text/css">
+                       /*授权表格样式*/
+
+                       .sq_table {
+                           min-height: 300px;
+                           border-bottom: 2px solid #8a9294;
+                           margin-right: 3px;
+                           overflow-x: auto;
+                       }
+
+                           .sq_table table {
+                               border: none;
+                               border-spacing: 0px 0px;
+                               white-space: nowrap;
+                               width: auto;
+                           }
+
+                               .sq_table table th {
+                                   color: #ffffff;
+                                   text-align: center;
+                                   padding: 5px 10px;
+                                   background: -webkit-linear-gradient(top, #385a7f, #437fb1);
+                                   background: -o-linear-gradient(top, #385a7f, #437fb1);
+                                   background: -moz-linear-gradient(top, #385a7f, #437fb1);
+                                   background: linear-gradient(to top, #385a7f, #437fb1);
+                                   border-right: 1px solid white;
+                               }
+
+                               .sq_table table tr {
+                                   background-color: #e8ecf5;
+                               }
+
+                                   .sq_table table tr td {
+                                       text-align: center;
+                                       padding: 5px 5px;
+                                       border: 1px solid #263441;
+                                   }
+
+                                   .sq_table table tr:hover {
+                                       background-color: #d0d8e3;
+                                   }
+                       /*表格样式结束*/
+
+                       .chaxun_map {
+                           border: 2px solid #8393a2;
+                       }
+
+                       .shoufei_map {
+                           padding: 15px;
+                           border-radius: 5px;
+                           border: 2px solid #8393a2;
+                       }
+
+                       .heji {
+                           padding: 5px 0px;
+                           color: #747273;
+                           text-indent: 10px;
+                           font-weight: 600;
+                           background-color: #efeeec;
+                           border: 1px solid #8393a2;
+                           margin-top: 5px;
+                       }
+
+                       .shoufei_ico {
+                           background-color: #f0f7ff;
+                           padding: 5px;
+                       }
+
+                           .shoufei_ico label {
+                               margin-right: 15px;
+                               padding-right: 15px;
+                               border-right: 1px solid #ced7d6;
+                           }
+
+                               .shoufei_ico label img {
+                                   cursor: pointer;
+                               }
+
+                       .sousuo {
+                           height: 20px;
+                           width: 60px;
+                           margin-right: 15px;
+                       }
+
+                       .fenye {
+                           text-align: center;
+                           padding: 5px 0px;
+                           background-color: #eff6fe;
+                       }
+
+                       .fenye_bt {
+                           cursor: pointer;
+                           border: 1px solid #b8b7b5;
+                           padding: 5px;
+                           margin-right: 15px;
+                       }
+
+                           .fenye_bt:hover {
+                               background-color: #fefaf9;
+                           }
+
+                       .yema {
+                           border: 1px solid #b8b7b5;
+                           width: 45px;
+                           height: 28px;
+                           margin-right: 15px;
+                           background: none;
+                       }
+
+                       .dayinbtn {
+                           cursor: pointer;
+                           float: right;
+                           margin-right: 5px;
+                       }
+
+                       #win_xjkb_case {
+                           width: 300px;
+                           margin: 10px auto;
+                       }
+
+                           #win_xjkb_case li {
+                               height: 30px;
+                               line-height: 30px;
+                           }
+
+                               #win_xjkb_case li label {
+                                   width: 60px;
+                                   display: inline-block;
+                                   text-align: right;
+                               }
+                   </style>
+               </form>

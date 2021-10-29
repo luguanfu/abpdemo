@@ -1,0 +1,126 @@
+﻿
+<link href="~/CSS/bootstrap-table.min.css" rel="stylesheet" />
+
+<!--电子银行签约管理[登录密码重置]-->
+<table class="table table-hover" id="tbl"></table>
+<div id="DivTabValue" style="display:none;">
+    <div class="divider divider-horizontal"><div class="divider-text is-left"><strong>反显值</strong></div></div>
+<textarea rows="5" id="tb1Value" name="tb1Value" style="width:100%;"></textarea>
+</div>
+<div class="row">
+    <div class="col-md-9">
+        <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 control-label">业务类型</label>
+            <div class="col-sm-9">
+                <button type="button" class="btn btn-default" onclick="goPage('200029')">签约管理</button>
+                <button type="button" class="btn btn-default active" onclick="goPage('200034')">登录密码重置</button>
+                <button type="button" class="btn btn-default" onclick="goPage('200043')">认证方式及限额</button>
+                <button type="button" class="btn btn-default" onclick="goPage('200046')">账户管理</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <label id="lbl_directThawing" name="lbl_directThawing" for="inputEmail3" class="col-sm-3 control-label">直接解冻</label>
+            <div class="col-sm-6" style="padding-right: 5px;">
+                <select vl-default="" id="sle_directThawing" name="sle_directThawing" class="form-control"></select>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <label id="lbl_newPassword" name="lbl_newPassword" for="inputEmail3" class="col-sm-3 control-label">新密码</label>
+            <div class="col-sm-6">
+                <input vl-default="" id="pwd_newPassword" name="pwd_newPassword" type="password" class="form-control input-sm">
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/Scripts/bootstrap-table.min.js"></script>
+
+<script type="text/javascript">
+    setOptions(['directThawing']);
+    $(function () {
+        initTableValue();
+    });
+    function initTableValue() {
+        var defaultValue = $("#TabDefaultValue").val();
+        if (defaultValue != null && defaultValue.length > 0) {
+            fanxian();
+        } else {
+            setTimeout("initTableValue()", 100);
+        }
+    }
+
+    var data = [];
+    function setTableValue(values, id) {
+        var vals = values.split('\n');
+        data = [{
+            'signingChannel': vals[0],
+            'signingStatus': vals[1],
+            'signingVerson': vals[2],
+            'customerStatus': vals[3],
+            'signingDate': vals[4],
+            'signingOrgan': vals[5],
+            'signingPhone': vals[6],
+        }];
+
+        $("#tbl").bootstrapTable('load', data);
+    }
+    $('#tbl').bootstrapTable({
+        data: data,
+        columns: [
+            {
+                title: '序号',
+                align: 'center',
+                formatter: function (value, row, index) {
+                    return index + 1;
+                }
+            },
+            {
+                title: '签约渠道',
+                field: 'signingChannel',
+                align: 'center'
+            },
+            {
+                title: '签约状态',
+                field: 'signingStatus',
+                align: 'center'
+            },
+            {
+                title: '签约版本',
+                field: 'signingVerson',
+                align: 'center',
+            },
+            {
+                title: '客户状态',
+                field: 'customerStatus',
+                align: 'center',
+            },
+            {
+                title: '签约时间',
+                field: 'signingDate',
+                align: 'center'
+            },
+            {
+                title: '签约机构',
+                field: 'signingOrgan',
+                align: 'center'
+            },
+            {
+                title: '签约手机号',
+                field: 'signingPhone',
+                align: 'center'
+            },
+        ]
+    });
+    function doSubmit() {
+        goPage("200011&backform=200034")
+    }
+</script>
+
+
+

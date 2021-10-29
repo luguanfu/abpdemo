@@ -1,0 +1,131 @@
+﻿@{
+    
+    Layout = "~/Views/Shared/_StudentLayout.cshtml";
+    ViewData["nvc"] = "理论学习";
+}
+
+<style type="text/css">
+    .wrapper_map {
+        width: 1200px;
+        margin: auto;
+        padding-bottom: 20px;
+        min-height: 808px;
+    }
+</style>
+<div class="wrapper_map">
+    <div class="m-t-lg">
+        <label class="dangqian">课后练习 </label>
+    </div>
+    <div class="wrapper_training">
+        <div class="search_public">
+            <input type="text" id="E_Name" placeholder="请输入练习名称" />
+            <button type="button" onclick="bindIngfo()" class="search_btn"></button>
+
+        </div>
+        <div class="m-t">
+            <table class="table_public_two">
+                <thead>
+                    <tr>
+                        <th width="330">练习名称</th>
+                        <th width="460">答题时长（min）</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody id="tablelist">
+                </tbody>
+            </table>
+
+            <!--分页开始-->
+            <div class="con_bottom" id="PaginatorLibrary">
+            </div>
+
+            <!--分页结束	-->
+
+        </div>
+    </div>
+
+</div>
+<script type="text/javascript">
+    $(function () {
+        bindIngfo();
+    })
+
+    //列表数据加载
+    function bindIngfo(page) {
+
+        var PageSize = 8;
+
+        $.ajax({
+            url: '/HB_Competition/GetList',
+            Type: "post",
+            dataType: "json", cache: false,
+            contentType: "application/json; charset=utf-8",
+            data: { "page": page, "PageSize": PageSize, "E_Name": $("#E_Name").val() },
+            success: function (tb) {
+
+                var html = '';
+                var data = tb.Tb;//转换table
+                for (var i = 0; i < data.length; i++) {
+                    html += '<tr>';
+                    html += '<td>' + data[i]["E_Name"] + '</td>';
+                    html += '<td>' + data[i]["E_Whenlong"] + '</td>';
+                    html += "<td><button onclick=\"Getinto('" + data[i]["EId"] + "','" + data[i]["E_PId"] + "')\" class=\"btn_look\" type=\"button\">开始练习</button>&nbsp;<button onclick=\"ShwoResult('" + data[i]["EId"] + "','" + data[i]["E_PId"] + "')\" class=\"btn_look\" type=\"button\">上次练习结果</button></td>";
+                    html += '</tr>';
+                }
+
+                $("#tablelist").html(html);
+                bootstrapPaginator("#PaginatorLibrary", tb, bindIngfo);//分页
+            }
+        });
+    }
+
+    //未进行比赛 进入 
+    function Getinto(Eid, Pid) {
+
+        //验证是否存在记载倒计时数据
+        //不存在就新增
+        $.ajax({
+            url: "/HB_Competition/CheckGointo",
+            data: { "Eid": Eid, "Pid": Pid, "Type": "1" },
+            type: 'POST',
+            async: false,
+            dataType: 'json',
+            success: function (data) {
+                if (data == "1") {
+                    window.open('/HB_kaoshi?Eid=' + Eid + '&Pid=' + Pid + '&ALLType=2');
+                }
+                if (data == "77") {
+                    layer.msg('考核时间未到！');
+                }
+                if (data == "99") {
+                    layer.alert('操作失败，请刷新或重新登录再试！', { skin: 'layui-layer-lan' }, function () {
+                        layer.closeAll();//关闭所有弹出框
+                    });
+                }
+            }
+        });
+
+    }
+
+    function ShwoResult(Eid, Pid) {
+
+        //判断是否第一次练习
+        $.ajax({
+            url: "/HB_Competition/SeCount",
+            data: { "Eid": Eid },
+            type: 'POST',
+            async: false,
+            dataType: 'json',
+            success: function (data) {
+                if (data == "1") {
+                    window.open('/HB_ExamPreview?Eid=' + Eid + '&Pid=' + Pid + '&Type=1&ALLType=2');
+                } else {
+                    layer.alert('暂无练习数据！', { skin: 'layui-layer-lan' }, function () {
+                        layer.closeAll();//关闭所有弹出框
+                    });
+                }
+            }
+        });
+
+    }
+</script>

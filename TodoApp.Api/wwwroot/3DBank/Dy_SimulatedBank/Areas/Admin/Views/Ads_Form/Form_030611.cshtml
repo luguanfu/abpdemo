@@ -1,0 +1,86 @@
+﻿@{
+                    ViewBag.Title = "Form_030611";
+                    Layout = "~/Views/Shared/_AdminLayoutIsNull.cshtml";
+                }
+               <script src="~/Js/Admin/AdminForm.js"></script>
+               <script src="~/Js/Admin/CaseManagement/AddDefaultValue.js"></script>
+               <form id="form1" onsubmit="return false" action="##" method="post">
+                  <input type="hidden" id="TaskId" name="TaskId" value="@Request["TaskId"]" />
+                  <input type="hidden" id="CustomerId" name="CustomerId" value="@Request["CustomerId"]" />
+                  <input type="hidden" id="FormId" name="FormId" value="@Request["FormId"]" />
+                  <input type="hidden" id="Types" name="Types" value="@Request["Types"]" />
+                <!--内容表单区域开始-->
+            <div class="tables bankmap">
+			<div class="banktop">
+				<span class="toolbar-title-img"> <img src="../busi/img/topleft.png">02346-账户控制金额查询
+			</span> <span class="toolbar-title-close" style="display: none;"> </span>
+			</div>
+			<div class="con-map2 selected">
+				<table id="qv" class="con-map2-table">
+					<tbody>
+						<tr>
+							<td class="" rowspan="1" colspan="1" style="width: 55px;"><label vl-default="" id="label_zkh" vtitle="账/s卡号" class="form-item text-left" vl-tipsid="label_zkh_tips" title="label_zkh" name="label_zkh">账/<s></s>卡号
+						</label>
+								<div id="label_zkh_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class=""><input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_zkh" vtitle="账/卡号" class="form-item text-left on" kuaicha="true" vl-tipsid="txt_zkh_tips" vl-regex="['require', 'maxlength32', 'number']" vl-message="['账/卡号不能为空!','账/卡号长度大于最大长度:[32]!','账/卡号输入错误!']" style="width: 180px;" title="txt_zkh" onpaste="return false" name="txt_zkh"><img class="sousuo" src="/Js/Student/GetDefaultValue/img/banksousuo.png" vl-select="sle_xh|0|0,txt_zhmc|0|0" vl-exec="false" vl-message="['账/卡号查询未执行！']" title="执行快查！"><span class="text-red redtip">!</span>
+								<div id="txt_zkh_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="" style="width: 32px;"><label vl-default="" id="label_xh" vtitle="序ii号" class="form-item text-left on" vl-tipsid="label_xh_tips" style="width: 69px;" title="label_xh" name="label_xh">序<i></i><i></i>号
+						</label>
+								<div id="label_xh_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="">
+								<div class="slectstyle">
+									<select vl-default="" id="sle_xh" vtitle="账户序号" class="form-item text-left" vl-tipsid="sle_xh_tips" vl-regex="['require', 'maxlength25']" vl-message="['序号不能为空!','序号长度大于最大长度:[25]!']" style="width: 180px;" title="sle_xh" vl-slemodel="" name="sle_xh">
+										<option disabled="" style="background-color: blue; color: #fff;" value="" selected="selected">序号值含义</option>
+										<option value="1">1 - 个人银行结算存款</option>
+										<option value="4">4 - 整存整取3月</option>
+									</select><input type="text" oncopy="return false" onpaste="return false" oncut="return false" style="width: 157px;" id="mb1_sleinput_ZhangHuXuHao_4" name="mb1_sleinput_ZhangHuXuHao_4"><span class="text-red redtip">!</span>
+								</div>
+								<div id="sle_xh_tips" class="tipsmsg"></div>
+							</td>
+						</tr>
+						<tr></tr>
+						<tr></tr>
+						<tr>
+							<td rowspan="1" colspan="1" class="" style="width: 48px;"><label vl-default="" id="label_zhmc" vtitle="账户名称" class="form-item text-left" vl-tipsid="label_zhmc_tips" title="label_zhmc" name="label_zhmc">账户名称</label>
+								<div id="label_zhmc_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="3" class=""><input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_zhmc" vtitle="账户名称" class="form-item text-left" vl-disabled="true" vl-tipsid="txt_zhmc_tips" vl-regex="['maxlength20']" vl-message="['账户名称长度大于最大长度:[20]!']" style="width: 680px;" onpaste="return false" disabled="disabled" name="txt_zhmc">
+								<div id="txt_zhmc_tips" class="tipsmsg"></div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="con-map2">
+					<iframe id="iframeID" name="iframeID" style="width: 100%;height: 400px; border:none; " src="http://bsi1.occupationedu.com/commontable/?fields=zkh%7C%E8%B4%A6/%E5%8D%A1%E5%8F%B7,xh%7C%E5%BA%8F%E5%8F%B7,kzje%7C%E6%8E%A7%E5%88%B6%E9%87%91%E9%A2%9D,kzyy%7C%E6%8E%A7%E5%88%B6%E5%8E%9F%E5%9B%A0,kzrq%7C%E6%8E%A7%E5%88%B6%E6%97%A5%E6%9C%9F,dqrq%7C%E5%88%B0%E6%9C%9F%E6%97%A5%E6%9C%9F,djzf%7C%E5%86%BB%E7%BB%93%E6%AD%A2%E4%BB%98,zfxh%7C%E5%BA%8F%E5%8F%B7&amp;table=tb_daily_zhkzjecx&amp;orderby=id&amp;page=1&amp;pagesize=10&amp;is_page=true&amp;toolbar=true&amp;where=%20and%201!=1"></iframe>
+			 
+			</div>
+			<div class="foot ">
+				<span>
+				<button>退出（F3）</button>
+				<button>帮助（F1）</button>
+				<button>辅助（F4）</button>
+				<button type="button" onclick="FormReset()">重置（F5）</button>
+			</span> <span style="float: right;">
+				<button type="button" style="margin-right: 0px;" vl-submit="true" id="btnsubmit" onclick="SubmitForm()">提交</button>
+			</span>
+			</div>
+			<input type="hidden" class="hidmainwidth" value="1000" oncopy="return false" onpaste="return false" oncut="return false">
+		</div>
+@*<script src="~/Js/Student/GetDefaultValue/js/accountControl.js"></script>
+<script type="text/javascript">
+            $(function () {
+                $("#iframeID").attr("src", _ip + encodeURI("commontable/?fields=zkh|账/卡号,xh|序号,kzje|控制金额,kzyy|控制原因,kzrq|控制日期,dqrq|到期日期,djzf|冻结止付,zfxh|序号&table=tb_daily_zhkzjecx&orderby=id&page=1&pagesize=10&is_page=true&toolbar=true&where= and 1!=1"));
+    });
+    
+</script>*@
+<link href="~/Js/Student/GetDefaultValue/js/common.bank.css" rel="stylesheet" />
+<style>
+			.ac-iframe {
+				min-height: 400px;
+			}
+		</style>
+              </form>

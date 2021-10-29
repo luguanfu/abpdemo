@@ -1,0 +1,50 @@
+﻿@{
+    ViewBag.Title = "Form_130103";
+    Layout = "~/Views/Shared/_AdminLayoutIsNull.cshtml";
+}
+
+<style type="text/css">
+    .from_map018 {
+        width: 1100px;
+        margin: auto;
+        position: relative;
+        background: url(/CSS/danju/img/danjuimg/menu018.jpg) no-repeat top;
+        height: 850px;
+        background-size: 100%;
+    }
+
+    .site1 {
+        width: 90px;
+        height: 25px;
+        left: 438px;
+        top: 303px;
+    }
+
+
+
+    .site2 {
+        width: 230px;
+        height: 25px;
+        left: 706px;
+        top: 303px;
+    }
+</style>
+
+<form id="form1" onsubmit="return false" action="##" method="post">
+    <input type="hidden" id="TaskId" name="TaskId" value="@Request["TaskId"]" />
+    <input type="hidden" id="CustomerId" name="CustomerId" value="@Request["CustomerId"]" />
+    <input type="hidden" id="FormId" name="FormId" value="@Request["FormId"]" />
+    <input type="hidden" id="Types" name="Types" value="@Request["Types"]" />
+    <!--内容表单区域开始-->
+    <div class="from_map018">
+        <input class="inputall site1 " type="text" name="dy01" id="dy01" value="" />
+        <input class="inputall site2 " type="text" name="dy02" id="dy02" value="" />
+
+        <button class="btn_chongzhi" type="button" value="重置" onclick="btnReset()">重置</button>
+        <button class="btn_tijiao" type="button" value="提交" onclick="btnSubmit()">提交</button>
+
+    </div>
+
+
+</form>
+<script src="~/Js/Admin/clicktoggle.js"></script>

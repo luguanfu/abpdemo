@@ -1,0 +1,99 @@
+﻿@{
+    ViewBag.Title = "跨境电商综合实训平台";
+    Layout = "~/Views/Shared/_StudentLayout.cshtml";
+    ViewData["nvc"] = "最近学习";
+}
+<style type="text/css">
+    .db_map {
+        min-height: 500px;
+    }
+
+    .item_name {
+        text-align: center;
+        font-size: 20px;
+        margin-top: 15px;
+        color: #333333;
+    }
+
+    .hr_item {
+        width: 50px;
+        height: 1px;
+        border: 2px solid #3487f5;
+        margin: auto;
+        margin-top: 3px;
+    }
+
+    .jj_text {
+        text-indent: 2em;
+        color: #666666;
+    }
+
+    .kecheng_map {
+        cursor: pointer;
+        border: 1px solid #dddddd;
+        min-height: 200px;
+    }
+
+        .kecheng_map:hover {
+            border: 1px solid #3487f5;
+        }
+
+        .kecheng_map img {
+            width: 100%;
+        }
+
+    .kecheng_text {
+        margin: 10px 5px;
+    }
+
+    .kecheng_name {
+        font-size: 18px;
+        color: #333333;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .zj_text {
+        font-size: 16px;
+        color: #666666;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+</style>
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+    <div class="index_con">
+    <!--面包屑开始-->
+    <div class="crumbs_map">
+        你当前所在的位置：
+        <a href="/Introduction">首页</a>＞
+        <span>最近学习</span>
+    </div>
+    <!--面包屑结束-->
+    <!--切换内容区域-->
+    <div class="db_map">
+        <div class="item_name">
+            最近学习
+        </div>
+        <div class="hr_item"></div>
+        <div class="m-t-lg m-l-sm m-r-sm m-b-sm">
+            <div class="row" id="tablelist">
+                
+
+
+            </div>
+        </div>
+
+    </div>
+</div>
+</body>
+</html>
+<script src="~/Js/Student/StuRecentlearning.js"></script>

@@ -1,0 +1,292 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="renderer" content="webkit">
+    <title>@ViewBag.Title</title>
+    <!--时间插件样式-->
+    <link href="~/Scripts/My97DatePicker/skin/default/datepicker.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="~/CSS/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/CSS/header.css" />
+    <link rel="stylesheet" href="~/CSS/footer.css" />
+    <link href="~/CSS/iCheck/custom.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/CSS/form_public.css" />
+    <link href="~/CSS/default.css" rel="stylesheet" />
+    <!-- Mainly scripts  主体js -->
+    <script src="~/Scripts/jquery-3.2.0.js"></script>
+    <script src="~/Scripts/tab_bar.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <!-- iCheck -->
+    <script src="~/Scripts/iCheck/icheck.min.js"></script>
+    <!--时间插件js-->
+    <script src="~/Scripts/My97DatePicker/WdatePicker.js"></script>
+    <!--弹窗js-->
+    <script src="~/Scripts/layer/layer.js"></script>
+
+    <script src="~/Scripts/verifyform.js"></script>
+    <script src="~/Scripts/StudentPage.js"></script>
+    <script src="~/Js/CheckTimeOut.js"></script>
+    <script type="text/javascript">
+        //退出系统
+        //退出系统
+        function onout() {
+            layer.confirm('确认要退出登录吗？', {
+                btn: ['确认', '取消'],
+                skin: 'layui-layer-lan',
+                title: '退出登录',//按钮
+            }, function () {//确认
+                window.location.href = '/Logout';
+            });
+        }
+    </script>
+
+    <style type="text/css">
+        .table_public tr input { /*自定义表格里面input宽度*/
+            width: 100% !important;
+            text-align: center;
+        }
+
+
+
+
+        .win_wra {
+            padding: 0 16px;
+        }
+
+        .wra_ul {
+            overflow: hidden;
+            /*width: 360px;*/
+            margin-bottom: 10px;
+            border-bottom: 1px solid #F3F3F3;
+        }
+
+            .wra_ul li {
+                float: left;
+                padding: 12px 10px;
+                cursor: pointer;
+                text-align: center;
+                margin-right: 16px;
+            }
+
+        .wra_name {
+            font-size: 20px;
+            color: #333333;
+            padding-top: 8px;
+            padding-bottom: 4px;
+        }
+
+        .wra_txt {
+            display: none;
+            color: #666666;
+            font-size: 15px;
+            padding-bottom: 30px;
+        }
+
+        /***layer用于切换样式***/
+        .addBorder {
+            border-bottom: 2px solid #CF9354;
+        }
+
+        .isShow {
+            display: block;
+        }
+    </style>
+</head>
+
+<body class="top-navigation">
+    <!-------------头部------------->
+    <div class="header">
+        <div class="header_wra">
+
+            <div class="wra_img fl">
+                <img src="~/Img/logo.png" alt="" />
+            </div>
+
+            @*<ul class="wra_tabbar fl">
+
+            <li onclick="javascript:window.location.href='/OverallAbility'">能力中心</li>
+        </ul>*@
+
+            <!-------头像------->
+            @if (Session["UserType"] != null)
+            {
+
+                if (Session["UserType"].ToString() == "3")
+                {
+                    <div class="wra_people fr">
+                        <div class="people_img">
+                            <img src="~/Img/xguse.png" id="stuimg" alt="" />
+                        </div>
+                        <span class="people_name"></span>
+                        <div class="people_user">
+                            <p onclick="javascript:window.location.href='/PersonalCenter'">个人中心</p>
+                            <p style="display:none;" onclick="javascript:window.location.href='/OverallAbility'">能力中心</p>
+
+                            <p onclick="onout()">退出登录</p>
+                        </div>
+                    </div>
+
+
+                }
+
+            }
+        </div>
+    </div>
+    <!--头部结束-->
+
+    <div id="body">
+        <!--内容区域模版开始-->
+        @RenderSection("featured", required: false)
+        <section class="gray-bg">
+            @RenderBody()
+        </section>
+        <!--内容区域模版结束-->
+    </div>
+    @RenderSection("scripts", required: false)
+
+    <!-------------底部------------->
+    <div class="footer">
+        <div class="footer_wra">Copyright&nbsp;&nbsp;2013-2019&nbsp;&nbsp;深圳典阅科技有限公司 版权所有</div>
+        <!--回到顶部-->
+        <div class="icon_fixed">
+            <p class="icon_top"></p>
+        </div>
+    </div>
+
+    <img src="/img/levitated_spher.png" id="AnliDiv" style="position: fixed; top: 194px; right: 0px; z-index: 99; cursor: pointer; display: none;" onclick="opens_win();" />
+
+
+
+    <!--切换系统弹窗-->
+
+    <div id="opens_win" style="display: none;">
+
+        <div class="win_wra">
+            <p class="wra_name">请认真阅读材料，根据材料信息完成业务</p>
+            <ul class="wra_ul">
+                <li class="addBorder">案例描述</li>
+                <li>重要提示</li>
+
+            </ul>
+            <div class="wra_txt isShow" id="TaskDescribe_html"></div>
+            <div class="wra_txt" id="TaskImportant_html"></div>
+
+        </div>
+
+    </div>
+
+</body>
+@{
+    string nvc = "";
+    if (ViewData["nvc"] != null)
+    {
+        nvc = ViewData["nvc"].ToString();
+    }
+}
+</html>
+
+<script type="text/javascript">
+    //切换系统
+    function opens_win() {
+        //查询 弹框内容 案例重要提示 赋值
+        $.ajax({
+            type: "POST",//方法类型
+            dataType: "json",//预期服务器返回的数据类型
+            url: "/Base/GetTaskInfo",//url
+            data: { "TasKId": getQueryString('TasKId') },
+            async: false,
+            success: function (data) {
+                if (data.length > 0) {
+                    //反转义
+                    $("#TaskDescribe_html").html(HTMLDecode(data[0]["TaskDescribe"]));//任务描述
+                    $("#TaskImportant_html").html(HTMLDecode(data[0]["TaskImportant"]));//提示
+                }
+            }
+        });
+
+        layer.open({
+            title: '案例材料',
+            offset: 'rb',
+            area: ['35%', '580px'],
+            type: 1,
+            skin: 'layui-layer-lan', //样式类名
+            closeBtn: 1, //显示关闭按钮
+            anim: 2,
+            shade: false,//不显示遮罩
+            maxmin: true, //开启最大化最小化按钮
+            shadeClose: false, //开启遮罩关闭
+            content: $("#opens_win")
+        });
+    }
+
+    $(".wra_ul").on("click", "li", function () {
+        $("li").removeClass("addBorder");
+        $(".wra_txt").removeClass("isShow");
+
+        $(this).addClass("addBorder");
+        $(".wra_txt").eq($(this).index()).addClass("isShow");
+    })
+
+
+    $(function () {
+        sy();
+
+
+
+        ////查询信息
+        //$.ajax({
+        //    type: "POST",//方法类型
+        //    dataType: "json",//预期服务器返回的数据类型
+        //    url: "/StuIndex/GetStuInfo",//url
+        //    data: {},
+        //    async: false,
+        //    success: function (data) {
+        //        if (data.length > 0) {
+
+        //            var imgurl = data[0]["UI_UserPic"];
+        //            if (imgurl != null && imgurl != "null") {
+        //                $("#stuimg").attr('src', imgurl);
+        //            }
+        //            $(".people_name").html(data[0]["Name"]);
+
+        //        }
+        //    }
+        //});
+
+    });
+    //导航条选中控制
+    function sy() {
+        var strurl = window.location.pathname + "";
+        var newurl = strurl.substring(strurl.lastIndexOf('/', 2));
+        //var search = window.location.search + "";
+        ////如果是创建平台
+        //if (newurl == "/SimulationTraining" || newurl == "/RSX_ZY_Index" || newurl == "/RSX_ZY_Index/Add"
+        //    || newurl == "/CX_CB_Index" || newurl == "/CX_CB_Index/Add") {
+        //    $("#AnliDiv").css('display', 'none');
+
+        //}
+        if (newurl.indexOf('Bsi_') > 0) {
+            $("#AnliDiv").css('display', 'block');
+        }
+
+        $(".wra_tabbar").find("li").each(function () {
+            var txt = $(this).html();
+            if (txt == "@nvc") {
+                $(this).addClass("addColor")
+            }
+
+        });
+
+    }
+
+
+
+
+</script>

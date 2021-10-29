@@ -1,0 +1,1076 @@
+﻿@{
+                    ViewBag.Title = "Form_080101";
+                    Layout = "~/Views/Shared/_AdminLayoutIsNull.cshtml";
+                }
+               <script src="~/Js/Admin/AdminForm.js"></script>
+               <script src="~/Js/Admin/CaseManagement/AddDefaultValue.js"></script>
+               <form id="form1" onsubmit="return false" action="##" method="post">
+                  <input type="hidden" id="TaskId" name="TaskId" value="@Request["TaskId"]" />
+                  <input type="hidden" id="CustomerId" name="CustomerId" value="@Request["CustomerId"]" />
+                  <input type="hidden" id="FormId" name="FormId" value="@Request["FormId"]" />
+                  <input type="hidden" id="Types" name="Types" value="@Request["Types"]" />
+                <!--内容表单区域开始-->
+            <div class="tables bankmap">
+			<div class="banktop">
+				<span class="toolbar-title-img"> <img src="../busi/img/topleft.png">01101-建立个人客户信息
+			</span> <span class="toolbar-title-close" style="display: none;"> <img src="../busi/img/topright.png"></span>
+			</div>
+			<div class="con-map2 selected">
+				<table id="qv" class="con-map2-table qv">
+					<tbody>
+						<tr>
+							<td class="" style="width: 64px;"><label vl-default="" id="label_zjlx" vtitle="证s件s类s型" class="form-item text-left" vl-tipsid="label_zjlx_tips" title="label_zjlx" name="label_zjlx">证<s></s>件<s></s>类<s></s>型
+						</label>
+								<div id="label_zjlx_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="">
+								<div class="slectstyle">
+									<select vl-default="1" id="sle_zjlx" vtitle="证件类型_mb1" class="form-item text-left on" vl-tipsid="sle_zjlx_tips" vl-regex="['require']" vl-message="['证件类型不能为空!']" style="width: 160px;" title="sle_zjlx" vl-slemodel="txt_zjhm,txt_zjhm,txt_zjhm,txt_zjhm,txt_zjhm,txt_zjhm,txt_zjhm,txt_zjhm,txt_zjhm,txt_zjhm,txt_zjhm,txt_zjhm,txt_zjhm,txt_zjhm,txt_zjhm,txt_zjhm,txt_zjhm,txt_zjhm,txt_zjhm,txt_zjhm,txt_zjhm,txt_qtzj" name="sle_zjlx">
+										<option disabled="" style="background-color: blue; color: #fff;" value="">证件类型值含义</option>
+										<option sle-require="[{'id':'txt_zjhm','regex':['require','maxlength20','idcard'],'tips':['证件号码不能为空！','证件号码身份证号长度大于最大长度:[20]！','证件号码身份证位数不正确（应为15位或者18位）！'],'disabled':'false*false*false','default':''},{'id':'txt_qtzj','regex':[''],'tips':[''],'disabled':'true','default':''}]" value="1">1 - 居民身份证</option>
+										<option sle-require="[{'id':'txt_zjhm','regex':['require','maxlength20','idcard'],'tips':['证件号码不能为空！','证件号码身份证号长度大于最大长度:[20]！','证件号码身份证位数不正确（应为15位或者18位）！'],'disabled':'false*false*false','default':''},{'id':'txt_qtzj','regex':[''],'tips':[''],'disabled':'true','default':''}]" value="2">2 - 临时居民身份证</option>
+										<option sle-require="[{'id':'txt_zjhm','regex':['require','maxlength20','idcard'],'tips':['证件号码不能为空！','证件号码身份证号长度大于最大长度:[20]！','证件号码身份证位数不正确（应为15位或者18位）！'],'disabled':'false*false*false','default':''},{'id':'txt_qtzj','regex':[''],'tips':[''],'disabled':'true','default':''}]" value="3">3 - 居民户口簿（16周岁以下）</option>
+										<option sle-require="[{'id':'txt_zjhm','regex':['require','maxlength40'],'tips':['证件号码不能为空！','证件号码长度大于最大长度:[40]！'],'disabled':'false*false','default':''},{'id':'txt_qtzj','regex':[''],'tips':[''],'disabled':'true','default':''}]" value="4">4 - 军官证</option>
+										<option sle-require="[{'id':'txt_zjhm','regex':['require','maxlength40'],'tips':['证件号码不能为空！','证件号码长度大于最大长度:[40]！'],'disabled':'false*false','default':''},{'id':'txt_qtzj','regex':[''],'tips':[''],'disabled':'true','default':''}]" value="5">5 - 警官证</option>
+										<option sle-require="[{'id':'txt_zjhm','regex':['require','maxlength40'],'tips':['证件号码不能为空！','证件号码长度大于最大长度:[40]！'],'disabled':'false*false','default':''},{'id':'txt_qtzj','regex':[''],'tips':[''],'disabled':'true','default':''}]" value="6">6 - 士兵证</option>
+										<option sle-require="[{'id':'txt_zjhm','regex':['require','maxlength40'],'tips':['证件号码不能为空！','证件号码长度大于最大长度:[40]！'],'disabled':'false*false','default':''},{'id':'txt_qtzj','regex':[''],'tips':[''],'disabled':'true','default':''}]" value="7">7 - 军队学员证</option>
+										<option sle-require="[{'id':'txt_zjhm','regex':['require','maxlength40'],'tips':['证件号码不能为空！','证件号码长度大于最大长度:[40]！'],'disabled':'false*false','default':''},{'id':'txt_qtzj','regex':[''],'tips':[''],'disabled':'true','default':''}]" value="8">8 - 军队文职干部证</option>
+										<option sle-require="[{'id':'txt_zjhm','regex':['require','maxlength40'],'tips':['证件号码不能为空！','证件号码长度大于最大长度:[40]！'],'disabled':'false*false','default':''},{'id':'txt_qtzj','regex':[''],'tips':[''],'disabled':'true','default':''}]" value="9">9 - 军队离退休干部证和军队职员证</option>
+										<option sle-require="[{'id':'txt_zjhm','regex':['require','maxlength40'],'tips':['证件号码不能为空！','证件号码长度大于最大长度:[40]！'],'disabled':'false*false','default':''},{'id':'txt_qtzj','regex':[''],'tips':[''],'disabled':'true','default':''}]" value="10">10 - 中国护照</option>
+										<option sle-require="[{'id':'txt_zjhm','regex':['require','maxlength40'],'tips':['证件号码不能为空！','证件号码长度大于最大长度:[40]！'],'disabled':'false*false','default':''},{'id':'txt_qtzj','regex':[''],'tips':[''],'disabled':'true','default':''}]" value="11">11 - 护照（外国公民）</option>
+										<option sle-require="[{'id':'txt_zjhm','regex':['require','maxlength40'],'tips':['证件号码不能为空！','证件号码长度大于最大长度:[40]！'],'disabled':'false*false','default':''},{'id':'txt_qtzj','regex':[''],'tips':[''],'disabled':'true','default':''}]" value="12">12 - 海员证</option>
+										<option sle-require="[{'id':'txt_zjhm','regex':['require','maxlength40'],'tips':['证件号码不能为空！','证件号码长度大于最大长度:[40]！'],'disabled':'false*false','default':''},{'id':'txt_qtzj','regex':[''],'tips':[''],'disabled':'true','default':''}]" value="13">13 - 港澳同胞回乡证</option>
+										<option sle-require="[{'id':'txt_zjhm','regex':['require','maxlength40'],'tips':['证件号码不能为空！','证件号码长度大于最大长度:[40]！'],'disabled':'false*false','default':''},{'id':'txt_qtzj','regex':[''],'tips':[''],'disabled':'true','default':''}]" value="14">14 - 港澳居民来往大陆通行证</option>
+										<option sle-require="[{'id':'txt_zjhm','regex':['require','maxlength40'],'tips':['证件号码不能为空！','证件号码长度大于最大长度:[40]！'],'disabled':'false*false','default':''},{'id':'txt_qtzj','regex':[''],'tips':[''],'disabled':'true','default':''}]" value="15">15 - 中华人民共和国网络港澳通行证</option>
+										<option sle-require="[{'id':'txt_zjhm','regex':['require','maxlength40'],'tips':['证件号码不能为空！','证件号码长度大于最大长度:[40]！'],'disabled':'false*false','default':''},{'id':'txt_qtzj','regex':[''],'tips':[''],'disabled':'true','default':''}]" value="16">16 - 台湾居民来往大陆通行证</option>
+										<option sle-require="[{'id':'txt_zjhm','regex':['require','maxlength40'],'tips':['证件号码不能为空！','证件号码长度大于最大长度:[40]！'],'disabled':'false*false','default':''},{'id':'txt_qtzj','regex':[''],'tips':[''],'disabled':'true','default':''}]" value="17">17 - 大陆居民往来台湾通行证</option>
+										<option sle-require="[{'id':'txt_zjhm','regex':['require','maxlength40'],'tips':['证件号码不能为空！','证件号码长度大于最大长度:[40]！'],'disabled':'false*false','default':''},{'id':'txt_qtzj','regex':[''],'tips':[''],'disabled':'true','default':''}]" value="18">18 - 外国人居留证</option>
+										<option sle-require="[{'id':'txt_zjhm','regex':['require','maxlength40'],'tips':['证件号码不能为空！','证件号码长度大于最大长度:[40]！'],'disabled':'false*false','default':''},{'id':'txt_qtzj','regex':[''],'tips':[''],'disabled':'true','default':''}]" value="19">19 - 外国人出入境证</option>
+										<option sle-require="[{'id':'txt_zjhm','regex':['require','maxlength40'],'tips':['证件号码不能为空！','证件号码长度大于最大长度:[40]！'],'disabled':'false*false','default':''},{'id':'txt_qtzj','regex':[''],'tips':[''],'disabled':'true','default':''}]" value="20">20 - 外交官证</option>
+										<option sle-require="[{'id':'txt_zjhm','regex':['require','maxlength40'],'tips':['证件号码不能为空！','证件号码长度大于最大长度:[40]！'],'disabled':'false*false','default':''},{'id':'txt_qtzj','regex':[''],'tips':[''],'disabled':'true','default':''}]" value="21">21 - 领事馆证</option>
+										<option sle-require="[{'id':'txt_qtzj','regex':['maxlength40'],'tips':['证件号码长度大于最大长度:[40]！'],'disabled':'false','default':''}]" value="22">22 - 其他</option>
+									</select><input type="text" oncopy="return false" onpaste="return false" oncut="return false" style="width: 137px;" id="mb1_sleinput_ZhengJianLeiXingmb1_2" name="mb1_sleinput_ZhengJianLeiXingmb1_2">
+								</div>
+								<div id="sle_zjlx_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="" style="width: 64px;"><label vl-default="" id="label_qtzj" vtitle="其s他s证s件" class="form-item text-left" vl-tipsid="label_qtzj_tips" title="label_qtzj" name="label_qtzj">其<s></s>他<s></s>证<s></s>件
+						</label>
+								<div id="label_qtzj_tips" class="tipsmsg"></div>
+							</td>
+							<td class=""><input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_qtzj" vtitle="其他证件" class="form-item text-left" vl-disabled="true" vl-tipsid="txt_qtzj_tips" style="width: 160px;" title="txt_qtzj" onpaste="return false" disabled="disabled" name="txt_qtzj">
+								<div id="txt_qtzj_tips" class="tipsmsg"></div>
+							</td>
+							<td class="" style="width: 64px;"><label vl-default="" id="label_zjhm" vtitle="证s件s号s码" class="form-item text-left" vl-tipsid="label_zjhm_tips" title="label_zjhm" name="label_zjhm">证<s></s>件<s></s>号<s></s>码
+						</label>
+								<div id="label_zjhm_tips" class="tipsmsg"></div>
+							</td>
+							<td class=""><input type="text" oncopy="return false" oncut="return false" vl-keyup="wwww" vl-default="" id="txt_zjhm" vtitle="证件号码_mb1" class="form-item text-left" kuaicha="true" vl-tipsid="txt_zjhm_tips" vl-regex="['require', 'maxlength20','idcard']" vl-message="['证件号码不能为空!','证件号码长度超过最大长度:[20]!','证件号码身份证位数不正确(应为15位或者18位)！']" style="width: 160px;" onpaste="return false" name="txt_zjhm"><img class="sousuo" src="/Js/Student/GetDefaultValue/img/banksousuo.png" vl-select="sle_gbdm|1|0,date_khsr|1|0,sle_hcjg|1|0,sle_yxqlx|0|0,sle_hsjg|0|0" vl-exec="false" vl-message="['证件号码查询未执行！']" title="执行快查！"><span class="text-red redtip">!</span>
+								<div id="txt_zjhm_tips" class="tipsmsg"></div>
+							</td>
+						</tr>
+						<tr>
+							<td rowspan="1" colspan="1" class="" style="width: 64px;"><label vl-default="" id="label_yxqlx" vtitle="有效期类型" class="form-item text-left" vl-tipsid="label_yxqlx_tips" title="label_yxqlx" name="label_yxqlx">有效期类型</label>
+								<div id="label_yxqlx_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="">
+								<div class="slectstyle">
+									<select vl-default="" id="sle_yxqlx" vtitle="有效期类型" class="form-item text-left" vl-tipsid="sle_yxqlx_tips" style="width: 160px;" title="sle_yxqlx" vl-slemodel="date_zjdqr,date_zjdqr" name="sle_yxqlx">
+										<option disabled="" style="background-color: blue; color: #fff;" value="" selected="selected">有效期类型值含义</option>
+										<option sle-require="[{'id':'date_zjdqr','regex':['integer'],'tips':[''],'disabled':'true','default':''}]" value="0">0 - 无有效期</option>
+										<option sle-require="[{'id':'date_zjdqr','regex':['require','minlength8','maxlength8','tdate','number'],'tips':['证件到期日不能为空!','请输入正确的证件到期日(如:19000101)!','证件到期日输入错误!'],'disabled':'false*false*false*false*false','default':''}]" value="1">1 - 有有效期</option>
+									</select><input type="text" oncopy="return false" onpaste="return false" oncut="return false" style="width: 137px;" id="mb1_sleinput_YouXiaoQiLeiXing_8" name="mb1_sleinput_YouXiaoQiLeiXing_8">
+								</div>
+								<div id="sle_yxqlx_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="" style="width: 64px;"><label vl-default="" id="label_zjdqr" vtitle="证件到期日" class="form-item text-left" vl-tipsid="label_zjdqr_tips" title="label_zjdqr" name="label_zjdqr">证件到期日</label>
+								<div id="label_zjdqr_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class=""><input type="text" class="date form-item text-left" vl-keyup="wwww" vl-default="" id="date_zjdqr" vtitle="证件到期日_mb1" vl-tipsid="date_zjdqr_tips" style="width: 160px;" title="date_zjdqr" oncopy="return false" onpaste="return false" oncut="return false" name="date_zjdqr"><img onclick="WdatePicker({el:'date_zjdqr',dateFmt:'yyyyMMdd'})" src="/js/My97DatePicker/skin/datePicker.gif" align="absmiddle" style="width: 16px; height: 22px; margin-left: 6px;">
+								<div id="date_zjdqr_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="" style="width: 64px;"><label vl-default="" id="label_hcjg" vtitle="核s查s结s果" class="form-item text-left" vl-tipsid="label_hcjg_tips" title="label_hcjg" name="label_hcjg">核<s></s>查<s></s>结<s></s>果
+						</label>
+								<div id="label_hcjg_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="">
+								<div class="slectstyle">
+									<select vl-default="" id="sle_hcjg" vtitle="核查结果" class="form-item text-left" vl-disabled="true" vl-tipsid="sle_hcjg_tips" style="width: 160px;" title="sle_hcjg" vl-slemodel="" disabled="disabled" name="sle_hcjg">
+										<option disabled="" style="background-color: blue; color: #fff;" value="" selected="selected">核查结果值含义</option>
+										<option value="00">00 - 公民身份证号码与姓名一致，且存在照片</option>
+										<option value="01">01 - 公民身份号码与姓名一致，但不存在照片</option>
+										<option value="02">02 - 公民身份号码存在，但与姓名不匹配</option>
+										<option value="03">03 - 公民身份号码存在，但公民身份号码存在，但证件日期到期</option>
+										<option value="04">04 - 其他错误</option>
+                                        <option value="05">05 - 输入的参数错误</option>
+										<option value="06">06 - 核查为真实</option>
+										<option value="07">07 - 待核查</option>
+									</select><input type="text" oncopy="return false" onpaste="return false" oncut="return false" disabled="disabled" style="width: 137px;" id="mb1_sleinput_HeChaJieGuo_12" name="mb1_sleinput_HeChaJieGuo_12">
+								</div>
+								<div id="sle_hcjg_tips" class="tipsmsg"></div>
+							</td>
+						</tr>
+						<tr>
+							<td rowspan="1" colspan="1" class="" style="width: 64px;"><label vl-default="" id="label_khxm" vtitle="客s户s姓s名" class="form-item text-left" vl-tipsid="label_khxm_tips" title="label_khxm" name="label_khxm">客<s></s>户<s></s>姓<s></s>名
+						</label>
+								<div id="label_khxm_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class=""><input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_khxm" vtitle="客户姓名" class="form-item text-left" kuaicha="true" vl-tipsid="txt_khxm_tips" vl-regex="['require', 'maxlength20', 'hascode']" vl-message="['客户姓名不能为空!','客户姓名长度超过最大长度:[20]!','客户姓名不能全为数字!']" style="width: 160px;" title="txt_khxm" onpaste="return false" name="txt_khxm">
+							<img class="sousuo" src="/Js/Student/GetDefaultValue/img/banksousuo.png" vl-select="sle_jnwbs|1|0" vl-exec="false" vl-message="['客户姓名查询未执行！']" title="执行快查！"><span class="text-red redtip">!</span>
+								<div id="txt_khxm_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="" style="width: 64px;"><label vl-default="" id="label_jnwbs" vtitle="境内外标识" class="form-item text-left" vl-tipsid="label_jnwbs_tips" title="label_jnwbs" name="label_jnwbs">境内外标识</label>
+								<div id="label_jnwbs_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="">
+								<div class="slectstyle">
+									<select vl-default="0" id="sle_jnwbs" vtitle="境内外标识" class="form-item text-left" vl-disabled="true" vl-tipsid="sle_jnwbs_tips" style="width: 160px;" title="sle_jnwbs" vl-slemodel="" disabled="disabled" name="sle_jnwbs">
+										<option disabled="" style="background-color: blue; color: #fff;" value="">境内外标识值含义</option>
+										<option value="0">0 - 境内个人</option>
+									</select><input type="text" oncopy="return false" onpaste="return false" oncut="return false" disabled="disabled" style="width: 137px;" id="mb1_sleinput_JingNaWaiBiaoShi_16" name="mb1_sleinput_JingNaWaiBiaoShi_16">
+								</div>
+								<div id="sle_jnwbs_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="" style="width: 64px;"><label vl-default="" id="label_hsjg" vtitle="核s实s结s果" class="form-item text-left" vl-tipsid="label_hsjg_tips" title="label_hsjg" name="label_hsjg">核<s></s>实<s></s>结<s></s>果
+						</label>
+								<div id="label_hsjg_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="">
+								<div class="slectstyle">
+									<select vl-default="" id="sle_hsjg" vtitle="核实结果" class="form-item text-left" vl-disabled="true" vl-tipsid="sle_hsjg_tips" style="width: 160px;" title="sle_hsjg" vl-slemodel="" disabled="disabled" name="sle_hsjg">
+										<option disabled="" style="background-color: blue; color: #fff;" value="" selected="selected">核实结果值含义</option>
+										<option value="00">00 - 公民身份证号码与姓名一致＆且存在照片</option>
+										<option value="1">1 - 真实</option>
+										<option value="2">2 - 姓名，身份证件号码，照片存在一项或多项不一致</option>
+										<option value="3">3 - 公安，军队等有关部门无法</option>
+										<option value="4">4 - 未留存身份证件</option>
+										<option value="5">5 - 未留存身份证件，且无法联</option>
+										<option value="6">6 - 其他</option>
+									</select><input type="text" oncopy="return false" onpaste="return false" oncut="return false" disabled="disabled" style="width: 137px;" id="mb1_sleinput_HeShiJieGuo_18" name="mb1_sleinput_HeShiJieGuo_18">
+								</div>
+								<div id="sle_hsjg_tips" class="tipsmsg"></div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="con-map2">
+				<table id="qv" class="con-map2-table qv">
+					<tbody>
+						<tr>
+							<td class="" style="width: 64px;"><label vl-default="" id="label_fzjg" vtitle="发s证s机s关" class="form-item text-left" vl-tipsid="label_fzjg_tips" title="label_fzjg" name="label_fzjg">发<s></s>证<s></s>机<s></s>关
+						</label>
+								<div id="label_fzjg_tips" class="tipsmsg"></div>
+							</td>
+							<td class="" rowspan="1" colspan="5"><input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_fzjg" vtitle="发证机关_mb2" class="form-item text-left" vl-tipsid="txt_fzjg_tips" vl-regex="['require', 'maxlength120']" vl-message="['发证机关不能为空!','发证机关长度超过最大长度:[120]!']" style="width: 600px;" title="txt_fzjg" onpaste="return false" name="txt_fzjg"><span class="text-red redtip">!</span>
+								<div id="txt_fzjg_tips" class="tipsmsg"></div>
+							</td>
+						</tr>
+						<tr>
+							<td rowspan="1" colspan="1" class="" style="width: 64px;"><label vl-default="" id="label_zjdz" vtitle="证s件s地s址" class="form-item text-left" vl-tipsid="label_zjdz_tips" title="label_zjdz" name="label_zjdz">证<s></s>件<s></s>地<s></s>址
+						</label>
+								<div id="label_zjdz_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="5" class=""><input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_zjdz" vtitle="证件地址" class="form-item text-left" vl-tipsid="txt_zjdz_tips" vl-regex="['require', 'maxlength120', 'hascode']" vl-message="['证件地址不能为空!','证件地址长度超过最大长度:[120]!','证件地址输入错误!']" style="width: 600px;" title="txt_zjdz" onpaste="return false" name="txt_zjdz"><span class="text-red redtip">!</span>
+								<div id="txt_zjdz_tips" class="tipsmsg"></div>
+							</td>
+						</tr>
+						<tr>
+							<td rowspan="1" colspan="1" class="" style="width: 64px;"><label vl-default="" id="label_gbdm" vtitle="国s别s代s码" class="form-item text-left" vl-tipsid="label_gbdm_tips" title="label_gbdm" name="label_gbdm">国<s></s>别<s></s>代<s></s>码
+						</label>
+								<div id="label_gbdm_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="">
+								<div class="slectstyle">
+									<select vl-default="CHN" id="sle_gbdm" vtitle="国别代码" class="form-item text-left" vl-tipsid="sle_gbdm_tips" style="width: 160px;" title="sle_gbdm" vl-slemodel="" name="sle_gbdm">
+										<option disabled="" style="background-color: blue; color: #fff;" value="">国别代码值含义</option>
+										<option value="CHN">CHN - 中国</option>
+										<option value="BVT">BVT - 布维岛</option>
+										<option value="BWA">BWA - 博茨瓦纳</option>
+										<option value="CAF">CAF - 中非</option>
+										<option value="CAN">CAN - 加拿大</option>
+										<option value="CCK">CCK - 科科斯( 基林)群岛</option>
+										<option value="CHE">CHE - 瑞士</option>
+										<option value="CHL">CHL - 智利</option>
+										<option value="CIV">CIV - 科特迪瓦</option>
+										<option value="CMR">CMR - 喀麦隆</option>
+										<option value="COD">COD - 刚果（金）</option>
+										<option value="COG">COG - 刚果（布）</option>
+										<option value="COK">COK - 库克群岛</option>
+										<option value="COL">COL - 哥伦比亚</option>
+										<option value="COM">COM - 科摩罗</option>
+										<option value="CPV">CPV - 佛得角</option>
+										<option value="CRI">CRI - 哥斯达黎加</option>
+										<option value="CUB">CUB - 古巴</option>
+										<option value="ABW">ABW - 阿鲁巴</option>
+										<option value="AFG">AFG - 阿富汗</option>
+										<option value="AGO">AGO - 安哥拉</option>
+										<option value="AIA">AIA - 安圭拉</option>
+										<option value="ALB">ALB - 阿尔巴尼亚</option>
+										<option value="AND">AND - 安道尔</option>
+										<option value="ANT">ANT - 荷属安的列斯</option>
+										<option value="ARE">ARE - 阿联酋</option>
+										<option value="ARG">ARG - 阿根廷</option>
+										<option value="ARM">ARM - 亚美尼亚</option>
+										<option value="ASM">ASM - 美属萨摩亚</option>
+										<option value="ATA">ATA - 南极洲</option>
+										<option value="ATF">ATF - 法属南部领地</option>
+										<option value="ATG">ATG - 安提瓜和巴布达</option>
+										<option value="AUS">AUS - 澳大利亚</option>
+										<option value="AUT">AUT - 奥地利</option>
+										<option value="AZE">AZE - 阿塞拜疆</option>
+										<option value="BDI">BDI - 布隆迪</option>
+										<option value="BEL">BEL - 比利时</option>
+										<option value="BEN">BEN - 贝宁</option>
+										<option value="BFA">BFA - 布基纳法索</option>
+										<option value="BGD">BGD - 孟加拉国</option>
+										<option value="BGR">BGR - 保加利亚</option>
+										<option value="BHR">BHR - 巴林</option>
+										<option value="BHS">BHS - 巴哈马</option>
+										<option value="BIH">BIH - 波黑</option>
+										<option value="BLR">BLR - 白俄罗斯</option>
+										<option value="BLZ">BLZ - 伯利兹</option>
+										<option value="BMU">BMU - 百慕大</option>
+										<option value="BOL">BOL - 玻利维亚</option>
+										<option value="BRA">BRA - 巴西</option>
+										<option value="BRB">BRB - 巴巴多斯</option>
+										<option value="BRN">BRN - 文莱</option>
+										<option value="BTN">BTN - 不丹</option>
+										<option value="LTU">LTU - 立陶宛</option>
+										<option value="LUX">LUX - 卢森堡</option>
+										<option value="LVA">LVA - 拉脱维亚</option>
+										<option value="MAC">MAC - 中国澳门</option>
+										<option value="MAR">MAR - 摩洛哥</option>
+										<option value="MCO">MCO - 摩纳哥</option>
+										<option value="MDA">MDA - 摩尔多瓦</option>
+										<option value="MDG">MDG - 马达加斯加</option>
+										<option value="MDV">MDV - 马尔代夫</option>
+										<option value="MEX">MEX - 墨西哥</option>
+										<option value="MHL">MHL - 马绍尔群岛</option>
+										<option value="MKD">MKD - 前南马其顿</option>
+										<option value="MLI">MLI - 马里</option>
+										<option value="MLT">MLT - 马耳他</option>
+										<option value="MMR">MMR - 缅甸</option>
+										<option value="MNE">MNE - 黑山</option>
+										<option value="MNG">MNG - 蒙古</option>
+										<option value="MNP">MNP - 北马里亚纳</option>
+										<option value="MOZ">MOZ - 莫桑比克</option>
+										<option value="MRT">MRT - 毛里塔尼亚</option>
+										<option value="MSR">MSR - 蒙特塞拉特</option>
+										<option value="MTQ">MTQ - 马提尼克</option>
+										<option value="MUS">MUS - 毛里求斯</option>
+										<option value="MWI">MWI - 马拉维</option>
+										<option value="MYS">MYS - 马来西亚</option>
+										<option value="MYT">MYT - 马约特</option>
+										<option value="MAN">NAM - 纳米比亚</option>
+										<option value="NCL">NCL - 新喀里多尼亚</option>
+										<option value="MER">NER - 尼日尔</option>
+										<option value="NFK">NFK - 诺福克岛</option>
+										<option value="NGA">NGA - 尼日利亚</option>
+										<option value="NIC">NIC - 尼加拉瓜</option>
+										<option value="NIU">NIU - 纽埃</option>
+										<option value="NLD">NLD - 荷兰</option>
+										<option value="NOR">NOR - 挪威</option>
+										<option value="NPL">NPL - 尼泊尔</option>
+										<option value="NRU">NRU - 瑙鲁</option>
+										<option value="NZL">NZL - 新西兰</option>
+										<option value="OMN">OMN - 阿曼</option>
+										<option value="PAK">PAK - 巴基斯坦</option>
+										<option value="PAK">PAN - 巴拿马</option>
+										<option value="PCN">PCN - 皮特凯恩</option>
+										<option value="PER">PER - 秘鲁</option>
+										<option value="PHL">PHL - 菲律宾</option>
+										<option value="PLW">PLW - 帕劳</option>
+										<option value="PNG">PNG - 巴布亚新几内亚</option>
+										<option value="POL">POL - 波兰</option>
+										<option value="PRI">PRI - 波多黎各</option>
+										<option value="PRK">PRK - 朝鲜</option>
+										<option value="PRT">PRT - 葡萄牙</option>
+										<option value="PRY">PRY - 巴拉圭</option>
+										<option value="PSE">PSE - 巴勒斯坦</option>
+										<option value="PYF">PYF - 法属波利尼西亚</option>
+										<option value="QAT">QAT - 卡塔尔</option>
+										<option value="REU">REU - 留尼汪</option>
+										<option value="ROM">ROM - 罗马尼亚</option>
+										<option value="RUS">RUS - 俄罗斯联邦</option>
+										<option value="RWA">RWA - 卢旺达</option>
+										<option value="SAU">SAU - 沙特阿拉伯</option>
+										<option value="SDN">SDN - 苏丹</option>
+										<option value="SEN">SEN - 塞内加尔</option>
+										<option value="SGP">SGP - 新加坡</option>
+										<option value="SGS">SGS - 南乔治亚岛和南桑德韦奇岛</option>
+										<option value="SHN">SHN - 圣赫勒拿</option>
+										<option value="SJM">SJM - 斯瓦尔巴岛和扬马延岛</option>
+										<option value="SLB">SLB - 所罗门群岛</option>
+										<option value="SLE">SLE - 塞拉利昂</option>
+										<option value="SLV">SLV - 萨尔瓦多</option>
+										<option value="SMR">SMR - 圣马力诺</option>
+										<option value="SOM">SOM - 索马里</option>
+										<option value="SPM">SPM - 圣皮埃尔和密克隆</option>
+										<option value="SRB">SRB - 塞尔维亚</option>
+										<option value="STP">STP - 圣多美和普林西比</option>
+										<option value="SUR">SUR - 苏里南</option>
+										<option value="SVL">SVK - 斯洛伐克</option>
+										<option value="SVN">SVN - 斯洛文尼亚</option>
+										<option value="SWE">SWE - 瑞典</option>
+										<option value="SWZ">SWZ - 斯威士兰</option>
+										<option value="SYC">SYC - 塞舌尔</option>
+										<option value="SYR">SYR - 叙利亚</option>
+										<option value="TCA">TCA - 特克斯和凯科斯群岛</option>
+										<option value="CXR">CXR - 圣诞岛</option>
+										<option value="CYM">CYM - 开曼群岛</option>
+										<option value="CYP">CYP - 塞浦路斯</option>
+										<option value="CZE">CZE - 捷克</option>
+										<option value="DEU">DEU - 德国</option>
+										<option value="DJI">DJI - 吉布提</option>
+										<option value="DMA">DMA - 多米尼克</option>
+										<option value="DNK">DNK - 丹麦</option>
+										<option value="DOM">DOM - 多米尼加</option>
+										<option value="DZA">DZA - 阿尔及利亚</option>
+										<option value="ECU">ECU - 厄瓜多尔</option>
+										<option value="EGY">EGY - 埃及</option>
+										<option value="ERI">ERI - 厄立特里亚</option>
+										<option value="ESH">ESH - 西撒哈拉</option>
+										<option value="ESP">ESP - 西班牙</option>
+										<option value="EST">EST - 爱沙尼亚</option>
+										<option value="ETH">ETH - 埃塞俄比亚</option>
+										<option value="FIN">FIN - 芬兰</option>
+										<option value="FJI">FJI - 斐济</option>
+										<option value="FLK">FLK - 福克兰群岛（马尔维纳斯群岛）</option>
+										<option value="FRA">FRA - 法国</option>
+										<option value="FRO">FRO - 法罗群岛</option>
+										<option value="FSM">FSM - 密克罗尼西亚联邦</option>
+										<option value="GAB">GAB - 加蓬</option>
+										<option value="GBR">GBR - 英国</option>
+										<option value="GEO">GEO - 格鲁吉亚</option>
+										<option value="GHA">GHA - 加纳</option>
+										<option value="GIB">GIB - 直布罗陀</option>
+										<option value="GIN">GIN - 几内亚</option>
+										<option value="GLP">GLP - 瓜德罗普</option>
+										<option value="GMB">GMB - 冈比亚</option>
+										<option value="GNB">GNB - 几内亚比绍</option>
+										<option value="GNQ">GNQ - 赤道几内亚</option>
+										<option value="GRC">GRC - 希腊</option>
+										<option value="GRD">GRD - 格林纳达</option>
+										<option value="GRL">GRL - 格陵兰</option>
+										<option value="GTM">GTM - 危地马拉</option>
+										<option value="GUF">GUF - 法属圭亚那</option>
+										<option value="GUM">GUM - 关岛</option>
+										<option value="GUY">GUY - 圭亚那</option>
+										<option value="HKG">HKG - 中国香港</option>
+										<option value="HMD">HMD - 赫德岛和麦克唐纳岛</option>
+										<option value="HND">HND - 洪都拉斯</option>
+										<option value="HRV">HRV - 克罗地亚</option>
+										<option value="HTI">HTI - 海地</option>
+										<option value="HUN">HUN - 匈牙利</option>
+										<option value="IDN">IDN - 印度尼西亚</option>
+										<option value="IMN">IMN - 马恩岛</option>
+										<option value="IND">IND - 印度</option>
+										<option value="IOT">IOT - 英属印度洋领</option>
+										<option value="IRL">IRL - 爱尔兰</option>
+										<option value="IRN">IRN - 伊朗</option>
+										<option value="IRQ">IRQ - 伊拉克</option>
+										<option value="ISL">ISL - 冰岛</option>
+										<option value="ISR">ISR - 以色列</option>
+										<option value="ITA">ITA - 意大利</option>
+										<option value="JAN">JAM - 牙买加</option>
+										<option value="JOR">JOR - 约旦</option>
+										<option value="IPN">JPN - 日本</option>
+										<option value="HAZ">KAZ - 哈萨克斯坦</option>
+										<option value="KEN">KEN - 肯尼亚</option>
+										<option value="KGZ">KGZ - 吉尔吉斯斯坦</option>
+										<option value="KHM">KHM - 柬埔寨</option>
+										<option value="KIR">KIR - 基里巴斯</option>
+										<option value="KNA">KNA - 圣基茨和尼维斯</option>
+										<option value="KOR">KOR - 韩国</option>
+										<option value="KWT">KWT - 科威特</option>
+										<option value="LAO">LAO - 老挝</option>
+										<option value="LAN">LBN - 黎巴嫩</option>
+										<option value="LBR">LBR - 利比里亚</option>
+										<option value="LBY">LBY - 利比亚</option>
+										<option value="LCA">LCA - 圣卢西亚</option>
+										<option value="LIE">LIE - 列支敦士登</option>
+										<option value="LKA">LKA - 斯里兰卡</option>
+										<option value="TCD">TCD - 乍得</option>
+										<option value="TGO">TGO - 多哥</option>
+										<option value="THA">THA - 泰国</option>
+										<option value="TJK">TJK - 塔吉克斯坦</option>
+										<option value="LSO">LSO - 莱索托</option>
+										<option value="TKL">TKL - 托克劳</option>
+										<option value="TKM">TKM - 土库曼斯坦</option>
+										<option value="TMP">TMP - 东帝汶</option>
+										<option value="TPN">TON - 汤加</option>
+										<option value="TTO">TTO - 特立尼达和多巴哥</option>
+										<option value="TUN">TUN - 突尼斯</option>
+										<option value="TUR">TUR - 土耳其</option>
+										<option value="TUV">TUV - 图瓦卢</option>
+										<option value="TEN">TWN - 中国台湾</option>
+										<option value="TZA">TZA - 坦桑尼亚</option>
+										<option value="UGA">UGA - 乌干达</option>
+										<option value="UKR">UKR - 乌克兰</option>
+										<option value="UMI">UMI - 美国本土外小岛屿</option>
+										<option value="URY">URY - 乌拉圭</option>
+										<option value="USA">USA - 美国</option>
+										<option value="UZB">UZB - 乌兹别克斯坦</option>
+										<option value="VAT">VAT - 梵蒂冈</option>
+										<option value="VCT">VCT - 圣文森特和格林纳丁斯</option>
+										<option value="VEN">VEN - 委内瑞拉</option>
+										<option value="VGB">VGB - 英属维尔京群岛</option>
+										<option value="VIR">VIR - 美属维尔京群岛</option>
+										<option value="VNM">VNM - 越南</option>
+										<option value="VUT">VUT - 瓦努阿图</option>
+										<option value="WLF">WLF - 瓦利斯和富图纳</option>
+										<option value="WSM">WSM - 萨摩亚</option>
+										<option value="YEM">YEM - 也门</option>
+										<option value="ZAF">ZAF - 南非</option>
+										<option value="ZMB">ZMB - 赞比亚</option>
+										<option value="ZWE">ZWE - 津巴布韦</option>
+									</select><input type="text" oncopy="return false" onpaste="return false" oncut="return false" style="width: 137px;" id="mb2_sleinput_GuoBieDaiMa_6" name="mb2_sleinput_GuoBieDaiMa_6">
+								</div>
+								<div id="sle_gbdm_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="" style="width: 32px;"><label vl-default="" id="label_mz" vtitle="民iiis族" class="form-item text-left" vl-tipsid="label_mz_tips" title="label_mz" name="label_mz">民<i></i><i></i><i></i><s></s>族
+						</label>
+								<div id="label_mz_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="">
+								<div class="slectstyle">
+									<select vl-default="" id="sle_mz" vtitle="民族" class="form-item text-left" vl-tipsid="sle_mz_tips" vl-regex="['require']" vl-message="['民族不能为空!']" style="width: 160px;" title="sle_mz" vl-slemodel="txt_qtmz" name="sle_mz">
+										<option disabled="" style="background-color: blue; color: #fff;" value="" selected="selected">民族值含义</option>
+										<option value="0">0 - 汉族</option>
+										<option sle-require="[{'id':'txt_qtmz','regex':['require','maxlength20'],'tips':['其他民族不能为空!', '其他民族长度大于最大长度:[20]!'],'disabled':'false*false','default':''}]" value="99 - 其它">99 - 其它</option>
+										<option value="1">1-蒙古族</option>
+										<option value="2">2-回族</option>
+										<option value="3">3-藏族</option>
+										<option value="4">4-维吾尔族</option>
+										<option value="5">5-苗族</option>
+										<option value="6">6-彝族</option>
+										<option value="7">7-壮族</option>
+										<option value="8">8-布依族</option>
+										<option value="9">9-朝鲜族</option>
+										<option value="10">10-满族</option>
+										<option value="11">11-侗族</option>
+										<option value="12">12-瑶族</option>
+										<option value="13">13-白族</option>
+										<option value="14">14-土家族</option>
+										<option value="15">15-哈尼族</option>
+										<option value="39">39-普米族</option>
+										<option value="40">40-塔吉克族</option>
+										<option value="41">41-怒族</option>
+										<option value="42">42-乌孜别克族</option>
+										<option value="43">43-俄罗斯族</option>
+										<option value="44">44-鄂温克族</option>
+										<option value="45">45-德昂族</option>
+										<option value="46">46-保安族</option>
+										<option value="47">47-裕固族</option>
+										<option value="48">48-京族</option>
+										<option value="16">16-哈萨克族</option>
+										<option value="17">17-傣族</option>
+										<option value="18">18-黎族</option>
+										<option value="19">19-僳僳族</option>
+										<option value="20">20-佤族</option>
+										<option value="21">21-畲族</option>
+										<option value="22">22-高山族</option>
+										<option value="23">23-拉祜族</option>
+										<option value="24">24-水族</option>
+										<option value="25">25-东乡族</option>
+										<option value="26">26-纳西族</option>
+										<option value="27">27-景颇族</option>
+										<option value="28">28-柯尔克孜族</option>
+										<option value="29">29-土族</option>
+										<option value="30">30-达斡尔族</option>
+										<option value="31">31-仫佬族</option>
+										<option value="32">32-羌族</option>
+										<option value="33">33-布朗族</option>
+										<option value="34">34-撒拉族</option>
+										<option value="35">35-毛南族</option>
+										<option value="36">36-仡佬族</option>
+										<option value="49">49-塔塔尔族</option>
+										<option value="50">50-独龙族</option>
+										<option value="51">51-鄂伦春族</option>
+										<option value="52">52-赫哲族</option>
+										<option value="53">53-门巴族</option>
+										<option value="54">54-珞巴族</option>
+										<option value="55">55-基诺族</option>
+									</select><input type="text" oncopy="return false" onpaste="return false" oncut="return false" style="width: 137px;" id="mb2_sleinput_MinZu_8" name="mb2_sleinput_MinZu_8"><span class="text-red redtip">!</span>
+								</div>
+								<div id="sle_mz_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="" style="width: 64px;"><label vl-default="" id="label_qtmz" vtitle="其s他s名s族" class="form-item text-left" vl-tipsid="label_qtmz_tips" title="label_qtmz" name="label_qtmz">其<s></s>他<s></s>民<s></s>族
+						</label>
+								<div id="label_qtmz_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class=""><input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_qtmz" vtitle="其他民族" class="form-item text-left" vl-tipsid="txt_qtmz_tips" style="width: 160px;" title="txt_qtmz" onpaste="return false" name="txt_qtmz">
+								<div id="txt_qtmz_tips" class="tipsmsg"></div>
+							</td>
+						</tr>
+						<tr>
+							<td rowspan="1" colspan="1" class="" style="width: 64px;"><label vl-default="" id="label_khsr" vtitle="客s户s生s日" class="form-item text-left" vl-tipsid="label_khsr_tips" title="label_khsr" name="label_khsr">客<s></s>户<s></s>生<s></s>日
+						</label>
+								<div id="label_khsr_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class=""><input type="text" class="date form-item text-left" vl-default="" id="date_khsr" vtitle="客户生日" vl-tipsid="date_khsr_tips" style="width: 160px;" vl-regex="['require']" vl-message="['客户生日不能为空!']" title="date_khsr" oncopy="return false" onpaste="return false" oncut="return false" name="date_khsr"><img onclick="WdatePicker({el:'date_khsr',dateFmt:'yyyyMMdd'})" src="/js/My97DatePicker/skin/datePicker.gif" align="absmiddle" style="width: 16px; height: 22px; margin-left: 6px;"><span class="text-red redtip">!</span>
+								<div id="date_khsr_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="" style="width: 48px;"><label vl-default="" id="label_ywm" vtitle="英i文is名" class="form-item text-left" vl-tipsid="label_ywm_tips" title="label_ywm" name="label_ywm">英<i></i>文<i></i><s></s>名
+						</label>
+								<div id="label_ywm_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class=""><input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_ywm" vtitle="英文名" class="form-item text-left" vl-tipsid="txt_ywm_tips" vl-regex="['maxlength20', 'shuziandmu']" vl-message="['英文名长度超过最大长度:[20]!','英文名输入错误!']" style="width: 160px;" title="txt_ywm" onpaste="return false" name="txt_ywm">
+								<div id="txt_ywm_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="" style="width: 48px;"><label vl-default="" id="label_zym" vtitle="曾i用is名" class="form-item text-left" vl-tipsid="label_zym_tips" title="label_zym" name="label_zym">曾<i></i>用<i></i><s></s>名
+						</label>
+								<div id="label_zym_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class=""><input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_zym" vtitle="曾用名" class="form-item text-left" vl-tipsid="txt_zym_tips" vl-regex="['maxlength20', 'hascode']" vl-message="['曾用名长度超过最大长度:[20]!','曾用名不能全为数字!']" style="width: 160px;" title="txt_zym" onpaste="return false" name="txt_zym">
+								<div id="txt_zym_tips" class="tipsmsg"></div>
+							</td>
+						</tr>
+						<tr>
+							<td rowspan="1" colspan="1" class="" style="width: 64px;"><label vl-default="" id="label_gddh" vtitle="固s定s电s话" class="form-item text-left" vl-tipsid="label_gddh_tips" title="label_gddh" name="label_gddh">固<s></s>定<s></s>电<s></s>话
+						</label>
+								<div id="label_gddh_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class=""><input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_gddh" vtitle="固定电话" class="form-item text-left" vl-tipsid="txt_gddh_tips" vl-regex="['maxlength20', 'phone']" vl-message="['固定电话长度超过最大长度:[20]!','固定电话输入错误!']" style="width: 160px;" title="txt_gddh" onpaste="return false" name="txt_gddh">
+								<div id="txt_gddh_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="" style="width: 32px;"><label vl-default="" id="label_qh" vtitle="区iiis号" class="form-item text-left" vl-tipsid="label_qh_tips" title="label_qh" name="label_qh">区<i></i><i></i><i></i><s></s>号
+						</label>
+								<div id="label_qh_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="">
+								<div class="slectstyle">
+									<select vl-default="1" id="sle_qh" vtitle="区号" class="form-item text-left" vl-tipsid="sle_qh_tips" style="width: 160px;" title="sle_qh" vl-slemodel="" name="sle_qh">
+										<option disabled="" style="background-color: blue; color: #fff;" value="">区号值含义</option>
+										<option value="1">1 - +86</option>
+										<option value="2">2 - 其它</option>
+									</select><input type="text" oncopy="return false" onpaste="return false" oncut="return false" style="width: 137px;" id="mb2_sleinput_QuHao_20" name="mb2_sleinput_QuHao_20">
+								</div>
+								<div id="sle_qh_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="" style="width: 64px;"><label vl-default="" id="label_yddh" vtitle="移s动s电s话" class="form-item text-left" vl-tipsid="label_yddh_tips" title="label_yddh" name="label_yddh">移<s></s>动<s></s>电<s></s>话
+						</label>
+								<div id="label_yddh_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class=""><input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_yddh" vtitle="移动电话" class="form-item text-left" vl-tipsid="txt_yddh_tips" vl-regex="['require', 'maxlength15', 'mobile']" vl-message="['移动电话不能为空!','移动电话长度超过最大长度:[15]!','移动电话输入错误!']" style="width: 160px;" title="txt_yddh" onpaste="return false" name="txt_yddh"><span class="text-red redtip">!</span>
+								<div id="txt_yddh_tips" class="tipsmsg"></div>
+							</td>
+						</tr>
+						<tr>
+							<td rowspan="1" colspan="1" class="" style="width: 32px;"><label vl-default="" id="label_xb" vtitle="性iiis别" class="form-item text-left" vl-tipsid="label_xb_tips" title="label_xb" name="label_xb">性<i></i><i></i><i></i><s></s>别
+						</label>
+								<div id="label_xb_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="">
+								<div class="slectstyle">
+									<select vl-default="1" id="sle_xb" vtitle="性别_mb2" class="form-item text-left" vl-tipsid="sle_xb_tips" style="width: 160px;" title="sle_xb" vl-slemodel="" name="sle_xb">
+										<option disabled="" style="background-color: blue; color: #fff;" value="">性别值含义</option>
+										<option value="1">1 - 男</option>
+										<option value="2">2 - 女</option>
+										<option value="9">9 - 其它</option>
+									</select><input type="text" oncopy="return false" onpaste="return false" oncut="return false" style="width: 137px;" id="mb2_sleinput_XingBiemb2_24" name="mb2_sleinput_XingBiemb2_24">
+								</div>
+								<div id="sle_xb_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="" style="width: 64px;"><label vl-default="" id="label_hyzk" vtitle="婚s姻s状s况" class="form-item text-left" vl-tipsid="label_hyzk_tips" title="label_hyzk" name="label_hyzk">婚<s></s>姻<s></s>状<s></s>况
+						</label>
+								<div id="label_hyzk_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="">
+								<div class="slectstyle">
+									<select vl-default="" id="sle_hyzk" vtitle="婚姻状况" class="form-item text-left" vl-tipsid="sle_hyzk_tips" vl-regex="['require']" vl-message="['婚姻状况不能为空!']" style="width: 160px;" title="sle_hyzk" vl-slemodel="" name="sle_hyzk">
+										<option disabled="" style="background-color: blue; color: #fff;" value="" selected="selected">婚姻状况值含义</option>
+										<option value="0">0 - 未婚</option>
+										<option value="1">1 - 已婚</option>
+										<option value="2">2 - 丧偶</option>
+										<option value="3">3 - 已离异</option>
+									</select><input type="text" oncopy="return false" onpaste="return false" oncut="return false" style="width: 137px;" id="mb2_sleinput_HunYinZhuangKuang_26" name="mb2_sleinput_HunYinZhuangKuang_26"><span class="text-red redtip">!</span>
+								</div>
+								<div id="sle_hyzk_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="" style="width: 32px;"><label vl-default="" id="label_jy" vtitle="教iiis育" class="form-item text-left" vl-tipsid="label_jy_tips" title="label_jy" name="label_jy">教<i></i><i></i><i></i><s></s>育
+						</label>
+								<div id="label_jy_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="">
+								<div class="slectstyle">
+									<select vl-default="" id="sle_jy" vtitle="教育" class="form-item text-left" vl-tipsid="sle_jy_tips" vl-regex="['require']" vl-message="['教育不能为空!']" style="width: 160px;" title="sle_jy" vl-slemodel="" name="sle_jy">
+										<option disabled="" style="background-color: blue; color: #fff;" value="" selected="selected">教育值含义</option>
+										<option value="1">1 - 未接受过教育</option>
+										<option value="2">2 - 小学( 含 )以下</option>
+										<option value="3">3 - 初中</option>
+										<option value="4">4 - 高中（含中职、高职）</option>
+										<option value="5">5 - 专科</option>
+										<option value="6">6 - 本科</option>
+										<option value="7">7 - 研究生（含硕士学位）</option>
+										<option value="8">8 - 博士以上</option>
+										<option value="9">9 - 其它</option>
+										<option value="0">0 - 未知</option>
+									</select><input type="text" oncopy="return false" onpaste="return false" oncut="return false" style="width: 137px;" id="mb2_sleinput_JiaoYu_28" name="mb2_sleinput_JiaoYu_28"><span class="text-red redtip">!</span>
+								</div>
+								<div id="sle_jy_tips" class="tipsmsg"></div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="con-map2">
+				<table id="qv" class="con-map2-table qv">
+					<tbody>
+						<tr>
+							<td class="" style="width: 64px;"><label vl-default="" id="label_hydm" vtitle="行s业s代s码" class="form-item text-left" vl-tipsid="label_hydm_tips" title="label_hydm" name="label_hydm">行<s></s>业<s></s>代<s></s>码
+						</label>
+								<div id="label_hydm_tips" class="tipsmsg"></div>
+							</td>
+							<td class="" colspan="4">
+								<div class="slectstyle">
+									<select vl-keyup="wwww" vl-default="" id="sle_hydm" vtitle="行业代码" class="form-item text-left" vl-tipsid="sle_hydm_tips" vl-regex="['require']" vl-message="['行业代码不能为空!']" style="width: 500px;" title="sle_hydm" vl-slemodel="" name="sle_hydm">
+										<option disabled="" style="background-color: blue; color: #fff;" value="" selected="selected">行业代码值含义</option>
+										<option value="1">1 - 农林牧渔</option>
+										<option value="2">2 - 法律/司法</option>
+										<option value="3">3 - 机关团体</option>
+										<option value="4">4 - 制造业</option>
+										<option value="5">5 - 交通运输</option>
+										<option value="6">6 - 税务</option>
+										<option value="7">7 - 财政</option>
+										<option value="8">8 - 工业</option>
+										<option value="9">9 - 武警/部队系统</option>
+										<option value="10">10 - 水电气供应</option>
+										<option value="11">11 - 律师/会计事务所等社会服</option>
+										<option value="12">12 - 商业/贸易</option>
+										<option value="13">13 - IT/网络/计算机</option>
+										<option value="14">14 - 媒体/广告</option>
+										<option value="15">15 - 邮电通讯</option>
+										<option value="16">16 - 房地产/建筑/装修</option>
+										<option value="17">17 - 银行/证券/保险</option>
+										<option value="18">18 - 咨询/中介</option>
+										<option value="19">19 - 医疗/医院</option>
+										<option value="20">20 - 科研教育/培训/学校</option>
+										<option value="21">21 - 文化/影视/娱乐服务/体育</option>
+										<option value="22">22 - 采矿业</option>
+										<option value="23">23 - 拍卖</option>
+										<option value="24">24 - 旅游/餐饮/饭店</option>
+										<option value="25">25 - 废品收购</option>
+										<option value="26">26 - 经营金银、珠宝、艺术品收藏</option>
+										<option value="27">27 - 售卖彩票</option>
+										<option value="98">98 - 其他</option>
+										<option value="99">99 - 未知</option>
+									</select><input type="text" oncopy="return false" onpaste="return false" oncut="return false" style="width: 477px;" id="mb3_sleinput_XingYeDaiMa_2" name="mb3_sleinput_XingYeDaiMa_2"><span class="text-red redtip">!</span>
+								</div>
+								<div id="sle_hydm_tips" class="tipsmsg"></div>
+							</td>
+							<td class="" style="width: 64px;"><label vl-default="" id="label_zydm" vtitle="职s业s代s码" class="form-item text-left" vl-tipsid="label_zydm_tips" title="label_zydm" name="label_zydm">职<s></s>业<s></s>代<s></s>码
+						</label>
+								<div id="label_zydm_tips" class="tipsmsg"></div>
+							</td>
+							<td class="">
+								<div class="slectstyle">
+									<select vl-default="" id="sle_zydm" vtitle="职业代码" class="form-item text-left" vl-tipsid="sle_zydm_tips" vl-regex="['require']" vl-message="['职业代码不能为空!']" style="width: 160px;" title="sle_zydm" vl-slemodel="" name="sle_zydm">
+										<option disabled="" style="background-color: blue; color: #fff;" value="" selected="selected">职业代码值含义</option>
+										<option value="1">1 - 国家公务员</option>
+										<option value="2">2 - 事业单位人员</option>
+										<option value="3">3 - 国有企业职员</option>
+										<option value="4">4 - 股份制企业职员</option>
+										<option value="5">5 - 三资企业职员</option>
+										<option value="6">6 - 民营企业职员</option>
+										<option value="7">7 - 私营企业职员</option>
+										<option value="8">8 - 企业管理人员</option>
+										<option value="9">9 - 工人</option>
+										<option value="10">10 - 农村居民</option>
+										<option value="11">11 - 学生</option>
+										<option value="12">12 - 警察、军人</option>
+										<option value="13">13 - 自由职业者</option>
+										<option value="14">14 - 个体经营者</option>
+										<option value="15">15 - 无业人员</option>
+										<option value="16">16 - 退(离)休人员</option>
+										<option value="17">17 - 文体明星</option>
+										<option value="18">18 - 专业技术人员</option>
+										<option value="98">98 - 其他人员</option>
+										<option value="99">99 - 未知</option>
+									</select><input type="text" oncopy="return false" onpaste="return false" oncut="return false" style="width: 137px;" id="mb3_sleinput_ZhiYeDaiMa_4" name="mb3_sleinput_ZhiYeDaiMa_4"><span class="text-red redtip">!</span>
+								</div>
+								<div id="sle_zydm_tips" class="tipsmsg"></div>
+							</td>
+						</tr>
+						<tr>
+							<td rowspan="1" colspan="1" class="" style="width: 64px;"><label vl-default="" id="label_gzdw" vtitle="工s作s单s位" class="form-item text-left" vl-tipsid="label_gzdw_tips" title="label_gzdw" name="label_gzdw">工<s></s>作<s></s>单<s></s>位
+						</label>
+								<div id="label_gzdw_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="4" class=""><input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_gzdw" vtitle="工作单位" class="form-item text-left" vl-tipsid="txt_gzdw_tips" vl-regex="['maxlength120']" vl-message="['工作单位长度超过最大长度:[120]!']" style="width: 500px;" title="txt_gzdw" onpaste="return false" name="txt_gzdw">
+								<div id="txt_gzdw_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="" style="width: 64px;"><label vl-default="" id="label_jjxz" vtitle="经s济s性s质" class="form-item text-left" vl-tipsid="label_jjxz_tips" title="label_jjxz" name="label_jjxz">经<s></s>济<s></s>性<s></s>质
+						</label>
+								<div id="label_jjxz_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="">
+								<div class="slectstyle">
+									<select vl-default="" id="sle_jjxz" vtitle="经济性质" class="form-item text-left" vl-tipsid="sle_jjxz_tips" style="width: 160px;" title="sle_jjxz" vl-slemodel="" name="sle_jjxz">
+										<option disabled="" style="background-color: blue; color: #fff;" value="" selected="selected">经济性质值含义</option>
+										<option value="1">1 - 无</option>
+										<option value="2">2 - 国有</option>
+										<option value="3">3 - 集体</option>
+										<option value="4">4 - 股份制</option>
+										<option value="5">5 - 联营</option>
+										<option value="6">6 - 私营</option>
+										<option value="7">7 - 其他</option>
+										<option value="8">8 - 个体</option>
+										<option value="9">9 - 外商投资</option>
+										<option value="10">10 - 港、澳、台投资</option>
+										<option value="11">11 - 未知</option>
+									</select><input type="text" oncopy="return false" onpaste="return false" oncut="return false" style="width: 137px;" id="mb3_sleinput_JingJiXingZhi_8" name="mb3_sleinput_JingJiXingZhi_8">
+								</div>
+								<div id="sle_jjxz_tips" class="tipsmsg"></div>
+							</td>
+						</tr>
+						<tr>
+							<td rowspan="1" colspan="1" class="" style="width: 32px;"><label vl-default="" id="label_zw" vtitle="职iiis务" class="form-item text-left" vl-tipsid="label_zw_tips" title="label_zw" name="label_zw">职<i></i><i></i><i></i><s></s>务
+						</label>
+								<div id="label_zw_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="4" class=""><input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_zw" vtitle="职务" class="form-item text-left" vl-tipsid="txt_zw_tips" vl-regex="['maxlength120']" vl-message="['职务长度大于最大长度:[120]!']" style="width: 500px;" title="txt_zw" onpaste="return false" name="txt_zw">
+								<div id="txt_zw_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="" style="width: 64px;"><label vl-default="" id="label_ysrlx" vtitle="月收入类型" class="form-item text-left" vl-tipsid="label_ysrlx_tips" title="label_ysrlx" name="label_ysrlx">月收入类型</label>
+								<div id="label_ysrlx_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="">
+								<div class="slectstyle">
+									<select vl-default="" id="sle_ysrlx" vtitle="月收入类型" class="form-item text-left" vl-tipsid="sle_ysrlx_tips" vl-regex="['require']" vl-message="['月收入类型不能为空!']" style="width: 160px;" title="sle_ysrlx" vl-slemodel="" name="sle_ysrlx">
+										<option disabled="" style="background-color: blue; color: #fff;" value="" selected="selected">月收入类型值含义</option>
+										<option value="1">1 - 低于2000元</option>
+										<option value="2">2 - 2000元至5000元（含）</option>
+										<option value="3">3 - 5000元至10000元（含）</option>
+										<option value="4">4 - 10000元至20000元（含）</option>
+										<option value="5">5 - 20000元以上</option>
+										<option value="98">98 - 其他</option>
+										<option value="99">99 - 未知</option>
+									</select><input type="text" oncopy="return false" onpaste="return false" oncut="return false" style="width: 137px;" id="mb3_sleinput_YueShouRuLeiXing_12" name="mb3_sleinput_YueShouRuLeiXing_12"><span class="text-red redtip">!</span>
+								</div>
+								<div id="sle_ysrlx_tips" class="tipsmsg"></div>
+							</td>
+						</tr>
+						<tr>
+							<td rowspan="1" colspan="1" class="" style="width: 64px;"><label vl-default="" id="label_zsdz" vtitle="住s所s地s址" class="form-item text-left" vl-tipsid="label_zsdz_tips" title="label_zsdz" name="label_zsdz">住<s></s>所<s></s>地<s></s>址
+						</label>
+								<div id="label_zsdz_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="6" class=""><input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_zsdz" vtitle="住所地址" class="form-item text-left" vl-tipsid="txt_zsdz_tips" vl-regex="['maxlength120']" vl-message="['住所地址长度超过最大长度:[120]!']" style="width: 500px;" title="txt_zsdz" onpaste="return false" name="txt_zsdz">
+								<div id="txt_zsdz_tips" class="tipsmsg"></div>
+							</td>
+						</tr>
+						<tr>
+							<td rowspan="1" colspan="1" class="" style="width: 64px;"><label vl-default="" id="label_txdz" vtitle="通s讯s地s址" class="form-item text-left" vl-tipsid="label_txdz_tips" title="label_txdz" name="label_txdz">通<s></s>讯<s></s>地<s></s>址
+						</label>
+								<div id="label_txdz_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="6" class=""><input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_txdz" vtitle="通讯地址" class="form-item text-left" vl-tipsid="txt_txdz_tips" vl-regex="['maxlength120']" vl-message="['通讯地址长度超过最大长度:[120]!']" style="width: 500px;" title="txt_txdz" onpaste="return false" name="txt_txdz">
+								<div id="txt_txdz_tips" class="tipsmsg"></div>
+							</td>
+						</tr>
+						<tr>
+							<td rowspan="1" colspan="1" class="" style="width: 48px;"><label vl-default="" id="label_lxr" vtitle="联i系is人" class="form-item text-left" vl-tipsid="label_lxr_tips" title="label_lxr" name="label_lxr">联<i></i>系<i></i><s></s>人
+						</label>
+								<div id="label_lxr_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class=""><input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_lxr" vtitle="联系人" class="form-item text-left" vl-tipsid="txt_lxr_tips" vl-regex="['maxlength20', 'hascode']" vl-message="['联系人长度超过最大长度:[20]!','联系人不能全为数字!']" style="width: 160px;" title="txt_lxr" onpaste="return false" name="txt_lxr">
+								<div id="txt_lxr_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="" style="width: 64px;"><label vl-default="" id="label_lxfs" vtitle="联s系s方s式" class="form-item text-left" vl-tipsid="label_lxfs_tips" title="label_lxfs" name="label_lxfs">联<s></s>系<s></s>方<s></s>式
+						</label>
+								<div id="label_lxfs_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class=""><input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_lxfs" vtitle="联系方式" class="form-item text-left" vl-tipsid="txt_lxfs_tips" vl-regex="['maxlength20', 'connect']" vl-message="['联系方式长度超过最大长度:[20]!','联系方式输入不正确!']" style="width: 160px;" title="txt_lxfs" onpaste="return false" name="txt_lxfs">
+								<div id="txt_lxfs_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="" style="width: 64px;"><label vl-default="" id="label_dzyx" vtitle="电s子s邮s箱" class="form-item text-left" vl-tipsid="label_dzyx_tips" title="label_dzyx" name="label_dzyx">电<s></s>子<s></s>邮<s></s>箱
+						</label>
+								<div id="label_dzyx_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="2" class=""><input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_dzyx" vtitle="电子邮箱" class="form-item text-left" vl-tipsid="txt_dzyx_tips" vl-regex="['email', 'maxlength40']" vl-message="['电子邮箱输入错误!','电子邮箱长度大于最大长度:[40]!']" style="width: 160px;" title="txt_dzyx" onpaste="return false" name="txt_dzyx">
+								<div id="txt_dzyx_tips" class="tipsmsg"></div>
+							</td>
+						</tr>
+						<tr>
+							<td rowspan="1" colspan="1" class="" style="width: 64px;"><label vl-default="" id="label_khjlh" vtitle="客户经理号" class="form-item text-left" vl-tipsid="label_khjlh_tips" title="label_khjlh" name="label_khjlh">客户经理号</label>
+								<div id="label_khjlh_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class=""><input type="text" oncopy="return false" oncut="return false" vl-default="134201" id="txt_khjlh" vtitle="客户经理号" class="form-item text-left" vl-tipsid="txt_khjlh_tips" vl-regex="['maxlength40', 'shuziandmu']" vl-message="['客户经理号长度超过最大长度:[40]!','客户经理号输入错误!']" style="width: 160px;" title="txt_khjlh" onpaste="return false" name="txt_khjlh">
+								<div id="txt_khjlh_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="" style="width: 64px;"><label vl-default="" id="label_khsjkzr" vtitle="客户实际控制人" class="form-item text-left" vl-tipsid="label_khsjkzr_tips" title="label_khsjkzr" name="label_khsjkzr">客户实际控制人</label>
+								<div id="label_khsjkzr_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class=""><input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_khsjkzr" vtitle="客户实际控制人" class="form-item text-left" vl-tipsid="txt_khsjkzr_tips" vl-regex="['maxlength20', 'hascode']" vl-message="['客户实际控制人长度超过最大长度:[20]!','客户实际控制人不能全为数字!']" style="width: 160px;" title="txt_khsjkzr" onpaste="return false" name="txt_khsjkzr">
+								<div id="txt_khsjkzr_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="" style="width: 64px;"><label vl-default="" id="label_cybgx" vtitle="持有保管箱" class="form-item text-left" vl-tipsid="label_cybgx_tips" title="label_cybgx" name="label_cybgx">持有保管箱</label>
+								<div id="label_cybgx_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="2" class="">
+								<div class="slectstyle">
+									<select vl-default="N" id="sle_cybgx" vtitle="持有保管箱" class="form-item text-left" vl-tipsid="sle_cybgx_tips" style="width: 160px;" title="sle_cybgx" vl-slemodel="" name="sle_cybgx">
+										<option disabled="" style="background-color: blue; color: #fff;" value="">持有保管箱值含义</option>
+										<option value="N">N - 否</option>
+										<option value="Y">Y - 是</option>
+									</select><input type="text" oncopy="return false" onpaste="return false" oncut="return false" style="width: 137px;" id="mb3_sleinput_ChiYouBaoGuanXiang_28" name="mb3_sleinput_ChiYouBaoGuanXiang_28">
+								</div>
+								<div id="sle_cybgx_tips" class="tipsmsg"></div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="con-map2">
+				<div class="box">
+					<ul class="tab">
+						<li title="tab_0_0" id="tab_0_0" class="tab_0_0 one">代理人信息</li>
+						<li title="tab_0_1" id="tab_0_1" class="tab_0_1">辅助证件信息</li>
+					</ul>
+					<div class="content">
+						<div class="ct" style="">
+							<table id="qv" class="con-map2-table qv">
+								<tbody>
+									<tr>
+										<td class="" style="width: 64px;"><label vl-default="" id="label_zjlx" vtitle="证s件s类s型" class="form-item text-left" vl-tipsid="label_zjlx_tips" title="label_zjlx" name="label_zjlx">证<s></s>件<s></s>类<s></s>型
+									</label>
+											<div id="label_zjlx_tips" class="tipsmsg"></div>
+										</td>
+										<td rowspan="1" colspan="1" class="">
+											<div class="slectstyle">
+												<select vl-default="1" id="sle_zjlx1" vtitle="证件类型_mb4" class="form-item text-left" vl-tipsid="sle_zjlx1_tips" style="width: 160px;" title="sle_zjlx1" vl-slemodel="txt_zjhm1,sle_ybrgx,txt_xm,sle_xb1,sle_zy,txt_sj,txt_fzjg1,sle_dbyy,txt_zjhm1,txt_zjhm1,txt_zjhm1,txt_zjhm1,txt_zjhm1,txt_zjhm1,txt_zjhm1,txt_zjhm1,txt_zjhm1,txt_zjhm1,txt_zjhm1,txt_zjhm1,txt_zjhm1" name="sle_zjlx1">
+													<option disabled="" style="background-color: blue; color: #fff;" value="">证件类型值含义</option>
+													<option sle-require="[{'id':'txt_zjhm1','regex':['integer'],'tips':[''],'disabled':'true','default':''},{'id':'sle_ybrgx','regex':['integer'],'tips':[''],'disabled':'true','default':''},{'id':'txt_xm','regex':['integer'],'tips':[''],'disabled':'true','default':''},{'id':'sle_xb1','regex':['integer'],'tips':[''],'disabled':'true','default':''},{'id':'sle_zy','regex':['integer'],'tips':[''],'disabled':'true','default':''},{'id':'txt_sj','regex':['integer'],'tips':[''],'disabled':'true','default':''},{'id':'txt_fzjg1','regex':['integer'],'tips':[''],'disabled':'true','default':''},{'id':'txt_qtyy','regex':['integer'],'tips':[''],'disabled':'true','default':''},{'id':'sle_dbyy','regex':['maxlength120'],'tips':[''],'disabled':'true','default':''}]" value="1">1 - 无代理人代办</option>
+													<option sle-require="[{'id':'txt_zjhm1','regex':['require','maxlength20','idcard'],'tips':['证件号码不能为空!','证件号码长度超过最大长度:[20]!','证件号码身份证位数不正确(应为15位或者18位)！'],'disabled':'false*false*false','default':''},{'id':'sle_ybrgx','regex':['integer'],'tips':[''],'disabled':'false*false*false','default':''},{'id':'txt_xm','regex':['require','maxlength20','hascode'],'tips':['客户姓名不能为空!','客户姓名长度超过最大长度:[20]!','客户姓名不能全为数字!'],'disabled':'false*false*false','default':''},{'id':'sle_xb1','regex':['integer'],'tips':[''],'disabled':'false*false*false','default':''},{'id':'sle_zy','regex':['integer'],'tips':[''],'disabled':'false*false*false','default':''},{'id':'txt_sj','regex':['require','maxlength15','mobile'],'tips':['移动电话不能为空!','移动电话长度超过最大长度:[15]!','移动电话输入错误!'],'disabled':'false*false*false','default':''},{'id':'txt_fzjg1','regex':['integer'],'tips':[''],'disabled':'false*false*false','default':''},{'id':'sle_dbyy','regex':['maxlength120'],'tips':[''],'disabled':'false*false*false','default':''}]" value="2">2 - 居民身份证</option>
+													<option sle-require="[{'id':'txt_zjhm1','regex':['require','maxlength20','idcard'],'tips':['证件号码不能为空!','证件号码长度超过最大长度:[20]!','证件号码身份证位数不正确(应为15位或者18位)！'],'disabled':'false*false*false','default':''},{'id':'sle_ybrgx','regex':['integer'],'tips':[''],'disabled':'false*false*false','default':''},{'id':'txt_xm','regex':['require','maxlength20','hascode'],'tips':['客户姓名不能为空!','客户姓名长度超过最大长度:[20]!','客户姓名不能全为数字!'],'disabled':'false*false*false','default':''},{'id':'sle_xb1','regex':['integer'],'tips':[''],'disabled':'false*false*false','default':''},{'id':'sle_zy','regex':['integer'],'tips':[''],'disabled':'false*false*false','default':''},{'id':'txt_sj','regex':['require','maxlength15','mobile'],'tips':['移动电话不能为空!','移动电话长度超过最大长度:[15]!','移动电话输入错误!'],'disabled':'false*false*false','default':''},{'id':'txt_fzjg1','regex':['integer'],'tips':[''],'disabled':'false*false*false','default':''},{'id':'sle_dbyy','regex':['maxlength120'],'tips':[''],'disabled':'false*false*false','default':''}]" value="3">3 - 临时居民身份证</option>
+													<option sle-require="[{'id':'txt_zjhm1','regex':['require','maxlength20','idcard'],'tips':['证件号码不能为空!','证件号码长度超过最大长度:[20]!','证件号码身份证位数不正确(应为15位或者18位)！'],'disabled':'false*false*false','default':''},{'id':'sle_ybrgx','regex':['integer'],'tips':[''],'disabled':'false*false*false','default':''},{'id':'txt_xm','regex':['require','maxlength20','hascode'],'tips':['客户姓名不能为空!','客户姓名长度超过最大长度:[20]!','客户姓名不能全为数字!'],'disabled':'false*false*false','default':''},{'id':'sle_xb1','regex':['integer'],'tips':[''],'disabled':'false*false*false','default':''},{'id':'sle_zy','regex':['integer'],'tips':[''],'disabled':'false*false*false','default':''},{'id':'txt_sj','regex':['require','maxlength15','mobile'],'tips':['移动电话不能为空!','移动电话长度超过最大长度:[15]!','移动电话输入错误!'],'disabled':'false*false*false','default':''},{'id':'txt_fzjg1','regex':['integer'],'tips':[''],'disabled':'false*false*false','default':''},{'id':'sle_dbyy','regex':['maxlength120'],'tips':[''],'disabled':'false*false*false','default':''}]" value="4">4 - 居民户口簿</option>
+													<option sle-require="[{'id':'txt_zjhm1','regex':['require','maxlength40','shuziandmu'],'tips':['证件号码不能为空!','证件号码长度大于最大长度:[40]!','证件号码输入错误!'],'disabled':'false*false*false','default':''},{'id':'sle_ybrgx','regex':['integer'],'tips':[''],'disabled':'false*false*false','default':''},{'id':'txt_xm','regex':['require','maxlength20','hascode'],'tips':['客户姓名不能为空!','客户姓名长度超过最大长度:[20]!','客户姓名不能全为数字!'],'disabled':'false*false*false','default':''},{'id':'sle_xb1','regex':['integer'],'tips':[''],'disabled':'false*false*false','default':''},{'id':'sle_zy','regex':['integer'],'tips':[''],'disabled':'false*false*false','default':''},{'id':'txt_sj','regex':['require','maxlength15','mobile'],'tips':['移动电话不能为空!','移动电话长度超过最大长度:[15]!','移动电话输入错误!'],'disabled':'false*false*false','default':''},{'id':'txt_fzjg1','regex':['integer'],'tips':[''],'disabled':'false*false*false','default':''},{'id':'sle_dbyy','regex':['maxlength120'],'tips':[''],'disabled':'false*false*false','default':''}]" value="5">5 - 军官证</option>
+													<option sle-require="[{'id':'txt_zjhm1','regex':['require','maxlength40','shuziandmu'],'tips':['证件号码不能为空!','证件号码长度大于最大长度:[40]!','证件号码输入错误!'],'disabled':'false*false*false','default':''},{'id':'sle_ybrgx','regex':['integer'],'tips':[''],'disabled':'false*false*false','default':''},{'id':'txt_xm','regex':['require','maxlength20','hascode'],'tips':['客户姓名不能为空!','客户姓名长度超过最大长度:[20]!','客户姓名不能全为数字!'],'disabled':'false*false*false','default':''},{'id':'sle_xb1','regex':['integer'],'tips':[''],'disabled':'false*false*false','default':''},{'id':'sle_zy','regex':['integer'],'tips':[''],'disabled':'false*false*false','default':''},{'id':'txt_sj','regex':['require','maxlength15','mobile'],'tips':['移动电话不能为空!','移动电话长度超过最大长度:[15]!','移动电话输入错误!'],'disabled':'false*false*false','default':''},{'id':'txt_fzjg1','regex':['integer'],'tips':[''],'disabled':'false*false*false','default':''},{'id':'sle_dbyy','regex':['maxlength120'],'tips':[''],'disabled':'false*false*false','default':''}]" value="6">6 - 警官证</option>
+													<option sle-require="[{'id':'txt_zjhm1','regex':['require','maxlength40','shuziandmu'],'tips':['证件号码不能为空!','证件号码长度大于最大长度:[40]!','证件号码输入错误!'],'disabled':'false*false*false','default':''},{'id':'sle_ybrgx','regex':['integer'],'tips':[''],'disabled':'false*false*false','default':''},{'id':'txt_xm','regex':['require','maxlength20','hascode'],'tips':['客户姓名不能为空!','客户姓名长度超过最大长度:[20]!','客户姓名不能全为数字!'],'disabled':'false*false*false','default':''},{'id':'sle_xb1','regex':['integer'],'tips':[''],'disabled':'false*false*false','default':''},{'id':'sle_zy','regex':['integer'],'tips':[''],'disabled':'false*false*false','default':''},{'id':'txt_sj','regex':['require','maxlength15','mobile'],'tips':['移动电话不能为空!','移动电话长度超过最大长度:[15]!','移动电话输入错误!'],'disabled':'false*false*false','default':''},{'id':'txt_fzjg1','regex':['integer'],'tips':[''],'disabled':'false*false*false','default':''},{'id':'sle_dbyy','regex':['maxlength120'],'tips':[''],'disabled':'false*false*false','default':''}]" value="7">7 - 士兵证</option>
+													<option sle-require="[{'id':'txt_zjhm1','regex':['require','maxlength40','shuziandmu'],'tips':['证件号码不能为空!','证件号码长度大于最大长度:[40]!','证件号码输入错误!'],'disabled':'false*false*false','default':''},{'id':'sle_ybrgx','regex':['integer'],'tips':[''],'disabled':'false*false*false','default':''},{'id':'txt_xm','regex':['require','maxlength20','hascode'],'tips':['客户姓名不能为空!','客户姓名长度超过最大长度:[20]!','客户姓名不能全为数字!'],'disabled':'false*false*false','default':''},{'id':'sle_xb1','regex':['integer'],'tips':[''],'disabled':'false*false*false','default':''},{'id':'sle_zy','regex':['integer'],'tips':[''],'disabled':'false*false*false','default':''},{'id':'txt_sj','regex':['require','maxlength15','mobile'],'tips':['移动电话不能为空!','移动电话长度超过最大长度:[15]!','移动电话输入错误!'],'disabled':'false*false*false','default':''},{'id':'txt_fzjg1','regex':['integer'],'tips':[''],'disabled':'false*false*false','default':''},{'id':'sle_dbyy','regex':['maxlength120'],'tips':[''],'disabled':'false*false*false','default':''}]" value="8">8 - 军队学员证</option>
+													<option sle-require="[{'id':'txt_zjhm1','regex':['require','maxlength40','shuziandmu'],'tips':['证件号码不能为空!','证件号码长度大于最大长度:[40]!','证件号码输入错误!'],'disabled':'false*false*false','default':''},{'id':'sle_ybrgx','regex':['integer'],'tips':[''],'disabled':'false*false*false','default':''},{'id':'txt_xm','regex':['require','maxlength20','hascode'],'tips':['客户姓名不能为空!','客户姓名长度超过最大长度:[20]!','客户姓名不能全为数字!'],'disabled':'false*false*false','default':''},{'id':'sle_xb1','regex':['integer'],'tips':[''],'disabled':'false*false*false','default':''},{'id':'sle_zy','regex':['integer'],'tips':[''],'disabled':'false*false*false','default':''},{'id':'txt_sj','regex':['require','maxlength15','mobile'],'tips':['移动电话不能为空!','移动电话长度超过最大长度:[15]!','移动电话输入错误!'],'disabled':'false*false*false','default':''},{'id':'txt_fzjg1','regex':['integer'],'tips':[''],'disabled':'false*false*false','default':''},{'id':'sle_dbyy','regex':['maxlength120'],'tips':[''],'disabled':'false*false*false','default':''}]" value="9">9 - 军队文职干部证</option>
+													<option sle-require="[{'id':'txt_zjhm1','regex':['require','maxlength40','shuziandmu'],'tips':['证件号码不能为空!','证件号码长度大于最大长度:[40]!','证件号码输入错误!'],'disabled':'false*false*false','default':''},{'id':'sle_ybrgx','regex':['integer'],'tips':[''],'disabled':'false*false*false','default':''},{'id':'txt_xm','regex':['require','maxlength20','hascode'],'tips':['客户姓名不能为空!','客户姓名长度超过最大长度:[20]!','客户姓名不能全为数字!'],'disabled':'false*false*false','default':''},{'id':'sle_xb1','regex':['integer'],'tips':[''],'disabled':'false*false*false','default':''},{'id':'sle_zy','regex':['integer'],'tips':[''],'disabled':'false*false*false','default':''},{'id':'txt_sj','regex':['require','maxlength15','mobile'],'tips':['移动电话不能为空!','移动电话长度超过最大长度:[15]!','移动电话输入错误!'],'disabled':'false*false*false','default':''},{'id':'txt_fzjg1','regex':['integer'],'tips':[''],'disabled':'false*false*false','default':''},{'id':'sle_dbyy','regex':['maxlength120'],'tips':[''],'disabled':'false*false*false','default':''}]" value="10">10 - 军队离退休干部证和军队职工证</option>
+													<option sle-require="[{'id':'txt_zjhm1','regex':['require','maxlength40','shuziandmu'],'tips':['证件号码不能为空!','证件号码长度大于最大长度:[40]!','证件号码输入错误!'],'disabled':'false*false*false','default':''},{'id':'sle_ybrgx','regex':['integer'],'tips':[''],'disabled':'false*false*false','default':''},{'id':'txt_xm','regex':['require','maxlength20','hascode'],'tips':['客户姓名不能为空!','客户姓名长度超过最大长度:[20]!','客户姓名不能全为数字!'],'disabled':'false*false*false','default':''},{'id':'sle_xb1','regex':['integer'],'tips':[''],'disabled':'false*false*false','default':''},{'id':'sle_zy','regex':['integer'],'tips':[''],'disabled':'false*false*false','default':''},{'id':'txt_sj','regex':['require','maxlength15','mobile'],'tips':['移动电话不能为空!','移动电话长度超过最大长度:[15]!','移动电话输入错误!'],'disabled':'false*false*false','default':''},{'id':'txt_fzjg1','regex':['integer'],'tips':[''],'disabled':'false*false*false','default':''},{'id':'sle_dbyy','regex':['maxlength120'],'tips':[''],'disabled':'false*false*false','default':''}]" value="11">11 - 海员证</option>
+													<option sle-require="[{'id':'txt_zjhm1','regex':['require','maxlength40','shuziandmu'],'tips':['证件号码不能为空!','证件号码长度大于最大长度:[40]!','证件号码输入错误!'],'disabled':'false*false*false','default':''},{'id':'sle_ybrgx','regex':['integer'],'tips':[''],'disabled':'false*false*false','default':''},{'id':'txt_xm','regex':['require','maxlength20','hascode'],'tips':['客户姓名不能为空!','客户姓名长度超过最大长度:[20]!','客户姓名不能全为数字!'],'disabled':'false*false*false','default':''},{'id':'sle_xb1','regex':['integer'],'tips':[''],'disabled':'false*false*false','default':''},{'id':'sle_zy','regex':['integer'],'tips':[''],'disabled':'false*false*false','default':''},{'id':'txt_sj','regex':['require','maxlength15','mobile'],'tips':['移动电话不能为空!','移动电话长度超过最大长度:[15]!','移动电话输入错误!'],'disabled':'false*false*false','default':''},{'id':'txt_fzjg1','regex':['integer'],'tips':[''],'disabled':'false*false*false','default':''},{'id':'sle_dbyy','regex':['maxlength120'],'tips':[''],'disabled':'false*false*false','default':''}]" value="12">12 - 护照</option>
+													<option sle-require="[{'id':'txt_zjhm1','regex':['require','maxlength40','shuziandmu'],'tips':['证件号码不能为空!','证件号码长度大于最大长度:[40]!','证件号码输入错误!'],'disabled':'false*false*false','default':''},{'id':'sle_ybrgx','regex':['integer'],'tips':[''],'disabled':'false*false*false','default':''},{'id':'txt_xm','regex':['require','maxlength20','hascode'],'tips':['客户姓名不能为空!','客户姓名长度超过最大长度:[20]!','客户姓名不能全为数字!'],'disabled':'false*false*false','default':''},{'id':'sle_xb1','regex':['integer'],'tips':[''],'disabled':'false*false*false','default':''},{'id':'sle_zy','regex':['integer'],'tips':[''],'disabled':'false*false*false','default':''},{'id':'txt_sj','regex':['require','maxlength15','mobile'],'tips':['移动电话不能为空!','移动电话长度超过最大长度:[15]!','移动电话输入错误!'],'disabled':'false*false*false','default':''},{'id':'txt_fzjg1','regex':['integer'],'tips':[''],'disabled':'false*false*false','default':''},{'id':'sle_dbyy','regex':['maxlength120'],'tips':[''],'disabled':'false*false*false','default':''}]" value="13">13 - 外交官证、领事馆证、港澳居民来往内地通行证、境外人员证件</option>
+													<option sle-require="[{'id':'txt_zjhm1','regex':['require','maxlength40','shuziandmu'],'tips':['证件号码不能为空!','证件号码长度大于最大长度:[40]!','证件号码输入错误!'],'disabled':'false*false*false','default':''},{'id':'sle_ybrgx','regex':['integer'],'tips':[''],'disabled':'false*false*false','default':''},{'id':'txt_xm','regex':['require','maxlength20','hascode'],'tips':['客户姓名不能为空!','客户姓名长度超过最大长度:[20]!','客户姓名不能全为数字!'],'disabled':'false*false*false','default':''},{'id':'sle_xb1','regex':['integer'],'tips':[''],'disabled':'false*false*false','default':''},{'id':'sle_zy','regex':['integer'],'tips':[''],'disabled':'false*false*false','default':''},{'id':'txt_sj','regex':['require','maxlength15','mobile'],'tips':['移动电话不能为空!','移动电话长度超过最大长度:[15]!','移动电话输入错误!'],'disabled':'false*false*false','default':''},{'id':'txt_fzjg1','regex':['integer'],'tips':[''],'disabled':'false*false*false','default':''},{'id':'sle_dbyy','regex':['maxlength120'],'tips':[''],'disabled':'false*false*false','default':''}]" value="14">14 - 其他</option>
+												</select><input type="text" oncopy="return false" onpaste="return false" oncut="return false" style="width: 137px;" id="mb4_sleinput_ZhengJianLeiXingmb4_2" name="mb4_sleinput_ZhengJianLeiXingmb4_2">
+											</div>
+											<div id="sle_zjlx1_tips" class="tipsmsg"></div>
+										</td>
+										<td rowspan="1" colspan="1" class="" style="width: 64px;"><label vl-default="" id="label_zjhm1" vtitle="证s件s号s码" class="form-item text-left" vl-tipsid="label_zjhm1_tips" title="label_zjhm1" name="label_zjhm1">证<s></s>件<s></s>号<s></s>码
+									</label>
+											<div id="label_zjhm1_tips" class="tipsmsg"></div>
+										</td>
+										<td rowspan="1" colspan="1" class=""><input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_zjhm1" vtitle="证件号码_mb4" vl-disabled="true" class="form-item text-left" vl-tipsid="txt_zjhm1_tips" style="width: 160px;" title="txt_zjhm1" onpaste="return false" disabled="disabled" name="txt_zjhm1">
+											<div id="txt_zjhm1_tips" class="tipsmsg"></div>
+										</td>
+										<td rowspan="1" colspan="1" class="" style="width: 80px;"><label vl-default="" id="label_ybrgx" vtitle="与本人关系" class="form-item text-left" vl-tipsid="label_ybrgx_tips" title="label_ybrgx" name="label_ybrgx">与本人关系</label>
+											<div id="label_ybrgx_tips" class="tipsmsg"></div>
+										</td>
+										<td rowspan="1" colspan="1" class="">
+											<div class="slectstyle">
+												<select vl-default="" id="sle_ybrgx" vtitle="与本人关系" class="form-item text-left" vl-disabled="true" vl-tipsid="sle_ybrgx_tips" style="width: 160px;" title="sle_ybrgx" vl-slemodel="" disabled="disabled" name="sle_ybrgx">
+													<option disabled="" style="background-color: blue; color: #fff;" value="" selected="selected">与本人关系值含义</option>
+													<option value="1">1 - 直系亲属（配偶、子女、父母）</option>
+													<option value="2">2 - 旁系亲属</option>
+													<option value="3">3 - 同事</option>
+													<option value="4">4 - 同学</option>
+													<option value="5">5 - 朋友</option>
+												</select><input type="text" oncopy="return false" onpaste="return false" oncut="return false" disabled="disabled" style="width: 137px;" id="mb4_sleinput_YuBenRenGuanXi_6" name="mb4_sleinput_YuBenRenGuanXi_6">
+											</div>
+											<div id="sle_ybrgx_tips" class="tipsmsg"></div>
+										</td>
+									</tr>
+									<tr>
+										<td rowspan="1" colspan="1" class="" style="width: 32px;"><label vl-default="" id="label_xm" vtitle="姓iiis名" class="form-item text-left" vl-tipsid="label_xm_tips" title="label_xm" name="label_xm">姓<i></i><i></i><i></i><s></s>名
+									</label>
+											<div id="label_xm_tips" class="tipsmsg"></div>
+										</td>
+										<td rowspan="1" colspan="1" class=""><input type="text" oncopy="return false" oncut="return false" vl-disabled="true" vl-default="" id="txt_xm" vtitle="姓名" class="form-item text-left" vl-tipsid="txt_xm_tips" vl-regex="['maxlength20', 'hascode']" vl-message="['姓名长度超过最大长度:[20]!','姓名长度不能全为数字!']" style="width: 160px;" title="txt_xm" onpaste="return false" disabled="disabled" name="txt_xm">
+											<div id="txt_xm_tips" class="tipsmsg"></div>
+										</td>
+										<td rowspan="1" colspan="1" class="" style="width: 32px;"><label vl-default="" id="label_xb1" vtitle="性iiis别" class="form-item text-left" vl-tipsid="label_xb1_tips" title="label_xb1" name="label_xb1">性<i></i><i></i><i></i><s></s>别
+									</label>
+											<div id="label_xb1_tips" class="tipsmsg"></div>
+										</td>
+										<td rowspan="1" colspan="1" class="">
+											<div class="slectstyle">
+												<select vl-default="" id="sle_xb1" vtitle="性别_mb4" class="form-item text-left" vl-disabled="true" vl-tipsid="sle_xb1_tips" style="width: 160px;" title="sle_xb1" vl-slemodel="" disabled="disabled" name="sle_xb1">
+													<option disabled="" style="background-color: blue; color: #fff;" value="" selected="selected">性别值含义</option>
+													<option value="1">1 - 男</option>
+													<option value="2">2 - 女</option>
+													<option value="9">9 - 其它</option>
+												</select><input type="text" oncopy="return false" onpaste="return false" oncut="return false" disabled="disabled" style="width: 137px;" id="mb4_sleinput_XingBiemb4_10" name="mb4_sleinput_XingBiemb4_10">
+											</div>
+											<div id="sle_xb1_tips" class="tipsmsg"></div>
+										</td>
+										<td rowspan="1" colspan="1" class="" style="width: 32px;"><label vl-default="" id="label_zy" vtitle="职iiis业" class="form-item text-left" vl-tipsid="label_zy_tips" title="label_zy" name="label_zy">职<i></i><i></i><i></i><s></s>业
+									</label>
+											<div id="label_zy_tips" class="tipsmsg"></div>
+										</td>
+										<td rowspan="1" colspan="1" class="">
+											<div class="slectstyle">
+												<select vl-default="" id="sle_zy" vtitle="职业" class="form-item text-left" vl-disabled="true" vl-tipsid="sle_zy_tips" style="width: 160px;" title="sle_zy" vl-slemodel="" disabled="disabled" name="sle_zy">
+													<option disabled="" style="background-color: blue; color: #fff;" value="" selected="selected">摘要值含义</option>
+													<option value="1">1 - 国家公务员</option>
+													<option value="2">2 - 事业单位人员</option>
+													<option value="3">3 - 国有企业职员</option>
+													<option value="4">4 - 股份制企业职员</option>
+													<option value="5">5 - 三资企业职员</option>
+													<option value="6">6 - 民营企业职员</option>
+													<option value="7">7 - 私营企业职员</option>
+													<option value="8">8 - 企业管理人员</option>
+													<option value="9">9 - 工人</option>
+													<option value="10">10 - 农村居民</option>
+													<option value="11">11 - 学生</option>
+													<option value="12">12 - 警察、军人</option>
+													<option value="13">13 - 自由职业者</option>
+													<option value="14">14 - 个体经营者</option>
+													<option value="15">15 - 无业人员</option>
+													<option value="16">16 - 退(离)休人员</option>
+													<option value="17">17 - 文体明星</option>
+													<option value="18">18 - 专业技术人员</option>
+													<option value="98">98 - 其他人员</option>
+													<option value="99">99 - 未知</option>
+												</select><input type="text" oncopy="return false" onpaste="return false" oncut="return false" disabled="disabled" style="width: 137px;" id="mb4_sleinput_ZhiYe_12" name="mb4_sleinput_ZhiYe_12">
+											</div>
+											<div id="sle_zy_tips" class="tipsmsg"></div>
+										</td>
+									</tr>
+									<tr>
+										<td rowspan="1" colspan="1" class="" style="width: 32px;"><label vl-default="" id="label_sj" vtitle="手iiis机" class="form-item text-left" vl-tipsid="label_sj_tips" title="label_sj" name="label_sj">手<i></i><i></i><i></i><s></s>机
+									</label>
+											<div id="label_sj_tips" class="tipsmsg"></div>
+										</td>
+										<td rowspan="1" colspan="1" class=""><input type="text" oncopy="return false" oncut="return false" vl-disabled="true" vl-default="" id="txt_sj" vtitle="手机" class="form-item text-left" vl-tipsid="txt_sj_tips" vl-regex="['minlength11', 'maxlength11', 'mobile']" vl-message="['手机长度应为11位!','手机长度应为11位!','手机输入错误!']" style="width: 160px;" title="txt_sj" onpaste="return false" disabled="disabled" name="txt_sj">
+											<div id="txt_sj_tips" class="tipsmsg"></div>
+										</td>
+										<td rowspan="1" colspan="1" class="" style="width: 64px;"><label vl-default="" id="label_fzjg1" vtitle="发s证s机s关" class="form-item text-left" vl-tipsid="label_fzjg1_tips" title="label_fzjg1" name="label_fzjg1">发<s></s>证<s></s>机<s></s>关
+									</label>
+											<div id="label_fzjg1_tips" class="tipsmsg"></div>
+										</td>
+										<td rowspan="1" colspan="3" class=""><input type="text" oncopy="return false" oncut="return false" vl-disabled="true" vl-default="" id="txt_fzjg1" vtitle="发证机关_mb4" class="form-item text-left" vl-tipsid="txt_fzjg1_tips" vl-regex="['maxlength120']" vl-message="['发证机关长度超过最大长度:[120]!']" style="width: 500px;" title="txt_fzjg1" onpaste="return false" disabled="disabled" name="txt_fzjg1">
+											<div id="txt_fzjg1_tips" class="tipsmsg"></div>
+										</td>
+									</tr>
+									<tr>
+										<td rowspan="1" colspan="1" class="" style="width: 64px;"><label vl-default="" id="label_dbyy" vtitle="代s办s原s因" class="form-item text-left" vl-tipsid="label_dbyy_tips" title="label_dbyy" name="label_dbyy">代<s></s>办<s></s>原<s></s>因
+									</label>
+											<div id="label_dbyy_tips" class="tipsmsg"></div>
+										</td>
+										<td rowspan="1" colspan="1" class="">
+											<div class="slectstyle">
+												<select vl-default="" id="sle_dbyy" vtitle="代办原因" class="form-item text-left" vl-disabled="true" vl-tipsid="sle_dbyy_tips" style="width: 160px;" title="sle_dbyy" vl-slemodel="txt_qtyy" disabled="disabled" name="sle_dbyy">
+													<option disabled="" style="background-color: blue; color: #fff;" value="" selected="selected">代办原因值含义</option>
+													<option value="1" sle-require="[{'id':'txt_qtyy','regex':['integer'],'tips':[''],'disabled':'true','default':''}]">1 - 真实</option>
+													<option value="2" sle-require="[{'id':'txt_qtyy','regex':['integer'],'tips':[''],'disabled':'true','default':''}]">2 - 姓名，身份证件号码，照片存在一项或多项不一致</option>
+													<option value="3" sle-require="[{'id':'txt_qtyy','regex':['integer'],'tips':[''],'disabled':'true','default':''}]">3 - 公安，军队等有关部门无法</option>
+													<option value="4" sle-require="[{'id':'txt_qtyy','regex':['integer'],'tips':[''],'disabled':'true','default':''}]">4 - 未留存身份证件</option>
+													<option value="5" sle-require="[{'id':'txt_qtyy','regex':['integer'],'tips':[''],'disabled':'true','default':''}]">5 - 未留存身份证件，且无法联</option>
+													<option value="6" sle-require="[{'id':'txt_qtyy','regex':['require','maxlength120'],'tips':['代办原因不能为空！','代办原因最大长度为120！'],'disabled':'false*false*false','default':''}]">6 - 其他</option>
+												</select><input type="text" oncopy="return false" onpaste="return false" oncut="return false" disabled="disabled" style="width: 137px;" id="mb4_sleinput_DaiBanYuanYin_18" name="mb4_sleinput_DaiBanYuanYin_18">
+											</div>
+											<div id="sle_dbyy_tips" class="tipsmsg"></div>
+										</td>
+										<td rowspan="1" colspan="1" class="" style="width: 64px;"><label vl-default="" id="label_qtyy" vtitle="其s他s原s因" class="form-item text-left" vl-tipsid="label_qtyy_tips" title="label_qtyy" name="label_qtyy">其<s></s>他<s></s>原<s></s>因
+									</label>
+											<div id="label_qtyy_tips" class="tipsmsg"></div>
+										</td>
+										<td rowspan="1" colspan="3" class=""><input type="text" oncopy="return false" oncut="return false" vl-default="" vl-disabled="true" id="txt_qtyy" vtitle="其他原因" class="form-item text-left" vl-tipsid="txt_qtyy_tips" vl-regex="['maxlength120']" vl-message="['其他原因长度超过最大长度:[120]!']" style="width: 500px;" title="txt_qtyy" onpaste="return false" disabled="disabled" name="txt_qtyy">
+											<div id="txt_qtyy_tips" class="tipsmsg"></div>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<div class="ct" style="display: none;">
+							<table id="qv" class="con-map2-table qv">
+								<tbody>
+									<tr>
+										<td class="" style="width: 0px;"><label vl-default="" id="label_zjlx" vtitle="证件类型" class="form-item text-left on" vl-tipsid="label_zjlx_tips" title="label_zjlx" name="label_zjlx">证件类型</label>
+											<div id="label_zjlx_tips" class="tipsmsg"></div>
+										</td>
+										<td rowspan="1" colspan="3" class="">
+											<div class="slectstyle">
+												<select vl-default="" id="sle_zjlx2" vtitle="证件类型_mb5" class="form-item text-left" vl-tipsid="sle_zjlx2_tips" style="width: 600px;" title="sle_zjlx2" vl-slemodel="txt_zjh" name="sle_zjlx2">
+													<option disabled="" style="background-color: blue; color: #fff;" value="" selected="selected">证件类型值含义</option>
+													<option value="1" sle-require="[{'id':'txt_zjh','regex':['maxlength20'],'tips':['证件号长度超过最大长度:[20]!'],'disabled':'false*false*false','default':''}]">1 - 户口簿</option>
+													<option value="2">2 - 护照</option>
+													<option value="3">3 - 机动车驾驶证</option>
+													<option value="4">4 - 社会保障卡</option>
+													<option value="5">5 - 香港特别行政区居民身份证</option>
+													<option value="6">6 - 澳门特别行政区居民身份证</option>
+													<option value="7">7 - 在台湾居住的有效期身份证明</option>
+													<option value="8">8 - 定居国外的证明文件</option>
+													<option value="9">9 - 外国居民身份证</option>
+													<option value="10">10 - 其他外国身份证件</option>
+													<option value="11">11 - 公用事业缴费单</option>
+													<option value="12">12 - 工作证</option>
+													<option value="13">13 - 学生证</option>
+													<option value="14">14 - 介绍信</option>
+													<option value="15">15 - 其他</option>
+												</select><input type="text" oncopy="return false" onpaste="return false" oncut="return false" style="width: 577px;" id="mb4_sleinput_ZhengJianLeiXingmb5_22" name="mb4_sleinput_ZhengJianLeiXingmb5_22">
+											</div>
+											<div id="sle_zjlx2_tips" class="tipsmsg"></div>
+										</td>
+									</tr>
+									<tr>
+										<td rowspan="1" colspan="1" class="" style="width: 0px;"><label vl-default="" id="label_qfjg" vtitle="签发机构" class="form-item text-left" vl-tipsid="label_qfjg_tips" title="label_qfjg" name="label_qfjg">签发机构</label>
+											<div id="label_qfjg_tips" class="tipsmsg"></div>
+										</td>
+										<td rowspan="1" colspan="3" class=""><input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_qfjg" vtitle="签发机构" class="form-item text-left" vl-tipsid="txt_qfjg_tips" vl-regex="['maxlength120']" vl-message="['签发机构长度超过最大长度:[120]!']" style="width: 600px;" title="txt_qfjg" onpaste="return false" name="txt_qfjg">
+											<div id="txt_qfjg_tips" class="tipsmsg"></div>
+										</td>
+									</tr>
+									<tr>
+										<td rowspan="1" colspan="1" class="" style="width: 0px;"><label vl-default="" id="label_zjh" vtitle="证件号" class="form-item text-left" vl-tipsid="label_zjh_tips" title="label_zjh" name="label_zjh">证件号</label>
+											<div id="label_zjh_tips" class="tipsmsg"></div>
+										</td>
+										<td rowspan="1" colspan="3" class=""><input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_zjh" vtitle="证件号" class="form-item text-left" vl-tipsid="txt_zjh_tips" vl-regex="['maxlength40', 'shuziandmu']" vl-message="['证件号长度超过最大长度:[40]!','证件号输入错误!']" style="width: 600px;" title="txt_zjh" onpaste="return false" name="txt_zjh">
+											<div id="txt_zjh_tips" class="tipsmsg"></div>
+										</td>
+									</tr>
+									<tr>
+										<td rowspan="1" colspan="1" class="" style="width: 0px;"><label vl-default="" id="label_zjyxq" vtitle="证件有效期" class="form-item text-left on" vl-tipsid="label_zjyxq_tips" title="label_zjyxq" name="label_zjyxq">证件有效期</label>
+											<div id="label_zjyxq_tips" class="tipsmsg"></div>
+										</td>
+										<td rowspan="1" colspan="1" class="">
+											<div class="slectstyle">
+												<select vl-default="" id="sle_zjyxq2" vtitle="证件有效期" class="form-item text-left" vl-tipsid="sle_zjyxq2_tips" style="width: 160px;" title="sle_zjyxq2" vl-slemodel="" name="sle_zjyxq2">
+													<option disabled="" style="background-color: blue; color: #fff;" value="" selected="selected">证件有效期值含义</option>
+													<option value="0">0 - 无有效期</option>
+													<option value="1">1 - 有有效期</option>
+												</select><input type="text" oncopy="return false" onpaste="return false" oncut="return false" style="width: 137px;" id="mb4_sleinput_ZhengJianYouXiaoQi_28" name="mb4_sleinput_ZhengJianYouXiaoQi_28">
+											</div>
+											<div id="sle_zjyxq2_tips" class="tipsmsg"></div>
+										</td>
+										<td rowspan="1" colspan="1" class="" style="width: 0px;"><label vl-default="" id="label_zjdqr1" vtitle="证件到期日" class="form-item text-left" vl-tipsid="label_zjdqr1_tips" title="label_zjdqr1" name="label_zjdqr1">证件到期日</label>
+											<div id="label_zjdqr1_tips" class="tipsmsg"></div>
+										</td>
+										<td rowspan="1" colspan="1" class=""><input type="text" class="date form-item text-left" vl-default="" id="date_zjdqr1" vtitle="证件到期日_mb5" vl-tipsid="date_zjdqr1_tips" vl-regex="['maxlength8', 'number', 'tdate']" vl-message="['证件到期日长度大于最大长度:[8]!','证件到期日输入错误!','请输入正确的证件到期日(如:19000101)!']" style="width: 160px;" title="date_zjdqr1" oncopy="return false" onpaste="return false" oncut="return false" name="date_zjdqr1"><img onclick="WdatePicker({el:'date_zjdqr1',dateFmt:'yyyyMMdd'})" src="/js/My97DatePicker/skin/datePicker.gif" align="absmiddle" style="width: 16px; height: 22px; margin-left: 6px;">
+											<div id="date_zjdqr1_tips" class="tipsmsg"></div>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="foot ">
+				<span>
+				<button>退出（F3）</button>
+				<button>帮助（F1）</button>
+				<button>辅助（F4）</button>
+				<button type="button" onclick="FormReset()">重置（F5）</button>
+			</span> <span style="float: right;">
+				<button type="button" style="margin-right: 0px;" vl-submit="true" id="btnsubmit" onclick="SubmitForm()">提交</button>
+			</span>
+			</div>
+			<input type="hidden" class="hidmainwidth" value="1000" oncopy="return false" onpaste="return false" oncut="return false">
+		</div>
+@*<script src=".~/Js/Student/GetDefaultValue/js/jlgrkhxx003.js"></script>*@
+<link href="~/Js/Student/GetDefaultValue/js/common.bank.css" rel="stylesheet" />
+              </form>

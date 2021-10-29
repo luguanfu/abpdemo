@@ -1,0 +1,443 @@
+﻿@{
+                    ViewBag.Title = "Form_100101";
+                    Layout = "~/Views/Shared/_AdminLayoutIsNull.cshtml";
+                }
+               <script src="~/Js/Admin/AdminForm.js"></script>
+               <script src="~/Js/Admin/CaseManagement/AddDefaultValue.js"></script>
+               <form id="form1" onsubmit="return false" action="##" method="post">
+                   <input type="hidden" id="TaskId" name="TaskId" value="@Request["TaskId"]" />
+                   <input type="hidden" id="CustomerId" name="CustomerId" value="@Request["CustomerId"]" />
+                   <input type="hidden" id="FormId" name="FormId" value="@Request["FormId"]" />
+                   <input type="hidden" id="Types" name="Types" value="@Request["Types"]" />
+                   <!--内容表单区域开始-->
+                   <div class="tables bankmap" data-yw="1">
+                       <div class="con-map selected">
+                           <span class="top-title">基本信息 <span id="dianji_con" style="cursor: pointer;">▼</span></span>
+                           <table id="qv" class="con-map2-table qv">
+                               <tbody>
+                                   <tr>
+                                       <td class="">
+                                           <label vl-default="" id="label_xysh" vtitle='协议书号' class="form-item text-left on" vl-tipsid="label_xysh_tips" title="label_xysh">协议书号</label>
+                                           <div id="label_xysh_tips" class="tipsmsg"></div>
+                                       </td>
+                                       <td class="">
+                                           <input oncopy="return false;" oncut="return false;" vl-keyup="wwww" vl-default="" id="txt_xysh" name="txt_xysh" vtitle='协议书号' class="form-item text-left" style="width: 150px;" vl-tipsid="txt_xysh_tips" vl-regex="['maxlength40']" vl-message="['协议书号长度大于最大长度:[40]!']" type="text">
+                                           <div id="txt_xysh_tips" class="tipsmsg"></div>
+                                       </td>
+                                       <td rowspan="1" colspan="1" class="">
+                                           <label vl-default="" id="label_nsrbm" vtitle='纳税人编码' class="form-item text-left on" vl-tipsid="label_nsrbm_tips" title="label_nsrbm">纳税人编码</label>
+                                           <div id="label_nsrbm_tips" class="tipsmsg"></div>
+                                       </td>
+                                       <td class="">
+                                           <input oncopy="return false;" oncut="return false;" vl-default="" id="txt_nsrbm" name="txt_nsrbm" vtitle='纳税人编码' class="form-item text-left on" vl-tipsid="txt_nsrbm_tips" vl-regex="['maxlength40']" vl-message="['纳税人编码长度大于最大长度:[40]!']" style="width: 150px;" title="txt_nsrbm" type="text">
+                                           <div id="txt_nsrbm_tips" class="tipsmsg"></div>
+                                       </td>
+                                       <td rowspan="1" colspan="1" class="">
+                                           <label vl-default="" id="label_nsrmc" vtitle='纳税人名称' class="form-item text-left on" vl-tipsid="label_nsrmc_tips" title="label_nsrmc">纳税人名称</label>
+                                           <div id="label_nsrmc_tips" class="tipsmsg"></div>
+                                       </td>
+                                       <td class="">
+                                           <input oncopy="return false;" oncut="return false;" vl-default="" id="txt_nsrmc" name="txt_nsrmc" vtitle='纳税人名称' class="form-item text-left on" vl-tipsid="txt_nsrmc_tips" vl-regex="['maxlength40']" vl-message="['纳税人名称长度大于最大长度:[40]!']" style="width: 150px;" title="txt_nsrmc" type="text">
+                                           <div id="txt_nsrmc_tips" class="tipsmsg"></div>
+                                       </td>
+                                   </tr>
+                                   <tr>
+                                       <td rowspan="1" colspan="1" class="">
+                                           <label vl-default="" id="label_fkzh" vtitle='付款账户' class="form-item text-left on" vl-tipsid="label_fkzh_tips" title="label_fkzh">付款账户</label>
+                                           <div id="label_fkzh_tips" class="tipsmsg"></div>
+                                       </td>
+                                       <td rowspan="1" colspan="1" class="">
+                                           <input oncopy="return false;" oncut="return false;" vl-default="" id="txt_fkzh" name="txt_fkzh" vtitle='付款账户' class="form-item text-left on" vl-tipsid="txt_fkzh_tips" vl-regex="['maxlength40', 'number']" vl-message="['付款账户长度大于最大长度:[40]!','付款账户输入错误!']" style="width: 150px;" title="txt_fkzh" type="text">
+                                           <div id="txt_fkzh_tips" class="tipsmsg"></div>
+                                       </td>
+                                       <td rowspan="1" colspan="1" class="">
+                                           <label vl-default="" id="label_zhlx" vtitle='账号类型' class="form-item text-left on" vl-tipsid="label_zhlx_tips" title="label_zhlx">账号类型</label>
+                                           <div id="label_zhlx_tips" class="tipsmsg"></div>
+                                       </td>
+                                       <td rowspan="1" colspan="1" class="">
+                                           <div class="slectstyle">
+                                               <select vl-default="zhlx"  vtitle='账号类型' class="form-item text-left on" vl-tipsid="sle_zhlx_tips" style="width: 150px;" title="sle_zhlx" vl-slemodel="">
+                                                   <option disabled="" style="background-color: blue; color: #fff;" value="">账户类型值含义</option>
+                                                   <option value="1">1-个人存折</option>
+                                                   <option value="2">2-磁条借记卡</option>
+                                                   <option value="3">03-对公账户</option>
+                                                   <option value="4">4-IC借记卡</option>
+                                                   <option value="6">6-单位结算户</option>
+                                               </select><input type='text' id="sle_zhlx" name="sle_zhlx" oncopy="return false;" onpaste="return false;" oncut="return false;" />
+                                           </div>
+                                           <div id="sle_zhlx_tips" class="tipsmsg"></div>
+                                       </td>
+                                       <td rowspan="1" colspan="1" class="">
+                                           <label vl-default="" id="label_yzbz" vtitle='验证标志' class="form-item text-left on" vl-tipsid="label_yzbz_tips" title="label_yzbz">验证标志</label>
+                                           <div id="label_yzbz_tips" class="tipsmsg"></div>
+                                       </td>
+                                       <td rowspan="1" colspan="1" class="">
+                                           <div class="slectstyle">
+                                               <select vl-default=""  vtitle='验证标志' class="form-item text-left on" vl-tipsid="sle_yzbz_tips" style="width: 150px;" title="sle_yzbz" vl-slemodel="">
+                                                   <option disabled="" style="background-color: blue; color: #fff;" value="">验证标志值含义</option>
+                                               </select><input type='text' id="sle_yzbz" name="sle_yzbz" oncopy="return false;" onpaste="return false;" oncut="return false;" />
+                                           </div>
+                                           <div id="sle_yzbz_tips" class="tipsmsg"></div>
+                                       </td>
+                                   </tr>
+                               </tbody>
+                           </table>
+                       </div>
+                       <div class="foot  text-center">
+                           <!--<button vl-submit="true" id="btnsubmit">确定</button>-->
+                           <button id="search">查询</button>
+                           <button id="close">关闭</button>
+                       </div>
+                       <div class="l-box" style="display:block;">
+                           <div style="min-height:300px;">
+                               <table id="aaa" cellspacing="0" cellpadding="0">
+                                   <tr class="bold">
+                                       <td>网点代号</td>
+                                       <td>纳税人编码</td>
+                                       <td>协议书号</td>
+                                       <td>清算行行号</td>
+                                       <td>账户开户行</td>
+                                       <td>付款账户</td>
+                                       <td>验证撤销结果</td>
+                                       <td>账号类型</td>
+                                       <td>纳税人名称</td>
+                                       <td>账户开户名称</td>
+                                       <td>征收机关...</td>
+                                       <td>征收机关名称</td>
+                                       <td>验证日期</td>
+                                       <td>维护日期</td>
+                                       <td>操作员</td>
+                                   </tr>
+                               </table>
+                           </div>
+                           <div class="foot  text-center">
+                               <!--<button vl-submit="true" id="btnsubmit">确定</button>-->
+                               <button id="add">添加</button>
+                               <button id="delete">删除</button>
+                               <button id="xyyz">协议验证</button>
+                               <button id="xycx">协议撤销</button>
+                               <button vl-submit="true" id="btnsubmit" onclick="SubmitForm()">提交</button>
+                           </div>
+                       </div>
+
+                       <input type='hidden' class='hidmainwidth' value=1000 />
+                   </div>
+
+                   <div class="tables bankmap" data-yw="2">
+                       <div class="con-map">
+                           <span class="top-title">数据录入界面<span id="dianji_con" style="cursor: pointer;">▼</span></span>
+                           <table id="qv" class="con-map2-table qv">
+                               <tbody>
+                                   <tr>
+                                       <td colspan="1" class="">
+                                           <label vl-default="" id="label_xysh2" vtitle='协议书号' class="form-item text-left" vl-tipsid="label_xysh2_tips" title="label_xysh2">协议书号</label>
+                                           <div id="label_xysh2_tips" class="tipsmsg"></div>
+                                       </td>
+                                       <td rowspan="1" colspan="3" class="">
+                                           <input oncopy="return false;" oncut="return false;" vl-keyup="wwww" vl-default="" id="txt_xysh2" name="txt_xysh2" vtitle='协议书号' class="form-item text-left" vl-tipsid="txt_xysh2_tips" vl-regex="['require', 'maxlength40']" vl-message="['协议书号不能为空!','协议书号长度大于最大长度:[40]!']" style="width: 600px;" title="txt_xysh2" type="text">
+                                           <div id="txt_xysh2_tips" class="tipsmsg"></div>
+                                       </td>
+                                   </tr>
+                                   <tr>
+                                       <td rowspan="1" colspan="1" class="">
+                                           <label vl-default="" id="label_nsrbm2" vtitle='纳税人编码' class="form-item text-left" vl-tipsid="label_nsrbm2_tips" title="label_nsrbm2">纳税人编码</label>
+                                           <div id="label_nsrbm2_tips" class="tipsmsg"></div>
+                                       </td>
+                                       <td rowspan="1" colspan="1" class="">
+                                           <input oncopy="return false;" oncut="return false;" vl-keyup="wwww" vl-default="" id="txt_nsrbm2" name="txt_nsrbm2" vtitle='纳税人编码' class="form-item text-left" vl-tipsid="txt_nsrbm2_tips" vl-regex="['require', 'maxlength40']" vl-message="['纳税人编码不能为空!','纳税人编码长度大于最大长度:[40]!']" style="width: 180px;" title="txt_nsrbm2" type="text">
+                                           <div id="txt_nsrbm2_tips" class="tipsmsg"></div>
+                                       </td>
+                                       <td rowspan="1" colspan="1" class="">
+                                           <label vl-default="" id="label_nsrmc2" vtitle='纳税人名称' class="form-item text-left" vl-tipsid="label_nsrmc2_tips" title="label_nsrmc2">纳税人名称</label>
+                                           <div id="label_nsrmc2_tips" class="tipsmsg"></div>
+                                       </td>
+                                       <td rowspan="1" colspan="1" class="">
+                                           <input oncopy="return false;" oncut="return false;" vl-keyup="wwww" vl-default="" id="txt_nsrmc2" name="txt_nsrmc2" vtitle='纳税人名称' class="form-item text-left on" vl-tipsid="txt_nsrmc2_tips" vl-regex="['require', 'maxlength20', 'hascode']" vl-message="['纳税人名称不能为空!','纳税人名称长度大于最大长度:[40]!','纳税人名称不能为全数字!']" style="width: 180px;" title="txt_nsrmc2" type="text">
+                                           <div id="txt_nsrmc2_tips" class="tipsmsg"></div>
+                                       </td>
+                                   </tr>
+                                   <tr>
+                                       <td rowspan="1" colspan="1" class="">
+                                           <label vl-default="" id="label_zsjgdm" vtitle='征收机关代码' class="form-item text-left on" vl-tipsid="label_zsjgdm_tips" title="label_zsjgdm">征收机关代码</label>
+                                           <div id="label_zsjgdm_tips" class="tipsmsg"></div>
+                                       </td>
+                                       <td rowspan="1" colspan="1" class="">
+                                           <input oncopy="return false;" kuaicha="true" oncut="return false;" vl-keyup="wwww" vl-default="" id="txt_jgzsdm" name="txt_jgzsdm" vtitle='征收机关代码' class="form-item text-left on" vl-tipsid="txt_jgzsdm_tips" vl-regex="['require', 'maxlength40']" vl-message="['征收机关代码','征收机关代码长度大于最大长度:[40]!']" style="width: 180px;" title="txt_jgzsdm" type="text">
+                                           <div id="txt_jgzsdm_tips" class="tipsmsg"></div>
+                                       </td>
+                                       <td rowspan="1" colspan="1" class="">
+                                           <label vl-default="" id="label_zsjgmc" vtitle='征收机关名称' class="form-item text-left on" vl-tipsid="label_zsjgmc_tips" title="label_zsjgmc">征收机关名称</label>
+                                           <div id="label_zsjgmc_tips" class="tipsmsg"></div>
+                                       </td>
+                                       <td rowspan="1" colspan="1" class="">
+                                           <input oncopy="return false;" oncut="return false;" vl-keyup="wwww" vl-default="" id="txt_zsjgmc" name="txt_zsjgmc" vtitle='征收机关名称' class="form-item text-left on" vl-tipsid="txt_zsjgmc_tips" vl-regex="['maxlength40','hascode']" vl-message="['征收机关名称长度大于最大长度:[40]!','征收机关名称不能为全数字!']" style="width: 180px;" title="txt_zsjgmc" type="text">
+                                           <div id="txt_zsjgmc_tips" class="tipsmsg"></div>
+                                       </td>
+                                   </tr>
+                                   <tr>
+                                       <td rowspan="1" colspan="1" class="">
+                                           <label vl-default="" id="label_zhlx2" vtitle='账号类型' class="form-item text-left" vl-tipsid="label_zhlx2_tips" title="label_zhlx2">账号类型</label>
+                                           <div id="label_zhlx2_tips" class="tipsmsg"></div>
+                                       </td>
+                                       <td rowspan="1" colspan="1" class="">
+                                           <div class="slectstyle">
+                                               <select vl-keyup="wwww" vl-default="zhlx" vtitle='账号类型' class="form-item text-left on" vl-tipsid="sle_zhlx2_tips" vl-regex="['require']" vl-message="['账号类型不能为空!']" style="width: 180px;" title="sle_zhlx2" vl-slemodel="">
+                                                   <option disabled="" style="background-color: blue; color: #fff;" value="">账号类型值含义</option>
+                                                   <option value="01">01-储蓄账号</option>
+                                                   <option value="02">02-卡号</option>
+                                                   <option value="03">03-对公账户</option>
+                                               </select><input type='text' id="sle_zhlx2" name="sle_zhlx2" oncopy="return false;" onpaste="return false;" oncut="return false;" />
+                                           </div>
+                                           <div id="sle_zhlx2_tips" class="tipsmsg"></div>
+                                       </td>
+                                       <td rowspan="1" colspan="1" class="">
+                                           <label vl-default="" id="label_fkzh2" vtitle='付款账户' class="form-item text-left" vl-tipsid="label_fkzh2_tips" title="label_fkzh2">付款账户</label>
+                                           <div id="label_fkzh2_tips" class="tipsmsg"></div>
+                                       </td>
+                                       <td rowspan="1" colspan="1" class="">
+                                           <input oncopy="return false;" oncut="return false;" vl-default="" id="txt_fkzh2" name="txt_fkzh2" vtitle='付款账户' class="form-item text-left on" vl-tipsid="txt_fkzh2_tips" vl-regex="['require', 'maxlength32', 'number']" vl-message="['付款账户不能为空!','付款账户长度大于最大长度:[32]!','付款账户输入错误!']" style="width: 180px;" title="txt_fkzh2" type="text">
+                                           <img class="sousuo" src="/busi/img/banksousuo.png" vl-exec="true" title="执行快查！" style="display: none;">
+                                           <div id="txt_fkzh2_tips" class="tipsmsg"></div>
+                                       </td>
+                                   </tr>
+                                   <tr>
+                                       <td rowspan="1" colspan="1" class="">
+                                           <label vl-default="" id="label_zhkhh" vtitle='账户开户行' class="form-item text-left on" vl-tipsid="label_zhkhh_tips" title="label_zhkhh">账户开户行</label>
+                                           <div id="label_zhkhh_tips" class="tipsmsg"></div>
+                                       </td>
+                                       <td rowspan="1" colspan="1" class="">
+                                           <input oncopy="return false;" oncut="return false;" vl-keyup="wwww" vl-default="" vl-disabled="true" id="txt_zhkhh" vtitle='账户开户行' class="form-item text-left" vl-tipsid="txt_zhkhh_tips" style="width: 180px;" title="txt_zhkhh" type="text">
+                                           <div id="txt_zhkhh_tips" class="tipsmsg"></div>
+                                       </td>
+                                       <td rowspan="1" colspan="1" class="">
+                                           <label vl-default="" id="label_khhhh" vtitle='开户行行号' class="form-item text-left on" vl-tipsid="label_khhhh_tips" title="label_khhhh">开户行行号</label>
+                                           <div id="label_khhhh_tips" class="tipsmsg"></div>
+                                       </td>
+                                       <td rowspan="1" colspan="1" class="">
+                                           <input oncopy="return false;" oncut="return false;" vl-default="" id="txt_khhhh" name="txt_khhhh" vtitle='开户行行号' vl-disabled="true" class="form-item text-left on" vl-tipsid="txt_khhhh_tips" style="width: 180px;" title="txt_khhhh" type="text">
+                                           <div id="txt_khhhh_tips" class="tipsmsg"></div>
+                                       </td>
+                                   </tr>
+                                   <tr>
+                                       <td rowspan="1" colspan="1" class="">
+                                           <label vl-default="" id="label_zhkhmc" vtitle='账户开户名称' class="form-item text-left on" vl-tipsid="label_zhkhmc_tips" title="label_zhkhmc">账户开户名称</label>
+                                           <div id="label_zhkhmc_tips" class="tipsmsg"></div>
+                                       </td>
+                                       <td rowspan="1" colspan="1" class="">
+                                           <input oncopy="return false;" oncut="return false;" vl-default="" id="txt_zhkhmc" name="txt_zhkhmc" vtitle='账户开户名称' vl-disabled="true" class="form-item text-left on" vl-tipsid="txt_zhkhmc_tips" style="width: 180px;" title="txt_zhkhmc" type="text">
+                                           <div id="txt_zhkhmc_tips" class="tipsmsg"></div>
+                                       </td>
+                                       <td rowspan="1" colspan="1" class="">
+                                           <label vl-default="" id="label_qshhh" vtitle='清算行行号' class="form-item text-left on" vl-tipsid="label_qshhh_tips" title="label_qshhh">清算行行号</label>
+                                           <div id="label_qshhh_tips" class="tipsmsg"></div>
+                                       </td>
+                                       <td rowspan="1" colspan="1" class="">
+                                           <input oncopy="return false;" oncut="return false;" vl-default="" id="txt_qshhh" name="txt_qshhh" vtitle='清算行行号' vl-disabled="true" class="form-item text-left on" vl-tipsid="txt_qshhh_tips" style="width: 180px;" title="txt_qshhh" type="text">
+                                           <div id="txt_qshhh_tips" class="tipsmsg"></div>
+                                       </td>
+                                   </tr>
+                                   <tr>
+                                       <td rowspan="1" colspan="1" class="">
+                                           <label vl-default="" id="label_fqjgdm" vtitle='发起机构代码' class="form-item text-left on" vl-tipsid="label_fqjgdm_tips" title="label_fqjgdm">发起机构代码</label>
+                                           <div id="label_fqjgdm_tips" class="tipsmsg"></div>
+                                       </td>
+                                       <td rowspan="1" colspan="1" class="">
+                                           <input oncopy="return false;" oncut="return false;" vl-default="" id="txt_fqjgdm" name="txt_fqjgdm" vtitle='发起机构代码' vl-disabled="true" class="form-item text-left on" vl-tipsid="txt_fqjgdm_tips" style="width: 180px;" title="txt_fqjgdm" type="text">
+                                           <div id="txt_fqjgdm_tips" class="tipsmsg"></div>
+                                       </td>
+                                       <td rowspan="1" colspan="1" class="">
+                                           <label vl-default="" id="label_wddm" vtitle='网点代码' class="form-item text-left on" vl-tipsid="label_wddm_tips" title="label_wddm">网点代码</label>
+                                           <div id="label_wddm_tips" class="tipsmsg"></div>
+                                       </td>
+                                       <td rowspan="1" colspan="1" class="">
+                                           <input oncopy="return false;" oncut="return false;" vl-default="246006" id="txt_wddm" name="txt_wddm" vtitle='网点代码' vl-disabled="true" class="form-item text-left on" vl-tipsid="txt_wddm_tips" vl-regex="['require']" vl-message="['网点代码不能为空!']" style="width: 180px;" title="txt_wddm" type="text">
+                                           <div id="txt_wddm_tips" class="tipsmsg"></div>
+                                       </td>
+                                   </tr>
+                                   <tr>
+                                       <td rowspan="1" colspan="1" class="">
+                                           <label vl-default="" id="label_fkkhhm" vtitle='付款开户行名' class="form-item text-left on" vl-tipsid="label_fkkhhm_tips" title="label_fkkhhm">付款开户行名</label>
+                                           <div id="label_fkkhhm_tips" class="tipsmsg"></div>
+                                       </td>
+                                       <td rowspan="1" colspan="1" class="">
+                                           <input oncopy="return false;" oncut="return false;" vl-default="" id="txt_fkkhhm" name="txt_fkkhhm" vtitle='付款开户行名' vl-disabled="true" class="form-item text-left on" vl-tipsid="txt_fkkhhm_tips" style="width: 180px;" title="txt_fkkhhm" type="text">
+                                           <div id="txt_fkkhhm_tips" class="tipsmsg"></div>
+                                       </td>
+                                   </tr>
+                                   <tr>
+                                       <td rowspan="1" colspan="1" class="">
+                                           <label vl-default="" id="label_yzcxjg" vtitle='验证撤销结果' class="form-item text-left on" vl-tipsid="label_yzcxjg_tips" title="label_yzcxjg">验证撤销结果</label>
+                                           <div id="label_yzcxjg_tips" class="tipsmsg"></div>
+                                       </td>
+                                       <td rowspan="1" colspan="1" class="">
+                                           <input oncopy="return false;" oncut="return false;" vl-default="初始状态即维护状态" id="txt_ycxjg" name="txt_ycxjg" vtitle='验证撤销结果' vl-disabled="true" class="form-item text-left on" vl-tipsid="txt_ycxjg_tips" style="width: 180px;" title="txt_ycxjg" type="text">
+                                           <div id="txt_ycxjg_tips" class="tipsmsg"></div>
+                                       </td>
+                                       <td rowspan="1" colspan="1" class="">
+                                           <label vl-default="" id="label_fy" vtitle='附言' class="form-item text-left on" vl-tipsid="label_fy_tips" title="label_fy">附言</label>
+                                           <div id="label_fy_tips" class="tipsmsg"></div>
+                                       </td>
+                                       <td rowspan="1" colspan="1" class="">
+                                           <input oncopy="return false;" oncut="return false;" vl-default="" id="txt_fy" name="txt_fy" vtitle='附言' class="form-item text-left on" vl-disabled="true" vl-tipsid="txt_fy_tips" style="width: 180px;" title="txt_fy" type="text">
+                                           <div id="txt_fy_tips" class="tipsmsg"></div>
+                                       </td>
+                                   </tr>
+                               </tbody>
+                           </table>
+                       </div>
+                       <div class="foot  text-center">
+                           <!--<button vl-submit="true" id="btnsubmit">确定</button>-->
+                           <button id="save">保存</button>
+                           <button disabled="disabled" style="color:#cccccc">继续添加</button>
+                           <button disabled="disabled" style="color:#cccccc">协议信息打印</button>
+                           <button class="ed-back">返回</button>
+                       </div>
+                   </div>
+                   <script src="~/Js/Student/GetDefaultValue/js/common.bank.ed.js"></script>
+                   <script src="~/Js/Student/GetDefaultValue/js/ed.common.js"></script>
+                  <script src="~/Js/Student/GetDefaultValue/js/sfxyqd.js"></script>
+                   <script type="text/javascript">
+           $(function () {
+               //checkOpener();
+               render();
+               loadPrevData();
+               $("#txt_xyyz").remove();
+               //$("#search").click(function () {
+
+               //    $("#qv").hide();
+               //    $(".l-box").show();
+               //});
+               //$("#close").click(function () {
+               //    $("#qv").show();
+               //    $(".l-box").hide();
+               //});
+               $("#add").click(function () {
+
+                   var controls = $("div[data-yw=1]").find(".form-item");
+                   for (var i = 0; i < controls.length; i++) {
+                       var result = checkRegex($(controls[i]).get(0));
+                       if (!result.isCheck) {
+                           layer.alert(result.errormsg);
+                           return;
+                       }
+                   }
+                   var data = lineEdPrevYwData(controls);
+                   sessionStorage.PrevData = data;
+
+                   edNextNewWin("/user/indexone?", "2");
+               });
+               $("#save").click(function () {
+                   var controls = $("div[data-yw=2]").find(".form-item");
+                   for (var i = 0; i < controls.length; i++) {
+                       var result = checkRegex($(controls[i]).get(0));
+                       if (!result.isCheck) {
+                           layer.alert(result.errormsg);
+                           return;
+                       }
+                   }
+
+                   var row = {};
+                   row.xysh = $("#txt_xysh2").val();
+                   row.nsrbm = $("#txt_nsrbm2").val();
+                   row.nsrmc = $("#txt_nsrmc2").val();
+                   row.zsjgdm = $("#txt_jgzsdm").val();
+                   row.zsjgmc = $("#txt_zsjgmc").val();
+                   row.zhlx = $("#sle_zhlx2").val();
+                   row.zhlxtxt = $("#sle_zhlx2 option:checked").text();
+                   row.fkzh = $("#txt_fkzh2").val();
+                   row.zhkhh = $("#txt_zhkhh").val();
+                   row.khhhh = $("#txt_khhhh").val();
+                   row.zhkhmc = $("#txt_zhkhmc").val();
+                   row.qshhh = $("#txt_qshhh").val();
+                   row.fqjgdm = $("#txt_fqjgdm").val();
+                   row.wddm = $("#txt_wddm").val();
+                   row.fkkhhm = $("#txt_fkkhhm").val();
+                   row.yzcxjg = $("#txt_ycxjg").val();
+                   row.fy = $("#txt_fy").val();
+                   window.opener.createTr(row);
+                   window.opener.CdPrev(row);
+                   layer.alert("保存数据成功");
+               });
+
+               $("#delete").click(function () {
+                   $("#aaa .aaa_selected").remove();
+               });
+
+               $("#xyyz").click(function () {
+                   var tr = $("#aaa .aaa_selected");
+                   if (tr == null || tr.length == 0) {
+                       layer.alert("请选择一条数据");
+                       return;
+                   }
+                   layer.confirm("是否要对选择的数据进行三方协议验证！", function () {
+                       var xyyz_html = "<input type=\"hidden\" id=\"txt_xyyz\" class=\"form-item\" value=\"1-已验证\"/>";
+                       $("body").append(xyyz_html);
+
+                       window.authCloseCall("print");
+                   });
+               });
+           });
+
+           window.createTr = function(row) {
+               var html = "<tr onclick=\"select(this)\">";
+               html += "<td>" + row.wddm + "</td>";
+               html += "<td>" + row.nsrbm + "</td>";
+               html += "<td>" + row.xysh + "</td>";
+               html += "<td>" + row.qshhh + "</td>";
+               html += "<td>" + row.zhkhh + "</td>";
+               html += "<td>" + row.fkzh + "</td>";
+               html += "<td>" + row.yzcxjg + "</td>";
+               html += "<td>" + row.zhlxtxt + "</td>";
+               html += "<td>" + row.nsrmc + "</td>";
+               html += "<td>" + row.zhkhmc + "</td>";
+               html += "<td>" + row.zsjgdm + "</td>";
+               html += "<td>" + row.zsjgmc + "</td>";
+               html += "<td>" + new Date().toLocaleDateString() + "</td>";
+               html += "<td>" + new Date().toLocaleDateString() + "</td>";
+               html += "<td>127336</td>";
+               html += "</tr>";
+               $("#aaa").append(html);
+           }
+
+           window.CdPrev = function (row) {
+               $("#txt_xysh2").val(row.xysh);
+               $("#txt_nsrbm2").val(row.nsrbm);
+               $("#txt_nsrmc2").val(row.nsrmc);
+               $("#txt_jgzsdm").val(row.zsjgdm);
+               $("#txt_zsjgmc").val(row.zsjgmc);
+               $("#sle_zhlx2").val(row.zhlx);
+               $("#sle_zhlx2").next().val(row.zhlxtxt);
+               $("#txt_fkzh2").val(row.fkzh);
+               $("#txt_zhkhh").val(row.zhkhh);
+               $("#txt_khhhh").val(row.khhhh);
+               $("#txt_zhkhmc").val(row.zhkhmc);
+               $("#txt_qshhh").val(row.qshhh);
+               $("#txt_fqjgdm").val(row.fqjgdm);
+               $("#txt_wddm").val(row.wddm);
+               $("#txt_fkkhhm").val(row.fkkhhm);
+               $("#txt_ycxjg").val(row.yzcxjg);
+               $("#txt_fy").val(row.fy);
+           }
+
+           function select(obj) {
+               $(obj).addClass("aaa_selected").siblings().removeClass("aaa_selected");
+           }
+
+           function handel() {
+               catchSuccess(function () {
+                   printEdWin();
+               });
+           }
+        </script>
+                   <link href="~/Js/Student/GetDefaultValue/js/common.bank.ed.css" rel="stylesheet" />
+                   <link href="~/Js/Student/GetDefaultValue/js/ed.common.css" rel="stylesheet" />
+                   <style type="text/css">
+                       .aaa_selected {
+                           background-color: #98c6ff;
+                       }
+
+                       #fake_btnsubmit {
+                           display: none;
+                       }
+                   </style>
+               </form>

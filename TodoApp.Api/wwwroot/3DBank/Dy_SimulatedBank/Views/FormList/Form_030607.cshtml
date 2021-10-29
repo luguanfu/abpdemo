@@ -1,0 +1,100 @@
+﻿@{
+                    ViewBag.Title = "Form_030607";
+                    Layout = "~/Views/Shared/_StutentLayoutIsNull.cshtml";
+                }
+               <form id="form1" onsubmit="return false" action="##" method="post">
+                   <input type="hidden" id="FormType" name="FormType" value="@Request["FormType"]" />
+                   <input type="hidden" id="FormId" name="FormId" value="@Request["FormId"]" />
+                   <input type="hidden" id="TRId" name="TRId" value="@Request["TotalResultId"]" />
+                   <input type="hidden" id="ExamId" name="ExamId" value="@Request["ExamId"]" />
+                   <input type="hidden" id="TaskId" name="TaskId" value="@Request["TaskId"]" />
+                   <input type="hidden" id="CustomerId" name="CustomerId" value="@Request["CustomerId"]" />
+                   <input type="hidden" id="LinkId" name="LinkId" value="@Request["LinkId"]" />
+                   <input type="hidden" id="Types" name="Types" value="2" />
+                <!--内容表单区域开始-->
+            <div class="tables bankmap">
+			<div class="banktop">
+				<span class="toolbar-title-img"> <img src="../busi/img/topleft.png">02329-冻结止付历史查询
+			</span> <span class="toolbar-title-close" style="display: none;"> </span>
+			</div>
+			<div class="con-map2 selected">
+				<table id="qv" class="con-map2-table">
+					<tbody>
+						<tr>
+							<td class="" style="width: 55px;"><label vl-default="" id="label_zkh" vtitle="账/s卡号" class="form-item text-left" vl-tipsid="label_zkh_tips" vl-rely="txt_zkh" title="label_zkh" name="label_zkh">账/<s></s>卡号
+						</label>
+								<div id="label_zkh_tips" class="tipsmsg"></div>
+							</td>
+							<td class=""><input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_zkh" vtitle="帐卡号" class="form-item text-left" kuaicha="true" vl-tipsid="txt_zkh_tips" vl-regex="['require', 'maxlength32', 'number']" vl-message="['帐/卡号不能为空！','账/卡号长度大于最大长度:[32]','账/卡号输入错误！']" style="width: 180px;" title="txt_zkh" onpaste="return false" name="txt_zkh"><img class="sousuo" src="/Js/Student/GetDefaultValue/img/banksousuo.png" vl-select="sle_xh|0|0,txt_zhmc|0|0" vl-exec="false" vl-message="['帐卡号查询未执行！']" title="执行快查！"><span class="text-red redtip">!</span>
+								<div id="txt_zkh_tips" class="tipsmsg"></div>
+							</td>
+							<td class="" style="width: 32px;"><label vl-default="" id="label_xh" vtitle="序ii号" class="form-item text-left" vl-tipsid="label_xh_tips" title="label_xh" name="label_xh">序<i></i><i></i>号
+						</label>
+								<div id="label_xh_tips" class="tipsmsg"></div>
+							</td>
+							<td class="">
+								<div class="slectstyle">
+                                    <select vl-default="" id="sle_xh" vtitle="序ii号" class="form-item text-left" vl-tipsid="sle_xh_tips" vl-regex="['require', 'maxlength25']" vl-message="['序号不能为空!','序号长度大于最大长度:[25]！']" style="width: 180px;" title="sle_xh" vl-slemodel="" name="sle_xh">
+                                        <option disabled="" style="background-color: blue; color: #fff;" value="" selected="selected">序号值含义</option>
+                                        <option value="1">1 - 个人银行结算存款</option>
+                                        <option value="2">2 - 整存整取1年</option>
+                                    </select><input type="text" oncopy="return false" onpaste="return false" oncut="return false" style="width: 157px;" id="mb1_sleinput_XuiiHao_4" name="mb1_sleinput_XuiiHao_4"><span class="text-red redtip">!</span>
+								</div>
+								<div id="sle_xh_tips" class="tipsmsg"></div>
+							</td>
+						</tr>
+						<tr>
+							<td rowspan="1" colspan="1" class="" style="width: 48px;"><label vl-default="" id="label_zhmc" vtitle="账户名称" class="form-item text-left" vl-tipsid="label_zhmc_tips" vl-rely="txt_zkh" name="label_zhmc">账户名称</label>
+								<div id="label_zhmc_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="3" class=""><input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_zhmc" vtitle="账户名称" class="form-item text-left" vl-disabled="true" vl-tipsid="txt_zhmc_tips" vl-regex="['maxlength20']" vl-message="['账户名称长度大于最大长度:[20]!']" style="width: 678px;" title="txt_zhmc" onpaste="return false" disabled="disabled" name="txt_zhmc">
+								<div id="txt_zhmc_tips" class="tipsmsg"></div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="con-map2">
+				<div class="box">
+					<!--<ul class="tab">
+					<li title="tab_0_0" id="tab_0_0" class="tab_0_0">账/卡号</li>
+					<li title="tab_0_1" id="tab_0_1" class="tab_0_1">序号</li>
+					<li title="tab_0_2" id="tab_0_2" class="tab_0_2">账户名称</li>
+					<li title="tab_0_3" id="tab_0_3" class="tab_0_3">冻结/止付序号</li>
+					<li title="tab_0_4" id="tab_0_4" class="tab_0_4">冻结/止付类型</li>
+					<li title="tab_0_5" id="tab_0_5" class="tab_0_5">冻结/止付金额</li>
+					<li title="tab_0_6" id="tab_0_6" class="tab_0_6">交易日期</li>
+					<li title="tab_0_7" id="tab_0_7" class="tab_0_7 one">交易类型</li>
+				</ul>-->
+					<div class="content">
+						<div class="ct">
+							<iframe id="iframeID" width="100%" height="100%"></iframe>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="foot ">
+				<span>
+				<button>退出（F3）</button>
+				<button>帮助（F1）</button>
+				<button>辅助（F4）</button>
+				<button type="button" onclick="FormReset()">重置（F5）</button>
+			</span> <span style="float: right;">
+				<button type="button" style="margin-right: 0px;" vl-submit="true" id="btnsubmit" onclick="SubmitForm()">提交</button>
+			</span>
+			</div>
+			<input type="hidden" class="hidmainwidth" value="1000" oncopy="return false" onpaste="return false" oncut="return false">
+		</div><script src="~/Js/Student/GetDefaultValue/common.bank.js"></script>
+              <script src="~/Js/Student/GetDefaultValue/lodash.min.js"></script>
+              <script src="~/Js/Student/GetDefaultValue/common.regex.cz.js"></script>
+              <script src="~/Js/Student/GetDefaultValue/common.regex.js"></script>
+<script src="~/Js/Student/GetDefaultValue/js/djzflscx.js"></script>
+<script src="~/Js/Student/GetDefaultValue/js/layer.js"></script>
+<script src="~/Js/Student/GetDefaultValue/js/My97DatePicker/WdatePicker.js"></script>
+<link href="~/Js/Student/GetDefaultValue/js/common.bank.css" rel="stylesheet" />
+<style>
+			.ba-iframe {
+				min-height: 400px;
+			}
+		</style>
+              </form>

@@ -1,0 +1,116 @@
+﻿@{
+                    ViewBag.Title = "Form_050511";
+                    Layout = "~/Views/Shared/_StutentLayoutIsNull.cshtml";
+                }
+<form id="form1" onsubmit="return false" action="##" method="post">
+    <input type="hidden" id="FormType" name="FormType" value="@Request["FormType"]" />
+    <input type="hidden" id="FormId" name="FormId" value="@Request["FormId"]" />
+    <input type="hidden" id="TRId" name="TRId" value="@Request["TotalResultId"]" />
+    <input type="hidden" id="ExamId" name="ExamId" value="@Request["ExamId"]" />
+    <input type="hidden" id="TaskId" name="TaskId" value="@Request["TaskId"]" />
+    <input type="hidden" id="CustomerId" name="CustomerId" value="@Request["CustomerId"]" />
+    <input type="hidden" id="LinkId" name="LinkId" value="@Request["LinkId"]" />
+    <input type="hidden" id="Types" name="Types" value="2" />
+    <!--内容表单区域开始-->
+    <div class="tables bankmap">
+        <div class="banktop"> <span class="toolbar-title-img">                                        <img src="../busi/img/topleft.png">收费处理</span> <span class="toolbar-title-close" style="display: none;">                                        <img src="../busi/img/topright.png"></span> </div>
+        <div class="con-map2">
+            <iframe id="iframeID" name="iframeID" style="width: 100%;height: 150px; border:none; " src="http://bsi1.occupationedu.com/commontable?fields=xh%7C%E5%BA%8F%E5%8F%B7,flbh%7C%E8%B4%B9%E7%8E%87%E7%BC%96%E5%8F%B7,fyje%7C%E8%B4%B9%E7%94%A8%E9%87%91%E9%A2%9D,zy%7C%E6%91%98%E8%A6%81&amp;table=tb_daily_sfcl&amp;orderby=id&amp;is_page=false&amp;where=%20and%20plan_id%5E2212"></iframe>
+        </div>
+        <div class="con-map2 selected">
+            <table id="qv" class="con-map2-table qv">
+                <tbody>
+                    <tr>
+                        <td class="" style="width: 64px;">
+                            <label vl-default="" id="label_sfzh" vtitle="收费账号" class="form-item text-left on" vl-tipsid="label_sfzh_tips" title="label_sfzh" name="label_sfzh">收费账号</label>
+                            <div id="label_sfzh_tips" class="tipsmsg"></div>
+                        </td>
+                        <td class="" rowspan="1" colspan="3">
+                            <input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_sfzh" vtitle="收费账号" value="820000000024031681" class="form-item text-left" vl-disabled="true" vl-tipsid="txt_sfzh_tips" style="width: 600px;" title="txt_sfzh" onpaste="return false" name="txt_sfzh">
+                            <!--<img class="sousuo" src="../busi/img/banksousuo.png" vl-exec="false" vl-message="['收费账号未执行！']" title="执行快查！">-->
+                            <div id="txt_sfzh_tips" class="tipsmsg"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td rowspan="1" colspan="1" class="" style="width: 64px;">
+                            <label vl-default="" id="label_sfbz" vtitle="收费币种" class="form-item text-left on" vl-tipsid="label_sfbz_tips" title="label_sfbz" name="label_sfbz">收费币种</label>
+                            <div id="label_sfbz_tips" class="tipsmsg"></div>
+                        </td>
+                        <td rowspan="1" colspan="1" class="">
+                            <div class="slectstyle">
+                                <select vl-default="CNY" id="sle_sfbz" vtitle="收费币种" class="form-item text-left on" vl-disabled="true" vl-tipsid="sle_sfbz_tips" style="width: 180px;" title="sle_sfbz" vl-slemodel="" disabled="disabled" name="sle_sfbz">
+                                    <option disabled="" style="background-color: blue; color: #fff;" value="">收费币种值含义</option>
+                                    <option value="CNY">CNY-人民币</option>
+                                </select><input type="text" oncopy="return false" onpaste="return false" oncut="return false" disabled="disabled" style="width: 157px;" id="mb2_sleinput_ShouFeiBiZhong_4" name="mb2_sleinput_ShouFeiBiZhong_4">
+                            </div>
+                            <div id="sle_sfbz_tips" class="tipsmsg"></div>
+                        </td>
+                        <td rowspan="1" colspan="1" class="" style="width: 64px;">
+                            <label vl-default="" id="label_zfye" vtitle="总费用额" class="form-item text-left" vl-tipsid="label_zfye_tips" title="label_zfye" name="label_zfye">总费用额</label>
+                            <div id="label_zfye_tips" class="tipsmsg"></div>
+                        </td>
+                        <td rowspan="1" colspan="1" class="">
+                            <input type="text" oncopy="return false" oncut="return false" vl-default="35.00" id="txt_zfye" vtitle="总费用额" class="form-item text-left on" vl-disabled="true" vl-tipsid="txt_zfye_tips" style="width: 180px;" title="txt_zfye" onpaste="return false" disabled="disabled" name="txt_zfye">
+                            <div id="txt_zfye_tips" class="tipsmsg"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td rowspan="1" colspan="1" class="" style="width: 64px;">
+                            <label vl-default="" id="label_shfs" vtitle="收费方式" class="form-item text-left" vl-disabled="true" vl-tipsid="label_shfs_tips" title="label_shfs" disabled="disabled" name="label_shfs">收费方式</label>
+                            <div id="label_shfs_tips" class="tipsmsg"></div>
+                        </td>
+                        <td rowspan="1" colspan="1" class="qvdisplay">
+                            <input type="radio" name="redio_xjsf" vl-keyup="wwww" vl-default="" value="" id="redio_xjsf" title="redio_xjsf" vtitle="现金收费" class="form-item text-left" vl-disabled="true" vl-tipsid="redio_xjsf_tips" style="width: 20px;" oncopy="return false" onpaste="return false" oncut="return false">1-现金收费
+                            <div id="redio_xjsf_tips" class="tipsmsg"></div>
+                        </td>
+                        <td rowspan="1" colspan="1" class="">
+                            <input type="radio" name="redio_xjsf" checked="checked" vl-default="" id="redio_zzsf" vtitle="转账收费" value="" class="form-item text-left" vl-tipsid="redio_zzsf_tips" style="width: 20px;" title="redio_zzsf" oncopy="return false" onpaste="return false" oncut="return false">2-转账收费
+                            <div id="redio_zzsf_tips" class="tipsmsg"></div>
+                        </td>
+                        <td rowspan="1" colspan="1" class="">
+                            <input type="radio" name="redio_xjsf" vl-default="" id="redio_bsf" vtitle="不收费" value="" class="form-item text-left" vl-tipsid="redio_bsf_tips" style="width: 20px;" title="redio_bsf" oncopy="return false" onpaste="return false" oncut="return false">3-不收费
+                            <div id="redio_bsf_tips" class="tipsmsg"></div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="foot "> <span>                                        <button>退出（F3）</button>                                        <button>帮助（F1）</button>                                        <button>辅助（F4）</button>                                        <button type="button" onclick="FormReset()">重置（F5）</button></span> <span style="float: right;">                                        <button type="button" style="margin-right: 0px;" vl-submit="true" id="btnsubmit" onclick="SubmitForm()">提交</button></span> </div> <input type="hidden" class="hidmainwidth" value="1000/" oncopy="return false" onpaste="return false" oncut="return false">
+    </div>
+    <script src="~/Js/Student/GetDefaultValue/common.bank.js"></script>
+    <script src="~/Js/Student/GetDefaultValue/lodash.min.js"></script>
+    <script src="~/Js/Student/GetDefaultValue/common.regex.cz.js"></script>
+    <script src="~/Js/Student/GetDefaultValue/common.regex.js"></script>
+    <script src="~/Js/Student/GetDefaultValue/js/chargeHandling.js"></script>
+    <script src="~/Js/Student/GetDefaultValue/js/layer.js"></script>
+    <script src="~/Js/Student/GetDefaultValue/js/My97DatePicker/WdatePicker.js"></script>
+    <script type="text/javascript">
+
+
+        $(function () {
+            //var txt_zh = getQueryString("txt_zh");
+           // $("#txt_sfzh").val(txt_zh);
+            
+            $("#txt_sfzh").val("820000000024031681");
+            var plan_id = getQueryString("planid");
+            $("#iframeID").attr("src", encodeURI("/commontable?fields=xh|序号,flbh|费率编号,fyje|费用金额,zy|摘要&table=tb_daily_sfcl&orderby=id&is_page=false&where= and plan_id^" + plan_id));
+        });
+
+        window.setTimeout(function () {
+            var aa = $('#common_table tr');
+            console.log(aa.length)
+        }, 2000)
+
+        function getQueryString(name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+            var r = window.location.search.substr(1).match(reg);
+            if (r != null) return unescape(r[2]);
+            return null;
+        }
+
+
+
+    </script>
+     
+    <link href="~/Js/Student/GetDefaultValue/js/common.bank.css" rel="stylesheet" />
+</form>

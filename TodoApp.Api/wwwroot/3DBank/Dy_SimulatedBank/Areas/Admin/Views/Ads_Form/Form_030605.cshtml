@@ -1,0 +1,166 @@
+﻿@{
+                    ViewBag.Title = "Form_030605";
+                    Layout = "~/Views/Shared/_AdminLayoutIsNull.cshtml";
+                }
+               <script src="~/Js/Admin/AdminForm.js"></script>
+               <script src="~/Js/Admin/CaseManagement/AddDefaultValue.js"></script>
+               <form id="form1" onsubmit="return false" action="##" method="post">
+                  <input type="hidden" id="TaskId" name="TaskId" value="@Request["TaskId"]" />
+                  <input type="hidden" id="CustomerId" name="CustomerId" value="@Request["CustomerId"]" />
+                  <input type="hidden" id="FormId" name="FormId" value="@Request["FormId"]" />
+                  <input type="hidden" id="Types" name="Types" value="@Request["Types"]" />
+                <!--内容表单区域开始-->
+            <div class="tables bankmap">
+			<div class="banktop"> <span class="toolbar-title-img">                                    <img src="../busi/img/topleft.png">02328-冻结止付查询</span> <span class="toolbar-title-close" style="display: none;">                                    </span> </div>
+			<div class="con-map2 selected">
+				<table id="qv" class="con-map2-table">
+					<tbody>
+						<tr>
+							<td class="" colspan="1" style="width: 64px;"><label vl-default="" id="label_zhlx" vtitle="账s户i类ss型" class="form-item text-left" vl-tipsid="label_zhlx_tips" style="width: 89px;" title="label_zhlx" name="label_zhlx">账<s></s>户<i></i>类<s></s><s></s>型</label>
+								<div id="label_zhlx_tips" class="tipsmsg"></div>
+							</td>
+							<td class="" rowspan="1" colspan="3">
+								<div class="slectstyle">
+									<select vl-default="" id="sle_zhlx" vtitle="账户类型" class="form-item text-left" vl-tipsid="sle_zhlx_tips" vl-regex="['require', 'maxlength25']" vl-message="['账户类型不能为空！','账户类型长度超过最大长度:[25]!']" style="width: 645px;" title="sle_zhlx" vl-slemodel="" name="sle_zhlx">
+										<option disabled="" style="background-color: blue; color: #fff;" value="" selected="selected">汇款账户类型值含义</option>
+										<option value="1">1-单位账户</option>
+										<option value="2">2-个人账户</option>
+										<option value="3">3-个人存折</option>
+										<option value="4">4-磁条借记卡</option>
+										<option value="5">5-IC借记卡</option>
+										<option value="6">6-单位结算户</option>
+									</select><input type="text" oncopy="return false" onpaste="return false" oncut="return false" style="width: 622px;" id="mb1_sleinput_ZhangHuLeiXing_2" name="mb1_sleinput_ZhangHuLeiXing_2"><span class="text-red redtip">!</span></div>
+								<div id="sle_zhlx_tips" class="tipsmsg"></div>
+							</td>
+						</tr>
+						<tr>
+							<td rowspan="1" colspan="1" class="" style="width: 55px;"><label vl-default="" id="label_zkh" vtitle="账i/i卡ss号" class="form-item text-left" vl-tipsid="label_zkh_tips" style="width: 90px;" title="label_zkh" name="label_zkh">账<i></i>/<i></i>卡<s></s><s></s>号</label>
+								<div id="label_zkh_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class=""><input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_zkh" vtitle="账/卡号" class="form-item text-left" kuaicha="true" vl-tipsid="txt_zkh_tips" vl-regex="['require', 'number', 'maxlength32']" vl-message="['账/卡号不能为空！','账卡号输入错误！','账/卡号长度超过最大长度:[32]!']" style="width: 180px;" title="txt_zkh" onpaste="return false" name="txt_zkh"><img class="sousuo" src="/Js/Student/GetDefaultValue/img/banksousuo.png" vl-select="sle_xh|0|0,txt_zhmc|0|0" vl-exec="false" vl-message="['账/卡号查询未执行！']" title="执行快查！"><span class="text-red redtip">!</span>
+								<div id="txt_zkh_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="" style="width: 32px;"><label vl-default="" id="label_xh" vtitle="序iiiss号" class="form-item text-left" vl-tipsid="label_xh_tips" style="width: 77px;" title="label_xh" name="label_xh">序<i></i><i></i><i></i><s></s><s></s>号</label>
+								<div id="label_xh_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="">
+								<div class="slectstyle">
+									<select vl-default="" id="sle_xh" vtitle="序号" class="form-item text-left" vl-tipsid="sle_xh_tips" vl-regex="['require']" vl-message="['序号不能为空!']" style="width: 180px;" title="sle_xh" vl-slemodel="" name="sle_xh">
+										<option disabled="" style="background-color: blue; color: #fff;" value="" selected="selected">序号值含义</option>
+										<option value="1">1 - 个人银行结算存款</option>
+										<option value="4">4 - 整存整取3月</option>
+									</select><input type="text" oncopy="return false" onpaste="return false" oncut="return false" style="width: 157px;" id="mb1_sleinput_XuHao_6" name="mb1_sleinput_XuHao_6"><span class="text-red redtip">!</span></div>
+								<div id="sle_xh_tips" class="tipsmsg"></div>
+							</td>
+						</tr>
+						<tr>
+							<td rowspan="1" colspan="1" class="" style="width: 64px;"><label vl-default="" id="label_zhmc" vtitle="账s户i名ss称" class="form-item text-left" vl-tipsid="label_zhmc_tips" style="width: 89px;" title="label_zhmc" name="label_zhmc">账<s></s>户<i></i>名<s></s><s></s>称</label>
+								<div id="label_zhmc_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="3" class=""><input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_zhmc" vtitle="账户名称" class="form-item text-left" vl-disabled="true" vl-tipsid="txt_zhmc_tips" style="width: 640px;" title="txt_zhmc" onpaste="return false" disabled="disabled" name="txt_zhmc">
+								<div id="txt_zhmc_tips" class="tipsmsg"></div>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="1" class="" rowspan="1" style="width: 64px;"><label vl-default="" id="label_jyjg" vtitle="交s易i机ss构" class="form-item text-left" vl-tipsid="label_jyjg_tips" style="width: 89px;" title="label_jyjg" name="label_jyjg">交<s></s>易<i></i>机<s></s><s></s>构</label>
+								<div id="label_jyjg_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="3" class=""><input type="text" oncopy="return false" oncut="return false" vl-default="2410008" id="txt_jyjg" vtitle="交易机构" class="form-item text-left" kuaicha="true" vl-tipsid="txt_jyjg_tips" vl-regex="['maxlength120']" vl-message="['交易机构长度超过最大长度:[120]!']" style="width: 640px;" title="txt_jyjg" onpaste="return false" name="txt_jyjg"><img class="sousuo" src="/Js/Student/GetDefaultValue/img/banksousuo.png" vl-exec="false" vl-message="['交易机构查询未执行！']" title="执行快查！">
+								<div id="txt_jyjg_tips" class="tipsmsg"></div>
+							</td>
+						</tr>
+						<tr>
+							<td rowspan="1" colspan="1" class="" style="width: 55px;"><label vl-default="" id="label_djzflx" vtitle="冻结/止付类型" class="form-item text-left on" vl-tipsid="label_djzflx_tips" title="label_djzflx" name="label_djzflx">冻结/止付类型</label>
+								<div id="label_djzflx_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="">
+								<div class="slectstyle">
+									<select vl-default="" id="sle_djzflx" vtitle="冻结/止付类型" class="form-item text-left" vl-tipsid="sle_djzflx_tips" style="width: 180px;" title="sle_djzflx" vl-slemodel="sle_zfywlx,sle_zfywlx,sle_zfywlx" name="sle_djzflx">
+										<option disabled="" style="background-color: blue; color: #fff;" value="" selected="selected">冻结/止付类型值含义</option>
+										<option sle-require="[{'id':'sle_zfywlx','regex':[''],'tips':['止付业务类型不能为空!'],'disabled':'true','default':''}]" value="0">0 - 不进不出冻结</option>
+										<option sle-require="[{'id':'sle_zfywlx','regex':[''],'tips':['止付业务类型不能为空!'],'disabled':'true','default':''}]" value="1">1 - 只进不出冻结</option>
+										<option sle-require="[{'id':'sle_zfywlx','regex':[''],'tips':['止付业务类型不能为空!'],'disabled':'true','default':''}]" value="2">2 - 部分冻结</option>
+										<option sle-require="[{'id':'sle_zfywlx','regex':['require'],'tips':['止付业务类型不能为空!'],'disabled':'false','default':''}]" value="3">3 - 中止业务</option>
+										<option sle-require="[{'id':'sle_zfywlx','regex':['require'],'tips':['止付业务类型不能为空!'],'disabled':'false','default':''}]" value="4">4 - 全部止付</option>
+										<option sle-require="[{'id':'sle_zfywlx','regex':['require'],'tips':['止付业务类型不能为空!'],'disabled':'false','default':''}]" value="5">5 - 部分止付</option>
+									</select><input type="text" oncopy="return false" onpaste="return false" oncut="return false" style="width: 157px;" id="mb1_sleinput_DongJieZhiFuLeiXing_12" name="mb1_sleinput_DongJieZhiFuLeiXing_12"></div>
+								<div id="sle_djzflx_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="" style="width: 32px;"><label vl-default="" id="label_zfywpt" vtitle="止付业务类型" class="form-item text-left on" vl-tipsid="label_zfywpt_tips" title="label_zfywpt" name="label_zfywpt">止付业务类型</label>
+								<div id="label_zfywpt_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="">
+								<div class="slectstyle">
+									<select vl-default="" id="sle_zfywlx" vtitle="止付业务类型" class="form-item text-left" vl-tipsid="sle_zfywlx_tips" style="width: 180px;" title="sle_zfywlx" vl-slemodel="" name="sle_zfywlx">
+										<option disabled="" style="background-color: blue; color: #fff;" value="" selected="selected">止付业务类型值含义</option>
+										<option value="0">0 - 内部控制</option>
+										<option value="1">1 - 质押止付</option>
+										<option value="2">2 - 贷款止付</option>
+										<option value="3">3 - 客户止付</option>
+										<option value="4">4 - 有权机构止付</option>
+									</select><input type="text" oncopy="return false" onpaste="return false" oncut="return false" style="width: 157px;" id="mb1_sleinput_ZhiFuYeWuLeiXing_14" name="mb1_sleinput_ZhiFuYeWuLeiXing_14"></div>
+								<div id="sle_zfywlx_tips" class="tipsmsg"></div>
+							</td>
+						</tr>
+						<tr>
+							<td rowspan="1" colspan="1" class="" style="width: 55px;"><label vl-default="" id="label_djzfzt" vtitle="冻结/止付状态" class="form-item text-left" vl-tipsid="label_djzfzt_tips" title="label_djzfzt" name="label_djzfzt">冻结/止付状态</label>
+								<div id="label_djzfzt_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="3" class="">
+								<div class="slectstyle">
+									<select vl-default="" id="sle_djzfzt" vtitle="冻结/止付状态" class="form-item text-left" vl-tipsid="sle_djzfzt_tips" style="width: 640px;" title="sle_djzfzt" vl-slemodel="" name="sle_djzfzt">
+										<option disabled="" style="background-color: blue; color: #fff;" value="" selected="selected">冻结/止付状态值含义</option>
+										<option value="0">0 - 生效</option>
+										<option value="1">1 - 解除</option>
+									</select><input type="text" oncopy="return false" onpaste="return false" oncut="return false" style="width: 617px;" id="mb1_sleinput_DongJieZhiFuZhuangTai_16" name="mb1_sleinput_DongJieZhiFuZhuangTai_16"></div>
+								<div id="sle_djzfzt_tips" class="tipsmsg"></div>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="1" class="" style="width: 64px;"><label vl-default="" id="label_jyrq" vtitle="交s易i日ss期" class="form-item text-left" vl-tipsid="label_jyrq_tips" style="width: 89px;" title="label_jyrq" name="label_jyrq">交<s></s>易<i></i>日<s></s><s></s>期</label>
+								<div id="label_jyrq_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="">
+								<input type="text" class="date form-item text-left" vl-default="" id="date_Begjyrq" vtitle="交易日期" vl-tipsid="date_Begjyrq_tips" vl-regex="['maxlength8', 'tdate','number']" vl-message="['交易日期长度大于最大长度:[8]!','请输入正确的交易日期格式（如:19000101）!','']" style="width: 180px;" title="date_Begjyrq" oncopy="return false" onpaste="return false" oncut="return false" name="date_Begjyrq"><img onclick="WdatePicker({el:'date_Begjyrq',dateFmt:'yyyyMMdd'})" src="/js/My97DatePicker/skin/datePicker.gif" align="absmiddle" style="width:16px;height:22px;margin-left:6px;">
+								<div id="date_Begjyrq_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="" style="width: 28px;"><label vl-default="" id="label_endYJSj" vtitle="------->" class="form-item text-left on" vl-tipsid="label_endYJSj_tips" title="label_endYJSj" name="label_endYJSj">-------&gt;</label>
+								<div id="label_endYJSj_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="">
+								<input type="text" class="date form-item text-left" vl-default="" id="date_endJYSJ2" vtitle="交易日期" vl-tipsid="date_endJYSJ2_tips" vl-regex="['maxlength8', 'tdate','number']" vl-message="['交易日期长度大于最大长度:[8]!','请输入正确的交易日期格式（如:19000101）!','']" style="width: 180px;" title="date_endJYSJ2" oncopy="return false" onpaste="return false" oncut="return false" name="date_endJYSJ2"><img onclick="WdatePicker({el:'date_endJYSJ2',dateFmt:'yyyyMMdd'})" src="/js/My97DatePicker/skin/datePicker.gif" align="absmiddle" style="width:16px;height:22px;margin-left:6px;">
+								<div id="date_endJYSJ2_tips" class="tipsmsg"></div>
+							</td>
+						</tr>
+						<tr>
+							<td colspan="1" class="" style="width: 64px;"><label vl-default="" id="label_begDjzfdqr" vtitle="冻结/止付到期日" class="form-item text-left" vl-tipsid="label_begDjzfdqr_tips" title="label_begDjzfdqr" name="label_begDjzfdqr">冻结/止付到期日</label>
+								<div id="label_begDjzfdqr_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="">
+								<input type="text" class="date form-item text-left" vl-default="" id="date_begDjzfdqr" vtitle="冻结/止付到期日" vl-tipsid="date_begDjzfdqr_tips" vl-regex="['maxlength8', 'tdate','number']" vl-message="['冻结/止付到期日长度大于最大长度:[8]!  ','请输入正确的冻结/止付到期日格式（如:19000101）!','']" style="width: 180px;" title="date_begDjzfdqr" oncopy="return false" onpaste="return false" oncut="return false" name="date_begDjzfdqr"><img onclick="WdatePicker({el:'date_begDjzfdqr',dateFmt:'yyyyMMdd'})" src="/js/My97DatePicker/skin/datePicker.gif" align="absmiddle" style="width:16px;height:22px;margin-left:6px;">
+								<div id="date_begDjzfdqr_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="" style="width: 28px;"><label vl-default="" id="label_endDjzfdqr" vtitle="------->" class="form-item text-left on" vl-tipsid="label_endDjzfdqr_tips" title="label_endDjzfdqr" name="label_endDjzfdqr">-------&gt;</label>
+								<div id="label_endDjzfdqr_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class=""><input type="text" class="date form-item text-left" vl-default="" id="date_endDjzfdqr2" vtitle="冻结/止付到期日" vl-tipsid="date_endDjzfdqr2_tips" vl-regex="['maxlength8', 'tdate','number']" vl-message="['冻结/止付到期日长度大于最大长度:[8]!  ','请输入正确的冻结/止付到期日格式（如:19000101）!','']" style="width: 180px;" oncopy="return false" onpaste="return false" oncut="return false" name="date_endDjzfdqr2"><img onclick="WdatePicker({el:'date_endDjzfdqr2',dateFmt:'yyyyMMdd'})" src="/js/My97DatePicker/skin/datePicker.gif" align="absmiddle" style="width:16px;height:22px;margin-left:6px;">
+								<div id="date_endDjzfdqr2_tips" class="tipsmsg"></div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="con-map2">
+				<iframe id="iframeID" name="iframeID" style="width:100%;height: 300px; border:none; " src="http://bsi1.occupationedu.com/commontable/?fields=dwmc%7C%E8%B4%A6/%E5%8D%A1%E5%8F%B7,dwzh%7C%E8%B4%A6%E6%88%B7%E5%BA%8F%E5%8F%B7,dbzgxe%7C%E5%AE%A2%E6%88%B7%E5%8F%B7,pczgxe%7C%E5%86%BB%E7%BB%93/%E6%AD%A2%E4%BB%98%E5%BA%8F%E5%8F%B7,zt%7C%E5%86%BB%E7%BB%93/%E6%AD%A2%E4%BB%98%E7%B1%BB%E5%9E%8B,qyrq%7C%E5%86%BB%E7%BB%93/%E6%AD%A2%E4%BB%98%E9%87%91%E9%A2%9D&amp;table=tb_daily_wtdwqycx&amp;orderby=id&amp;page=1&amp;pagesize=10&amp;is_page=true&amp;toolbar=false&amp;where=%20and%201!=1"></iframe>
+				
+	
+			</div>
+			<div class="foot "> <span>                                    <button>退出（F3）</button>                                    <button>帮助（F1）</button>                                    <button>辅助（F4）</button>                                    <button type="button" onclick="FormReset()">重置（F5）</button></span> <span style="float: right;">                                    <button type="button" style="margin-right: 0px;" vl-submit="true" id="btnsubmit" onclick="SubmitForm()">提交</button></span> </div>
+			<input type="hidden" class="hidmainwidth" value="1000/" oncopy="return false" onpaste="return false" oncut="return false"> </div>
+@*<script type="text/javascript">
+    $(function () {
+        $("#iframeID").attr("src", _ip + encodeURI("commontable/?fields=dwmc|账/卡号,dwzh|账户序号,dbzgxe|客户号,pczgxe|冻结/止付序号,zt|冻结/止付类型,qyrq|冻结/止付金额&table=tb_daily_wtdwqycx&orderby=id&page=1&pagesize=10&is_page=true&toolbar=false&where= and 1!=1"));
+    });
+</script>*@
+<link href="~/Js/Student/GetDefaultValue/js/common.bank.css" rel="stylesheet" />
+              </form>

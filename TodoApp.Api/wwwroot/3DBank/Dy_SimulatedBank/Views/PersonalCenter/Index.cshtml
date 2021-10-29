@@ -1,0 +1,393 @@
+﻿@{
+    
+    Layout = "~/Views/Shared/_StudentLayout.cshtml";
+}
+<!--公用样式 结束-->
+<link rel="stylesheet" type="text/css" href="~/CSS/user_center.css" />
+
+<script src="~/Scripts/cropbox.js"></script>
+<div class="wrapper">
+    <!--大图与头像-->
+    <div class="box">
+        <img class="banners" src="../img/banners.png" />
+        <img title="" id="use_img" onclick="change_use();" class="head_portrait" src="@ViewData["UI_UserPic"]" />
+    </div>
+
+    <!--个人的信息  开始-->
+    <div class="wrappers">
+        <!--基础资料-->
+        <div class="wrappers_basics">
+            <div class="basics_img">
+                <img src="../img/initial_value.png" />
+            </div>
+            <ul>
+                <li class="basics_number">学号:<p>@ViewData["U_UserNo"]</p>
+                </li>
+                <li class="basics_classname">班级:<p>@ViewData["className"]</p>
+                </li>
+                <li class="basics_college">学院:<p>@ViewData["classMName"]</p>
+                </li>
+                <li class="basics_major">专业:<p>@ViewData["MajorName"]</p>
+                </li>
+            </ul>
+        </div>
+        <!--扩展资料-->
+        <div class="wrappers_extend">
+            <div class="basics_img">
+                <img src="../img/resources.png" />
+            </div>
+            <ul>
+                <li>学生姓名&nbsp;
+                <input type="text" class="form-control" name="" maxlength="5" autocomplete="off" id="UI_UserName" value="@ViewData["UI_UserName"]" placeholder="请输入真实姓名" /></li>
+                <li style="display:none;">身份证号&nbsp;
+                <input type="text" class="form-control" name="" autocomplete="off" id="UI_UserIdentity" value="@ViewData["UI_UserIdentity"]" placeholder="0123 4567 8901 2345 6" /></li>
+                <li><span style="color: white;">个人</span>性别&nbsp;
+                <select class="form-control" id="sex">
+                    <option value="0">男</option>
+                    <option value="1">女</option>
+                </select>
+                <li><span style="color: white;">个人</span>手机	&nbsp;<input type="text" autocomplete="off" maxlength="11" class="form-control" name="" id="UI_UserPhone" value="@ViewData["UI_UserPhone"]"  onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g,'')" placeholder="请输入11位数字手机号码" /></li>
+                <li style="display:none;">居住地址&nbsp;
+						<select class="form-control" id="selProvince" onchange="provinceChange();">
+                        </select>
+
+                    <select class="form-control" name="" id="selCity">
+                    </select>
+                    <input type="hidden" id="UI_UserCity" value="@ViewData["UI_UserCity"]" />
+                    <input class="form-control" type="text" autocomplete="off" name="" id="UI_UserAddress" value="@ViewData["UI_UserAddress"]" placeholder="请输入详细地址" />
+                </li>
+
+                <li><span style="color: white;">个人</span>邮箱&nbsp;
+                <input type="text" class="form-control" name="" maxlength="" autocomplete="off" id="UI_Emlie" value="@ViewData["Email"]" placeholder="请输入Email" /></li>
+                <li class="extend_last">
+                    <button class="xgbtn" type="button" onclick="sumitinfo()">确定</button>
+                    <button type="button" onclick="quxiao()">取消</button>
+                </li>
+            </ul>
+        </div>
+        <!--修改密码-->
+        <div class="wrappers_amend">
+            <div class="basics_img">
+                <img src="../img/change_pwd.png" />
+            </div>
+            <div class="amend_pwd">
+                当前密码&nbsp;
+                <input type="password" value="@ViewData["U_UserPwd"]" disabled="disabled" />
+                <input type="hidden" id="U_UserPwd" value="@ViewData["U_UserPwd"]" />
+                <button class="amend_btn xgbtn" onclick="change_pass();">点击修改</button>
+            </div>
+        </div>
+    </div>
+    <!--个人的信息  结束-->
+</div>
+
+<!--上传头像区域弹窗开始-->
+<div id="change_use" style="display: none;">
+    <div class="box-body ">
+        <div class="col-sm-12" style="margin-top: 10px;">
+            <div style="margin: auto; width: 400px;">
+
+                <div class="imageBox">
+                    <div class="thumbBox"></div>
+                    <div class="spinner" style="display: none">Loading...</div>
+                </div>
+                <div class="action">
+                    <!-- <input type="file" id="file" style=" width: 200px">-->
+                    <div class="new-contentarea tc">
+                        <a href="javascript:void(0)" class="upload-img">
+                            <label for="upload-file">选择图像</label>
+                        </a>
+                        <input type="file" class="" name="upload-file" id="upload-file" />
+                    </div>
+                    <input type="button" id="btnCrop" class="Btnsty_peyton" value="保存">
+                    <input type="button" id="btnZoomIn" class="Btnsty_peyton" value="+">
+                    <input type="button" id="btnZoomOut" class="Btnsty_peyton" value="-">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--上传头像区域结束-->
+<!--修改密码-->
+<div id="change_pass" style="display: none;">
+    <div class="box-body ">
+        <div class="col-sm-12 " style="margin-top: 30px;">
+            <div class="form-horizontal ">
+                <div class="form-group ">
+                    <label for="inputEmail3" class="col-sm-4 control-label "><span class="text-danger ">*</span>当前密码：</label>
+                    <div class="col-sm-8">
+                        <input type="password" class="form-control mr30 " id="U_UserPwd1" placeholder="旧密码">
+                    </div>
+                </div>
+                <div class="form-group ">
+                    <label for="inputEmail3" class="col-sm-4 control-label "><span class="text-danger ">*</span>新密码：</label>
+                    <div class="col-sm-8">
+                        <input type="password" class="form-control mr30 " id="U_UserPwd2" placeholder="6-18位密码 ">
+                    </div>
+                </div>
+                <div class="form-group ">
+                    <label for="inputEmail3" class="col-sm-4 control-label "><span class="text-danger ">*</span>重复密码：</label>
+                    <div class="col-sm-8">
+                        <input type="password" class="form-control mr30 " id="U_UserPwd3" placeholder=" 6-18位确认密码">
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<script>
+
+
+
+    $(document).ready(function () {
+        var options = {
+            thumbBox: '.thumbBox',
+            spinner: '.spinner',
+            imgSrc: '@ViewData["UI_UserPic"]'
+        }
+        var cropper = $('.imageBox').cropbox(options);
+        $('#upload-file').on('change', function () {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                options.imgSrc = e.target.result;
+                cropper = $('.imageBox').cropbox(options);
+            }
+            reader.readAsDataURL(this.files[0]);
+            //this.files = [];
+        })
+        $('#btnCrop').on('click', function () {
+            var img = cropper.getDataURL();
+            if (img != 0) { //判断是否选择图片
+                $("#use_img").attr("src", img);
+
+                layer.closeAll();
+                $.ajax({
+                    type: "POST",
+                    dataType: "text",
+                    url: '/PersonalCenter/submitImg',
+                    data: { "use_img": img },
+                    success: function (data) {
+                        if (data == 1) {
+
+                            layer.closeAll();//关闭所有弹出框
+
+                            layer.msg('修改成功', { icon: 1, time: 800 }, function () {
+                                window.location.reload();
+                            });
+
+                        }
+                        else {
+                            layer.msg('修改失败',
+                {
+                    offset: 'top',//定义弹窗位置垂直居中
+                });
+                            return;
+                        }
+                    }
+                });
+            } else {
+                alert("没有选择图片");
+            }
+        })
+        $('#btnZoomIn').on('click', function () {
+            cropper.zoomIn();
+        })
+        $('#btnZoomOut').on('click', function () {
+            cropper.zoomOut();
+        })
+    });
+
+
+
+    $(function () {
+        $("#sex").val(@ViewData["Sex"]);
+    });
+
+    //头部 资讯详情下拉
+    $("#usertou").hover(function () {
+        $(".user_xiala").css("display", "block");
+    });
+    //鼠标离开
+    $("#usertou").mouseleave(function () {
+        $(".user_xiala").css("display", "none");
+    });
+
+    //修改密码
+    function change_pass() {
+        layer.open({
+            title: '修改密码',
+            btn: ['确定', '取消'],
+            area: ['400px', '290px'],
+            offset: 'top',//定义弹窗位置垂直居中
+            type: 1,
+            skin: 'layui-layer-lan', //样式类名
+            closeBtn: 1, //显示关闭按钮
+            anim: 2,
+            shadeClose: true, //开启遮罩关闭
+            content: $("#change_pass"),
+            yes: function () {
+                ;
+                var pwd = $("#U_UserPwd").val();
+                var pwd1 = $("#U_UserPwd1").val();
+                var pwd2 = $("#U_UserPwd2").val();
+                var pwd3 = $("#U_UserPwd3").val();
+                if (pwd != pwd1) {
+                    layer.msg('旧密码输入错误');
+                    return;
+                }
+                if (pwd2.length < 6 || pwd2.length > 18) {
+                    layer.msg('请输入6-18位密码');
+                    return;
+                }
+                if (pwd3.length < 6 || pwd3.length > 18) {
+                    layer.msg('请输入6-18位密码');
+                    return;
+                }
+                if (pwd2 != pwd3) {
+                    layer.msg('新密码与重复密码不一致');
+                    return;
+                }
+                $.ajax({
+                    type: "POST",
+                    dataType: "text",
+                    url: '/PersonalCenter/UpdatePwd',
+                    data: { "U_UserPwd": pwd2 },
+                    success: function (data) {
+                        if (data == 1) {
+
+                            layer.closeAll();//关闭所有弹出框
+
+                            layer.msg('修改成功', { icon: 1, time: 800 }, function () {
+                                window.location.reload();
+                            });
+
+                        }
+                        else {
+                            layer.msg('修改失败',
+                {
+                    offset: 'top',//定义弹窗位置垂直居中
+                });
+                            return;
+                        }
+                    }
+                });
+            }
+        });
+    }
+    //jquery验证邮箱 
+    function checkSubmitEmail(email) {
+        if (!email.match(/^\w+((-\w+)|(\.\w+))*\@@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+$/)) {
+            return false;
+        }
+        return true;
+    }
+    // 验证身份证 
+    function isCardNo(card) {
+        if (!card.match(/(^\d{15}$)|(^\d{18}$)|(^\d{17}(\d|X|x)$)/)) {
+            return false;
+        }
+        return true;
+    }
+    //jquery验证手机号码 
+    function checkSubmitMobil(phone) {
+        if (phone.length != 11) {
+            return false;
+        }
+        return true;
+    }
+
+    function sumitinfo() {
+        var UI_UserName = $("#UI_UserName").val();
+        var UI_UserIdentity = $("#UI_UserIdentity").val();
+        var UI_UserPhone = $("#UI_UserPhone").val();
+        var sheng = $("#selProvince").val();
+        var shi = $("#selCity").val();
+        var UI_UserAddress = $("#UI_UserAddress").val();
+        var Email = $("#UI_Emlie").val();
+        var sex = $("#sex").val();
+        var UI_UserCity = sheng + "," + shi;
+        if (UI_UserIdentity.length > 0) {
+            if (!isCardNo(UI_UserIdentity)) {
+                layer.msg('请输入正确身份证号',
+                    {
+                        offset: 'top',//定义弹窗位置垂直居中
+                    });
+                return;
+            }
+        }
+        if (UI_UserPhone.length > 0) {
+            if (!checkSubmitMobil(UI_UserPhone)) {
+                layer.msg('请输入正确手机号码',
+                    {
+                        offset: 'top',//定义弹窗位置垂直居中
+                    });
+                return;
+            }
+        }
+
+        if (Email.length > 0) {
+            if (!checkSubmitEmail(Email)) {
+                layer.msg('请输入正确邮箱',
+                    {
+                        offset: 'top',//定义弹窗位置垂直居中
+                    });
+                return;
+            }
+
+        }
+
+        $.ajax({
+            type: "POST",
+            dataType: "text",
+            url: '/PersonalCenter/Updateinfo',
+            data: { "UI_UserName": UI_UserName, "UI_UserIdentity": UI_UserIdentity, "UI_UserPhone": UI_UserPhone, "UI_UserAddress": UI_UserAddress, "UI_UserCity": UI_UserCity, "Email": Email, "sex": sex },
+            success: function (data) {
+                if (data == 1) {
+
+                    layer.closeAll();//关闭所有弹出框
+
+                    layer.msg('修改成功',
+                {
+                    offset: 'top',//定义弹窗位置垂直居中
+                }, { icon: 1, time: 800 }, function () {
+                    window.location.reload();
+                });
+
+                }
+                else {
+                    layer.msg('修改失败',
+                {
+                    offset: 'top',//定义弹窗位置垂直居中
+                });
+                    return;
+                }
+            }
+        });
+    }
+
+    //修改头像
+    //上传头像弹窗区域
+    function change_use() {
+        layer.open({
+            title: '上传头像',
+            area: ['500px', '550px'],
+            offset: 'top',//定义弹窗位置垂直居中
+            type: 1,
+            skin: 'layui-layer-lan', //样式类名
+            closeBtn: 1, //显示关闭按钮
+            anim: 2,
+            shadeClose: true, //开启遮罩关闭
+            content: $("#change_use")
+        });
+    }
+
+    //头像上传插件开始
+
+    function quxiao() {
+        window.history.back(-1);
+    }
+
+
+</script>
+<script src="~/Scripts/Provincesandcities.js"></script>

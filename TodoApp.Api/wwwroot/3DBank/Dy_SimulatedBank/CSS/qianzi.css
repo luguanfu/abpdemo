@@ -1,0 +1,5 @@
+/*鼠标指针变成铅笔样式*/
+
+body{
+	cursor: url(../img/public3D/qianbi.cur),default !important;
+}

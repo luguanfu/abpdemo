@@ -1,0 +1,59 @@
+﻿@{
+                    ViewBag.Title = "Form_081201";
+                    Layout = "~/Views/Shared/_StutentLayoutIsNull.cshtml";
+                }
+               <form id="form1" onsubmit="return false" action="##" method="post">
+                   <input type="hidden" id="FormType" name="FormType" value="@Request["FormType"]" />
+                   <input type="hidden" id="FormId" name="FormId" value="@Request["FormId"]" />
+                   <input type="hidden" id="TRId" name="TRId" value="@Request["TotalResultId"]" />
+                   <input type="hidden" id="ExamId" name="ExamId" value="@Request["ExamId"]" />
+                   <input type="hidden" id="TaskId" name="TaskId" value="@Request["TaskId"]" />
+                   <input type="hidden" id="CustomerId" name="CustomerId" value="@Request["CustomerId"]" />
+                   <input type="hidden" id="LinkId" name="LinkId" value="@Request["LinkId"]" />
+                   <input type="hidden" id="Types" name="Types" value="2" />
+                <!--内容表单区域开始-->
+            <div class="tables bankmap">
+			<div class="banktop"> <span class="toolbar-title-img">                                        <img src="../busi/img/topleft.png">04901-未复核交易撤销</span> <span class="toolbar-title-close" style="display: none;">                                        </span> </div>
+			<div class="con-map2 selected">
+				<table id="qv" class="con-map2-table qv">
+					<tbody>
+						<tr>
+							<td class="" rowspan="1" colspan="1" style="width: 64px;"><label vl-default="" id="label_jygy" vtitle="交s易s柜s员" class="form-item text-left on" vl-tipsid="label_jygy_tips" title="label_jygy" name="label_jygy">交<s></s>易<s></s>柜<s></s>员</label>
+								<div id="label_jygy_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="2" class=""><input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_jygy" vtitle="交易柜员" class="form-item text-left on" vl-disabled="true" vl-tipsid="txt_jygy_tips" style="width: 180px;" title="txt_jygy" onpaste="return false" disabled="disabled" name="txt_jygy">
+								<div id="txt_jygy_tips" class="tipsmsg"></div>
+							</td>
+						</tr>
+						<tr>
+							<td rowspan="1" colspan="1" class="" style="width: 48px;"><label vl-default="" id="label_fhm" vtitle="复i核is码" class="form-item text-left on" vl-tipsid="label_fhm_tips" title="label_fhm" name="label_fhm">复<i></i>核<i></i><s></s>码</label>
+								<div id="label_fhm_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="2" class=""><input type="text" oncopy="return false" oncut="return false" vl-default="0" id="txt_fhm" vtitle="复核码" class="form-item text-left on" kuaicha="true" vl-tipsid="txt_fhm_tips" vl-regex="['require','maxlength40']" vl-message="['复核码不能为空!','复核码长度不能大于最大长度:[40]!']" style="width: 180px;" title="txt_fhm" onpaste="return false" name="txt_fhm"><img class="sousuo" src="/Js/Student/GetDefaultValue/img/banksousuo.png" vl-select="txt_jym|0|0,txt_zyz99|0|0" vl-exec="false" vl-message="['复核码查询未执行！']" title="执行快查！">
+								<div id="txt_fhm_tips" class="tipsmsg"></div>
+							</td>
+						</tr>
+						<tr>
+							<td rowspan="1" colspan="1" class="" style="width: 48px;"><label vl-default="" id="label_jym" vtitle="交i易is码" class="form-item text-left on" vl-tipsid="label_jym_tips" title="label_jym" name="label_jym">交<i></i>易<i></i><s></s>码</label>
+								<div id="label_jym_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class=""><input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_jym" vtitle="交易码" class="form-item text-left on" vl-disabled="true" vl-tipsid="txt_jym_tips" style="width: 180px;" title="txt_jym" onpaste="return false" disabled="disabled" name="txt_jym">
+								<div id="txt_jym_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class=""><input type="text" oncopy="return false" oncut="return false" vl-keyup="wwww" vl-default="" id="txt_zyz99" vtitle="交易码_MB2" class="form-item text-left" vl-disabled="true" vl-tipsid="txt_zyz99_tips" style="width: 300px;" onpaste="return false" disabled="disabled" name="txt_zyz99">
+							<!--<img class="sousuo" src="../busi/img/banksousuo.png" vl-select="txt_jym|0|0,txt_zyz99|0|0" vl-exec="false" vl-message="['交易码_MB2查询未执行！']">  20170908根据文档去掉快查项-->
+								<div id="txt_zyz99_tips" class="tipsmsg"></div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="foot "> <span>                                        <button>退出（F3）</button>                                        <button>帮助（F1）</button>                                        <button>辅助（F4）</button>                                        <button type="button" onclick="FormReset()">重置（F5）</button></span> <span style="float: right;">                                        <button type="button" style="margin-right: 0px;" vl-submit="true" id="btnsubmit" onclick="SubmitForm()">提交</button></span> </div>
+			<input type="hidden" class="hidmainwidth" value="1000/" oncopy="return false" onpaste="return false" oncut="return false"> </div><script src="~/Js/Student/GetDefaultValue/common.bank.js"></script>
+              <script src="~/Js/Student/GetDefaultValue/lodash.min.js"></script>
+              <script src="~/Js/Student/GetDefaultValue/common.regex.cz.js"></script>
+              <script src="~/Js/Student/GetDefaultValue/common.regex.js"></script>
+<script src="~/Js/Student/GetDefaultValue/js/layer.js"></script>
+<script src="~/Js/Student/GetDefaultValue/js/My97DatePicker/WdatePicker.js"></script>
+<link href="~/Js/Student/GetDefaultValue/js/common.bank.css" rel="stylesheet" />
+              </form>

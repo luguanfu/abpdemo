@@ -1,0 +1,87 @@
+﻿
+<link href="~/CSS/bootstrap-table.min.css" rel="stylesheet" />
+
+<!--本地授权-->
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <label id="lbl_authMethod" name="lbl_authMethod" for="inputEmail3" class="col-sm-3 control-label">授权方式</label>
+            <div class="col-sm-6">
+                <select vl-default="" id="sle_authMethod" name="sle_authMethod" class="form-control">
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <label id="lbl_authGrade" name="lbl_authGrade" for="inputEmail3" class="col-sm-3 control-label">授权等级</label>
+            <div class="col-sm-6">
+                <input vl-default="" id="txt_authGrade" name="txt_authGrade" type="text" class="form-control input-sm">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <label id="lbl_authReason" name="lbl_authReason" for="inputEmail3" class="col-sm-3 control-label">授权原因</label>
+            <div class="col-sm-6">
+                <textarea id="txt_authReason" name="txt_authReason" class="form-control" rows="3"></textarea>
+            </div>
+        </div>
+    </div>
+</div>
+<table class="table table-hover" id="tbl"></table>
+<div id="DivTabValue" style="display:none;">
+    <div class="divider divider-horizontal"><div class="divider-text is-left"><strong>账户信息反显值</strong></div></div>
+<textarea rows="5" id="tb1Value" name="tb1Value" style="width:100%;"></textarea>
+</div>
+
+<script src="~/Scripts/bootstrap-table.min.js"></script>
+
+<script>
+    setOptions(['authMethod']);
+    var data = [];
+    function setTableValue(values) {
+        var vals = values.split('\n');
+        data = [{
+            'tellerNumber': vals[0],
+            'tellerName': vals[1],
+            'tellerGrade': vals[2],
+        }];
+        $("#tbl").bootstrapTable('load', data);
+    }
+    $('#tbl').bootstrapTable({
+        data: data,
+        columns: [{
+            checkbox: true,
+            align: 'center',
+        },
+        {
+            title: '序号',
+            align: 'center',
+            formatter: function (value, row, index) {
+                return index + 1;
+            }
+        },
+        {
+            title: '柜员号',
+            field: 'tellerNumber',
+            align: 'center'
+        },
+        {
+            title: '柜员姓名',
+            field: 'tellerName',
+            align: 'center'
+        },
+        {
+            title: '柜员等级',
+            field: 'tellerGrade',
+            align: 'center'
+        },
+        ]
+    });
+    function doSubmit() {
+        goPage("200038&init=true");
+    }
+</script>

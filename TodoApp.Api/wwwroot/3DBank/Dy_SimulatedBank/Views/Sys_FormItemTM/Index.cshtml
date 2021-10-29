@@ -1,0 +1,358 @@
+﻿@{
+    ViewData["nvc"] = "菜单管理";
+    ViewBag.Title = "银行虚拟仿真实训-系统管理";
+    Layout = "~/Views/Shared/SystemLayout.cshtml";
+}
+
+
+<style type="text/css">
+    .borderstyle {
+        border: 1px solid #c6e5fb;
+        padding: 5px;
+    }
+
+    .trSelected {
+        background-color: #EAFFE6;
+    }
+</style>
+
+<div class="row  border-bottom white-bg dashboard-header">
+    <h3>菜单管理</h3>
+    <div class="ibox-content">
+        <div class="row">
+            <!--左侧数据字典列表开始-->
+            <div class="col-sm-6 no-padding">
+                <div class="borderstyle">
+
+
+                    <div class="font-bold m-t-sm text-success">菜单列表</div>
+                    <div class="hr-line-dashed m-t-sm m-b-sm"></div>
+                    <div>
+                       
+                        <div class="input-group col-sm-5  m-r-sm pull-left">
+                            <select class="form-control"  id="txtModeId"><!--下拉框绑定-->
+                                <option value="0">请选择</option>
+                            </select>
+                        </div>
+                            <div class="input-group col-sm-5  m-r-sm ">
+                                <input type="text" placeholder="" id="txtSearch" name="txtSearch" class="form-control">
+                                <span class="input-group-btn">
+                                    <button type="button" class="btn  btn-primary" onclick="bindInfo(1)">搜索</button>
+                                </span>
+                            </div>
+                        </div>
+
+
+                    <div class=" m-t-sm table-responsive">
+                        <table class="table text-center table-bordered ">
+                            <thead>
+                                <tr>
+                                    <th class="text-center">序号</th>
+                                    <th class="text-center">
+                                        <input type="Checkbox" class="i-checks checkbox-all" disabled="disabled">
+                                    </th>
+                                    <th class="text-center">名称</th>
+                                    <th class="text-center">编码</th>
+                                </tr>
+                            </thead>
+                            <tbody class="new_table text-center" id="tablelist">
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!--分页开始-->
+                    <div class="row text-center" id="PaginatorLibrary">
+                    </div>
+                    <!--分页结束-->
+
+                </div>
+
+            </div>
+            <!--	右侧数据字典值列表考试-->
+            <div class="col-sm-6 " style="padding: 0 0 0 5px;">
+                <div class="borderstyle">
+                    <div class="font-bold m-t-sm text-success">表单列表</div>
+                    <div class="hr-line-dashed m-t-sm m-b-sm"></div>
+
+                    <div>
+                        <div class="input-group col-sm-6 pull-left  m-r-sm">
+                            <input type="text" placeholder="" id="txtSearchR" name="txtSearchR" class="form-control">
+                            <span class="input-group-btn">
+                                <button type="button" class="btn  btn-primary" onclick="bindInfoR(1)">搜索</button>
+                            </span>
+                        </div>
+                        <button onclick="AddInfoTo()" class="btn btn-primary btn-sm" type="button"><i class="fa fa-plus"></i><span class="bold">新增</span></button>
+                        <button onclick="EditInfoTo()" class="btn btn-success btn-sm" type="button"><i class="fa fa-pencil"></i><span class="bold">修改</span></button>
+                        <button onclick="del_all()" class="btn btn-warning btn-sm" type="button"><i class="fa fa-trash"></i><span class="bold">删除</span></button>
+                        <button onclick="AllAdd()" class="btn btn-primary btn-sm" type="button"><i class="fa fa-plus"></i><span class="bold">批量导入</span></button>
+                        <button id="btnexport" onclick="BtnExport()" class="btn btn-success btn-sm" type="button"><i class="fa fa-plus  m-r-xs"></i><span class="bold">导出表单</span></button>
+                        <a id="downFile" href="#" style="display: none;"><span id="fp"></span></a>
+                        
+                    </div>
+
+
+                    <div class=" m-t-sm table-responsive">
+                        <table class="table text-center table-bordered ">
+                            <thead>
+                                <tr>
+                                    <th class="text-center">序号</th>
+                                    <th class="text-center">
+                                        <input type="Checkbox" class="i-checks checkbox-allTo">
+                                    </th>
+                                    <th class="text-center">中文名</th>
+                                    <th class="text-center">英文名</th>
+                                    <th class="text-center">必填</th>
+                                </tr>
+                            </thead>
+                            <tbody class="new_tableTo text-center" id="tablelistTo"></tbody>
+                        </table>
+                    </div>
+
+                    <!--分页开始-->
+                    <div class="row text-center" id="PaginatorLibrary2">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!--新增弹框-->
+<div id="Add" style="display: none;" class="form-inline">
+    <form name="Addform" id="Addform">
+
+        <div class="col-sm-12">
+            <div class="form-horizontal  m-t-sm">
+                <label for="firstname" class="col-sm-4 control-label"><span style="color: red;">*</span>类型名称：</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" id="txtClass_Name" name="txtClass_Name" placeholder="">
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-12">
+            <div class="form-horizontal  m-t-sm">
+                <label for="firstname" class="col-sm-4 control-label"><span style="color: red;">*</span>编码：</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" id="txtClass_Code" name="txtClass_Code" placeholder="">
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-12">
+            <div class="form-horizontal  m-t-sm">
+                <label for="firstname" class="col-sm-4 control-label"><span style="color: red;"></span>系统内置：</label>
+                <div class="col-sm-8">
+                    <div style="text-align: left;" class=" control-label">
+                        <span class="m-r-xs">
+                            <input type="radio" class="i-checks" name="rdoIs_System" id="Is_SystemA" value="1">
+                        </span>是
+                        <span class="m-l-md">
+                            <span class="m-r-xs">
+                                <input type="radio" class="i-checks" name="rdoIs_System" id="Is_SystemB" value="0" checked="checked">
+                            </span>否
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="col-sm-12 text-center">
+            <div class="form-horizontal m-t-md ">
+                <button type="button" class="btn btn-w-m btn-success" onclick="BtnSubim()">保存</button>&nbsp;
+                <button type="button" class="btn btn-w-m btn-white" onclick="FormRest()">关闭</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<!--编辑弹框-->
+<div id="Edit" style="display: none;" class="form-inline">
+    <form name="Editform" id="Editform">
+
+        <div class="col-sm-12">
+            <div class="form-horizontal  m-t-sm">
+                <label for="firstname" class="col-sm-4 control-label"><span style="color: red;">*</span>类型名称：</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" id="txtEditClass_Name" name="txtEditClass_Name" placeholder="">
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-12">
+            <div class="form-horizontal  m-t-sm">
+                <label for="firstname" class="col-sm-4 control-label"><span style="color: red;">*</span>编码：</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" id="txtEditClass_Code" name="txtEditClass_Code" placeholder="">
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-12">
+            <div class="form-horizontal  m-t-sm">
+                <label for="firstname" class="col-sm-4 control-label"><span style="color: red;"></span>系统内置：</label>
+                <div class="col-sm-8">
+                    <div style="text-align: left;" class=" control-label">
+                        <span class="m-r-xs">
+                            <input type="radio" class="i-checks" name="rdoEditIs_System" id="EditIs_SystemA" value="1">
+                        </span>是
+                        <span class="m-l-md">
+                            <span class="m-r-xs">
+                                <input type="radio" class="i-checks" name="rdoEditIs_System" id="EditIs_SystemB" value="0">
+                            </span>否
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-12 text-center">
+            <div class="form-horizontal m-t-md ">
+                <button type="button" class="btn btn-w-m btn-success" onclick="EditBtnSubim()">保存</button>&nbsp;
+                <button type="button" class="btn btn-w-m btn-white" onclick="EditFormRest()">关闭</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+<div id="AddTo" style="display: none;" class="form-inline">
+    <form name="AddformTo" id="AddformTo">       
+        <div class="col-sm-12">
+            <div class="form-horizontal  m-t-sm">
+                <label for="firstname" class="col-sm-4 control-label">菜单名称：</label>
+                <div class="col-sm-8 ">
+                    <label id="toTypeName" class="col-sm-12 control-label" style="text-align: left;"></label>
+                    <input type="hidden" id="totxtClass_Code" name="totxtClass_Code" value="" />
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12">
+            <div class="form-horizontal  m-t-sm">
+                <label for="firstname" class="col-sm-4 control-label"><span style="color: red;">*</span>中文名：</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" id="txtDic_Name" name="txtDic_Name" placeholder="">
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-12">
+            <div class="form-horizontal  m-t-sm">
+                <label for="firstname" class="col-sm-4 control-label"><span style="color: red;">*</span>英文名：</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" id="txtDic_Value" name="txtDic_Value" placeholder="">
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-12">
+            <div class="form-horizontal  m-t-sm">
+                <label for="firstname" class="col-sm-4 control-label"><span style="color: red;">*</span>是否必填：</label>
+                <div class="col-sm-8">
+                    <select class=" form-control input-s-sm inline" id="ADISRequired" name="ADISRequired" style="width: 100%;" tabindex="2">
+                        <option value="1">是</option>
+                        <option value="0">否</option>
+                    </select>
+                </div>
+              </div>
+        </div>
+
+
+
+        <div class="col-sm-12 text-center">
+            <div class="form-horizontal m-t-md ">
+                <button type="button" class="btn btn-w-m btn-success" onclick="BtnSubimTo()">保存</button>&nbsp;
+                <button type="button" class="btn btn-w-m btn-white" onclick="FormRestTo()">关闭</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+<div id="EditTo" style="display: none;" class="form-inline">
+    <form name="EditformTo" id="EditformTo">
+        <div class="col-sm-12">
+            <div class="form-horizontal  m-t-sm">
+                <label for="firstname" class="col-sm-4 control-label">菜单名称：</label>
+                <div class="col-sm-8 ">
+                    <label id="EdittoTypeName" class="col-sm-12 control-label" style="text-align: left;"></label>
+                    <input type="hidden" id="EdittotxtClass_Code" name="EdittotxtClass_Code" value="" />
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12">
+            <div class="form-horizontal  m-t-sm">
+                <label for="firstname" class="col-sm-4 control-label"><span style="color: red;">*</span>中文名：</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" id="EdittxtDic_Name" name="EdittxtDic_Name" placeholder="">
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-12">
+            <div class="form-horizontal  m-t-sm">
+                <label for="firstname" class="col-sm-4 control-label"><span style="color: red;">*</span>英文名：</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" id="EdittxtDic_Value" name="EdittxtDic_Value" placeholder="">
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-12">
+            <div class="form-horizontal  m-t-sm">
+                <label for="firstname" class="col-sm-4 control-label"><span style="color: red;">*</span>是否必填：</label>
+                <div class="col-sm-8">
+                    <select class=" form-control input-s-sm inline" id="EDISRequired" name="EDISRequired" style="width: 100%;" tabindex="2">
+                        <option value="1">是</option>
+                        <option value="0">否</option>
+                    </select>
+                </div>
+                
+            </div>
+        </div>
+
+        <div class="col-sm-12 text-center">
+            <div class="form-horizontal m-t-md ">
+                <button type="button" class="btn btn-w-m btn-success" onclick="EditBtnSubimTo()">保存</button>&nbsp;
+                <button type="button" class="btn btn-w-m btn-white" onclick="EditFormRestTo()">关闭</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div id="AllAdd_Student" style="display: none;" class="form-inline">
+    <div class="box-body ">
+        <div class="col-sm-12 m-t-sm ">
+            <form id="form_Execl" class="form-horizontal " enctype="multipart/form-data">
+                <div class="col-sm-12 m-t-sm">
+                    <div class="col-sm-12 text-center m-t-sm">
+                        <button type="button" onclick="but_Execl()" class="btn  btn-success ">
+                            <i class="fa fa-arrow-circle-o-up mr5" aria-hidden="true"></i>
+                            上传样式表格
+                        </button>
+                        <p><input id="file_excel" name="file_excel" type="file" style="display: none" /></p>
+                    </div>
+                </div>
+
+                <div class="col-sm-12 m-t-sm text-center">
+                    <span style="color: red" id="ExcelName"></span>
+                </div>
+                <div class="col-sm-12 text-right">
+                    <div class="form-group ">
+                        <div class="col-sm-12 ">
+                            <a href="~/FormItemBDUpoad/导入表单模版.xlsx" class=" btn-primary btn-sm ><i class=" fa fa-level-down m-r-xs"></i>导入模版下载</a>
+                        </div>
+                    </div>
+                </div>
+
+
+            </form>
+
+
+        </div>
+    </div>
+</div>
+<script src="~/Js/System/Sys_FormItemTM.js"></script>

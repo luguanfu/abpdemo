@@ -1,0 +1,169 @@
+﻿
+<style>
+    .block {
+        width: 100px;
+        padding: 10px;
+        text-align: center;
+    }
+
+    .logo {
+        width: 50px;
+        height: 50px;
+    }
+
+    .block .demonstration {
+        display: block;
+        color: #8492a6;
+        font-size: 14px;
+        margin-top: 5px;
+    }
+</style>
+<!--快速签约-->
+
+<div class="divider divider-horizontal"><div class="divider-text is-left"></div></div>
+<div style="display: flex;clear: both;">
+    <div>
+        <input type="checkbox" name="box09" eventId="sms09" />
+    </div>
+    <div class="block">
+        <div class="el-image">
+            <img class="logo" src="/img/sms.png" alt="">
+        </div>
+        <span class="demonstration">短信通知</span>
+    </div>
+    <div class="row" style="width: 100%;">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label id="lbl_mobile" for="inputEmail3" class="col-sm-3 control-label">手机号码</label>
+                <div class="col-sm-6">
+                    <div class="input-group">
+                        <input vl-default="" type="text" class="form-control sms09" id="txt_mobile" name="txt_mobile">
+                        <span class="input-group-btn">
+                            <button class="btn btn-primary" type="button" onclick="sendCode('code')">发送验证码</button>
+                        </span>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="input-group">
+                        <input vl-default="" type="text" class="form-control input-sm" id="code" disabled placeholder="请输入验证码">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label id="lbl_chargeType" name="lbl_chargeType" for="inputEmail3" class="col-sm-3 control-label">收费类型</label>
+                <div class="col-sm-6">
+                    <select vl-default="" id="sle_chargeType" name="sle_chargeType" class="form-control sms09">
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label id="lbl_minAmount" name="lbl_minAmount" for="inputEmail3" class="col-sm-3 control-label">最小通知金额</label>
+                <div class="col-sm-6">
+                    <input vl-default="" id="txt_minAmount" name="txt_minAmount" type="text" class="form-control input-sm sms09">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="divider divider-horizontal"><div class="divider-text is-left"></div></div>
+<div style="display: flex;clear: both;">
+    <div>
+        <input type="checkbox" name="box09" eventId="atm09" />
+    </div>
+    <div class="block">
+        <div class="el-image">
+            <img src="/img/zhongchou.png" alt="">
+        </div>
+        <span class="demonstration">ATM转账</span>
+    </div>
+    <div class="row" style="width: 100%;margin-left: 130px;">
+        <div class="col-md-6">
+            <div class="checkbox">
+                <label style="margin-right: 20px;">
+                    <input vl-default="" id="check_hanlinTransfer" name="check_hanlinTransfer" type="checkbox" value="行内转账" disabled="disabled" class="atm09">行内转账
+                </label>
+                <label>
+                    <input vl-default="" id="check_unionPayTransfer" name="check_unionPayTransfer" type="checkbox" value="银联转账" disabled="disabled" class="atm09">银联转账
+                </label>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="divider divider-horizontal"><div class="divider-text is-left"></div></div>
+<div style="display: flex;clear: both;">
+    <div>
+        <input type="checkbox" name="box09" eventId="cunkuan09" />
+    </div>
+    <div class="block">
+        <div class="el-image">
+            <img src="/img/zhongchou.png" alt="">
+        </div>
+        <span class="demonstration">活期型智能存款</span>
+    </div>
+    <div class="row" style="width: 100%;">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label id="lbl_productName" name="lbl_productName" for="inputEmail3" class="col-sm-3 control-label">产品名称</label>
+                <div class="col-sm-6">
+                    <select vl-default="" id="sle_productName" name="sle_productName" class="form-control cunkuan09">
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="divider divider-horizontal"><div class="divider-text is-left"></div></div>
+<div style="display: flex;clear: both;">
+    <div>
+        <input type="checkbox" name="box09" eventId="wuka09" />
+    </div>
+    <div class="block">
+        <div class="el-image">
+            <img src="/img/zhongchou.png" alt="">
+        </div>
+        <span class="demonstration">无卡支付</span>
+    </div>
+    <div class="row" style="width: 100%;">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label id="lbl_singleLimit" name="lbl_singleLimit" for="inputEmail3" class="col-sm-3 control-label">单笔支付限额</label>
+                <div class="col-sm-6">
+                    <input vl-default="" id="txt_singleLimit" name="txt_singleLimit" type="text" class="form-control input-sm wuka09">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <label id="lbl_dailyLimit" name="lbl_dailyLimit" for="inputEmail3" class="col-sm-3 control-label">日累计支付限额</label>
+                <div class="col-sm-6">
+                    <input vl-default="" id="txt_dailyLimit" name="txt_dailyLimit" type="text" class="form-control input-sm wuka09">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    setOptions(['productName', 'chargeType']);
+    function doSubmit() {
+        checkEmpowe();
+    }
+    $(function () {
+        $("input[type=text]").attr("disabled", true);
+        $("select").attr("disabled", true);
+
+        $("input[name=box09]").click(function () {
+            var className = $(this).attr("eventId");
+            if ($(this).is(":checked")) {
+                $("." + className).removeAttr("disabled");
+            } else {
+                //清空内容
+                $("." + className).val('')
+                $("." + className).attr("disabled", true);
+            }
+        });
+    });
+</script>

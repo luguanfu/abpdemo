@@ -1,0 +1,129 @@
+﻿@{
+    ViewBag.Title = "Form_130101";
+    Layout = "~/Views/Shared/_AdminLayoutIsNull.cshtml";
+}
+
+<style type="text/css">
+    .from_map026 {
+        width: 1100px;
+        margin: auto;
+        position: relative;
+        background: url(/CSS/danju/img/danjuimg/menu026.jpg) no-repeat top;
+        height: 720px;
+    }
+
+    .site1 {
+        width: 104px;
+        height: 25px;
+        left: 214px;
+        top: 261px;
+    }
+
+    .site2 {
+        width: 275px;
+        height: 25px;
+        left: 457px;
+        top: 261px;
+    }
+
+    .site3 {
+        width: 130px;
+        height: 25px;
+        left: 166px;
+        top: 294px;
+    }
+
+    .site4 {
+        width: 350px;
+        height: 25px;
+        left: 590px;
+        top: 294px;
+    }
+
+    .site5 {
+        width: 160px;
+        height: 25px;
+        left: 228px;
+        top: 324px;
+    }
+
+    .site6 {
+        width: 105px;
+        height: 25px;
+        left: 695px;
+        top: 324px;
+    }
+
+    .site7 {
+        width: 160px;
+        height: 25px;
+        left: 252px;
+        top: 415px;
+    }
+
+    .site8 {
+        width: 405px;
+        height: 25px;
+        left: 552px;
+        top: 415px;
+    }
+
+    .site9 {
+        width: 179px;
+        height: 25px;
+        left: 230px;
+        top: 445px;
+    }
+
+    .site10 {
+        width: 55px;
+        height: 25px;
+        left: 784px;
+        top: 261px;
+    }
+
+    .site11 {
+        width: 26px;
+        height: 25px;
+        left: 869px;
+        top: 261px;
+    }
+
+    .site12 {
+        width: 38px;
+        height: 25px;
+        left: 920px;
+        top: 261px;
+    }
+</style>
+
+
+<form id="form1" onsubmit="return false" action="##" method="post">
+    <input type="hidden" id="TaskId" name="TaskId" value="@Request["TaskId"]" />
+    <input type="hidden" id="CustomerId" name="CustomerId" value="@Request["CustomerId"]" />
+    <input type="hidden" id="FormId" name="FormId" value="@Request["FormId"]" />
+    <input type="hidden" id="Types" name="Types" value="@Request["Types"]" />
+    <!--内容表单区域开始-->
+    <div class="from_map026">
+        <input class="inputall site1 " type="text" name="dy01" id="dy01" value="" />
+        <input class="inputall site2 " type="text" name="dy02" id="dy02" value="" />
+        <input class="inputall site3 " type="text" name="dy03" id="dy03" value="" />
+        <input class="inputall site4 " type="text" name="dy04" id="dy04" value="" />
+        <input class="inputall site5 " type="text" name="dy05" id="dy05" value="" />
+        <input class="inputall site6 " type="text" name="dy06" id="dy06" value="" />
+        <input class="inputall site7 " type="text" name="dy07" id="dy07" value="" />
+        <input class="inputall site8 " type="text" name="dy08" id="dy08" value="" />
+        <input class="inputall site9 " type="text" name="dy09" id="dy09" value="" />
+
+        <input class="inputall site10 text_center" maxlength="4" type="text" name="dy010" id="dy010" value="" />
+        <input class="inputall site11 text_center" maxlength="2" type="text" name="dy011" id="dy011" value="" />
+        <input class="inputall site12 text_center" maxlength="2" type="text" name="dy012" id="dy012" value="" />
+
+
+        <button class="btn_chongzhi" type="button" value="重置" onclick="btnReset()">重置</button>
+        <button class="btn_tijiao" type="button" value="提交" onclick="btnSubmit()">提交</button>
+    </div>
+
+
+</form>
+<script src="~/Js/Admin/clicktoggle.js"></script>

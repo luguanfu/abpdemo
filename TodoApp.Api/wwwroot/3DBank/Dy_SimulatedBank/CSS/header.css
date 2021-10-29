@@ -1,0 +1,98 @@
+.header{
+	width: 100%;
+	height: 60px;
+	color: #ECECEC;
+	background-color: #2B323B;
+}
+
+.header_wra{
+	width: 1200px;
+	margin: 0 auto;
+	height: 100%;
+}
+
+.wra_img {
+    width: 230px;
+    padding-top: 7px;
+}
+
+.wra_tabbar{
+	height: 60px;
+	line-height: 60px;
+	text-align: center;
+	margin-right: 30px;
+}
+
+.wra_tabbar li{
+	float: left;
+	width: 100px;
+	cursor: pointer;
+	margin: 0 30px;
+}
+
+.wra_tabbar li:hover{
+	background-color:#3487f5;
+}
+
+
+
+/*头像*/
+.wra_people{
+	position: relative;
+	height: 100%;
+	margin-right: 46px;
+}
+.people_img{
+	width: 42px;
+	height: 42px;
+	float: left;
+	border-radius: 50%;
+	margin-top: 10px;
+	cursor: pointer;
+	border: 1px solid #D0CFCF;
+}
+.people_img img{
+	width: 100%; 
+   height: 100%; 
+   border-radius: 50%; 
+}
+.people_name{
+	float: left;
+	margin-top: 18px;
+   margin-left: 12px;
+}
+
+/*个人中心与退出登录*/
+.wra_people:hover .people_user{
+	display: block;
+}
+.people_user{
+	position: absolute;
+   top: 60px;
+   left: 0;
+   text-align: center;
+   width: 104px;
+   z-index: 99;
+   color: #333;
+   background: #fff;
+   font-size: 14px;
+   display: none;
+   border: 1px solid #E4E4E4;
+}
+.people_user p{
+	padding: 6px 0;
+	cursor: pointer;
+}
+.people_user p:last-child{
+	padding-bottom: 8px;
+}
+.people_user p:hover{
+	color: #3487f5;
+	background-color: #FFF4E8;
+}
+
+
+/*切换样式*/
+.addColor{
+	background-color:#3487f5;
+}

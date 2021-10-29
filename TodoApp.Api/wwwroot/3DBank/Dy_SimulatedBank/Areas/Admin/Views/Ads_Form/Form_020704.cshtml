@@ -1,0 +1,88 @@
+﻿@{
+    ViewBag.Title = "Form_020704";
+    Layout = "~/Views/Shared/_AdminLayoutIsNull.cshtml";
+}
+<script src="~/Js/Admin/AdminForm.js"></script>
+<script src="~/Js/Admin/CaseManagement/AddDefaultValue.js"></script>
+<form id="form1" onsubmit="return false" action="##" method="post">
+    <input type="hidden" id="TaskId" name="TaskId" value="@Request["TaskId"]" />
+    <input type="hidden" id="CustomerId" name="CustomerId" value="@Request["CustomerId"]" />
+    <input type="hidden" id="FormId" name="FormId" value="@Request["FormId"]" />
+    <input type="hidden" id="Types" name="Types" value="@Request["Types"]" />
+    <!--内容表单区域开始-->
+    <div class="tables bankmap">
+        <div class="banktop">
+            <span class="toolbar-title-img"> <img src="../busi/img/topleft.png">02704-电子现金充值</span>
+            <span class="toolbar-title-close" style="display: none;"> <img src="../busi/img/topright.png"></span>
+        </div>
+        <div class="con-map2 selected">
+            <table id="qv" class="con-map2-table qv">
+                <tbody>
+                    <tr>
+                        <td class="" rowspan="1" colspan="1" style="width: 63px;">
+                            <label vl-keyup="wwww" vl-default="" id="label_ICKKH" vtitle="IC卡卡号" class="form-item text-left on" vl-tipsid="label_ICKKH_tips" title="label_ICKKH" name="label_ICKKH">IC卡卡号</label>
+                            <div id="label_ICKKH_tips" class="tipsmsg"></div>
+                        </td>
+                        <td class="" rowspan="1" colspan="1">
+                            <input type="text" oncopy="return false" oncut="return false" vl-keyup="wwww" vl-default="" id="txt_ICKKH" vtitle="IC卡卡号" class="form-item text-left" kuaicha="true" vl-tipsid="txt_ICKKH_tips" style="width: 600px;" title="txt_ICKKH" onpaste="return false" name="txt_ICKKH"><img class="sousuo" src="/Js/Student/GetDefaultValue/img/banksousuo.png" vl-exec="false" vl-message="['IC卡卡号查询未执行！']" title="执行快查！">
+                            <div id="txt_ICKKH_tips" class="tipsmsg"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td rowspan="1" colspan="1" class="" style="width: 48px;">
+                            <label vl-keyup="wwww" vl-default="" id="label_zhmc" vtitle="账户名称" class="form-item text-left" vl-tipsid="label_zhmc_tips" title="label_zhmc" name="label_zhmc">账户名称</label>
+                            <div id="label_zhmc_tips" class="tipsmsg"></div>
+                        </td>
+                        <td rowspan="1" colspan="1" class="">
+                            <input type="text" oncopy="return false" oncut="return false" vl-keyup="wwww" vl-default="" id="txt_zhmc" vtitle="账户名称" class="form-item text-left on" vl-disabled="true" vl-tipsid="txt_zhmc_tips" style="width: 600px;" title="txt_zhmc" onpaste="return false" disabled="disabled" name="txt_zhmc">
+                            <div id="txt_zhmc_tips" class="tipsmsg"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td rowspan="1" colspan="1" class="" style="width: 48px;">
+                            <label vl-keyup="wwww" vl-default="" id="label_dzxjye" vtitle="电子现金余额" class="form-item text-left on" vl-tipsid="label_dzxjye_tips" title="label_dzxjye" name="label_dzxjye">电子现金余额</label>
+                            <div id="label_dzxjye_tips" class="tipsmsg"></div>
+                        </td>
+                        <td rowspan="1" colspan="1" class="">
+                            <input type="text" oncopy="return false" oncut="return false" vl-keyup="wwww" vl-default="0.00" id="txt_dzxjye" vtitle="电子现金余额" class="form-item text-left" vl-disabled="true" vl-tipsid="txt_dzxjye_tips" style="width: 600px;" title="txt_dzxjye" onpaste="return false" disabled="disabled" name="txt_dzxjye">
+                            <div id="txt_dzxjye_tips" class="tipsmsg"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td rowspan="1" colspan="1" class="" style="width: 48px;">
+                            <label vl-keyup="wwww" vl-default="" id="label_qcje" vtitle="圈存金额" class="form-item text-left" vl-tipsid="label_qcje_tips" title="label_qcje" name="label_qcje">圈存金额</label>
+                            <div id="label_qcje_tips" class="tipsmsg"></div>
+                        </td>
+                        <td rowspan="1" colspan="1" class="">
+                            <div class="moneystyle">
+                                <input type="text" oncopy="return false" onpaste="return false" oncut="return false" vl-type="money" vl-keyup="wwww" vl-default="0.00" id="money_qcje" vtitle="圈存金额" class="form-item text-left money" vl-tipsid="money_qcje_tips" vl-regex="['require', 'notequal0']" vl-message="['圈存金额不能为空!','圈存金额数据小于下限值[0.01]!']" style="width: 600px;" title="money_qcje" name="money_qcje">
+                                <label class="moneytips hide green">人民币CNY￥<span class="num">0.00</span><span class="cn">零元整</span></label>
+                            </div>
+                            <div id="money_qcje_tips" class="tipsmsg"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td rowspan="1" colspan="1" class="" style="width: 48px;">
+                            <label vl-keyup="wwww" vl-default="0.00" id="label_ICKYESX" vtitle="IC卡余额上限" class="form-item text-left" vl-tipsid="label_ICKYESX_tips" title="label_ICKYESX" name="label_ICKYESX">IC卡余额上限</label>
+                            <div id="label_ICKYESX_tips" class="tipsmsg"></div>
+                        </td>
+                        <td rowspan="1" colspan="1" class="">
+                            <div class="moneystyle">
+                                <input type="text" oncopy="return false" onpaste="return false" oncut="return false" vl-type="money" vl-keyup="wwww" vl-default="1.00" id="money_ICKYESX" vtitle="IC卡余额上限" class="form-item text-left money" vl-disabled="true" vl-tipsid="money_ICKYESX_tips" style="width: 600px;" disabled="disabled" name="money_ICKYESX">
+                                <label class="moneytips hide green">人民币CNY￥<span class="num">0.00</span><span class="cn">零元整</span></label>
+                            </div>
+                            <div id="money_ICKYESX_tips" class="tipsmsg"></div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="foot ">
+            <span> <button>退出（F3）</button> <button>帮助（F1）</button> <button>辅助（F4）</button> <button type="button" onclick="FormReset()">重置（F5）</button></span>
+            <span style="float: right;"> <button type="button" style="margin-right: 0px;" vl-submit="true" id="btnsubmit" onclick="SubmitForm()">提交</button></span>
+        </div>
+        <input type="hidden" class="hidmainwidth" value="1000/" oncopy="return false" onpaste="return false" oncut="return false">
+    </div>
+
+    <link href="~/Js/Student/GetDefaultValue/js/common.bank.css" rel="stylesheet" />
+</form>

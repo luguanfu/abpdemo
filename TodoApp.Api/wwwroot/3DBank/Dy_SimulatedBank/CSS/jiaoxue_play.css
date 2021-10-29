@@ -1,0 +1,168 @@
+/*课程播放界面样式表*/
+.wrapper{
+	width: 1200px;
+	margin: 0 auto;
+}
+
+.jxplay_map{
+	position: relative;
+	margin-top: 5px;
+}
+
+
+.play_left{
+float: left;
+width: 860px;
+height: 550px;
+/*background-image: -moz-linear-gradient(0deg, #1C397A 0%, #5F87F1 87%);
+background-image: linear-gradient(0deg, #1C397A 0%, #5F87F1 87%);
+box-shadow: 0 2px 10px 0 rgba(1,25,33,0.20);*/
+border-radius: 5px;
+border-radius: 5px;
+}
+
+
+.play_title{
+	height: 55px;
+	background: rgba(0,0,0,0.30);
+box-shadow: 0 2px 4px 0 rgba(0,0,0,0.10);
+border-radius: 5px 5px 0 0;
+padding-left: 15px;
+line-height: 55px;
+color: white;
+font-size: 20px;
+margin-bottom: 20px;
+}
+
+
+.play_con{
+	cursor: pointer;
+	height: 452px;
+	width: 818px;
+	margin: auto;
+	background: white;
+	position: relative;
+}
+
+
+.play_bo{
+	
+	position: absolute;
+	left: 45%;
+	top: 45%;
+}
+
+
+
+.play_right{
+min-height: 400px;
+background: #F3FAFB;
+border-radius: 5px;
+border-radius: 5px;
+margin-left: 880px;
+padding-bottom: 15px;
+padding-top: 1px;
+height: 700px;
+overflow: auto;
+}
+
+.chapter_name{
+	padding-left: 8px;
+	padding-bottom: 5px;
+	font-size: 18px;
+	color: #333333;
+	border-bottom: 1px solid #c7c4c4;
+	margin-top: 15px;
+}
+
+.zhangjie {
+padding: 0px 10px;	
+}
+
+.zhangjie h2{
+	font-size: 16px;
+	color: #333333;
+	margin:8px 0px;
+}
+
+.jietou {
+	color: #888888;
+	font-size: 16px;
+	margin-top: 8px;
+	padding-left: 15px;
+}
+
+.jietou a{
+	text-decoration: none;
+color: #888888;	
+}
+.jietou.cuanzhong,
+.jietou:hover{
+	background: url(../img/play_san.png) left no-repeat;
+}
+.jietou.cuanzhong a,
+.jietou:hover a{
+	color: #4498FF;
+}
+
+
+/*底部案例实操*/
+
+.shicao_map{
+	clear: both;
+	float: left;
+	width: 860px;
+	margin-top: 20px;
+	padding-bottom:10px;
+}
+
+.shicao_map h2{
+	font-size: 20px;
+	padding-bottom: 10px;
+	border-bottom: 1px solid #c7c4c4;
+}
+
+
+
+.shicao_con  {
+	clear: both;
+	margin-top: 15px;
+	border-left: 1px solid #D9DCE1;
+	padding-left: 10px;
+}
+
+
+.yuandian{
+position: absolute;
+    left: -7px;
+}
+
+
+.shicao_con li {
+padding-left: 8px;
+margin-bottom: 20px;
+}
+
+.shicao_name{
+padding-left:30px;
+background: url(../img/paly_starhui.png) left no-repeat;	
+}
+
+.shicao_name a{
+	color: #666666;
+}
+
+
+
+.shicao_name:hover{
+background: url(../img/play_starlan.png) left no-repeat;		
+}
+
+
+.shicao_name:hover a{
+	color: #4498FF;
+}
+
+.go_lx{
+	float: right;
+}

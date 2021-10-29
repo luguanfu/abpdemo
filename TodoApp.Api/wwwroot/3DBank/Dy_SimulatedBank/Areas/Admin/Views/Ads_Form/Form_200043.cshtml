@@ -1,0 +1,173 @@
+﻿
+<link href="~/CSS/bootstrap-table.min.css" rel="stylesheet" />
+
+<!--电子银行签约管理[认证方式及限额]-->
+<table class="table table-hover" id="tbl"></table>
+<div id="DivTabValue" style="display:none;">
+    <div class="divider divider-horizontal"><div class="divider-text is-left"><strong>反显值</strong></div></div>
+<textarea rows="5" id="tb1Value" name="tb1Value" style="width:100%;"></textarea>
+</div>
+<div class="row">
+    <div class="col-md-9">
+        <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 control-label">业务类型</label>
+            <div class="col-sm-9">
+                <button type="button" class="btn btn-default" onclick="goPage('200029')">签约管理</button>
+                <button type="button" class="btn btn-default" onclick="goPage('200034')">登录密码重置</button>
+                <button type="button" class="btn btn-default active" onclick="goPage('200043')">认证方式及限额</button>
+                <button type="button" class="btn btn-default" onclick="goPage('200046')">账户管理</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <label id="lbl_phonebank" name="lbl_phonebank" for="inputEmail3" class="col-sm-3 control-label">手机银行</label>
+            <div class="col-sm-6">
+                <div class="checkbox">
+                    <label>
+                        <input vl-default="" id="check_encryptedSMS" name="check_encryptedSMS" type="checkbox"> 加密短信
+                    </label>
+                    <label>
+                        <input vl-default="" id="check_token" name="check_token" type="checkbox"> 令牌
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <label id="lbl_onlinebank" name="lbl_onlinebank" for="inputEmail3" class="col-sm-3 control-label">网上银行</label>
+            <div class="col-sm-6">
+                <div class="checkbox">
+                    <label>
+                        <input vl-default="" id="check_shortMessage" name="check_shortMessage" type="checkbox"> 短信
+                    </label>
+                    <label>
+                        <input vl-default="" id="check_token1" name="check_token1" type="checkbox"> 令牌
+                    </label>
+                    <label>
+                        <input vl-default="" id="check_USBKey" name="check_USBKey" type="checkbox"> USBKey
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <label id="lbl_dailyTransfer" name="lbl_dailyTransfer" for="inputEmail3" class="col-sm-3 control-label">转账日累计限额/笔数</label>
+            <div class="col-sm-6">
+                <input vl-default="" id="txt_dailyTransfer" name="txt_dailyTransfer" type="text" class="form-control input-sm">
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <label id="lbl_yearTransfer" name="lbl_yearTransfer" for="inputEmail3" class="col-sm-3 control-label">转账年累计限额</label>
+            <div class="col-sm-6">
+                <input vl-default="" id="txt_yearTransfer" name="txt_yearTransfer" type="text" class="form-control input-sm">
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <label id="lbl_dailyPayment" name="lbl_dailyPayment" for="inputEmail3" class="col-sm-3 control-label">支付日累计限额/笔数</label>
+            <div class="col-sm-6">
+                <input vl-default="" id="txt_dailyPayment" name="txt_dailyPayment" type="text" class="form-control input-sm">
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <label id="lbl_yearPayment" name="lbl_yearPayment" for="inputEmail3" class="col-sm-3 control-label">支付年累计限额</label>
+            <div class="col-sm-6">
+                <input vl-default="" id="txt_yearPayment" name="txt_yearPayment" type="text" class="form-control input-sm">
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/Scripts/bootstrap-table.min.js"></script>
+<script>
+    $(function () {
+        initTableValue();
+    });
+    function initTableValue() {
+        var defaultValue = $("#TabDefaultValue").val();
+        if (defaultValue != null && defaultValue.length > 0) {
+            fanxian();
+        } else {
+            setTimeout("initTableValue()", 100);
+        }
+    }
+
+    var data = [];
+    function setTableValue(values, id) {
+        var vals = values.split('\n');
+        data = [{
+            'signingChannel': vals[0],
+            'signingStatus': vals[1],
+            'signingVerson': vals[2],
+            'customerStatus': vals[3],
+            'signingDate': vals[4],
+            'signingOrgan': vals[5],
+            'signingPhone': vals[6],
+        }];
+
+        $("#tbl").bootstrapTable('load', data);
+    }
+    $('#tbl').bootstrapTable({
+        data: data,
+        columns: [
+            {
+                title: '序号',
+                align: 'center',
+                formatter: function (value, row, index) {
+                    return index + 1;
+                }
+            },
+            {
+                title: '签约渠道',
+                field: 'signingChannel',
+                align: 'center'
+            },
+            {
+                title: '签约状态',
+                field: 'signingStatus',
+                align: 'center'
+            },
+            {
+                title: '签约版本',
+                field: 'signingVerson',
+                align: 'center',
+            },
+            {
+                title: '客户状态',
+                field: 'customerStatus',
+                align: 'center',
+            },
+            {
+                title: '签约时间',
+                field: 'signingDate',
+                align: 'center'
+            },
+            {
+                title: '签约机构',
+                field: 'signingOrgan',
+                align: 'center'
+            },
+            {
+                title: '签约手机号',
+                field: 'signingPhone',
+                align: 'center'
+            },
+        ]
+    });
+    function doSubmit() {
+        goPage("200011&backform=200043")
+    }
+</script>

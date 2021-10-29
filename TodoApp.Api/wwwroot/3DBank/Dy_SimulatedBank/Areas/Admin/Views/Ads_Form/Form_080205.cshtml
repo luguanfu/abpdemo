@@ -1,0 +1,491 @@
+﻿@{
+                    ViewBag.Title = "Form_080205";
+                    Layout = "~/Views/Shared/_AdminLayoutIsNull.cshtml";
+                }
+               <script src="~/Js/Admin/AdminForm.js"></script>
+               <script src="~/Js/Admin/CaseManagement/AddDefaultValue.js"></script>
+               <form id="form1" onsubmit="return false" action="##" method="post">
+                  <input type="hidden" id="TaskId" name="TaskId" value="@Request["TaskId"]" />
+                  <input type="hidden" id="CustomerId" name="CustomerId" value="@Request["CustomerId"]" />
+                  <input type="hidden" id="FormId" name="FormId" value="@Request["FormId"]" />
+                  <input type="hidden" id="Types" name="Types" value="@Request["Types"]" />
+                <!--内容表单区域开始-->
+            <div class="tables bankmap">
+			<div class="banktop"> <span class="toolbar-title-img">                                        <img src="../busi/img/topleft.png">01208-个人客户身份核实</span> <span class="toolbar-title-close" style="display: none;">                                        </span> </div>
+			<div class="con-map2">
+				<table id="qv" class="con-map2-table qv">
+					<tbody>
+						<tr>
+							<td class="" style="width: 64px;"><label vl-default="" id="label_zjlx" vtitle="证件类型" class="form-item text-left" vl-tipsid="label_zjlx_tips" title="label_zjlx" name="label_zjlx">证件类型</label>
+								<div id="label_zjlx_tips" class="tipsmsg"></div>
+							</td>
+							<td class="">
+								<div class="slectstyle">
+									<!--<select vl-default="1" id="sle_zjlx" vtitle='证件类型' class="form-item text-left" vl-tipsid="sle_zjlx_tips" vl-regex="['require']" vl-message="['证件类型不能为空!']" style="width: 180px;" title="sle_zjlx" vl-slemodel="txt_zjhm,txt_zjhm,txt_zjhm">
+										<option disabled="" style="background-color: blue; color: #fff;" value="">证件类型_mb1值含义</option>
+										<option sle-require=[{'id':'txt_zjhm','regex':['require','maxlength20','idcard'],'tips':['证件号码不能为空!','证件号码长度大于最大长度:[20]!','证件号码身份证位数不正确(应为15位或者18位)！'],'disabled':'false*false*false','default':''}] value="1">1 - 居民身份证</option>
+										<option sle-require=[{'id':'txt_zjhm','regex':['require','maxlength20','idcard'],'tips':['证件号码不能为空!','证件号码长度大于最大长度:[20]!','证件号码身份证位数不正确(应为15位或者18位)！'],'disabled':'false*false*false','default':''}] value="2">2 - 临时居民身份证</option>
+										<option sle-require=[{'id':'txt_zjhm','regex':['require','maxlength20','idcard'],'tips':['证件号码不能为空!','证件号码长度大于最大长度:[20]!','证件号码身份证位数不正确(应为15位或者18位)！'],'disabled':'false*false*false','default':''}] value="3">3 - 居民户口簿（16周岁以下）</option>
+										<option value="4">4 - 军官证</option>
+										<option value="5">5 - 警官证</option>
+										<option value="6">6 - 士兵证</option>
+										<option value="7">7 - 军队学员证</option>
+										<option value="8">8 - 军队文职干部证</option>
+										<option value="9">9 - 军队离退休干部证和军队职员证</option>
+										<option value="10">10 - 中国护照</option>
+										<option value="11">11 - 护照（外国公民）</option>
+										<option value="12">12 - 海员证</option>
+										<option value="13">13 - 港澳同胞回乡证</option>
+										<option value="14">14 - 港澳居民来往大陆通行证</option>
+										<option value="15">15 - 中华人民共和国网络港澳通行证</option>
+										<option value="16">16 - 台湾居民来往大陆通行证</option>
+										<option value="17">17 - 大陆居民往来台湾通行证</option>
+										<option value="18">18 - 外国人居留证</option>
+										<option value="19">19 - 外国人出入境证</option>
+										<option value="20">20 - 外交官证</option>
+										<option value="21">21 - 领事馆证</option>
+										<option value="22">22 - 其他</option>
+									</select>
+									-->
+									<select vl-default="1" id="sle_zjlx" vtitle="证件类型" class="form-item text-left" vl-tipsid="sle_cwryzjlx_tips" vl-regex="['require']" vl-message="['证件类型不能为空!']" style="width: 180px;" title="sle_cwryzjlx" vl-slemodel="txt_zjhm" name="sle_zjlx">
+										<option disabled="" style="background-color: blue; color: #fff;" value="">证件类型值含义</option>
+										<option sle-require="[{'id':'txt_zjhm','regex':['require','maxlength20','idcard'],'tips':['证件号码不能为空!','证件号码身份证号长度大于最大长度:[20]!','证件号码身份证位数不正确（应为15位或者18位）!'],'disabled':'false*false*false','default':''}]" value="1">1 - 居民身份证</option>
+										<option sle-require="[{'id':'txt_zjhm','regex':['require','maxlength20','idcard'],'tips':['证件号码不能为空!','证件号码身份证号长度大于最大长度:[20]!','证件号码身份证位数不正确（应为15位或者18位）!'],'disabled':'false*false*false','default':''}]" value="2">2 - 临时居民身份证</option>
+										<option sle-require="[{'id':'txt_zjhm','regex':['require','maxlength20','idcard'],'tips':['证件号码不能为空!','证件号码身份证号长度大于最大长度:[20]!','证件号码身份证位数不正确（应为15位或者18位）!'],'disabled':'false*false*false','default':''}]" value="3">3 - 居民户口簿（16周岁以下）</option>
+										<option sle-require="[{'id':'txt_zjhm','regex':['require','maxlength40'],'tips':['证件号码不能为空!','证件号码长度大于最大长度:[40]!'],'disabled':'false*false','default':''}]" value="4">4 - 军官证</option>
+										<option sle-require="[{'id':'txt_zjhm','regex':['require','maxlength40'],'tips':['证件号码不能为空!','证件号码长度大于最大长度:[40]!'],'disabled':'false*false','default':''}]" value="5">5 - 警官证</option>
+										<option sle-require="[{'id':'txt_zjhm','regex':['require','maxlength40'],'tips':['证件号码不能为空!','证件号码长度大于最大长度:[40]!'],'disabled':'false*false','default':''}]" value="6">6 - 士兵证</option>
+										<option sle-require="[{'id':'txt_zjhm','regex':['require','maxlength40'],'tips':['证件号码不能为空!','证件号码长度大于最大长度:[40]!'],'disabled':'false*false','default':''}]" value="7">7 - 军队学员证</option>
+										<option sle-require="[{'id':'txt_zjhm','regex':['require','maxlength40'],'tips':['证件号码不能为空!','证件号码长度大于最大长度:[40]!'],'disabled':'false*false','default':''}]" value="8">8 - 军队文职干部证</option>
+										<option sle-require="[{'id':'txt_zjhm','regex':['require','maxlength40'],'tips':['证件号码不能为空!','证件号码长度大于最大长度:[40]!'],'disabled':'false*false','default':''}]" value="9">9 - 军队离退休干部证和军队职员证</option>
+										<option sle-require="[{'id':'txt_zjhm','regex':['require','maxlength40'],'tips':['证件号码不能为空!','证件号码长度大于最大长度:[40]!'],'disabled':'false*false','default':''}]" value="10">10 - 中国护照</option>
+										<option sle-require="[{'id':'txt_zjhm','regex':['require','maxlength40'],'tips':['证件号码不能为空!','证件号码长度大于最大长度:[40]!'],'disabled':'false*false','default':''}]" value="11">11 - 护照（外国公民）</option>
+										<option sle-require="[{'id':'txt_zjhm','regex':['require','maxlength40'],'tips':['证件号码不能为空!','证件号码长度大于最大长度:[40]!'],'disabled':'false*false','default':''}]" value="12">12 - 海员证</option>
+										<option sle-require="[{'id':'txt_zjhm','regex':['require','maxlength40'],'tips':['证件号码不能为空!','证件号码长度大于最大长度:[40]!'],'disabled':'false*false','default':''}]" value="13">13 - 港澳同胞回乡证</option>
+										<option sle-require="[{'id':'txt_zjhm','regex':['require','maxlength40'],'tips':['证件号码不能为空!','证件号码长度大于最大长度:[40]!'],'disabled':'false*false','default':''}]" value="14">14 - 港澳居民来往大陆通行证</option>
+										<option sle-require="[{'id':'txt_zjhm','regex':['require','maxlength40'],'tips':['证件号码不能为空!','证件号码长度大于最大长度:[40]!'],'disabled':'false*false','default':''}]" value="15">15 - 中华人民共和国网络港澳通行证</option>
+										<option sle-require="[{'id':'txt_zjhm','regex':['require','maxlength40'],'tips':['证件号码不能为空!','证件号码长度大于最大长度:[40]!'],'disabled':'false*false','default':''}]" value="16">16 - 台湾居民来往大陆通行证</option>
+										<option sle-require="[{'id':'txt_zjhm','regex':['require','maxlength40'],'tips':['证件号码不能为空!','证件号码长度大于最大长度:[40]!'],'disabled':'false*false','default':''}]" value="17">17 - 大陆居民往来台湾通行证</option>
+										<option sle-require="[{'id':'txt_zjhm','regex':['require','maxlength40'],'tips':['证件号码不能为空!','证件号码长度大于最大长度:[40]!'],'disabled':'false*false','default':''}]" value="18">18 - 外国人居留证</option>
+										<option sle-require="[{'id':'txt_zjhm','regex':['require','maxlength40'],'tips':['证件号码不能为空!','证件号码长度大于最大长度:[40]!'],'disabled':'false*false','default':''}]" value="19">19 - 外国人出入境证</option>
+										<option sle-require="[{'id':'txt_zjhm','regex':['require','maxlength40'],'tips':['证件号码不能为空!','证件号码长度大于最大长度:[40]!'],'disabled':'false*false','default':''}]" value="20">20 - 外交官证</option>
+										<option sle-require="[{'id':'txt_zjhm','regex':['require','maxlength40'],'tips':['证件号码不能为空!','证件号码长度大于最大长度:[40]!'],'disabled':'false*false','default':''}]" value="21">21 - 领事馆证</option>
+										<option sle-require="[{'id':'txt_zjhm','regex':['require','maxlength40'],'tips':['证件号码不能为空!','证件号码长度大于最大长度:[40]!'],'disabled':'false*false','default':''}]" value="22">22 - 其他</option>
+									</select>
+									<input type="text" oncopy="return false" onpaste="return false" oncut="return false" style="width: 157px;" id="mb1_sleinput_ZhengJianLeiXing_2" name="mb1_sleinput_ZhengJianLeiXing_2"></div>
+								<div id="sle_zjlx_tips" class="tipsmsg"></div>
+							</td>
+							<td class="" style="width: 64px;"><label vl-default="" id="label_zjhm" vtitle="证件号码" class="form-item text-left" vl-tipsid="label_zjhm_tips" title="label_zjhm" name="label_zjhm">证件号码</label>
+								<div id="label_zjhm_tips" class="tipsmsg"></div>
+							</td>
+							<td class=""><input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_zjhm" vtitle="证件号码" class="form-item text-left" kuaicha="true" vl-tipsid="txt_zjhm_tips" vl-regex="['require','maxlength20','idcard']" vl-message="['证件号码不能为空!','证件号码身份证号长度大于最大长度:[20]!','证件号码身份证位数不正确（应为15位或者18位）!']" style="width: 180px;" title="txt_zjhm" onpaste="return false" name="txt_zjhm"><img class="sousuo" src="/Js/Student/GetDefaultValue/img/banksousuo.png" vl-select="txt_zjhm|0|0,txt_xm|0|0" vl-exec="false" vl-message="['证件号码查询未执行！']" title="执行快查！"><span class="text-red redtip">!</span>
+								<div id="txt_zjhm_tips" class="tipsmsg"></div>
+							</td>
+						</tr>
+						<tr>
+							<td rowspan="1" colspan="1" class="" style="width: 32px;"><label vl-default="" id="label_xm" vtitle="姓名" class="form-item text-left" vl-tipsid="label_xm_tips" title="label_xm" name="label_xm">姓名</label>
+								<div id="label_xm_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="3" class=""><input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_xm" vtitle="姓名" class="form-item text-left" kuaicha="true" vl-tipsid="txt_xm_tips" vl-regex="['require', 'maxlength20']" vl-message="['姓名不能为空!','姓名长度大于最大长度:[20]!']" style="width: 600px;" title="txt_xm" onpaste="return false" name="txt_xm"><img class="sousuo" src="/Js/Student/GetDefaultValue/img/banksousuo.png" vl-exec="false" vl-message="['姓名查询未执行！']" title="执行快查！"><span class="text-red redtip">!</span>
+								<div id="txt_xm_tips" class="tipsmsg"></div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="con-map2 selected">
+				<img src="../busi/usershen.jpg" id="usershen1" style="position: absolute;right: 25px;top: 50px;width: 150px;display:none">
+				<div class="box">
+					<ul class="tab">
+						<li title="tab_0_0" id="tab_0_0" class="tab_0_0 one">留存信息</li>
+					</ul>
+					<div class="content">
+						<div class="ct" style="display: block;">
+							<table id="qv" class="con-map2-table qv">
+								<tbody>
+									<tr>
+										<td class="" colspan="1" style="width: 64px;"><label vl-default="" id="label_khxm" vtitle="客户姓名" class="form-item text-left" vl-tipsid="label_khxm_tips" title="label_khxm" name="label_khxm">客户姓名</label>
+											<div id="label_khxm_tips" class="tipsmsg"></div>
+										</td>
+										<td rowspan="1" colspan="3" class=""><input type="text" oncopy="return false" oncut="return false" vl-keyup="wwww" vl-default="" id="txt_khxm" vtitle="客户姓名" class="form-item text-left" vl-disabled="true" vl-tipsid="txt_khxm_tips" style="width: 600px;" onpaste="return false" disabled="disabled" name="txt_khxm">
+											<div id="txt_khxm_tips" class="tipsmsg"></div>
+										</td>
+									</tr>
+									<tr>
+										<td rowspan="1" colspan="1" class="" style="width: 64px;"><label vl-default="" id="label_hcjg" vtitle="核查结果" class="form-item text-left" vl-tipsid="label_hcjg_tips" title="label_hcjg" name="label_hcjg">核查结果</label>
+											<div id="label_hcjg_tips" class="tipsmsg"></div>
+										</td>
+										<td rowspan="1" colspan="3" class="">
+											<div class="slectstyle">
+												<select vl-default="" id="sle_hcjg" vtitle="核查结果" class="form-item text-left" vl-disabled="true" vl-tipsid="sle_hcjg_tips" style="width: 600px;" title="sle_hcjg" vl-slemodel="" disabled="disabled" name="sle_hcjg">
+													<option disabled="" style="background-color: blue; color: #fff;" value="" selected="selected">核查结果值含义</option>
+													<option value="00">00 - 公民身份证号码与姓名一致，且存在照片</option>
+													<option value="01">01 - 公民身份号码与姓名一致，但不存在照片</option>
+													<option value="02">02 - 公民身份号码存在，但与姓名不匹配</option>
+													<option value="03">03 - 公民身份号码存在，但公民身份号码存在，但证件日期到期</option>
+													<option value="04">04 - 其他错误</option>
+                                                    <option value="05">05 - 输入的参数错误</option>
+													<option value="06">06 - 核查为真实</option>
+													<option value="07">07 - 待核查</option>
+												</select><input type="text" oncopy="return false" onpaste="return false" oncut="return false" disabled="disabled" style="width: 577px;" id="mb2_sleinput_HeChaJieGuo_4" name="mb2_sleinput_HeChaJieGuo_4"></div>
+											<div id="sle_hcjg_tips" class="tipsmsg"></div>
+										</td>
+									</tr>
+									<tr>
+										<td rowspan="1" colspan="1" class="" style="width: 64px;"><label vl-default="" id="label_hsjg" vtitle="核实结果" class="form-item text-left" vl-tipsid="label_hsjg_tips" title="label_hsjg" name="label_hsjg">核实结果</label>
+											<div id="label_hsjg_tips" class="tipsmsg"></div>
+										</td>
+										<td rowspan="1" colspan="3" class="">
+											<div class="slectstyle">
+												<select vl-default="" id="sle_hsjg" vtitle="核实结果" class="form-item text-left" vl-disabled="true" vl-tipsid="sle_hsjg_tips" style="width: 600px;" title="sle_hsjg" vl-slemodel="" disabled="disabled" name="sle_hsjg">
+													<option disabled="" style="background-color: blue; color: #fff;" value="" selected="selected">核实结果值含义</option>
+													<option value="1">1 - 真实</option>
+													<option value="2">2 - 姓名，身份证件号码，照片存在一项或多项不一致</option>
+													<option value="3">3 - 公安，军队等有关部门无法</option>
+													<option value="4">4 - 未留存身份证件</option>
+													<option value="5">5 - 未留存身份证件，且无法联</option>
+													<option value="6">6 - 其他</option>
+												</select><input type="text" oncopy="return false" onpaste="return false" oncut="return false" disabled="disabled" style="width: 577px;" id="mb2_sleinput_HeShiJieGuo_6" name="mb2_sleinput_HeShiJieGuo_6"></div>
+											<div id="sle_hsjg_tips" class="tipsmsg"></div>
+										</td>
+									</tr>
+									<tr>
+										<td rowspan="1" colspan="1" class="" style="width: 64px;"><label vl-default="" id="label_qxlx" vtitle="期限类型" class="form-item text-left" vl-tipsid="label_qxlx_tips" title="label_qxlx" name="label_qxlx">期限类型</label>
+											<div id="label_qxlx_tips" class="tipsmsg"></div>
+										</td>
+										<td rowspan="1" colspan="1" class="">
+											<div class="slectstyle">
+												<select vl-default="" id="sle_qxlx" vtitle="期限类型" class="form-item text-left" vl-disabled="true" vl-tipsid="sle_qxlx_tips" style="width: 180px;" title="sle_qxlx" vl-slemodel="" disabled="disabled" name="sle_qxlx">
+													<option disabled="" style="background-color: blue; color: #fff;" value="" selected="selected">期限类型值含义</option>
+													<option value="0">0 - 无有效期 </option>
+													<option value="1">1 - 有有效期</option>
+												</select><input type="text" oncopy="return false" onpaste="return false" oncut="return false" disabled="disabled" style="width: 157px;" id="mb2_sleinput_QiXianLeiXing_8" name="mb2_sleinput_QiXianLeiXing_8"></div>
+											<div id="sle_qxlx_tips" class="tipsmsg"></div>
+										</td>
+										<td rowspan="1" colspan="1" class="" style="width: 48px;"><label vl-default="" id="label_dqr" vtitle="到期日" class="form-item text-left" vl-tipsid="label_dqr_tips" title="label_dqr" name="label_dqr">到期日</label>
+											<div id="label_dqr_tips" class="tipsmsg"></div>
+										</td>
+										<td rowspan="1" colspan="1" class=""><input type="text" class="date form-item text-left" vl-default="" id="date_dqr" vtitle="到期日" vl-disabled="true" vl-tipsid="date_dqr_tips" style="width: 180px;" title="date_dqr" oncopy="return false" onpaste="return false" oncut="return false" disabled="disabled" name="date_dqr"><img onclick="WdatePicker({el:'date_dqr',dateFmt:'yyyyMMdd'})" src="/js/My97DatePicker/skin/datePicker.gif" align="absmiddle" style="width:16px;height:22px;margin-left:6px;">
+											<div id="date_dqr_tips" class="tipsmsg"></div>
+										</td>
+									</tr>
+									<tr>
+										<td rowspan="1" colspan="1" class="" style="width: 32px;"><label vl-default="" id="label_mz" vtitle="民族" class="form-item text-left" vl-tipsid="label_mz_tips" title="label_mz" name="label_mz">民族</label>
+											<div id="label_mz_tips" class="tipsmsg"></div>
+										</td>
+										<td rowspan="1" colspan="1" class="">
+											<div class="slectstyle">
+												<select vl-default="" id="sle_mz" vtitle="民族" class="form-item text-left" vl-disabled="true" vl-tipsid="sle_mz_tips" style="width: 180px;" title="sle_mz" vl-slemodel="" disabled="disabled" name="sle_mz">
+													<option disabled="" style="background-color: blue; color: #fff;" value="" selected="selected">民族值含义</option>
+													<option value="0">0 - 汉族</option>
+													<option value="99 - 其它">99 - 其它</option>
+													<option value="1">1-蒙古族</option>
+													<option value="2">2-回族</option>
+													<option value="3">3-藏族</option>
+													<option value="4">4-维吾尔族</option>
+													<option value="5">5-苗族</option>
+													<option value="6">6-彝族</option>
+													<option value="7">7-壮族</option>
+													<option value="8">8-布依族</option>
+													<option value="9">9-朝鲜族</option>
+													<option value="10">10-满族</option>
+													<option value="11">11-侗族</option>
+													<option value="12">12-瑶族</option>
+													<option value="13">13-白族</option>
+													<option value="14">14-土家族</option>
+													<option value="15">15-哈尼族</option>
+													<option value="39">39-普米族</option>
+													<option value="40">40-塔吉克族</option>
+													<option value="41">41-怒族</option>
+													<option value="42">42-乌孜别克族</option>
+													<option value="43">43-俄罗斯族</option>
+													<option value="44">44-鄂温克族</option>
+													<option value="45">45-德昂族</option>
+													<option value="46">46-保安族</option>
+													<option value="47">47-裕固族</option>
+													<option value="48">48-京族</option>
+													<option value="16">16-哈萨克族</option>
+													<option value="17">17-傣族</option>
+													<option value="18">18-黎族</option>
+													<option value="19">19-僳僳族</option>
+													<option value="20">20-佤族</option>
+													<option value="21">21-畲族</option>
+													<option value="22">22-高山族</option>
+													<option value="23">23-拉祜族</option>
+													<option value="24">24-水族</option>
+													<option value="25">25-东乡族</option>
+													<option value="26">26-纳西族</option>
+													<option value="27">27-景颇族</option>
+													<option value="28">28-柯尔克孜族</option>
+													<option value="29">29-土族</option>
+													<option value="30">30-达斡尔族</option>
+													<option value="31">31-仫佬族</option>
+													<option value="32">32-羌族</option>
+													<option value="33">33-布朗族</option>
+													<option value="34">34-撒拉族</option>
+													<option value="35">35-毛南族</option>
+													<option value="36">36-仡佬族</option>
+													<option value="49">49-塔塔尔族</option>
+													<option value="50">50-独龙族</option>
+													<option value="51">51-鄂伦春族</option>
+													<option value="52">52-赫哲族</option>
+													<option value="53">53-门巴族</option>
+													<option value="54">54-珞巴族</option>
+													<option value="55">55-基诺族</option>
+												</select><input type="text" oncopy="return false" onpaste="return false" oncut="return false" disabled="disabled" style="width: 157px;" id="mb2_sleinput_MinZu_12" name="mb2_sleinput_MinZu_12"></div>
+											<div id="sle_mz_tips" class="tipsmsg"></div>
+										</td>
+										<td rowspan="1" colspan="1" class="" style="width: 48px;"><label vl-default="" id="label_qtmz" vtitle="其他民族" class="form-item text-left" vl-tipsid="label_qtmz_tips" title="label_qtmz" name="label_qtmz">其他民族</label>
+											<div id="label_qtmz_tips" class="tipsmsg"></div>
+										</td>
+										<td rowspan="1" colspan="1" class=""><input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_qtmz" vtitle="其他民族" class="form-item text-left" vl-disabled="true" vl-tipsid="txt_qtmz_tips" style="width: 180px;" title="txt_qtmz" onpaste="return false" disabled="disabled" name="txt_qtmz">
+											<div id="txt_qtmz_tips" class="tipsmsg"></div>
+										</td>
+									</tr>
+									<tr>
+										<td rowspan="1" colspan="1" class="" style="width: 32px;"><label vl-default="" id="label_xb" vtitle="性别" class="form-item text-left" vl-tipsid="label_xb_tips" title="label_xb" name="label_xb">性别</label>
+											<div id="label_xb_tips" class="tipsmsg"></div>
+										</td>
+										<td rowspan="1" colspan="1" class=""><input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_xb" vtitle="性别" class="form-item text-left" vl-disabled="true" vl-tipsid="txt_xb_tips" style="width: 180px;" title="txt_xb" onpaste="return false" disabled="disabled" name="txt_xb">
+											<div id="txt_xb_tips" class="tipsmsg"></div>
+										</td>
+										<td rowspan="1" colspan="1" class="" style="width: 32px;"><label vl-default="" id="label_sr" vtitle="生日" class="form-item text-left" vl-tipsid="label_sr_tips" title="label_sr" name="label_sr">生日</label>
+											<div id="label_sr_tips" class="tipsmsg"></div>
+										</td>
+										<td rowspan="1" colspan="1" class=""><input type="text" class="date form-item text-left" vl-default="" id="date_sr" vtitle="生日" vl-disabled="true" vl-tipsid="date_sr_tips" style="width: 180px;" title="date_sr" oncopy="return false" onpaste="return false" oncut="return false" disabled="disabled" name="date_sr"><img onclick="WdatePicker({el:'date_sr',dateFmt:'yyyyMMdd'})" src="/js/My97DatePicker/skin/datePicker.gif" align="absmiddle" style="width:16px;height:22px;margin-left:6px;">
+											<div id="date_sr_tips" class="tipsmsg"></div>
+										</td>
+									</tr>
+									<tr>
+										<td rowspan="1" colspan="1" class="" style="width: 64px;"><label vl-default="" id="label_fzjg" vtitle="发证机关" class="form-item text-left on" vl-tipsid="label_fzjg_tips" title="label_fzjg" name="label_fzjg">发证机关</label>
+											<div id="label_fzjg_tips" class="tipsmsg"></div>
+										</td>
+										<td rowspan="1" colspan="3" class=""><input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_fzjg" vtitle="发证机关" class="form-item text-left" vl-disabled="true" vl-tipsid="txt_fzjg_tips" style="width: 600px;" title="txt_fzjg" onpaste="return false" disabled="disabled" name="txt_fzjg">
+											<div id="txt_fzjg_tips" class="tipsmsg"></div>
+										</td>
+									</tr>
+									<tr>
+										<td rowspan="1" colspan="1" class="" style="width: 64px;"><label vl-default="" id="label_zjdz" vtitle="证件地址" class="form-item text-left" vl-tipsid="label_zjdz_tips" title="label_zjdz" name="label_zjdz">证件地址</label>
+											<div id="label_zjdz_tips" class="tipsmsg"></div>
+										</td>
+										<td rowspan="1" colspan="3" class=""><input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_zjdz" vtitle="证件地址" class="form-item text-left" vl-disabled="true" vl-tipsid="txt_zjdz_tips" style="width: 600px;" title="txt_zjdz" onpaste="return false" disabled="disabled" name="txt_zjdz">
+											<div id="txt_zjdz_tips" class="tipsmsg"></div>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="con-map2">
+				<img src="../busi/usershen.jpg" id="usershen2" style="position: absolute;right: 25px;top: 50px;width: 150px;display:none">
+				<div class="box">
+					<ul class="tab">
+						<li title="tab_1_0" id="tab_1_0" class="tab_1_0">读卡信息</li>
+					</ul>
+					<div class="content">
+						<div class="ct">
+							<table id="qv" class="con-map2-table qv">
+								<tbody>
+									<tr>
+										<td rowspan="1" colspan="1" class="" style="width: 64px;"><label vl-default="" id="label_qxlx2" vtitle="期限类型" class="form-item text-left on" vl-tipsid="label_qxlx2_tips" title="label_qxlx2" name="label_qxlx2">期限类型</label>
+											<div id="label_qxlx2_tips" class="tipsmsg"></div>
+										</td>
+										<td rowspan="1" colspan="1" class="">
+											<div class="slectstyle">
+												<select vl-default="1" id="sle_qxlx2" vtitle="期限类型_mb3" class="form-item text-left" vl-disabled="true" vl-tipsid="sle_qxlx2_tips" style="width: 180px;" title="sle_qxlx2" vl-slemodel="" disabled="disabled" name="sle_qxlx2">
+													<option disabled="" style="background-color: blue; color: #fff;" value="">期限类型值含义</option>
+													<option value="0">0 - 无有效期 </option>
+													<option value="1">1 - 有有效期</option>
+												</select><input type="text" oncopy="return false" onpaste="return false" oncut="return false" disabled="disabled" style="width: 157px;" id="mb3_sleinput_QiXianLeiXingmb3_2" name="mb3_sleinput_QiXianLeiXingmb3_2"></div>
+											<div id="sle_qxlx2_tips" class="tipsmsg"></div>
+										</td>
+										<td rowspan="1" colspan="1" class="" style="width: 48px;"><label vl-default="" id="label_dqr" vtitle="到期日" class="form-item text-left" vl-tipsid="label_dqr_tips" title="label_dqr" name="label_dqr">到期日</label>
+											<div id="label_dqr_tips" class="tipsmsg"></div>
+										</td>
+										<td rowspan="1" colspan="1" class=""><input type="text" class="date form-item text-left" vl-default="" id="date_dqr2" vtitle="到期日_mb3" vl-disabled="true" vl-tipsid="date_dqr2_tips" style="width: 180px;" title="date_dqr2" oncopy="return false" onpaste="return false" oncut="return false" disabled="disabled" name="date_dqr2"><img onclick="WdatePicker({el:'date_dqr2',dateFmt:'yyyyMMdd'})" src="/js/My97DatePicker/skin/datePicker.gif" align="absmiddle" style="width:16px;height:22px;margin-left:6px;">
+											<div id="date_dqr2_tips" class="tipsmsg"></div>
+										</td>
+									</tr>
+									<tr>
+										<td rowspan="1" colspan="1" class="" style="width: 32px;"><label vl-default="" id="label_mz2" vtitle="民族" class="form-item text-left" vl-tipsid="label_mz2_tips" title="label_mz2" name="label_mz2">民族</label>
+											<div id="label_mz2_tips" class="tipsmsg"></div>
+										</td>
+										<td rowspan="1" colspan="1" class="">
+											<div class="slectstyle">
+												<select vl-default="" id="sle_mz2" vtitle="民族_mb3" class="form-item text-left" vl-disabled="true" vl-tipsid="sle_mz2_tips" style="width: 180px;" title="sle_mz2" vl-slemodel="" disabled="disabled" name="sle_mz2">
+													<option disabled="" style="background-color: blue; color: #fff;" value="" selected="selected">民族值含义</option>
+													<option value="0">0 - 汉族</option>
+													<option value="99 - 其它">99 - 其它</option>
+													<option value="1">1-蒙古族</option>
+													<option value="2">2-回族</option>
+													<option value="3">3-藏族</option>
+													<option value="4">4-维吾尔族</option>
+													<option value="5">5-苗族</option>
+													<option value="6">6-彝族</option>
+													<option value="7">7-壮族</option>
+													<option value="8">8-布依族</option>
+													<option value="9">9-朝鲜族</option>
+													<option value="10">10-满族</option>
+													<option value="11">11-侗族</option>
+													<option value="12">12-瑶族</option>
+													<option value="13">13-白族</option>
+													<option value="14">14-土家族</option>
+													<option value="15">15-哈尼族</option>
+													<option value="39">39-普米族</option>
+													<option value="40">40-塔吉克族</option>
+													<option value="41">41-怒族</option>
+													<option value="42">42-乌孜别克族</option>
+													<option value="43">43-俄罗斯族</option>
+													<option value="44">44-鄂温克族</option>
+													<option value="45">45-德昂族</option>
+													<option value="46">46-保安族</option>
+													<option value="47">47-裕固族</option>
+													<option value="48">48-京族</option>
+													<option value="16">16-哈萨克族</option>
+													<option value="17">17-傣族</option>
+													<option value="18">18-黎族</option>
+													<option value="19">19-僳僳族</option>
+													<option value="20">20-佤族</option>
+													<option value="21">21-畲族</option>
+													<option value="22">22-高山族</option>
+													<option value="23">23-拉祜族</option>
+													<option value="24">24-水族</option>
+													<option value="25">25-东乡族</option>
+													<option value="26">26-纳西族</option>
+													<option value="27">27-景颇族</option>
+													<option value="28">28-柯尔克孜族</option>
+													<option value="29">29-土族</option>
+													<option value="30">30-达斡尔族</option>
+													<option value="31">31-仫佬族</option>
+													<option value="32">32-羌族</option>
+													<option value="33">33-布朗族</option>
+													<option value="34">34-撒拉族</option>
+													<option value="35">35-毛南族</option>
+													<option value="36">36-仡佬族</option>
+													<option value="49">49-塔塔尔族</option>
+													<option value="50">50-独龙族</option>
+													<option value="51">51-鄂伦春族</option>
+													<option value="52">52-赫哲族</option>
+													<option value="53">53-门巴族</option>
+													<option value="54">54-珞巴族</option>
+													<option value="55">55-基诺族</option>
+												</select><input type="text" oncopy="return false" onpaste="return false" oncut="return false" disabled="disabled" style="width: 157px;" id="mb3_sleinput_MinZumb3_6" name="mb3_sleinput_MinZumb3_6"></div>
+											<div id="sle_mz2_tips" class="tipsmsg"></div>
+										</td>
+										<td rowspan="1" colspan="1" class="" style="width: 48px;"><label vl-default="" id="label_qtmz" vtitle="其他民族" class="form-item text-left" vl-tipsid="label_qtmz_tips" title="label_qtmz" name="label_qtmz">其他民族</label>
+											<div id="label_qtmz_tips" class="tipsmsg"></div>
+										</td>
+										<td rowspan="1" colspan="1" class=""><input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_qtmz2" vtitle="其他民族_mb3" class="form-item text-left on" vl-disabled="true" vl-tipsid="txt_qtmz2_tips" style="width: 180px;" title="txt_qtmz2" onpaste="return false" disabled="disabled" name="txt_qtmz2">
+											<div id="txt_qtmz2_tips" class="tipsmsg"></div>
+										</td>
+									</tr>
+									<tr>
+										<td rowspan="1" colspan="1" class="" style="width: 32px;"><label vl-default="" id="label_xb2" vtitle="性别" class="form-item text-left on" vl-tipsid="label_xb2_tips" title="label_xb2" name="label_xb2">性别</label>
+											<div id="label_xb2_tips" class="tipsmsg"></div>
+										</td>
+										<td rowspan="1" colspan="1" class=""><input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_xb2" vtitle="性别_mb3" class="form-item text-left" vl-disabled="true" vl-tipsid="txt_xb2_tips" style="width: 180px;" title="txt_xb2" onpaste="return false" disabled="disabled" name="txt_xb2">
+											<div id="txt_xb2_tips" class="tipsmsg"></div>
+										</td>
+										<td rowspan="1" colspan="1" class="" style="width: 32px;"><label vl-default="" id="label_sr" vtitle="生日" class="form-item text-left" vl-tipsid="label_sr_tips" title="label_sr" name="label_sr">生日</label>
+											<div id="label_sr_tips" class="tipsmsg"></div>
+										</td>
+										<td rowspan="1" colspan="1" class=""><input type="text" class="date form-item text-left on" vl-default="" id="date_sr2" vtitle="生日_mb3" vl-disabled="true" vl-tipsid="date_sr2_tips" style="width: 180px;" title="date_sr2" oncopy="return false" onpaste="return false" oncut="return false" disabled="disabled" name="date_sr2"><img onclick="WdatePicker({el:'date_sr2',dateFmt:'yyyyMMdd'})" src="/js/My97DatePicker/skin/datePicker.gif" align="absmiddle" style="width:16px;height:22px;margin-left:6px;">
+											<div id="date_sr2_tips" class="tipsmsg"></div>
+										</td>
+									</tr>
+									<tr>
+										<td rowspan="1" colspan="1" class="" style="width: 64px;"><label vl-default="" id="label_fzjg2" vtitle="发证机关" class="form-item text-left on" vl-tipsid="label_fzjg2_tips" title="label_fzjg2" name="label_fzjg2">发证机关</label>
+											<div id="label_fzjg2_tips" class="tipsmsg"></div>
+										</td>
+										<td rowspan="1" colspan="3" class=""><input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_fzjg2" vtitle="发证机关_mb3" class="form-item text-left on" vl-disabled="true" vl-tipsid="txt_fzjg2_tips" style="width: 600px;" title="txt_fzjg2" onpaste="return false" disabled="disabled" name="txt_fzjg2">
+											<div id="txt_fzjg2_tips" class="tipsmsg"></div>
+										</td>
+									</tr>
+									<tr>
+										<td rowspan="1" colspan="1" class="" style="width: 64px;"><label vl-default="" id="label_zjdz2" vtitle="证件地址" class="form-item text-left on" vl-tipsid="label_zjdz2_tips" title="label_zjdz2" name="label_zjdz2">证件地址</label>
+											<div id="label_zjdz2_tips" class="tipsmsg"></div>
+										</td>
+										<td rowspan="1" colspan="3" class=""><input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_zjdz2" vtitle="证件地址_mb3" class="form-item text-left on" vl-disabled="true" vl-tipsid="txt_zjdz2_tips" style="width: 600px;" title="txt_zjdz2" onpaste="return false" disabled="disabled" name="txt_zjdz2">
+											<div id="txt_zjdz2_tips" class="tipsmsg"></div>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="con-map2">
+				<img src="../busi/usershen.jpg" id="usershen3" style="position: absolute;right: 70px;top: 45px;height:80px ; display:none">
+				<div class="box">
+					<ul class="tab">
+						<li title="tab_2_0" id="tab_2_0" class="tab_2_0">核实信息</li>
+					</ul>
+					<div class="content">
+						<div class="ct">
+							<table id="qv" class="con-map2-table qv">
+								<tbody>
+									<tr>
+										<td rowspan="1" colspan="2" class="" style="width: 64px;"><label vl-default="" id="label_hcjg2" vtitle="核查结果" class="form-item text-left" vl-disabled="true" vl-tipsid="label_hcjg2_tips" title="label_hcjg2" disabled="disabled" name="label_hcjg2">核查结果</label>
+											<div id="label_hcjg2_tips" class="tipsmsg"></div>
+										</td>
+										<td rowspan="1" colspan="2" class="">
+											<div class="slectstyle">
+												<select vl-default="" id="sle_hcjg2" vtitle="核查结果_mb4" class="form-item text-left" vl-tipsid="sle_hcjg2_tips" vl-regex="['require']" vl-message="['核查结果不能为空!']" style="width: 600px;" title="sle_hcjg2" vl-slemodel="" name="sle_hcjg2">
+													<option disabled="" style="background-color: blue; color: #fff;" value="" selected="selected">核查结果值含义</option>
+													<option value="00">00 - 公民身份证号码与姓名一致，且存在照片</option>
+													<option value="01">01 - 公民身份号码与姓名一致，但不存在照片</option>
+													<option value="02">02 - 公民身份号码存在，但与姓名不匹配</option>
+													<option value="03">03 - 公民身份号码不存在</option>
+													<option value="04">04 - 其他错误</option>
+                                                    <option value="05">05 - 输入的参数错误</option>
+													<option value="06">06 - 核查为真实</option>
+													<option value="07">07 - 待核查</option>
+												</select><input type="text" oncopy="return false" onpaste="return false" oncut="return false" style="width: 577px;" id="mb4_sleinput_HeChaJieGuomb4_2" name="mb4_sleinput_HeChaJieGuomb4_2"><span class="text-red redtip">!</span></div>
+											<div id="sle_hcjg2_tips" class="tipsmsg"></div>
+										</td>
+									</tr>
+									<tr>
+										<td rowspan="1" colspan="2" class="" style="width: 64px;"><label vl-default="" id="label_hsjg2" vtitle="核实结果" class="form-item text-left" vl-tipsid="label_hsjg2_tips" title="label_hsjg2" name="label_hsjg2">核实结果</label>
+											<div id="label_hsjg2_tips" class="tipsmsg"></div>
+										</td>
+										<td rowspan="1" colspan="2" class="">
+											<div class="slectstyle">
+												<select vl-default="" id="sle_hsjg2" vtitle="核实结果_mb4" class="form-item text-left" vl-regex="['require']" vl-message="['核实结果不能为空!']" vl-tipsid="sle_hsjg2_tips" style="width: 600px;" title="sle_hsjg2" vl-slemodel="" name="sle_hsjg2">
+													<option disabled="" style="background-color: blue; color: #fff;" value="" selected="selected">核实结果值含义</option>
+													<option value="1">1 - 真实</option>
+													<option value="2">2 - 姓名，身份证件号码，照片存在一项或多项不一致</option>
+													<option value="3">3 - 公安，军队等有关部门无法辨别身份信息真伪</option>
+													<option value="4">4 - 未留存身份证件</option>
+													<option value="5">5 - 未留存身份证件，且无法联系存款人</option>
+													<option value="6">6 - 其他</option>
+												</select><input type="text" oncopy="return false" onpaste="return false" oncut="return false" style="width: 577px;" id="mb4_sleinput_HeShiJieGuomb4_4" name="mb4_sleinput_HeShiJieGuomb4_4"><span class="text-red redtip">!</span></div>
+											<div id="sle_hsjg2_tips" class="tipsmsg"></div>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="con-map2">
+			<iframe id="iframeID" name="iframeID" style="width: 100%;height: 400px; border:none; " src="http://bsi1.occupationedu.com/commontable?fields=pzlx%7C%E8%AF%81%E4%BB%B6%E7%B1%BB%E5%9E%8B,qshm%7C%E8%AF%81%E4%BB%B6%E5%8F%B7%E7%A0%81,zzhm%7C%E6%9C%89%E6%95%88%E6%9C%9F%E7%B1%BB%E5%9E%8B,pzsl%7C%E5%88%B0%E6%9C%9F%E6%97%A5,id%7C%E7%AD%BE%E5%8F%91%E6%9C%BA%E6%9E%84&amp;table=tb_daily_voucher&amp;orderby=id&amp;is_page=false&amp;toolbar=true&amp;where=%20and%201!=1"></iframe>
+			</div>
+			<div class="foot "> <span>                                        <button>退出（F3）</button>                                        <button>帮助（F1）</button>                                        <button>辅助（F4）</button>                                        <button type="button" onclick="FormReset()">重置（F5）</button></span> <span style="float: right;">                                        <button type="button" style="margin-right: 0px;" vl-submit="true" id="btnsubmit" onclick="SubmitForm()">提交</button></span> </div>
+			<input type="hidden" class="hidmainwidth" value="1000/" oncopy="return false" onpaste="return false" oncut="return false"> </div>
+@*<script src="~/Js/Student/GetDefaultValue/js/grkhsfhs080205byxu.js"></script>
+<script type="text/javascript">
+            $(function () {
+                $("#iframeID").attr("src", _ip + encodeURI("commontable?fields=pzlx|证件类型,qshm|证件号码,zzhm|有效期类型,pzsl|到期日,id|签发机构&table=tb_daily_voucher&orderby=id&is_page=false&toolbar=true&where= and 1!=1"));
+		    });    
+		</script>*@
+<link href="~/Js/Student/GetDefaultValue/js/common.bank.css" rel="stylesheet" />
+<style>
+			.ba-iframe {
+				min-height: 400px;
+			}
+		</style>
+              </form>

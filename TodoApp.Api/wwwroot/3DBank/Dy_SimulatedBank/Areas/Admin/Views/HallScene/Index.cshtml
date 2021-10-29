@@ -1,0 +1,169 @@
+﻿@{
+    
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewData["nvc"] = "案例管理";
+}
+
+
+
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-sm-12">
+        <ol class="breadcrumb">
+            <li>
+                <h2><a href="/Admin/CaseManagement">案例管理</a></h2>
+            </li>
+            <li>
+                <a href="/Admin/Customer/Index?taskid=@ViewData["taskid"]">客户列表</a>
+            </li>
+            <li>
+                @ViewData["customername"]
+            </li>
+        </ol>
+
+        <input type="hidden" id="taskid" value="@ViewData["taskid"]" />
+        <input type="hidden" id="addtype" value="@ViewData["addtype"]" />
+        <input type="hidden" id="customerid" value="@ViewData["customerid"]" />
+    </div>
+</div>
+<!--面包屑位置结束-->
+<!--主体内容开始-->
+<div class="ibox-content">
+    <form class="form-horizontal" name="Addform" id="Addform">
+
+        <div class="form-group">
+            <h3><label for="inputEmail3" class="col-sm-2 control-label">厅堂服务</label></h3>
+        </div>
+        <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 control-label">厅堂服务-分流：</label>
+            <div class="col-sm-8">
+                <select class="form-control input-s-sm inline" style="width: 180px;" id="Names_20" name="Names_20" data-LinkId="20">
+                    <option value="">请选择分流方向</option>
+                    <option value="取号">取号</option>
+                    <option value="自助服务区">自助服务区</option>
+                    <option value="理财区">理财区</option>
+                    <option value="信贷区">信贷区</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <h3><label for="inputEmail3" class="col-sm-2 control-label">取号</label></h3>
+        </div>
+
+        <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 control-label">取号类型：</label>
+            <div class="col-sm-8">
+                <select class="form-control input-s-sm inline" style="width: 180px;" id="Names_3" name="Names_3" data-LinkId="3">
+                    <option value="">请选择取号类型</option>
+                    <option value="个人业务号">个人业务号</option>
+                    <option value="对公业务号">对公业务号</option>
+                </select>
+            </div>
+        </div>
+
+        <hr />
+
+        <div class="form-group">
+            <h3><label for="inputEmail3" class="col-sm-2 control-label">取号后引导</label></h3>
+        </div>
+
+        <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 control-label">引导方向：</label>
+            <div class="col-sm-8">
+                <select class="form-control input-s-sm inline" style="width: 180px;" id="Names_4" name="Names_4" data-LinkId="4">
+                    <option value="">请选择引导方向</option>
+                    <option value="服务等候区">服务等候区</option>
+                    <option value="填单台">填单台</option>
+                    <option value="自助服务区">自助服务区</option>
+                </select>
+            </div>
+        </div>
+
+        <hr />
+
+        <div class="form-group">
+            <h3><label for="inputEmail3" class="col-sm-2 control-label">填单</label></h3>
+        </div>
+
+        <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 control-label">客户填单内容：</label>
+            <div class="col-sm-8">
+
+
+                <select data-modeid="5" class="form-control input-s-sm inline" style="width: 180px;" id="Names_5" name="Names_5">
+                    <option value="0">请选择单据</option>
+                </select>
+                <button data-modeid="5" data-alert="单据" data-selectid="Names_5" id="billsAddBtn" type="button" class="btn  btn-success ">添加单据</button>
+            </div>
+        </div>
+
+        <hr />
+
+        <div class="form-group">
+            <h3><label for="inputEmail3" class="col-sm-2 control-label">填单后引导</label></h3>
+        </div>
+
+        <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 control-label">引导方向：</label>
+            <div class="col-sm-8">
+                <select class="form-control input-s-sm inline" style="width: 180px;" id="Names_6" name="Names_6" data-LinkId="6">
+                    <option value="">请选择引导方向</option>
+                    <option value="服务等候区">服务等候区</option>
+                    <option value="填单台">填单台</option>
+                    <option value="自助服务区">自助服务区</option>
+                </select>
+            </div>
+        </div>
+
+        <hr />
+
+        <div class="form-group">
+            <h3><label for="inputEmail3" class="col-sm-2 control-label">送别</label></h3>
+        </div>
+
+        <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 control-label">意向理财产品：</label>
+            <div class="col-sm-8">
+                <select data-modeid="16" class="form-control input-s-sm inline" style="width: 180px;" id="Names_16" name="Names_16" data-LinkId="16">
+                    <option value="">请选择</option>
+                </select>
+            </div>
+
+        </div>
+
+        <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 control-label">厅堂送别：</label>
+            <div class="col-sm-8">
+                <input class="i-checks" type="checkbox" id="Names_161" name="Names_161" value="1" data-LinkId="161" />
+            </div>
+
+        </div>
+
+
+
+        <hr />
+
+
+
+        @*<div class="box-footer">
+            <div class="form-group">
+                <label class="col-sm-2 control-label"></label>
+                <div class="col-sm-10">
+                    <a class="btn btn-w-m btn-success m-r-lg" href="javascript:void(0);" onclick="BtnSubmit()">保存</a>
+                    <a class="btn btn-w-m btn-white " href="javascript:void(0);" onclick="history.go(-1)" >取消</a>
+                </div>
+            </div>
+        </div>*@
+    </form>
+
+</div>
+
+
+
+
+<script src="~/Js/Admin/CaseManagement/CommonConfig.js"></script>
+<script src="~/Scripts/String/StringFormat.js"></script>
+<script src="~/Js/Admin/CaseManagement/CommonAddForm.js"></script>
+<script src="~/Js/Admin/CaseManagement/HallScene.js"></script>
+
+<link href="~/Scripts/select2/css/select2.min.css" rel="stylesheet" />
+<script src="~/Scripts/select2/js/select2.min.js"></script>

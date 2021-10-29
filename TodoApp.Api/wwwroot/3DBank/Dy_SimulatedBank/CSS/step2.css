@@ -1,0 +1,339 @@
+/*步骤二样式表*/
+
+.qie_renwu_map {
+	padding: 5px 80px;
+}
+
+.qie_renwu_map ul li {
+	min-height: 97px;
+}
+
+
+.ico_lan{
+	background: url(../img/icojing_lan.png) no-repeat left top ;
+}
+
+.task_lan {
+	width: 66px;
+	min-height: 97px;
+	
+	float: left;
+	text-align: center;
+	color: #4499e6;
+	padding-top: 15px;
+	font-size: 26px;
+}
+
+.ico_hui{
+	background: url(../img/icojing_hui.png) no-repeat left top ;
+}
+
+.task_hui {
+	width: 66px;
+	min-height: 97px;
+	background: url(../img/icojing_hui.png) no-repeat top;
+	float: left;
+	text-align: center;
+	color: #c5c9cd;
+	padding-top: 15px;
+	font-size: 26px;
+}
+
+.tsk_con {
+	margin-left: 80px;
+	color: #333333;
+	font-size: 16px;
+	width: 580px;
+	padding-top: 15px;
+}
+
+.tsk_con{
+color: #666666;	
+font-size: 14px;
+}
+
+
+.tsk_con h2 {
+	color: #333333;	
+	font-weight: 600;
+	font-size: 20px;
+	margin-bottom: 8px;
+}
+
+
+/*切换任务弹窗样式结束*/
+
+.jia_map {
+	cursor: pointer;
+}
+
+.jia_map:hover p {
+	color: #4499e6;
+}
+
+.jia_map:hover img {
+	-webkit-animation-name: pulse;
+	animation-name: pulse;
+}
+
+
+/*切换场景样式开始*/
+
+.changjingmain{
+	height: 100%;
+	position: relative;
+	background: url(../img/chagjingbj.png) no-repeat center;
+	background-size:auto ;
+}
+
+
+
+
+.step_line.bucheck,
+.step_line:hover  {
+	color: #e66361;
+}
+
+.step_num {
+	    margin: auto;
+    width: 115px;
+    height: 95px;
+    font-size: 11px;
+    text-align: center;
+    line-height: 65px;
+	background: url(../img/changicomo.png) center no-repeat;
+}
+
+.step_num:hover {
+	background: url(../img/changicocheck.png) center no-repeat;
+}
+
+.step_line.bucheck .step_num {
+	background: url(../img/changicocheck.png) center no-repeat;
+}
+
+.step_line{
+	cursor: pointer;
+	    position: absolute;
+    text-align: center;
+        font-weight: 600;
+}
+
+
+
+
+.buzhou1{
+	left: 49px;
+    top: 10px;
+}
+
+
+.buzhou2{
+	    left: 30px;
+    top: 166px;
+}
+
+.buzhou3{
+	left: 92px;
+    top: 280px;
+}
+
+
+.buzhou4{
+	    left: 109px;
+    top: 426px;
+}
+
+
+.buzhou5{
+	    left: 250px;
+    top: 288px;
+}
+
+
+.buzhou6{
+	       left: 315px;
+    top: 175px;
+}
+
+
+.buzhou7{
+	    left: 363px;
+    top: 10px;
+}
+.buzhou8{
+	left: 465px;
+    top: 110px;
+}
+
+
+.buzhou9{
+	      left: 575px;
+    top: 220px;
+}
+
+
+.buzhou10{
+	    left: 545px;
+    top: 380px;
+}
+
+
+
+.buzhou11{
+left: 710px;
+    top: 340px;
+}
+
+.buzhou12{
+	left: 835px;
+    top: 260px;
+}
+
+
+
+
+
+
+/*切换场景样式结束*/
+
+
+/*部门地点切换*/
+.bumenmap{
+	width: 1100px;
+	height: 600px;
+	margin: auto;
+	background: url(../img/bumenbj.png) no-repeat center;
+}
+
+.bumen1{
+	cursor: pointer;
+	position: absolute;
+	left: 245px;
+    top: 202px;
+}
+
+
+.bumen2{
+	cursor: pointer;
+	position: absolute;
+	left: 432px;
+    top: 202px;
+}
+
+
+.bumen3{
+	cursor: pointer;
+	position: absolute;
+	left: 630px;
+    top: 202px;
+}
+
+
+.bumen4{
+	cursor: pointer;
+	position: absolute;
+	left: 825px;
+    top: 202px;
+}
+
+
+.bumen5{
+	cursor: pointer;
+	position: absolute;
+	left: 1009px;
+    top: 202px;
+}
+
+.bumen5:hover,
+.bumen4:hover,
+.bumen3:hover,
+.bumen2:hover,
+.bumen1:hover{
+	-webkit-animation-name: pulse;
+	animation-name: pulse;
+	animation-iteration-count: 2;
+    -webkit-animation-iteration-count: 2;
+}
+
+
+
+/*我的成绩页面样式*/
+.garde_top{
+				background: url(../img/gradebj.png) no-repeat center;
+				height: 300px;
+				padding-top: 1px;
+				text-align: center;
+				color: white;
+			}
+			
+			
+			.zongfen{
+				    margin-top: 155px;
+    font-size: 24px;
+			}
+			
+
+/*新增问一问模块样式*/
+.ico_wenda {
+				position: absolute;
+				width: 13%;
+				height: 11%;
+				cursor: pointer;
+				background: url(../img/ico_wenda.png) center no-repeat;
+				background-size: 100% 100%;
+				right: 0;
+				top: 35%;
+				z-index: 999999;
+}
+
+.wenda_map{
+	padding: 0px 15px;
+}
+
+
+   .col_lv {
+        color: #45b882 !important;
+    }
+
+
+    .col_lan {
+        color: #3487f5 !important;
+    }
+
+
+    .col_red {
+        color: #f34536 !important;
+    }
+    
+    .col_yel {
+        color: #e4862c !important;
+    }
+
+
+.wenda_list ul li{
+	margin: 15px 0px;
+	padding: 15px;
+	    background-color: #ffffff;
+    box-shadow: 0px 7px 14px 1px rgba(221, 221, 221, 0.44);
+    border-radius: 14px;
+    border: solid 1px #d9d9d9;
+}
+
+.timap p{
+	margin: 5px 0px;
+}
+
+.timap{
+	font-size: 16px;
+	color: #666666;
+}
+
+.tigan{
+	font-size: 18px;
+	color: #333333;
+}
+
+.titime{
+	color: #999999;
+}

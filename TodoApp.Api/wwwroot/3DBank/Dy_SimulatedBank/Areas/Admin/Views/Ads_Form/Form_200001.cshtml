@@ -1,0 +1,63 @@
+﻿
+<!--短信通知-->
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <label id="lbl_yddh1" for="inputEmail3" class="col-sm-3 control-label">移动电话1</label>
+            <div class="col-sm-6">
+                <div class="input-group">
+                    <input vl-default="" type="text" class="form-control input-sm" id="txt_yddh" name="txt_yddh">
+                    <span class="input-group-btn">
+                        <button class="btn btn-primary btn-sm" type="button" onclick="sendCode('txt_yddh2')">发送验证码</button>
+                    </span>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="input-group">
+                    <input vl-default="" type="text" class="form-control input-sm" id="txt_yddh2" name="txt_yddh2" disabled placeholder="请输入验证码">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <label for="inputEmail3" class="col-sm-3 control-label">移动电话2</label>
+            <div class="col-sm-6">
+                <div class="input-group">
+                    <input type="text" class="form-control input-sm" id="mobile2">
+                    <span class="input-group-btn">
+                        <button class="btn btn-primary btn-sm" type="button" onclick="sendCode('code1')">发送验证码</button>
+                    </span>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="input-group" style="display: flex;">
+                    <input type="text" class="form-control input-sm" id="code1" disabled placeholder="请输入验证码">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <label id="lbl_chargeType" for="inputEmail3" class="col-sm-3 control-label">收费类型</label>
+            <div class="col-sm-6">
+                <select vl-default="" class="form-control" id="sle_chargeType" name="sle_chargeType">
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <label id="lbl_tzje" for="inputEmail3" class="col-sm-3 control-label">最小通知金额</label>
+            <div class="col-sm-6">
+                <input vl-default="" type="text" class="form-control input-sm" name="txt_tzje" id="txt_tzje">
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    setOptions(['chargeType']);
+    function doSubmit() {
+        window.location.href = "javascript:history.go(-1)";
+    }
+</script>

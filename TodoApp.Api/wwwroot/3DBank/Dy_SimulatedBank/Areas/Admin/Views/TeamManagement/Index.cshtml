@@ -1,0 +1,154 @@
+﻿@{
+    
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewData["nvc"] = "团队管理";
+}
+<script>
+    $(document).ready(function () {
+        var config = {
+            '.chosen-select': {},
+            '.chosen-select-deselect': {
+                allow_single_deselect: true
+            },
+            '.chosen-select-no-single': {
+                disable_search_threshold: 10
+            },
+            '.chosen-select-no-results': {
+                no_results_text: 'Oops, nothing found!'
+            },
+            '.chosen-select-width': {
+                width: "95%"
+            }
+        }
+        for (var selector in config) {
+            $(selector).chosen(config[selector]);
+        }
+    });
+</script>
+<script src="~/JS/Teacher/TeamManagement/TeamManagement.js?v=2018"></script>
+<link href="/CSS/chosen/chosen.css" rel="stylesheet" />
+<script src="/Scripts/chosen/chosen.jquery.js"></script>
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-sm-12">
+        <ol class="breadcrumb">
+            <li>
+                <h2>组织架构管理</h2>
+            </li>
+            <li>
+                <a href="javascript:viod(0)">团队管理</a>
+            </li>
+            <li>
+                <strong>团队列表</strong>
+            </li>
+        </ol>
+
+    </div>
+</div>
+<!--面包屑位置结束-->
+<!--主体内容开始-->
+<div class="row  white-bg dashboard-header">
+    @*   <h3>学生管理</h3>*@
+   
+
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="input-group">
+                    <input type="text" placeholder="请输入关键字搜索" id="StudentInfo" class="form-control">
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-primary" onclick="SearchInfo()">搜索</button>
+                    </span>
+                </div>
+            </div>
+            <div class="col-sm-6 text-right">
+                <button onclick="AddInfo()" class="btn btn-primary btn-sm" type="button"><i class="fa fa-plus  m-r-xs"></i><span class="bold">新增团队</span></button>
+                <button onclick="BatchAddInfo()" class="btn btn-success btn-sm" type="button"><i class="fa fa-plus  m-r-xs"></i><span class="bold">导入团队</span></button>
+                <button onclick="del_all()" type="button" class="btn btn-warning btn-sm"><i class="fa fa-trash  m-r-xs"></i><span class="bold">删除团队</span></button>
+            </div>
+        </div>
+
+        <div class="row m-t-sm table-responsive">
+            <div class="col-sm-12">
+                <table class="table text-center table-bordered ">
+                    <thead>
+                        <tr>
+                            <th class="text-center">
+                                <input type="Checkbox" class="i-checks checkbox-all"></th>
+                            <th class="text-center">学校名称</th>
+                            <th class="text-center">团队名称</th>
+                            <th class="text-center">团队成员</th>
+                            <th class="text-center">人数</th>
+                            <th width="300px" class="text-center">操作</th>
+                        </tr>
+                    </thead>
+                    <tbody class="new_table text-center" id="tablelist">
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+
+        <!--分页开始-->
+        <div class="row text-center" id="PaginatorLibrary">
+        </div>
+        <!--分页结束-->
+
+</div>
+<!--新增弹框-->
+<div id="Add" style="display: none;" class="form-inline">
+    <form name="Addform" id="Addform">
+        <div class="col-sm-12">
+            <div class="form-horizontal  m-t-md">
+                <label for="firstname" class="col-sm-4 control-label"><span style="color: red;">*</span>团队名称：</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" id="AddStudentName" name="AddStudentName" placeholder="">
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<!--编辑弹框-->
+<div id="Edit_div" style="display: none;" class="form-inline">
+    <form name="Addform" id="Edit_form">
+        <div class="col-sm-12">
+            <div class="form-horizontal  m-t-md">
+                <label for="firstname" class="col-sm-4 control-label"><span style="color: red;">*</span>团队名称：</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" id="EditStudentName" name="AddStudentName" placeholder="">
+                </div>
+            </div>
+        </div>
+
+    </form>
+</div>
+<!--批量新增-->
+<div id="BatchAdd" style="display: none;" class="form-inline">
+    <div class="box-body ">
+
+        <form id="form_Execl" class="form-horizontal " enctype="multipart/form-data">
+            <div class="col-sm-12 text-center">
+                <div class="form-group ">
+                    <div class="col-sm-12 m-t-sm">
+                        <button type="button" onclick="but_Execl()" class="btn btn-block btn-success ">
+                            <i class="fa fa-arrow-circle-o-up mr5" aria-hidden="true"></i>
+                            上传样式表格
+                        </button>
+                        <input id="file_excel" name="file_excel" type="file" style="display: none" />
+                    </div>
+                </div>
+            </div>
+            <div class="text-center col-sm-12 m-t-sm ">
+                <span style="color: red" id="ExcelName"></span>
+            </div>
+            <div class="text-right col-sm-12 m-t-sm">
+                <a href="~/ExcelTemplate/导入团队模版.xlsx" class=" btn-primary btn-sm  "><i class="fa  fa-level-down m-r-xs"></i>下载表格</a>
+
+            </div>
+        </form>
+
+
+    </div>
+</div>
+<a id='downFile' href="" style="display: none"><span id='tf'></span></a>
+@*<script src="~/Js/Admin/SchoolManage/Provincesandcities.js"></script>*@
+<script src="~/Scripts/verifyform.js"></script>
+<script src="~/Scripts/jquery.form.js"></script>

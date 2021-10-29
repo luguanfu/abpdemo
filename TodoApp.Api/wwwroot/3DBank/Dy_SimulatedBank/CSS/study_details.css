@@ -1,0 +1,188 @@
+.wrapper{
+	width: 1200px;
+	margin: 0 auto;
+	margin-bottom: 84px;
+}
+
+/******课程名称与简介******/
+.wrapper_details{
+	overflow: hidden;
+	margin-left: 28px;
+	margin-top: 10px;
+}
+
+.details_left{
+	float: left;
+	width: 510px;
+	height: 288px;
+}
+
+.details_left img{
+	width: 100%;
+	height: 100%;
+}
+
+.details_right{
+	float: right;
+	width: 662px;
+	height: 288px;
+	background-color: #FBFBFB;
+	padding: 0 36px;
+}
+
+.details_right p{
+	font-size: 22px;
+	font-weight: 600;
+	color: #333333;
+	margin-top: 24px;
+   margin-bottom: 16px;
+}
+
+.details_right div{
+	color: #666666;
+	height: 178px;
+	overflow: hidden;
+   text-overflow: ellipsis;
+   display: -webkit-box;
+   -webkit-box-orient: vertical;
+   -webkit-line-clamp:8;
+}
+
+
+
+
+
+/******课程目录列表******/
+.catalog_list{
+	width: 1172px;
+	margin-left: 28px;
+	border: 1px solid #E4E4E4;
+	margin-top: 50px;
+	margin-bottom: 40px;
+	/*border-top: none;*/
+}
+
+.list_title{
+	height: 54px;
+	line-height: 54px;
+	text-align: center;
+	font-size: 18px;
+	color: #333333;
+	background-color: #FAFAFA;
+}
+
+.list_tabbar{
+	border-left:1px solid #D9DCE1;
+	border-top-left-radius: 10px;
+	margin: 30px 36px;
+}
+
+.list_tabbar p{
+	margin-bottom: 18px;
+}
+
+.tabbar_name{
+	font-size: 19px;
+	position: relative;
+	padding-left: 30px;
+}
+
+.tabbar_name img{
+	position: absolute;
+	top: 3px;
+	left: -8px;
+}
+
+.tabbar_name .plans{
+	float: right;
+	font-size: 16px;
+	padding-top: 4px;
+   letter-spacing: 1px;
+}
+
+.knobble_name{
+	overflow: hidden;
+	padding-left: 42px;
+}
+
+.pack_up,
+.pack_down{
+	cursor: pointer;
+	color: #A0A0A0;
+	padding-left: 22px;
+	margin-right: 20px;
+	font-size: 14px;
+}
+
+.pack_down{
+	background: url(../img/z_up_samil.png) no-repeat 0 center;
+}
+
+.knobble_txt{
+	font-size: 15px;
+	display: none;
+}
+
+.knobble_txt p{
+	cursor: pointer;
+	height: 38px;
+   padding-top: 7px;
+   margin-bottom: 8px;
+   padding-left: 92px;
+}
+
+.knobble_txt p:hover{
+	background-color:#FFF9F3;
+}
+
+.knobble_txt span{
+	display: inline-block;
+	padding: 2px 10px;
+   margin-right: 8px;
+	border-radius: 4px;
+}
+
+.knobble_txt .videoColor{
+	color: #348CF7;
+	border: 1px solid #348CF7;
+}
+
+.knobble_txt .pptColor{
+	color: #F95E45;
+	border: 1px solid #F95E45;
+}
+
+.knobble_txt .study_learn{
+	float: right;
+	font-size: 14px;
+	color: #CF9354;
+}
+
+.knobble_txt .study_ok{
+	float: right;
+	font-size: 14px;
+	padding-left: 20px;
+	background: url(../img/is_ok.png) no-repeat 0 center;
+	background-size: 18px;
+}
+
+
+
+
+
+/*显示内容切换样式*/
+.disBlock{
+	display: block;
+}
+
+/*收起展开切换样式*/
+.pack_up{
+	background: url(../img/z_down_samil.png) no-repeat 0 center;
+}
+
+/*小节里的切换样式*/
+.redColor{
+	background-color:#FFF9F3;
+}
+
+

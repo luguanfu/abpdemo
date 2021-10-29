@@ -1,0 +1,99 @@
+﻿
+<link href="~/CSS/bootstrap-table.min.css" rel="stylesheet" />
+
+<!--企业网银客户签约管理[客户限额]-->
+<div class="divider divider-horizontal"><div class="divider-text is-left"><strong>企业网银基本信息</strong></div></div>
+<table class="table table-hover" id="tbl"></table>
+<div id="DivTabValue" style="display:none;">
+    <div class="divider divider-horizontal"><div class="divider-text is-left"><strong>企业网银基本信息反显值</strong></div></div>
+<textarea rows="5" id="tb1Value" name="tb1Value" style="width:100%;"></textarea>
+</div>
+<div class="row">
+    <div class="col-md-9">
+        <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 control-label">业务类型</label>
+            <div class="col-sm-9">
+                <button type="button" class="btn btn-default" onclick="goPage('200016')">证书管理</button>
+                <button type="button" class="btn btn-default" onclick="goPage('200007')">用户管理</button>
+                <button type="button" class="btn btn-default" onclick="goPage('200017')">账户管理</button>
+                <button type="button" class="btn btn-default" onclick="goPage('200024')">业务管理</button>
+                <button type="button" class="btn btn-default active" onclick="goPage('200025')">客户限额</button>
+                <button type="button" class="btn btn-default" onclick="goPage('200012')">注销网银</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="divider divider-horizontal"><div class="divider-text is-left"><strong>企业客户限额</strong></div></div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <label id="lbl_dailyLimit" name="lbl_dailyLimit" for="inputEmail3" class="col-sm-3 control-label">日累计限额</label>
+            <div class="col-sm-6">
+                <input vl-default="" id="txt_dailyLimit" name="txt_dailyLimit" type="text" class="form-control input-sm">
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <label id="lbl_dailyCount" name="lbl_dailyCount" for="inputEmail3" class="col-sm-3 control-label">日累计笔数</label>
+            <div class="col-sm-6">
+                <input vl-default="" id="txt_dailyCount" name="txt_dailyCount" type="text" class="form-control input-sm">
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <label id="lbl_yearLimit" name="lbl_yearLimit" for="inputEmail3" class="col-sm-3 control-label">年累计限额</label>
+            <div class="col-sm-6">
+                <input vl-default="" id="txt_yearLimit" name="txt_yearLimit" type="text" class="form-control input-sm">
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/Scripts/bootstrap-table.min.js"></script>
+
+<script>
+    var data = [];
+    function setTableValue(values) {
+        var vals = values.split('\n');
+        data = [{
+            'customer': vals[0],
+            'bankingType': vals[1],
+            'contractingAgency': vals[2],
+            'signingDate': vals[3],
+            'customerNo': vals[4],
+        }];
+        $("#tbl").bootstrapTable('load', data);
+    }
+    $('#tbl').bootstrapTable({
+        data: data,
+        columns: [
+            {
+                title: '客户名称',
+                field: 'customer',
+                align: 'center'
+            },
+            {
+                title: '企业网银类型',
+                field: 'bankingType',
+                align: 'center'
+            },
+            {
+                title: '签约机构',
+                field: 'contractingAgency',
+                align: 'center',
+            },
+            {
+                title: '签约日期',
+                field: 'signingDate',
+                align: 'center',
+            },
+            {
+                title: '网银客户号',
+                field: 'customerNo',
+                align: 'center'
+            },
+        ]
+    });
+</script>

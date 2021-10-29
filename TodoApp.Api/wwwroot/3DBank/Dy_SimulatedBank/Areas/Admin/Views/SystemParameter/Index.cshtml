@@ -1,0 +1,58 @@
+﻿@{
+    
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewData["nvc"] = "系统参数";
+}
+
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-sm-12">
+        <ol class="breadcrumb">
+            <li>
+                <h2>系统管理</h2>
+            </li>
+            <li>
+                <a href="#">参数管理</a>
+            </li>
+            <li>
+
+                <strong>参数列表</strong>
+            </li>
+        </ol>
+    </div>
+</div>
+<!--面包屑位置结束-->
+<!--主体内容开始-->
+<div class="ibox-content">
+
+    <div class="row  m-t-sm ">
+        <div class="col-sm-3">
+            <div class="input-group">
+                <input type="text" placeholder="请输入参数名称……" id="C_Name" class="form-control">
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-primary" onclick="searchinfo()">搜索</button>
+                </span>
+            </div>
+        </div>
+        <div class="hr-line-dashed"></div>
+        <div class="col-sm-12">
+            <table class="table text-center table-bordered ">
+                <thead>
+                    <tr>
+                        <th class="text-center">设置项</th>
+                        <th class="text-center">操作</th>
+                    </tr>
+                </thead>
+                <tbody class="new_table text-center" id="tablelist">
+                    <tr><td>能力模型</td><td><a href="/Admin/CapabilityModel/Index" onclick="" class=" btn-primary btn-sm  m-r-sm"><i class="fa fa-pencil m-r-xxs"></i>编辑</a></td></tr>
+                    <tr><td>分类标签</td><td><a href="/Admin/HB_QuestionBQ/Index?AllType=1" onclick="" class=" btn-primary btn-sm  m-r-sm"><i class="fa fa-pencil m-r-xxs"></i>编辑</a></td></tr>
+                    <tr><td>学生评级等级</td><td><a href="/Admin/System/Rating" onclick="" class=" btn-primary btn-sm  m-r-sm"><i class="fa fa-pencil m-r-xxs"></i>编辑</a></td></tr>
+                    <tr><td>大厅功能区介绍</td><td><a href="/Admin/AreaIntroduce/Index" onclick="" class=" btn-primary btn-sm  m-r-sm"><i class="fa fa-pencil m-r-xxs"></i>编辑</a></td></tr>
+                </tbody>
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+<script src="~/Js/Admin/SystemParameter/SystemParameter.js"></script>

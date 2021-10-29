@@ -1,0 +1,120 @@
+﻿@{
+                    ViewBag.Title = "Form_091004";
+                    Layout = "~/Views/Shared/_StutentLayoutIsNull.cshtml";
+                }
+               <form id="form1" onsubmit="return false" action="##" method="post">
+                   <input type="hidden" id="FormType" name="FormType" value="@Request["FormType"]" />
+                   <input type="hidden" id="FormId" name="FormId" value="@Request["FormId"]" />
+                   <input type="hidden" id="TRId" name="TRId" value="@Request["TotalResultId"]" />
+                   <input type="hidden" id="ExamId" name="ExamId" value="@Request["ExamId"]" />
+                   <input type="hidden" id="TaskId" name="TaskId" value="@Request["TaskId"]" />
+                   <input type="hidden" id="CustomerId" name="CustomerId" value="@Request["CustomerId"]" />
+                   <input type="hidden" id="LinkId" name="LinkId" value="@Request["LinkId"]" />
+                   <input type="hidden" id="Types" name="Types" value="2" />
+                <!--内容表单区域开始-->
+            <div class="tables bankmap">
+			<div class="banktop"> <span class="toolbar-title-img">                                        <img src="../busi/img/topleft.png">06804-代理数据核查校验</span> <span class="toolbar-title-close" style="display: none;">                                        </span> </div>
+			<div class="con-map2 selected">
+				<table id="qv" class="con-map2-table qv">
+					<tbody>
+						<tr>
+							<td class="" rowspan="1" colspan="1" style="width: 64px;"><label vl-default="" id="label_ywlx" vtitle="业s务s类s型" class="form-item text-left" vl-tipsid="label_ywlx_tips" title="label_ywlx" name="label_ywlx">业<s></s>务<s></s>类<s></s>型</label>
+								<div id="label_ywlx_tips" class="tipsmsg"></div>
+							</td>
+							<td class="" rowspan="1" colspan="3">
+								<div class="slectstyle">
+									<select vl-default="" id="sle_ywlx" vtitle="业务类型" class="form-item text-left" vl-tipsid="sle_ywlx_tips" vl-regex="['require']" vl-message="['业务类型不能为空！']" style="width: 600px;" title="sle_ywlx" vl-slemodel="" name="sle_ywlx">
+										<option disabled="" style="background-color: blue; color: #fff;" value="" selected="selected">业务类型值含义</option>
+										<option value="1">1 - 批量代发账户校验</option>
+										<option value="2">2 - 批量代发账户校验查询</option>
+										<option value="3">3 - 批量开户身份核查</option>
+										<option value="4">4 - 批量开户身份核查查询</option>
+									</select><input type="text" oncopy="return false" onpaste="return false" oncut="return false" style="width: 577px;" id="mb1_sleinput_YeWuLeiXing_2" name="mb1_sleinput_YeWuLeiXing_2"><span class="text-red redtip">!</span></div>
+								<div id="sle_ywlx_tips" class="tipsmsg"></div>
+							</td>
+						</tr>
+						<tr>
+							<td rowspan="1" colspan="1" class="" style="width: 48px;"><label vl-default="" id="label_pch" vtitle="批is次i号" class="form-item text-left" vl-tipsid="label_pch_tips" title="label_pch" name="label_pch">批<i></i><s></s>次<i></i>号</label>
+								<div id="label_pch_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="3" class="">
+								<input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_pch" vtitle="批次号" class="form-item text-left" kuaicha="true" vl-tipsid="txt_pch_tips" vl-regex="['require','maxlength40']" vl-message="['批次号不能为空！','批次号长度大于最大长度:[40]!']" style="width: 600px;" onpaste="return false" name="txt_pch"><img class="sousuo" src="/Js/Student/GetDefaultValue/img/banksousuo.png" vl-select="" vl-exec="false" vl-message="['批次号查询未执行！']" title="执行快查！"><span class="text-red redtip">!</span>
+								<div id="txt_pch_tips" class="tipsmsg"></div>
+							</td>
+						</tr>
+						<tr>
+							<td rowspan="1" colspan="1" class="" style="width: 48px;"><label vl-default="" id="label_zbs" vtitle="总i笔is数" class="form-item text-left" vl-tipsid="label_zbs_tips" title="label_zbs" name="label_zbs">总<i></i>笔<i></i><s></s>数</label>
+								<div id="label_zbs_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class=""><input type="text" oncopy="return false" oncut="return false" vl-default="0" id="txt_zbs99" vtitle="总笔数" class="form-item text-left" vl-disabled="true" vl-tipsid="txt_zbs_tips" style="width: 180px;" title="txt_zbs" onpaste="return false" disabled="disabled" name="txt_zbs">
+								<div id="txt_zbs_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="" style="width: 64px;"><label vl-default="" id="label_cgbs" vtitle="成功笔数" class="form-item text-left" vl-tipsid="label_cgbs_tips" title="label_cgbs" name="label_cgbs">成功笔数</label>
+								<div id="label_cgbs_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class=""><input type="text" oncopy="return false" oncut="return false" vl-default="0" id="txt_cgbs99" vtitle="成功笔数" class="form-item text-left" vl-disabled="true" vl-tipsid="txt_cgbs_tips" style="width: 160px;" title="txt_cgbs" onpaste="return false" disabled="disabled" name="txt_cgbs">
+								<div id="txt_cgbs_tips" class="tipsmsg"></div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="foot "> <span>                                        <button>退出（F3）</button>                                        <button>帮助（F1）</button>                                        <button>辅助（F4）</button>                                        <button type="button" onclick="FormReset()">重置（F5）</button></span> <span style="float: right;">                                        <button type="button" style="margin-right: 0px;" vl-submit="true" id="btnsubmit" onclick="SubmitForm()">提交</button></span> </div>
+			<input type="hidden" class="hidmainwidth" value="1000/" oncopy="return false" onpaste="return false" oncut="return false"> </div><script src="~/Js/Student/GetDefaultValue/common.bank.js"></script>
+              <script src="~/Js/Student/GetDefaultValue/lodash.min.js"></script>
+              <script src="~/Js/Student/GetDefaultValue/common.regex.cz.js"></script>
+              <script src="~/Js/Student/GetDefaultValue/common.regex.js"></script>
+<script src="~/Js/Student/GetDefaultValue/js/layer.js"></script>
+<script src="~/Js/Student/GetDefaultValue/js/My97DatePicker/WdatePicker.js"></script>
+<script type="text/javascript">
+	$(function(){
+		$("#txt_pch").nextAll("img").click(function(){
+			var mycgbs = getCgbs("091004","txt_cgbs");
+			var zhi =$("#sle_ywlx").val();
+			if($("#txt_pch").val().length > 0){
+				if(zhi=="3" ||zhi =="2" || zhi=="1")
+				{
+					if(mycgbs.length > 0 && zhi == "1"){
+						$("#txt_cgbs").val(mycgbs[0]);
+					}
+					if(mycgbs.length > 1 && zhi == "2"){
+						$("#txt_cgbs").val(mycgbs[1]);
+					}
+				}
+				else if(zhi=="4")
+				{
+					// $("#txt_cgbs").val('');
+				}
+			}else{
+				$("#txt_cgbs").val("0");
+				$("#txt_zbs").val("0");
+			}
+		})
+	 function getCgbs(tab,id){
+        var html = $("#DefaultValue").html();
+        var otab = html.split("$");
+        var bb = [];
+        var mnew = [];
+        var thisTab = otab.filter(function(item,i){
+            return item.indexOf(tab) != -1;
+        })
+        thisTab.forEach(function(item){
+            var aa = item.split(";").filter(function(a){
+                return a.indexOf(id) != -1;
+            });
+            bb.push(aa);
+        })
+        bb.forEach(function(item){
+            item.forEach(function(a){
+                if(a.indexOf(id) != -1){
+                    mnew.push(a.substring(a.lastIndexOf("#")+1));
+                }
+            })
+        })
+        return mnew;
+    }
+     	
+	})
+	</script>
+<link href="~/Js/Student/GetDefaultValue/js/common.bank.css" rel="stylesheet" />
+              </form>

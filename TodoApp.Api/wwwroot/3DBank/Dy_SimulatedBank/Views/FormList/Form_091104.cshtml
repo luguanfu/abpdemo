@@ -1,0 +1,170 @@
+﻿@{
+                    ViewBag.Title = "Form_091104";
+                    Layout = "~/Views/Shared/_StutentLayoutIsNull.cshtml";
+                }
+               <form id="form1" onsubmit="return false" action="##" method="post">
+                   <input type="hidden" id="FormType" name="FormType" value="@Request["FormType"]" />
+                   <input type="hidden" id="FormId" name="FormId" value="@Request["FormId"]" />
+                   <input type="hidden" id="TRId" name="TRId" value="@Request["TotalResultId"]" />
+                   <input type="hidden" id="ExamId" name="ExamId" value="@Request["ExamId"]" />
+                   <input type="hidden" id="TaskId" name="TaskId" value="@Request["TaskId"]" />
+                   <input type="hidden" id="CustomerId" name="CustomerId" value="@Request["CustomerId"]" />
+                   <input type="hidden" id="LinkId" name="LinkId" value="@Request["LinkId"]" />
+                   <input type="hidden" id="Types" name="Types" value="2" />
+                <!--内容表单区域开始-->
+            <div class="tables bankmap">
+			<div class="banktop"> <span class="toolbar-title-img">                                        <img src="../busi/img/topleft.png">06904-代理业务处理信息查询</span> <span class="toolbar-title-close" style="display: none;">                                        </span> </div>
+			<div class="con-map2 selected">
+				<table id="qv" class="con-map2-table qv">
+                    <tbody>
+                        <tr>
+                            <td class="" style="width: 64px;">
+                                <label vl-default="" id="label_ywlx" vtitle="业s务s类s型" class="form-item text-left" vl-tipsid="label_ywlx_tips" title="label_ywlx" name="label_ywlx">业<s></s>务<s></s>类<s></s>型</label>
+                                <div id="label_ywlx_tips" class="tipsmsg"></div>
+                            </td>
+                            <td class="" rowspan="1" colspan="3">
+                                <div class="slectstyle">
+                                    <select vl-default="" id="sle_ywlx" vtitle="业务类型" class="form-item text-left" vl-tipsid="sle_ywlx_tips" vl-regex="['require']" vl-message="['业务类型不能为空!']" style="width: 718px;" title="sle_ywlx" vl-slemodel="sle_clzt,txt_cljd,txt_zts,txt_zje,txt_cgts,txt_cgje,txt_sbts,txt_sbje" name="sle_ywlx">
+                                        <option disabled="" style="background-color: blue; color: #fff;" value="" selected="selected">业务类型值含义</option>
+                                        <option value="01">01 - 代发</option>
+                                        <option value="02">02 - 代扣</option>
+                                        <option value="03">03 - 批量开户</option>
+                                        <option value="04">04 - 批量配卡结果查询</option>
+                                    </select><input type="text" oncopy="return false" onpaste="return false" oncut="return false" style="width: 695px;" id="mb1_sleinput_YeWuLeiXing_2" name="mb1_sleinput_YeWuLeiXing_2"><span class="text-red redtip">!</span>
+                                </div>
+                                <div id="sle_ywlx_tips" class="tipsmsg"></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td rowspan="1" colspan="1" class="" style="width: 48px;">
+                                <label vl-default="" id="label_pch" vtitle="批i次is号" class="form-item text-left" vl-tipsid="label_pch_tips" title="label_pch" name="label_pch">批<i></i>次<i></i><s></s>号</label>
+                                <div id="label_pch_tips" class="tipsmsg"></div>
+                            </td>
+                            <td rowspan="1" colspan="3" class="">
+                                <input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_pch" vtitle="批次号" class="form-item text-left" kuaicha="true" vl-tipsid="txt_pch_tips" vl-regex="['require', 'maxlength40']" vl-message="['批次号不能为空！','批次号长度超过最大长度:[40]!']" style="width: 718px;" onpaste="return false" name="txt_pch"><span class="text-red redtip">!</span><img class="sousuo" src="/Js/Student/GetDefaultValue/img/banksousuo.png" vl-exec="true" vl-message="['批次号查询未执行！']" title="执行快查！"><!-- <img class="sousuo" src="../busi/img/banksousuo.png" vl-select="sle_clzt|0|0,txt_zts|0|0,txt_zje|0|0,txt_cgts|0|0,txt_cgje|0|0,txt_sbje|0|0,txt_cgts|0|0,txt_cljd|0|0" vl-exec="false" vl-message="['批次号查询未执行！']"> -->
+                                <div id="txt_pch_tips" class="tipsmsg"></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td rowspan="1" colspan="1" class="" style="width: 64px;">
+                                <label vl-default="" id="label_clzt" vtitle="处s理s状s态" class="form-item text-left" vl-tipsid="label_clzt_tips" title="label_clzt" name="label_clzt">处<s></s>理<s></s>状<s></s>态</label>
+                                <div id="label_clzt_tips" class="tipsmsg"></div>
+                            </td>
+                            <td rowspan="1" colspan="1" class="">
+                                <div class="slectstyle">
+                                    <select vl-default="" id="sle_clzt" vtitle="处理状态" class="form-item text-left" vl-disabled="true" vl-tipsid="sle_clzt_tips" style="width: 240px;" title="sle_clzt" vl-slemodel="" disabled="disabled" name="sle_clzt">
+                                        <option disabled="" style="background-color: blue; color: #fff;" value="" selected="selected">处理状态值含义</option>
+                                        <option value="4">4-处理失败</option>
+                                        <option value="5">5-处理成功</option>
+                                    </select><input type="text" oncopy="return false" onpaste="return false" oncut="return false" disabled="disabled" style="width: 217px;" id="mb1_sleinput_ChuLiZhuangTai_6" name="mb1_sleinput_ChuLiZhuangTai_6">
+                                </div>
+                                <div id="sle_clzt_tips" class="tipsmsg"></div>
+                            </td>
+                            <td rowspan="1" colspan="1" class="" style="width: 64px;">
+                                <label vl-default="" id="label_cljd" vtitle="处s理s进s度" class="form-item text-left" vl-tipsid="label_cljd_tips" title="label_cljd" name="label_cljd">处<s></s>理<s></s>进<s></s>度</label>
+                                <div id="label_cljd_tips" class="tipsmsg"></div>
+                            </td>
+                            <td rowspan="1" colspan="1" class="">
+                                <input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_cljd" vtitle="处理进度" class="form-item text-left" vl-disabled="true" vl-tipsid="txt_cljd_tips" style="width: 240px;" title="txt_cljd" onpaste="return false" disabled="disabled" name="txt_cljd">
+                                <div id="txt_cljd_tips" class="tipsmsg"></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td rowspan="1" colspan="1" class="" style="width: 48px;">
+                                <label vl-default="" id="label_zts" vtitle="总i条is数" class="form-item text-left" vl-tipsid="label_zts_tips" title="label_zts" name="label_zts">总<i></i>条<i></i><s></s>数</label>
+                                <div id="label_zts_tips" class="tipsmsg"></div>
+                            </td>
+                            <td rowspan="1" colspan="1" class="">
+                                <input type="text" oncopy="return false" oncut="return false" vl-default="0" id="txt_zts" vtitle="总条数" class="form-item text-left" vl-disabled="true" vl-tipsid="txt_zts_tips" style="width: 240px;" title="txt_zts" onpaste="return false" disabled="disabled" name="txt_zts">
+                                <div id="txt_zts_tips" class="tipsmsg"></div>
+                            </td>
+                            <td rowspan="1" colspan="1" class="" style="width: 48px;">
+                                <label vl-default="" id="label_zje" vtitle="总i金is额" class="form-item text-left" vl-tipsid="label_zje_tips" title="label_zje" name="label_zje">总<i></i>金<i></i><s></s>额</label>
+                                <div id="label_zje_tips" class="tipsmsg"></div>
+                            </td>
+                            <td rowspan="1" colspan="1" class="">
+                                <input type="text" oncopy="return false" oncut="return false" vl-default="0.00" id="txt_zje" vtitle="总金额" class="form-item text-left" vl-disabled="true" vl-tipsid="txt_zje_tips" style="width: 240px;" title="txt_zje" onpaste="return false" disabled="disabled" name="txt_zje">
+                                <div id="txt_zje_tips" class="tipsmsg"></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td rowspan="1" colspan="1" class="" style="width: 64px;">
+                                <label vl-default="" id="label_cgts" vtitle="成s功s条s数" class="form-item text-left" vl-disabled="true" vl-tipsid="label_cgts_tips" title="label_cgts" disabled="disabled" name="label_cgts">成<s></s>功<s></s>条<s></s>数</label>
+                                <div id="label_cgts_tips" class="tipsmsg"></div>
+                            </td>
+                            <td rowspan="1" colspan="1" class="">
+                                <input type="text" oncopy="return false" oncut="return false" vl-default="0" id="txt_cgts" vtitle="成功条数" class="form-item text-left" vl-disabled="true" vl-tipsid="txt_cgts_tips" style="width: 240px;" title="txt_cgts" onpaste="return false" disabled="disabled" name="txt_cgts">
+                                <div id="txt_cgts_tips" class="tipsmsg"></div>
+                            </td>
+                            <td rowspan="1" colspan="1" class="" style="width: 64px;">
+                                <label vl-default="" id="label_cgje" vtitle="成s功s金s额" class="form-item text-left" vl-tipsid="label_cgje_tips" title="label_cgje" name="label_cgje">成<s></s>功<s></s>金<s></s>额</label>
+                                <div id="label_cgje_tips" class="tipsmsg"></div>
+                            </td>
+                            <td rowspan="1" colspan="1" class="">
+                                <input type="text" oncopy="return false" oncut="return false" vl-default="0.00" id="txt_cgje" vtitle="成功金额" class="form-item text-left" vl-disabled="true" vl-tipsid="txt_cgje_tips" style="width: 240px;" title="txt_cgje" onpaste="return false" disabled="disabled" name="txt_cgje">
+                                <div id="txt_cgje_tips" class="tipsmsg"></div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td rowspan="1" colspan="1" class="" style="width: 64px;">
+                                <label vl-default="" id="label_sbts" vtitle="失s败s条s数" class="form-item text-left" vl-disabled="true" vl-tipsid="label_sbts_tips" title="label_sbts" disabled="disabled" name="label_sbts">失<s></s>败<s></s>条<s></s>数</label>
+                                <div id="label_sbts_tips" class="tipsmsg"></div>
+                            </td>
+                            <td rowspan="1" colspan="1" class="">
+                                <input type="text" oncopy="return false" oncut="return false" vl-default="0" id="txt_sbts" vtitle="失败条数" class="form-item text-left" vl-disabled="true" vl-tipsid="txt_sbts_tips" style="width: 240px;" title="txt_sbts" onpaste="return false" disabled="disabled" name="txt_sbts">
+                                <div id="txt_sbts_tips" class="tipsmsg"></div>
+                            </td>
+                            <td rowspan="1" colspan="1" class="" style="width: 64px;">
+                                <label vl-default="" id="label_sbje" vtitle="失s败s金s额" class="form-item text-left" vl-tipsid="label_sbje_tips" title="label_sbje" name="label_sbje">失<s></s>败<s></s>金<s></s>额</label>
+                                <div id="label_sbje_tips" class="tipsmsg"></div>
+                            </td>
+                            <td rowspan="1" colspan="1" class="">
+                                <input type="text" oncopy="return false" oncut="return false" vl-default="0" id="txt_sbje" vtitle="失败金额" class="form-item text-left" vl-disabled="true" vl-tipsid="txt_sbje_tips" style="width: 240px;" title="txt_sbje" onpaste="return false" disabled="disabled" name="txt_sbje">
+                                <div id="txt_sbje_tips" class="tipsmsg"></div>
+                            </td>
+                        </tr>
+                    </tbody>
+				</table>
+			</div>
+			<div class="foot "> <span>                                        <button>退出（F3）</button>                                        <button>帮助（F1）</button>                                        <button>辅助（F4）</button>                                        <button type="button" onclick="FormReset()">重置（F5）</button></span> <span style="float: right;">                                        <button type="button" style="margin-right: 0px;" vl-submit="true" id="btnsubmit" onclick="SubmitForm()">提交</button></span> </div> <input type="hidden" class="hidmainwidth" value="1000/" oncopy="return false" onpaste="return false" oncut="return false"> </div><script src="~/Js/Student/GetDefaultValue/common.bank.js"></script>
+              <script src="~/Js/Student/GetDefaultValue/lodash.min.js"></script>
+              <script src="~/Js/Student/GetDefaultValue/common.regex.cz.js"></script>
+              <script src="~/Js/Student/GetDefaultValue/common.regex.js"></script>
+<script src="~/Js/Student/GetDefaultValue/js/layer.js"></script>
+<script src="~/Js/Student/GetDefaultValue/js/My97DatePicker/WdatePicker.js"></script>
+
+<link href="~/Js/Student/GetDefaultValue/js/common.bank.css" rel="stylesheet" />
+              </form>
+
+<script> 
+    $(document).ready(function () {
+        getDefault();
+    })
+     
+    //获取默认值
+    function getDefault() {
+        var TMNO = "091104";
+        var TaskId = getQueryString("TaskId");
+        $.ajax({
+            url: "/GetDefaultValue/GetDefaultValue",
+            data: { "TaskId": TaskId, "TMNO": TMNO },
+            type: 'POST',
+            async: false,
+            dataType: 'json',
+            success: function (data) {
+                if (data.length > 0) {
+                    if (document.getElementById("DefaultValue")) {
+                        //存在 
+                        var box = document.getElementById("DefaultValue");
+                        box.remove();
+                        $(".bankmap").append('<input type="hidden" id="DefaultValue" name="DefaultValue" value="' + data[0]["DefaultValue"] + '" />');
+
+                    } else {
+                        $(".bankmap").append('<input type="hidden" id="DefaultValue" name="DefaultValue" value="' + data[0]["DefaultValue"] + '" />');
+                    }
+
+                }
+            }
+        });
+    }
+</script>

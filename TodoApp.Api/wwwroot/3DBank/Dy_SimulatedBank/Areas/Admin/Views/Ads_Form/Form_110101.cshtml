@@ -1,0 +1,493 @@
+﻿@{
+                    ViewBag.Title = "Form_110101";
+                    Layout = "~/Views/Shared/_AdminLayoutIsNull.cshtml";
+                }
+               <script src="~/Js/Admin/AdminForm.js"></script>
+               <script src="~/Js/Admin/CaseManagement/AddDefaultValue.js"></script>
+               <form id="form1" onsubmit="return false" action="##" method="post">
+                  <input type="hidden" id="TaskId" name="TaskId" value="@Request["TaskId"]" />
+                  <input type="hidden" id="CustomerId" name="CustomerId" value="@Request["CustomerId"]" />
+                  <input type="hidden" id="FormId" name="FormId" value="@Request["FormId"]" />
+                  <input type="hidden" id="Types" name="Types" value="@Request["Types"]" />
+                <!--内容表单区域开始-->
+            <div class="tables bankmap">
+
+			<div class="con-map current"> <span class="top-title">基本信息 <span id="dianji_con" style="cursor: pointer;">▼</span></span>
+				<table id="qv" class="con-map2-table qv">
+					<tbody>
+						<tr>
+							<td class="" style="width: 68px;"><label vl-default="" id="label_zjlx" vtitle="证件类型:" class="form-item text-left on" vl-tipsid="label_zjlx_tips" title="label_zjlx">证件类型:</label>
+								<div id="label_zjlx_tips" class="tipsmsg"></div>
+							</td>
+                            <td class="" rowspan="1" colspan="1">
+
+                                <div class="slectstyle">
+                                    <select vl-default="" vtitle="证件类型" class="form-item text-left" vl-tipsid="sle_typeofdoc_tips" vl-regex="['require']" vl-message="['证件类型不能为空！']" style="width: 180px;" title="sle_typeofdoc" vl-slemodel="txt_numberofdoc,txt_numberofdoc,txt_numberofdoc,txt_numberofdoc" name="sle_typeofdoc">
+                                        <option selected="" value="" hidden=""></option>
+                                        <option disabled="" style="background-color: blue; color: #fff;" value="" selected="selected">证件类型值含义</option>
+                                        <option sle-require="[{'id':'txt_numberofdoc','regex':['require','maxlength20','idcard'],'tips':['身份证不能为空','身份证长度大于最大长度:[20]!','证件号码身份证位数不正确(应为15位或者18位)！'],'disabled':'false*false*false','default':''}]" value="1">1- 居民身份证</option>
+                                        <option sle-require="[{'id':'txt_numberofdoc','regex':['require','maxlength20','idcard'],'tips':['身份证不能为空','身份证长度大于最大长度:[20]!','证件号码身份证位数不正确(应为15位或者18位)！'],'disabled':'false*false*false','default':''}]" value="2">2- 临时居民身份证</option>
+                                        <option sle-require="[{'id':'txt_numberofdoc','regex':['require','maxlength20','idcard'],'tips':['身份证不能为空','身份证长度大于最大长度:[20]!','证件号码身份证位数不正确(应为15位或者18位)！'],'disabled':'false*false*false','default':''}]" value="3">3- 居民户口薄（16周岁以下）</option>
+                                        <option sle-require="[{'id':'txt_numberofdoc','regex':['require','maxlength32'],'tips':['证件号码不能为空！','证件号码长度大于最大长度:[32]！'],'disabled':'false*false','default':''}]" value="4">4- 军官证</option>
+                                        <option value="5">5- 警官证</option>
+                                        <option value="6">6- 士兵证</option>
+                                        <option value="7">7- 军队学员证</option>
+                                        <option value="8">8- 军队文职干部证</option>
+                                        <option value="9">9- 军队离退休干部证和军队职员证</option>
+                                        <option value="10">10- 中国护照</option>
+                                        <option value="11">11- 护照（外国公民）</option>
+                                        <option value="12">12- 海员证</option>
+                                        <option value="13">13- 港澳同胞回乡证</option>
+                                        <option value="14">14- 港澳居民来往大陆通行证</option>
+                                        <option value="15">15- 中华人民共和国往来港澳通行证</option>
+                                        <option value="16">16- 台湾居民来往大陆通行证</option>
+                                        <option value="16">16- 台湾居民来往大陆通行证</option>
+                                        <option value="17">17- 大陆居民往来台湾通行证</option>
+                                        <option value="18">18- 外国人居留证</option>
+                                        <option value="19">19- 外国人出入境证</option>
+                                        <option value="20">20- 外交官证</option>
+                                        <option value="21">21- 领事馆证</option>
+                                        <option value="22">22- 其他</option>
+                                    </select><input type="text" oncopy="return true" onpaste="return true" oncut="return true" style="width: 157px;" id="sle_zjlx" name="sle_zjlx" autocomplete="off"><span class="text-red redtip">!</span>
+                                </div>
+                                <div id="sle_zjlx_tips" class="tipsmsg"></div>
+                            </td>
+						</tr>
+						<tr>
+							<td rowspan="1" colspan="1" class="" style="width: 68px;"><label vl-default="" id="label_zjhm" vtitle="证件号码:" class="form-item text-left on" vl-tipsid="label_zjhm_tips" title="label_zjhm">证件号码:</label>
+								<div id="label_zjhm_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class=""><input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_zjhm" name="txt_zjhm" vtitle="证件号码" kuaicha="true" class="form-item text-left on" vl-tipsid="txt_zjhm_tips" vl-regex="['require','maxlength20','idcard']" vl-message="['证件号码不能为空!','证件号码长度大于最大长度:[20]!','证件号码身份证位数不正确(应为15位或者18位)!']" style="width: 180px;" title="txt_zjhm" onpaste="return false">
+								<img class="sousuo" src="/busi/img/banksousuo.png" vl-exec="false" vl-message="['证件号码查询未执行！']" title="执行快查！"><span class="text-red redtip">!</span>
+								<div id="txt_zjhm_tips" class="tipsmsg"></div>
+							</td>
+						</tr>
+						<tr>
+							<td rowspan="1" colspan="1" class="" style="width: 36px;"><label vl-keyup="wwww" vl-default="" id="label_hm" vtitle="户ii名:" class="form-item text-left" vl-tipsid="label_hm_tips" title="label_hm">户<i></i><i></i>名:</label>
+								<div id="label_hm_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class=""><input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_hm" name="txt_hm" vtitle="户名" class="form-item text-left" vl-tipsid="txt_hm_tips" vl-regex="['maxlength20', 'hascode']" vl-message="['户名长度大于最大长度:[20]!','户名不能全为数字!']" style="width: 180px;" title="txt_hm" onpaste="return false">
+								<div id="txt_hm_tips" class="tipsmsg"></div>
+							</td>
+						</tr>
+
+					</tbody>
+				</table>
+				<div class="foot"><button id="search">查询</button><button type="button" onclick="FormReset()">重置</button>
+                       <button type="button " style="margin-right: 0px; " vl-submit="true" id="btnsubmit" onclick="SubmitForm()"> 提交</button></div>
+			</div>
+			<div class="next" >
+
+				<div class="con-map selected"><span class="top-title">第一步:填写个人客户基本资料 <span id="dianji_con" style="cursor: pointer;">▼</span></span>
+					<table id="qv" class="con-map2-table qv">
+						<tbody>
+							<tr>
+								<td class="" style="width: 0px;"><label vl-default="" id="label_khxm" vtitle="客户姓名:" class="form-item text-left" vl-tipsid="label_khxm_tips" title="label_khxm">客户姓名:</label>
+									<div id="label_khxm_tips" class="tipsmsg"></div>
+								</td>
+								<td class=""><input type="text" oncopy="return false" oncut="return false" vl-keyup="wwww" vl-default="" id="txt_khxm" vtitle="客户姓名" class="form-item text-left" vl-tipsid="txt_khxm_tips" style="width: 180px;" title="txt_khxm" onpaste="return false">
+									<div id="txt_khxm_tips" class="tipsmsg"></div>
+								</td>
+								<td class="" style="width: 0px;"><label vl-default="" id="label_khmc" vtitle="客户名称（拼音或英文）:" class="form-item text-left" vl-tipsid="label_khmc_tips" title="label_khmc">客户名称（拼音或英文）:</label>
+									<div id="label_khmc_tips" class="tipsmsg"></div>
+								</td>
+								<td class=""><input onkeyup="value=value.replace(/[\d]/g,'') " onbeforepaste="clipboardData.setData('text',clipboardData.getData('text').replace(/[\d]/g,''))" type="text" oncopy="return false" oncut="return false" vl-keyup="wwww" vl-default="" id="txt_khmc" vtitle="客户名称（拼音或英文）" class="form-item text-left on" vl-tipsid="txt_khmc_tips" vl-regex="['require', 'maxlength20', 'shuziandmu']" vl-message="['客户名称（拼音或英文）不能为空!','客户名称长度大于最大长度:[20]!','客户名称输入错误!']" style="width: 180px;" title="txt_khmc" onpaste="return false"><span class="text-red redtip">!</span>
+									<div id="txt_khmc_tips" class="tipsmsg"></div>
+								</td>
+							</tr>
+							<tr>
+								<td rowspan="1" colspan="1" class="" style="width: 0px;"><label vl-default="" id="label_zjlx1" vtitle="证件类型:" class="form-item text-left on" vl-tipsid="label_zjlx1_tips" title="label_zjlx1">证件类型:</label>
+									<div id="label_zjlx1_tips" class="tipsmsg"></div>
+								</td>
+								<td rowspan="1" colspan="1" class="">
+									<div class="slectstyle">
+										<select vl-keyup="wwww" vl-default="" id="sle_zjlx1" vtitle="证件类型" class="form-item text-left" vl-tipsid="sle_zjlx1_tips" style="width: 180px;" title="sle_zjlx1" vl-slemodel="txt_zjhm1">
+											<option disabled="" style="background-color: blue; color: #fff;" value="" selected="selected">证件类型值含义</option>
+											<option sle-require="[{" 'id':="" 'txt_zjhm1',="" 'regex':[="" 'require',="" 'maxlength20',="" 'idcard'],="" 'tips':[="" '证件号码不能为空!',="" '证件号码长度大于最大长度:[20]!',="" '证件号码身份证位数不正确(应为15位或者18位)!'],="" 'disabled':="" 'false*false*false',="" 'default':="" ''}]="" value="1">1 - 居民身份证</option>
+											<option sle-require="[{" 'id':="" 'txt_zjhm1',="" 'regex':[="" 'require',="" 'maxlength20',="" 'idcard'],="" 'tips':[="" '证件号码不能为空!',="" '证件号码长度大于最大长度:[20]!',="" '证件号码身份证位数不正确(应为15位或者18位)!'],="" 'disabled':="" 'false*false*false',="" 'default':="" ''}]="" value="2">2 - 临时身份证</option>
+											<option sle-require="[{" 'id':="" 'txt_zjhm1',="" 'regex':[="" 'require',="" 'maxlength20',="" 'idcard'],="" 'tips':[="" '证件号码不能为空!',="" '证件号码长度大于最大长度:[20]!',="" '证件号码身份证位数不正确(应为15位或者18位)!'],="" 'disabled':="" 'false*false*false',="" 'default':="" ''}]="" value="3">3 - 户口簿（16周岁以下）</option>
+											<option sle-require="[{" 'id':="" 'txt_zjhm1',="" 'regex':[="" 'require',="" 'maxlength40',="" 'shuziandmu'],="" 'tips':[="" '证件号码不能为空!',="" '证件号码长度大于最大长度:[40]!',="" '证件号码长度大于最大长度:[40]!'],="" 'disabled':="" 'false*false*false',="" 'default':="" ''}]="" value="4">4 - 港澳居民来往内地通行证</option>
+											<option sle-require="[{" 'id':="" 'txt_zjhm1',="" 'regex':[="" 'require',="" 'maxlength40',="" 'shuziandmu'],="" 'tips':[="" '证件号码不能为空!',="" '证件号码长度大于最大长度:[40]!',="" '证件号码长度大于最大长度:[40]!'],="" 'disabled':="" 'false*false*false',="" 'default':="" ''}]="" value="5">5 - 台湾居民来往大陆通行证</option>
+											<option sle-require="[{" 'id':="" 'txt_zjhm1',="" 'regex':[="" 'require',="" 'maxlength40',="" 'shuziandmu'],="" 'tips':[="" '证件号码不能为空!',="" '证件号码长度大于最大长度:[40]!',="" '证件号码长度大于最大长度:[40]!'],="" 'disabled':="" 'false*false*false',="" 'default':="" ''}]="" value="6">6 - 中国护照（华侨）</option>
+											<option sle-require="[{" 'id':="" 'txt_zjhm1',="" 'regex':[="" 'require',="" 'maxlength40',="" 'shuziandmu'],="" 'tips':[="" '证件号码不能为空!',="" '证件号码长度大于最大长度:[40]!',="" '证件号码长度大于最大长度:[40]!'],="" 'disabled':="" 'false*false*false',="" 'default':="" ''}]="" value="7">7 - 护照（外国公民）</option>
+											<option sle-require="[{" 'id':="" 'txt_zjhm1',="" 'regex':[="" 'require',="" 'maxlength40',="" 'shuziandmu'],="" 'tips':[="" '证件号码不能为空!',="" '证件号码长度大于最大长度:[40]!',="" '证件号码长度大于最大长度:[40]!'],="" 'disabled':="" 'false*false*false',="" 'default':="" ''}]="" value="8">8 - 外国人永久居留证</option>
+											<option sle-require="[{" 'id':="" 'txt_zjhm1',="" 'regex':[="" 'require',="" 'maxlength40',="" 'shuziandmu'],="" 'tips':[="" '证件号码不能为空!',="" '证件号码长度大于最大长度:[40]!',="" '证件号码长度大于最大长度:[40]!'],="" 'disabled':="" 'false*false*false',="" 'default':="" ''}]="" value="9">9 - 边民证</option>
+											<option sle-require="[{" 'id':="" 'txt_zjhm1',="" 'regex':[="" 'require',="" 'maxlength40',="" 'shuziandmu'],="" 'tips':[="" '证件号码不能为空!',="" '证件号码长度大于最大长度:[40]!',="" '证件号码长度大于最大长度:[40]!'],="" 'disabled':="" 'false*false*false',="" 'default':="" ''}]="" value="L">L-其他（个人）</option>
+											<option sle-require="[{" 'id':="" 'txt_zjhm1',="" 'regex':[="" 'require',="" 'maxlength40',="" 'shuziandmu'],="" 'tips':[="" '证件号码不能为空!',="" '证件号码长度大于最大长度:[40]!',="" '证件号码长度大于最大长度:[40]!'],="" 'disabled':="" 'false*false*false',="" 'default':="" ''}]="" value="Q">Q-军人/武装警察证</option>
+										</select><input type="text" oncopy="return false" onpaste="return false" oncut="return false" style="width: 157px;"></div>
+									<div id="sle_zjlx1_tips" class="tipsmsg"></div>
+								</td>
+								<td rowspan="1" colspan="1" class="" style="width: 0px;"><label vl-default="" id="label_zjhm1" vtitle="证件号码:" class="form-item text-left on" vl-tipsid="label_zjhm1_tips" title="label_zjhm1">证件号码:</label>
+									<div id="label_zjhm1_tips" class="tipsmsg"></div>
+								</td>
+								<td rowspan="1" colspan="1" class=""><input type="text" oncopy="return false" oncut="return false" vl-keyup="wwww" vl-default="" id="txt_zjhm1" vtitle="证件号码" class="form-item text-left" vl-tipsid="txt_zjhm1_tips" style="width: 180px;" title="txt_zjhm1" onpaste="return false">
+									<div id="txt_zjhm1_tips" class="tipsmsg"></div>
+								</td>
+							</tr>
+							<tr>
+								<td rowspan="1" colspan="1" class="" style="width: 0px;"><label vl-default="" id="label_sjhm" vtitle="手机号码:" class="form-item text-left on" vl-tipsid="label_sjhm_tips" title="label_sjhm">手机号码:</label>
+									<div id="label_sjhm_tips" class="tipsmsg"></div>
+								</td>
+								<td rowspan="1" colspan="3" class=""><input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_sjhm" vtitle="手机号码" class="form-item text-left on" vl-tipsid="txt_sjhm_tips" vl-regex="['require', 'minlength11', 'maxlength11', 'mobile']" vl-message="['手机号码不能为空!','手机号码应该为11位!','手机号码应该为11位!','手机号码输入错误!']" style="width: 180px;" title="txt_sjhm" onpaste="return false"><span class="text-red redtip">!</span> &nbsp;&nbsp;<button id="sb_send">发送短信验证码</button>
+									<div id="txt_sjhm_tips" class="tipsmsg"></div>
+								</td>
+							</tr>
+							<tr>
+								<td rowspan="1" colspan="1" class="" style="width: 0px;"><label vl-default="" id="label_srdxyzm" vtitle="输入短信验证码:" class="form-item text-left on" vl-tipsid="label_srdxyzm_tips" title="label_srdxyzm">输入短信验证码:</label>
+									<div id="label_srdxyzm_tips" class="tipsmsg"></div>
+								</td>
+								<td rowspan="1" colspan="3" class=""><input type="password" oncopy="return false" vl-disabled="true" oncut="return false" vl-default="" id="txt_srdxyzm" vtitle="输入短信验证码" class="form-item text-left on" vl-tipsid="txt_srdxyzm_tips" vl-regex="['require', 'maxlength20', 'shuziandmu']" vl-message="['短信验证码不能为空!','短信验证码长度超过最大长度:[20]!','短信验证码输入错误!']" style="width: 180px;" title="txt_srdxyzm" onpaste="return false" disabled="disabled"><span class="text-red redtip">!</span> &nbsp;&nbsp;<button id="sb_srdxyzm">输入短信验证码</button>&nbsp;&nbsp;<button id="sb_input_msg">验证短信验证码</button>
+									<div id="txt_srdxyzm_tips" class="tipsmsg"></div>
+								</td>
+							</tr>
+							<tr>
+								<td rowspan="1" colspan="1" class="" style="width: 0px;"><label vl-default="" id="label_dzyx" vtitle="电子邮箱:" class="form-item text-left on" vl-tipsid="label_dzyx_tips" title="label_dzyx">电子邮箱:</label>
+									<div id="label_dzyx_tips" class="tipsmsg"></div>
+								</td>
+								<td rowspan="1" colspan="3" class=""><input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_dzyx" vtitle="电子邮箱" class="form-item text-left on" vl-tipsid="txt_dzyx_tips" vl-regex="['email', 'maxlength40']" vl-message="['电子邮箱输入错误!','电子邮箱长度大于最大长度:[40]!']" style="width: 180px;" title="txt_dzyx" onpaste="return false">
+									<div id="txt_dzyx_tips" class="tipsmsg"></div>
+								</td>
+							</tr>
+							<tr>
+								<td rowspan="1" colspan="1" class="" style="width: 0px;"><label vl-default="" id="label_lxdz" vtitle="联系地址:" class="form-item text-left on" vl-tipsid="label_lxdz_tips" title="label_lxdz">联系地址:</label>
+									<div id="label_lxdz_tips" class="tipsmsg"></div>
+								</td>
+								<td rowspan="1" colspan="3" class=""><input type="text" oncopy="return false" oncut="return false" vl-keyup="wwww" vl-default="" id="txt_lxdz" vtitle="联系地址" class="form-item text-left" vl-tipsid="txt_lxdz_tips" vl-regex="['maxlength120']" vl-message="['联系地址长度大于最大长度:[120]!']" style="width: 180px;" title="txt_lxdz" onpaste="return false">
+									<div id="txt_lxdz_tips" class="tipsmsg"></div>
+								</td>
+							</tr>
+							<tr>
+								<td rowspan="1" colspan="1" class="" style="width: 0px;"><label vl-default="" id="label_yzbm" vtitle="邮政编码:" class="form-item text-left on" vl-tipsid="label_yzbm_tips" title="label_yzbm">邮政编码:</label>
+									<div id="label_yzbm_tips" class="tipsmsg"></div>
+								</td>
+								<td rowspan="1" colspan="1" class=""><input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_yzbm" vtitle="邮政编码" class="form-item text-left on" vl-tipsid="txt_yzbm_tips" vl-regex="['minlength6', 'maxlength6', 'zipcode', 'number']" vl-message="['邮政编码长度为6位!','邮政编码长度为6位!','邮政编码输入错误!','邮政编码输入错误!']" style="width: 180px;" title="txt_yzbm" onpaste="return false">
+									<div id="txt_yzbm_tips" class="tipsmsg"></div>
+								</td>
+								<td rowspan="1" colspan="1" class="" style="width: 0px;"><label vl-default="" id="label_lxdh" vtitle="联系电话:" class="form-item text-left on" vl-tipsid="label_lxdh_tips" title="label_lxdh">联系电话:</label>
+									<div id="label_lxdh_tips" class="tipsmsg"></div>
+								</td>
+								<td rowspan="1" colspan="1" class=""><input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_lxdh" vtitle="联系电话" class="form-item text-left on" vl-tipsid="txt_lxdh_tips" vl-regex="['connect', 'maxlength15']" vl-message="['联系电话输入错误!','联系电话长度大于最大长度:[15]!']" style="width: 180px;" title="txt_lxdh" onpaste="return false">
+									<div id="txt_lxdh_tips" class="tipsmsg"></div>
+								</td>
+							</tr>
+							<tr>
+								<td rowspan="1" colspan="1" class="" style="width: 0px;"><label vl-default="" id="label_khjlbh" vtitle="客户经理编号:" class="form-item text-left on" vl-tipsid="label_khjlbh_tips" title="label_khjlbh">客户经理编号:</label>
+									<div id="label_khjlbh_tips" class="tipsmsg"></div>
+								</td>
+								<td rowspan="1" colspan="1" class=""><input type="text" oncopy="return false" oncut="return false" vl-keyup="wwww" vl-default="" id="txt_khjlbm" vtitle="客户经理编号" class="form-item text-left" vl-tipsid="txt_khjlbm_tips" vl-regex="['maxlength40']" vl-message="['客户经理编号长度超过最大长度:[40]!']" style="width: 180px;" onpaste="return false">
+									<div id="txt_khjlbm_tips" class="tipsmsg"></div>
+								</td>
+								<td rowspan="1" colspan="1" class="" style="width: 0px;"><label vl-default="" id="label_khjlxm" vtitle="客户经理姓名:" class="form-item text-left" vl-tipsid="label_khjlxm_tips" title="label_khjlxm">客户经理姓名:</label>
+									<div id="label_khjlxm_tips" class="tipsmsg"></div>
+								</td>
+								<td rowspan="1" colspan="1" class=""><input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_khjlxm" vtitle="客户经理姓名" class="form-item text-left on" vl-tipsid="txt_khjlxm_tips" vl-regex="['maxlength20', 'hascode']" vl-message="['客户经理姓名长度超过最大长度:[20]!','客户经理名字不能全为数字!']" style="width: 180px;" title="txt_khjlxm" onpaste="return false">
+									<div id="txt_khjlxm_tips" class="tipsmsg"></div>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="con-map"><span class="top-title">第二步:选择开通渠道<span id="dianji_con" style="cursor: pointer;">▼</span></span>
+					<table id="qv" class="con-map2-table qv">
+						<tbody>
+							<tr>
+								<td colspan="1" rowspan="2" class="" style="width: 0px;"><label vl-default="" id="label_ktqdrzfs" vtitle="开通渠道及认证方式:" class="form-item text-left" vl-tipsid="label_ktqdrzfs_tips" title="label_ktqdrzfs">开通渠道及认证方式:</label>
+									<div id="label_ktqdrzfs_tips" class="tipsmsg"></div>
+								</td>
+								<td rowspan="1" colspan="2" class=""><input type="checkbox" vl-default="" id="check_wy" vtitle="网银" class="form-item text-left" vl-tipsid="check_wy_tips" title="check_wy" oncopy="return false" onpaste="return false" oncut="return false" value="">
+									<div id="check_wy_tips" class="tipsmsg"></div>网银</td>
+							</tr>
+							<tr>
+								<td colspan="1" class="" rowspan="1"><input type="checkbox" vl-default="" id="check_sjyh" vtitle="手机银行" class="form-item text-left" vl-tipsid="check_sjyh_tips" title="check_sjyh" oncopy="return false" onpaste="return false" oncut="return false" value="">
+									<div id="check_sjyh_tips" class="tipsmsg"></div>手机银行</td>
+								<td rowspan="1" colspan="1" class=""><input type="radio" vl-default="" name="rediobank" id="redio_sjdt" vtitle="手机动态" class="form-item text-left" vl-tipsid="redio_sjdt_tips" style="width: 30px;" title="redio_sjdt" oncopy="return false" onpaste="return false" oncut="return false" value="">手机动态
+									</td><td rowspan="1" colspan="1" class=""><input type="radio" vl-default="" name="rediobank" id="redio_vdun" vtitle="V盾" class="form-item text-left" vl-tipsid="redio_vdun_tips" style="width: 30px;" title="redio_vdun" oncopy="return false" onpaste="return false" oncut="return false" value="">V盾
+										<div id="redio_vdun_tips" class="tipsmsg"></div>
+									</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="con-map"><span class="top-title">第三步:下挂账户<span id="dianji_con" style="cursor: pointer;">▼</span></span>
+					<table id="qv" class="con-map2-table qv">
+						<tbody>
+							<tr>
+								<td class="" rowspan="3" style="width: 0px;"><label vl-default="" id="label_srqyzhxx" vtitle="输入签约账户信息:" class="form-item text-left" vl-tipsid="label_srqyzhxx_tips" title="label_srqyzhxx">输入签约账户信息:</label>
+									<div id="label_srqyzhxx_tips" class="tipsmsg"></div>
+								</td>
+								<td class="" rowspan="1" colspan="1" style="width: 0px;"><label vl-default="" id="label_qyzh" vtitle="签约账户:" class="form-item text-left" vl-tipsid="label_qyzh_tips" title="label_qyzh">签约账户:</label>
+									<div id="label_qyzh_tips" class="tipsmsg"></div>
+								</td>
+								<td colspan="1" rowspan="1" class=""><input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_qyzh" vtitle="签约账户" class="form-item text-left" vl-tipsid="txt_qyzh_tips" vl-regex="['require', 'maxlength32', 'number']" vl-message="['签约账户不能为空!','签约账户长度超过最大长度:[32]!','签约账户输入错误!']" style="width: 180px;" title="txt_qyzh" onpaste="return false"><span class="text-red redtip">!</span>
+									<div id="txt_qyzh_tips" class="tipsmsg"></div>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="1" class="" style="width: 0px;"><label vl-default="" id="label_qkmm" vtitle="取款密码:ii输入密码" class="form-item text-left" vl-tipsid="label_qkmm_tips" title="label_qkmm">取款密码:<i></i><i></i><button id="sb_srqkmm">输入密码</button></label>
+									<div id="label_qkmm_tips" class="tipsmsg"></div>
+								</td>
+								<td rowspan="1" colspan="1" class=""><input type="password" oncopy="return false" vl-disabled="" onpaste="return false" oncut="return false" vl-default="" id="pwd_qkmm" vtitle="取款密码" class="form-item text-left" vl-tipsid="pwd_qkmm_tips" vl-regex="['require', 'minlength6', 'maxlength6', 'number']" vl-message="['取款密码不能为空!','取款密码长度为6位!','取款密码长度为6位!','取款密码输入错误!']" style="width: 180px;" title="pwd_qkmm"><span class="text-red redtip">!</span> &nbsp;&nbsp;<button id="sb_xgzh">下挂账户</button>
+									<div id="pwd_qkmm_tips" class="tipsmsg"></div>
+								</td>
+							</tr>
+							<tr>
+								<td colspan="2" class="" rowspan="1" style="width: 0px;"><label vl-default="" id="label_txgy" vtitle="提示用户输入密码" class="form-item text-left" vl-tipsid="label_txgy_tips" title="label_txgy">提醒柜员:点击"输入密码"，提示用户输入密码</label>
+									<div id="label_txgy_tips" class="tipsmsg"></div>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					<div class="l-box" style="height:auto;">
+						<div class="toolbar">
+							签约账户列表
+						</div>
+						<table id="aaa" cellspacing="0" cellpadding="0">
+							<tbody><tr>
+								<td>渠道</td>
+								<td>账户</td>
+								<td>账户类型</td>
+								<td>账户开户网点</td>
+								<td>单笔限额</td>
+								<td>日累计限额</td>
+								<td>单日最大笔数</td>
+								<td>年累计限额</td>
+								<td>操作</td>
+							</tr>
+							<tr>
+								<td>手机</td>
+								<td id="xgzh">6217790001084850425</td>
+								<td>活期</td>
+								<td>贵州遵义汇川农村<br>商业银行股份有限公司</td>
+								<td>111111.00</td>
+								<td>111111.00</td>
+								<td>1111</td>
+								<td>111111.00</td>
+								<td><button>删除</button></td>
+							</tr>
+						</tbody></table>
+					</div>
+				</div>
+				<div class="con-map"><span class="top-title">设置登录密码 <span id="dianji_con" style="cursor: pointer;">▼</span></span>
+					<table id="qv" class="con-map2-table qv">
+						<tbody>
+							<tr>
+								<td class="" style="width: 0px;"><label vl-default="" id="label_dlmm" vtitle="登录密码:" class="form-item text-left" vl-tipsid="label_dlmm_tips" title="label_dlmm">登录密码:</label>
+									<div id="label_dlmm_tips" class="tipsmsg"></div>
+								</td>
+								<td class=""><input type="password" oncopy="return false" onpaste="return false" oncut="return false" vl-default="" id="pwd_dlmm" vl-disabled="" vtitle="登录密码" class="form-item text-left" vl-tipsid="pwd_dlmm_tips" vl-regex="['require', 'minlength6', 'maxlength6', 'number']" vl-message="['登录密码不能为空!','登录密码为6位!','登录密码为6位!','登录密码输入错误!']" style="width: 180px;" title="pwd_dlmm"><span class="text-red redtip">!</span>&nbsp;&nbsp;<button id="sb_srdlmm">输入登录密码</button>
+									<div id="pwd_dlmm_tips" class="tipsmsg"></div>
+								</td>
+								<td class="" style="width: 0px;"><label vl-default="" id="label_qrdlmm" vtitle="确认登录密码:" class="form-item text-left" vl-tipsid="label_qrdlmm_tips" title="label_qrdlmm">确认登录密码:</label>
+									<div id="label_qrdlmm_tips" class="tipsmsg"></div>
+								</td>
+								<td class=""><input type="password" oncopy="return false" onpaste="return false" oncut="return false" vl-default="" id="pwd_qrdlmm" vtitle="确认登录密码" class="form-item text-left" vl-tipsid="pwd_qrdlmm_tips" vl-regex="['require', 'minvalue6', 'maxlength6', 'number']" vl-message="['确认登录密码不能为空!','确认登录密码为6位!','确认登录密码为6位!','确认登录密码输入错误!']" style="width: 180px;" title="pwd_qrdlmm"><span class="text-red redtip">!</span>&nbsp;&nbsp;<button class="yzjdmm">验证是否为简单密码</button>
+									<div id="pwd_qrdlmm_tips" class="tipsmsg"></div>
+								</td>
+							</tr>
+							<tr>
+								<td rowspan="1" colspan="4" class="" style="width: 0px;"><label vl-default="" id="label_srlw" vtitle="提醒客户:请输入六位登录密码!" class="form-item text-left on" vl-tipsid="label_srlw_tips" title="label_srlw">提醒客户:请输入六位登录密码!</label>
+									<div id="label_srlw_tips" class="tipsmsg"></div>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="con-map"><span class="top-title">设置交易密码<span id="dianji_con" style="cursor: pointer;">▼</span></span>
+					<table id="qv" class="con-map2-table qv">
+						<tbody>
+							<tr>
+								<td class="" style="width: 0px;"><label vl-default="" id="label_jymm" vtitle="交易密码:" class="form-item text-left on" vl-tipsid="label_jymm_tips" title="label_jymm">交易密码:</label>
+									<div id="label_jymm_tips" class="tipsmsg"></div>
+								</td>
+								<td class=""><input type="password" oncopy="return false" onpaste="return false" oncut="return false" vl-default="" id="pwd_jymm" vl-disabled="" vtitle="交易密码" class="form-item text-left" vl-tipsid="pwd_jymm_tips" vl-regex="['require', 'minlength6', 'maxlength6', 'number']" vl-message="['交易密码不能为空!','交易密码长度为6位!','交易密码长度为6位!','交易密码输入错误!']" style="width: 180px;" title="pwd_jymm"><span class="text-red redtip">!</span>&nbsp;&nbsp;<button id="sb_srjymm">输入交易密码</button>
+									<div id="pwd_jymm_tips" class="tipsmsg"></div>
+								</td>
+								<td class="" style="width: 0px;"><label vl-default="" id="label_qrjymm" vtitle="确认交易密码:" class="form-item text-left" vl-tipsid="label_qrjymm_tips" title="label_qrjymm">确认交易密码:</label>
+									<div id="label_qrjymm_tips" class="tipsmsg"></div>
+								</td>
+								<td class=""><input type="password" oncopy="return false" onpaste="return false" oncut="return false" vl-default="" id="pwd_qrjymm" vtitle="确认交易密码" class="form-item text-left" vl-tipsid="pwd_qrjymm_tips" vl-regex="['require', 'minlength6', 'maxlength6', 'number']" vl-message="['确认交易密码不能为空!','确认交易密码长度为6位!','确认交易密码长度为6位!','确认交易密码输入错误!']" style="width: 180px;" title="pwd_qrjymm"><span class="text-red redtip">!</span>&nbsp;&nbsp;<button class="yzjdmm">验证是否为简单密码</button>
+									<div id="pwd_qrjymm_tips" class="tipsmsg"></div>
+								</td>
+							</tr>
+							<tr>
+								<td rowspan="1" colspan="4" class="" style="width: 0px;"><label vl-default="" id="label_srmm" vtitle="提醒客户:请输入六位登录密码!" class="form-item text-left" vl-tipsid="label_srmm_tips" title="label_srmm">提醒客户:请输入六位登录密码!</label>
+									<div id="label_srmm_tips" class="tipsmsg"></div>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div> <input type="hidden" class="hidmainwidth" value="1000/" oncopy="return false" onpaste="return false" oncut="return false">
+				<div class="foot  text-center">
+					<button vl-submit="true" id="btnsubmit" onclick="SubmitForm()">提交</button>
+					<button id="back">返回</button>
+				</div>
+			</div>
+		</div>
+<script src="/busi/js/common.bank.ed.js"></script>
+<script src="/busi/js/ed.common.js"></script>
+<script type="text/javascript">
+	loadCss(busi_static_page_domain + "busi/js/common.bank.ed.css");
+</script>
+<script type="text/javascript">
+	var seconds_model = 180;
+	var seconds = seconds_model;
+	var interval;
+	$(function() {
+		$('#txt_qyzh').change(function() {
+			$('#xgzh').html($(this).val());
+		})
+
+		$("#search").click(function() {
+			var controls = $("#qv").find(".form-item");
+			for(var i = 0; i < controls.length; i++) {
+				var result = checkRegex($(controls[i]).get(0));
+				if(!result.isCheck || $(".sousuo").attr("vl-exec") == "false") {
+					layer.alert(result.errormsg + "证件号码查询未执行！");
+					return;
+				}
+			}
+			$(".current").hide();
+			$(".next").show();
+		});
+
+		$("#back").click(function() {
+			$(".current").show();
+			$(".next").hide();
+		});
+		var a = Math.floor(Math.random() * 10);
+		var b = Math.floor(Math.random() * 10);
+		var c = Math.floor(Math.random() * 10);
+		var d = Math.floor(Math.random() * 10);
+		var e = Math.floor(Math.random() * 10);
+		var f = Math.floor(Math.random() * 10);
+
+		var num = a + '' + b + '' + c + '' + d + '' + e + '' + f
+
+		$("#sb_send").click(function() {
+			var sjhm = $("#txt_sjhm").val();
+			if(sjhm.length < 11) {
+				layer.alert("手机号码格式错误");
+				return;
+			}
+
+			layer.alert("验证码：" + num);
+			var disabled = $(this).attr("disabled");
+			if(disabled != "disabled") {
+				$(this).attr("disabled", "disabled");
+				var _this = this;
+				interval = setInterval(function() {
+					Timer(_this);
+				}, 1000);
+			}
+		});
+		$("#sb_input_msg").click(function() {
+			var yzm = $("#txt_srdxyzm").val();
+			if(yzm == num) {
+				layer.alert("短信验证码验证通过");
+			} else {
+				layer.alert("短信验证码输入错误");
+			}
+		});
+
+		$("#sb_xgzh").click(function() {
+			$(".l-box").show();
+		});
+
+		$("#sb_srdxyzm").click(function() {
+			$("#txt_srdxyzm").removeAttr("disabled");
+		});
+		// $("#sb_srqkmm").click(function () {
+		//     $("#pwd_qkmm").removeAttr("disabled");
+		// });
+
+		// //sb_srdlmm
+		// $("#sb_srdlmm").click(function () {
+		//     $("#pwd_dlmm").removeAttr("disabled");
+		// });
+
+		// $("#sb_srjymm").click(function () {
+		//     $("#pwd_jymm").removeAttr("disabled");
+		// });
+
+		$(".yzjdmm").click(function() {
+			layer.alert("验证通过");
+		});
+
+		$("#pwd_qkmm,#pwd_dlmm,#pwd_jymm").blur(function() {
+			var qkmm = $("#pwd_qkmm").val();
+			var dlmm = $("#pwd_dlmm").val();
+			var jymm = $("#pwd_jymm").val();
+			if((qkmm == dlmm) && qkmm != "" && dlmm != "") {
+				layer.alert("取款密码、登录密码不能重复");
+				return;
+			}
+			if((qkmm == jymm) && qkmm != "" && jymm != "") {
+				layer.alert("取款密码、交易密码不能重复");
+				return;
+			}
+
+			if((dlmm == jymm) && dlmm != "" && jymm != "") {
+				layer.alert("登录密码、交易密码不能重复");
+				return;
+			}
+		});
+
+		$("#pwd_qrdlmm").blur(function() {
+			var qrdlmm = $(this).val();
+			var dlmm = $("#pwd_dlmm").val();
+			if(dlmm != qrdlmm) {
+				layer.alert("两次输入登录密码不一致");
+			}
+		});
+
+		$("#pwd_qrjymm").blur(function() {
+			var qrjymm = $(this).val();
+			var jymm = $("#pwd_jymm").val();
+			if(jymm != qrjymm) {
+				layer.alert("两次输入交易密码不一致");
+			}
+		});
+	});
+
+	function Timer(obj) {
+		if(seconds > 0) {
+			$(obj).text(seconds + "秒后重新发送验证码");
+			seconds--;
+		} else {
+			$(obj).removeAttr("disabled");
+			$(obj).text("发送短信验证码");
+			seconds = seconds_model;
+			clearInterval(interval);
+		}
+
+	}
+
+	var handel = function() {
+		catchSuccess(function() {
+			layer.open({
+				title: "提示",
+				type: 1,
+				skin: 'layui-layer-rim', //加上边框
+				area: ['500px', '200px'], //宽高
+				content: '<div style=\"width:100%;text-align:center;\">操作成功！</div>',
+				btn: ['打印凭证', '蓝牙Key绑定/变更'],
+				yes: function() {
+					printEdWin();
+				},
+				btn2: function() {
+					return false;
+				}
+			});
+		});
+	}
+
+	function Submit(formid, auth_ids) {
+		var is_review = $("#review").text();
+		//弹出操作成功提示
+		edInnerAuthWin(function(auth_layer_index) {
+			layer.close(auth_layer_index);
+			review(formid, auth_ids);
+		});
+	}
+</script>
+              </form>

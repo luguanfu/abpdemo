@@ -1,0 +1,85 @@
+﻿@{
+
+}
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>银行虚拟仿真-案例描述</title>
+    <link rel="stylesheet" type="text/css" href="~/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="~/css/font-awesome-4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="~/css/animate.css" />
+    <link rel="stylesheet" type="text/css" href="~/css/public3D.css" />
+    <link href="~/CSS/3Dstudent.css" rel="stylesheet" />
+    <link rel="shortcut icon" href="~/UnityPublish/TemplateData/favicon.ico">
+    <script src="~/Scripts/jquery-3.2.0.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/layer/layer.js"></script>
+    <style>
+        .ibox-content {
+            width:400px;
+            margin:0 auto;
+        }
+    </style>
+
+
+
+
+</head>
+<body style="">
+    <div class="ibox-content">
+        <div class="row m-t-md">
+            <form class="form-horizontal">
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-2 control-label">任务描述：</label>
+                    <div class="col-sm-8">
+                        <div id="CaseDescription"></div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
+<script>
+    function getQueryString(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) return unescape(r[2]);
+        return null;
+    }
+    //html标签 反转义
+    function HTMLDecode(text) {
+        var temp = document.createElement("div");
+        temp.innerHTML = text;
+        var output = temp.innerText || temp.textContent;
+        temp = null;
+        return output;
+    }
+    $(function () {
+        $.ajax({
+            type: "POST",
+            async: false,
+            url: "/StuHome/GetCustomerInfoById",
+            data: { "CustomerId": getQueryString("CustomerId") ? getQueryString("CustomerId"):0 },
+            dataType: "json",
+            success: function (data) {
+                if (Array.isArray(data)) {
+                    if (data.length > 0) {
+                        customerInfo = data[0];
+                        var CaseDescription = customerInfo.CaseDescription;
+                        $('#CaseDescription').html(HTMLDecode(CaseDescription));
+                    }
+                }
+
+            },
+            error: function (error) {
+
+            }
+        });
+    })
+</script>
+
+

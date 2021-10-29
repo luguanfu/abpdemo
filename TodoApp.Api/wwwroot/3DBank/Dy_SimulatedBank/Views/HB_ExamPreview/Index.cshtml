@@ -1,0 +1,201 @@
+﻿@{
+    
+    Layout = "~/Views/Shared/_StudentLayout.cshtml";
+
+    if (Request["ALLType"] == "1")
+    {
+        ViewData["nvc"] = "考试中心";
+
+    }
+    else
+    {
+        ViewData["nvc"] = "理论学习";
+    }
+
+
+    var jm = Model as Dy_SimulatedBank.Models.HBKaoShiModel;
+}
+
+<link href="~/CSS/student.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-3.2.0.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<script src="~/Scripts/layer/layer.js"></script>
+<script src="~/Scripts/verifyform.js"></script>
+
+
+
+<div class="stu_map" style="margin-bottom: 5px;">
+
+    @{
+        var Dt = "";//
+        var Xz = "";//
+        var ksName = "";
+        var lnname = "";
+        if (Request["ALLType"] == "1")
+        {
+            Dt = "Examination_Main";
+            Xz = "HB_KaoShiMain";
+            ksName = "考试中心";
+            lnname = "理论考核";
+        }
+        else
+        {
+            Dt = "TheoreticalStudy_Main";
+            Xz = "HB_Competition";
+            ksName = "理论学习";
+            lnname = "课后练习";
+        }
+        <div class="crumbs_map">
+            你当前所在的位置：
+   
+        @*<a href="/Distribution">首页</a>＞
+
+        <a href="/@Dt">@ksName</a> ＞  <a href="/@Xz">@lnname</a> ＞*@ <span>查看明细</span>
+        </div>
+    }
+
+    <!--面包屑结束-->
+
+    <div class="topic_map">
+        <!--头部标题-->
+        <div class="topic_top">
+            <div class="topic_time">
+                <label>
+                    <img src="/Img/student/topictime.png" />
+                    <span>00:00:00</span></label>
+            </div>
+            <div class="topic_top_text">
+                <span>@jm.E_Name</span>(满分<span>@Math.Round(Convert.ToDecimal(jm.Score), 2)</span>分)
+				
+            </div>
+            <div class="topic_btn ">
+                <div class="bt_back" onclick="tuichu()"></div>
+            </div>
+        </div>
+        <!--头部标题结束-->
+        <div class="topic_con">
+            <!--左侧信息及选题区域开始-->
+            <div class="topic_con_left">
+                <!--用户头像和学校信息-->
+                <div class="topic_use">
+                    <img src="@jm.UserPic" />
+                    <div class="topic_use_text">
+                        @jm.UserName
+                    </div>
+                    <div class="topic_use_text row">
+                        <div class="col-lg-3" style="padding: 0;">班级：</div>
+                        <div class="col-lg-9" style="padding: 0; text-align: left; color: #3487f5;">
+                            <span>@jm.ClassName</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!--考试成绩-->
+                <div class="grad_bj">
+                    <div class="topic_use_text">
+                        你的成绩
+						
+                    </div>
+                    <div class="grad_num"><span>@jm.ER_Score</span> 分</div>
+                </div>
+                <!--做题状态-->
+                <div class="topic_state">
+                    <div style="margin-left: 45px;">
+                        <div class="state_sure">
+                            <span class="look_sure_bt">√</span><span>回答正确</span>
+                        </div>
+                        <div class="state_now">
+                            <span class="look_now_bt">×</span><span>回答错误</span>
+                        </div>
+                        <div class="state_no">
+                            <span class="look_no_bt">?</span><span>未回答</span>
+                        </div>
+                    </div>
+                </div>
+                <!--选题区域-->
+                <div class="state_num">
+                    <ul id="thdiv">
+                    </ul>
+                </div>
+                <!--选题区域结束-->
+            </div>
+            <!--题目内容及结果显示区域开始-->
+            <div class="topic_con_right" style="width: 895px;">
+                <div>
+                    <!--切换题目类型-->
+                    <div class="state_type">
+                        <ul>
+                            <li class="type_sty active" style="display: none;" id="Typeli1" onclick="selectType(1)">单选题</li>
+                            <li class="type_sty" style="display: none;" id="Typeli2" onclick="selectType(2)">多选题</li>
+                            <li class="type_sty" style="display: none;" id="Typeli3" onclick="selectType(3)">判断题</li>
+
+                        </ul>
+                    </div>
+                    <!--题目详情-->
+                    <div class="state_title" id="titleScore">
+                    </div>
+                    <div class="state_xq" id="titleDescription" style="table-layout: fixed; word-break: break-all;">
+                    </div>
+                    <div id="daanContent" style="table-layout: fixed; word-break: break-all;">
+                    </div>
+
+                    <!--答案对错描述-->
+                    <div class="kye_pd" id="dananshowdiv">
+                    </div>
+
+                    <!--成绩报告-->
+                    <div class="grade_money">
+                        <span class="grade_text">成绩报告</span>
+                        <table border="0" cellspacing="0" cellpadding="0">
+                            <thead>
+                                <tr>
+                                    <td></td>
+                                    <td>总分</td>
+                                    <td>得分</td>
+                                    <td>准确率</td>
+
+                                </tr>
+                            </thead>
+                            <tbody id="tablelist">
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--切题区域开始-->
+        <div class="qieti_map">
+            <div class="qieti" onclick="clickshouti()">
+                <div class="qieti_fx">▏◀</div>
+                <div class="qieti_hr">---------</div>
+                <div>首题</div>
+            </div>
+
+            <div class="qieti" onclick="clickshangyiti()">
+                <div class="qieti_fx">◀</div>
+                <div class="qieti_hr">---------</div>
+                <div>上一题</div>
+            </div>
+
+            <div class="qieti" onclick="clickxiayiti()">
+                <div class="qieti_fx">▶</div>
+                <div class="qieti_hr">---------</div>
+                <div>下一题</div>
+            </div>
+
+            <div class="qieti" onclick="clickweiti()">
+                <div class="qieti_fx">▶ ▏</div>
+                <div class="qieti_hr">---------</div>
+                <div>尾题</div>
+            </div>
+
+        </div>
+
+        <!--切题区域结束-->
+    </div>
+</div>
+
+<input type="hidden" value="@jm.Isallow"  id="IsallowId"/>
+
+
+<script src="~/Js/Student/HB_ExamPreview.js"></script>

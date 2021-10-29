@@ -1,0 +1,88 @@
+﻿@{
+    
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewData["nvc"] = "班级管理";
+}
+
+<link href="~/CSS/chosen/chosen.css" rel="stylesheet" />
+<script src="~/Scripts/chosen/chosen.jquery.js"></script>
+
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-sm-12">
+        <ol class="breadcrumb">
+            <li>
+                <h2>组织架构管理</h2>
+            </li>
+            <li>
+                <a href="javascript:viod(0)">课时安排</a>
+            </li>
+            <li>
+                <strong>课时列表</strong>
+            </li>
+        </ol>
+
+    </div>
+</div>
+<!--面包屑位置结束-->
+<!--主体内容开始-->
+<div class="ibox-content">
+    <div class="row m-t">
+
+        <div class="col-sm-3">
+            <select class=" form-control input-s-sm inline" onchange="GetMajor('List')" id="CollegeNameId">
+                <option value='0'>请选择学院</option>
+                @foreach (System.Data.DataRow item in Model.Rows)
+                {
+                    <option value="@item["C_ID"]">@item["CollegeName"]</option>
+                }
+            </select>
+        </div>
+        <div class="col-sm-3">
+            <select class=" form-control input-s-sm inline" id="Majorid">
+                <option value='0'>请选择专业</option>
+            </select>
+        </div>
+        <div class="col-sm-3">
+            <div class="input-group">
+                <input type="text" placeholder="请输入关键字搜索……" id="ClassNameid" class="form-control" name="ClassName">
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-primary" onclick="Select(1)">查找<i class="fa fa-search "></i></button>
+                </span>
+
+            </div>
+        </div>
+        <div class="col-sm-3 text-right">
+            <button onclick="Anp()" class="btn btn-primary" type="button"><i class="fa fa-gearm-r-xs"></i><span class="bold">统一课时安排</span></button>
+
+            @*<button class="btn btn-warning" type="button" onclick="Reset()"><i class="fa fa-repeat  m-r-xs"></i><span class="bold">重置安排</span></button>*@
+        </div>
+    </div>
+
+
+    <div class="row  m-t-sm ">
+        <div class="col-sm-12">
+            <table class="table text-center table-bordered ">
+                <thead>
+                    <tr>
+                        <th class="text-center">
+                            <input type="Checkbox" class="i-checks checkbox-all">
+                        </th>
+                        <th class="text-center">班级名称</th>
+                        <th class="text-center">所属学院</th>
+                        <th class="text-center">所属专业</th>
+                        <th class="text-center">学生人数</th>
+                        <th class="text-center">操作</th>
+                    </tr>
+                </thead>
+                <tbody class="new_table text-center" id="tablelist"></tbody>
+            </table>
+        </div>
+    </div>
+
+    <!--分页开始-->
+    <div class="row text-center m-t-md" id="PaginatorLibrary">
+    </div>
+    <!--分页结束-->
+</div>
+
+<script src="~/JS/Teacher/Teachinghours/Teachinghours.js"></script>

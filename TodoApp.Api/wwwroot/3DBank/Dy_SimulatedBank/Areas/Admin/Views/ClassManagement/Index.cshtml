@@ -1,0 +1,219 @@
+﻿@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewData["nvc"] = "班级管理";
+    @model System.Data.DataTable
+}
+
+<link href="~/CSS/chosen/chosen.css" rel="stylesheet" />
+<script src="~/Scripts/chosen/chosen.jquery.js"></script>
+
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-sm-12">
+        <ol class="breadcrumb">
+            <li>
+                <h2>组织架构管理</h2>
+            </li>
+            <li>
+                <a href="javascript:viod(0)">班级管理</a>
+            </li>
+            <li>
+                <strong>班级列表</strong>
+            </li>
+        </ol>
+
+    </div>
+</div>
+<!--面包屑位置结束-->
+<!--主体内容开始-->
+<div class="ibox-content">
+    <div class="row m-t">
+        <div class="col-sm-4">
+            <select class="chosen-select" id="Schoolid" style="width: 100%;" tabindex="2" onchange="SelecCollege('List')">
+                <option value="0">请选择学校</option>
+                @foreach (System.Data.DataRow item in Model.Rows)
+                {
+                    <option value="@item["S_ID"]">@item["SchoolName"]</option>
+                }
+            </select>
+        </div>
+        <div class="col-sm-4">
+            <select class=" form-control input-s-sm inline" id="CollegeNameId" onchange="GetMajor('List')">
+                <option value="0">请选择学院</option>
+            </select>
+        </div>
+        <div class="col-sm-4">
+            <select class=" form-control input-s-sm inline" id="Majorid">
+                <option value="0">请选择专业</option>
+            </select>
+        </div>
+        </div>
+        
+        
+         <div class="row m-t">
+    @*    <div class="col-sm-4">
+            <select class=" form-control input-s-sm inline" id="Gradeid">
+                <option value="0">请选择年级</option>
+            </select>
+        </div>*@
+            <div class="col-sm-4">
+                <div class="input-group">
+                    <input type="text" placeholder="请输入关键字搜索……" id="ClassNameid" class="form-control" name="ClassName">
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-primary" onclick="Select()"><i class="fa fa-search "></i></button>
+                    </span>
+                </div>
+            </div>
+            <div class="col-sm-8 text-right">
+                <button onclick="Add_Class();" class="btn btn-primary btn-sm " type="button"><i class="fa fa-plus m-r-xs"></i><span class="bold">新增班级</span></button>
+                <button onclick="del_all();" class="btn btn-warning btn-sm " type="button"><i class="fa fa-trash m-r-xs"></i><span class="bold">删除班级</span></button>
+            </div>
+        </div>
+        
+        
+        
+        
+    <div class="row  m-t-sm ">
+        <div class="col-sm-12">
+            <table class="table text-center table-bordered ">
+                <thead>
+                    <tr>
+                        <th class="text-center">
+                            <input type="Checkbox" class="i-checks checkbox-all">
+                        </th>
+                        <th class="text-center">学校名称</th>
+                        <th class="text-center">学院名称</th>
+                        <th class="text-center">专业名称</th>
+                        <th class="text-center">教师名称</th>
+                        <th class="text-center">班级名称</th>
+                        <th class="text-center">人数</th>
+                        <th class="text-center">操作</th>
+                    </tr>
+                </thead>
+                <tbody class="new_table text-center" id="tablelist"></tbody>
+            </table>
+        </div>
+    </div>
+
+    <!--分页开始-->
+    <div class="row text-center m-t-md" id="PaginatorLibrary">
+    </div>
+    <!--分页结束-->
+</div>
+
+<!--新增弹框-->
+<div id="Add_Class" style="display: none;" class="form-inline">
+    <form name="" id="">
+
+        <div class="col-sm-10">
+            <div class="form-horizontal  m-t-lg">
+                <label for="firstname" class="col-sm-4 control-label"><span style="color: red;">*</span>选择学校：</label>
+                <div class="col-sm-8">
+                    <select class="chosen-select" id="AddSchoolid" style="width: 200px;" tabindex="2" onchange="SelecCollege('Add')">
+                        <option value="0">请选择学校</option>
+                        @foreach (System.Data.DataRow item in Model.Rows)
+                        {
+                            <option value="@item["S_ID"]">@item["SchoolName"]</option>
+                        }
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-10">
+            <div class="form-horizontal  m-t-lg">
+                <label for="firstname" class="col-sm-4 control-label"><span style="color: red;">*</span>学院名称：</label>
+                <div class="col-sm-8">
+                    <select class=" form-control input-s-sm inline" style="width: 100%;" id="AddCollegeNameId" onchange="GetMajor('Add')">
+                        <option value="0">请选择学院</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-10">
+            <div class="form-horizontal  m-t-lg">
+                <label for="firstname" class="col-sm-4 control-label"><span style="color: red;">*</span>专业名称：</label>
+                <div class="col-sm-8">
+                    <select style="width: 100%;" class=" form-control input-s-sm inline" id="AddMajorid">
+                        <option value="0">请选择专业</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-10">
+            <div class="form-horizontal  m-t-lg">
+                <label for="firstname" class="col-sm-4 control-label"><span style="color: red;">*</span>选择教师：</label>
+                <div class="col-sm-8">
+                    <select style="width: 100%;" class=" form-control input-s-sm inline" id="AddGrade">
+                        <option value="0">请选择角色</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-10">
+            <div class="form-horizontal  m-t-lg">
+                <label for="firstname" class="col-sm-4 control-label"><span style="color: red;">*</span>班级名称：</label>
+                <div class="col-sm-8">
+                    <input style="width: 100%;" type="text" class="form-control" id="AddClassid" name="AddClassName" placeholder="" maxlength="15">
+                </div>
+            </div>
+        </div> 
+    </form>
+</div>
+<!--编辑窗口-->
+<div id="Update_Class" style="display: none;" class="form-inline">
+    <form name="" id="">
+
+        <div class="col-sm-10">
+            <div class="form-horizontal  m-t-lg">
+                <label for="firstname" class="col-sm-4 control-label"><span style="color: red;">*</span>选择学校：</label>
+                <div class="col-sm-8">
+                    <select class="chosen-select" id="UpdateSchoolid" style="width: 200px;" tabindex="2" onchange="SelecCollege('Update')">
+                        <option value="0">请选择学校</option>
+                        @foreach (System.Data.DataRow item in Model.Rows)
+                        {
+                            <option value="@item["S_ID"]">@item["SchoolName"]</option>
+                        }
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-10">
+            <div class="form-horizontal  m-t-lg">
+                <label for="firstname" class="col-sm-4 control-label"><span style="color: red;">*</span>学院名称：</label>
+                <div class="col-sm-8">
+                    <select style="width: 100%;" class=" form-control input-s-sm inline" id="UpdateCollegeNameId" onchange="GetMajor('Update')">
+                        <option value="0">请选择学院</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-10">
+            <div class="form-horizontal  m-t-lg">
+                <label for="firstname" class="col-sm-4 control-label"><span style="color: red;">*</span>专业名称：</label>
+                <div class="col-sm-8">
+                    <select style="width: 100%;" class=" form-control input-s-sm inline" id="UpdateMajorid">
+                        <option value="0">请选择专业</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-10">
+            <div class="form-horizontal  m-t-lg">
+                <label for="firstname" class="col-sm-4 control-label"><span style="color: red;">*</span>选择教师：</label>
+                <div class="col-sm-8">
+                    <select style="width: 100%;" class=" form-control input-s-sm inline" id="UpdateGrade">
+                        <option value="0">请选择教师</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-10">
+            <div class="form-horizontal  m-t-lg">
+                <label for="firstname" class="col-sm-4 control-label"><span style="color: red;">*</span>班级名称：</label>
+                <div class="col-sm-8">
+                    <input style="width: 100%;" type="text" class="form-control" id="UpdateClassid" name="AddClassName" placeholder="" maxlength="15">
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<script src="~/JS/Admin/ClassManagement/ClassManagement.js"></script>

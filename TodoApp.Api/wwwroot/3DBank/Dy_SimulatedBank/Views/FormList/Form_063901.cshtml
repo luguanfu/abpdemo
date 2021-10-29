@@ -1,0 +1,405 @@
+﻿@{
+                    ViewBag.Title = "Form_063901";
+                    Layout = "~/Views/Shared/_StutentLayoutIsNull.cshtml";
+                }
+               <form id="form1" onsubmit="return false" action="##" method="post">
+                   <input type="hidden" id="FormType" name="FormType" value="@Request["FormType"]" />
+                   <input type="hidden" id="FormId" name="FormId" value="@Request["FormId"]" />
+                   <input type="hidden" id="TRId" name="TRId" value="@Request["TotalResultId"]" />
+                   <input type="hidden" id="ExamId" name="ExamId" value="@Request["ExamId"]" />
+                   <input type="hidden" id="TaskId" name="TaskId" value="@Request["TaskId"]" />
+                   <input type="hidden" id="CustomerId" name="CustomerId" value="@Request["CustomerId"]" />
+                   <input type="hidden" id="LinkId" name="LinkId" value="@Request["LinkId"]" />
+                   <input type="hidden" id="Types" name="Types" value="2" />
+                <!--内容表单区域开始-->
+            <div class="tables bankmap">
+        <div class="con-map selected"> <span class="top-title">查询条件 <span id="dianji_con" style="cursor: pointer;">▼</span></span>
+            <table id="qv" class="con-map2-table qv">
+                <tbody>
+                    <tr>
+                        <td class="" style="width: 68px;"><label vl-default="" id="label_qsrq" vtitle="起始日期:" class="form-item text-left" vl-tipsid="label_qsrq_tips" title="label_qsrq">起始日期:</label>
+                            <div id="label_qsrq_tips" class="tipsmsg"></div>
+                        </td>
+                        <td class=""><input type="text" class="date form-item text-left clear-control" vl-keyup="wwww" vl-default="20170701" id="date_qsrq" vtitle="起始日期" vl-tipsid="date_qsrq_tips" vl-regex="['tdate', 'number']" vl-message="['起始日期输入格式不正确(如:19000101)','起始日期输入错误!']" style="width: 160px;" oncopy="return false" onpaste="return false" oncut="return false"><img onclick="WdatePicker({el:'date_qsrq',dateFmt:'yyyyMMdd'})" src="/js/My97DatePicker/skin/datePicker.gif" align="absmiddle" style="width:16px;height:22px;margin-left:6px;">
+                            <div id="date_qsrq_tips" class="tipsmsg"></div>
+                        </td>
+                        <td class="" style="width: 68px;"><label vl-default="" id="label_zzrq" vtitle="终止日期:" class="form-item text-left" vl-tipsid="label_zzrq_tips" title="label_zzrq">终止日期:</label>
+                            <div id="label_zzrq_tips" class="tipsmsg"></div>
+                        </td>
+                        <td class=""><input type="text" class="date form-item text-left clear-control" vl-default="20170705" id="date_zzrq" vtitle="终止日期" vl-tipsid="date_zzrq_tips" vl-regex="['tdate', 'number', 'minvaluedate_qsrq']" vl-message="['终止日期输入格式不正确(如:19000101)!','终止日期输入错误!','终止日期不得小于起始日期!']" style="width: 160px;" title="date_zzrq" oncopy="return false" onpaste="return false" oncut="return false"><img onclick="WdatePicker({el:'date_zzrq',dateFmt:'yyyyMMdd'})" src="/js/My97DatePicker/skin/datePicker.gif" align="absmiddle" style="width:16px;height:22px;margin-left:6px;">
+                            <div id="date_zzrq_tips" class="tipsmsg"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td rowspan="1" colspan="1" class="" style="width: 68px;"><label vl-default="" id="label_wllx" vtitle="往来类型:" class="form-item text-left" vl-tipsid="label_wllx_tips" title="label_wllx">往来类型:</label>
+                            <div id="label_wllx_tips" class="tipsmsg"></div>
+                        </td>
+                        <td rowspan="1" colspan="1" class="">
+                            <div class="slectstyle"><select vl-default="2" id="sle_wllx" vtitle="往来类型" class="form-item text-left" vl-disabled="true" vl-tipsid="sle_wllx_tips" style="width: 160px;" title="sle_wllx" vl-slemodel="" disabled="disabled"><option disabled="" style="background-color: blue; color: #fff;" value="">往来类型值含义</option> <option value="1">转账</option> <option value="2">来账</option></select><input type="text" oncopy="return false" onpaste="return false" oncut="return false" disabled="disabled" style="width: 137px;"></div>
+                            <div id="sle_wllx_tips" class="tipsmsg"></div>
+                        </td>
+                        <td rowspan="1" colspan="1" class="" style="width: 68px;"><label vl-default="" id="label_hllx" vtitle="汇路类型:" class="form-item text-left" vl-tipsid="label_hllx_tips" title="label_hllx">汇路类型:</label>
+                            <div id="label_hllx_tips" class="tipsmsg"></div>
+                        </td>
+                        <td rowspan="1" colspan="1" class="">
+                            <div class="slectstyle"><select vl-default="" id="sle_hllx" vtitle="汇路类型" class="form-item text-left" vl-tipsid="sle_hllx_tips" style="width: 160px;" title="sle_hllx" vl-slemodel=""><option disabled="" style="background-color: blue; color: #fff;" value="" selected="selected">汇路类型值含义</option> <option value="1">--请选择--</option> <option value="0">行内汇兑</option></select><input type="text" oncopy="return false" onpaste="return false" oncut="return false" style="width: 137px;"></div>
+                            <div id="sle_hllx_tips" class="tipsmsg"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td rowspan="1" colspan="1" class="" style="width: 68px;"><label vl-default="" id="label_jyzt" vtitle="交易状态:" class="form-item text-left on" vl-tipsid="label_jyzt_tips" title="label_jyzt">交易状态:</label>
+                            <div id="label_jyzt_tips" class="tipsmsg"></div>
+                        </td>
+                        <td rowspan="1" colspan="1" class="">
+                            <div class="slectstyle"><select vl-default="" id="sle_jyzt" vtitle="交易状态" class="form-item text-left" vl-tipsid="sle_jyzt_tips" style="width: 160px;" title="sle_jyzt" vl-slemodel=""><option disabled="" style="background-color: blue; color: #fff;" value="" selected="selected">交易状态值含义</option> <option value="1">来账待审核</option> <option value="2">来账已审核</option> <option value="3">解付录入</option> <option value="4">退汇录入</option> <option value="5">解付更正录入</option> <option value="6">自动入账</option> <option value="7">手工解付入账</option> <option value="8">已退汇</option> <option value="9">预约汇款</option> <option value="10">预约汇款已清算</option> <option value="11">预约汇款已撤销</option> <option value="12">预约汇款撤销失败</option> <option value="13">已录入</option></select><input type="text" oncopy="return false" onpaste="return false" oncut="return false" style="width: 137px;"></div>
+                            <div id="sle_jyzt_tips" class="tipsmsg"></div>
+                        </td>
+                        <td rowspan="1" colspan="1" class="" style="width: 68px;"><label vl-default="" id="label_jyqd" vtitle="交易渠道:" class="form-item text-left" vl-tipsid="label_jyqd_tips" title="label_jyqd">交易渠道:</label>
+                            <div id="label_jyqd_tips" class="tipsmsg"></div>
+                        </td>
+                        <td rowspan="1" colspan="1" class="">
+                            <div class="slectstyle"><select vl-default="" id="sle_jyqd" vtitle="交易渠道" class="form-item text-left" vl-disabled="true" vl-tipsid="sle_jyqd_tips" style="width: 160px;" title="sle_jyqd" vl-slemodel="" disabled="disabled"><option disabled="" style="background-color: blue; color: #fff;" value="" selected="selected">交易渠道值含义</option> <option value="1">转账</option> <option value="2">来账</option></select><input type="text" oncopy="return false" onpaste="return false" oncut="return false" disabled="disabled" style="width: 137px;"></div>
+                            <div id="sle_jyqd_tips" class="tipsmsg"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td rowspan="1" colspan="1" class="" style="width: 68px;"><label vl-default="" id="label_ywlx" vtitle="业务类型:" class="form-item text-left on" vl-tipsid="label_ywlx_tips" title="label_ywlx">业务类型:</label>
+                            <div id="label_ywlx_tips" class="tipsmsg"></div>
+                        </td>
+                        <td rowspan="1" colspan="1" class="">
+                            <div class="slectstyle"><select vl-default="" id="sle_ywlx" vtitle="业务类型" class="form-item text-left" vl-tipsid="sle_ywlx_tips" style="width: 160px;" title="sle_ywlx" vl-slemodel=""><option disabled="" style="background-color: blue; color: #fff;" value="" selected="selected">业务类型值含义</option> <option value="1">普通汇兑</option> <option value="2">现金汇款</option> <option value="3">支票</option> <option value="4">退汇</option> <option value="5">公益性资金汇划</option></select><input type="text" oncopy="return false" onpaste="return false" oncut="return false" style="width: 137px;"></div>
+                            <div id="sle_ywlx_tips" class="tipsmsg"></div>
+                        </td>
+                        <td rowspan="1" colspan="1" class="" style="width: 68px;"><label vl-default="" id="label_ywzl" vtitle="业务种类:" class="form-item text-left" vl-tipsid="label_ywzl_tips" title="label_ywzl">业务种类:</label>
+                            <div id="label_ywzl_tips" class="tipsmsg"></div>
+                        </td>
+                        <td rowspan="1" colspan="1" class="">
+                            <div class="slectstyle"><select vl-default="" id="sle_ywzl" vtitle="业务种类" class="form-item text-left" vl-disabled="true" vl-tipsid="sle_ywzl_tips" style="width: 160px;" title="sle_ywzl" vl-slemodel="" disabled="disabled"><option disabled="" style="background-color: blue; color: #fff;" value="" selected="selected">业务种类值含义</option> <option value="1">转账</option> <option value="2">来账</option></select><input type="text" oncopy="return false" onpaste="return false" oncut="return false" disabled="disabled" style="width: 137px;"></div>
+                            <div id="sle_ywzl_tips" class="tipsmsg"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td rowspan="1" colspan="1" class="" style="width: 68px;"><label vl-default="" id="label_jexx" vtitle="金额下限:" class="form-item text-left" vl-tipsid="label_jexx_tips" title="label_jexx">金额下限:</label>
+                            <div id="label_jexx_tips" class="tipsmsg"></div>
+                        </td>
+                        <td rowspan="1" colspan="1" class="">
+                            <div class="moneystyle"><input type="text" oncopy="return false" onpaste="return false" oncut="return false" vl-type="money" vl-default="" id="money_jexx" vtitle="金额下限" class="form-item text-left clear-control money" jinejiaoyan="true" vl-tipsid="money_jexx_tips" vl-regex="['maxlength16', 'notequal0', 'decimal']" vl-message="['金额下限超过最大长度:[16]!','金额下限小于下限值:[0.01]','金额下限输入错误!']" style="width: 160px;" title="money_jexx"><label class="moneytips hide green">人民币CNY￥<span class="num">0.00</span><span class="cn">零元整</span></label></div>
+                            <div id="money_jexx_tips" class="tipsmsg"></div>
+                        </td>
+                        <td rowspan="1" colspan="1" class="" style="width: 68px;"><label vl-default="" id="label_jesx" vtitle="金额上限:" class="form-item text-left" vl-tipsid="label_jesx_tips" title="label_jesx">金额上限:</label>
+                            <div id="label_jesx_tips" class="tipsmsg"></div>
+                        </td>
+                        <td rowspan="1" colspan="1" class="">
+                            <div class="moneystyle"><input type="text" oncopy="return false" onpaste="return false" oncut="return false" vl-type="money" vl-default="" id="money_jesx" vtitle="金额上限" class="form-item text-left clear-control money" jinejiaoyan="true" vl-tipsid="money_jesx_tips" vl-regex="['maxlength16', 'notequal0', 'decimal', 'minvaluemoney_jexx']" vl-message="['金额上限长度超过最大长度:[16]!','金额上限小于下限值:[0.01]!','金额上限输入错误!','金额上限不可小于金额下限!']" style="width: 160px;" title="money_jesx"><label class="moneytips hide green">人民币CNY￥<span class="num">0.00</span><span class="cn">零元整</span></label></div>
+                            <div id="money_jesx_tips" class="tipsmsg"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td rowspan="1" colspan="1" class="" style="width: 64px;"><label vl-default="" id="label_fkrzh" vtitle="付款人账号:" class="form-item text-left on" vl-tipsid="label_fkrzh_tips" title="label_fkrzh">付款人账号:</label>
+                            <div id="label_fkrzh_tips" class="tipsmsg"></div>
+                        </td>
+                        <td rowspan="1" colspan="1" class=""><input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_fkrzh" vtitle="付款人账号" class="form-item text-left on clear-control" vl-tipsid="txt_fkrzh_tips" vl-regex="['maxlength32', 'number']" vl-message="['付款人账号长度超过最大长度:[32]!','付款人账号输入错误!']" style="width: 160px;" title="txt_fkrzh" onpaste="return false">
+                            <div id="txt_fkrzh_tips" class="tipsmsg"></div>
+                        </td>
+                        <td rowspan="1" colspan="1" class="" style="width: 64px;"><label vl-default="" id="label_fkrmc" vtitle="付款人名称:" class="form-item text-left on" vl-tipsid="label_fkrmc_tips" title="label_fkrmc">付款人名称:</label>
+                            <div id="label_fkrmc_tips" class="tipsmsg"></div>
+                        </td>
+                        <td rowspan="1" colspan="1" class=""><input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_fkemc" vtitle="付款人名称" class="form-item text-left clear-control" vl-tipsid="txt_fkemc_tips" vl-regex="['maxlength20', 'hascode']" vl-message="['付款人名称长度超过最大长度:[20]!','付款人名称不能全为数字!']" style="width: 160px;" title="txt_fkemc" onpaste="return false">
+                            <div id="txt_fkemc_tips" class="tipsmsg"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td rowspan="1" colspan="1" class="" style="width: 64px;"><label vl-default="" id="label_skrzh" vtitle="收款人账号:" class="form-item text-left on" vl-tipsid="label_skrzh_tips" title="label_skrzh">收款人账号:</label>
+                            <div id="label_skrzh_tips" class="tipsmsg"></div>
+                        </td>
+                        <td rowspan="1" colspan="1" class=""><input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_skrzh" vtitle="收款人账号" class="form-item text-left clear-control" vl-tipsid="txt_skrzh_tips" vl-regex="['maxlength32', 'number']" vl-message="['收款人账号长度超过最大长度:[32]!','收款人账号输入错误!']" style="width: 160px;" title="txt_skrzh" onpaste="return false">
+                            <div id="txt_skrzh_tips" class="tipsmsg"></div>
+                        </td>
+                        <td rowspan="1" colspan="1" class="" style="width: 64px;"><label vl-default="" id="label_skrmc" vtitle="收款人名称:" class="form-item text-left" vl-tipsid="label_skrmc_tips" title="label_skrmc">收款人名称:</label>
+                            <div id="label_skrmc_tips" class="tipsmsg"></div>
+                        </td>
+                        <td rowspan="1" colspan="1" class=""><input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_skemc" vtitle="收款人名称" class="form-item text-left clear-control" vl-tipsid="txt_skemc_tips" vl-regex="['maxlength20', 'hascode']" vl-message="['收款人名称长度超过最大长度:[20]!','收款人名称不能全为数字!']" style="width: 160px;" title="txt_skemc" onpaste="return false">
+                            <div id="txt_skemc_tips" class="tipsmsg"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td rowspan="1" colspan="1" class="" style="width: 64px;"><label vl-default="" id="label_hxlsh" vtitle="核心流水号:" class="form-item text-left" vl-tipsid="label_hxlsh_tips" title="label_hxlsh">核心流水号:</label>
+                            <div id="label_hxlsh_tips" class="tipsmsg"></div>
+                        </td>
+                        <td rowspan="1" colspan="1" class=""><input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_hxlsh" vtitle="核心流水号" class="form-item text-left clear-control" vl-tipsid="txt_hxlsh_tips" vl-regex="['maxlength40', 'shuziandmu']" vl-message="['核心流水号长度超过最大长度:[40]!','核心流水号输入错误!']" style="width: 160px;" title="txt_hxlsh" onpaste="return false">
+                            <div id="txt_hxlsh_tips" class="tipsmsg"></div>
+                        </td>
+                        <td rowspan="1" colspan="1" class="" style="width: 64px;"><label vl-default="" id="label_lrgyh" vtitle="录入柜员号:" class="form-item text-left" vl-tipsid="label_lrgyh_tips" title="label_lrgyh">录入柜员号:</label>
+                            <div id="label_lrgyh_tips" class="tipsmsg"></div>
+                        </td>
+                        <td rowspan="1" colspan="1" class=""><input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_lrgyh" vtitle="录入柜员号" class="form-item text-left clear-control" vl-tipsid="txt_lrgyh_tips" vl-regex="['maxlength40', 'shuziandmu']" vl-message="['录入柜员号长度超过最大长度:[40]!','录入柜员号输入错误!']" style="width: 160px;" title="txt_lrgyh" onpaste="return false">
+                            <div id="txt_lrgyh_tips" class="tipsmsg"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td rowspan="1" colspan="1" class="" style="width: 52px;"><label vl-default="" id="label_jgh" vtitle="机构号:" class="form-item text-left" vl-tipsid="label_jgh_tips" title="label_jgh">机构号:</label>
+                            <div id="label_jgh_tips" class="tipsmsg"></div>
+                        </td>
+                        <td rowspan="1" colspan="1" class=""><input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_jgh" vtitle="机构号" class="form-item text-left clear-control" vl-tipsid="txt_jgh_tips" vl-regex="['maxlength40', 'shuziandmu']" vl-message="['机构号长度超过最大长度:[40]!','机构号输入错误!']" style="width: 160px;" title="txt_jgh" onpaste="return false">
+                            <div id="txt_jgh_tips" class="tipsmsg"></div>
+                        </td>
+                        <td rowspan="1" colspan="1" class="" style="width: 68px;"><label vl-default="" id="label_pxtj" vtitle="排序条件:" class="form-item text-left" vl-tipsid="label_pxtj_tips" title="label_pxtj">排序条件:</label>
+                            <div id="label_pxtj_tips" class="tipsmsg"></div>
+                        </td>
+                        <td rowspan="1" colspan="1" class="">
+                            <div class="slectstyle"><select vl-default="" id="sle_pxtj" vtitle="排序条件" class="form-item text-left" vl-tipsid="sle_pxtj_tips" style="width: 160px;" title="sle_pxtj" vl-slemodel=""><option disabled="" style="background-color: blue; color: #fff;" value="" selected="selected">排序条件值含义</option> <option value="1">日期</option> <option value="2">金额</option></select><input type="text" oncopy="return false" onpaste="return false" oncut="return false" style="width: 137px;"></div>
+                            <div id="sle_pxtj_tips" class="tipsmsg"></div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div> <input type="hidden" class="hidmainwidth" value="1000/" oncopy="return false" onpaste="return false" oncut="return false">
+        <div class="foot  text-center"> 
+            <button id="search">提交</button> 
+            <button class="ed-clear">清空</button> 
+            <button class="ed-back">关闭</button> 
+        <button type="button" onclick="FormReset()">重置</button>
+                       <button type="button " style="margin-right: 0px; " vl-submit="true" id="btnsubmit" onclick="SubmitForm()"> 提交</button></div>
+        <div class="l-box">
+                <div class="toolbar">
+                    <a class="detail" href="javascript:void(0);">详细信息</a>
+                </div>
+                <table id="aaa" cellspacing="0" cellpadding="0">
+                    <tbody><tr class="bold">
+                        <td>序号</td>
+                        <td>平台日期</td>
+                        <td>平台流水号</td>
+                        <td>交易状态</td> 
+                        <td>往来标识</td>
+                        <td>业务类型</td>
+                        <td>付款人账号</td>
+                        <td>付款人名称</td>
+                        <td>交易金额</td>
+                        <td>收款人账号</td>
+                        <td>收款人名称</td>
+                        <td>发起方名称</td>
+                    </tr>
+                    <tr index="1">
+                        <td>
+                            <input type="radio" name="xuhao" data-id="1" oncopy="return false" onpaste="return false" oncut="return false">
+                        </td>
+                        <td>20170527</td>
+                        <td>100512113</td>
+                        <td data-state="1">来账待审核</td>
+                        <td>往账</td>
+                        <td>普通汇兑</td> 
+                        <td>2461010001201100008723</td>
+                        <td>贵州农信测试公司</td>
+                        <td>5.00</td>
+                        <td>2061010001201100255084</td>
+                        <td>贵州农信测试公司8000398507</td>
+                        <td>贵定县农村信用合作联社</td>
+                    </tr>
+                    <tr index="2">
+                        <td>
+                            <input type="radio" name="xuhao" data-id="2" oncopy="return false" onpaste="return false" oncut="return false">
+                        </td>
+                        <td>20170527</td>
+                        <td>100512110</td>
+                        <td data-state="2">已退汇
+                        </td><td>往账</td>
+                        <td>普通汇兑</td>
+                        <td>2461010001201100008723</td>
+                        <td>贵州农信测试公司</td>
+                        <td>5.00</td>
+                        <td>2061010001201100255084</td>
+                        <td>贵州农信测试公司8000398507</td>
+                        <td>贵定县农村信用合作联社</td>
+                    </tr>
+                    <!--<tr index="3">
+                            <td>
+                                <input type="radio" name="xuhao" data-id="3" />
+                            </td>
+                            <td>20170527</td>
+                            <td>100512111</td>
+                            <td data-state="3">来账已审核</td>
+                            <td>往账</td>
+                            <td>普通汇兑</td>
+                            <td>2461010001201100008723</td>
+                            <td>贵州农信测试公司</td>
+                            <td>5.00</td>
+                            <td>2061010001201100255084</td>
+                            <td>贵州农信测试公司8000398507</td>
+                            <td>贵定县农村信用合作联社</td>
+                        </tr>-->
+                        <!-- <tr index="4">
+                                <td>
+                                    <input type="radio" name="xuhao" data-id="4" />
+                                </td>
+                                <td>20170527</td>
+                                <td>100512112</td>
+                                <td>解付录入</td>
+                                <td>往账</td>
+                                <td>普通汇兑</td>
+                                <td>2461010001201100008723</td>
+                                <td>贵州农信测试公司</td>
+                                <td>5.00</td>
+                                <td>2061010001201100255084</td>
+                                <td>贵州农信测试公司8000398507</td>
+                                <td>贵定县农村信用合作联社</td>
+                            </tr> -->
+                </tbody></table>
+            </div>
+    </div><script src="~/Js/Student/GetDefaultValue/common.bank.js"></script>
+              <script src="~/Js/Student/GetDefaultValue/lodash.min.js"></script>
+              <script src="~/Js/Student/GetDefaultValue/common.regex.cz.js"></script>
+              <script src="~/Js/Student/GetDefaultValue/common.regex.js"></script>
+<script src="~/Js/Student/GetDefaultValue/js/common.bank.ed.js"></script>
+<script src="~/Js/Student/GetDefaultValue/js/ed.common.js"></script>
+<script src="~/Js/Student/GetDefaultValue/js/layer.js"></script>
+<script src="~/Js/Student/GetDefaultValue/js/My97DatePicker/WdatePicker.js"></script>
+<script src="~/Js/Student/GetDefaultValue/js/ready.js"></script>
+<script type="text/javascript">
+        $(function(){
+            loadPrevData();
+            render();
+            //var yw_sign = getQueryString("yw_sign");
+            //if (yw_sign == "063902") {
+            //     //跳入另个业务
+            //    var formid = getQueryString("formid");
+            //    var tellerId = getQueryString("tellerId");
+            //    var examid = getQueryString("examid");
+            //    var banksiteid = getQueryString("banksiteid");
+            //    var DepartmentId = getQueryString("DepartmentId");
+            //    var planid = getQueryString("planid");
+            //    var row = getQueryString("row");
+            //    var state = getQueryString("state");
+            //    location = '/User/indexone?row=' + row + '&state=' + state + '&yw=2&formid=063902&tellerId=' + tellerId + '&examid=' + examid + '&banksiteid=' + banksiteid + '&DepartmentId=' + DepartmentId + '&planid=' + planid;
+            //}
+            var is_review = $("#review").text();  
+            var state = getQueryString("state");
+            var options = "";
+            if (state == "1") {
+                 options = "<option value=\"\"></option><option value= \"发送查询书\">发送查询书</option><option value=\"审核\">审核</option>";
+            } else if (state == "3") {
+                options = "<option value=\"\"></option><option value= \"发送查询书\">发送查询书</option><option value=\"审核更正\">审核更正</option><option value=\"解付录入\">解付录入</option>";
+            }
+            if (is_review == "true") {
+                options = "<option value=\"\"></option><option value= \"发送查询书\">发送查询书</option><option value=\"解付复核\">解付复核</option>";
+            }
+            $(".cz_czlx").html(options);
+            $("#search").click(function () { 
+				var controls = $("div[data-yw=1]").find(".form-item");
+				for (var i = 0; i < controls.length; i++) {
+					var result = checkRegex($(controls[i]).get(0));
+					if (!result.isCheck) {
+						layer.alert(result.errormsg);
+						return;
+					}
+				}
+
+				var data = lineEdPrevYwData(controls);
+				sessionStorage.PrevData = data; 
+				$(".l-box").show();
+				$("#qv").hide();
+            });
+            
+            $(".detail").click(function () {
+				var chks = $("input[name=xuhao]:checked");
+				if (chks.length == 0) {
+					layer.alert("请选择一条数据");
+					return;
+                } 
+                var row = chks.attr("data-id");
+                var tds = $("#aaa tr[index=" + row + "] td");
+                var state = $(tds[3]).attr("data-state");
+                if (state == "3") { 
+                    edNextNewWin("/user/indexone?yw_sign=063902&row=" + row + "&state=" + state + "&", "2");
+                } else {
+                    edNextNewWin("/user/indexone?row=" + row + "&state=" + state + "&", "2");
+                }
+            });
+
+            $(".cz_czlx").change(function(){
+                var val = $(this).val(); 
+                if(val=="解付录入"){
+                     $("#txt_sjrzzh").removeAttr("disabled");
+                     $("#txt_sjrzzh").attr("vl-regex","['require']").attr("vl-message","['实际入账账号不能为空！']").parent().append("<span class=\"text-red redtip\">!</span>");
+                     $("#txt_sjrzhm").removeAttr("disabled");
+                     $("#txt_sjrzhm").attr("vl-regex","['require']").attr("vl-message","['实际入账户名不能为空！']").parent().append("<span class=\"text-red redtip\">!</span>");
+                }else if(val=="解付复核"){
+                     $("#txt_sjrzzh").removeAttr("disabled");
+                     $("#txt_sjrzzh").attr("vl-regex","['require']").attr("vl-message","['实际入账账号不能为空！']").parent().append("<span class=\"text-red redtip\">!</span>");
+                     $("#txt_sjrzhm").removeAttr("disabled");
+                     $("#txt_sjrzhm").attr("vl-regex","['require']").attr("vl-message","['实际入账户名不能为空！']").parent().append("<span class=\"text-red redtip\">!</span>");
+                     
+                     $("#txt_zkhm").removeAttr("disabled");
+                     $("#txt_zkhm").attr("vl-regex","['require']").attr("vl-message","['重控号码不能为空！']").parent().append("<span class=\"text-red redtip\">!</span>");
+                }
+            });
+
+            $("#tijiao").click(function(){
+                var val = $(".cz_czlx").val();
+                if(val==""){
+                    layer.alert("请选择操作类型！");
+                    return;
+                }
+                $("#btnsubmit").click();
+            });
+             
+        });
+      
+        function handel() {
+            catchSuccess(function () {
+                //   window.opener.closecall("#aaa", 1);
+                //window.close();
+            });
+        }
+          
+
+          function Submit(formid,auth_ids) {
+			    var is_review=$("#review").text();  
+				  //弹出操作成功提示
+                  var czlx=$(".cz_czlx").val();
+                  if(czlx=="审核"){
+                      var l_i =layer.open({
+                              title: "操作成功",
+                              type: 1,
+                              skin: 'layui-layer-rim', //加上边框
+                              area: ['420px', '300px'], //宽高
+                              content: '<ul class=\"dialog-content\"><li>操作成功</li><li><label>交易代码：</label><input value=\"200002\" type=\"text\" disabled=\"disabled\"/></li><li><label>平台日期：</label><input value=\"20170527\" type=\"text\" disabled=\"disabled\"/></li><li><label>平台流水号：</label><input value=\"100512132\" type=\"text\" disabled=\"disabled\"/></li><li><label>操作柜员：</label><input value=\"102748\" type=\"text\" disabled=\"disabled\"/></li></ul>',
+                              btn: ["关闭"],
+                              yes: function () {
+                                    layer.close(l_i); 
+                                    //通知父窗口
+                                    // var row= getQueryString("row");
+                                    // window.opener.closecall("#aaa", row);
+                                    // window.close();
+                                    window.authCloseCall("submit");
+                                    //window.close();
+                                    //not_hxxtjt();
+                                  }
+                              });
+                  }else if(czlx=="解付录入"){
+                     var l_i= layer.open({
+                              title: "操作成功",
+                              type: 1,
+                              skin: 'layui-layer-rim', //加上边框
+                              area: ['420px', '300px'], //宽高
+                              content: '<ul class=\"dialog-content\"><li>操作成功</li><li><label>交易代码：</label><input value=\"200002\" type=\"text\" disabled=\"disabled\"/></li><li><label>平台日期：</label><input value=\"20170527\" type=\"text\" disabled=\"disabled\"/></li><li><label>平台流水号：</label><input value=\"100512132\" type=\"text\" disabled=\"disabled\"/></li><li><label>操作柜员：</label><input value=\"102748\" type=\"text\" disabled=\"disabled\"/></li><li>点击“确定”开始复核操作</li></ul>',
+                              btn: ["关闭"],
+                              yes: function () {
+                                    //通知父窗口
+                                    // var row= getQueryString("row");
+                                    // window.opener.closecall("#aaa", row); 
+                                    layer.close(l_i); 
+					            	if(is_review!="true"){ 
+						            	//跳转到复核页面  
+						            	review(formid,auth_ids); 
+					            	}else{ 
+						            	//复核页面 进行复核验证
+						            	$("#btnsubmit").click();
+						            }
+                                }
+                              });
+                  }
+		  }
+    </script>
+<link href="~/Js/Student/GetDefaultValue/js/common.bank.ed.css" rel="stylesheet" />
+<link href="~/Js/Student/GetDefaultValue/js/ed.common.css" rel="stylesheet" />
+              </form>

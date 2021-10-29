@@ -1,0 +1,109 @@
+﻿@{
+                    ViewBag.Title = "Form_030609";
+                    Layout = "~/Views/Shared/_StutentLayoutIsNull.cshtml";
+                }
+               <form id="form1" onsubmit="return false" action="##" method="post">
+                   <input type="hidden" id="FormType" name="FormType" value="@Request["FormType"]" />
+                   <input type="hidden" id="FormId" name="FormId" value="@Request["FormId"]" />
+                   <input type="hidden" id="TRId" name="TRId" value="@Request["TotalResultId"]" />
+                   <input type="hidden" id="ExamId" name="ExamId" value="@Request["ExamId"]" />
+                   <input type="hidden" id="TaskId" name="TaskId" value="@Request["TaskId"]" />
+                   <input type="hidden" id="CustomerId" name="CustomerId" value="@Request["CustomerId"]" />
+                   <input type="hidden" id="LinkId" name="LinkId" value="@Request["LinkId"]" />
+                   <input type="hidden" id="Types" name="Types" value="2" />
+                <!--内容表单区域开始-->
+            <div class="tables bankmap">
+			<div class="banktop">
+				<span class="toolbar-title-img"> <img src="../busi/img/topleft.png">02342-司法扣划登记薄
+			</span> <span class="toolbar-title-close" style="display: none;"> </span>
+			</div>
+			<div class="con-map2 selected">
+				<table id="qv" class="con-map2-table">
+					<tbody>
+						<tr>
+							<td class="" rowspan="1" colspan="1" style="width: 55px;"><label vl-default="" id="label_zkh2" vtitle="账s/卡号" class="form-item text-left" vl-tipsid="label_zkh2_tips" title="label_zkh2" name="label_zkh2">账<s></s>/卡号
+						</label>
+								<div id="label_zkh2_tips" class="tipsmsg"></div>
+							</td>
+							<td class="" rowspan="1" colspan="3"><input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_zkh2" vtitle="账/卡号" class="form-item text-left" kuaicha="true" vl-tipsid="txt_zkh2_tips" vl-regex="['require', 'maxlength32', 'number']" vl-message="['账/卡号不能为空！','账/卡号长度大于最大长度:[32]!','账/卡号输入错误!']" style="width: 600px;" title="txt_zkh2" onpaste="return false" name="txt_zkh2"><img class="sousuo" src="/Js/Student/GetDefaultValue/img/banksousuo.png" vl-select="txt_name|1|0" vl-exec="false" vl-message="['账/卡号查询未执行！']" title="执行快查！"><span class="text-red redtip">!</span>
+								<div id="txt_zkh2_tips" class="tipsmsg"></div>
+							</td>
+						</tr>
+						<tr>
+							<td rowspan="1" colspan="1" class="" style="width: 48px;"><label vl-default="" id="label_name" vtitle="账户名称" class="form-item text-left" vl-tipsid="label_name_tips" style="width: 80px;" title="label_name" name="label_name">账户名称</label>
+								<div id="label_name_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="3" class=""><input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_name" vtitle="账户名称" class="form-item text-left" vl-disabled="true" vl-tipsid="txt_name_tips" style="width: 600px;" title="txt_name" onpaste="return false" disabled="disabled" name="txt_name">
+								<div id="txt_name_tips" class="tipsmsg"></div>
+							</td>
+						</tr>
+						<tr>
+							<td rowspan="1" colspan="1" class="" style="width: 48px;"><label vl-default="" id="label_type" vtitle="扣划类型" class="form-item text-left" vl-tipsid="label_type_tips" style="width: 80px;" title="label_type" name="label_type">扣划类型</label>
+								<div id="label_type_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="3" class="">
+								<div class="slectstyle">
+									<select vl-default="" id="sle_khlx" vtitle="扣划类型" class="form-item text-left" vl-tipsid="sle_khlx_tips" style="width: 600px;" title="sle_khlx" vl-slemodel="" name="sle_khlx">
+										<option disabled="" style="background-color: blue; color: #fff;" value="" selected="selected">开户类型值含义</option>
+										<option value="1">1 - 强制扣划</option>
+										<option value="2">2 - 冻结扣划</option>
+										<option value="3">3 - 业务扣划</option>
+										<option value="4">4 - 质押扣划</option>
+										<option value="5">5 - 贷款扣划</option>
+									</select><input type="text" oncopy="return false" onpaste="return false" oncut="return false" style="width: 577px;" id="mb1_sleinput_KouHuaLeiXing_6" name="mb1_sleinput_KouHuaLeiXing_6">
+								</div>
+								<div id="sle_khlx_tips" class="tipsmsg"></div>
+							</td>
+						</tr>
+						<tr>
+							<td rowspan="1" colspan="1" class="" style="width: 48px;"><label vl-default="" id="label_Organization+number" vtitle="机构编号" class="form-item text-left on" vl-tipsid="label_Organization+number_tips" style="width: 80px;" title="label_Organization+number" name="label_Organization+number">机构编号</label>
+								<div id="label_Organization+number_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="3" class=""><input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_Organization+number" vtitle="机构编号" class="form-item text-left" vl-tipsid="txt_Organization+number_tips" vl-regex="['maxlength40']" vl-message="['机构编号长度超过最大长度:[40]!']" style="width: 600px;" title="txt_Organization+number" onpaste="return false" name="txt_Organization+number">
+								<div id="txt_Organization+number_tips" class="tipsmsg"></div>
+							</td>
+						</tr>
+						<tr>
+							<td rowspan="1" colspan="1" class="" style="width: 48px;"><label vl-default="" id="label_qsrq" vtitle="起始日期" class="form-item text-left" vl-tipsid="label_qsrq_tips" title="label_qsrq" name="label_qsrq">起始日期</label>
+								<div id="label_qsrq_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class=""><input type="text" class="date form-item text-left" vl-default="" id="date_start" vtitle="起始日期" vl-tipsid="date_start_tips" vl-regex="['require', 'maxlength8', 'tdate','number']" vl-message="['起始日期不能为空!','起始日期长度大于最大长度:[8]!','请输入正确的起始日期格式（如:19000101）!']" style="width: 180px;" oncopy="return false" onpaste="return false" oncut="return false" name="date_start"><img onclick="WdatePicker({el:'date_start',dateFmt:'yyyyMMdd'})" src="/js/My97DatePicker/skin/datePicker.gif" align="absmiddle" style="width: 16px; height: 22px; margin-left: 6px;"><span class="text-red redtip">!</span>
+								<div id="date_start_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="" style="width: 64px;"><label vl-default="" id="label_stop+time" vtitle="终止日期" class="form-item text-left" vl-tipsid="label_stop+time_tips" style="width: 80px;" title="label_stop+time" name="label_stop+time">终止日期</label>
+								<div id="label_stop+time_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class=""><input type="text" class="date form-item text-left" vl-default="" id="date_stop" vtitle="终止日期" vl-tipsid="date_stop_tips" vl-regex="['require', 'maxlength8', 'tdate','number']" vl-message="['终止日期不能为空！','终止日期长度大于最大长度:[8]!','请输入正确的终止日期（如:19000101）!']" style="width: 180px;" title="date_stop" oncopy="return false" onpaste="return false" oncut="return false" name="date_stop"><img onclick="WdatePicker({el:'date_stop',dateFmt:'yyyyMMdd'})" src="/js/My97DatePicker/skin/datePicker.gif" align="absmiddle" style="width: 16px; height: 22px; margin-left: 6px;"><span class="text-red redtip">!</span>
+								<div id="date_stop_tips" class="tipsmsg"></div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="con-map2"> 
+					 <iframe id="iframeID" name="iframeID" style="width: 100%;height: 400px; border:none; " src="http://bsi1.occupationedu.com/commontable/?fields=zkh%7C%E8%B4%A6/%E5%8D%A1%E5%8F%B7,zhmc%7C%E8%B4%A6%E6%88%B7%E5%90%8D%E7%A7%B0,xh%7C%E5%BA%8F%E5%8F%B7,djzh%7C%E5%86%BB%E7%BB%93%E5%BA%8F%E5%8F%B7,khrq%7C%E6%89%A3%E5%88%92%E6%97%A5%E6%9C%9F,khlx%7C%E6%89%A3%E5%88%92%E7%B1%BB%E5%9E%8B,khje%7C%E6%89%A3%E5%88%92%E9%87%91%E9%A2%9D,sjkhje%7C%E5%AE%9E%E9%99%85%E6%89%A3%E5%88%92%E9%87%91%E9%A2%9D,qljglx%7C%E6%9D%83%E5%8A%9B%E6%9C%BA%E5%85%B3%E7%B1%BB%E5%9E%8B,sqkh%7C%E7%94%B3%E8%AF%B7%E6%89%A3%E5%88%92,dwkh%7C%E5%8D%95%E4%BD%8D%E6%89%A3%E5%88%92,tzsh%7C%E9%80%9A%E7%9F%A5%E4%B9%A6%E5%8F%B7,bz%7C%E5%A4%87%E6%B3%A8,zxrzjlx%7C%E6%89%A7%E8%A1%8C%E4%BA%BA-%E8%AF%81%E4%BB%B6%E7%B1%BB%E5%9E%8B,zxrxm%7C%E6%89%A7%E8%A1%8C%E4%BA%BA-%E5%A7%93%E5%90%8D,xzrlxfs%7C%E6%89%A7%E8%A1%8C%E4%BA%BA-%E8%81%94%E7%B3%BB%E6%96%B9%E5%BC%8F,xzrezjlx%7C%E6%89%A7%E8%A1%8C%E4%BA%BA%E4%BA%8C%E8%AF%81%E4%BB%B6%E7%B1%BB%E5%9E%8B,zxrezjhm%7C%E6%89%A7%E8%A1%8C%E4%BA%BA%E4%BA%8C%E8%AF%81%E4%BB%B6%E5%8F%B7%E7%A0%81,zxrexm%7C%E6%89%A7%E8%A1%8C%E4%BA%BA%E4%BA%8C%E5%A7%93%E5%90%8D,zxrelxfs%7C%E6%89%A7%E8%A1%8C%E4%BA%BA%E4%BA%8C%E8%81%94%E7%B3%BB%E6%96%B9%E5%BC%8F,czy%7C%E6%93%8D%E4%BD%9C%E5%91%98,wdh%7C%E7%BD%91%E7%82%B9%E5%8F%B7,lsh%7C%E6%B5%81%E6%B0%B4%E5%8F%B7,djzfje%7C%E5%86%BB%E7%BB%93/%E6%AD%A2%E4%BB%98%E9%87%91%E9%A2%9D,sfjd%7C%E6%98%AF%E5%90%A6%E8%A7%A3%E5%86%BB,khczfs%7C%E6%89%A3%E5%88%92%E6%93%8D%E4%BD%9C%E6%96%B9%E5%BC%8F,sqry%7C%E6%8E%88%E6%9D%83%E4%BA%BA%E5%91%98,khfs%7C%E6%89%A3%E5%88%92%E6%96%B9%E5%BC%8F&amp;table=tb_daily_sfkhdjb&amp;orderby=id&amp;page=1&amp;pagesize=10&amp;is_page=true&amp;toolbar=true&amp;where=%20and%201!=1"></iframe>
+
+		    </div>
+		    <div class="foot ">
+				<span>
+				<button>退出（F3）</button>
+				<button>帮助（F1）</button>
+				<button>辅助（F4）</button>
+				<button type="button" onclick="FormReset()">重置（F5）</button>
+			</span> <span style="float: right;">
+				<button type="button" style="margin-right: 0px;" vl-submit="true" id="btnsubmit" onclick="SubmitForm()">提交</button>
+			</span>
+			</div>
+			</div><script src="~/Js/Student/GetDefaultValue/common.bank.js"></script>
+              <script src="~/Js/Student/GetDefaultValue/lodash.min.js"></script>
+              <script src="~/Js/Student/GetDefaultValue/common.regex.cz.js"></script>
+              <script src="~/Js/Student/GetDefaultValue/common.regex.js"></script>
+<script src="~/Js/Student/GetDefaultValue/js/layer.js"></script>
+<script src="~/Js/Student/GetDefaultValue/js/My97DatePicker/WdatePicker.js"></script>
+<script type="text/javascript">
+            $(function () {
+                $("#iframeID").attr("src", encodeURI("/commontable/?fields=zkh|账/卡号,zhmc|账户名称,xh|序号,djzh|冻结序号,khrq|扣划日期,khlx|扣划类型,khje|扣划金额,sjkhje|实际扣划金额,qljglx|权力机关类型,sqkh|申请扣划,dwkh|单位扣划,tzsh|通知书号,bz|备注,zxrzjlx|执行人-证件类型,zxrxm|执行人-姓名,xzrlxfs|执行人-联系方式,xzrezjlx|执行人二证件类型,zxrezjhm|执行人二证件号码,zxrexm|执行人二姓名,zxrelxfs|执行人二联系方式,czy|操作员,wdh|网点号,lsh|流水号,djzfje|冻结/止付金额,sfjd|是否解冻,khczfs|扣划操作方式,sqry|授权人员,khfs|扣划方式&table=tb_daily_sfkhdjb&orderby=id&page=1&pagesize=10&is_page=true&toolbar=true&where= and 1!=1"));
+    });
+</script>
+<link href="~/Js/Student/GetDefaultValue/js/common.bank.css" rel="stylesheet" />
+              </form>

@@ -1,0 +1,64 @@
+﻿@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewData["nvc"] = "案例管理";
+}
+
+
+
+
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-sm-12">
+        <ol class="breadcrumb">
+            <li>
+                <h2><a href="/Admin/CaseManagement">案例管理</a></h2>
+            </li>
+            <li>
+                编辑案例
+            </li>
+        </ol>
+
+
+        <div class="col-sm-12 m-t-sm m-b-lg text-center">
+            <button class="btn  btn-lg btn-outline btn-success m-r-lg" name="senceSelect" value="1" onclick="selectScene(this)">基本信息</button>
+            <i class="fa fa-arrow-circle-right fa-2x m-r-xs"></i>
+            <button class="btn   btn-lg btn-outline  btn-success m-l-lg m-r-lg" name="senceSelect" value="2" onclick="selectScene(this)">业务场景设置</button>
+            <i class="fa fa-arrow-circle-right fa-2x m-r-xs"></i>
+            <button class="btn   btn-lg  btn-outline btn-success m-l-lg m-r-lg" value="3" onclick="selectScene(this)">客户列表</button>
+            <i class="fa fa-arrow-circle-right fa-2x m-r-xs"></i>
+            <button class="btn   btn-lg  btn-success m-l-lg m-r-lg" name="senceSelect" value="4" onclick="selectScene(this)">能力分值设置</button>
+        </div>
+
+        <input type="hidden" id="taskid" value="@ViewData["taskid"]" />
+        <input type="hidden" id="addtype" value="@ViewData["addtype"]" />
+        <input type="hidden" id="operscene" value="@ViewData["operscene"]" />
+    </div>
+</div>
+<!--面包屑位置结束-->
+<!--主体内容开始-->
+<div class="ibox-content">
+
+    <div class="row  m-t-sm ">
+        <div class="col-sm-12">
+            <table class="table text-center table-bordered ">
+                <thead>
+                    <tr>
+                        <th class="text-center">场景</th>
+                        <th class="text-center">当前设置</th>
+                        <th class="text-center">操作</th>
+                    </tr>
+                </thead>
+                <tbody class="new_table text-center" id="tablelist"></tbody>
+            </table>
+
+        </div>
+
+    </div>
+
+
+</div>
+
+
+<script src="~/Js/Admin/CaseManagement/OperSceneSelect.js"></script>
+<script src="~/Scripts/String/StringFormat.js"></script>
+
+<script src="~/Js/Admin/CaseManagement/AbilityScoreSet.js"></script>

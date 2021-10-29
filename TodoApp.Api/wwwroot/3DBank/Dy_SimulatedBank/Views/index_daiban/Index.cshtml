@@ -1,0 +1,197 @@
+﻿@{
+    Layout = "~/Views/Shared/_StudentLayout.cshtml";
+}
+
+
+<style type="text/css">
+
+    .db_map {
+        height: 500px;
+    }
+
+    .item_name {
+        text-align: center;
+        font-size: 20px;
+        margin-top: 15px;
+        color: #333333;
+    }
+
+    .hr_item {
+        width: 50px;
+        height: 1px;
+        border: 2px solid #3487f5;
+        margin: auto;
+        margin-top: 3px;
+    }
+
+    .shi_map {
+        cursor: pointer;
+    }
+
+        .shi_map h2 {
+            font-size: 32px;
+            margin: 18px 0px 13px 0px;
+        }
+
+        .shi_map:hover {
+            color: #3487f5;
+        }
+</style>
+
+<!-------------内容------------->
+<div class="index_con">
+    <div class="crumbs_map">
+        你当前所在的位置：
+        <a href="index_one.html">首页</a>＞
+        <span>代办事项</span>
+    </div>
+    <!--面包屑结束-->
+    <!--切换内容区域-->
+    <div class="db_map">
+        <div class="item_name">
+            待办事项
+        </div>
+        <div class="hr_item"></div>
+        <div class="title_public m-t">
+            <label>进行中的实训</label>
+        </div>
+        <div class="row m-t-sm">
+            <div class="col-sm-3 shi_map">
+                <div class="col-sm-5">
+                    <img src="../img/imgshi1.png" />
+                </div>
+                <div class="col-sm-7">
+                    <h2>@ViewBag.TYJNSX</h2>
+                    <p>个人练习</p>
+                </div>
+            </div>
+            <div class="col-sm-3 shi_map">
+                <div class="col-sm-5">
+                    <img src="../img/imgshi2.png" />
+                </div>
+                <div class="col-sm-7">
+                    <h2>@ViewBag.AMAZON</h2>
+                    <p>团队练习</p>
+                </div>
+            </div>
+            @*<div class="col-sm-3 shi_map">
+                    <div class="col-sm-5">
+                        <img src="../img/imgshi3.png" />
+                    </div>
+                    <div class="col-sm-7">
+                        <h2>15</h2>
+                        <p>阿里巴巴国际站技能实训</p>
+                    </div>
+                </div>
+                <div class="col-sm-3 shi_map">
+                    <div class="col-sm-5">
+                        <img src="../img/imgshi4.png" />
+                    </div>
+                    <div class="col-sm-7">
+                        <h2>15</h2>
+                        <p>速卖通技能实训</p>
+                    </div>
+                </div>*@
+        </div>
+        @*<div class="row m-t-sm">
+                <div class="col-sm-3 shi_map">
+                    <div class="col-sm-5">
+                        <img src="../img/imgshi5.png" />
+                    </div>
+                    <div class="col-sm-7">
+                        <h2>15</h2>
+                        <p>Wish技能实训</p>
+                    </div>
+                </div>
+                <div class="col-sm-3 shi_map">
+                    <div class="col-sm-5">
+                        <img src="../img/imgshi6.png" />
+                    </div>
+                    <div class="col-sm-7">
+                        <h2>15</h2>
+                        <p>eBay技能实训</p>
+                    </div>
+                </div>
+            </div>*@
+        <div class="title_public m-t">
+            <label>进行中的考试</label>
+        </div>
+        <div class="row m-t-sm">
+            <div class="col-sm-3 shi_map">
+                <div class="col-sm-5">
+                    <img class="m-t-md" src="../img/imgshi7.png" />
+                </div>
+                <div class="col-sm-7">
+                    <h2>96</h2>
+                    <p>知识考核</p>
+                </div>
+            </div>
+            <div class="col-sm-3 shi_map">
+                <div class="col-sm-5">
+                    <img class="m-t-md" src="../img/imgshi8.png" />
+                </div>
+                <div class="col-sm-7">
+                    <h2>@ViewBag.ZSKH</h2>
+                    <p>个人考核 </p>
+                </div>
+            </div>
+            <div class="col-sm-3 shi_map">
+                <div class="col-sm-5">
+                    <img class="m-t-md" src="../img/imgshi8.png" />
+                </div>
+                <div class="col-sm-7">
+                    <h2>@ViewBag.JNKH</h2>
+                    <p>团队考核 </p>
+                </div>
+            </div>
+        </div>
+        @*<div class="title_public m-t">
+                <label>进行中的竞赛</label>
+            </div>
+            <div class="row m-t-sm">
+                <div class="col-sm-3 shi_map">
+                    <div class="col-sm-5">
+                        <img class="m-t-md" src="../img/imgshi9.png" />
+                    </div>
+                    <div class="col-sm-7">
+                        <h2>82</h2>
+                        <p>所有竞赛</p>
+                    </div>
+                </div>
+            </div>*@
+    </div>
+</div>
+
+<script type="text/javascript">
+    //根据渲染出来的数据，动态设置底部
+
+    //文档body的高度
+    var bodyHeight = $(document.body).height()
+    //当前窗口可视区域高度
+    var winHeight = $(window).height()
+    if (bodyHeight > winHeight) {
+        $(".footer").removeClass("fid")
+    } else {
+        $(".footer").addClass("fid")
+    }
+
+    //退出系统
+    function out_xitong() {
+        layer.confirm('您确定要退出系统吗？', {
+            title: '退出系统',
+            btn: ['确定', '取消'],
+            offset: 'auto', //定义弹窗位置垂直居中
+            shadeClose: false, //遮罩关闭控制
+            skin: 'layui-layer-lan'
+            //按钮
+        },
+            function () {
+                layer.msg('退出成功', {
+                    time: 10000,
+                    icon: 1,
+                });
+                window.location.href = "login.html"
+            });
+
+    }
+</script>

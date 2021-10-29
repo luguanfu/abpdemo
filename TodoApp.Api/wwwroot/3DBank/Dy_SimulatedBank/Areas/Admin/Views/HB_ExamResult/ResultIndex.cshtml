@@ -1,0 +1,201 @@
+﻿@{
+    
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewData["nvc"] = "理论考核成绩";
+}
+
+
+<div class="row wrapper white-bg page-heading">
+    <div class="col-sm-12">
+        <ol class="breadcrumb">
+            <li>
+                <h2>理论考核成绩</h2>
+            </li>
+            <li>
+                <a href="/Admin/HB_ExamResult">考核成绩</a>
+            </li>
+            <li>
+                <strong>@ViewData["E_Name"]</strong>
+            </li>
+        </ol>
+
+    </div>
+</div>
+
+<div class="ibox-content">
+    <div class="row form-horizontal">
+
+        <div class="row">
+
+            <div class="col-sm-3">
+                <div class="input-group">
+                    <input type="text" placeholder="请输入学员信息" id="stuinfo" class="form-control">
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-primary" onclick="searchinfo()">搜索</button>
+                    </span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="hr-line-dashed"></div>
+
+    <div class="row">
+        <div class="pull-right">
+            <button onclick="ExportExamResult()" class="btn btn-info btn-sm" type="button"><i class="fa fa-level-down  m-r-xs"></i><span class="bold">成绩导出</span></button>
+        </div>
+    </div>
+    <div class="row m-t-sm table-responsive">
+        <table class="table text-center table-bordered ">
+            <thead>
+                <tr>
+                    <th class="text-center">排名</th>
+                    <th class="text-center">学生账号</th>
+                    <th class="text-center">学生姓名</th>
+                    <th class="text-center">所属学院</th>
+                    <th class="text-center">所属专业</th>
+                    <th class="text-center">所属班级</th>
+                    <th class="text-center" style="cursor: pointer;" onclick="ResultDesc()">分数↑↓</th>
+                    <th class="text-center" style="cursor: pointer;" onclick="TimeDesc()">提交时间↑↓</th>
+                </tr>
+            </thead>
+            <tbody class="new_table text-center" id="tablelist">
+            </tbody>
+        </table>
+    </div>
+
+    <!--分页开始-->
+    <div class="row text-center" id="PaginatorLibrary">
+    </div>
+    <!--分页结束-->
+</div>
+<a id='downFile' href="" style="display: none"><span id='tf'></span></a>
+
+<script type="text/javascript">
+    $(function () {
+        bindIngfo();
+    });
+
+    function redload() {
+        $('.i-checks').iCheck({
+            checkboxClass: 'icheckbox_square-green',
+            radioClass: 'iradio_square-green',
+        });
+        //全选checkbox
+        var $checkboxAll = $(".checkbox-all"),
+                           $checkbox = $(".new_table").find("[type='checkbox']").not("[disabled]"),
+                           length = $checkbox.length,
+                           i = 0;
+        $checkboxAll.on("ifClicked", function (event) {
+            if (event.target.checked) {
+                $checkbox.iCheck('uncheck');
+                i = 0;
+            } else {
+                $checkbox.iCheck('check');
+                i = length;
+            }
+        });
+    }
+
+    var descby = "Scores desc";
+    var d1by = "Scores desc";
+    var d2by = "tiTime desc";
+    //分数排序
+    function ResultDesc() {
+        if (d1by == "Scores desc") {
+            d1by = "Scores asc";
+        } else {
+            d1by = "Scores desc";
+        }
+        descby = d1by;
+        bindIngfo();
+    }
+    var allcs = 1;
+    //时间排序
+    function TimeDesc() {
+       
+        if (d2by == "tiTime desc") {
+            d2by = "tiTime asc";
+        } else {
+            d2by = "tiTime desc";
+        }
+        descby = d2by;
+        bindIngfo();
+
+    }
+
+    //列表数据加载
+    function bindIngfo(page) {
+
+        var stuinfo = $("#stuinfo").val();
+
+        var PageSize = 10;
+        var EId = getQueryString('EId');
+        var PId = getQueryString('PId');
+        $.ajax({
+            url: '/Admin/HB_ExamResult/GetListResult',
+            Type: "post",
+            dataType: "json", cache: false,
+            contentType: "application/json; charset=utf-8",
+            data: { "descby": descby, "stuinfo": stuinfo, "page": page, "PageSize": PageSize, "EId": EId, "PId": PId },
+            success: function (tb) {
+
+                var html = '';
+                var data = tb.Tb;//转换table
+                for (var i = 0; i < data.length; i++) {
+                    html += '<tr>';
+
+                    html += '<td><span class="pie">' + data[i]["pm"] + '</span></td>';
+                    html += '<td><span class="pie">' + data[i]["LoginNo"] + '</span></td>';
+                    html += '<td><span class="pie">' + data[i]["Name"] + '</span></td>';
+                    html += '<td><span class="pie">' + data[i]["CollegeName"] + '</span></td>';
+                    html += '<td><span class="pie">' + data[i]["MajorName"] + '</span></td>';
+                    html += '<td><span class="pie">' + data[i]["ClassName"] + '</span></td>';
+
+
+                    html += '<td><span class="pie">' + data[i]["Scores"] + '</span></td>';
+
+                    var tiTime = data[i]["tiTime"] + "";
+                    if (tiTime == "null") {
+                        html += '<td><span class="pie">---</span></td>';
+                    } else {
+                        html += '<td><span class="pie">' + tiTime.substr(0, 19).replace('T', ' ') + '</span></td>';
+                    }
+                    html += '</tr>';
+                }
+
+                $("#tablelist").html(html);
+
+                bootstrapPaginator("#PaginatorLibrary", tb, bindIngfo);//分页
+                //样式重新加载
+                redload();
+            }
+        });
+    }
+
+    //搜索
+    function searchinfo() {
+
+        bindIngfo();
+
+    }
+
+    function ExportExamResult() {
+        var EId = getQueryString('EId');
+        var PId = getQueryString('PId');
+        var stuinfo = $("#stuinfo").val();
+        $.ajax({
+            Type: "post",
+            dataType: "json",
+            url: '/Admin/HB_ExamResult/ExportExamResult',
+            data: { "descby": descby, "stuinfo": stuinfo, "EId": EId, "PId": PId },
+            async: false,
+            success: function (data) {
+
+                $("#downFile").attr("href", "/Ashx/download.ashx?downurl=" + data[0]["filename"]);
+                $("#tf").click();
+            }
+        });
+    }
+
+</script>

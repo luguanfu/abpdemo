@@ -1,0 +1,120 @@
+﻿
+<!--企业网银客户签约管理[Ukey变更]-->
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <label id="lbl_enterpriseName" name="lbl_enterpriseName" for="inputEmail3" class="col-sm-3 control-label">企业名称</label>
+            <div class="col-sm-6">
+                <input vl-default="" id="txt_enterpriseName" name="txt_enterpriseName" type="text" class="form-control input-sm">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <label id="lbl_userNumber" name="lbl_userNumber" for="inputEmail3" class="col-sm-3 control-label">用户编号</label>
+            <div class="col-sm-6">
+                <input vl-default="" id="txt_userNumber" name="txt_userNumber" type="text" class="form-control input-sm">
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <label id="lbl_username" name="lbl_username" for="inputEmail3" class="col-sm-3 control-label">用户姓名</label>
+            <div class="col-sm-6">
+                <input vl-default="" id="txt_username" name="txt_username" type="text" class="form-control input-sm">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <label id="lbl_certificateKind" name="lbl_certificateKind" for="inputEmail3" class="col-sm-3 control-label">证件类型</label>
+            <div class="col-sm-6">
+                <select vl-default="" id="sle_certificateKind" name="sle_certificateKind" class="form-control"></select>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <label id="lbl_idCode" name="lbl_idCode" for="inputEmail3" class="col-sm-3 control-label">证件号码</label>
+            <div class="col-sm-6">
+                <input vl-default="" id="txt_idCode" name="txt_idCode" type="text" class="form-control input-sm">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <label id="lbl_oldUkeyType" name="lbl_oldUkeyType" for="inputEmail3" class="col-sm-3 control-label">原Ukey类型</label>
+            <div class="col-sm-6">
+                <select vl-default="" id="sle_oldUkeyType" name="sle_oldUkeyType" class="form-control"></select>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <label id="lbl_oldUkeySerial" name="lbl_oldUkeySerial" for="inputEmail3" class="col-sm-3 control-label">原Ukey序列号</label>
+            <div class="col-sm-6">
+                <input vl-default="" id="txt_oldUkeySerial" name="txt_oldUkeySerial" type="text" class="form-control input-sm">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <label id="lbl_issueDate" name="lbl_issueDate" for="inputEmail3" class="col-sm-3 control-label">发放日期</label>
+            <div class="col-sm-6">
+                <input vl-default="" id="txt_issueDate" name="txt_issueDate" type="date" max="9999-12-31"  class="form-control input-sm">
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <label id="lbl_certificateStatus" name="lbl_certificateStatus" for="inputEmail3" class="col-sm-3 control-label">证书状态</label>
+            <div class="col-sm-6">
+                <input vl-default="" id="txt_certificateStatus" name="txt_certificateStatus" type="text" class="form-control input-sm">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <label id="lbl_newUkeyType" name="lbl_newUkeyType" for="inputEmail3" class="col-sm-3 control-label">新Ukey类型</label>
+            <div class="col-sm-6">
+                <select vl-default="" id="sle_newUkeyType" name="sle_newUkeyType" class="form-control"></select>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <label id="lbl_minSerial" name="lbl_minSerial" for="inputEmail3" class="col-sm-3 control-label">最小序列号</label>
+            <div class="col-sm-6">
+                <input vl-default="" id="txt_minSerial" name="txt_minSerial" type="text" class="form-control input-sm">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <label id="lbl_newUkeySerial" name="lbl_newUkeySerial" for="inputEmail3" class="col-sm-3 control-label">新Ukey序列号</label>
+            <div class="col-sm-6">
+                <input vl-default="" id="txt_newUkeySerial" name="txt_newUkeySerial" type="text" class="form-control input-sm">
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    setOptions(['certificateKind', 'oldUkeyType', 'newUkeyType']);
+    function doSubmit() {
+        goPage("200016");
+    }
+</script>

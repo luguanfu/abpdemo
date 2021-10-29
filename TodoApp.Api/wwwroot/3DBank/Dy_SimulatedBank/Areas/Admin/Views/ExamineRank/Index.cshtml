@@ -1,0 +1,114 @@
+﻿@{
+    
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewData["nvc"] = "排名管理";
+}
+
+<div class="row   white-bg dashboard-header">
+    <div class="col-sm-12">
+        <ol class="breadcrumb">
+            <li>
+                <h2>考试管理</h2>
+            </li>
+            <li>
+                <a href="#">排名管理</a>
+            </li>
+            <li>
+                <strong>排名列表</strong>
+            </li>
+        </ol>
+        <input type="text" hidden="hidden" id="typess" name="typess" value="@ViewData["UserType"]" />
+    </div>
+    <div class="ibox-content">
+        <div class="row form-horizontal">
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="input-group">
+                        <input type="text" placeholder="请输入排名名称" id="ExamineName" class="form-control">
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-primary" onclick="bindIngfo()">搜索</button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="hr-line-dashed"></div>
+
+        <div class="row"  id="an">
+            <div class="pull-right">
+
+
+                <button onclick="del_all()" type="button" class="btn btn-warning btn-sm"><i class="fa fa-trash  m-r-xs"></i><span class="bold">删除所选</span></button>
+
+                <button onclick="activate()" class="btn btn-success btn-sm" type="button"><i class="fa fa-check  m-r-xs"></i><span class="bold">激活所选</span></button>
+
+                <button onclick="closeactivate()" class="btn btn-danger btn-sm" type="button"><i class="fa fa-times  m-r-xs"></i><span class="bold">关闭激活</span></button>
+
+                <button onclick="AddRank()" class="btn btn-primary btn-sm" type="button"><i class="fa fa-plus  m-r-xs"></i><span class="bold">新增排名</span></button>
+
+            </div>
+        </div>
+
+        <div class="row m-t-sm table-responsive">
+            <table class="table text-center table-bordered ">
+                <thead>
+                    <tr>
+
+                        <th width="80" class="text-center">
+                            <input type="Checkbox" class="i-checks checkbox-all">
+                        </th>
+                        <th class="text-center">排名名称</th>
+                        <th class="text-center">激活状态</th>
+                        <th width="400" class="text-center">操作</th>
+                    </tr>
+                </thead>
+                <tbody class="new_table text-center" id="tablelist"></tbody>
+            </table>
+        </div>
+
+        <!--分页开始-->
+        <div class="row text-center" id="PaginatorLibrary">
+        </div>
+        <!--分页结束-->
+
+    </div>
+</div>
+
+<!--新增弹框-->
+<div id="Add_div" style="display: none;" class="form-inline">
+    <form name="Add_form" id="Add_form">
+        <div class="col-sm-12">
+            <div class="form-horizontal  m-t-lg">
+                <label for="firstname" class="col-sm-3 control-label"><span style="color: red;">*</span>排名名称：</label>
+                <div class="col-sm-9">
+                    <input style="width: 100%;" autocomplete="off" type="text" class="form-control" id="RankName" name="RankName">
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<!--编辑弹框-->
+<div id="Edit_div" style="display: none;" class="form-inline">
+    <form name="Edit_form" id="Edit_form">
+        <div class="col-sm-12">
+            <div class="form-horizontal  m-t-lg">
+                <label for="firstname" class="col-sm-3 control-label"><span style="color: red;">*</span>排名名称：</label>
+                <div class="col-sm-9">
+                    <input style="width: 100%;" autocomplete="off" type="text" class="form-control" id="EditRankName" name="EditRankName">
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+<script type="text/javascript">
+    var UserType = "0";
+    $(function () {
+
+        UserType = "@ViewData["UserType"]";//当前登录角色
+        if (UserType != "0") {
+
+        }
+    });
+</script>
+<script src="~/Js/Admin/ExamineRank/ExamineRank.js"></script>

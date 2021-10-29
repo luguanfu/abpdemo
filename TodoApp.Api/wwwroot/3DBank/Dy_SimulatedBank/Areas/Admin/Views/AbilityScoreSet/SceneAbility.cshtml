@@ -1,0 +1,267 @@
+﻿@{
+    ViewBag.Title = "SceneAbility";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewData["nvc"] = "案例管理";
+}
+
+<input type="hidden" id="taskid" value="@ViewData["taskid"]" />
+<input type="hidden" id="sceneid" value="@ViewData["sceneid"]" />
+
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-sm-12">
+        <ol class="breadcrumb">
+
+            <li>
+                <h2><a href="/Admin/CaseManagement">案例管理</a></h2>
+            </li>
+
+            <li>
+                <strong><a href="/Admin/AbilityScoreSet/Index?taskid=@ViewData["taskid"]&addtype=2&operscene=4">能力分值设定</a></strong>
+            </li>
+
+            <li>
+                <strong id="scenename"></strong>
+            </li>
+
+        </ol>
+
+    </div>
+</div>
+
+
+
+<!--主体内容开始-->
+<div class="ibox-content" id="Scene1" hidden>
+
+    <div class="row m-t">
+        <div class="col-sm-3">
+            <h2>开工管理</h2>
+        </div>
+        <div class=" col-sm-9 text-right">
+            <button class="btn btn-danger btn-sm m-r-sm" type="button" onclick="clearAbilitySet()"><i class="fa fa-trash m-r-xs"></i><span class="bold" >清空设置</span></button>
+            <button class="btn btn-primary btn-sm " type="button" onclick="batchAbilitySet()"><i class="fa fa-pencil m-r-xs"></i><span class="bold" >批量编辑所选</span></button>
+        </div>
+    </div>
+
+
+    <div class="row  m-t-sm ">
+        <div class="col-sm-12">
+            <table class="table text-center table-bordered ">
+                <thead>
+                    <tr>
+                        <th class="text-center"><input type="Checkbox" class="i-checks checkbox-all"></th>
+                        <th class="text-center">柜面服务</th>
+                        <th class="text-center">操作</th>
+                        <th class="text-center"> 正确答案或选项</th>
+                        <th class="text-center"> 对应能力及分值</th>
+                        <th class="text-center">操作</th>
+                    </tr>
+                </thead>
+                <tbody class="new_table text-center" id="tbody1"></tbody>
+            </table>
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<!--主体内容开始-->
+<div class="ibox-content" id="Scene2" hidden>
+
+    <div class="row m-t">
+        <div class="col-sm-3">
+            <h2>厅堂服务</h2>
+        </div>
+        <div class=" col-sm-9 text-right">
+            <button class="btn btn-danger btn-sm m-r-sm" type="button" onclick="clearAbilitySet()"><i class="fa fa-trash m-r-xs"></i><span class="bold" >清空设置</span></button>
+
+            <button class="btn btn-success btn-sm m-r-sm" type="button" onclick="batchAbilitySetOperate()"><i class="fa fa-pencil m-r-xs"></i><span class="bold">批量编辑操作</span></button>
+
+            <button class="btn btn-info btn-sm m-r-sm" type="button" onclick="batchAbilitySetInquiry()"><i class="fa fa-pencil m-r-xs"></i><span class="bold">批量编辑质询</span></button>
+
+            <button class="btn btn-primary btn-sm " type="button" onclick="batchAbilitySet()"><i class="fa fa-pencil m-r-xs"></i><span class="bold" >批量编辑所选</span></button>
+
+        </div>
+    </div>
+
+    <div class="row  m-t-sm ">
+        <div class="col-sm-12">
+            <div class="bg-warning" style="padding:10px 0px">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="col-sm-4" id="kehuindex2"> 客户1 </div>
+                        <div class="col-sm-4" id="kehuming2">客户姓名 </div>
+                        <div class="col-sm-4" id="kehuyewu2">获取所办理的业务比如单位销户综合业务 </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12">
+            <table class="table text-center table-bordered ">
+                <thead>
+                    <tr>
+                        <th class="text-center"><input type="Checkbox" class="i-checks checkbox-all"></th>
+                        <th class="text-center">柜面服务</th>
+                        <th class="text-center">操作</th>
+                        <th class="text-center"> 正确答案或选项</th>
+                        <th class="text-center"> 对应能力及分值</th>
+                        <th class="text-center">操作</th>
+                    </tr>
+                </thead>
+                <tbody class="new_table text-center" id="tbody2"></tbody>
+            </table>
+        </div>
+
+        <!--分页开始-->
+        <div class=" text-center">
+            <div class="dataTables_paginate paging_simple_numbers" id="PaginatorLibrary2">
+
+            </div>
+
+        </div>
+        <!--分页结束-->
+    </div>
+
+</div>
+
+<!--主体内容开始-->
+<div class="ibox-content" id="Scene3" hidden>
+
+    <div class="row m-t">
+        <div class="col-sm-3">
+            <h2>柜面服务</h2>
+        </div>
+        <div class=" col-sm-9 text-right">
+            <button class="btn btn-danger btn-sm m-r-sm" type="button" onclick="clearAbilitySet()"><i class="fa fa-trash m-r-xs"></i><span class="bold" >清空设置</span></button>
+
+            <button class="btn btn-success btn-sm m-r-sm" type="button" onclick="batchAbilitySetOperate()"><i class="fa fa-pencil m-r-xs"></i><span class="bold">批量编辑操作</span></button>
+
+            <button class="btn btn-info btn-sm m-r-sm" type="button" onclick="batchAbilitySetInquiry()"><i class="fa fa-pencil m-r-xs"></i><span class="bold">批量编辑质询</span></button>
+
+            <button class="btn btn-primary btn-sm " type="button" onclick="batchAbilitySet()"><i class="fa fa-pencil m-r-xs"></i><span class="bold" >批量编辑所选</span></button>
+
+        </div>
+    </div>
+
+    <div class="row  m-t-sm ">
+        <div class="col-sm-12">
+            <div class="bg-warning" style="padding:10px 0px">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="col-sm-4" id="kehuindex3"> 客户1 </div>
+                        <div class="col-sm-4" id="kehuming3">客户姓名 </div>
+                        <div class="col-sm-4" id="kehuyewu3">获取所办理的业务比如单位销户综合业务 </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12">
+            <table class="table text-center table-bordered ">
+                <thead>
+                    <tr>
+                        <th class="text-center"><input type="Checkbox" class="i-checks checkbox-all"></th>
+                        <th class="text-center">柜面服务</th>
+                        <th class="text-center">操作</th>
+                        <th class="text-center"> 正确答案或选项</th>
+                        <th class="text-center"> 对应能力及分值</th>
+                        <th class="text-center">操作</th>
+                    </tr>
+                </thead>
+                <tbody class="new_table text-center" id="tbody3"></tbody>
+            </table>
+        </div>
+
+        <!--分页开始-->
+        <div class=" text-center">
+            <div class="dataTables_paginate paging_simple_numbers" id="PaginatorLibrary3">
+
+            </div>
+
+        </div>
+        <!--分页结束-->
+    </div>
+
+</div>
+
+
+<!--主体内容开始-->
+<div class="ibox-content" id="Scene4" hidden>
+
+    <div class="row m-t">
+        <div class="col-sm-3">
+            <h2>完工管理</h2>
+        </div>
+        <div class=" col-sm-9 text-right">
+            <button class="btn btn-danger btn-sm m-r-sm"  type="button" onclick="clearAbilitySet()"><i class="fa fa-trash m-r-xs"></i><span class="bold" >清空设置</span></button>
+            <button class="btn btn-primary btn-sm " type="button" onclick="batchAbilitySet()"><i class="fa fa-pencil m-r-xs"></i><span class="bold" >批量编辑所选</span></button>
+        </div>
+    </div>
+
+
+    <div class="row  m-t-sm ">
+        <div class="col-sm-12">
+            <table class="table text-center table-bordered ">
+                <thead>
+                    <tr>
+                        <th class="text-center"><input type="Checkbox" class="i-checks checkbox-all"></th>
+                        <th class="text-center">柜面服务</th>
+                        <th class="text-center">操作</th>
+                        <th class="text-center"> 正确答案或选项</th>
+                        <th class="text-center"> 对应能力及分值</th>
+                        <th class="text-center">操作</th>
+                    </tr>
+                </thead>
+                <tbody class="new_table text-center" id="tbody4"></tbody>
+            </table>
+        </div>
+
+    </div>
+
+</div>
+
+
+<div hidden id="SetAbilityScoresDiv">
+    <form name="EditSealForm" id="EditSealForm">
+        <input type="hidden" id="SetAbilityType" value="0" />@* 0:根据TaskDetailId设置  1：选取批量设置  *@
+        <input type="hidden" id="TaskDetailId" value="0" />
+        <div class="col-sm-12">
+            <div class="form-horizontal  m-t-lg">
+                <label for="firstname" class="col-sm-12 "><span style="color: red;"></span>请设置所选题目对应能力分值：</label>
+            </div>
+        </div>
+
+        <div id="abilityScoreRows">
+
+            <div class="col-sm-4">
+                <div class="form-horizontal  m-t-lg">
+                    <select class="form-control input-s-sm inline" name="abilitySelect"></select>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="form-horizontal  m-t-lg">
+                    <input autocomplete="off" type="number" class="form-control" name="abilityScore" name="" placeholder="请输入分值">
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="form-horizontal  m-t-lg">
+                    <input onclick="addScoreSetRow()" type="button" id="btnZoomIn" class="Btnsty_peyton" value="+">
+                    <input onclick="dllScoreSetRow(this)" type="button" id="btnZoomOut" class="Btnsty_peyton" value="-">
+                </div>
+            </div>
+        </div>
+
+
+    </form>
+
+</div>
+
+
+
+<script src="~/Js/Admin/CaseManagement/CommonConfig.js"></script>
+<script src="~/Scripts/String/StringFormat.js"></script>
+<script src="~/Js/Admin/CaseManagement/SceneAbility.js"></script>
+

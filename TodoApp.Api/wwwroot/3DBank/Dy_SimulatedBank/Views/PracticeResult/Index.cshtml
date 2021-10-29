@@ -1,0 +1,254 @@
+﻿@{
+    Layout = "~/Views/Shared/_StudentLayout.cshtml";
+    ViewData["nvc"] = "成绩";
+}
+<link href="~/CSS/bootstrap.min.css" rel="stylesheet" />
+<link href="~/CSS/form_public.css" rel="stylesheet" />
+<link href="~/CSS/header.css" rel="stylesheet" />
+<link href="~/CSS/footer.css" rel="stylesheet" />
+<link href="~/Scripts/layer/skin/layer.css" rel="stylesheet" />
+<link href="~/CSS/default.css" rel="stylesheet" />
+<link href="~/CSS/iCheck/custom.css" rel="stylesheet" />
+<link href="~/CSS/3Dstudent.css" rel="stylesheet" />
+<style type="text/css">
+
+    .font-bold {
+        font-weight: 600;
+    }
+
+    .text_colpublic {
+        color: #3487f5 !important;
+    }
+
+    .text_lv {
+        color: green !important;
+    }
+
+    .text_red {
+        color: red !important;
+    }
+
+    .grade_public {
+        width: 350px;
+        height: 218px;
+        background: url(../img/grade_img.png) no-repeat center;
+        margin: auto;
+    }
+
+    .grade_text {
+        text-align: center;
+        padding-top: 152px;
+        font-size: 21px;
+        color: white;
+    }
+
+    #zhixunjiexiDiv span {
+        color: white !important;
+    }
+    /***公共用分页***/
+    .con_bottom {
+        padding-top: 36px;
+        margin-bottom: 38px;
+        text-align: center;
+        clear: both;
+    }
+
+        .con_bottom a {
+            cursor: pointer !important;
+            padding: 6px 10px !important;
+            border: 1px solid #f3f3f3 !important;
+            color: #6e6e6e !important;
+            background-color: #E2E1E1;
+            border-radius: 0.3em !important;
+            margin-left: 5px !important;
+            text-decoration: none !important;
+            line-height: 20px !important;
+            height: 35px !important;
+            width: 35px !important;
+        }
+
+            .con_bottom a:hover {
+                color: white !important;
+                border: 1px solid #3487f5;
+                background-color: #3487f5;
+                text-decoration: none;
+            }
+
+            .con_bottom a.xz {
+                color: white !important;
+                border: 1px solid #3487f5;
+                background-color: #3487f5;
+                text-decoration: none;
+            }
+
+        .con_bottom span {
+            margin-left: 5px;
+            color: #6e6e6e;
+        }
+
+        .con_bottom input {
+            outline: none;
+            /*margin-left: 30px;*/
+            font-size: 16px;
+            text-align: center;
+            width: 65px;
+            height: 32px;
+            border: 1px solid #E2E1E1;
+            border-radius: 0.3em;
+            color: #3487f5;
+        }
+
+            .con_bottom input:focus {
+                border: 1px solid #3487f5;
+            }
+
+    /***分页结束***/
+
+</style>
+
+<div class="index_con">
+    <!--面包屑开始-->
+    <div class="crumbs_map">
+        你当前所在的位置：
+        <span>我的成绩</span>
+    </div>
+    <!--面包屑结束-->
+    <!--案例名称-->
+    <div class="m-t-sm">
+        考核题目：<label class="dangqian" id="PracticeName"></label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        学生编号：<label class="dangqian" id="UserNo">@ViewData["UserName"]</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        作答用时：<label class="dangqian" id="AnswerTime">@ViewData["AnswerTime"]</label>
+        @*<button onclick="downLoadExcel()" type="button" class="btn btn-primary fr">导出</button>*@
+        @if (ViewData["type"] != null && ViewData["type"].ToString() != "1")
+        {
+            <p>
+                <span style="text-align:right;color:red;margin-left:1000px;"><a href="/PracticeResult/jx?practiceID=@ViewData["ExamId"]" target="_blank">查看明细分析</a></span>
+            </p>
+            <p style="margin-top:20px;">
+                <span style="text-align:right;color:red;margin-left:1000px;"><a href="/StuHome/Index">返回</a></span>
+            </p>
+        }
+    </div>
+    <div class="m-t-md">
+        <div class="grade_public">
+            <div class="grade_text">
+                综合得分：<span id="Scores"></span>
+            </div>
+        </div>
+    </div>
+    <!--切换标签结束-->
+    <!--切换内容区域-->
+</div>
+
+
+
+@*<input type="hidden" id="taskid" value="@ViewData["taskid"]" />*@
+<input type="hidden" id="sceneid" value="@ViewData["sceneid"]" />
+<input type="hidden" id="TaskId" />
+<input type="hidden" id="trid" value="@ViewData["trid"]" />
+
+
+<script src="~/Scripts/jquery-3.2.0.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<script src="~/Scripts/tab_bar.js"></script>
+<script src="~/Js/echarts.min.js"></script>
+<script src="~/Scripts/layer/layer.js"></script>
+<script src="~/Scripts/iCheck/icheck.min.js"></script>
+<script src="~/Scripts/String/StringFormat.js"></script>
+<script src="~/Js/Student/PracticeResult/Index.js"></script>
+<script src="~/Scripts/Charts.js"></script>
+<script type="text/javascript">
+
+    //根据渲染出来的数据，动态设置底部
+    function gaifoot() {
+        //文档body的高度
+        var bodyHeight = $(document.body).height()
+        //当前窗口可视区域高度
+        var winHeight = $(window).height()
+        if (bodyHeight > winHeight) {
+            $(".footer").removeClass("fid")
+        } else {
+            $(".footer").addClass("fid")
+        }
+    }
+    setInterval("gaifoot()", "50");
+
+    //radio选中样式
+    $(document).ready(function () {
+        $('.i-checks').iCheck({
+            checkboxClass: 'icheckbox_square-green',
+            radioClass: 'iradio_square-green',
+        });
+    });
+
+    //退出系统
+    function out_xitong() {
+        layer.confirm('您确定要退出系统吗？', {
+            title: '退出系统',
+            btn: ['确定', '取消'],
+            offset: 'auto', //定义弹窗位置垂直居中
+            shadeClose: false, //遮罩关闭控制
+            skin: 'layui-layer-lan'
+            //按钮
+        },
+            function () {
+                layer.msg('退出成功', {
+                    time: 10000,
+                    icon: 1,
+                });
+                window.location.href = "login.html"
+            });
+
+    }
+
+    //编辑自我评价
+    function change_pass() {
+        layer.open({
+            title: '编辑自我评价',
+            btn: ['确定'],
+            area: ['600px', '390px'],
+            type: 1,
+            skin: 'layui-layer-lan', //样式类名
+            closeBtn: 1, //显示关闭按钮
+            anim: 2,
+            shadeClose: false, //开启遮罩关闭
+            content: $("#change_pass")
+        });
+    }
+</script>
+<script src="~/Js/Student/StuHome/CjPublic.js"></script>
+<script src="~/Js/html2canvas.js"></script>
+<script type="text/javascript">
+
+    function zhuap(event) {
+        var img = {}
+        html2canvas($(".top-navigation"), {
+            allowTaint: true,
+            taintTest: false,
+            onrendered: function (canvas) {
+                canvas.id = "mycanvas";
+
+                //生成base64图片数据
+                var dataUrl = canvas.toDataURL();
+                img.img = dataUrl;
+                img.trid = $("#trid").val();
+                saveimg(img)
+            }
+        });
+    }
+
+    // 保存图片
+    function saveimg(img) {
+        $.ajax({
+            url: "/PracticeResult/quickZP",
+            type: 'post',
+            data: img,
+            success: function (data) {
+
+            }
+        })
+    }
+
+    setTimeout(zhuap, 2000);
+
+</script>

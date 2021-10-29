@@ -1,0 +1,346 @@
+﻿@{
+                    ViewBag.Title = "Form_063301";
+                    Layout = "~/Views/Shared/_StutentLayoutIsNull.cshtml";
+                }
+               <form id="form1" onsubmit="return false" action="##" method="post">
+                   <input type="hidden" id="FormType" name="FormType" value="@Request["FormType"]" />
+                   <input type="hidden" id="FormId" name="FormId" value="@Request["FormId"]" />
+                   <input type="hidden" id="TRId" name="TRId" value="@Request["TotalResultId"]" />
+                   <input type="hidden" id="ExamId" name="ExamId" value="@Request["ExamId"]" />
+                   <input type="hidden" id="TaskId" name="TaskId" value="@Request["TaskId"]" />
+                   <input type="hidden" id="CustomerId" name="CustomerId" value="@Request["CustomerId"]" />
+                   <input type="hidden" id="LinkId" name="LinkId" value="@Request["LinkId"]" />
+                   <input type="hidden" id="Types" name="Types" value="2" />
+                <!--内容表单区域开始-->
+            <div class="tables bankmap">
+        <div class="con-map selected">
+            <span class="top-title">查询条件<span id="dianji_con" style="cursor: pointer;">▼</span></span>
+            <table id="qv" class="con-map2-table qv">
+                <tbody>
+                    <tr>
+                        <td class="" style="width: 64px;">
+                            <label vl-default="" id="label_qsrq" vtitle="起始日期" class="form-item text-left" vl-tipsid="label_qsrq_tips" title="label_qsrq">起始日期</label>
+                            <div id="label_qsrq_tips" class="tipsmsg"></div>
+                        </td>
+                        <td class="">
+                            <input type="text" class="date form-item text-left" vl-keyup="wwww" vl-default="20170719" id="date_qsrq" vtitle="起始日期" vl-tipsid="date_qsrq_tips" style="width: 149px;" title="date_qsrq" oncopy="return false" onpaste="return false" oncut="return false"><img onclick="WdatePicker({el:'date_qsrq',dateFmt:'yyyyMMdd'})" src="/js/My97DatePicker/skin/datePicker.gif" align="absmiddle" style="width:16px;height:22px;margin-left:6px;">
+                            <div id="date_qsrq_tips" class="tipsmsg"></div>
+                        </td>
+                        <td class="" style="width: 64px;">
+                            <label vl-default="" id="label_zzrq" vtitle="终止日期" class="form-item text-left" vl-tipsid="label_zzrq_tips" title="label_zzrq">终止日期</label>
+                            <div id="label_zzrq_tips" class="tipsmsg"></div>
+                        </td>
+                        <td class="">
+                            <input type="text" class="date form-item text-left" vl-default="20170719" id="date_zzrq" vtitle="终止日期" vl-tipsid="date_zzrq_tips" style="width: 149px;" title="date_zzrq" oncopy="return false" onpaste="return false" oncut="return false"><img onclick="WdatePicker({el:'date_zzrq',dateFmt:'yyyyMMdd'})" src="/js/My97DatePicker/skin/datePicker.gif" align="absmiddle" style="width:16px;height:22px;margin-left:6px;">
+                            <div id="date_zzrq_tips" class="tipsmsg"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td rowspan="1" colspan="1" class="" style="width: 64px;">
+                            <label vl-default="" id="label_hllx" vtitle="汇路类型" class="form-item text-left" vl-tipsid="label_hllx_tips" title="label_hllx">汇路类型</label>
+                            <div id="label_hllx_tips" class="tipsmsg"></div>
+                        </td>
+                        <td rowspan="1" colspan="1" class="">
+                            <div class="slectstyle">
+                                <select vl-default="" id="sle_hllx" vtitle="汇路类型" class="form-item text-left" vl-tipsid="sle_hllx_tips" style="width: 160px;" title="sle_hllx" vl-slemodel="">
+                                    <option disabled="" style="background-color: blue; color: #fff;" value="" selected="selected">汇路类型值含义</option>
+                                    <option value="1">--请选择--</option>
+                                    <option value="0">行内汇兑</option>
+                                </select><input type="text" oncopy="return false" onpaste="return false" oncut="return false" style="width: 137px;">
+                            </div>
+                            <div id="sle_hllx_tips" class="tipsmsg"></div>
+                        </td>
+                        <td rowspan="1" colspan="1" class="" style="width: 64px;">
+                            <label vl-default="" id="label_jyzt1" vtitle="交易状态" class="form-item text-left" vl-tipsid="label_jyzt1_tips" title="label_jyzt1">交易状态</label>
+                            <div id="label_jyzt_tips" class="tipsmsg"></div>
+                        </td>
+                        <td rowspan="1" colspan="1" class="">
+                            <div class="slectstyle">
+                                <select vl-keyup="wwww" vl-default="" id="sle_jyzt1" vtitle="交易状态" class="form-item text-left" vl-tipsid="sle_jyzt1_tips" style="width: 160px;" vl-slemodel="">
+                                    <option disabled="" style="background-color: blue; color: #fff;" value="" selected="selected">交易状态值含义</option>
+                                    <option value="1">来账待审核</option>
+                                    <option value="2">来账已审核</option>
+                                    <option value="3">解付录入</option>
+                                    <option value="4">退汇录入</option>
+                                    <option value="5">解付更正录入</option>
+                                    <option value="6">自动入账</option>
+                                    <option value="7">手工解付入账</option>
+                                    <option value="8">已退汇</option>
+                                    <option value="9">预约汇款</option>
+                                    <option value="10">预约汇款已清算</option>
+                                    <option value="11">预约汇款已撤销</option>
+                                    <option value="12">预约汇款撤销失败</option>
+                                    <option value="13">已录入</option>
+                                </select><input type="text" oncopy="return false" onpaste="return false" oncut="return false" style="width: 137px;">
+                            </div>
+                            <div id="sle_jyzt1_tips" class="tipsmsg"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td rowspan="1" colspan="1" class="" style="width: 64px;">
+                            <label vl-default="" id="label_ywlx" vtitle="业务类型" class="form-item text-left" vl-tipsid="label_ywlx_tips" title="label_ywlx">业务类型</label>
+                            <div id="label_ywlx_tips" class="tipsmsg"></div>
+                        </td>
+                        <td rowspan="1" colspan="1" class="">
+                            <div class="slectstyle">
+                                <select vl-default="" id="sle_ywlx" vtitle="业务类型" class="form-item text-left" vl-tipsid="sle_ywlx_tips" style="width: 160px;" title="sle_ywlx" vl-slemodel="">
+                                    <option disabled="" style="background-color: blue; color: #fff;" value="" selected="selected">业务类型值含义</option>
+                                    <option value="0">0 - 普通汇兑</option>
+                                    <option value="1">1 - 现金汇款</option>
+                                    <option value="2">2 - 支票</option>
+                                    <option value="3">3 - 退汇</option>
+                                    <option value="4">4 - 公益性资金汇划</option>
+                                </select><input type="text" oncopy="return false" onpaste="return false" oncut="return false" style="width: 137px;">
+                            </div>
+                            <div id="sle_ywlx_tips" class="tipsmsg"></div>
+                        </td>
+                        <td rowspan="1" colspan="1" class="" style="width: 64px;">
+                            <label vl-default="" id="label_ywzl" vtitle="业务种类" class="form-item text-left" vl-tipsid="label_ywzl_tips" title="label_ywzl">业务种类</label>
+                            <div id="label_ywzl_tips" class="tipsmsg"></div>
+                        </td>
+                        <td rowspan="1" colspan="1" class="">
+                            <div class="slectstyle">
+                                <select vl-default="" id="sle_ywzl" vtitle="业务种类" class="form-item text-left" vl-disabled="true" vl-tipsid="sle_ywzl_tips" style="width: 160px;" title="sle_ywzl" vl-slemodel="" disabled="disabled">
+                                    <option disabled="" style="background-color: blue; color: #fff;" value="" selected="selected">业务种类值含义</option>
+                                    <option value="0">0 - 全部</option>
+                                </select><input type="text" oncopy="return false" onpaste="return false" oncut="return false" disabled="disabled" style="width: 137px;">
+                            </div>
+                            <div id="sle_ywzl_tips" class="tipsmsg"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td rowspan="1" colspan="1" class="" style="width: 64px;">
+                            <label vl-default="" id="label_jexx" vtitle="金额下限" class="form-item text-left" vl-tipsid="label_jexx_tips" title="label_jexx">金额下限</label>
+                            <div id="label_jexx_tips" class="tipsmsg"></div>
+                        </td>
+                        <td rowspan="1" colspan="1" class="">
+                            <input type="text" oncopy="return false" oncut="return false" vl-default="" vl-type="money" id="money_jexx" vtitle="金额下限" class="form-item text-left on money" vl-tipsid="money_jexx_tips" title="money_jexx" onpaste="return false">
+                            <div id="money_jexx_tips" class="tipsmsg"></div>
+                        </td>
+                        <td rowspan="1" colspan="1" class="" style="width: 64px;">
+                            <label vl-default="" id="label_jesx" vtitle="金额上限" class="form-item text-left" vl-tipsid="label_jesx_tips" title="label_jesx">金额上限</label>
+                            <div id="label_jesx_tips" class="tipsmsg"></div>
+                        </td>
+                        <td rowspan="1" colspan="1" class="">
+                            <input type="text" oncopy="return false" oncut="return false" vl-default="" vl-type="money" id="money_jesx" vtitle="金额上限" class="form-item text-left money" vl-tipsid="money_jesx_tips" title="money_jesx" onpaste="return false">
+                            <div id="money_jesx_tips" class="tipsmsg"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td rowspan="1" colspan="1" class="" style="width: 64px;">
+                            <label vl-default="" id="label_jyqd" vtitle="交易渠道" class="form-item text-left" vl-tipsid="label_jyqd_tips" title="label_jyqd">交易渠道</label>
+                            <div id="label_jyqd_tips" class="tipsmsg"></div>
+                        </td>
+                        <td rowspan="1" colspan="1" class="">
+                            <div class="slectstyle">
+                                <select vl-default="" id="sle_jyqd" vtitle="交易渠道" class="form-item text-left" vl-disabled="true" vl-tipsid="sle_jyqd_tips" style="width: 160px;" title="sle_jyqd" vl-slemodel="" disabled="disabled">
+                                    <option disabled="" style="background-color: blue; color: #fff;" value="" selected="selected">交易渠道值含义</option>
+                                </select><input type="text" oncopy="return false" onpaste="return false" oncut="return false" disabled="disabled" style="width: 137px;">
+                            </div>
+                            <div id="sle_jyqd_tips" class="tipsmsg"></div>
+                        </td>
+                        <td rowspan="1" colspan="1" class="" style="width: 48px;">
+                            <label vl-default="" id="label_jgh" vtitle="机构号" class="form-item text-left" vl-tipsid="label_jgh_tips" title="label_jgh">机构号</label>
+                            <div id="label_jgh_tips" class="tipsmsg"></div>
+                        </td>
+                        <td rowspan="1" colspan="1" class="">
+                            <input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_jgh" vtitle="机构号" class="form-item text-left" vl-tipsid="txt_jgh_tips" title="txt_jgh" onpaste="return false">
+                            <div id="txt_jgh_tips" class="tipsmsg"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td rowspan="1" colspan="1" class="" style="width: 64px;">
+                            <label vl-default="" id="label_fkrzh1" vtitle="付款人账号" class="form-item text-left" vl-tipsid="label_fkrzh1_tips" title="label_fkrzh1">付款人账号</label>
+                            <div id="label_fkrzh1_tips" class="tipsmsg"></div>
+                        </td>
+                        <td rowspan="1" colspan="1" class="">
+                            <input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_fkrzh1" vtitle="付款人账号" class="form-item text-left on" vl-tipsid="txt_fkrzh1_tips" title="txt_fkrzh1" onpaste="return false">
+                            <div id="txt_fkrzh1_tips" class="tipsmsg"></div>
+                        </td>
+                        <td rowspan="1" colspan="1" class="" style="width: 64px;">
+                            <label vl-default="" id="label_fkrmc1" vtitle="付款人名称" class="form-item text-left" vl-tipsid="label_fkrmc1_tips" title="label_fkrmc1">付款人名称</label>
+                            <div id="label_fkrmc1_tips" class="tipsmsg"></div>
+                        </td>
+                        <td rowspan="1" colspan="1" class="">
+                            <input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_fkrmc1" vtitle="收款人名称" class="form-item text-left" vl-tipsid="txt_fkrmc1_tips" title="txt_fkrmc1" onpaste="return false">
+                            <div id="txt_fkrmc1_tips" class="tipsmsg"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td rowspan="1" colspan="1" class="" style="width: 64px;">
+                            <label vl-default="" id="label_skrzh1" vtitle="收款人账号" class="form-item text-left" vl-tipsid="label_skrzh1_tips" title="label_skrzh1">收款人账号</label>
+                            <div id="label_skrzh1_tips" class="tipsmsg"></div>
+                        </td>
+                        <td rowspan="1" colspan="1" class="">
+                            <input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_skrzh1" vtitle="收款人账号" class="form-item text-left on" vl-tipsid="txt_skrzh1_tips" title="txt_skrzh1" onpaste="return false">
+                            <div id="txt_skrzh1_tips" class="tipsmsg"></div>
+                        </td>
+                        <td rowspan="1" colspan="1" class="" style="width: 64px;">
+                            <label vl-default="" id="label_skrmc1" vtitle="收款人名称" class="form-item text-left" vl-tipsid="label_skrmc1_tips" title="label_skrmc1">收款人名称</label>
+                            <div id="label_skrmc1_tips" class="tipsmsg"></div>
+                        </td>
+                        <td rowspan="1" colspan="1" class="">
+                            <input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_skrmc1" vtitle="收款人名称" class="form-item text-left" vl-tipsid="txt_skrmc1_tips" title="txt_skrmc1" onpaste="return false">
+                            <div id="txt_skrmc1_tips" class="tipsmsg"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td rowspan="1" colspan="1" class="" style="width: 64px;">
+                            <label vl-default="" id="label_hxlsh" vtitle="核心流水号" class="form-item text-left" vl-tipsid="label_hxlsh_tips" title="label_hxlsh">核心流水号</label>
+                            <div id="label_hxlsh_tips" class="tipsmsg"></div>
+                        </td>
+                        <td rowspan="1" colspan="1" class="">
+                            <input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_hxlsh" vtitle="核心流水号" class="form-item text-left on" vl-tipsid="txt_hxlsh_tips" title="txt_hxlsh" onpaste="return false">
+                            <div id="txt_hxlsh_tips" class="tipsmsg"></div>
+                        </td>
+                        <td rowspan="1" colspan="1" class="" style="width: 64px;">
+                            <label vl-default="" id="label_lrgyh" vtitle="录入柜员号" class="form-item text-left" vl-tipsid="label_lrgyh_tips" title="label_lrgyh">录入柜员号</label>
+                            <div id="label_lrgyh_tips" class="tipsmsg"></div>
+                        </td>
+                        <td rowspan="1" colspan="1" class="">
+                            <input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_lrgyh" vtitle="录入柜员号" class="form-item text-left" vl-tipsid="txt_lrgyh_tips" title="txt_lrgyh" onpaste="return false">
+                            <div id="txt_lrgyh_tips" class="tipsmsg"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td rowspan="1" colspan="1" class="" style="width: 64px;">
+                            <label vl-default="" id="label_pxtj" vtitle="排序条件" class="form-item text-left" vl-tipsid="label_pxtj_tips" title="label_pxtj">排序条件</label>
+                            <div id="label_pxtj_tips" class="tipsmsg"></div>
+                        </td>
+                        <td rowspan="1" colspan="1" class="">
+                            <input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_pxtj" vtitle="排序条件" class="form-item text-left" vl-tipsid="txt_pxtj_tips" title="txt_pxtj" onpaste="return false">
+                            <div id="txt_pxtj_tips" class="tipsmsg"></div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div> 
+        <input type="hidden" class="hidmainwidth" value="1000" oncopy="return false" onpaste="return false" oncut="return false">
+        <div class="foot  text-center">
+            <button id="search">提交</button>
+            <button>清空</button>
+            <button>关闭</button>
+        <button type="button" onclick="FormReset()">重置</button>
+                       <button type="button " style="margin-right: 0px; " vl-submit="true" id="btnsubmit" onclick="SubmitForm()"> 提交</button></div>
+        <div class="l-box">
+            <div class="toolbar">
+                <a class="detail" href="javascript:void(0);">详细信息</a>
+            </div>
+            <table id="aaa" cellspacing="0" cellpadding="0">
+                <tbody><tr class="bold">
+                    <td>序号</td>
+                    <td>平台日期</td>
+                    <td>平台流水号</td>
+                    <td>交易状态</td> 
+                    <td>往来标识</td>
+                    <td>业务类型</td>
+                    <td>付款人账号</td>
+                    <td>付款人名称</td>
+                    <td>交易金额</td>
+                    <td>收款人账号</td>
+                    <td>收款人名称</td>
+                    <td>发起方名称</td> 
+                </tr>
+                <tr index="1">
+                    <td>
+                        <input type="radio" name="xuhao" data-id="1" oncopy="return false" onpaste="return false" oncut="return false">
+                    </td>
+                    <td>20170527</td>
+                    <td>100512132</td>
+                    <td>已录入</td> 
+                    <td>普通汇兑</td>
+                    <td>来账</td>
+                    <td>2461010001201100008723</td>
+                    <td>贵州农信测试公司</td>
+                    <td>5.00</td>
+                    <td>2061010001201100255084</td>
+                    <td>贵州农信测试公司8000398507</td>
+                    <td>贵定县农村信用合作联社</td> 
+                </tr>
+            </tbody></table>
+        </div>
+        <div class="l-box" style="display:block;">
+            <div class="toolbar">
+                <a class="detail" href="javascript:void(0);">详细信息</a>
+            </div>
+            <table id="aaa" cellspacing="0" cellpadding="0">
+                <tbody><tr class="bold">
+                    <td>序号</td>
+                    <td>平台日期</td>
+                    <td>平台流水号</td>
+                    <td>交易状态</td>
+                    <td>业务类型</td>
+                    <td>往来标识</td>
+                    <td>付款人账号</td>
+                    <td>付款人名称</td>
+                    <td>交易金额</td>
+                    <td>收款人账号</td>
+                    <td>收款人名称</td>
+                    <td>发起方名称</td>
+                    <td>接收方名称</td>
+                    <td>记账员</td>
+                </tr> 
+            </tbody></table>
+        </div>
+    </div><script src="~/Js/Student/GetDefaultValue/common.bank.js"></script>
+              <script src="~/Js/Student/GetDefaultValue/lodash.min.js"></script>
+              <script src="~/Js/Student/GetDefaultValue/common.regex.cz.js"></script>
+              <script src="~/Js/Student/GetDefaultValue/common.regex.js"></script>
+<script src="~/Js/Student/GetDefaultValue/js/common.bank.ed.js"></script>
+<script src="~/Js/Student/GetDefaultValue/js/ed.common.js"></script>
+<script src="~/Js/Student/GetDefaultValue/js/layer.js"></script>
+<script src="~/Js/Student/GetDefaultValue/js/My97DatePicker/WdatePicker.js"></script>
+<script type="text/javascript">
+    $(function () { 
+        render();
+        loadPrevData();
+
+        $("#search").click(function () {
+            var controls = $("div[data-yw=1]").find(".form-item");
+            for (var i = 0; i < controls.length; i++) {
+                var result = checkRegex($(controls[i]).get(0));
+                if (!result.isCheck) {
+                    layer.alert(result.errormsg);
+                    return;
+                }
+            }
+
+            var data = lineEdPrevYwData(controls);
+            sessionStorage.PrevData = data;
+
+            $(".l-box").show();
+            $(".l-box").last().hide();
+            $("#qv").hide();
+        });
+
+        $(".detail").click(function () {
+            var chks = $("input[name=xuhao]:checked");
+            if (chks.length == 0) {
+                layer.alert("请选择一条数据");
+                return;
+            }
+            edNextNewWin("/user/indexone?", "2");
+        });
+    });
+
+    function Submit(formid, auth_ids) {
+        var l_i = layer.confirm("请确认交易信息是否正确,正确请按“确定”继续下一步，不正确请按“取消”返回到录入界面进行修改。",
+            {
+                btn: ['确定', '取消']
+            },
+            function () {
+                layer.close(l_i);
+                review(formid, auth_ids);
+            });
+    }
+
+    function handel() {
+        catchSuccess(function () {
+            //printEdWin();
+            //window.close();
+        });
+    }
+</script>
+<link href="~/Js/Student/GetDefaultValue/js/common.bank.ed.css" rel="stylesheet" />
+<link href="~/Js/Student/GetDefaultValue/js/ed.common.css" rel="stylesheet" />
+              </form>

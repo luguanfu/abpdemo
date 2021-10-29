@@ -1,0 +1,231 @@
+﻿@{
+                    ViewBag.Title = "Form_030104";
+                    Layout = "~/Views/Shared/_AdminLayoutIsNull.cshtml";
+                }
+               <script src="~/Js/Admin/AdminForm.js"></script>
+               <script src="~/Js/Admin/CaseManagement/AddDefaultValue.js"></script>
+               <form id="form1" onsubmit="return false" action="##" method="post">
+                  <input type="hidden" id="TaskId" name="TaskId" value="@Request["TaskId"]" />
+                  <input type="hidden" id="CustomerId" name="CustomerId" value="@Request["CustomerId"]" />
+                  <input type="hidden" id="FormId" name="FormId" value="@Request["FormId"]" />
+                  <input type="hidden" id="Types" name="Types" value="@Request["Types"]" />
+                <!--内容表单区域开始-->
+            <div class="tables bankmap">
+			<div class="banktop"> <span class="toolbar-title-img">                                        <img src="../busi/img/topleft.png">02805-个人客户关联账户查询</span> <span class="toolbar-title-close" style="display: none;">                                        </span> </div>
+			<div class="con-map2 selected">
+				<table id="qv" class="con-map2-table qv">
+					<tbody>
+						<tr>
+							<td class="" style="width: 64px;"><label vl-default="" id="label_zjlx" vtitle="证s件s类s型" class="form-item text-left" vl-tipsid="label_zjlx_tips" title="label_zjlx" name="label_zjlx">证<s></s>件<s></s>类<s></s>型</label>
+								<div id="label_zjlx_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="">
+								<div class="slectstyle">
+									<select vl-default="" id="sle_zjlx" vtitle="证件类型" class="form-item text-left" vl-tipsid="sle_zjlx_tips" vl-regex="['require']" vl-message="['证件类型不能为空!']" style="width: 180px;" title="sle_zjlx" vl-slemodel="txt_zjhm,txt_zjhm,txt_zjhm,txt_zjhm,txt_zjhm,txt_zjhm,txt_zjhm,txt_zjhm,txt_zjhm,txt_zjhm,txt_zjhm,txt_zjhm,txt_zjhm,txt_zjhm,txt_zjhm,txt_zjhm,txt_zjhm,txt_zjhm,txt_zjhm,txt_zjhm,txt_zjhm,txt_zjhm" name="sle_zjlx">
+										<option disabled="" style="background-color: blue; color: #fff;" value="" selected="selected">证件类型值含义</option>
+										<option sle-require="[{'id':'txt_zjhm','regex':['require','maxlength20','idcard'],'tips':['证件号码不能为空!','证件号码身份证号长度大于最大长度:[20]!','证件号码身份证位数不正确(应为15位或者18位)！'],'disabled':'false*false*false','default':''}]" value="1">1 - 居民身份证</option>
+										<option sle-require="[{'id':'txt_zjhm','regex':['require','maxlength20','idcard'],'tips':['证件号码不能为空!','证件号码身份证号长度大于最大长度:[20]!','证件号码身份证位数不正确(应为15位或者18位)！'],'disabled':'false*false*false','default':''}]" value="2">2 - 临时居民身份证</option>
+										<option sle-require="[{'id':'txt_zjhm','regex':['require','maxlength20','idcard'],'tips':['证件号码不能为空!','证件号码身份证号长度大于最大长度:[20]!','证件号码身份证位数不正确(应为15位或者18位)！'],'disabled':'false*false*false','default':''}]" value="3">3 - 居民户口簿（16周岁以下）</option>
+										<option sle-require="[{'id':'txt_zjhm','regex':['require','maxlength40','shuziandmu'],'tips':['证件号码军官证不能为空!','证件号码军官证长度大于最大长度:[40]!','证件号码输入错误!'],'disabled':'false*false*false','default':''}]" value="4">4 - 军官证</option>
+										<option sle-require="[{'id':'txt_zjhm','regex':['require','maxlength40','shuziandmu'],'tips':['证件号码军官证不能为空!','证件号码军官证长度大于最大长度:[40]!','证件号码输入错误!'],'disabled':'false*false*false','default':''}]" value="5">5 - 警官证</option>
+										<option sle-require="[{'id':'txt_zjhm','regex':['require','maxlength40','shuziandmu'],'tips':['证件号码军官证不能为空!','证件号码军官证长度大于最大长度:[40]!','证件号码输入错误!'],'disabled':'false*false*false','default':''}]" value="6">6 - 士兵证</option>
+										<option sle-require="[{'id':'txt_zjhm','regex':['require','maxlength40','shuziandmu'],'tips':['证件号码军官证不能为空!','证件号码军官证长度大于最大长度:[40]!','证件号码输入错误!'],'disabled':'false*false*false','default':''}]" value="7">7 - 军队学员证</option>
+										<option sle-require="[{'id':'txt_zjhm','regex':['require','maxlength40','shuziandmu'],'tips':['证件号码军官证不能为空!','证件号码军官证长度大于最大长度:[40]!','证件号码输入错误!'],'disabled':'false*false*false','default':''}]" value="8">8 - 军队文职干部证</option>
+										<option sle-require="[{'id':'txt_zjhm','regex':['require','maxlength40','shuziandmu'],'tips':['证件号码军官证不能为空!','证件号码军官证长度大于最大长度:[40]!','证件号码输入错误!'],'disabled':'false*false*false','default':''}]" value="9">9 - 军队离退休干部证和军队职员证</option>
+										<option sle-require="[{'id':'txt_zjhm','regex':['require','maxlength40','shuziandmu'],'tips':['证件号码军官证不能为空!','证件号码军官证长度大于最大长度:[40]!','证件号码输入错误!'],'disabled':'false*false*false','default':''}]" value="10">10 - 中国护照</option>
+										<option sle-require="[{'id':'txt_zjhm','regex':['require','maxlength40','shuziandmu'],'tips':['证件号码军官证不能为空!','证件号码军官证长度大于最大长度:[40]!','证件号码输入错误!'],'disabled':'false*false*false','default':''}]" value="11">11 - 护照（外国公民）</option>
+										<option sle-require="[{'id':'txt_zjhm','regex':['require','maxlength40','shuziandmu'],'tips':['证件号码军官证不能为空!','证件号码军官证长度大于最大长度:[40]!','证件号码输入错误!'],'disabled':'false*false*false','default':''}]" value="12">12 - 海员证</option>
+										<option sle-require="[{'id':'txt_zjhm','regex':['require','maxlength40','shuziandmu'],'tips':['证件号码军官证不能为空!','证件号码军官证长度大于最大长度:[40]!','证件号码输入错误!'],'disabled':'false*false*false','default':''}]" value="13">13 - 港澳同胞回乡证</option>
+										<option sle-require="[{'id':'txt_zjhm','regex':['require','maxlength40','shuziandmu'],'tips':['证件号码军官证不能为空!','证件号码军官证长度大于最大长度:[40]!','证件号码输入错误!'],'disabled':'false*false*false','default':''}]" value="14">14 - 港澳居民来往大陆通行证</option>
+										<option sle-require="[{'id':'txt_zjhm','regex':['require','maxlength40','shuziandmu'],'tips':['证件号码军官证不能为空!','证件号码军官证长度大于最大长度:[40]!','证件号码输入错误!'],'disabled':'false*false*false','default':''}]" value="15">15 - 中华人民共和国网络港澳通行证</option>
+										<option sle-require="[{'id':'txt_zjhm','regex':['require','maxlength40','shuziandmu'],'tips':['证件号码军官证不能为空!','证件号码军官证长度大于最大长度:[40]!','证件号码输入错误!'],'disabled':'false*false*false','default':''}]" value="16">16 - 台湾居民来往大陆通行证</option>
+										<option sle-require="[{'id':'txt_zjhm','regex':['require','maxlength40','shuziandmu'],'tips':['证件号码军官证不能为空!','证件号码军官证长度大于最大长度:[40]!','证件号码输入错误!'],'disabled':'false*false*false','default':''}]" value="17">17 - 大陆居民往来台湾通行证</option>
+										<option sle-require="[{'id':'txt_zjhm','regex':['require','maxlength40','shuziandmu'],'tips':['证件号码军官证不能为空!','证件号码军官证长度大于最大长度:[40]!','证件号码输入错误!'],'disabled':'false*false*false','default':''}]" value="18">18 - 外国人居留证</option>
+										<option sle-require="[{'id':'txt_zjhm','regex':['require','maxlength40','shuziandmu'],'tips':['证件号码军官证不能为空!','证件号码军官证长度大于最大长度:[40]!','证件号码输入错误!'],'disabled':'false*false*false','default':''}]" value="19">19 - 外国人出入境证</option>
+										<option sle-require="[{'id':'txt_zjhm','regex':['require','maxlength40','shuziandmu'],'tips':['证件号码军官证不能为空!','证件号码军官证长度大于最大长度:[40]!','证件号码输入错误!'],'disabled':'false*false*false','default':''}]" value="20">20 - 外交官证</option>
+										<option sle-require="[{'id':'txt_zjhm','regex':['require','maxlength40','shuziandmu'],'tips':['证件号码军官证不能为空!','证件号码军官证长度大于最大长度:[40]!','证件号码输入错误!'],'disabled':'false*false*false','default':''}]" value="21">21 - 领事馆证</option>
+										<option sle-require="[{'id':'txt_zjhm','regex':['require','maxlength40','shuziandmu'],'tips':['证件号码军官证不能为空!','证件号码军官证长度大于最大长度:[40]!','证件号码输入错误!'],'disabled':'false*false*false','default':''}]" value="22">22 - 其他</option>
+									</select><input type="text" oncopy="return false" onpaste="return false" oncut="return false" style="width: 157px;" id="mb1_sleinput_ZhengJianLeiXing_2" name="mb1_sleinput_ZhengJianLeiXing_2"><span class="text-red redtip">!</span></div>
+								<div id="sle_zjlx_tips" class="tipsmsg"></div>
+							</td>
+							<td class="" style="width: 64px;"><label vl-default="" id="label_zjhm" vtitle="证件号码" class="form-item text-left" vl-tipsid="label_zjhm_tips" style="width: 160px;" title="label_zjhm" name="label_zjhm">证件号码</label>
+								<div id="label_zjhm_tips" class="tipsmsg"></div>
+							</td>
+							<td class=""><input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_zjhm" vtitle="证件号码" class="form-item text-left" kuaicha="true" vl-tipsid="txt_zjhm_tips" vl-regex="['require']" vl-message="['证件号码不能为空!']" style="width: 180px;" title="txt_zjhm" onpaste="return false" name="txt_zjhm"><img class="sousuo" src="/Js/Student/GetDefaultValue/img/banksousuo.png" vl-select="txt_khh|1|0" vl-exec="false" vl-message="['证件号码查询未执行！']" title="执行快查！"><span class="text-red redtip">!</span>
+								<div id="txt_zjhm_tips" class="tipsmsg"></div>
+							</td>
+						</tr>
+						<tr>
+							<td rowspan="1" colspan="1" class="" style="width: 48px;"><label vl-default="" id="label_khh" vtitle="客i户is号" class="form-item text-left" vl-tipsid="label_khh_tips" title="label_khh" name="label_khh">客<i></i>户<i></i><s></s>号</label>
+								<div id="label_khh_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class=""><input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_khh" vtitle="客户号" class="form-item text-left" vl-tipsid="txt_khh_tips" vl-regex="['maxlength32', 'shuziandmu']" vl-message="['客户号长度大于最大长度:[32]!','客户号输入错误!']" style="width: 180px;" onpaste="return false" name="txt_khh">
+								<div id="txt_khh_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="" style="width: 48px;"><label vl-default="" id="label_khm" vtitle="客s户s名" class="form-item text-left" vl-tipsid="label_khm_tips" style="width: 160px;" title="label_khm" name="label_khm">客<s></s>户<s></s>名</label>
+								<div id="label_khm_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class=""><input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_khm" vtitle="客户名" class="form-item text-left" vl-tipsid="txt_khm_tips" vl-regex="['require', 'maxlength20']" vl-message="['客户名不能为空!','客户名长度大于最大长度:[20]!']" style="width: 180px;" title="txt_khm" onpaste="return false" name="txt_khm"><span class="text-red redtip">!</span>
+								<div id="txt_khm_tips" class="tipsmsg"></div>
+							</td>
+						</tr>
+						<tr>
+							<td rowspan="1" colspan="1" class="" style="width: 64px;"><label vl-default="" id="label_khjg" vtitle="开s户s机s构" class="form-item text-left" vl-tipsid="label_khjg_tips" style="width: 160px;" title="label_khjg" name="label_khjg">开<s></s>户<s></s>机<s></s>构</label>
+								<div id="label_khjg_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class=""><input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_khjg" vtitle="开户机构" class="form-item text-left" vl-tipsid="txt_khjg_tips" vl-regex="['maxlength40']" vl-message="['开户机构长度大于最大长度:[40]!']" style="width: 180px;" title="txt_khjg" onpaste="return false" name="txt_khjg">
+								<div id="txt_khjg_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="" style="width: 32px;"><label vl-default="" id="label_bz" vtitle="币ii种" class="form-item text-left" vl-tipsid="label_bz_tips" style="width: 160px;" title="label_bz" name="label_bz">币<i></i><i></i>种</label>
+								<div id="label_bz_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="">
+								<div class="slectstyle">
+									<select vl-default="CNY" id="sle_bz" vtitle="币种" class="form-item text-left" vl-tipsid="sle_bz_tips" style="width: 180px;" title="sle_bz" vl-slemodel="" name="sle_bz">
+										<option disabled="" style="background-color: blue; color: #fff;" value="">币种值含义</option>
+										<option value="CNY">CNY - 人民币</option>
+									</select><input type="text" oncopy="return false" onpaste="return false" oncut="return false" style="width: 157px;" id="mb1_sleinput_BiZhong_12" name="mb1_sleinput_BiZhong_12"></div>
+								<div id="sle_bz_tips" class="tipsmsg"></div>
+							</td>
+						</tr>
+						<tr>
+							<td rowspan="1" colspan="1" class="" style="width: 64px;"><label vl-default="" id="label_zhlx" vtitle="账s户s类s型" class="form-item text-left" vl-tipsid="label_zhlx_tips" style="width: 160px;" title="label_zhlx" name="label_zhlx">账<s></s>户<s></s>类<s></s>型</label>
+								<div id="label_zhlx_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="">
+								<div class="slectstyle">
+                                    <select vl-default="" id="sle_zhlx" vtitle="账户类型" class="form-item text-left" kuaicha="true" vl-tipsid="sle_zhlx_tips" style="width: 180px;" title="sle_zhlx" vl-slemodel="" name="sle_zhlx">
+                                        <option disabled="" style="background-color: blue; color: #fff;" value="" selected="selected">账户类型值含义</option>
+                                        <option value="1">1-个人存折</option>
+                                        <option value="2">2-磁条借记卡</option>
+                                        <option value="3">3-IC借记卡</option>
+                                        <option value="4">4-I类个人账户</option>
+                                        <option value="6">6-单位结算户</option>
+
+                                    </select><input type="text" oncopy="return false" onpaste="return false" oncut="return false" style="width: 157px;" id="mb1_sleinput_ZhangHuLeiXing_14" name="mb1_sleinput_ZhangHuLeiXing_14"><img class="sousuo" src="/Js/Student/GetDefaultValue/img/banksousuo.png" vl-exec="false" vl-message="['账户类型查询未执行！']" title="执行快查！"></div>
+								<div id="sle_zhlx_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="" style="width: 64px;"><label vl-default="" id="label_cpdm" vtitle="产品代码" class="form-item text-left" vl-tipsid="label_cpdm_tips" style="width: 160px;" title="label_cpdm" name="label_cpdm">产品代码</label>
+								<div id="label_cpdm_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="">
+								<div class="slectstyle">
+									<select vl-default="" id="sle_cpdm" vtitle="产品代码" class="form-item text-left" vl-tipsid="sle_cpdm_tips" style="width: 180px;" title="sle_cpdm" vl-slemodel="" name="sle_cpdm">
+										<option disabled="" style="background-color: blue; color: #fff;" value="" selected="selected">产品代码值含义</option>
+										<option value="11011">11011 - 个人银行结算存款</option>
+										<option value="11017">11017 - 个人银行结算存款9</option>
+										<option value="11041">11041 - 个人零存整取</option>
+										<option value="11051">11051 - 个人教育储蓄存款</option>
+										<option value="41011">41011 - 整存整取</option>
+										<option value="42031">42031 - 一天通知存款(自动转存)</option>
+										<option value="42041">42041 - 七天通知存款(自动转存)</option>
+										<option value="42045">42045 - 只能通知存款</option>
+										<option value="43011">43011 - 定活两便(六折)</option>
+										<option value="10011">10011 - 个人保险金活期存款</option>
+										<option value="42051">42051 - 智能通知存款</option>
+									</select><input type="text" oncopy="return false" onpaste="return false" oncut="return false" style="width: 157px;" id="mb1_sleinput_ChanPinDaiMa_16" name="mb1_sleinput_ChanPinDaiMa_16"></div>
+								<div id="sle_cpdm_tips" class="tipsmsg"></div>
+							</td>
+						</tr>
+						<tr>
+							<td rowspan="1" colspan="1" class="" style="width: 32px;"><label vl-default="" id="label_cq" vtitle="存iiis期" class="form-item text-left" vl-tipsid="label_cq_tips" style="width: 160px;" title="label_cq" name="label_cq">存<i></i><i></i><i></i><s></s>期</label>
+								<div id="label_cq_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="">
+								<div class="slectstyle">
+                                    <select vl-default="" id="sle_cq" vtitle="存期" class="form-item text-left" vl-tipsid="sle_cq_tips" style="width: 180px;" title="sle_cq" vl-slemodel="" name="sle_cq">
+                                        <option disabled="" style="background-color: blue; color: #fff;" value="" selected="selected">存期值含义</option>
+                                        <option value="00">00 -无存期</option>
+                                        <option value="01">01 -1个月</option>
+                                        <option value="03">03 - 3个月</option>
+                                        <option value="06">06 - 6个月</option>
+                                        <option value="12">12 - 12个月</option>
+                                        <option value="24">24 - 24个月</option>
+                                        <option value="36">36 - 36个月</option>
+                                        <option value="60">60 - 60个月</option>
+                                        <option value="72">72 -72个月</option>
+                                        <option value="96">96 -96个月</option>
+                                        <option value="1D">1D -1天</option>
+                                        <option value="7D">7D -7天</option>
+                                        <option value="09">09 -9个月</option>
+                                        <option value="18">18 -18个月</option>
+                                        <option value="0">0  -无存期</option>
+                                       
+                                       
+                                    </select><input type="text" oncopy="return false" onpaste="return false" oncut="return false" style="width: 157px;" id="mb1_sleinput_CunQi_18" name="mb1_sleinput_CunQi_18"></div>
+								<div id="sle_cq_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="" style="width: 64px;"><label vl-default="" id="label_zhzt" vtitle="账户状态" class="form-item text-left" vl-tipsid="label_zhzt_tips" style="width: 160px;" title="label_zhzt" name="label_zhzt">账户状态</label>
+								<div id="label_zhzt_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="">
+								<div class="slectstyle">
+                                    <select vl-default="" id="sle_zhzt" vtitle="账户状态" class="form-item text-left on" vl-tipsid="sle_zhzt_tips" style="width: 180px;" title="sle_zhzt" vl-slemodel="" name="sle_zhzt">
+                                        <option disabled="" style="background-color: blue; color: #fff;" value="" selected="selected">账户状态值含义</option>
+                                        <option value="1">1 - 正常</option>
+                                        <option value="2">2 - 销户</option>
+                                    </select><input type="text" oncopy="return false" onpaste="return false" oncut="return false" style="width: 157px;" id="mb1_sleinput_ZhangHuZhuangTai_20" name="mb1_sleinput_ZhangHuZhuangTai_20"></div>
+								<div id="sle_zhzt_tips" class="tipsmsg"></div>
+							</td>
+						</tr>
+						<tr>
+							<td rowspan="1" colspan="1" class="" style="width: 64px;"><label vl-default="" id="label_dqrqsrq" vtitle="到期日起始日期" class="form-item text-left on" vl-tipsid="label_dqrqsrq_tips" style="width: 160px;" title="label_dqrqsrq" name="label_dqrqsrq">到期日起始日期</label>
+								<div id="label_dqrqsrq_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class=""><input type="text" class="date form-item text-left" vl-default="" id="date_dqrqsrq" vtitle="到期日起始日期" vl-tipsid="date_dqrqsrq_tips" vl-regex="['maxlength8', 'number', 'tdate']" vl-message="['到期日起始日期长度大于最大长度:[8]!','请输入正确的格式（如:19000101）!','请输入正确的格式（如:19000101）!']" style="width: 180px;" title="date_dqrqsrq" oncopy="return false" onpaste="return false" oncut="return false" name="date_dqrqsrq"><img onclick="WdatePicker({el:'date_dqrqsrq',dateFmt:'yyyyMMdd'})" src="/js/My97DatePicker/skin/datePicker.gif" align="absmiddle" style="width:16px;height:22px;margin-left:6px;">
+								<div id="date_dqrqsrq_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="" style="width: 64px;"><label vl-default="" id="label_dqrzzrq" vtitle="到期日终止日期" class="form-item text-left" vl-tipsid="label_dqrzzrq_tips" style="width: 160px;" title="label_dqrzzrq" name="label_dqrzzrq">到期日终止日期</label>
+								<div id="label_dqrzzrq_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class=""><input type="text" class="date form-item text-left" vl-default="" id="date_dqrzzrq" vtitle="到期日终止日期" vl-tipsid="date_dqrzzrq_tips" vl-regex="['maxlength8', 'tdate', 'number']" vl-message="['到期日终止日期长度大于最大长度:[8]!','请输入正确的格式（如:19000101）!','']" style="width: 180px;" title="date_dqrzzrq" oncopy="return false" onpaste="return false" oncut="return false" name="date_dqrzzrq"><img onclick="WdatePicker({el:'date_dqrzzrq',dateFmt:'yyyyMMdd'})" src="/js/My97DatePicker/skin/datePicker.gif" align="absmiddle" style="width:16px;height:22px;margin-left:6px;">
+								<div id="date_dqrzzrq_tips" class="tipsmsg"></div>
+							</td>
+						</tr>
+						<tr>
+							<td rowspan="1" colspan="1" class="" style="width: 64px;"><label vl-default="" id="label_khrqsrq" vtitle="开户日起始日期" class="form-item text-left" vl-tipsid="label_khrqsrq_tips" style="width: 160px;" title="label_khrqsrq" name="label_khrqsrq">开户日起始日期</label>
+								<div id="label_khrqsrq_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class=""><input type="text" class="date form-item text-left" vl-default="" id="date_khrqsrq" vtitle="开户日起始日期" vl-tipsid="date_khrqsrq_tips" vl-regex="['maxlength8','number']" vl-message="['开户日起始日期大于最大长度:[8]!','']" style="width: 180px;" title="date_khrqsrq" oncopy="return false" onpaste="return false" oncut="return false" name="date_khrqsrq"><img onclick="WdatePicker({el:'date_khrqsrq',dateFmt:'yyyyMMdd'})" src="/js/My97DatePicker/skin/datePicker.gif" align="absmiddle" style="width:16px;height:22px;margin-left:6px;">
+								<div id="date_khrqsrq_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="" style="width: 64px;"><label vl-default="" id="label_khrzzrq" vtitle="开户日终止日期" class="form-item text-left" vl-tipsid="label_khrzzrq_tips" style="width: 160px;" title="label_khrzzrq" name="label_khrzzrq">开户日终止日期</label>
+								<div id="label_khrzzrq_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class=""><input type="text" class="date form-item text-left" vl-default="" id="date_khrzzrq" vtitle="开户日终止日期" vl-tipsid="date_khrzzrq_tips" vl-regex="['maxlength8', 'number']" vl-message="['开户日终止日期大于最大长度:[8]!','']" style="width: 180px;" title="date_khrzzrq" oncopy="return false" onpaste="return false" oncut="return false" name="date_khrzzrq"><img onclick="WdatePicker({el:'date_khrzzrq',dateFmt:'yyyyMMdd'})" src="/js/My97DatePicker/skin/datePicker.gif" align="absmiddle" style="width:16px;height:22px;margin-left:6px;">
+								<div id="date_khrzzrq_tips" class="tipsmsg"></div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="con-map2">
+				<iframe id="iframeID" name="iframeID" style="width:100%;height: 400px; border:none; " src=""></iframe>
+			</div>
+			<div class="foot "> <span>                                        <button>退出（F3）</button>                                        <button>帮助（F1）</button>                                        <button>辅助（F4）</button>                                        <button type="button" onclick="FormReset()">重置（F5）</button></span> <span style="float: right;">                                        <button type="button" style="margin-right: 0px;" vl-submit="true" id="btnsubmit" onclick="SubmitForm()">提交</button></span> </div>
+			<input type="hidden" class="hidmainwidth" value="1000/" oncopy="return false" onpaste="return false" oncut="return false"> </div>
+@*<script type="text/javascript">
+         
+    $(document).ready(function(){
+    	
+    	// var bdFrame = _ip + encodeURI("commontable?fields=zkh|账/卡号,xh|序号,zhmc|账户名称,zhfjlx|账户分级类型,bz|币种,cpdm|产品代码,cpm|产品名,cq|存期,zhzt|账户状态,khrq|开户日期,dqrq|到期日期&table=tb_daily_grkhglzhcx&orderby=id&page=1&is_page=true");
+             // $("#iframeID").attr("src",bdFrame);
+    var planid = getQueryString("planid");
+    //冻结止付历史查询回车事件
+     // var bdFrame = _ip + encodeURI("commontable?fields=zhanghao|账/卡号,xuhao|序号,zhmc|账户名称,zhfjlx|账户分级类型,bz|币种,cpdm|产品代码,cpm|产品名,cq|存期,zhzt|账户状态,khrq|开户日期,dqrq|到期日期&table=tb_daily_grkhglzhcx&orderby=id&page=1&is_page=true");
+     	var bdFrame = _ip + encodeURI("commontable?fields=zkh|账/卡号,xh|序号,zhmc|账户名称,zhfjlx|账户分级类型,bz|币种,cpdm|产品代码,cpm|产品名,cq|存期,zhzt|账户状态,khrq|开户日期,dqrq|到期日期&table=tb_daily_grkhglzhcx&orderby=id&is_page=false");
+		$("#btnsubmit").click(function(){
+				
+			$("#iframeID").attr("src",bdFrame + "&where=and plan_id^"+planid).addClass("ba-iframe");
+			
+		})
+	});
+	 function getQueryString(name) {
+	     var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+	     var r = window.location.search.substr(1).match(reg);
+	     if (r != null) return unescape(r[2]);
+	     return null;
+	 }
+</script>*@
+<link href="~/Js/Student/GetDefaultValue/js/common.bank.css" rel="stylesheet" />
+              </form>

@@ -1,0 +1,167 @@
+﻿
+<link href="~/CSS/bootstrap-table.min.css" rel="stylesheet" />
+<!--按账号更换-->
+<div class="row">
+    <div class="col-md-9">
+        <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 control-label">业务类型：</label>
+            <div class="col-sm-6">
+                <button type="button" class="btn btn-default" onclick="goPage('200040&init=true')">按印鉴卡号更换</button>
+                <button type="button" class="btn btn-default" onclick="goPage('200026')">按客户更换</button>
+                <button type="button" class="btn btn-default active" onclick="goPage('200018')">按账号更换</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <label id="lbl_account" name="lbl_account" for="inputEmail3" class="col-sm-3 control-label">账号</label>
+            <div class="col-sm-6">
+                <input vl-default="" id="txt_account" name="txt_account" type="text" class="form-control input-sm">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <label id="lbl_accountName" name="lbl_accountName" for="inputEmail3" class="col-sm-3 control-label">账户名称</label>
+            <div class="col-sm-6">
+                <input vl-default="" id="txt_accountName" name="txt_accountName" type="text" class="form-control input-sm">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <label id="lbl_certificateType" name="lbl_certificateType" for="inputEmail3" class="col-sm-3 control-label">证件类型</label>
+            <div class="col-sm-6">
+                <select vl-default="" id="sle_certificateType" name="sle_certificateType" class="form-control"></select>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <label id="lbl_idCode" name="lbl_idCode" for="inputEmail3" class="col-sm-3 control-label">证件号码</label>
+            <div class="col-sm-6">
+                <input vl-default="" id="txt_idCode" name="txt_idCode" type="text" class="form-control input-sm">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <label id="lbl_customer" name="lbl_customer" for="inputEmail3" class="col-sm-3 control-label">客户名称</label>
+            <div class="col-sm-6">
+                <input vl-default="" id="txt_customer" name="txt_customer" type="text" class="form-control input-sm">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="text-right" style="margin-bottom: 10px;">
+    <button type="button" class="btn btn-primary btn-sm" onclick="doSearch()">查询</button>
+</div>
+
+<table class="table table-hover" id="tbl"></table>
+<div id="DivTabValue" style="display:none;">
+    <div class="divider divider-horizontal"><div class="divider-text is-left"><strong>列表反显值</strong></div></div>
+<textarea rows="5" id="tb1Value" name="tb1Value" style="width:100%;"></textarea>
+</div>
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <label id="lbl_changeMode" name="lbl_changeMode" for="inputEmail3" class="col-sm-3 control-label">变更方式</label>
+            <div class="col-sm-6">
+                <select vl-default="" id="sle_changeMode" name="sle_changeMode" class="form-control"></select>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <label id="lbl_startDate" name="lbl_startDate" for="inputEmail3" class="col-sm-3 control-label">启用日期</label>
+            <div class="col-sm-6">
+                <input vl-default="" id="date_startDate" name="date_startDate" type="date" max="9999-12-31"  class="form-control input-sm">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <label id="lbl_replacementReason" name="lbl_replacementReason" for="inputEmail3" class="col-sm-3 control-label">更换原因</label>
+            <div class="col-sm-6">
+                <input vl-default="" id="txt_replacementReason" name="txt_replacementReason" type="text" class="form-control input-sm">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <label id="lbl_newSealCardNumber" name="lbl_newSealCardNumber" for="inputEmail3" class="col-sm-3 control-label">新印鉴卡号码</label>
+            <div class="col-sm-6">
+                <input vl-default="" id="txt_newSealCardNumber" name="txt_newSealCardNumber" type="text" class="form-control input-sm">
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/Scripts/bootstrap-table.min.js"></script>
+<script src="~/Js/Student/GetDefaultValue/js/common.js"></script>
+<script src="~/Scripts/bootstrap-table-zh-CN.js"></script>
+
+<script type="text/javascript">
+    setOptions(['certificateType', 'changeMode']);
+    var data = [];
+    function setTableValue(values) {
+        var vals = values.split('\n');
+        data = [{
+            'cardNumber': vals[0],
+            'cardStatus': vals[1],
+            'startDate': vals[2],
+            'establishTeller': vals[3],
+        }];
+        $("#tbl").bootstrapTable('load', data);
+    }
+    $('#tbl').bootstrapTable({
+        data,
+        paginationHAlign: 'left',
+        columns: [{
+            checkbox: true,
+            align: 'center',
+        },
+        {
+            title: '印鉴卡号码',
+            field: 'cardNumber',
+            align: 'center'
+        },
+        {
+            title: '印鉴卡状态',
+            field: 'cardStatus',
+            align: 'center'
+        },
+        {
+            title: '启用日期',
+            field: 'startDate',
+            align: 'center'
+        },
+        {
+            title: '建立柜员',
+            field: 'establishTeller',
+            align: 'center'
+        },
+        ]
+    });
+    function doSearch() {
+        data = [{
+            'cardNumber': "343123213",
+            'cardStatus': '正常',
+            'startDate': '2021/9/16',
+            'establishTeller': '张三',
+        },];
+        $("#tbl").bootstrapTable('append', data);
+    }
+</script>

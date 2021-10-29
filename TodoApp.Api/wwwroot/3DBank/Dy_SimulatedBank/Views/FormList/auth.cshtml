@@ -1,0 +1,478 @@
+﻿
+<head>
+    <meta charset="UTF-8">
+    <title>授权员交易授权</title>
+    <style type="text/css">
+        .con-map2 {
+            margin: auto;
+            margin-top: 5px;
+            border: 1px solid #d5d5d5;
+            padding: 10px 10px;
+            position: relative;
+            background-color: white;
+            clear: both;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0px 20px;
+            border: 1px solid #101622;
+            border-radius: 5px;
+        }
+
+            table td {
+                padding: 0px 3px;
+            }
+
+        .text-left {
+            text-align: left;
+        }
+
+        .text-right {
+            text-align: right;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .text-red {
+            color: red;
+        }
+
+        .slectstyle select {
+            cursor: pointer;
+            width: 100%;
+            height: 20px;
+            line-height: 20px;
+            border: 1px solid #d2d2d2;
+            background: url(/Images/slectbj.png) no-repeat right;
+        }
+
+            .slectstyle select:focus {
+                outline: none;
+                border: 1px solid #92c978;
+                background: url(/Images/slectbjdj.png) no-repeat right;
+            }
+
+            .slectstyle select option:checked {
+                background-image: linear-gradient(#fada00, #fada00);
+            }
+
+        .inputstyle input {
+            width: 100%;
+            border: 1px solid #d2d2d2;
+            height: 20px;
+            line-height: 20px;
+        }
+
+            .inputstyle input:focus {
+                outline: none;
+                border: 1px solid #92c978;
+            }
+
+        .bg-gray {
+            background-color: #f6f6f6;
+        }
+
+        .top-title {
+            position: absolute;
+            top: -12px;
+            left: 30px;
+            background-color: white;
+        }
+
+        .bottom {
+            clear: both;
+            width: 580px;
+            margin: auto;
+        }
+
+            .bottom button {
+                cursor: pointer;
+                margin-right: 15px;
+                margin-top: 5px;
+                margin-bottom: 5px;
+                padding: 8px 5px;
+                border: 1px solid #9c9c9c;
+                background: none;
+                color: #181818;
+                text-align: center;
+                border-radius: 5px;
+            }
+
+        * {
+            padding: 0;
+            margin: 0
+        }
+
+        ul {
+            list-style-type: none
+        }
+
+        .box ul {
+            height: 22px;
+            border: 1px solid #48515a;
+            border-bottom: none;
+            padding-top: 2px;
+            background: -webkit-linear-gradient(top, #deeafa, #f3f4f9);
+            background: -o-linear-gradient(top, #deeafa, #f3f4f9);
+            background: -moz-linear-gradient(top, #deeafa, #f3f4f9);
+            background: linear-gradient(to top, #deeafa, #f3f4f9);
+        }
+            /*position:relative;用于IE7上面*/
+
+            .box ul li {
+                border-top-left-radius: 5px;
+                border-top-right-radius: 5px;
+                float: left;
+                border: 1px solid #4a6e9e;
+                margin-right: 0px;
+                padding: 0 10px;
+                border-bottom: none;
+                position: relative;
+                cursor: pointer;
+                background: #dfe3e8;
+            }
+
+        .content {
+            border: 1px solid #101622;
+            /*	height: 145px;*/
+            padding: 5px;
+        }
+
+        * html .content {
+            margin-top: -1px;
+        }
+        /*用于IE6上面*/
+
+        .box ul li.one {
+            border-top: 2px solid red;
+            background: #e3e3e5;
+        }
+        /*蓝色背景样式*/
+
+        .bankmap {
+            background-color: #4a6e9e;
+            width: 620px;
+            margin: auto;
+            padding-bottom: 10px;
+        }
+
+        .sousuo {
+            position: absolute;
+            margin-top: 5px;
+            margin-left: 5px;
+            cursor: pointer;
+        }
+        /*授权页面新增样式*/
+
+        .banktop {
+            height: 30px;
+        }
+
+        .map_left {
+            float: left;
+            background-color: white;
+            width: 604px;
+        }
+
+        .content_map {
+            background-color: white;
+            width: 600px;
+            margin: auto;
+            height: 720px;
+        }
+
+        .kz_title {
+            height: 30px;
+            line-height: 30px;
+            background: -webkit-linear-gradient(top, #e7e7e7, #f1f1f1);
+            background: -o-linear-gradient(top, #e7e7e7, #f1f1f1);
+            background: -moz-linear-gradient(top, #e7e7e7, #f1f1f1);
+            background: linear-gradient(to top, #e7e7e7, #f1f1f1);
+        }
+
+        .map_right {
+            padding-left: 5px;
+            float: left;
+            background-color: white;
+            width: 570px;
+        }
+
+        .tishi {
+            border: 1px solid #d5d5d5;
+            height: 95px;
+            padding: 5px 0px 5px 20px;
+            overflow-x: auto;
+            white-space: nowrap;
+            line-height: 30px;
+        }
+
+        .sq_bt {
+            border-radius: 5px;
+            background-color: #505d70;
+            color: white;
+            padding: 5px 3px;
+        }
+
+        /*授权表格样式*/
+        .sq_table {
+            height: 160px;
+            border: 1px solid #8a9294;
+            margin-right: 3px;
+            overflow-x: auto;
+        }
+
+            .sq_table table {
+                border: none;
+                width: 750px;
+                border-spacing: 0px 0px;
+            }
+
+                .sq_table table th {
+                    color: #ffffff;
+                    text-align: center;
+                    padding: 5px 5px;
+                    background: -webkit-linear-gradient(top, #385a7f, #437fb1);
+                    background: -o-linear-gradient(top, #385a7f, #437fb1);
+                    background: -moz-linear-gradient(top, #385a7f, #437fb1);
+                    background: linear-gradient(to top, #385a7f, #437fb1);
+                    border-right: 1px solid white;
+                }
+
+                .sq_table table tr td {
+                    text-align: center;
+                    padding: 5px 5px;
+                    background-color: #d0d8e3;
+                    border: 1px solid #263441;
+                }
+
+        .bt_sq {
+            cursor: pointer;
+            background-color: #dedede;
+            border: 1px solid #747474;
+        }
+
+        .number_bj {
+            height: 225px;
+            border: 1px solid #e0e0e0;
+            margin-right: 3px;
+            background: -webkit-linear-gradient(top, #e5e5e5, #ffffff);
+            background: -o-linear-gradient(top, #e5e5e5, #ffffff);
+            background: -moz-linear-gradient(top, #e5e5e5, #ffffff);
+            background: linear-gradient(to top, #e5e5e5, #ffffff);
+            text-align: center;
+        }
+
+        .sq_input input {
+            margin-top: 5px;
+            width: 550px;
+            height: 25px;
+            border: 1px solid #d2d2d2;
+            background: url(/Images/banksousuo.png) right no-repeat;
+        }
+
+            .sq_input input:focus {
+                outline: none;
+                border: 1px solid #92c978;
+            }
+
+        .sq_person {
+            margin: auto;
+            margin-top: 10px;
+            width: 300px;
+            height: 30px;
+            line-height: 30px;
+        }
+    </style>
+</head>
+<body>
+    <!--外围背景区域-->
+    <div class="bankmap">
+        <!--头部信息-->
+        <div class="banktop">
+            <span style="float: left; margin-top: 5px;margin-left: 7px; color: white;">
+                <img style="float: left;" src="/Images/topleft.png" />授权员交易授权
+            </span>
+            <span style="float: right;margin-right:7px; margin-top: 5px;">
+                <img src="/Images/topright.png" />
+            </span>
+        </div>
+        <!--头部信息结束-->
+        <div class="content_map">
+
+            <!--右侧信息提示区域-->
+            <div class="map_right">
+                <div class="kz_title">
+                    <img src="/Images/titile.png" style="float: left;" /> 关键提示信息（2项）
+                </div>
+                <div class="tishi">
+                    <!-- 提示：该账户信息已被冻结，是否继续。<br />-->
+                    <div>
+                        <!--提醒：此冻结为轮候冻结，待登记在先的冻结满足条件或失效后，执行本次冻结(此处内容向右拖动查看)	-->
+                    </div>
+                </div>
+                <div class="kz_title">
+                    <img src="/Images/titile.png" style="float: left;" /> 授权基本信息
+                </div>
+                <div class="">
+                    <table border="0" cellspacing="0" cellpadding="0" style="border: none;border-spacing: 0px 8px;color: #505d70;">
+                        <tr style="height: 30px;">
+                            <td><span class="sq_bt">授权代码</span> 685965</td>
+                            <td><span class="sq_bt">原操作员</span> 105893-刘剑</td>
+                        </tr>
+
+                        <tr style="height: 30px;">
+                            <td><span class="sq_bt">授权原因</span> </td>
+                            <td><span class="sq_bt">原复核员</span> -</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="sq_table">
+                    <table border="0" cellspacing="0" cellpadding="0">
+                        <tr>
+                            <th>授权操作</th>
+                            <th>序号</th>
+                            <th>授权结果</th>
+                            <th>授权方式</th>
+                            <th>柜员级别要求</th>
+                            <th>授权人</th>
+                            <th>授权人名</th>
+                            <th>拒绝原因</th>
+                            <th>看不清</th>
+                        </tr>
+                        <tr>
+                            <td><button class="bt_sq"> <img src="/Images/sq_bt.png" style="float: left;margin-right: 5px;" />授 &nbsp;&nbsp;权</button></td>
+                            <td>5</td>
+                            <td>N-未授权</td>
+                            <td>L-本地授权</td>
+                            <td>Z6-6级</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="kz_title">
+                    <img src="/Images/titile.png" style="float: left;" /> 授权序号 &nbsp;&nbsp;5
+                </div>
+                <div class="number_bj">
+                    <div class="sq_input">
+                        <input type="text" name="txt_sqyh" id="txt_sqyh" value="" placeholder="授权员操作（F11）：请输入授权员号，按回车" />
+                    </div>
+                    <div class="sq_person">
+                        <img src="/Images/sq_person.png" style="float: left;" /> 授权验证区域，请先确认授权员。
+                        <input type="password" id="sqy_pwd" name="sqy_pwd" placeholder="请输入授权员密码" style="width:300px; height:25px; border:1px solid #d2d2d2; margin-top:5px; display:none;" />
+                    </div>
+
+
+
+                </div>
+
+                <div class="bottom">
+                    <span><button>退出（F3）</button><button>刷新（F5）</button></span>
+                    <span style="float: right;"><button id="submit" style="margin-right: 18px;">提交</button></span>
+                    <span style="float: right;"><button style="margin-right: 5px;">修改（F8）</button></span>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</body>
+
+<script src="~/Scripts/jquery-1.8.3.min.js"></script>
+<script src="~/Scripts/layer/layer.js"></script>
+<link href="~/Scripts/layer/skin/layer.css" rel="stylesheet" />
+<script src="~/Js/CheckTimeOut.js"></script>
+<script type="text/javascript">
+    $(document).ready(function () { //切换标签
+        $('.ct:gt(0)').hide()
+        $('.box ul li').click(function () {
+            $(this).addClass("one")
+                .siblings().removeClass();
+            //获取当前标签的索引值
+            var content_idnex = $('.box ul li').index(this);
+            $('.ct').eq(content_idnex).show()
+                .siblings().hide();
+        });
+
+        $("#txt_sqyh").keypress(function (e) {
+            if (e.keyCode == 13) {
+                var sqyh = $(this).val();
+                if (sqyh == "143276") {
+                    $("#sqy_pwd").show().focus().val("");
+                } else {
+                    layer.alert("授权员号错误");
+                }
+            }
+        });
+        $("#submit").click(function () {
+            if (window.opener != null) {
+                var pwd = $("#sqy_pwd").val();
+                var formId = getQueryString("FormId");
+                if (pwd == "12345654") {
+                    layer.alert("提交成功", function () {
+                        if (Auth_array.join(",").indexOf(formId) > -1) { 
+                            EditEmpower(formId); 
+                        } 
+                        var call_sign = getQueryString("call_sign");
+                        window.opener.authCloseCall(call_sign);
+                        window.close();
+                    });
+                } else {
+                    layer.alert("授权员密码错误");
+                }
+            } else {
+            }
+        });
+        //核心系统内部授权
+        var Auth_array = ["091003", "030602"]; 
+    });
+
+
+    //内部授权打开新窗口
+    function EditEmpower() {
+        var formid = getQueryString("FormId");
+        var url = '/FormList/Form_010001?FormId=' + formid+"&type=1";
+        var height = 600;
+        //window.open(url, 'width=1024,height=' + height + ',top=10px,left=10px,location=no,scrollbars=yes');
+
+        window.open(url, '_blank', 'width=1024,height=' + height + ',top=10px,left=10px,location=no,scrollbars=yes');
+    }
+    
+    function getQueryString(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) {
+            return decodeURI(r[2]);
+        } else {
+            return null;
+        }
+    }
+
+
+
+</script>
+
+<script>
+    var width = window.screen.width;   //获取屏幕宽度
+    if (width == 1920) {
+        document.getElementsByTagName('body')[0].style.zoom = 1;
+    }
+    if (width < 1920) {
+        if (!isIE())
+            document.getElementsByTagName('body')[0].style.zoom = 0.70;
+    }
+
+
+    function isIE() { //ie?
+        if (!!window.ActiveXObject || "ActiveXObject" in window)
+            return true;
+        else
+            return false;
+    }
+</script>

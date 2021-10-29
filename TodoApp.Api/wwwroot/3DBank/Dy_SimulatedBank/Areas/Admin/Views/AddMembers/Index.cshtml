@@ -1,0 +1,87 @@
+﻿@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewData["nvc"] = "团队管理";
+}
+<link href="~/CSS/chosen/chosen.css" rel="stylesheet" />
+<script src="~/Scripts/chosen/chosen.jquery.js"></script>
+<input type="hidden"  id="ID"  value="@ViewData["ID"]"/>
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-sm-12">
+        <ol class="breadcrumb">
+            <li>
+                <h2>组织架构管理</h2>
+            </li>
+            <li>
+                <a onclick="tuandui()">团队管理</a>
+            </li>
+            <li>
+                <a onclick="shangyiji()">团队列表</a>
+            </li>
+             <li>
+                <a>添加成员列表</a>
+            </li>
+        </ol>
+
+    </div>
+</div>
+<!--面包屑位置结束-->
+<!--主体内容开始-->
+<div class="ibox-content">
+    <div class="row m-t">
+        <div class="col-sm-3">
+            <select class=" form-control input-s-sm inline" id="CollegeNameId" onchange="GetMajor('@ViewData["ID"]')">
+                <option value="0">请选择学院</option>
+            </select>
+        </div>
+        <div class="col-sm-3">
+            <select class=" form-control input-s-sm inline" id="Majorid" >
+                <option value="0">请选择专业</option>
+            </select>
+        </div>
+      @*  <div class="col-sm-2">
+            <select class=" form-control input-s-sm inline" id="Gradeid">
+                <option value="0">请选择年级</option>
+            </select>
+        </div>*@
+        <div class="col-sm-3">
+            <div class="input-group">
+                <input type="text" placeholder="请输入关键字搜索……" id="ClassNameid" class="form-control" name="ClassName">
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-primary" onclick="Select()"><i class="fa fa-search "></i></button>
+                </span>
+            </div>
+        </div>
+        <div class="col-sm-3 text-right">
+            <button onclick="del_all();" class="btn btn-primary btn-sm " type="button"><i class="fa fa-plus m-r-xs"></i><span class="bold">加入团队</span></button>
+        </div>
+    </div>
+    <div class="row  m-t-sm ">
+        <div class="col-sm-12">
+            <table class="table text-center table-bordered ">
+                <thead>
+                    <tr>
+                        <th class="text-center">
+                            <input type="Checkbox" class="i-checks checkbox-all">
+                        </th>
+                        <th class="text-center">学院名称</th>
+                        <th class="text-center">专业名称</th>
+                        <th class="text-center">班级名称</th>
+                        <th class="text-center">姓名</th>
+                        <th class="text-center">学号</th>
+                        <th class="text-center">状态</th>
+                        <th class="text-center">操作</th>
+                    </tr>
+                </thead>
+                <tbody class="new_table text-center" id="tablelist"></tbody>
+            </table>
+        </div>
+    </div>
+
+    <!--分页开始-->
+    <div class="row text-center m-t-md" id="PaginatorLibrary">
+    </div>
+    <!--分页结束-->
+</div>
+<script src="~/JS/Teacher/AddMembers/AddMembersIndex.js"></script>
+
+  

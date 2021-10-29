@@ -1,0 +1,552 @@
+﻿
+.red {
+    background-color: #e6e6e6 !important;
+}
+
+.l-case-title {
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+body,
+html {
+    width: 100%;
+    height: 100%;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+#winlinks {
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    width: 100%;
+}
+
+    #winlinks ul {
+        position: relative;
+    }
+
+    #winlinks li {
+        width: 70px;
+        cursor: pointer;
+        height: 80px;
+        position: absolute;
+        z-index: 101;
+        list-style: none;
+        text-align: center;
+    }
+
+        #winlinks li img {
+            width: 36px;
+            height: 36px;
+        }
+
+        #winlinks li span {
+            background: none repeat scroll 0 0 rgba(0, 0, 0, 0.6);
+            border-radius: 10px 10px 10px 10px;
+            display: block;
+            font-size: 12px;
+            margin-top: 1px;
+            color: White;
+            line-height: 18px;
+            text-align: center;
+        }
+
+        #winlinks li.l-over div.bg {
+            display: block;
+        }
+
+        #winlinks li div.bg {
+            display: none;
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            z-index: 0;
+            width: 75px;
+            height: 64px;
+            -webkit-border-radius: 5px;
+            -moz-border-radius: 5px;
+            border-radius: 5px;
+            background: #000;
+            opacity: 0.1;
+            filter: alpha(opacity=10);
+        }
+
+.l-taskbar-task-icon {
+    top: 3px;
+    left: 6px;
+    background-image: none;
+}
+
+.l-taskbar-task-content {
+    margin-left: 30px;
+}
+
+.l-taskbar-task-icon img {
+    width: 22px;
+    height: 22px;
+}
+/*任务面板样式开始*/
+
+.top {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+HTML,
+BODY {
+    font-size: 12px;
+    padding: 0px;
+    margin: 0px;
+    background-color: #f1f6f9;
+}
+
+a:link {
+    color: #15428B;
+    text-decoration: none;
+}
+
+a:visited {
+    text-decoration: none;
+    color: #15428B;
+}
+
+a:hover {
+    text-decoration: none;
+    color: #15428B;
+}
+
+a:active {
+    text-decoration: none;
+    color: #15428B;
+}
+
+.rwtdfont {
+    font-size: 13px;
+    color: #5774A5;
+    margin-top: 8px;
+}
+
+.imgb {
+    cursor: hand;
+    border: 0px;
+}
+
+div.tableContainer {
+    clear: both;
+    height: 270px;
+    overflow: auto;
+    margin-bottom: 5px;
+    position: relative;
+}
+
+    div.tableContainer table {
+        width: 100%;
+    }
+
+thead.fixedHeader tr {
+    position: relative;
+    /*这句是决定抬头要不要滚动的*/
+    top: expression(document.getElementById("tableContainer").scrollTop);
+}
+
+thead.fixedHeader th {
+    background: #90d751;
+    color: white;
+    font-weight: normal;
+    padding: 8px 3px;
+    text-align: center;
+}
+
+.scrollContent tr td {
+    padding: 6px 0px;
+    color: #000000;
+    font-size: 14px;
+    border-top: 1px solid #CCCCCC;
+}
+
+.panel-header {
+    padding: 5px;
+    line-height: 25px;
+    color: #3F3F3F;
+    font-weight: bold;
+    font-size: 14px;
+    color: white;
+    position: relative;
+    background-color: #90d751;
+}
+/*任务窗口底部信息区域样式*/
+
+.rw_bottom_map {
+    margin-top: -5px;
+    padding: 5px;
+    background: #049d41;
+    background: -webkit-linear-gradient(top, #049d41, #8ac34a);
+    /* Safari 5.1 - 6.0 */
+    background: -o-linear-gradient(top, #049d41, #8ac34a);
+    /* Opera 11.1 - 12.0 */
+    background: -moz-linear-gradient(top, #049d41, #8ac34a);
+    /* Firefox 3.6 - 15 */
+    background: linear-gradient(to top, #049d41, #8ac34a);
+    /* 渐变背景标准的语法 */
+}
+
+.time_down {
+    height: 90;
+    line-height: 90px;
+    font-size: 28px;
+    color: white;
+}
+
+    .time_down img {
+        float: left;
+        margin-top: 15px;
+        margin-left: 15px;
+        margin-right: 10px;
+    }
+
+.bottom_btn {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+    .bottom_btn button {
+        cursor: pointer;
+        width: 110px;
+        height: 40px;
+        line-height: 40px;
+        border-radius: 5px;
+        border: 1px solid white;
+        background-color: white;
+        color: #90d751;
+        font-size: 18px;
+    }
+
+.rw_message {
+    margin-top: 10px;
+    border-top: 2px solid white;
+    border-bottom: 2px solid white;
+    padding: 10px 0px;
+}
+/*任务面板样式结束*/
+/*   切换题目类型样式*/
+
+.state_type {
+    width: 380px;
+}
+
+    .state_type ul {
+        position: relative;
+        margin: 0px;
+        padding: 0px;
+        height: 40px;
+        border-bottom: 1px solid #dddddd;
+    }
+
+        .state_type ul li {
+            display: list-item;
+            list-style-type: none;
+            text-decoration: none;
+        }
+
+.type_sty {
+    cursor: pointer;
+    float: left;
+    color: #666666;
+    border-bottom: none;
+    text-align: center;
+    font-size: 14px;
+    padding: 0px 20px;
+    height: 40px;
+    line-height: 40px;
+}
+
+    .type_sty:hover {
+        color: #90d751;
+    }
+
+    .type_sty:active {
+        font-weight: 600;
+        border-bottom: 2px solid #90d751;
+        color: #90d751;
+    }
+
+.qiehuan_con {
+    clear: both;
+    height: 220px;
+    text-align: left;
+    padding: 8px;
+    overflow: auto;
+    color: #666666;
+    font-size: 15px;
+    line-height: 25px;
+}
+/*切换题目样式结束*/
+/*左侧任务按钮区域开始*/
+
+.task_back {
+    height: 60px;
+    font-size: 20px;
+    line-height: 60px;
+    text-indent: 40px;
+}
+
+    .task_back a {
+        color: #2ba844;
+    }
+
+        .task_back a:hover {
+            color: #126823;
+        }
+
+.task_line {
+    cursor: pointer;
+    width: 210px;
+    height: 155px;
+    background-color: white;
+    text-align: center;
+    font-size: 20px;
+    margin-left: 40px;
+    margin-bottom: 50px;
+    border-radius: 5px;
+    -webkit-box-shadow: 0 0 30px rgba(187, 183, 183, 0.5);
+    -moz-box-shadow: 0 0 30px rgba(187, 183, 183, 0.5);
+    box-shadow: 0 0 5px rgba(187, 183, 183, 0.5);
+}
+
+.taskico {
+    margin-top: 25px;
+    margin-bottom: 20px;
+}
+/*弹窗左侧二级菜单样式开始*/
+
+.tan_map {
+    padding: 0px;
+}
+
+.map_left {
+    float: left;
+    margin-top: 9px;
+    position: relative;
+    margin-right:8px;
+}
+
+.tan_left {
+    float: left;
+    border: 3px solid #446e96;
+    height: 560px;
+    overflow: auto;
+    padding-top: 1px;
+    margin-left:7px;
+}
+
+.left_sousuo input {
+    height: 30px;
+    width: 223px;
+    text-indent: 5px;
+    border: 3px solid #446e96;
+    margin-left:7px;
+}
+
+.part {
+    height: auto;
+    list-style-type: none;
+    padding: 0;
+}
+
+    .part dd {
+        cursor: pointer;
+        font-size: 16px;
+        height: 40px;
+        line-height: 40px;
+        padding: 0px 10px;
+        color: #446e96;
+        border-bottom: 1px solid #446e96;
+    }
+
+        .part dd:hover {
+            color: white;
+            background-color: #446e96;
+            border-bottom: 1px solid #446e96;
+        }
+
+        .part dd.active {
+            color: white;
+            background-color: #446e96;
+            border-bottom: 1px solid #446e96;
+        }
+
+    .part ul {
+        list-style-type: none;
+        padding: 0px;
+    }
+
+.part_two li {
+    line-height: 35px;
+    cursor: pointer;
+    color: #676a6c;
+    padding-left: 20px;
+    font-size: 15px;
+    border-bottom: 1px solid #c1c7ca;
+}
+
+    .part_two li:hover {
+        color: #446e96;
+        background-color: #eff7fb;
+    }
+
+    .part_two li.active {
+        color: #446e96;
+        background-color: #eff7fb;
+    }
+
+.tan_right {
+    margin-left: 10px;
+}
+/*弹窗左侧二级菜单样式结束*/
+
+.sytop_ul {
+    height: 37px;
+    background: url(/img/sytopul.png);
+}
+
+.astyle {
+    background: none !important;
+}
+
+    .astyle:hover {
+        border: 1px solid #186b00;
+    }
+
+.listy a:hover {
+    background: red;
+}
+
+.tuichu {
+    cursor: pointer;
+    display: block;
+    width: 55px;
+    height: 18px;
+    position: absolute;
+    top: 0px;
+    right: 5px;
+}
+
+.fhsy {
+    cursor: pointer;
+    display: block;
+    width: 80px;
+    height: 18px;
+    position: absolute;
+    top: 0px;
+    right: 70px;
+}
+
+tr.active {
+    background-color: #e2f5d5;
+}
+
+#GetList li.active {
+    background-color: #98c6ff;
+}
+/*#smoothmenu1 .listy {
+            background: #049d41;
+        }*/
+
+.guanbi {
+    position: absolute;
+    top: -2px;
+    font-size: 24px;
+    right: 5px;
+    cursor: pointer;
+    color: #dad8d8;
+}
+
+    .guanbi:hover {
+        color: #15428B;
+    }
+
+.left_sousuo {
+    height: 30px;
+    position: relative;
+    clear: both;
+}
+
+
+
+.panel-group .panel {
+    border-radius: 0;
+}
+
+    .panel-group .panel + .panel {
+        margin-top: 0;
+    }
+
+.panel-default .panel-heading {
+    background-color: #f2f2f2;
+}
+
+.item-container {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.item-name {
+    margin-left: 10px
+}
+
+
+#btn {
+    width: 15px;
+    border: none;
+    height: 50px;
+    background-color: #3ea2f1;
+    line-height: 50px;
+    text-align: center;
+    color: white;
+    cursor: pointer;
+    position: absolute;
+    right: -17px;
+    top: 0px;
+}
+
+#btnb {
+    width: 15px;
+    border: none;
+    height: 50px;
+    background-color: #3ea2f1;
+    line-height: 50px;
+    text-align: center;
+    color: white;
+    cursor: pointer;
+    position: absolute;
+    left: 0px;
+    top: 10px;
+    display: none;
+}
+/*退出框里按钮样式*/
+.quxiao, .queding {
+    border: none;
+    outline: none;
+    width: 100px;
+    height: 36px;
+    line-height: 36px;
+    border-radius: 6px;
+}
+
+.quxiao {
+    background-color: #fff;
+    color: #314770;
+    border: 1px solid #314770;
+}
+
+.queding {
+    background-color: #314770;
+    color: #fff;
+}

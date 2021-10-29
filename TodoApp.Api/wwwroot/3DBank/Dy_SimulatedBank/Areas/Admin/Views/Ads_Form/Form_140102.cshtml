@@ -1,0 +1,107 @@
+﻿@{
+    ViewBag.Title = "Form_140102";
+    Layout = "~/Views/Shared/_AdminLayoutIsNull.cshtml";
+}
+
+
+<script src="~/Js/Admin/AdminForm.js"></script>
+<script src="~/Js/Admin/CaseManagement/AddDefaultValue.js"></script>
+<link href="~/CSS/danju/css/menupublic.css" rel="stylesheet" />
+<style type="text/css">
+    .from_map016 {
+        width: 1100px;
+        margin: auto;
+        margin-top: 20px;
+        position: relative;
+        background: url(/CSS/danju/img/danjuimg/menu016.jpg) no-repeat top;
+        height: 490px;
+        background-size: 100%;
+    }
+
+    .site1 {
+        width: 352px;
+        height: 30px;
+        left: 245px;
+        top: 135px;
+    }
+
+    .site2 {
+        width: 352px;
+        height: 30px;
+        left: 270px;
+        top: 190px;
+    }
+
+    .site3 {
+        width: 300px;
+        height: 30px;
+        left: 790px;
+        top: 190px;
+    }
+
+    .site4 {
+        width: 322px;
+        height: 30px;
+        left: 340px;
+        top: 245px;
+    }
+
+    .site5 {
+        width: 300px;
+        height: 30px;
+        left: 820px;
+        top: 250px;
+    }
+
+    .site6 {
+        width: 161px;
+        height: 30px;
+        left: 280px;
+        top: 365px;
+    }
+
+
+    .site7 {
+        padding: 6px;
+        left: 315px;
+        top: 307px;
+        position: absolute;
+    }
+
+
+
+</style>
+
+
+<form id="form1" onsubmit="return false" action="##" method="post">
+    <input type="hidden" id="TaskId" name="TaskId" value="@Request["TaskId"]" />
+    <input type="hidden" id="CustomerId" name="CustomerId" value="@Request["CustomerId"]" />
+    <input type="hidden" id="FormId" name="FormId" value="@Request["FormId"]" />
+    <input type="hidden" id="Types" name="Types" value="@Request["Types"]" />
+    <!--内容表单区域开始-->
+    <div class="from_map016">
+        <input class="inputall site1 " type="text" name="dy01" id="dy01" value="" />
+        <input class="inputall site2 " type="text" name="dy02" id="dy02" value="" />
+        <input class="inputall site3 " type="text" name="dy03" id="dy03" value="" />
+        <input class="inputall site4 " type="text" name="dy04" id="dy04" value="" />
+        <input class="inputall site5 " type="text" name="dy05" id="dy05" value="" />
+        <input class="inputall site6 " type="text" name="dy06" id="dy06" value="" />
+
+        <button class="btn_chongzhi" type="button" value="重置" onclick="FormReset()">重置</button>
+        <button class="btn_tijiao" type="button" value="提交" onclick="SubmitForm()">提交</button>
+
+
+        <select class="site7" name="dy07" id="dy07">
+            <option value="">请选择核查结果</option>
+            <option value="1">00-号码和姓名一致，且存在照片</option>
+            <option value="2">01-号码和姓名一致，但不存在照片</option>
+            <option value="3">02-号码存在，但与姓名不匹配</option>
+            <option value="4">03-号码存在，但照片不一致</option>
+            <option value="5">04-其它错误</option>
+            <option value="6">05-输入的参数错误</option>
+            <option value="7">06-待审核</option>
+        </select>
+    </div>
+
+
+</form>

@@ -1,0 +1,205 @@
+﻿@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewData["nvc"] = "系统参数";
+}
+
+<style>
+    .btnSelect {
+        background-color: darkseagreen;
+        pointer-events: none;
+        cursor: default;
+        opacity: 0.6;
+    }
+
+    .note-editor {
+        min-height: 100px;
+        height: 150px;
+    }
+</style>
+
+<!--富文本编辑器样式-->
+<link href="~/CSS/plugins/summernote/summernote.css" rel="stylesheet" />
+<link href="~/CSS/plugins/summernote/summernote-bs3.css" rel="stylesheet" />
+<!--富文本编辑器js-->
+<script src="~/Scripts/summernote/summernote.min.js"></script>
+<script src="~/Scripts/summernote/summernote-zh-CN.js"></script>
+
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-sm-12">
+        <ol class="breadcrumb">
+            <li>
+                <h2>系统管理</h2>
+            </li>
+            <li>
+                <a href="/Admin/SystemParameter/Index">系统参数</a>
+            </li>
+            <li>
+
+                <strong>大厅功能区介绍列表</strong>
+            </li>
+        </ol>
+    </div>
+</div>
+<!--面包屑位置结束-->
+<!--主体内容开始-->
+<div class="ibox-content">
+
+    <div class="row  m-t-sm ">
+        <div class="col-sm-12">
+            <table class="table text-center table-bordered ">
+                <thead>
+                    <tr>
+                        <th class="text-center">功能区名称</th>
+                        <th class="text-center">操作</th>
+                    </tr>
+                </thead>
+                <tbody class="new_table text-center" id="tablelist"></tbody>
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!--编辑弹框-->
+<div id="AreaIntroduce" style="display: none;" class="form-inline">
+    <form name="Edit_AreaIntroduceform" id="Edit_AreaIntroduceform">
+
+        <div class="col-sm-12">
+            <div class="form-horizontal  m-t-lg">
+                <label for="firstname" class="col-sm-3 control-label">功能区：</label>
+                <div class="col-sm-8">
+                    <span id="AreaName"></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-sm-12">
+            <div class="form-horizontal  m-t-lg">
+                <label for="inputEmail3" class="col-sm-3 control-label">功能区介绍：</label>
+                <div class="col-sm-8">
+                    <!--编辑器开始-->
+                    <div class="ibox-content no-padding">
+                        <div class="summernote" id="txtdescribe">
+                        </div>
+                    </div>
+
+                    <!--编辑器结束-->
+                </div>
+            </div>
+        </div>
+
+    </form>
+</div>
+
+<script type="text/javascript">
+    //富文本编辑器API
+    $(document).ready(function () {
+
+        $('.summernote').summernote({
+            lang: 'zh-CN',
+            //height: 150,
+            maxHeight: 200,
+            toolbar: [
+                ['style', ['bold', 'italic', 'underline', 'clear']]
+            ]
+        });
+
+    });
+
+    $(function () {
+        bindIngfo();
+    });
+
+    //列表数据加载
+    function bindIngfo() {
+
+        $.ajax({
+            url: '/Admin/AreaIntroduce/GetList',
+            Type: "post",
+            dataType: "json", cache: false,
+            contentType: "application/json; charset=utf-8",
+            data: {
+            },
+            success: function (data) {
+
+                var html = "";
+                for (var i = 0; i < data.length; i++) {
+                    html += '<tr>';
+                    html += '<td>' + (data[i]["FunctionalAreaName"] == null ? "" : data[i]["FunctionalAreaName"]) + '</td>';
+                    html += '<td><a onclick="Setupanswers(' + data[i]["Id"] + ')" class=" btn-primary btn-sm  m-r-sm"><i class="fa fa-pencil m-r-xxs"></i>编辑 </a></td>';
+                    html += '</tr>';
+                }
+
+                $("#tablelist").html(html);
+
+            }
+        });
+    }
+
+    //设置功能区域介绍
+    function Setupanswers(SID) {
+
+        //表单清空
+        $("#Edit_AreaIntroduceform")[0].reset();
+
+        //赋值
+        $.ajax({
+            type: "POST",
+            dataType: "json",
+            url: '/Admin/AreaIntroduce/GetListById',
+            data: { "ID": SID },
+            async: false,
+            success: function (data) {
+      
+                if (data.length > 0) {
+                    $("#AreaName").text(data[0]["FunctionalAreaName"]);
+                
+                    $("#txtdescribe").code(HTMLDecode(data[0]["describe"]));
+                }
+            }
+        });
+
+        layer.open({
+            title: '设置功能区域介绍',
+            btn: ['确定', '取消'],
+            area: ['700px', '500px'],
+            type: 1,
+            skin: 'layui-layer-lan', //样式类名
+            closeBtn: 1, //显示关闭按钮
+            anim: 2,
+            shadeClose: false, //关闭点击遮罩关闭，true为打开遮罩关闭
+            content: $("#AreaIntroduce"),
+            yes: function (index, layero) {
+                Edit(SID);
+            }
+        });
+    }
+
+    //修改 方法
+    function Edit(SID) {
+
+        var txtdescribe = HTMLEncode($('#txtdescribe').code());
+
+        $.ajax({
+            url: '/Admin/AreaIntroduce/Update',
+            type: 'POST',
+            async: false,
+            dataType: "json",
+            cache: false,
+            data: { "txtdescribe": txtdescribe, "ID": SID },
+            success: function (data) {
+                if (data == "1") {
+                    layer.closeAll();//关闭所有弹出框
+                    layer.msg('操作成功', { icon: 1 });
+                    bindIngfo();
+                }
+                if (data == "99") {
+                    layer.msg('操作失败', { icon: 2 });
+                    return;
+                }
+            }
+        });
+    }
+</script>

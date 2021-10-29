@@ -1,0 +1,493 @@
+﻿@{
+    
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewData["nvc"] = "系统参数";
+}
+
+<style type="text/css">
+    .caozuo_btn {
+        position: relative;
+    }
+
+        .caozuo_btn:hover .caozuo_map {
+            display: block;
+        }
+
+    .caozuo_map {
+        display: none;
+        background-color: white;
+        border: 1px solid #e2e2e2;
+        width: 120px;
+        position: absolute;
+        text-align: center;
+        left: -35px;
+        top: 30px;
+        z-index: 999;
+    }
+
+        .caozuo_map ul {
+            margin: 0;
+            padding: 0;
+        }
+
+            .caozuo_map ul li {
+                list-style: none;
+                margin: 5px;
+                font-size: 14px;
+            }
+
+                .caozuo_map ul li a:hover {
+                    color: red;
+                }
+</style>
+
+
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-sm-12">
+        <ol class="breadcrumb">
+            <li>
+                <h2>系统管理</h2>
+            </li>
+            <li>
+                <a href="/Admin/SystemParameter/Index">系统参数</a>
+            </li>
+            <li>
+                <strong>学生评级</strong>
+            </li>
+        </ol>
+    </div>
+</div>
+<div class="row   white-bg dashboard-header">
+    <div class="panel blank-panel">
+        <div class="panel-body">
+            <div class="tab-content">
+                <div id="tab-1" class="tab-pane active">
+                    <div class="row m-t-sm">
+                        <div class="col-sm-3">
+                            <div class="input-group">
+                                <input type="text" placeholder="请输入评级名称搜索……" id="SelectName" class="form-control" name="SelectName">
+                                <span class="input-group-btn">
+                                    <button type="button" onclick="GetList()" class="btn btn-primary"><i class="fa fa-search "></i></button>
+                                </span>
+                            </div>
+                        </div>
+                            <div class="pull-right">
+                                <input type="text" hidden="hidden" id="uids" name="uids" value="@Session["UserId"]" />
+                                <button onclick="del_all()" type="button" class="btn btn-warning btn-sm"><i class="fa fa-trash"></i><span class="bold">删除所选</span></button>
+                                <button id="but_add1" class="btn btn-primary btn-sm " type="button"><i class="fa fa-plus m-r-xs"></i><span id="add_str1" class="bold">添加评级(0/1)</span></button>
+                            </div>
+                        </div>
+                        <div class="hr-line-dashed"></div>
+                        <div class="row m-t-sm">
+                            <table class="table text-center table-bordered ">
+                                <thead>
+                                    <tr>
+                                        <th class="text-center">
+                                            <input type="checkbox" class="i-checks checkbox-all">
+                                        </th>
+                                        <th class="text-center">等级名称</th>
+                                        <th class="text-center">操作</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="new_table text-center" id="Curriculumtablelist"></tbody>
+                            </table>
+                        </div>
+
+                        <!--分页开始-->
+                        @*<div class="row text-center m-t-md" id="CurriculumPaginatorLibrary">
+        </div>*@
+                        <!--分页结束-->
+                    </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--编辑弹框-->
+<div id="Edit_rating" style="display: none;" class="form-inline">
+    <form name="Edit_schoolform" id="Edit_schoolform">
+        <div class="col-sm-12">
+            <div class="form-horizontal  m-t-lg">
+                <label for="firstname" class="col-sm-3 control-label"><span style="color: red;">*</span>评级名称：</label>
+                <div class="col-sm-9">
+                    <input style="width: 100%;" type="text" class="form-control" id="EditQuestonBQName" name="EditQuestonBQName" placeholder="请输入评级名称">
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script type="text/javascript">
+    $(function () {
+
+        bindData_all();
+    })
+    function GetList() {
+        bindData_all();
+    }
+    function redload() {
+        $('.i-checks').iCheck({
+            checkboxClass: 'icheckbox_square-green',
+            radioClass: 'iradio_square-green',
+        });
+        //全选checkbox
+        var $checkboxAll = $(".checkbox-all"),
+            $checkbox = $(".new_table").find("[type='checkbox']").not("[disabled]"),
+            length = $checkbox.length,
+            i = 0;
+        $checkboxAll.on("ifClicked", function (event) {
+            if (event.target.checked) {
+                $checkbox.iCheck('uncheck');
+                i = 0;
+            } else {
+                $checkbox.iCheck('check');
+                i = length;
+            }
+        });
+    }
+
+    function bindData_all(page) {
+        var PageSize = 10;
+        var SelectName = $("#SelectName").val();
+        $.ajax({
+            url: '/Admin/System/GetRating',
+            type: "post",
+            dataType: "json", cache: false,
+            //contentType: "application/json; charset=utf-8",
+            data: { "page": page, "PageSize": PageSize, "SelectName": SelectName },
+            success: function (tb) {
+                var html = '';
+                var data = tb.Tb;//转换table
+                if (data.length > 9) {
+                    $("#but_add1").attr("disabled", "disabled");
+                } else {
+                    $("#but_add1").removeAttr("disabled", "disabled");
+                }
+
+                var srt = "添加评级(" + data.length + "/10)";
+                $("#add_str1").text(srt)
+                $("#but_add1").unbind();
+
+                $("#but_add1").on('click', function () {
+                    //if (data.length > 9) {
+                    //    $("#but_add1").attr("disabled","disabled");
+                    //    layer.msg('评级数量已到最大值，请删除后添加');
+                    //    return;
+                    //}
+                    //else {
+                    Adds();
+                    //}
+                });
+
+
+                for (var i = 0; i < data.length; i++) {
+                    html += '<tr>';
+                    //当前页面
+                    var idx = 0;
+                    if (page != "undefined" && page != null) {
+                        idx = page;
+                        idx = idx - 1;
+                    }
+
+                    if ($("#uids").val() != 1) {
+                        if (data[i]["AddUserId"] == $("#uids").val()) {
+                            html += '<td><input type="checkbox" class="i-checks" name="iclass" value=' + data[i]["ID"] + '></td>';
+                        }
+                        else {
+                            html += '<td><input type="checkbox" disabled="true"  class="i-checks" name="iclass" value=' + data[i]["ID"] + '></td>';
+                        }
+                    }
+                    else {
+                        html += '<td><input type="checkbox" class="i-checks" name="iclass" value=' + data[i]["ID"] + '></td>';
+                    }
+
+
+                    html += '<td>' + data[i]["RankName"] + '</td>';
+                    var up = "'up'";
+                    var down = "'down'";
+                    html += '<td> <a onclick="movesort(' + data[i]["ID"] + ',' + up + ',' + data[i]["SerialNumber"] + ')" class=" btn-primary btn-sm  m-r-sm">上移 </a>'
+                    html += '<a onclick="movesort(' + data[i]["ID"] + ',' + down + ',' + data[i]["SerialNumber"] + ')" class="btn-warning btn-sm">下移</a>&nbsp;&nbsp;&nbsp;'
+
+                    if ($("#uids").val() != 1) {
+                        if (data[i]["AddPersonnel"] == $("#uids").val()) {
+                            html += '<a onclick="update(' + data[i]["ID"] + ')" class=" btn-primary btn-sm  m-r-sm"><i class="fa fa-pencil m-r-xxs"></i>编辑 </a>';
+                            html += '<a onclick="del(' + data[i]["ID"] + ')" class=" btn-warning btn-sm"><i class="fa fa-trash-o m-r-xxs"></i>删除 </a></td>';
+                        }
+                        else {
+                            html += '<a onclick="fzj()"  style = "background: #ddd;"   class=" btn-primary btn-sm  m-r-sm"><i class="fa fa-pencil m-r-xxs"></i>编辑 </a>';
+                            html += '<a  onclick="fzj()"  style = "background: #ddd;"   class=" btn-warning btn-sm"><i class="fa fa-trash-o m-r-xxs"></i>删除 </a></td>';
+                        }
+                    }
+                    else {
+                        html += '<a onclick="update(' + data[i]["ID"] + ')" class=" btn-primary btn-sm  m-r-sm"><i class="fa fa-pencil m-r-xxs"></i>编辑 </a>';
+                        html += '<a onclick="del(' + data[i]["ID"] + ')" class=" btn-warning btn-sm"><i class="fa fa-trash-o m-r-xxs"></i>删除 </a></td>';
+                    }
+
+
+                    html += '</tr>';
+                }
+                $("#Curriculumtablelist").html(html);
+
+                //bootstrapPaginator("#CurriculumPaginatorLibrary", tb, bindData_all);//分页
+
+                //样式重新加载
+                redload();
+
+            }
+        });
+    }
+
+    function fzj() {
+        layer.msg('非当前登陆账号添加数据不可操作', { icon: 0 });
+        return;
+    }
+
+    //添加
+    function Adds() {
+        $("#EditQuestonBQName").val("");
+        layer.open({
+            title: '添加评级',
+            btn: ['确定', '取消'],
+            type: 1,
+            area: ['450px', '220px'],
+            skin: 'layui-layer-lan', //样式类名
+            closeBtn: 1, //显示关闭按钮
+            anim: 2,
+            shadeClose: false, //关闭点击遮罩关闭，true为打开遮罩关闭
+            content: $("#Edit_rating"),
+            yes: function (index, layero) {
+                Addss();
+            }
+        });
+    }
+
+    //修改
+    function update(ID) {
+        $.ajax({
+            url: '/Admin/System/lookids',
+            type: 'POST',
+            dataType: "json",
+            data: { "ID": ID },
+            success: function (data) {
+                if (data.length > 0) {
+                    $("#EditQuestonBQName").val(data[0]["RankName"]);
+
+                    layer.open({
+                        title: '编辑评级',
+                        btn: ['确定', '取消'],
+                        type: 1,
+                        area: ['450px', '220px'],
+                        skin: 'layui-layer-lan', //样式类名
+                        closeBtn: 1, //显示关闭按钮
+                        anim: 2,
+                        shadeClose: false, //关闭点击遮罩关闭，true为打开遮罩关闭
+                        content: $("#Edit_rating"),
+                        yes: function (index, layero) {
+                            Edits(ID);
+                        }
+                    });
+                }
+            }
+        });
+    }
+
+    function lookid(ID) {
+        $.ajax({
+            url: '/Admin/System/lookids',
+            type: 'POST',
+            data: { "ID": ID },
+            async: false,
+            success: function (data) {
+                if (data.length > 0) {
+                    $("#EditQuestonBQName").val(data[0]["RankName"]);
+                }
+            }
+        });
+    }
+
+    //添加
+    function Addss() {
+        //新增校验
+        var EditQuestonBQName = $("#EditQuestonBQName").val();
+
+
+        if (trim(EditQuestonBQName) == "") {
+            layer.msg('请输入评级名称');
+            return;
+        }
+        if (!CheckCharacter(EditQuestonBQName, '30')) {
+            layer.msg('评级名称长度不能超过30个汉字');
+            return;
+        }
+
+        $.ajax({
+            url: '/Admin/System/Addrating',
+            type: 'POST',
+            data: { "EditQuestonBQName": EditQuestonBQName },
+            async: false,
+            success: function (data) {
+                if (data == "1") {
+                    layer.closeAll();//关闭所有弹出框
+                    layer.msg('操作成功', { icon: 1 });
+                    bindData_all();
+                    $("#EditQuestonBQName").val("");
+                }
+                if (data == "88") {
+                    layer.msg('评级名称已经存在', { icon: 2 });
+                    return;
+                }
+                if (data == "99") {
+                    layer.msg('操作失败', { icon: 2 });
+                    return;
+                }
+            }
+        });
+    }
+
+
+    //修改 方法
+    function Edits(ID) {
+        //新增校验
+        var EditQuestonBQName = $("#EditQuestonBQName").val();
+
+
+        if (trim(EditQuestonBQName) == "") {
+            layer.msg('请输入评级名称');
+            return;
+        }
+        if (!CheckCharacter(EditQuestonBQName, '30')) {
+            layer.msg('评级名称长度不能超过30个汉字');
+            return;
+        }
+
+        $.ajax({
+            url: '/Admin/System/updaterating',
+            type: 'POST',
+            data: { "EditQuestonBQName": EditQuestonBQName, "ID": ID },
+            async: false,
+            success: function (data) {
+                if (data == "1") {
+                    layer.closeAll();//关闭所有弹出框
+                    layer.msg('操作成功', { icon: 1 });
+                    bindData_all();
+                    $("#EditQuestonBQName").val("");
+                }
+                if (data == "88") {
+                    layer.msg('评级名称已经存在', { icon: 2 });
+                    return;
+                }
+                if (data == "99") {
+                    layer.msg('操作失败', { icon: 2 });
+                    return;
+                }
+            }
+        });
+    }
+
+    //删除
+    function del(id, state) {
+        layer.confirm('您确定要删除该评级吗？', {
+            title: '删除',
+            btn: ['确定', '取消'],
+            shadeClose: true, //开启遮罩关闭
+            skin: 'layui-layer-lan'
+            //按钮
+        }, function () {
+            $.ajax({
+                type: "POST",
+                dataType: "json",
+                url: '/Admin/System/Delrating',
+                data: { "ModeId": id },
+                success: function (data) {
+                    if (data == "1") {
+                        bindData_all();
+                        //window.location.reload();
+                        layer.msg('操作成功', { icon: 1 });
+
+                    }
+                    if (data == "99") {
+                        layer.msg('操作失败', { icon: 2 });
+                        return;
+                    }
+                }
+            });
+        });
+    }
+
+
+    //删除所选
+    function del_all(id) {
+        var chks = document.getElementsByName('iclass');//name
+        var chkstr = "";
+
+        for (var i = 0; i < chks.length; i++) {
+            if (chks[i].checked == true) {
+                var lis = chks[i].value.split(':');
+
+                chkstr += lis[0] + ",";
+            }
+        }
+
+        if (chkstr.length == 0) {
+            layer.msg('请选择要删除的评级！', function () { });
+            return;
+        }
+        chkstr = chkstr.substr(0, chkstr.length - 1);
+
+        layer.confirm('您确定要删除所选评级吗？', {
+            title: '删除',
+            btn: ['确定', '取消'],
+            shadeClose: true, //开启遮罩关闭
+            skin: 'layui-layer-lan'
+            //按钮
+        }, function () {
+            $.ajax({
+                url: '/Admin/System/Delrating',
+                type: "POST",
+                dataType: "text",
+                data: { "ModeId": chkstr },
+                success: function (data) {
+                    if (data == "1") {
+                        bindData_all();
+                        //window.location.reload();
+                        layer.msg('操作成功', { icon: 1 });
+                    }
+                    if (data == "99") {
+                        layer.msg('操作失败', { icon: 2 });
+                        return;
+                    }
+                }
+            });
+        });
+    }
+
+
+    //移动
+    function movesort(id, type, sort) {
+        $.ajax({
+            url: '/Admin/System/MoveSort',
+            type: "POST",
+            dataType: "text",
+            data: { "id": id, "type": type, "SerialNumber": sort },
+            success: function (data) {
+                if (data == "88") {
+                    if (type == "up")
+                        layer.msg('已经是第一条了', { icon: 1 });
+                    if (type == "down")
+                        layer.msg('已经是最后一条了', { icon: 1 });
+                    return;
+                }
+                if (data == "1") {
+
+                    bindData_all();
+                    //layer.msg('操作成功', { icon: 1 });
+
+                }
+                if (data == "99") {
+                    layer.msg('操作失败', { icon: 2 });
+                    return;
+                }
+            }
+        });
+    }
+</script>

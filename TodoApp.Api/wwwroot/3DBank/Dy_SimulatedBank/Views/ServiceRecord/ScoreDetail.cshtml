@@ -1,0 +1,229 @@
+﻿@{
+    ViewBag.Title = "实训练习-成绩报告";
+    ViewData["nvc"] = "实训练习";
+    //Layout = "~/Views/Shared/_StudentShared.cshtml";
+}
+<link href="../css/bootstrap.min.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/layer/layer.js"></script>
+<script src="~/Scripts/ddsmoothmenu.js"></script>
+<script src="~/Scripts/verifyform.js"></script>
+<script src="~/Scripts/Page.js"></script>
+
+<script src="~/Js/ServiceRecord/ScoreDetail.js"></script>
+
+<style type="text/css">
+
+    .list_map {
+        width: 1300px;
+        margin: auto;
+        margin-bottom: 10px;
+    }
+
+    .exam_name {
+        text-align: left;
+        font-size: 24px;
+        height: 70px;
+        line-height: 70px;
+        color: #4c4c4c;
+        font-weight: 600;
+    }
+
+    .kaoshi_time {
+        float: right;
+        font-weight: 400;
+        font-size: 20px;
+        color: #2d77af;
+    }
+
+    .report_map {
+        height: 220px;
+        padding: 15px;
+        border: 1px solid #e7e7e7;
+        background-color: white;
+        -webkit-box-shadow: 0 0 30px rgba(187, 183, 183, 0.5);
+        -moz-box-shadow: 0 0 30px rgba(187, 183, 183, 0.5);
+        box-shadow: 0 0 5px rgba(187, 183, 183, 0.5);
+    }
+
+    .user_message {
+        height: 40px;
+        line-height: 40px;
+        font-size: 18px;
+        color: #6c6c6c;
+    }
+
+    .item_map {
+        margin-top: 35px;
+        padding-top: 15px;
+        height: 90px;
+        box-shadow: 0px 2px 3px #ebebef;
+        color: #5e5e62;
+        font-size: 18px;
+        font-weight: 600;
+    }
+
+    .item_num {
+        text-align: left;
+        padding: 0px;
+    }
+
+    .caozuo_message {
+        height: 75px;
+        line-height: 75px;
+        color: #5e5e62;
+        font-size: 17px;
+    }
+
+    .bagao_table {
+        min-height: 250px;
+        background-color: white;
+    }
+
+        .bagao_table table {
+            width: 100%;
+            text-align: center;
+            border-collapse: separate;
+            border-right: 1px solid #b8c4ce;
+            border-left: 1px solid #b8c4ce;
+            border-top: 1px solid #b8c4ce;
+        }
+
+            .bagao_table table tr th {
+                text-align: center;
+                height: 5vmin;
+                border-bottom: 1px solid #b8c4ce;
+                background-color: #d8edfc;
+            }
+
+            .bagao_table table tr td {
+                vertical-align: middle;
+                height: 6vmin;
+                border-bottom: 1px solid #b8c4ce;
+                color: #526068;
+            }
+
+    .text_red {
+        color: #f05561;
+    }
+
+    .text_green {
+        color: #3ea3f2;
+    }
+
+    .yewu_title {
+        color: #3ea3f2;
+        font-weight: 600;
+        font-size: 18px;
+    }
+
+
+    .head_top_text {
+        height: 80px;
+        background-color: #d8edfc;
+        line-height: 80px;
+        font-size: 22px;
+        color: #3ea3f2;
+    }
+</style>
+<input value="@ViewData["ExamId"]" type="hidden" id="ExamId" />
+<input value="@ViewData["planId"]" type="hidden" id="planId" />
+<input value="@ViewData["Diff"]" type="hidden" id="Diff" />
+<input value="@ViewData["TotalItems"]" type="hidden" id="TotalItems" />
+<input value="@ViewData["CustomerId"]" type="hidden" id="CustomerId" />
+<input value="@ViewData["TaskID"]" type="hidden" id="TaskID" />
+
+<input value="@ViewData["Score"]" type="hidden" id="Score" />
+<input value="@ViewData["type"]" type="hidden" id="type" />
+
+<div class="head_top_text">
+    <span style="margin-left: 5%;">综合技能>@ViewData["Plan_Name"]</span>
+    <button class="fanhui" onclick="javascript:window.location.href = '/StuHome/Index'">← 返回</button>
+</div>
+<div class="list_map">
+    <div class="exam_name">
+        综合业务成绩报告
+        <span class="kaoshi_time"></span>
+    </div>
+    <div class="report_map">
+        <div class="user_message">
+            <span>代表队名称：@ViewData["Plan_Name"]  </span>
+            <span style="margin-left: 50px;">参赛选手名称：@ViewData["User_Name"]</span>
+        </div>
+        <div class="col-sm-12 text-center">
+            <div class="col-sm-4 ">
+                <div class="item_map">
+                    <div class="col-sm-6 text-right">
+                        <img src="~/img/repotshijuan.png" />
+                    </div>
+                    <div class="col-sm-6 item_num">
+                        <p>最终得分</p>
+                        <p id="zzfs">@ViewData["Score"]分</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="item_map">
+                    <div class="col-sm-6 text-right">
+                        <img src="~/img/repotzuizhong.png" />
+                    </div>
+                    <div class="col-sm-6 item_num">
+                        <p>考试总分</p>
+                        <p>@ViewData["trueScore"]分</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="item_map">
+                    <div class="col-sm-6 text-right">
+                        <img src="~/img/repottongguo.png" />
+                    </div>
+                    <div class="col-sm-6 item_num">
+                        <p>准确率</p>
+                        <p id="zql">@ViewData["zql"]</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="caozuo_message" style='@(ViewData["type"].ToString()=="1"?"display:none;":"")'>
+        <span style="font-weight: 600; font-size: 20px; margin-right: 20px;">操作详情</span> 操作记录说明：作答错误的题目，只有已操作的题目才有操作记录，其中红色部分为
+        <span class="text_red">错误答案</span>。@*， 绿色部分为
+            <span class="text_green">正确答案</span>。，空白部分为输入对应答案。*@
+    </div>
+    <div class="bagao_table" style='@(ViewData["type"].ToString()=="1"?"display:none;":"")'>
+        <table border="0" cellspacing="0" cellpadding="0">
+            <thead>
+                <tr>
+                    <th width="100">序号</th>
+                    <th width="150">任务名称</th>
+                    <th>操作记录</th>
+                    @*<th width="100">结果</th>*@
+                    <th width="80">得分</th>
+                </tr>
+            </thead>
+            <tbody id="tableContainer"></tbody>
+        </table>
+    </div>
+</div>
+<script type="text/javascript">
+    function tishi_btn() { //点击提示按钮
+        $("#jeixi").hide();
+        $("#tishi").show();
+    }
+
+    function jiexi_btn() { //点击答案解析按钮
+        $("#jeixi").show();
+        $("#tishi").hide();
+    }
+
+    $("#ShouGong").hover(function () {
+        $(".xialasty").css("display", "block");
+    });
+    //鼠标离开
+    $("#ShouGong").mouseleave(function () {
+        $(".xialasty").css("display", "none");
+    });
+
+
+</script>

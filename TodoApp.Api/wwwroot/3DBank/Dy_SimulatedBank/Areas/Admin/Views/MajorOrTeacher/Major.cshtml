@@ -1,0 +1,122 @@
+﻿@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewData["nvc"] = "专业管理";
+}
+
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-sm-12">
+        <ol class="breadcrumb">
+            <li>
+                <h2>组织架构管理</h2>
+            </li>
+            <li>
+                <a href="#">专业管理</a>
+            </li>
+            <li>
+                <strong>专业列表</strong>
+            </li>
+        </ol>
+
+    </div>
+</div>
+<!--面包屑位置结束-->
+<!--主体内容开始-->
+<div class="ibox-content">
+    <div class="row m-t">
+        <div class="col-sm-2">
+            <select class=" form-control input-s-sm inline" id="School">
+                <option value="">请选择学校</option>
+            </select>
+        </div>
+        <div class="col-sm-2">
+            <select class=" form-control input-s-sm inline" id="College">
+                <option value="">请选择学院</option>
+            </select>
+        </div>
+        <div class="col-sm-3">
+            <div class="input-group">
+                <input type="text" placeholder="请输入关键字搜索……" id="Keyword" class="form-control" name="Keyword">
+                <span class="input-group-btn">
+                    <button  onclick="bindIngfo()" type="button" class="btn btn-primary"><i class="fa fa-search "></i></button> 
+                </span>
+            </div>
+        </div>
+        <div class=" col-sm-5 text-right">
+            <button onclick="Add_Major();" class="btn btn-primary btn-sm " type="button"><i class="fa fa-plus m-r-xs"></i><span class="bold">新增专业</span></button>
+            <button onclick="del_all();" class="btn btn-warning btn-sm " type="button"><i class="fa fa-trash m-r-xs"></i><span class="bold">删除专业</span></button>
+        </div>
+    </div>
+    <div class="row  m-t-sm ">
+        <div class="col-sm-12">
+            <table class="table text-center table-bordered ">
+                <thead>
+                    <tr>
+                        <th class="text-center">
+                            <input type="Checkbox" class="i-checks checkbox-all"></th>
+                        <th class="text-center">学校名称</th>
+                        <th class="text-center">学院名称</th>
+                        <th class="text-center">专业名称</th>
+                        <th class="text-center">班级个数</th>
+                        <th class="text-center">人数</th>
+                        <th class="text-center">操作</th>
+                    </tr>
+                </thead>
+                <tbody class="new_table text-center" id="list">
+              
+                </tbody>
+            </table>
+
+        </div>
+
+    </div>
+
+
+    <!--分页开始-->
+    <div class=" text-center">
+        <div class="dataTables_paginate paging_simple_numbers" id="PaginatorLibrary">
+
+        </div>
+
+    </div>
+    <!--分页结束-->
+</div>
+
+
+<!--新增弹框-->
+<div id="Add_Major" style="display: none;" class="form-inline">
+    <form name="" id="">
+
+        <div class="col-sm-12">
+            <div class="form-horizontal  m-t-lg">
+                <label for="firstname" class="col-sm-3 control-label"><span style="color: red;">*</span>选择学校：</label>
+                <div class="col-sm-9">
+                     <select class=" form-control input-s-sm inline" style="width:100%;" id="AddSchool">
+                <option value="">请选择学校</option>
+            </select>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12">
+            <div class="form-horizontal  m-t-lg">
+                <label for="firstname" class="col-sm-3 control-label"><span style="color: red;">*</span>选择学院：</label>
+                <div class="col-sm-9">
+                    <select class=" form-control input-s-sm inline" style="width:100%;" id="AddCollege">
+                        <option value="">请选择学院</option>
+                    </select>
+                </div>
+            </div>
+        </div> 
+        <div class="col-sm-12">
+            <div class="form-horizontal  m-t-lg">
+                <label for="firstname" class="col-sm-3 control-label"><span style="color: red;">*</span>专业名称：</label>
+                <div class="col-sm-9">
+                    <input style="width: 100%;" type="text" class="form-control" id="AddMajorName" name="AddMajorName" placeholder="">
+                    <input  type="hidden" id="M_ID" name="M_ID" placeholder="">
+                </div>
+            </div>
+        </div> 
+
+
+    </form>
+</div>
+<script src="~/JS/Admin/MajorOrTeacher/Major.js"></script>

@@ -1,0 +1,115 @@
+﻿<!--单位活期销户[账户结息]-->
+<link href="~/CSS/bootstrap-step.css" rel="stylesheet" />
+<div class="main-container">
+    <div id="step_container" style="margin-bottom: 10px;"></div>
+    <div class="form-horizontal">
+        <div class="pull-left">
+            <img src="/img/card.png" style="width:250px;height:150px;" alt="">
+        </div>
+        <div class="box">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label id="lbl_account" name="lbl_account" for="inputEmail3" class="col-sm-3 control-label">账(卡)号</label>
+                        <div class="col-sm-6">
+                            <input vl-default="" id="txt_cancelReason" name="txt_cancelReason" type="text" class="form-control input-sm">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label id="lbl_accountType" name="lbl_accountType" for="inputEmail3" class="col-sm-3 control-label">账户类型</label>
+                        <div class="col-sm-6">
+                            <select vl-default="" id="sle_accountType2" name="sle_accountType2" class="form-control"></select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label id="lbl_accountName" name="lbl_accountName" for="inputEmail3" class="col-sm-3 control-label">账户名称</label>
+                        <div class="col-sm-6">
+                            <input vl-default="" id="txt_accountName" name="txt_accountName" type="text" class="form-control input-sm">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label id="lbl_accoutOrgan" name="lbl_accoutOrgan" for="inputEmail3" class="col-sm-3 control-label">开户机构</label>
+                        <div class="col-sm-6">
+                            <input vl-default="" id="txt_accoutOrgan" name="txt_accoutOrgan" type="text" class="form-control input-sm">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group" style="margin-left: -10px;">
+                        <label id="lbl_accountNature" name="lbl_accountNature" for="inputEmail3" class="col-sm-3 control-label">账户性质</label>
+                        <div class="col-sm-6">
+                            <select vl-default="" id="sle_accountNature" name="sle_accountNature" class="form-control"></select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="divider divider-horizontal"><div class="divider-text is-left"></div></div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label id="lbl_currency" name="lbl_currency" for="inputEmail3" class="col-sm-3 control-label">币种钞汇</label>
+                    <div class="col-sm-8" style="display: flex;">
+                        <div>
+                            <select vl-default="" id="sle_currency" name="sle_currency" class="form-control"></select>
+                        </div>
+                        <div>
+                            <select vl-default="" id="sle_remittance" name="sle_remittance" class="form-control"></select>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label id="lbl_accountBalance" name="lbl_accountBalance" for="inputEmail3" class="col-sm-3 control-label">账户余额</label>
+                    <div class="col-sm-8">
+                        <input vl-default="" id="txt_accountBalance" name="txt_accountBalance" type="text" class="form-control input-sm">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label id="lbl_interest" name="lbl_interest" for="inputEmail3" class="col-sm-3 control-label">利息</label>
+                    <div class="col-sm-8">
+                        <input vl-default="" id="txt_interest" name="txt_interest" type="text" class="form-control input-sm">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label id="lbl_totalInterest" name="lbl_totalInterest" for="inputEmail3" class="col-sm-3 control-label">本息合计</label>
+                    <div class="col-sm-8">
+                        <input vl-default="" id="txt_totalInterest" name="txt_totalInterest" type="text" class="form-control input-sm">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="~/Js/bootstrap-step.js"></script>
+<script type="text/javascript">
+    setOptions(['accountType2', 'accountNature', 'currency', 'remittance']);
+    function doSubmit() {
+        checkEmpowe();
+    }
+    $(function () {
+        try {
+            if (initData && typeof (initData) == "function") {
+                initData("200021");
+            }
+        } catch { }
+    });
+</script>

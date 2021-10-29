@@ -1,0 +1,534 @@
+﻿@{
+
+    
+    Layout = "~/Views/Shared/_StudentLayout.cshtml";
+    ViewData["nvc"] = "成绩";
+}
+<link href="~/CSS/bootstrap.min.css" rel="stylesheet" />
+<link href="~/CSS/form_public.css" rel="stylesheet" />
+<link href="~/CSS/header.css" rel="stylesheet" />
+<link href="~/CSS/footer.css" rel="stylesheet" />
+<link href="~/Scripts/layer/skin/layer.css" rel="stylesheet" />
+<link href="~/CSS/default.css" rel="stylesheet" />
+<link href="~/CSS/iCheck/custom.css" rel="stylesheet" />
+<link href="~/CSS/3Dstudent.css" rel="stylesheet" />
+<style type="text/css">
+
+    .font-bold {
+        font-weight: 600;
+    }
+
+    .text_colpublic {
+        color: #3487f5 !important;
+    }
+
+    .text_lv {
+        color: green !important;
+    }
+
+    .text_red {
+        color: red !important;
+    }
+
+    .grade_public {
+        width: 350px;
+        height: 218px;
+        background: url(../img/grade_img.png) no-repeat center;
+        margin: auto;
+    }
+
+    .grade_text {
+        text-align: center;
+        padding-top: 152px;
+        font-size: 21px;
+        color: white;
+    }
+    #zhixunjiexiDiv span {
+        color:white !important;
+    }
+    /***公共用分页***/
+    .con_bottom {
+        padding-top: 36px;
+        margin-bottom: 38px;
+        text-align: center;
+        clear: both;
+    }
+
+        .con_bottom a {
+            cursor: pointer !important;
+            padding: 6px 10px !important;
+            border: 1px solid #f3f3f3 !important;
+            color: #6e6e6e !important;
+            background-color: #E2E1E1;
+            border-radius: 0.3em !important;
+            margin-left: 5px !important;
+            text-decoration: none !important;
+            line-height: 20px !important;
+            height: 35px !important;
+            width: 35px !important;
+        }
+
+            .con_bottom a:hover {
+                color: white !important;
+                border: 1px solid #3487f5;
+                background-color: #3487f5;
+                text-decoration: none;
+            }
+
+            .con_bottom a.xz {
+                color: white !important;
+                border: 1px solid #3487f5;
+                background-color: #3487f5;
+                text-decoration: none;
+            }
+
+        .con_bottom span {
+            margin-left: 5px;
+            color: #6e6e6e;
+        }
+
+        .con_bottom input {
+            outline: none;
+            /*margin-left: 30px;*/
+            font-size: 16px;
+            text-align: center;
+            width: 65px;
+            height: 32px;
+            border: 1px solid #E2E1E1;
+            border-radius: 0.3em;
+            color: #3487f5;
+        }
+
+            .con_bottom input:focus {
+                border: 1px solid #3487f5;
+            }
+
+    /***分页结束***/
+
+</style>
+
+<div class="index_con">
+    <!--面包屑开始-->
+    <div class="crumbs_map">
+        你当前所在的位置：
+        <span>我的成绩</span>
+    </div>
+    <!--面包屑结束-->
+    <!--案例名称-->
+    <div class="m-t-sm" style="display: none;">
+        <label class="dangqian" id="PracticeName"></label>
+        <button onclick="downLoadExcel()" type="button" class="btn btn-primary fr">导出</button>
+    </div>
+    <div class="m-t-md">
+        <div class="grade_public">
+            <div class="grade_text">
+                综合得分：<span id="Scores"></span>
+            </div>
+        </div>
+    </div>
+    <!--切换标签开始  切换标签插件-->
+    <div class="tabs m-t-md">
+        <div class="tabs-header" style="display: none;">
+            <div class="border"></div>
+            <ul>
+                <li class="active">
+                    <a href="#kaigong" data-toggle="tab" ripple="ripple" onclick="opurl(0)" ripple-color="#FFF">成绩预览</a>
+                </li>
+                <li>
+                    <a href="#wangong" data-toggle="tab" ripple="ripple" onclick="opurl(1)" ripple-color="#FFF">开工明细</a>
+                </li>
+                <li>
+                    <a href="#tingtang" data-toggle="tab" ripple="ripple" onclick="opurl(2)" ripple-color="#FFF">厅堂服务明细</a>
+                </li>
+                <li>
+                    <a href="#guimian" data-toggle="tab" ripple="ripple" onclick="opurl(3)" ripple-color="#FFF">柜面服务明细</a>
+                </li>
+                <li>
+                    <a href="#wangong1" data-toggle="tab" ripple="ripple" onclick="opurl(4)" ripple-color="#FFF">完工明细</a>
+                </li>
+            </ul>
+        </div>
+
+        
+        <div class="tabs-content">
+            <!--成绩预览-->
+            <div id="kaigong" class="tab">
+                <div class="title_public m-t-md">
+                    <label>场景正确率</label>
+                </div>
+                <div class="m-t-sm text-center">
+
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <canvas id="pie1" width="100px" height="100px"></canvas>
+                            <p class="m-t-sm">开工管理</p>
+                        </div>
+
+                        <div class="col-sm-3">
+                            <canvas id="pie2" width="100px" height="100px"></canvas>
+                            <p class="m-t-sm">厅堂服务</p>
+                        </div>
+
+                        <div class="col-sm-3">
+                            <canvas id="pie3" width="100px" height="100px"></canvas>
+                            <p class="m-t-sm">柜面服务</p>
+                        </div>
+
+                        <div class="col-sm-3">
+                            <canvas id="pie4" width="100px" height="100px"></canvas>
+                            <p class="m-t-sm">完工管理</p>
+                        </div>
+                    </div>
+
+
+
+
+                </div>
+                <div class="title_public m-t-md">
+                    <label>角色正确率</label>
+                </div>
+
+
+                <div class="m-t-sm text-center">
+
+                    <div class="row">
+                        <div class="col-sm-3">
+
+                            <canvas id="pie5" width="100px" height="100px"></canvas>
+                            <p class="m-t-sm">大堂经理</p>
+                        </div>
+
+                        <div class="col-sm-3">
+                            <canvas id="pie6" width="100px" height="100px"></canvas>
+                            <p class="m-t-sm">高柜柜员</p>
+                        </div>
+
+                        <div class="col-sm-3">
+                            <canvas id="pie7" width="100px" height="100px"></canvas>
+                            <p class="m-t-sm">低柜柜员</p>
+                        </div>
+
+                    </div>
+
+
+
+
+                </div>
+                <div class="title_public m-t-md">
+                    <label>能力得分率</label>
+                </div>
+
+
+                <div class="m-t-sm text-center" id="grArea1">
+
+                    <div id="grArea">
+                       
+                    </div>
+                </div>
+
+                <div class="m-t" id="RoleAbility">
+                   
+                </div>
+
+
+                <div class="title_public m-t-md" style="clear:both;">
+                    <label>附加分值</label>
+                </div>
+
+                <div class="m-t">
+                    <table class="table_public">
+                        <thead>
+                            <tr>
+                                <th>附件项目</th>
+                                <th>加分值</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>客户满意度</td>
+                                <td><span id="AdditionScores"></span></td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+
+
+            </div>
+
+
+            @*tab页开始*@
+            <div id="wangong" class="tab" style="min-height: 450px;">
+                <div class="row m-t-md">
+                    <div class="col-sm-3">
+                        <label class="dangqian">开工管理</label>
+                    </div>
+                    <div class="col-sm-9 text-right">
+                        <div class="m-t-sm">
+                            <label>操作人：</label><span class="text_colpublic" id="StuName"></span>
+                            <label class="m-l-md">操作账号：</label><span class="text_colpublic" id="UserName"></span>
+                            <label class="m-l-md">正确率：</label><span class="text_colpublic" id="KGid"></span>
+                            @*<label class="m-l-md">得分：</label><span class="text_colpublic" id="Scores1"></span>*@
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12 m-b-sm">
+                        <table class="table_public" border="0" cellspacing="0" cellpadding="0">
+                            <thead>
+                                <tr>
+                                    <th>开工场景</th>
+                                    <th>对应操作</th>
+                                    <th>正确答案或选项</th>
+                                    <th>我的答案或选项</th>
+                                    <th>操作</th>
+                                </tr>
+                            </thead>
+                            <tbody class="new_table text-center" id="tbody1"></tbody>
+
+                        </table>
+                    </div>
+
+                </div>
+            </div>
+            <div id="tingtang" class="tab active" style="min-height: 450px;">
+                <div class="row m-t-md">
+                    <div class="col-sm-3">
+                        <label class="dangqian">厅堂服务</label>
+                    </div>
+                    <div class="col-sm-9 text-right">
+                        <div class="m-t-sm">
+                            <label>操作人：</label><span class="text_colpublic" id="StuName1"></span>
+                            <label class="m-l-md">操作账号：</label><span class="text_colpublic" id="UserName1"></span>
+                            <label class="m-l-md">正确率：</label><span class="text_colpublic" id="TTid"></span>
+                            @*<label class="m-l-md">得分：</label><span class="text_colpublic" id="Scores2"></span>*@
+                        </div>
+                    </div>
+                </div>
+                <div class=" m-b-sm">
+                    <div class="bg-warning m-t-md" style="padding:10px 0px">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="col-sm-2" id="kehuindex2">  </div>
+                                <div class="col-sm-2" id="kehuming2"> </div>
+                                <div class="col-sm-4" id="kehuyewu2"> </div>
+                            </div>
+                        </div>
+                    </div>
+                    <table class="table_public" border="0" cellspacing="0" cellpadding="0">
+                        <thead>
+                            <tr>
+                                <th width="120">厅堂服务场景</th>
+                                <th width="150">对应操作</th>
+                                <th>正确答案或选项</th>
+                                <th width="180">我的答案或选项</th>
+                                @*<th>操作</th>*@
+                            </tr>
+                        </thead>
+                        @if (ViewData["HallScene"].ToString() == "1")
+                        {
+                            <tbody class="new_table text-center" id="tbody2"></tbody>
+                        }
+
+
+                    </table>
+                    @if (ViewData["HallScene"].ToString() == "1")
+                    {
+                        <!--分页开始-->
+                        <div class=" text-center">
+                            <div class="dataTables_paginate paging_simple_numbers" id="PaginatorLibrary2">
+
+                            </div>
+
+                        </div>
+                        <!--分页结束-->
+                    }
+                    </div>
+            </div>
+            <div id="guimian" class="tab" style="min-height: 450px;">
+                <div class="row m-t-md">
+                    <div class="col-sm-3">
+                        <label class="dangqian">客户服务</label>
+                    </div>
+                    <div class="col-sm-9 text-right">
+                        <div class="m-t-sm">
+                            <label>操作人：</label><span class="text_colpublic" id="StuName2"></span>
+                            <label class="m-l-md">操作账号：</label><span class="text_colpublic" id="UserName2"></span>
+                            <label class="m-l-md">正确率：</label><span class="text_colpublic" id="FWid"></span>
+                            @*<label class="m-l-md">得分：</label><span class="text_colpublic" id="Scores3"></span>*@
+                        </div>
+                    </div>
+                </div>
+                <div class=" m-b-sm">
+                    <div class="bg-warning m-t-md" style="padding:10px 0px">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="col-sm-2" id="kehuindex3">  </div>
+                                <div class="col-sm-2" id="kehuming3"> </div>
+                                <div class="col-sm-4" id="kehuyewu3"> </div>
+                                <div class="col-sm-3" id="kehumanyi3">满意度： </div>
+                            </div>
+                        </div>
+                    </div>
+                    <table class="table_public" border="0" cellspacing="0" cellpadding="0">
+                        <thead>
+                            <tr>
+                                <th width="120">柜面服务场景</th>
+                                <th width="150">对应操作</th>
+                                <th>正确答案或选项</th>
+                                <th>我的答案或选项</th>
+                                <th width="180">操作</th>
+                            </tr>
+                        </thead>
+                        @if (ViewData["CounterScene"].ToString() == "1")
+                        {
+                            <tbody class="new_table text-center" id="tbody3"></tbody>
+                        }
+                    </table>
+                    <!--分页开始-->
+                    @if (ViewData["CounterScene"].ToString() == "1")
+                    {
+                        <div class=" text-center">
+                            <div class="dataTables_paginate paging_simple_numbers" id="PaginatorLibrary3">
+
+                            </div>
+
+                        </div>
+                    }
+                        <!--分页结束-->
+                    </div>
+
+            </div>
+            <div id="wangong1" class="tab" style="min-height: 450px;">
+                <div class="row m-t-md">
+                    <div class="col-sm-3">
+                        <label class="dangqian">完工管理</label>
+                    </div>
+                    <div class="col-sm-9 text-right">
+                        <div class="m-t-sm">
+                            <label>操作人：</label><span class="text_colpublic" id="StuName3"></span>
+                            <label class="m-l-md">操作账号：</label><span class="text_colpublic" id="UserName3"></span>
+                            <label class="m-l-md">正确率：</label><span class="text_colpublic" id="WGid"></span>
+                            @*<label class="m-l-md">得分：</label><span class="text_colpublic" id="Scores4"></span>*@
+                        </div>
+                    </div>
+                </div>
+                <div class=" m-b-sm">
+
+                    <table class="table_public" border="0" cellspacing="0" cellpadding="0">
+                        <thead>
+                            <tr>
+                                <th>完工场景</th>
+                                <th>对应操作</th>
+                                <th>正确答案或选项</th>
+                                <th>我的答案或选项</th>
+                                <th>操作</th>
+                            </tr>
+                        </thead>
+                        <tbody class="new_table text-center" id="tbody4"></tbody>
+
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!--切换标签结束-->
+    <!--切换内容区域-->
+</div>
+
+
+<!--介质解析-->
+<div id="zhixunjiexi" style="display: none;">
+    <div class="pub_titele">
+        质询解析
+        <img class="shouqian_guanbi" onclick="layerCloseZdy(this)" src="~/img/public3D/ms_ico_guanbi.png" />
+    </div>
+
+    <div class="xuandan_map">
+        <input hidden id="InquiryId" value="" />
+        <div style="padding:10px;" id="zhixunjiexiDiv">
+
+
+        </div>
+
+
+    </div>
+
+
+</div>
+
+@*<input type="hidden" id="taskid" value="@ViewData["taskid"]" />*@
+<input type="hidden" id="sceneid" value="@ViewData["sceneid"]" />
+<input type="hidden" id="TaskId" />
+
+
+<script src="~/Scripts/jquery-3.2.0.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
+<script src="~/Scripts/tab_bar.js"></script>
+<script src="~/Js/echarts.min.js"></script>
+<script src="~/Scripts/layer/layer.js"></script>
+<script src="~/Scripts/iCheck/icheck.min.js"></script>
+<script src="~/Scripts/String/StringFormat.js"></script>
+<script src="~/Js/Student/PracticeResult/Index.js"></script>
+<script src="~/Scripts/Charts.js"></script>
+<script type="text/javascript">
+
+    //根据渲染出来的数据，动态设置底部
+    function gaifoot() {
+        //文档body的高度
+        var bodyHeight = $(document.body).height()
+        //当前窗口可视区域高度
+        var winHeight = $(window).height()
+        if (bodyHeight > winHeight) {
+            $(".footer").removeClass("fid")
+        } else {
+            $(".footer").addClass("fid")
+        }
+    }
+    setInterval("gaifoot()", "50");
+
+    //radio选中样式
+    $(document).ready(function () {
+        $('.i-checks').iCheck({
+            checkboxClass: 'icheckbox_square-green',
+            radioClass: 'iradio_square-green',
+        });
+    });
+
+    //退出系统
+    function out_xitong() {
+        layer.confirm('您确定要退出系统吗？', {
+            title: '退出系统',
+            btn: ['确定', '取消'],
+            offset: 'auto', //定义弹窗位置垂直居中
+            shadeClose: false, //遮罩关闭控制
+            skin: 'layui-layer-lan'
+            //按钮
+        },
+            function () {
+                layer.msg('退出成功', {
+                    time: 10000,
+                    icon: 1,
+                });
+                window.location.href = "login.html"
+            });
+
+    }
+
+    //编辑自我评价
+    function change_pass() {
+        layer.open({
+            title: '编辑自我评价',
+            btn: ['确定'],
+            area: ['600px', '390px'],
+            type: 1,
+            skin: 'layui-layer-lan', //样式类名
+            closeBtn: 1, //显示关闭按钮
+            anim: 2,
+            shadeClose: false, //开启遮罩关闭
+            content: $("#change_pass")
+        });
+    }
+</script>
+<script src="~/Js/Student/StuHome/CjPublic.js"></script>

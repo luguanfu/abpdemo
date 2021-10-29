@@ -1,0 +1,127 @@
+﻿@{
+                    ViewBag.Title = "Form_091006";
+                    Layout = "~/Views/Shared/_StutentLayoutIsNull.cshtml";
+                }
+               <form id="form1" onsubmit="return false" action="##" method="post">
+                   <input type="hidden" id="FormType" name="FormType" value="@Request["FormType"]" />
+                   <input type="hidden" id="FormId" name="FormId" value="@Request["FormId"]" />
+                   <input type="hidden" id="TRId" name="TRId" value="@Request["TotalResultId"]" />
+                   <input type="hidden" id="ExamId" name="ExamId" value="@Request["ExamId"]" />
+                   <input type="hidden" id="TaskId" name="TaskId" value="@Request["TaskId"]" />
+                   <input type="hidden" id="CustomerId" name="CustomerId" value="@Request["CustomerId"]" />
+                   <input type="hidden" id="LinkId" name="LinkId" value="@Request["LinkId"]" />
+                   <input type="hidden" id="Types" name="Types" value="2" />
+                <!--内容表单区域开始-->
+            <div class="tables bankmap">
+			<div class="banktop"> <span class="toolbar-title-img">                                        <img src="../busi/img/topleft.png">06812-批量配介质辅屏</span> <span class="toolbar-title-close" style="display: none;">                                        </span> </div>
+			<div class="con-map2 selected">
+				<table id="qv" class="con-map2-table qv">
+					<tbody>
+						<tr>
+							<td class="" rowspan="1" colspan="1" style="width: 48px;"><label vl-default="" id="label_pch" vtitle="批s次s号" class="form-item text-left" vl-tipsid="label_pch_tips" title="label_pch" name="label_pch">批<s></s>次<s></s>号</label>
+								<div id="label_pch_tips" class="tipsmsg"></div>
+							</td>
+							<td class="" rowspan="1" colspan="1"><input type="text" oncopy="return false" oncut="return false" vl-default="Plkh201705052679785" id="txt_pch" vtitle="批次号" class="form-item text-left" vl-tipsid="txt_pch_tips" vl-regex="['require']" vl-message="['批次号不能为空!']" style="width: 600px;" title="txt_pch" onpaste="return false" name="txt_pch">
+								<div id="txt_pch_tips" class="tipsmsg"></div>
+							</td>
+						</tr>
+						<tr>
+							<td rowspan="1" colspan="1" class="" style="width: 48px;"><label vl-default="" id="label_pzzl" vtitle="凭证种类" class="form-item text-left" vl-tipsid="label_pzzl_tips" title="label_pzzl" name="label_pzzl">凭证种类</label>
+								<div id="label_pzzl_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="">
+								<div class="slectstyle">
+									<select vl-default="001" id="sle_pzzl" vtitle="凭证种类" class="form-item text-left" vl-tipsid="sle_pzzl_tips" style="width: 600px;" title="sle_pzzl" vl-slemodel="" name="sle_pzzl">
+										<option disabled="" style="background-color: blue; color: #fff;" value="">凭证种类值含义</option>
+										<option value="001">001 - 储蓄存折</option>
+										<option value="002">002 - 信合惠农一折通专用存折</option>
+										<option value="003">003 - 定期一本通</option>
+										<option value="004">004 - 储蓄存单</option>
+										<option value="005">005 - 信合借记IC卡</option>
+										<option value="006">006 - 福农IC卡</option>
+										<option value="007">007 - 合医IC卡</option>
+										<option value="008">008 - 信合社保IC卡</option>
+										<option value="009">009 - 信合居民健康IC卡</option>
+										<option value="010">010 - 信合公务IC卡</option>
+										<option value="011">011 - 股金证</option>
+										<option value="012">012 - 单位定期存款开户证实书</option>
+										<option value="013">013 - 单位定期存单</option>
+										<option value="014">014 - 现金支票</option>
+										<option value="015">015 - 转账支票</option>
+										<option value="016">016 - 农信银银行汇票</option>
+										<option value="017">017 - 银行承兑汇票</option>
+										<option value="018">018 - 非税收入缴款书</option>
+										<option value="019">019 - 印鉴卡</option>
+										<option value="020">020 - 支付业务来账补充凭证</option>
+										<option value="021">021 - 个人U盾</option>
+										<option value="022">022 - 贷款证(卡)</option>
+										<option value="023">023 - VIP贵宾卡</option>
+										<option value="024">024 - 资信证明书</option>
+										<option value="025">025 - 稽核审计现场检查处罚收据</option>
+										<option value="027">027 - 机构信用代码证</option>
+										<option value="028">028 - 空头支票代收罚款收据</option>
+										<option value="029">029 - 假币收缴凭证</option>
+										<option value="030">030 - 太保人寿保险单</option>
+										<option value="031">031 - 国寿保险单</option>
+										<option value="032">032 - 股权凭证</option>
+										<option value="034">034 - 合医磁条卡</option>
+										<option value="035">035 - 信合磁条卡</option>
+										<option value="036">036 - 福农磁条卡</option>
+										<option value="037">037 - 电子汇兑往账凭证</option>
+										<option value="038">038 - 电子汇兑来账补充凭证</option>
+										<option value="039">039 - 单位U盾</option>
+										<option value="041">041 - TSM移动金融IC卡</option>
+										<option value="023">033 - 联名卡</option>
+										<option value="299">299 - 其他凭证</option>
+										<option value="901">901 - 汇票申请委托书</option>
+										<option value="902">902 - 本票申请委托书</option>
+										<option value="903">903 - 电汇委托书</option>
+										<option value="904">904 - 其他</option>
+									</select><input type="text" oncopy="return false" onpaste="return false" oncut="return false" style="width: 577px;" id="mb1_sleinput_PingZhengZhongLei_4" name="mb1_sleinput_PingZhengZhongLei_4"></div>
+								<div id="sle_pzzl_tips" class="tipsmsg"></div>
+							</td>
+						</tr>
+						<tr>
+							<td rowspan="1" colspan="1" class="" style="width: 48px;"><label vl-default="" id="label_pzhm" vtitle="凭证号码" class="form-item text-left" vl-tipsid="label_pzhm_tips" title="label_pzhm" name="label_pzhm">凭证号码</label>
+								<div id="label_pzhm_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class=""><input onkeyup="this.value=this.value.replace(/\D/g,'')" onafterpaste="this.value=this.value.replace(/\D/g," type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_pzhm" vtitle="凭证号码" class="form-item text-left" kuaicha="true" vl-tipsid="txt_pzhm_tips" vl-regex="['require', 'shuziandmu', 'maxlength40']" vl-message="['凭证号码不能为空!','凭证号码输入错误!','凭证号码长度大于最大长度:[40]!']" style="width: 600px;" onpaste="return false" name="txt_pzhm"><img class="sousuo" src="/Js/Student/GetDefaultValue/img/banksousuo.png" vl-select="txt_khmc|0|0,txt_khzh|0|0,txt_zjhm|0|0" vl-exec="false" vl-message="['凭证号码查询未执行！']" title="执行快查！"><span class="text-red redtip">!</span>
+								<div id="txt_pzhm_tips" class="tipsmsg"></div>
+							</td>
+						</tr>
+						<tr>
+							<td rowspan="1" colspan="1" class="" style="width: 48px;"><label vl-default="" id="label_khzh" vtitle="客户账号" class="form-item text-left" vl-tipsid="label_khzh_tips" title="label_khzh" name="label_khzh">客户账号</label>
+								<div id="label_khzh_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class=""><input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_khzh" vtitle="客户账号" class="form-item text-left" vl-disabled="true" vl-tipsid="txt_khzh_tips" style="width: 600px;" title="txt_khzh" onpaste="return false" disabled="disabled" name="txt_khzh">
+								<div id="txt_khzh_tips" class="tipsmsg"></div>
+							</td>
+						</tr>
+						<tr>
+							<td rowspan="1" colspan="1" class="" style="width: 48px;"><label vl-default="" id="label_khmc" vtitle="客户名称" class="form-item text-left" vl-tipsid="label_khmc_tips" title="label_khmc" name="label_khmc">客户名称</label>
+								<div id="label_khmc_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class=""><input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_khmc" vtitle="客户名称" class="form-item text-left" vl-disabled="true" vl-tipsid="txt_khmc_tips" style="width: 600px;" title="txt_khmc" onpaste="return false" disabled="disabled" name="txt_khmc">
+								<div id="txt_khmc_tips" class="tipsmsg"></div>
+							</td>
+						</tr>
+						<tr>
+							<td rowspan="1" colspan="1" class="" style="width: 48px;"><label vl-default="" id="label_zjhm" vtitle="证件号码" class="form-item text-left" vl-tipsid="label_zjhm_tips" title="label_zjhm" name="label_zjhm">证件号码</label>
+								<div id="label_zjhm_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class=""><input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_zjhm" vtitle="证件号码" class="form-item text-left" vl-disabled="true" vl-tipsid="txt_zjhm_tips" style="width: 600px;" title="txt_zjhm" onpaste="return false" disabled="disabled" name="txt_zjhm">
+								<div id="txt_zjhm_tips" class="tipsmsg"></div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="foot "> <span>                                        <button>退出（F3）</button>                                        <button>帮助（F1）</button>                                        <button>辅助（F4）</button>                                        <button type="button" onclick="FormReset()">重置（F5）</button></span> <span style="float: right;">                                        <button type="button" style="margin-right: 0px;" vl-submit="true" id="btnsubmit" onclick="SubmitForm()">提交</button></span> </div>
+			<input type="hidden" class="hidmainwidth" value="1000/" oncopy="return false" onpaste="return false" oncut="return false"> </div><script src="~/Js/Student/GetDefaultValue/common.bank.js"></script>
+              <script src="~/Js/Student/GetDefaultValue/lodash.min.js"></script>
+              <script src="~/Js/Student/GetDefaultValue/common.regex.cz.js"></script>
+              <script src="~/Js/Student/GetDefaultValue/common.regex.js"></script>
+<script src="~/Js/Student/GetDefaultValue/js/layer.js"></script>
+<script src="~/Js/Student/GetDefaultValue/js/My97DatePicker/WdatePicker.js"></script>
+<link href="~/Js/Student/GetDefaultValue/js/common.bank.css" rel="stylesheet" />
+              </form>

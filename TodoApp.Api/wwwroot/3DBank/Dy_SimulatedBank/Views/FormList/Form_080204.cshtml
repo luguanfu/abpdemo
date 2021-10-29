@@ -1,0 +1,241 @@
+﻿@{
+                    ViewBag.Title = "Form_080204";
+                    Layout = "~/Views/Shared/_StutentLayoutIsNull.cshtml";
+                }
+               <form id="form1" onsubmit="return false" action="##" method="post">
+                   <input type="hidden" id="FormType" name="FormType" value="@Request["FormType"]" />
+                   <input type="hidden" id="FormId" name="FormId" value="@Request["FormId"]" />
+                   <input type="hidden" id="TRId" name="TRId" value="@Request["TotalResultId"]" />
+                   <input type="hidden" id="ExamId" name="ExamId" value="@Request["ExamId"]" />
+                   <input type="hidden" id="TaskId" name="TaskId" value="@Request["TaskId"]" />
+                   <input type="hidden" id="CustomerId" name="CustomerId" value="@Request["CustomerId"]" />
+                   <input type="hidden" id="LinkId" name="LinkId" value="@Request["LinkId"]" />
+                   <input type="hidden" id="Types" name="Types" value="2" />
+                <!--内容表单区域开始-->
+            <div class="tables bankmap">
+			<div class="banktop">
+				<span class="toolbar-title-img"> <img src="../busi/img/topleft.png">01206-个人客户联网核查
+			</span> <span class="toolbar-title-close" style="display: none;"> <img src="../busi/img/topright.png"></span>
+			</div>
+			<div class="con-map2 selected">
+				<img src="~/busi/img/usershen.jpg" id="usershen" style="position: absolute;right: 7px;top: 30px;width: 150px; display:none">
+				<table id="qv" class="con-map2-table qv">
+					<tbody>
+						<tr>
+							<td class="" style="width: 64px;"><label vl-default="" id="label_zjlx" vtitle="证件类型" class="form-item text-left" vl-tipsid="label_zjlx_tips" title="label_zjlx" name="label_zjlx">证件类型</label>
+								<div id="label_zjlx_tips" class="tipsmsg"></div>
+							</td>
+							<td class="">
+								<div class="slectstyle">
+									<select vl-default="1" id="sle_zjlx" vtitle="证件类型" class="form-item text-left" vl-tipsid="sle_zjlx_tips" vl-regex="['require']" vl-message="['证件类型不能为空!']" style="width: 160px;" title="sle_zjlx" vl-slemodel="txt_zjhm,txt_zjhm,txt_zjhm" name="sle_zjlx">
+										<option disabled="" style="background-color: blue; color: #fff;" value="">证件类型值含义</option>
+										<option sle-require="[{'id':'txt_zjhm','regex':['require','maxlength20','idcard','shuziandmu'],'tips':['证件号码不能为空!','证件号码长度超过最大长度:[20]！','证件号码身份证位数不正确(应为15位或者18位)！'],'disabled':'false*false*false*false','default':'" '}]="" value="1">1 - 居民身份证</option>
+										<option sle-require="[{'id':'txt_zjhm','regex':['require','maxlength20','idcard','shuziandmu'],'tips':['证件号码不能为空!','证件号码长度超过最大长度:[20]！','证件号码身份证位数不正确(应为15位或者18位)！'],'disabled':'false*false*false*false','default':'" '}]="" value="2">2 - 临时居民身份证</option>
+										<option sle-require="[{'id':'txt_zjhm','regex':['require','maxlength20','idcard','shuziandmu'],'tips':['证件号码不能为空!','证件号码长度超过最大长度:[20]！','证件号码身份证位数不正确(应为15位或者18位)！'],'disabled':'false*false*false*false','default':'" '}]="" value="3">3 - 居民户口簿（16周岁以下）</option>
+									</select><input type="text" oncopy="return false" onpaste="return false" oncut="return false" style="width: 137px;" id="mb1_sleinput_ZhengJianLeiXing_2" name="mb1_sleinput_ZhengJianLeiXing_2">
+								</div>
+								<div id="sle_zjlx_tips" class="tipsmsg"></div>
+							</td>
+
+							<td class="" style="width: 64px;"><label vl-default="" id="label_zjhm" vtitle="证件号码" class="form-item text-left" vl-tipsid="label_zjhm_tips" title="label_zjhm" name="label_zjhm">证件号码</label>
+								<div id="label_zjhm_tips" class="tipsmsg"></div>
+							</td>
+
+							<td class=""><input type="text" oncopy="return false" oncut="return false" vl-keyup="wwww" vl-default="" id="txt_zjhm" vtitle="证件号码" class="form-item text-left" vl-tipsid="txt_zjhm_tips" vl-regex="['require', 'idcard', 'maxlength20']" vl-message="['证件号码不能为空！','证件号码身份证位数不正确(应为15位或者18位)！','证件号码长度超过最大长度:[20]!']" style="width: 160px;" onpaste="return false" name="txt_zjhm"><img class="sousuo" src="/busi/img/banksousuo.png"  vl-exec="false" vl-message="['姓名查询未执行！']" title="执行快查！"><span class="text-red redtip">!</span>
+								<div id="txt_zjhm_tips" class="tipsmsg"></div>
+							</td>
+
+						</tr>
+						<tr>
+							<td rowspan="1" colspan="1" class="" style="width: 32px;"><label vl-default="" id="label_xm" vtitle="姓ii名" class="form-item text-left" vl-tipsid="label_xm_tips" title="label_xm" name="label_xm">姓<i></i><i></i>名
+						</label>
+								<div id="label_xm_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="3" class=""><input type="text" oncopy="return false" oncut="return false" kuaicha="true" vl-default="" id="txt_xm" vtitle="姓名" class="form-item text-left on" vl-tipsid="txt_xm_tips" style="width: 320px;" title="txt_xm" onpaste="return false" name="txt_xm"><img class="sousuo" src="/busi/img/banksousuo.png" vl-select="sle_hcjg|0|0" vl-exec="false" vl-message="['姓名查询未执行！']" title="执行快查！">
+								<div id="txt_xm_tips" class="tipsmsg"></div>
+							</td>
+						</tr>
+						<tr>
+							<td rowspan="1" colspan="1" class="" style="width: 64px;"><label vl-default="" id="label_hcjg" vtitle="核查结果" class="form-item text-left" vl-tipsid="label_hcjg_tips" title="label_hcjg" name="label_hcjg">核查结果</label>
+								<div id="label_hcjg_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="3" class="">
+								<div class="slectstyle">
+									<select vl-default="" id="sle_hcjg" vtitle="核查结果" class="form-item text-left" vl-tipsid="sle_hcjg_tips" style="width: 320px;" title="sle_hcjg" vl-slemodel="" name="sle_hcjg">
+										<option disabled="" style="background-color: blue; color: #fff;" value="" selected="selected">核查结果值含义</option>
+										<option value="00">00 - 公民身份证号码与姓名一致，且存在照片</option>
+										<option value="01">01 - 公民身份号码与姓名一致，但不存在照片</option>
+										<option value="02">02 - 公民身份号码存在，但与姓名不匹配</option>
+										<option value="03">03 - 公民身份号码存在，但公民身份号码存在，但证件日期到期</option>
+										<option value="04">04 - 其他错误</option>
+                                        <option value="05">05 - 输入的参数错误</option>
+										<option value="06">06 - 核查为真实</option>
+										<option value="07">07 - 待核查</option>
+									</select><input type="text" oncopy="return false" onpaste="return false" oncut="return false" style="width: 297px;" id="mb1_sleinput_HeChaJieGuo_8" name="mb1_sleinput_HeChaJieGuo_8">
+								</div>
+								<div id="sle_hcjg_tips" class="tipsmsg"></div>
+							</td>
+						</tr>
+						<tr>
+							<td rowspan="1" colspan="1" class="" style="width: 64px;"><label vl-default="" id="label_qxlx" vtitle="期限类型" class="form-item text-left" vl-tipsid="label_qxlx_tips" title="label_qxlx" name="label_qxlx">期限类型</label>
+								<div id="label_qxlx_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="">
+								<div class="slectstyle">
+									<select vl-default="" id="sle_qxlx" vtitle="期限类型" class="form-item text-left" vl-disabled="true" vl-tipsid="sle_qxlx_tips" style="width: 160px;" title="sle_qxlx" vl-slemodel="" disabled="disabled" name="sle_qxlx">
+										<option disabled="" style="background-color: blue; color: #fff;" value="" selected="selected">期限类型值含义</option>
+										<option value="0">0 - 无有效期 </option>
+										<option value="1">1 - 有有效期</option>
+									</select><input type="text" oncopy="return false" onpaste="return false" oncut="return false" disabled="disabled" style="width: 137px;" id="mb1_sleinput_QiXianLeiXing_10" name="mb1_sleinput_QiXianLeiXing_10">
+								</div>
+								<div id="sle_qxlx_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="" style="width: 64px;"><label vl-default="" id="label_zjdqr" vtitle="证件到期日" class="form-item text-left on" vl-tipsid="label_zjdqr_tips" title="label_zjdqr" name="label_zjdqr">证件到期日</label>
+								<div id="label_zjdqr_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class=""><input type="text" class="date form-item text-left" vl-default="" id="date_zjdqr" vtitle="证件到期日" vl-disabled="true" vl-tipsid="date_zjdqr_tips" style="width: 160px;" title="date_zjdqr" oncopy="return false" onpaste="return false" oncut="return false" disabled="disabled" name="date_zjdqr"><img onclick="WdatePicker({el:'date_zjdqr',dateFmt:'yyyyMMdd'})" src="/js/My97DatePicker/skin/datePicker.gif" align="absmiddle" style="width: 16px; height: 22px; margin-left: 6px;">
+								<div id="date_zjdqr_tips" class="tipsmsg"></div>
+							</td>
+						</tr>
+						<tr>
+							<td rowspan="1" colspan="1" class="" style="width: 32px;"><label vl-default="" id="label_mz" vtitle="民ii族" class="form-item text-left" vl-tipsid="label_mz_tips" title="label_mz" name="label_mz">民<i></i><i></i>族
+						</label>
+								<div id="label_mz_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="3" class="">
+								<div class="slectstyle">
+									<select vl-default="" id="sle_mz" vtitle="民族" class="form-item text-left" vl-disabled="true" vl-tipsid="sle_mz_tips" style="width: 320px;" title="sle_mz" vl-slemodel="" disabled="disabled" name="sle_mz">
+										<option disabled="" style="background-color: blue; color: #fff;" value="" selected="selected">民族值含义</option>
+										<option value="0">0 - 汉族</option>
+										<option value="99 - 其它">99 - 其它</option>
+										<option value="1">1-蒙古族</option>
+										<option value="2">2-回族</option>
+										<option value="3">3-藏族</option>
+										<option value="4">4-维吾尔族</option>
+										<option value="5">5-苗族</option>
+										<option value="6">6-彝族</option>
+										<option value="7">7-壮族</option>
+										<option value="8">8-布依族</option>
+										<option value="9">9-朝鲜族</option>
+										<option value="10">10-满族</option>
+										<option value="11">11-侗族</option>
+										<option value="12">12-瑶族</option>
+										<option value="13">13-白族</option>
+										<option value="14">14-土家族</option>
+										<option value="15">15-哈尼族</option>
+										<option value="39">39-普米族</option>
+										<option value="40">40-塔吉克族</option>
+										<option value="41">41-怒族</option>
+										<option value="42">42-乌孜别克族</option>
+										<option value="43">43-俄罗斯族</option>
+										<option value="44">44-鄂温克族</option>
+										<option value="45">45-德昂族</option>
+										<option value="46">46-保安族</option>
+										<option value="47">47-裕固族</option>
+										<option value="48">48-京族</option>
+										<option value="16">16-哈萨克族</option>
+										<option value="17">17-傣族</option>
+										<option value="18">18-黎族</option>
+										<option value="19">19-僳僳族</option>
+										<option value="20">20-佤族</option>
+										<option value="21">21-畲族</option>
+										<option value="22">22-高山族</option>
+										<option value="23">23-拉祜族</option>
+										<option value="24">24-水族</option>
+										<option value="25">25-东乡族</option>
+										<option value="26">26-纳西族</option>
+										<option value="27">27-景颇族</option>
+										<option value="28">28-柯尔克孜族</option>
+										<option value="29">29-土族</option>
+										<option value="30">30-达斡尔族</option>
+										<option value="31">31-仫佬族</option>
+										<option value="32">32-羌族</option>
+										<option value="33">33-布朗族</option>
+										<option value="34">34-撒拉族</option>
+										<option value="35">35-毛南族</option>
+										<option value="36">36-仡佬族</option>
+										<option value="49">49-塔塔尔族</option>
+										<option value="50">50-独龙族</option>
+										<option value="51">51-鄂伦春族</option>
+										<option value="52">52-赫哲族</option>
+										<option value="53">53-门巴族</option>
+										<option value="54">54-珞巴族</option>
+										<option value="55">55-基诺族</option>
+									</select><input type="text" oncopy="return false" onpaste="return false" oncut="return false" disabled="disabled" style="width: 297px;" id="mb1_sleinput_MinZu_14" name="mb1_sleinput_MinZu_14">
+								</div>
+								<div id="sle_mz_tips" class="tipsmsg"></div>
+							</td>
+						</tr>
+						<tr>
+							<td rowspan="1" colspan="1" class="" style="width: 32px;"><label vl-default="" id="label_xb" vtitle="性ii别" class="form-item text-left" vl-tipsid="label_xb_tips" title="label_xb" name="label_xb">性<i></i><i></i>别
+						</label>
+								<div id="label_xb_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="">
+								<div class="slectstyle">
+									<select vl-default="" id="sle_xb" vtitle="性别" class="form-item text-left" vl-disabled="true" vl-tipsid="sle_xb_tips" style="width: 160px;" title="sle_xb" vl-slemodel="" disabled="disabled" name="sle_xb">
+										<option disabled="" style="background-color: blue; color: #fff;" value="" selected="selected">性别值含义</option>
+										<option value="1">1 - 男</option>
+										<option value="2">2 - 女</option>
+										<option value="9">9 - 其它</option>
+									</select><input type="text" oncopy="return false" onpaste="return false" oncut="return false" disabled="disabled" style="width: 137px;" id="mb1_sleinput_XingBie_16" name="mb1_sleinput_XingBie_16">
+								</div>
+								<div id="sle_xb_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class="" style="width: 32px;"><label vl-default="" id="label_sr" vtitle="生ii日" class="form-item text-left" vl-tipsid="label_sr_tips" title="label_sr" name="label_sr">生<i></i><i></i>日
+						</label>
+								<div id="label_sr_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="1" class=""><input type="text" class="date form-item text-left" vl-default="" id="date_sr" vtitle="生日" vl-disabled="true" vl-tipsid="date_sr_tips" style="width: 160px;" title="date_sr" oncopy="return false" onpaste="return false" oncut="return false" disabled="disabled" name="date_sr"><img onclick="WdatePicker({el:'date_sr',dateFmt:'yyyyMMdd'})" src="/js/My97DatePicker/skin/datePicker.gif" align="absmiddle" style="width: 16px; height: 22px; margin-left: 6px;">
+								<div id="date_sr_tips" class="tipsmsg"></div>
+							</td>
+						</tr>
+						<tr>
+							<td rowspan="1" colspan="1" class="" style="width: 64px;"><label vl-default="" id="label_fzjg" vtitle="发证机关" class="form-item text-left on" vl-tipsid="label_fzjg_tips" title="label_fzjg" name="label_fzjg">发证机关</label>
+								<div id="label_fzjg_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="3" class=""><input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_fzjg" vtitle="发证机关" class="form-item text-left on" vl-disabled="true" vl-tipsid="txt_fzjg_tips" style="width: 320px;" title="txt_fzjg" onpaste="return false" disabled="disabled" name="txt_fzjg">
+								<div id="txt_fzjg_tips" class="tipsmsg"></div>
+							</td>
+						</tr>
+						<tr>
+							<td rowspan="1" colspan="1" class="" style="width: 64px;"><label vl-default="" id="label_zjdz" vtitle="证件地址" class="form-item text-left" vl-disabled="true" vl-tipsid="label_zjdz_tips" title="label_zjdz" disabled="disabled" name="label_zjdz">证件地址</label>
+								<div id="label_zjdz_tips" class="tipsmsg"></div>
+							</td>
+							<td rowspan="1" colspan="3" class=""><input type="text" oncopy="return false" oncut="return false" vl-default="" id="txt_zjdz" vtitle="证件地址" class="form-item text-left" vl-disabled="true" vl-tipsid="txt_zjdz_tips" style="width: 320px;" title="txt_zjdz" onpaste="return false" disabled="disabled" name="txt_zjdz">
+								<div id="txt_zjdz_tips" class="tipsmsg"></div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="foot ">
+				<span>
+				<button>退出（F3）</button>
+				<button>帮助（F1）</button>
+				<button>辅助（F4）</button>
+				<button type="button" onclick="FormReset()">重置（F5）</button>
+			</span> <span style="float: right;">
+				<button type="button" style="margin-right: 0px;" vl-submit="true" id="btnsubmit" onclick="SubmitForm()">提交</button>
+			</span>
+			</div>
+			<input type="hidden" class="hidmainwidth" value="1000" oncopy="return false" onpaste="return false" oncut="return false">
+		</div><script src="~/Js/Student/GetDefaultValue/common.bank.js"></script>
+              <script src="~/Js/Student/GetDefaultValue/lodash.min.js"></script>
+              <script src="~/Js/Student/GetDefaultValue/common.regex.cz.js"></script>
+              <script src="~/Js/Student/GetDefaultValue/common.regex.js"></script>
+<script src="~/Js/Student/GetDefaultValue/js/grkhlwhc080204byxu.js"></script>
+<script src="~/Js/Student/GetDefaultValue/js/layer.js"></script>
+<script src="~/Js/Student/GetDefaultValue/js/My97DatePicker/WdatePicker.js"></script>
+<script>
+			$('#txt_xm').next('img').click(function(){
+				var val = $("#txt_xm").val();
+                if(val == ''){
+                    return;
+                }else{
+                	$('#usershen').attr('style','position: absolute;right: 7px;top: 30px;width: 150px; display:block')
+                }
+			})
+		</script>
+<link href="~/Js/Student/GetDefaultValue/js/common.bank.css" rel="stylesheet" />
+              </form>

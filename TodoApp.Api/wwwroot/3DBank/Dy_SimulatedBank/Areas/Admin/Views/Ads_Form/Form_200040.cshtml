@@ -1,0 +1,168 @@
+﻿
+<link href="~/CSS/bootstrap-table.min.css" rel="stylesheet" />
+
+<!--按印鉴卡号更换-->
+<div class="row">
+    <div class="col-md-9">
+        <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 control-label">业务类型：</label>
+            <div class="col-sm-6">
+                <button type="button" class="btn btn-default active" onclick="goPage('200040&init=true')">按印鉴卡号更换</button>
+                <button type="button" class="btn btn-default" onclick="goPage('200026')">按客户更换</button>
+                <button type="button" class="btn btn-default" onclick="goPage('200018')">按账号更换</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <label id="lbl_sealCardNumber" name="lbl_sealCardNumber" for="inputEmail3" class="col-sm-3 control-label">印鉴卡号码</label>
+            <div class="col-sm-6">
+                <input vl-default="" id="txt_sealCardNumber" name="txt_sealCardNumber" type="text" class="form-control input-sm">
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <label id="lbl_sealCardStatus" name="lbl_sealCardStatus" for="inputEmail3" class="col-sm-3 control-label">印鉴卡状态</label>
+            <div class="col-sm-6">
+                <select vl-default="" id="sle_sealCardStatus" name="sle_sealCardStatus" class="form-control">
+                </select>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <label id="lbl_creationDate" name="lbl_creationDate" for="inputEmail3" class="col-sm-3 control-label">建立日期</label>
+            <div class="col-sm-6">
+                <input vl-default="" id="txt_creationDate" name="txt_creationDate" type="date" max="9999-12-31"  class="form-control input-sm">
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <label id="lbl_establishTeller" name="lbl_establishTeller" for="inputEmail3" class="col-sm-3 control-label">建立柜员</label>
+            <div class="col-sm-6">
+                <input vl-default="" id="txt_establishTeller" name="txt_establishTeller" type="text" class="form-control input-sm">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="divider divider-horizontal"><div class="divider-text is-left"><strong>关联账户清单</strong></div></div>
+<table class="table table-hover" id="tbl"></table>
+<div id="DivTabValue" style="display:none;">
+    <div class="divider divider-horizontal"><div class="divider-text is-left"><strong>关联账户清单反显值</strong></div></div>
+<textarea rows="5" id="tb1Value" name="tb1Value" style="width:100%;"></textarea>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <label id="lbl_changeMode" name="lbl_changeMode" for="inputEmail3" class="col-sm-3 control-label">变更方式</label>
+            <div class="col-sm-6">
+                <select vl-default="" id="sle_changeMode" name="sle_changeMode" class="form-control"></select>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="form-group">
+            <label id="lbl_startDate" name="lbl_startDate" for="inputEmail3" class="col-sm-3 control-label">启用日期</label>
+            <div class="col-sm-6">
+                <input vl-default="" id="date_startDate" name="date_startDate" type="date" max="9999-12-31"  class="form-control input-sm">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <label id="lbl_replacementReason" name="lbl_replacementReason" for="inputEmail3" class="col-sm-3 control-label">更换原因</label>
+            <div class="col-sm-6">
+                <input vl-default="" id="txt_replacementReason" name="txt_replacementReason" type="text" class="form-control input-sm">
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+            <label id="lbl_newSealCardNumber" name="lbl_newSealCardNumber" for="inputEmail3" class="col-sm-3 control-label">新印鉴卡号码</label>
+            <div class="col-sm-6">
+                <input vl-default="" id="txt_newSealCardNumber" name="txt_newSealCardNumber" type="text" class="form-control input-sm">
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/Scripts/bootstrap-table.min.js"></script>
+<script src="~/Scripts/bootstrap-table-zh-CN.js"></script>
+
+<script>
+    setOptions(['changeMode', 'sealCardStatus']);
+    
+    function doSubmit() {
+        checkEmpowe();
+    }
+    $(function () {
+        var init = getQueryString("init");
+        if (init == null || init == undefined || init == "") {
+            if (window.performance.navigation.type == 0) {
+                layer.alert('请输入经办人信息', function () {
+                    inConnectForm("200059");
+                })
+            }
+        }
+    });
+    var data = [];
+    function setTableValue(values) {
+        var vals = values.split('\n');
+        data = [{
+            'account': vals[0],
+            'accountName': vals[1],
+            'operateType': vals[2],
+            'startDate': vals[3],
+            'mainSign': vals[4],
+        }];
+        $("#tbl").bootstrapTable('load', data);
+    }
+    $('#tbl').bootstrapTable({
+        data: data,
+        paginationHAlign: 'left',
+        columns: [
+            {
+                title: '序号',
+                align: 'center',
+                formatter: function (value, row, index) {
+                    return index + 1;
+                }
+            },
+            {
+                title: '账号',
+                field: 'account',
+                align: 'center'
+            },
+            {
+                title: '账号名称',
+                field: 'accountName',
+                align: 'center'
+            },
+            {
+                title: '操作类型',
+                field: 'operateType',
+                align: 'center'
+            },
+            {
+                title: '启用日期',
+                field: 'startDate',
+                align: 'center'
+            },
+            {
+                title: '主账号标识',
+                field: 'mainSign',
+                align: 'center'
+            },
+        ]
+    });
+</script>

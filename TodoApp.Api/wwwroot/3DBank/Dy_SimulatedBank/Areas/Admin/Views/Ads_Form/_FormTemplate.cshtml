@@ -1,0 +1,106 @@
+﻿@{
+    Layout = "~/Views/Shared/_AdminLayoutIsNull.cshtml";
+}
+<script src="~/Js/Admin/AdminForm.js?ver=202109294"></script>
+<script src="~/Js/Admin/CaseManagement/AddDefaultValue.js?ver=202110262"></script>
+<link href="~/CSS/bootstrap.min.css" rel="stylesheet" />
+<link href="~/CSS/common.css?ver=20210923" rel="stylesheet" />
+<style>
+    .col-md-6 {
+        margin-top: 2px;
+    }
+
+    :after,
+    :before {
+        box-sizing: revert;
+    }
+
+    .img {
+        width: 20%;
+        height: 140px;
+        border: 1px solid;
+        border-radius: 10px;
+        float: left;
+    }
+
+    .box {
+        display: inline-block;
+        width: 75%;
+    }
+</style>
+<script src="~/Js/Admin/CaseManagement/EditEmpower.js?ver=20210917"></script>
+<script type="text/javascript">
+
+    $(function () {
+        if (getQueryString("isDefault") == "2") {
+            $("#DivTabValue").show();
+        }
+    });
+    function jt() {
+        interval = setInterval("handel()", 100);
+    }
+    function handel() {
+        catchSuccess(function () {
+            var is_print = getQueryString("is_print");
+            if (is_print == "true") {
+                //调用父窗口函数
+                window.opener.authCloseCall("print");
+            } else {
+                window.opener.authCloseCall("submit");
+            }
+            window.close();
+
+        });
+    }
+    var formUrl = "/Admin/Ads_Form/ToForm?";
+    function goPage(url, callback) {
+        location.href = formUrl + "TaskId=@(Request["TaskId"])&CustomerId=@(Request["CustomerId"])&Types=@(Request["Types"])&FormId=" + url+"&isDefault=@(Request["isDefault"])";
+        if (callback) {
+            callback();
+        }
+    }
+    function goParentPage(url, callback) {
+        top.location.href = formUrl + "TaskId=@(Request["TaskId"])&CustomerId=@(Request["CustomerId"])&Types=@(Request["Types"])&FormId=" + url+"&isDefault=@(Request["isDefault"])";
+        if (callback) {
+            callback();
+        }
+    }
+
+</script>
+<style type="text/css">
+    .bankmap {
+        background-color: #4a6e9e;
+        margin: auto;
+        width: 950px;
+        min-width: 550px;
+    }
+
+    .foot {
+        width: 930px !important;
+        margin: auto;
+    }
+</style>
+
+<form id="form1" onsubmit="return false" action="##" method="post">
+    <input type="hidden" id="TaskId" name="TaskId" value="@Request["TaskId"]" />
+    <input type="hidden" id="CustomerId" name="CustomerId" value="@Request["CustomerId"]" />
+    <input type="hidden" id="FormId" name="FormId" value="@Request["FormId"]" />
+    <input type="hidden" id="Types" name="Types" value="@Request["Types"]" />
+    <div class="con-map2 main-container">
+        @RenderBody()
+        <div class="foot">
+            <span>
+                <button>退出（F3）</button>
+                <button>帮助（F1）</button>
+                <button>辅助（F4）</button>
+                <button type="button" onclick="FormReset()">重置（F5）</button>
+            </span>
+            <span style="float: right;">
+                <button vl-submit="true " id="btnsubmit" onclick="SubmitForm()">提交</button>
+                @RenderSection("btnList", false)
+            </span>
+        </div>
+        <input type="hidden" class="hidmainwidth" value="1000" oncopy="return false" onpaste="return false" oncut="return false">
+    </div>
+</form>
+@RenderSection("MyScript", false)

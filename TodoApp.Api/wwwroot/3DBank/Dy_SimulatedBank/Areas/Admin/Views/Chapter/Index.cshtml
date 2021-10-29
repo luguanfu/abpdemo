@@ -1,0 +1,194 @@
+﻿@{
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewData["nvc"] = "课程管理";
+}
+<!--课程章节页面-->
+
+<style type="text/css">
+    .borderstyle {
+        border: 1px solid #c6e5fb;
+        padding: 5px;
+    }
+
+    .trSelected {
+        background-color: #EAFFE6;
+    }
+</style>
+
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-sm-12">
+        <ol class="breadcrumb">
+            <li>
+                <h2>实务教学管理</h2>
+            </li>
+            <li>
+                <a href="/Admin/Curriculum">课程管理</a>
+            </li>
+            <li>
+                <strong>章节管理</strong>
+            </li>
+        </ol>
+    </div>
+</div>
+<div class="ibox-content">
+    <div class="row">
+        <!--左侧数据字典列表开始-->
+        <div class="col-sm-6 no-padding">
+            <div class="borderstyle">
+                <div class="font-bold m-t-sm text-success">章管理</div>
+                <div class="hr-line-dashed m-t-sm m-b-sm"></div>
+                <div>
+                    <button onclick="AddInfo()" class="btn btn-primary btn-sm" type="button"><i class="fa fa-plus"></i><span class="bold">新增章</span></button>
+                </div>
+
+                
+                <div class=" m-t-sm table-responsive">
+                    <table class="table text-center table-bordered ">
+                        <thead>
+                            <tr>
+                                <th class="text-center">本章标题</th>
+                                <th width="360" class="text-center">操作</th>
+                            </tr>
+                        </thead>
+                        <tbody class="new_table text-center" id="tablelist"></tbody>
+                    </table>
+                </div>
+
+                <!--分页开始-->
+                <div class="row text-center" id="PaginatorLibrary">
+                </div>
+                <!--分页结束-->
+            </div>
+
+        </div>
+        <!--	右侧数据字典值列表考试-->
+        <div class="col-sm-6 " style="padding: 0 0 0 5px;">
+            <div class="borderstyle"  id="Sectionid">
+                <div class="font-bold m-t-sm text-success">节管理</div>
+                <div class="hr-line-dashed m-t-sm m-b-sm"></div>
+
+                <div>
+                    <button onclick="AddInfoTo()" class="btn btn-primary btn-sm" type="button"><i class="fa fa-plus"></i><span class="bold">新增节</span></button>
+                </div>
+
+
+                <div class=" m-t-sm table-responsive">
+                    <table class="table text-center table-bordered ">
+                        <thead>
+                            <tr>
+                                <th class="text-center">本节标题</th>
+                                <th width="360" class="text-center">操作</th>
+                            </tr>
+                        </thead>
+                        <tbody class="new_tableTo text-center" id="tablelistTo"></tbody>
+                    </table>
+                </div>
+
+                <!--分页开始-->
+                @*<div class="row text-center" id="PaginatorLibrary2">
+                    </div>*@
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<!--新增弹框-->
+<div id="Add" style="display: none;" class="form-inline">
+    <form name="Addform" id="Addform">
+
+        <div class="col-sm-12">
+            <div class="form-horizontal  m-t-sm">
+                <label for="firstname" class="col-sm-4 control-label"><span style="color: red;">*</span>本章标题：</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" id="txtClass_Name" name="txtClass_Name" placeholder="">
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12 text-center">
+            <div class="form-horizontal m-t-md ">
+                <button type="button" class="btn btn-w-m btn-success" onclick="BtnSubim()">保存</button>&nbsp;
+                <button type="button" class="btn btn-w-m btn-white" onclick="FormRest()">关闭</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<!--编辑弹框-->
+<div id="Edit" style="display: none;" class="form-inline">
+    <form name="Editform" id="Editform">
+
+        <div class="col-sm-12">
+            <div class="form-horizontal  m-t-sm">
+                <label for="firstname" class="col-sm-4 control-label"><span style="color: red;">*</span>本章标题：</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" id="txtEditClass_Name" name="txtEditClass_Name" placeholder="">
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12 text-center">
+            <div class="form-horizontal m-t-md ">
+                <button type="button" class="btn btn-w-m btn-success" onclick="EditBtnSubim()">保存</button>&nbsp;
+                <button type="button" class="btn btn-w-m btn-white" onclick="EditFormRest()">关闭</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div id="AddTo" style="display: none;" class="form-inline">
+    <form name="AddformTo" id="AddformTo">
+        <div class="col-sm-12">
+            <div class="form-horizontal  m-t-sm">
+                <label for="firstname" class="col-sm-4 control-label">本章标题：</label>
+                <div class="col-sm-8 ">
+                    <span id="CurriculumNameid"></span>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12">
+            <div class="form-horizontal  m-t-sm">
+                <label for="firstname" class="col-sm-4 control-label"><span style="color: red;">*</span>本节名称：</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" id="txt_Section" name="txtDic_Name" placeholder="">
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12 text-center">
+            <div class="form-horizontal m-t-md ">
+                <button type="button" class="btn btn-w-m btn-success" onclick="BtnSectionSubimTo()">保存</button>&nbsp;
+                <button type="button" class="btn btn-w-m btn-white" onclick="SectionAddFormRest()">关闭</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+<div id="EditTo" style="display: none;" class="form-inline">
+    <form name="EditformTo" id="EditformTo">
+        <div class="col-sm-12">
+            <div class="form-horizontal  m-t-sm">
+                <label for="firstname" class="col-sm-4 control-label">本章标题：</label>
+                <div class="col-sm-8 ">
+                    <span id="EditSection_CurriculumNameid"></span>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12">
+            <div class="form-horizontal  m-t-sm">
+                <label for="firstname" class="col-sm-4 control-label"><span style="color: red;">*</span>本节名称：</label>
+                <div class="col-sm-8">
+                    <input type="text" class="form-control" id="txtEdit_Section" name="txtDic_Name" placeholder="">
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12 text-center">
+            <div class="form-horizontal m-t-md ">
+                <button type="button" class="btn btn-w-m btn-success" onclick="EditBtnSectionSubimTo()">保存</button>&nbsp;
+                <button type="button" class="btn btn-w-m btn-white" onclick="SectionAddFormRest()">关闭</button>
+            </div>
+        </div>
+    </form>
+    <input type="hidden"id="hidChapter" value=""/>
+</div>
+<script src="~/Js/Admin/Curriculum/Chapter.js"></script>

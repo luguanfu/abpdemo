@@ -1,0 +1,111 @@
+﻿@{
+    ViewBag.Title = "Form_120211";
+    Layout = "~/Views/Shared/_StutentLayoutIsNull.cshtml";
+}
+
+
+ 
+<link href="~/CSS/danju/css/menupublic.css" rel="stylesheet" />
+<style type="text/css">
+    .from_map028 {
+        width: 1100px;
+        margin: auto;
+        position: relative;
+        background: url(/CSS/danju/img/danjuimg/menu028.jpg) no-repeat top;
+        height: 900px;
+    }
+
+    .site1 {
+        width: 90px;
+        height: 25px;
+        left: 189px;
+        top: 388px;
+    }
+
+    .site2 {
+        width: 24px;
+        height: 25px;
+        left: 329px;
+        top: 388px;
+    }
+
+    .site3 {
+        width: 230px;
+        height: 25px;
+        left: 510px;
+        top: 388px;
+    }
+
+    .site4 {
+        width: 500px;
+        height: 25px;
+        left: 295px;
+        top: 445px;
+    }
+
+    .site5 {
+        width: 500px;
+        height: 25px;
+        left: 275px;
+        top: 505px;
+    }
+
+    .site6 {
+        width: 500px;
+        height: 25px;
+        left: 275px;
+        top: 565px;
+    }
+
+    .site7 {
+        width: 80px;
+        height: 25px;
+        left: 705px;
+        top: 625px;
+    }
+
+    .site8 {
+        width: 32px;
+        height: 25px;
+        left: 818px;
+        top: 625px;
+    }
+
+    .site9 {
+        width: 40px;
+        height: 25px;
+        left: 875px;
+        top: 625px;
+    }
+</style>
+
+
+<form id="form1" onsubmit="return false" action="##" method="post">
+    <input type="hidden" id="FormType" name="FormType" value="@Request["FormType"]" />
+    <input type="hidden" id="FormId" name="FormId" value="@Request["FormId"]" />
+    <input type="hidden" id="TRId" name="TRId" value="@Request["TotalResultId"]" />
+    <input type="hidden" id="ExamId" name="ExamId" value="@Request["ExamId"]" />
+    <input type="hidden" id="TaskId" name="TaskId" value="@Request["TaskId"]" />
+    <input type="hidden" id="CustomerId" name="CustomerId" value="@Request["CustomerId"]" />
+    <input type="hidden" id="LinkId" name="LinkId" value="@Request["LinkId"]" />
+    <input type="hidden" id="mid" name="mid" value="@Request["mid"]" />
+    <input type="hidden" id="Types" name="Types" value="2" />
+    <!--内容表单区域开始-->
+    <div class="from_map028">
+        <input class="inputall site1 " type="text" name="dy01" id="dy01" value="" />
+        <input class="inputall site2 text_center" maxlength="1" type="text" name="dy02" id="dy02" value="" />
+        <input class="inputall site3 " type="text" name="dy03" id="dy03" value="" />
+        <input class="inputall site4 " type="text" name="dy04" id="dy04" value="" />
+        <input class="inputall site5 " type="text" name="dy05" id="dy05" value="" />
+        <input class="inputall site6 " type="text" name="dy06" id="dy06" value="" />
+        <input class="inputall site7 text_center" maxlength="4" type="text" name="dy07" id="dy07" value="" />
+        <input class="inputall site8 text_center" maxlength="2" type="text" name="dy08" id="dy08" value="" />
+        <input class="inputall site9 text_center" maxlength="2" type="text" name="dy09" id="dy09" value="" />
+
+        <button class="btn_chongzhi" type="button" value="重置" onclick="FormReset()">重置</button>
+        <button class="btn_tijiao" type="button" value="提交" onclick="SubmitForm()">提交</button>
+
+    </div>
+
+
+</form>

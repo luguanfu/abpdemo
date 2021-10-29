@@ -1,0 +1,195 @@
+// 默认数据
+let datas = [{
+	"Teller_Name": "虞莹峰",
+	"TeamName": "典阅测试",
+	"Result": 94.0,
+	"Plan_Name": "2021国赛模拟赛001"
+}, {
+	"Teller_Name": "彭万里",
+	"TeamName": "典阅测试",
+	"Result": 93.0,
+	"Plan_Name": "2021国赛模拟赛001"
+}, {
+	"Teller_Name": "高大山",
+	"TeamName": "典阅测试",
+	"Result": 74.0,
+	"Plan_Name": "2021国赛模拟赛001"
+}, {
+	"Teller_Name": "马宏宇",
+	"TeamName": "典阅测试",
+	"Result": 53.0,
+	"Plan_Name": "2021国赛模拟赛001"
+}, {
+	"Teller_Name": "罗文清",
+	"TeamName": "典阅测试",
+	"Result": 50.0,
+	"Plan_Name": "2021国赛模拟赛001"
+}, {
+	"Teller_Name": "林莽",
+	"TeamName": "典阅测试",
+	"Result": 48.0,
+	"Plan_Name": "2021国赛模拟赛001"
+}, {
+	"Teller_Name": "王雅欣",
+	"TeamName": "典阅测试",
+	"Result": 47.0,
+	"Plan_Name": "2021国赛模拟赛001"
+}, {
+	"Teller_Name": "赵琳",
+	"TeamName": "典阅测试",
+	"Result": 43.0,
+	"Plan_Name": "2021国赛模拟赛001"
+}, {
+	"Teller_Name": "黄强辉",
+	"TeamName": "典阅测试",
+	"Result": 42.0,
+	"Plan_Name": "2021国赛模拟赛001"
+}, {
+	"Teller_Name": "马建国",
+	"TeamName": "典阅测试",
+	"Result": 41.0,
+	"Plan_Name": "2021国赛模拟赛001"
+}, {
+	"Teller_Name": "姓名待修改",
+	"TeamName": "典阅测试",
+	"Result": 40.0,
+	"Plan_Name": "2021国赛模拟赛001"
+}, {
+	"Teller_Name": "姓名待修改",
+	"TeamName": "典阅测试",
+	"Result": 37.0,
+	"Plan_Name": "2021国赛模拟赛001"
+}, {
+	"Teller_Name": "姓名待修改",
+	"TeamName": "典阅测试",
+	"Result": 36.0,
+	"Plan_Name": "2021国赛模拟赛001"
+}, {
+	"Teller_Name": "姓名待修改",
+	"TeamName": "典阅测试",
+	"Result": 24.0,
+	"Plan_Name": "2021国赛模拟赛001"
+}, {
+	"Teller_Name": "凡锐红",
+	"TeamName": "典阅测试",
+	"Result": 20.0,
+	"Plan_Name": "2021国赛模拟赛001"
+}, {
+	"Teller_Name": "姓名待修改",
+	"TeamName": "典阅测试",
+	"Result": 10.0,
+	"Plan_Name": "2021国赛模拟赛001"
+}, {
+	"Teller_Name": "国赛测试01",
+	"TeamName": "典阅测试",
+	"Result": 4.0,
+	"Plan_Name": "2021国赛模拟赛001"
+}, {
+	"Teller_Name": "姓名待修改",
+	"TeamName": "典阅测试",
+	"Result": 3.0,
+	"Plan_Name": "2021国赛模拟赛001"
+}, {
+	"Teller_Name": "姓名待修改123",
+	"TeamName": "典阅测试",
+	"Result": 2.0,
+	"Plan_Name": "2021国赛模拟赛001"
+}, {
+	"Teller_Name": "1姓名待修改",
+	"TeamName": "典阅测试",
+	"Result": 2.0,
+	"Plan_Name": "2021国赛模拟赛001"
+}, {
+	"Teller_Name": "霍迎帆",
+	"TeamName": "典阅测试",
+	"Result": 2.0,
+	"Plan_Name": "2021国赛模拟赛001"
+}, {
+	"Teller_Name": "姓名待修改",
+	"TeamName": "典阅测试",
+	"Result": 2.0,
+	"Plan_Name": "2021国赛模拟赛001"
+}, {
+	"Teller_Name": "姓名待修改",
+	"TeamName": "典阅测试",
+	"Result": 0.0,
+	"Plan_Name": "2021国赛模拟赛001"
+}, {
+	"Teller_Name": "虞莹峰",
+	"TeamName": "典阅测试",
+	"Result": 0.0,
+	"Plan_Name": "2021国赛模拟赛001"
+}, {
+	"Teller_Name": "姓名待修改",
+	"TeamName": "典阅测试",
+	"Result": 0.0,
+	"Plan_Name": "2021国赛模拟赛001"
+}, {
+	"Teller_Name": "1姓名待修改",
+	"TeamName": "典阅测试",
+	"Result": 0.0,
+	"Plan_Name": "2021国赛模拟赛001"
+}, {
+	"Teller_Name": "王佳纬",
+	"TeamName": "典阅测试",
+	"Result": 0.0,
+	"Plan_Name": "2021国赛模拟赛001"
+}, {
+	"Teller_Name": "姓名待修改",
+	"TeamName": "典阅测试",
+	"Result": 0.0,
+	"Plan_Name": "2021国赛模拟赛001"
+}, {
+	"Teller_Name": "姓名待修改",
+	"TeamName": "典阅测试",
+	"Result": 0.0,
+	"Plan_Name": "2021国赛模拟赛001"
+}, {
+	"Teller_Name": "姓名待修改",
+	"TeamName": "典阅测试",
+	"Result": 0.0,
+	"Plan_Name": "2021国赛模拟赛001"
+}, {
+	"Teller_Name": "于学忠",
+	"TeamName": "典阅测试",
+	"Result": 0.0,
+	"Plan_Name": "2021国赛模拟赛001"
+}, {
+	"Teller_Name": "谭平山",
+	"TeamName": "典阅测试",
+	"Result": 0.0,
+	"Plan_Name": "2021国赛模拟赛001"
+}, {
+	"Teller_Name": "孙顺达",
+	"TeamName": "典阅测试",
+	"Result": 0.0,
+	"Plan_Name": "2021国赛模拟赛001"
+}, {
+	"Teller_Name": "何光宗",
+	"TeamName": "典阅测试",
+	"Result": 0.0,
+	"Plan_Name": "2021国赛模拟赛001"
+}, {
+	"Teller_Name": "贾怡",
+	"TeamName": "典阅测试",
+	"Result": 0.0,
+	"Plan_Name": "2021国赛模拟赛001"
+}, {
+	"Teller_Name": "高尚德",
+	"TeamName": "典阅测试",
+	"Result": 0.0,
+	"Plan_Name": "2021国赛模拟赛001"
+}, {
+	"Teller_Name": "王德茂",
+	"TeamName": "典阅测试",
+	"Result": 0.0,
+	"Plan_Name": "2021国赛模拟赛001"
+}]
+
+// 人名
+let names = ["彭万里", "高大山", "谢大海", "马宏宇", "林莽", "黄强辉", "章汉夫", "范长江", "林君雄", "谭平山", "朱希亮", "李四光", "甘铁生", "马继祖",
+"程孝先", "宗敬先", "汤绍箕", "吕显祖", "何光宗", "孙念祖", "马建国", "节振国", "高晴", "郝爱民", "于学忠", "马连良", "胡宝善", "李宗仁", "洪学智", "余克勤",
+"吴克俭", "杨惟义", "李文信", "王德茂", "李书诚", "杨勇", "高尚德", "刁富贵", "汤念祖", "吕奉先", "何光宗", "冷德友", "安怡孙", "贾德善", "蔡德霖", "关仁",
+"郑义", "贾怡", "孙天民", "赵大华", "赵进喜", "赵德荣", "赵德茂", "钱汉祥", "钱运高", "钱生禄", "孙寿康", "孙应吉", "孙顺达", "李秉贵", "李厚福", "李开富", "王子久", "刘永生",
+"刘宝瑞", "关玉和", "王仁兴", "李际泰", "罗元发", "刘造时", "刘乃超", "刘长胜", "张成基", "张国柱", "张志远", "张广才", "吕德榜", "吕文达", "吴家栋", "吴国梁",
+"吴立功李大江", "张石山", "王海"]

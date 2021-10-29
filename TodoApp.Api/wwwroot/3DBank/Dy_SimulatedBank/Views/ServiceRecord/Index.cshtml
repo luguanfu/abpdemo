@@ -1,0 +1,1227 @@
+﻿@{
+    /**/
+
+    ViewBag.Title = "Index";
+}
+@model Dy_SimulatedBank.Models.ServiceRecordModel
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@(Model.type == "1" ? "考试中心——实操题作答" : "实训练习——实操题作答")</title>
+    <link href="~/CSS/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/Scripts/layer/skin/layer.css?v=20211028">
+    <link rel="stylesheet" type="text/css" href="~/CSS/ddsmoothmenu.css" />
+    <link rel="stylesheet" type="text/css" href="~/CSS/ddsmoothmenu-v.css" />
+
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/jquery.signalR-2.0.0.min.js"></script>
+    @*<script src="~/signalr/hubs"></script>*@
+    @*<script type="text/javascript" charset="gb2312" src="~/Scripts/DK_RealTimeCommunication.js"></script>*@
+
+
+    <script src="~/Scripts/jquery.cookie.js"></script>
+    <script src="~/Scripts/layer/layer.js"></script>
+    <script src="~/Scripts/ddsmoothmenu.js"></script>
+    <script src="~/Scripts/verifyform.js"></script>
+    <script src="~/Scripts/Page.js"></script>
+    <style type="text/css">
+        .red {
+            background-color: #e6e6e6 !important;
+        }
+
+        .l-case-title {
+            font-weight: bold;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        body,
+        html {
+            width: 100%;
+            height: 100%;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #winlinks {
+            position: absolute;
+            left: 20px;
+            top: 20px;
+            width: 100%;
+        }
+
+            #winlinks ul {
+                position: relative;
+            }
+
+            #winlinks li {
+                width: 70px;
+                cursor: pointer;
+                height: 80px;
+                position: absolute;
+                z-index: 101;
+                list-style: none;
+                text-align: center;
+            }
+
+                #winlinks li img {
+                    width: 36px;
+                    height: 36px;
+                }
+
+                #winlinks li span {
+                    background: none repeat scroll 0 0 rgba(0, 0, 0, 0.6);
+                    border-radius: 10px 10px 10px 10px;
+                    display: block;
+                    font-size: 12px;
+                    margin-top: 1px;
+                    color: White;
+                    line-height: 18px;
+                    text-align: center;
+                }
+
+                #winlinks li.l-over div.bg {
+                    display: block;
+                }
+
+                #winlinks li div.bg {
+                    display: none;
+                    position: absolute;
+                    top: -2px;
+                    left: -2px;
+                    z-index: 0;
+                    width: 75px;
+                    height: 64px;
+                    -webkit-border-radius: 5px;
+                    -moz-border-radius: 5px;
+                    border-radius: 5px;
+                    background: #000;
+                    opacity: 0.1;
+                    filter: alpha(opacity=10);
+                }
+
+        .l-taskbar-task-icon {
+            top: 3px;
+            left: 6px;
+            background-image: none;
+        }
+
+        .l-taskbar-task-content {
+            margin-left: 30px;
+        }
+
+        .l-taskbar-task-icon img {
+            width: 22px;
+            height: 22px;
+        }
+        /*任务面板样式开始*/
+
+        .top {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        HTML,
+        BODY {
+            font-size: 12px;
+            padding: 0px;
+            margin: 0px;
+            background-color: #f1f6f9;
+        }
+
+        a:link {
+            color: #15428B;
+            text-decoration: none;
+        }
+
+        a:visited {
+            text-decoration: none;
+            color: #15428B;
+        }
+
+        a:hover {
+            text-decoration: none;
+            color: #15428B;
+        }
+
+        a:active {
+            text-decoration: none;
+            color: #15428B;
+        }
+
+        .rwtdfont {
+            font-size: 13px;
+            color: #5774A5;
+            margin-top: 8px;
+        }
+
+        .imgb {
+            cursor: hand;
+            border: 0px;
+        }
+
+        div.tableContainer {
+            clear: both;
+            height: 270px;
+            overflow: auto;
+            margin-bottom: 5px;
+            position: relative;
+        }
+
+            div.tableContainer table {
+                width: 100%;
+            }
+
+        thead.fixedHeader tr {
+            position: relative;
+            /*这句是决定抬头要不要滚动的*/
+            top: expression(document.getElementById("tableContainer").scrollTop);
+        }
+
+        thead.fixedHeader th {
+            background: #304771;
+            color: white;
+            font-weight: normal;
+            padding: 8px 3px;
+            text-align: center;
+        }
+
+        .scrollContent tr td {
+            padding: 6px 0px;
+            color: #000000;
+            font-size: 14px;
+            border-top: 1px solid #CCCCCC;
+        }
+
+        .panel-header {
+            padding: 8px;
+            line-height: 25px;
+            font-weight: bold;
+            font-size: 14px;
+            color: white;
+            position: relative;
+            background-color: #304771;
+            position: relative;
+        }
+
+            .panel-header img {
+                position: absolute;
+                top: 25%;
+                right: 3%;
+            }
+
+        /*任务窗口底部信息区域样式*/
+
+        .rw_bottom_map {
+            margin-top: -5px;
+            padding: 5px;
+            background: #049d41;
+            background: -webkit-linear-gradient(top, #314872, #5275B5);
+            /* Safari 5.1 - 6.0 */
+            background: -o-linear-gradient(top, #314872, #5275B5);
+            /* Opera 11.1 - 12.0 */
+            background: -moz-linear-gradient(top, #314872, #5275B5);
+            /* Firefox 3.6 - 15 */
+            background: linear-gradient(to top, #314872, #5275B5);
+            /* 渐变背景标准的语法 */
+        }
+
+        .time_down {
+            height: 90;
+            line-height: 90px;
+            font-size: 28px;
+            color: white;
+        }
+
+            .time_down img {
+                float: left;
+                margin-top: 4%;
+                margin-left: 10%;
+                margin-right: 10px;
+            }
+
+            .time_down span {
+                font-size: 32px;
+            }
+
+        .bottom_btn {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+            .bottom_btn button {
+                cursor: pointer;
+                width: 110px;
+                height: 40px;
+                line-height: 40px;
+                border-radius: 5px;
+                border: none;
+                outline: none;
+                color: #C9A938;
+                font-size: 18px;                
+            }
+
+        .backgroupimg {
+            background: white url(/../img/subs.png) no-repeat 16% center;
+            padding-left: 8%;
+        }
+
+        .rw_message {
+            margin-top: 10px;
+            border-top: 2px solid white;
+            border-bottom: 2px solid white;
+            padding: 10px 0px;
+        }
+        /*任务面板样式结束*/
+        /*   切换题目类型样式*/
+
+        .state_type {
+            width: 380px;
+        }
+
+            .state_type ul {
+                position: relative;
+                margin: 0px;
+                padding: 0px;
+                height: 40px;
+                border-bottom: 1px solid #dddddd;
+            }
+
+                .state_type ul li {
+                    display: list-item;
+                    list-style-type: none;
+                    text-decoration: none;
+                }
+
+        .type_sty {
+            cursor: pointer;
+            float: left;
+            color: #666666;
+            border-bottom: none;
+            text-align: center;
+            font-size: 14px;
+            padding: 0px 20px;
+            height: 40px;
+            line-height: 40px;
+        }
+
+            .type_sty:hover {
+                color: #D8C989;
+            }
+
+            .type_sty:active {
+                font-weight: 600;
+                border-bottom: 2px solid #C9A938;
+                color: #D8C989;
+            }
+
+            .type_sty.active {
+                font-weight: 600;
+                border-bottom: 2px solid #C9A938;
+                color: #D8C989;
+            }
+
+
+        .qiehuan_con {
+            clear: both;
+            width: 380px;
+            height: 220px;
+            text-align: left;
+            padding: 8px;
+            overflow: auto;
+            color: #666666;
+            font-size: 15px;
+            line-height: 25px;
+        }
+        /*切换题目样式结束*/
+        /*左侧任务按钮区域开始*/
+
+        .task_back {
+            height: 62px;
+            line-height: 62px;
+        }
+
+            .task_back span {
+                font-weight: bold;
+                color: #16313A;
+                font-size: 23px;
+                padding-left: 28px;
+            }
+
+            .task_back a {
+                color: #C9A938;
+                font-size: 26px;
+                padding-left: 70px;
+            }
+
+                .task_back a:hover {
+                    color: #D8B424;
+                }
+
+        .task_line {
+            float: left;
+            cursor: pointer;
+            width: 210px;
+            height: 137px;
+            /*background-color: white;*/
+            text-align: center;
+            font-size: 18px;
+            font-weight: 600;
+            margin-left: 24px;
+            margin-bottom: 8%;
+            border-radius: 5px;
+        }
+
+            .task_line:hover p {
+                color: #D6BC52;
+            }
+
+            .task_line p {
+                color: #040404;
+            }
+
+        /*.shipin_line {
+            cursor: pointer;
+            text-align: center;
+            width: 210px;
+            height: 155px;
+            margin-left: 40px;
+            margin-bottom: 10px;
+        }*/
+        .taskico {
+            margin-top: 20px;
+            margin-bottom: 15px;
+            width: 49%;
+        }
+
+        .check_ico {
+            margin-top: -22%;
+        }
+
+
+
+        /*弹窗左侧二级菜单样式开始*/
+
+        .tan_map {
+            padding: 5px;
+        }
+
+        .tan_left {
+            float: left;
+            width: 260px;
+            border: 3px solid #446e96;
+            height: 632px;
+            overflow: auto;
+        }
+
+        .part {
+            height: auto;
+            list-style-type: none;
+            padding: 0;
+        }
+
+            .part dd {
+                cursor: pointer;
+                font-size: 16px;
+                height: 40px;
+                line-height: 40px;
+                padding: 0px 10px;
+                color: #446e96;
+                border-bottom: 1px solid #446e96;
+            }
+
+                .part dd:hover {
+                    color: white;
+                    background-color: #446e96;
+                    border-bottom: 1px solid #446e96;
+                }
+
+                .part dd.active {
+                    color: white;
+                    background-color: #446e96;
+                    border-bottom: 1px solid #446e96;
+                }
+
+            .part ul {
+                list-style-type: none;
+                padding: 0px;
+            }
+
+        .part_two li {
+            height: 35px;
+            line-height: 35px;
+            cursor: pointer;
+            color: #676a6c;
+            padding-left: 20px;
+            font-size: 15px;
+            border-bottom: 1px solid #c1c7ca;
+        }
+
+            .part_two li:hover {
+                color: #446e96;
+                background-color: #eff7fb;
+            }
+
+            .part_two li.active {
+                color: #446e96;
+                background-color: #eff7fb;
+            }
+
+        .tan_right {
+            margin-left: 270px;
+        }
+
+        /*弹窗左侧二级菜单样式结束*/
+
+        .sytop_ul {
+            height: 37px;
+            background: url(/img/sytopul.png);
+        }
+
+        .astyle {
+            background: none !important;
+        }
+
+            .astyle:hover {
+                border: 1px solid #186b00;
+            }
+
+        .listy a:hover {
+            background: red;
+        }
+
+        .tuichu {
+            cursor: pointer;
+            display: block;
+            width: 55px;
+            height: 18px;
+            position: absolute;
+            top: 0px;
+            right: 5px;
+        }
+
+        .fhsy {
+            cursor: pointer;
+            display: block;
+            width: 80px;
+            height: 18px;
+            position: absolute;
+            top: 0px;
+            right: 70px;
+        }
+
+        tr.active {
+            background-color: #E6E6E6;
+        }
+
+        #GetList li.active {
+            background-color: #98c6ff;
+        }
+        /*视频弹窗样式开始*/
+
+        .list_map {
+            width: 900px;
+            margin: auto;
+        }
+
+        .list_sousuo {
+            width: 775px;
+            height: 50px;
+            margin: auto;
+            margin-top: 40px;
+        }
+
+        .zt_select {
+            -moz-appearance: none;
+            -webkit-appearance: none;
+            float: left;
+            padding: 0px 5px;
+            height: 50px;
+            width: 220px;
+            border: 1px solid #b8c4ce;
+            color: #34495e;
+            font-size: 17px;
+            background: white url(/img/icodown.png) no-repeat right center;
+        }
+
+            .zt_select:focus {
+                outline: none;
+                border: 1px solid #3ea3f2;
+            }
+
+        .sousuo_input {
+            float: left;
+            height: 50px;
+            width: 380px;
+            color: #000000;
+            font-size: 16px;
+            text-indent: 5px;
+            border: 1px solid #b8c4ce;
+        }
+
+            .sousuo_input:focus {
+                outline: none;
+                border: 1px solid #3ea3f2;
+            }
+
+        .sousuo_btn {
+            cursor: pointer;
+            float: left;
+            height: 50px;
+            width: 175px;
+            border: 1px solid #3ea3f2;
+            background-color: #3ea3f2;
+            color: white;
+            font-size: 18px;
+        }
+
+            .sousuo_btn:hover {
+                background-color: #3c98e0;
+            }
+
+        .list_con {
+            background-color: #ffffff;
+            clear: both;
+            margin-top: 30px;
+            border: 1px solid #f3f3f4;
+        }
+
+            .list_con table {
+                width: 100%;
+                text-align: center;
+                border-collapse: separate;
+                font-size: 16px;
+            }
+
+                .list_con table tr th {
+                    height: 5vmin;
+                    border-bottom: 1px solid #f3f3f4;
+                }
+
+                .list_con table tr td {
+                    height: 6vmin;
+                    border-bottom: 1px solid #f3f3f4;
+                    color: #526068;
+                }
+
+        /*分页开始*/
+
+        .con_bottom {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+            .con_bottom a {
+                cursor: pointer;
+                padding: 6px 10px;
+                border: 1px solid #3ea3f2;
+                color: #3ea3f2;
+                border-radius: 0.3em;
+                margin-left: 5px;
+                text-decoration: none;
+            }
+
+                .con_bottom a:hover {
+                    color: white;
+                    background-color: #3ea3f2;
+                    text-decoration: none;
+                }
+
+            .con_bottom span {
+                margin-left: 5px;
+                color: #3ea3f2;
+            }
+
+            .con_bottom input {
+                border: none;
+                border-bottom: 1px solid #3ea3f2;
+                background: none;
+                height: 30px;
+                width: 50px;
+                border-radius: 5px;
+                text-align: center;
+            }
+
+                .con_bottom input:focus {
+                    outline: none;
+                }
+        /*分页结束*/
+
+        .lookflash {
+            cursor: pointer;
+            width: 44px;
+            height: 40px;
+            border: none;
+            background: url(img/icobofangimg.png) no-repeat center;
+        }
+
+            .lookflash:hover {
+                background: url(img/icobofangimgcheck.png) no-repeat center;
+            }
+
+        .fuceng {
+            border-radius: 15px;
+            height: 75px;
+            line-height: 75px;
+            text-align: center;
+            font-size: 22px;
+            position: absolute;
+            width: 810px;
+            left: 65px;
+            background-color: white;
+            top: 200px;
+            -webkit-box-shadow: 0 0 30px rgba(68, 44, 44, 0.5);
+            -moz-box-shadow: 0 0 30px rgba(68, 44, 44, 0.5);
+            box-shadow: 0px 0px 20px rgba(68, 44, 44, 0.5);
+        }
+
+        .con_bottom a.xz {
+            color: white;
+            background-color: #3ea3f2;
+            text-decoration: none;
+        }
+
+        /*退出框里按钮样式*/
+        .quxiao, .queding {
+            border: none;
+            outline: none;
+            width: 100px;
+            height: 36px;
+            line-height: 36px;
+            border-radius: 6px;
+        }
+
+        .quxiao {
+            background-color: #fff;
+            color: #314770;
+            border: 1px solid #314770;
+        }
+
+        .queding {
+            background-color: #314770;
+            color: #fff;
+        }
+    </style>
+
+    <script src="~/Scripts/Configuration.js?t=231412324"></script>
+    <script src="~/js/ServiceRecord/Index.js?t=20211029"></script>
+    <script src="~/Scripts/students/kaoshiAdd.js?t=324234"></script>
+
+</head>
+
+<body style="background-image: url(/img/beij.png);">
+
+
+
+    <!--原来任务按钮区域-->
+    <!--<div id="winlinks">
+            <ul>
+            </ul>
+        </div>-->
+    <div class="task_back">
+        @*@{
+                string txt = "考试中心——实操题作答";
+            }
+            @if (Model.type == "1")
+            {
+                <a href="javascript:window.close();">← 返回</a>
+            }
+            else
+            {
+                txt = "实训练习——实操题作答";
+                txt = "在线练习中心——实操题作答";
+                txt = "摸底考试 > 实操题";
+                <a href="javascript:history.back(-1);">← 返回</a>
+            }*@
+    </div>
+    <div class="task_back">
+        @*<span>银行新员工培训一@(txt)</span>*@
+    </div>
+    @if (Model.type != "1")
+    {
+        <!--<div class="shipin_line" onclick="choice_shipin()">
+            <img class="taskico" src="~/img/helpshipin.png" />
+
+        </div>-->
+    }
+
+    </div>
+    @*业务区域开始*@
+    <div style="width:520px;margin-top: 200px;margin-left: 150px;">
+        <div class="task_line" onclick="choice_class(this,'核心系统',1);">
+            <img class="taskico" src="~/img/kernels.png" />
+            <p>核心业务系统</p>
+        </div>
+        <div class="task_line" onclick="choice_class(this,'帐户管理系统',7);">
+            <img class="taskico" src="~/img/meshs.png" />
+            <p>帐户管理系统</p>
+        </div>
+        <div style="display:none;">
+            <div class="task_line" onclick="choice_class(this,'网络查控综合平台',7);" style="display:none;">
+                <img class="taskico" src="~/img/meshs.png" />
+                <p>网络查控综合平台</p>
+                <img class="check_ico" style="display: none;" src="~/img/taskright.png" />
+            </div>
+
+            <div class="task_line" onclick="choice_class(this,'支付系统',2);">
+                <img class="taskico" src="~/img/paytwo.png" />
+                <p>二代支付平台</p>
+                <img class="check_ico" style="display: none;" src="~/img/taskright.png" />
+            </div>
+
+            <div class="task_line" onclick="choice_class(this,'财税库银系统',4);">
+                <img class="taskico" src="~/img/finance.png" />
+                <p>财税库银系统</p>
+                <img class="check_ico" style="display: none;" src="~/img/taskright.png" />
+            </div>
+
+            <div class="task_line" onclick="choice_class(this,'行内汇兑系统',3);">
+                <img class="taskico" src="~/img/inlines.png" />
+                <p>行内汇兑系统</p>
+                <img class="check_ico" style="display: none;" src="~/img/taskright.png" />
+            </div>
+
+            <div class="task_line" onclick="choice_class(this,'网上银行管理系统',4);">
+                <img class="taskico" src="~/img/bankings.png" />
+                <p>网上银行系统</p>
+                <img class="check_ico" style="display: none;" src="~/img/taskright.png" />
+            </div>
+        </div>
+        @*<div class="task_line" onclick="choice_class(this,'银行支付清算平台',4);">
+                <img class="taskico" src="~/img/nongxins.png" />
+                <p>银行支付清算平台</p>
+                <img class="check_ico" style="display: none;" src="~/img/taskright.png" />
+            </div>*@
+
+        @*业务区域结束*@
+    </div>
+    <!--原来任务按钮区域结束-->
+
+    <div class="app-widget" style="top: 60px; right: 0px; position: absolute;">
+        <!--右侧任务面板开始-->
+        <div class="panel" style="display: block; margin-right: 5px;">
+            <div class="panel-header" style="width: 380px;">
+                <div class="panel-title">任务名称：<span id="lblTaskName" data-taskid="@Model.TaskId">@Model.Task_Name</span></div>
+                <div class="panel-tool">
+                    <a class="panel-tool-collapse" href="javascript:void(0)"></a>
+                </div>
+                <img src="/../img/down.png" alt="" />
+            </div>
+            <div id="p" class="easyui-panel panel-body" title="" style="width: 380px; height: auto; padding: 0px; background: rgb(250, 250, 250);" data-options="closable:false,
+                collapsible:true,minimizable:false,maximizable:false">
+                <form method="post" action="#" id="form1">
+                    <table width="100%" border="0" cellpadding="0" cellspacing="0">
+                        <tbody>
+                            <tr>
+                                <td align="center">
+                                    <table width="100%" border="0" cellpadding="0" cellspacing="0">
+                                        <tbody>
+                                            <!--任务说明切换区域开始-->
+                                            <tr>
+                                                <td style="background-color: white;">
+                                                    <!--三个切换标签-->
+                                                    <img id="rwImg" src="~/img/wenxintishi.png">
+                                                    <div class="state_type " id="rwTitle" style="display: none;">
+                                                        <ul>
+                                                            <li id="renwu_btn" onclick="renwu_btn();" class="type_sty active">任务说明</li>
+                                                            <li id="tishi_btn" onclick="tishi_btn();" class="type_sty">重要提示</li>
+                                                            <li id="rizhi_btn" onclick="rizhi_btn();" class="type_sty">操作日志</li>
+                                                        </ul>
+                                                    </div>
+                                                    <!--三个切换标签结束-->
+                                                    <div class="qiehuan_con" id="qiehuan_con" style="display: none;">
+                                                        <div id="renwu">
+                                                        </div>
+
+                                                        <div id="tishi" style="display: none;">
+                                                        </div>
+
+                                                        <div id="rizhi" style="display: none;">
+                                                            <table style="width: 100%;">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th style="width: 30%;">
+                                                                            操作时间
+                                                                        </th>
+                                                                        <th style="width: 20%;">
+                                                                            任务
+                                                                        </th>
+                                                                        <th style="width: 50%;">
+                                                                            操作内容
+                                                                        </th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody id="rizhilist"></tbody>
+                                                            </table>
+                                                        </div>
+
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <!--任务说明切换区域结束-->
+                                            <tr id="examBanner">
+                                                <td width="358" valign="top" style="background: #ffffff;">
+                                                    <div id="waitBanner" class="tableContainer" style="font-size: 24px; text-align: center; display: none;">
+                                                        <br>
+                                                        <br>
+                                                        <br>
+                                                        考试即将开始，请耐心等待<br>
+                                                        剩余时间：<span id="endSecond" style="color: red;">0</span>秒
+                                                    </div>
+                                                    <!--任务表格开始-->
+                                                    <div id="tableContainer" class="tableContainer">
+                                                        <table border="0" cellpadding="0" cellspacing="0" class="scrollTable" style="text-align: center; background-color: white;">
+                                                            <thead class="fixedHeader">
+                                                                <tr>
+                                                                    <th style="width: 45px;">序号</th>
+                                                                    <th>任务</th>
+                                                                    <th style="width: 50px;">分值 </th>
+                                                                    <th style="width: 60px;">操作</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody class="scrollContent"></tbody>
+                                                        </table>
+                                                    </div>
+                                                    <!--	任务表格结束-->
+                                                    <div class="rw_bottom_map">
+                                                        <!--倒计时和提交区域开始-->
+                                                        <div id="tableButtom">
+                                                            <!--倒计时区域-->
+                                                            <div class="time_down">
+                                                                @if (Model.type == "1")
+                                                                {
+                                                                    <img src="~/img/icoclock.png" /><span style="font-size: 22px;">计时:</span>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <img src="~/img/icoclock.png" /><span style="font-size: 22px;">计时:</span>
+                                                                }
+                                                                <span id="hoursTime">00</span>:<span id="minTime">00</span>:<span id="serseTime">00</span>
+                                                            </div>
+                                                            <!-- 倒计时返回按钮区域结束-->
+                                                            <div class="bottom_btn">
+                                                                @*@if (Model.type == "1")
+                                                                    {
+                                                                        <button type="button" onclick="javascript:window.close();">返回</button>
+                                                                    }
+                                                                    else
+                                                                    {*@
+
+                                                                <button type="button" class="backgroupimg" onclick="tijiao();">提交</button>
+                                                                <button type="button" onclick="javascript: window.location.href='/StuHome/Index'">返回</button>
+                                                                @*}*@
+                                                            </div>
+                                                            <!--   注释代码原因：考试状态下不存在提交和重置功能-->
+                                                            <!--<table width="340" border="0" align="center" cellpadding="0" cellspacing="0">
+                                                                    <tbody>
+                                                                        <tr>
+                                                                            <td height="37" align="center" valign="bottom">
+                                                                                <a href="#" onclick="SubmitForm()"><img name="btnSave" id="btnSave" text="提交" src="~/img/ent.png" style="height: 30px; width: 90px;"></a>
+                                                                                <a style="display:none" href="#" onclick="ClearForm()"><img name="btnSave" id="btnSave" text="初始化" src="~/img/clear.png" style="height: 30px; width: 90px;"></a>
+                                                                            </td>
+                                                                        </tr>
+                                                                    </tbody>
+                                                                </table>-->
+                                                        </div>
+                                                        <!--倒计时和返回按钮区域结束-->
+                                                        <!--信息提示区域-->
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </form>
+            </div>
+        </div>
+        <!--右侧任务面板结束-->
+
+        <div id="window"></div>
+    </div>
+
+    <input type="hidden" id="planId" value="@(Model.planId)" />
+    <input type="hidden" id="ExamId" value="@(Model.ExamId)" />
+    <input type="hidden" id="Optype" value="@(Model.Optype)" />
+    <input type="hidden" id="type" value="@(Model.type)" />
+    <input type="hidden" id="TaskId" value="@(Model.TaskId)" />
+    <input type="hidden" id="DepartmentId" value="@(Model.DepartmentId)" />
+    <input type="hidden" id="Teller_No" value="@(Model.Teller_No)" />
+    <input type="hidden" id="UserId" value="@(Model.UserId)" />
+    <input type="hidden" id="SubBankId" value="@(Model.SubBankId)" />
+    <input type="hidden" id="Plan_Name" value="@(Model.Plan_Name)" />
+    <input type="hidden" id="tMono" value="@(Model.tMono)" />
+
+
+    <input type="hidden" id="Isallow" value="@(Model.Isallow)" />
+    <input type="hidden" id="CurrentTime" value="@(Model.CurrentTime)" />
+    <input type="hidden" id="TestStartDateTime" value="@(Model.TestStartDateTime)" />
+    <input type="hidden" id="AddStartDateTime" value="@(Model.AddStartDateTime)" />
+    <input type="hidden" id="startTestTime" value="@(Model.startTestTime)" />
+    <input type="hidden" id="StartTime" value="@(Model.StartTime)" />
+    <input type="hidden" id="EndTime" value="@(Model.EndTime)" />
+    <input type="hidden" id="Second" value="@(Model.Second)" />
+    <input type="hidden" id="totalResult" value="@(Model.totalResult)" />
+    <input type="hidden" id="LinkId" value="@(Model.LinkId)" />
+    <input type="hidden" id="Satisfaction" value="@(Model.Satisfaction)" />
+    <input type="hidden" id="CustomerId" value="@(Model.CustomerId)" />
+
+    <input type="hidden" id="Time" value="@ViewData["Time"]" />
+    <div id="divtishi" style="display: none;">
+        <img style="position: fixed; top: -70px; left: 175px;" src="~/img/popUp.png" />
+        <div style="font-size: 22px; margin-top: 90px; margin-bottom: 50px; text-align: center;" id="divtitle">提交考试将不能再做答，确认提交？</div>
+        <div class="text-center">
+            <button class="quxiao" onclick="qx()" style="margin-right: 50px; font-size: 18px;">取消</button>
+            <button class="queding" onclick="Kqueding()" style="font-size: 18px;">确定</button>
+        </div>
+    </div>
+    <div id="divtishis" style="display: none;">
+        <img style="position: fixed; top: -70px; left: 175px;" src="~/img/popUpReform.png" />
+        <div style="font-size: 22px; margin-top: 90px; margin-bottom: 50px; text-align: center;" id="divtitles">提交考试将不能再做答，确认提交？</div>
+        <div class="text-center">
+            <button class="quxiao" onclick="qx()" style="margin-right: 50px; font-size: 18px;">取消</button>
+            <button class="queding" onclick="Zqueding()" style="font-size: 18px; ">确定</button>
+        </div>
+    </div>
+    <div id="zongtijiao" style="display: none;">
+        <img style="position: fixed; top: -70px; left: 175px;" src="~/img/popUpOk.png" />
+        <div style="font-size: 22px; margin-top: 90px; margin-bottom: 50px; text-align: center;" id="zongtijiaos">提交考试将不能再做答，确认提交？</div>
+        <div class="text-center">
+            <button class="quxiao" onclick="qx()" style="margin-right: 50px; font-size: 18px;">取消</button>
+            <button class="queding" onclick="Tqueding()" style="font-size: 18px;">确定</button>
+        </div>
+    </div>
+
+    <div id="choice_shipin" style="display: none;">
+        <div class="list_map">
+            <!--浮层信息提示-->
+
+            <div class="fuceng" id="fuceng">
+                <span>该题目属于核心系统业务-个人开卡业务，业务代码00001，请观看该业务视频.</span>
+                <img onclick="close_tishi();" style="float: right; margin-top: 20px; cursor: pointer; margin-right: 5px;" src="~/img/closetishi.png" />
+            </div>
+
+            <!--筛选区域开始-->
+            <div class="list_sousuo">
+                <select class="zt_select" id="select_Type">
+                    <option value="-1">请选择</option>
+                    <option value="核心系统">核心业务系统</option>
+                    <option value="支付系统">支付系统</option>
+                    <option value="行内汇兑系统">行内汇兑系统</option>
+                    <option value="银行支付清算平台">银行支付清算平台</option>
+                    <option value="财税库银系统">财税库银系统</option>
+                    <option value="网上银行管理系统">网上银行管理系统</option>
+                </select>
+                <input type="text" class="sousuo_input" name="Keyword" id="Keyword" value="" />
+                <button class="sousuo_btn" onclick="GetCoursewareList(1)">搜索</button>
+            </div>
+
+            <!--表格区域开始-->
+            <div class="list_con">
+                <table border="0" cellspacing="0" cellpadding="0">
+                    <thead>
+                        <tr>
+                            <th width="100" style="text-align: center">序号</th>
+                            <th style="text-align: center">所属系统</th>
+                            <th style="text-align: center">业务代码</th>
+                            <th width="120" style="text-align: center">业务名称</th>
+                            <th width="160" style="text-align: center">观看视频</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tablelist"></tbody>
+                </table>
+            </div>
+            <!--分页开始-->
+            <div class="con_bottom" id="PaginatorLibrarys">
+            </div>
+
+        </div>
+
+    </div>
+
+    <input type="hidden" id="NodeUrl" value="@ViewBag.NodeUrl" />
+    <input type="hidden" id="TablesUrl" value="@ViewBag.Tables_url" />
+
+</body>
+<!--业务弹窗区域-->
+<!--业务弹窗区域-->
+
+
+</html>
+<script>
+    /*****======================== 弹框的图片start ========================*****/
+
+    var width = window.screen.width;   //获取屏幕宽度
+    var height = window.screen.height;   //获取屏幕高度
+    //因为IE8不支持document.getElementsByClassName()方法，可用jq代替
+    var imgStyle = $(".img_center");
+
+    if (isIE()) {
+        document.body.style.zoom = 1;
+        //为数组循环添加参数
+        for (var i = 0; i < imgStyle.length; i++) {
+            if (width >= 1680 && width <= 1920) {
+                imgStyle[i].style.top = "30%";
+                imgStyle[i].style.left = "46%";
+            }
+            else if (width >= 1600) {
+                imgStyle[i].style.top = "28%";
+                imgStyle[i].style.left = "48%";
+                if (height >= 1024) {
+                    imgStyle[i].style.top = "30%";
+                }
+            }
+            else if (width >= 1440) {
+                imgStyle[i].style.top = "28%";
+                imgStyle[i].style.left = "49%";
+            }
+            else if (width >= 1366) {
+                imgStyle[i].style.top = "25%";
+                imgStyle[i].style.left = "50%";
+            }
+        }
+    }
+    else {
+        if (width <= 1366) {
+            $(".tan_left").css("height", "552px");		//1366下  iframe出现搜索框
+            $(".shipin_line").css("zoom", "0.82");		//适当缩小   解决控制body的zoom则会引起iframe框上移不下来的问题
+            $(".task_back").css("zoom", "0.82");
+            $(".box_task").css("zoom", "0.82");
+            $(".app-widget").css("zoom", "0.82");
+        }
+        else if (width <= 1440) {
+            $(".shipin_line").css("zoom", "0.84");
+            $(".task_back").css("zoom", "0.84");
+            $(".box_task").css("zoom", "0.84");
+            $(".app-widget").css("zoom", "0.84");
+        } else if (width <= 1660) {
+            $(".shipin_line").css("zoom", "0.9");
+            $(".task_back").css("zoom", "0.9");
+            $(".box_task").css("zoom", "0.9");
+            $(".app-widget").css("zoom", "0.9");
+        }
+    }
+
+    function isIE() { //ie?
+        if (!!window.ActiveXObject || "ActiveXObject" in window) {
+            return true;
+        }
+        else if ((navigator.userAgent.indexOf('MSIE') >= 0) && (navigator.userAgent.indexOf('Opera') < 0)) {
+            return true;
+        }
+        else if (navigator.appName == "Microsoft Internet Explorer" && navigator.appVersion.match(/8./i) == "8.") {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    /*****======================== 弹框的图片END ========================*****/
+    //兼容IE8
+    if (navigator.appName == "Microsoft Internet Explorer" && navigator.appVersion.match(/8./i) == "8.") {
+        nums();
+    }
+    //兼容IE9,10
+    if ((navigator.userAgent.indexOf('MSIE') >= 0) && (navigator.userAgent.indexOf('Opera') < 0)) {
+        nums();
+    }
+    //兼容IE11
+    if (!!window.ActiveXObject || "ActiveXObject" in window) {
+        nums();
+    }
+    //设置样式
+    function nums() {
+        $(".panel").css("margin-right", "20px");
+        if (screen.width >= 1366 && screen.width <= 1440) {
+            $(".qiehuan_con").css("height", "180px");
+            $(".scrollContent").css("height", "206px");
+            $(".time_down").css({
+                "height": "70px",
+                "line-height": "70px"
+            });
+            if (screen.width == 1366) {
+                $(".app-widget").css("top", "30px");
+            }
+        }
+    }
+    /*****======================== IE9下右侧任务面板 start ========================*****/
+    //	封一个选择器
+    function $$(res) {
+        return document.getElementsByClassName(res)[0].style;
+    }
+    var tablHeight = document.getElementById("tableContainer").style;
+    //只在ie9下的样式
+    function numStyle() {
+        tablHeight.overflow = "auto";				//溢出出现滚动条
+        tablHeight.marginTop = "34px";
+        //任务表格结束区域
+        $$("rw_bottom_map").marginTop = "0";
+        $$("time_down").textAlign = "left";
+        //任务表格开始中thead 样式
+        $$("fixedHeader").position = "absolute";
+        $$("fixedHeader").width = "385px";
+        $$("fixedHeader").marginTop = "-33px";
+
+        //任务表格开始thead中th共有样式
+        $$("headerFirst").width = "60px";
+        $$("headerThree").width = "53px";
+        $$("headerFour").width = "70px";
+        $$("headerThree").paddingLeft = "12px";
+
+        /***============== 判断分辨率不同加载不同高度 start ==============***/
+        if (window.screen.width >= 1920) {
+            tablHeight.height = "270px";
+            //任务表格开始thead中th的样式
+            $$("headerSeconds").width = "220px";
+            $$("headerThree").textAlign = "left";
+            $$("headerFour").textAlign = "left";
+            $$("headerFour").paddingLeft = "15px";
+
+        } else if (window.screen.width >= 1680) {
+            tablHeight.height = "240px";
+            //任务表格开始thead中th的样式
+            $$("headerSeconds").width = "154px";
+            $$("headerFour").paddingRight = "15px";
+
+        } else if (window.screen.width >= 1600) {
+            tablHeight.height = "240px";
+            //任务表格开始thead中th的样式
+            $$("headerSeconds").width = "137px";
+            $$("headerFour").textAlign = "left";
+            $$("headerFour").paddingLeft = "15px";
+
+        } else if (window.screen.width >= 1440) {
+            tablHeight.height = "240px";
+            //任务表格开始thead中th的样式
+            $$("headerSeconds").width = "104px";
+            $$("headerFour").paddingLeft = "15px";
+
+        } else if (window.screen.width >= 1366) {
+            tablHeight.height = "225px";
+            //任务表格开始thead中th的样式
+            $$("headerSeconds").width = "88px";
+        }
+        /***============== 判断分辨率不同加载不同高度 END ==============***/
+    }
+    //单独判断ie9
+    if (navigator.appName == "Microsoft Internet Explorer" && navigator.appVersion.match(/9./i) == "9.") {
+        numStyle();
+        document.getElementsByTagName("html")[0].style.overflowX = "hidden";
+    }
+
+    /*****======================== IE9下右侧任务面板 END ========================*****/
+</script>
+
+<script>
+    $('body').on('paste', e => { e.preventDefault() })
+    $("#form1").attr("autocomplete", "off");
+    document.ondragstart = function () { return false; }
+    javascript: window.history.forward(1);
+</script>

@@ -1,0 +1,151 @@
+﻿@{ ViewBag.Title = "Form_" + ViewBag.FormId;
+    Layout = "_FormTemplate.cshtml"; }
+<div class="banktop">
+    <div style="width: 100%;height: 40px;background-color: #f2f2f2;display: flex;align-items: center;border-bottom: #cccccc solid 1px">        
+        <span class="toolbar-title-img">
+            @ViewBag.FormId-@ViewBag.TMName
+        </span>
+    </div>
+    
+</div>
+<div class="con-map2">
+    @RenderPage("~/Areas/Admin/Views/Ads_Form/Form_" + ViewBag.FormId + ".cshtml")
+</div>
+
+@{
+    if (ViewBag.FormId == "200029")
+    {
+        @section btnList{
+            <button onclick="goPage('200044')">签约</button>
+            <button>升级</button>
+            <button>注销</button>
+        }
+    }
+    if (ViewBag.FormId == "200007")
+    {
+        @section btnList{
+            <button type="button" class="btn btn-primary btn-sm" onclick="goPage('200051')">新增</button>
+            <button type="button" class="btn btn-primary btn-sm" onclick="goPage('200051')">修改</button>
+            <button type="button" class="btn btn-primary btn-sm" onclick="doDel()">删除</button>
+        }
+    }
+    if (ViewBag.FormId == "200016")
+    {
+        @section btnList{
+            <button type="button" onclick="goPage('200050')">变更Ukey</button>
+        }
+    }
+    if (ViewBag.FormId == "200017")
+    {
+        @section btnList{
+            <button type="button" onclick="goPage('200013')">新增</button>
+            <button type="button" onclick="goPage('200013')">修改</button>
+            <button type="button" onclick="doDel()">删除</button>
+        }
+    }
+    if (ViewBag.FormId == "200020")
+    {
+        @section btnList{
+            <button type="button" onclick="goPage('200019')">电票签约</button>
+        }
+    }
+    if (ViewBag.FormId == "200026")
+    {
+        @section btnList{
+            <button type="button" onclick="doSearch()">查询</button>
+        }
+    }
+    if (ViewBag.FormId == "200046")
+    {
+        @section btnList{
+            <button type="button">添加其他帐号</button>
+            <button type="button">变更主帐号</button>
+            <button type="button">升级</button>
+            <button type="button">添加</button>
+            <button type="button" onclick="javascript:alert('删除成功')">删除</button>
+        }
+    }
+    if (ViewBag.FormId == "200057")
+    {
+        <script>
+            $(function () {
+                $("button").each(function () {
+                    var txt = $(this).text();
+                    if (txt == "提交") {
+                        $(this).hide();
+                    }
+                });
+            })
+        </script>
+    }
+    if (ViewBag.FormId == "200002") { 
+        <script>
+            function getQueryString(name) {
+                var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+                var r = window.location.search.substr(1).match(reg);
+                if (r != null) return unescape(r[2]); return null;
+            }
+            var parentPage = getQueryString("parentPage");
+            
+            if (parentPage == "200003") {
+                changeProductName();
+            }
+        </script>
+    }
+    if (ViewBag.FormId == "200022" || ViewBag.FormId == "200014" || ViewBag.FormId == "200021")
+    {
+        @section MyScript{
+            <script>
+                var currentIndex = 1;
+                if (@ViewBag.FormId == "200022") { currentIndex = 1; }
+                if (@ViewBag.FormId == "200021") { currentIndex = 2; }
+                if (@ViewBag.FormId == "200014") { currentIndex = 3; }
+                $("#step_container").loadStep({
+                    current: currentIndex,
+                    steps: [{
+                        title: "销户开始",
+                        content: "销户开始"
+                    }, {
+                        title: "申请书打印",
+                        content: "申请书打印"
+                    }, {
+                        title: "账户结息",
+                        content: "账户结息"
+                    }, {
+                        title: "统一解约",
+                        content: "统一解约"
+                    }, {
+                        title: "账户结清",
+                        content: "账户结清"
+                    }, {
+                        title: "账户销户",
+                        content: "账户销户"
+                    }, {
+                        title: "销户完成",
+                        content: "销户完成"
+                    }]
+                });
+                function skip(step) {
+                    $("#step_container").setStep(step);
+                }
+            </script>
+        }
+    }
+
+
+    if (ViewBag.FormId == "200015"
+        || ViewBag.FormId == "200031"
+        || ViewBag.FormId == "200057"
+        || ViewBag.FormId == "200027")
+    {
+        @section doSubmit{
+            <script>
+            function doSubmit(){
+                var toformId = '@ViewBag.ToFromId';
+                toformId = toformId.replace('ToFormNo', '&ToFormNo');
+                goPage(toformId,afterGoPage())
+            }
+            </script>
+        }
+    }
+}

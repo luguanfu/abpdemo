@@ -1,0 +1,180 @@
+.wrapper{
+	width: 1200px;
+	margin: 0 auto;
+	margin-bottom: 84px;
+}
+
+
+/********具体的内容********/
+.wrapper_web,
+.wrapper_video{
+	width: 1000px;
+	margin: 0 auto;
+	margin-top: 10px;
+}
+
+
+/*****展示网页*****/
+.web_pagefile{
+	width: 100%;
+	height: 556px;
+	margin-top: 18px;
+	background: url(../img/z_bg_default.png) no-repeat;
+	background-size: 100% 100%;
+	text-align: center;
+	color: #fff;
+}
+
+.pagefile_ppt{
+	font-size: 22px;
+	letter-spacing: 4px;
+	padding-top: 328px;
+}
+
+.web_page{
+	overflow: hidden;	
+	font-size: 17px;
+	height: 70px;
+	padding-top: 14px;
+	border: 1px solid #DDDDDD;
+}
+
+.page_prev,
+.page_down{
+	float: left;
+	border: none;
+	outline: none;
+	cursor: pointer;
+	width: 82px;
+	height: 40px;
+	color: #999999;
+	font-size: 16px;
+	background-color: #fff;
+	border: 1px solid #E6E6E6;
+	border-radius: 4px;
+}
+
+.page_prev:hover,
+.page_down:hover{
+	color: #fff;
+	background-color: #CF9354;
+}
+
+.page_prev{
+	margin-left: 98px;
+	margin-right: 36px;
+}
+
+.page_down{
+	margin-left: 34px;
+	margin-right: 54px;
+}
+
+.page_go{
+	float: left;
+	border: none;
+	outline: none;
+	cursor: pointer;
+	width: 76px;
+	height: 40px;
+	color: #fff;
+	font-size: 20px;
+	background-color: #D9A976;
+	border-radius: 4px;
+	letter-spacing: 2px;
+	margin-left: 36px;
+}
+
+.page_go:hover{
+	background-color: #CF9354;
+}
+
+.page_now,
+.page_oll{
+	float: left;
+	letter-spacing: 2px;
+	margin-top: 6px;
+}
+
+.page_now{
+	color: #333333;
+}
+
+.page_oll{
+	color: #999999;
+}
+
+.page_to{
+	color: #999999;
+	float: left;
+	letter-spacing: 2px;
+}
+
+.page_to input{
+	width: 76px;
+	height: 40px;
+	border: 1px solid #EBEBEB;
+	border-radius: 4px;
+	margin: 0 10px;
+	color: #333333;
+	text-align: center;
+}
+
+.page_to input:focus{
+	border: 1px solid #CF9354;
+}
+
+
+
+/*****播放视频的名字*****/
+.video_show{
+	overflow: hidden;
+	margin-bottom: 16px;
+}
+.ke_name{
+	font-size: 19px;
+	font-weight: 600;
+	color: #333333;
+	padding-left: 12px;
+	border-left: 6px solid #CF9354;
+}
+.video_show button{
+	border: none;
+	outline: none;
+	cursor: pointer;
+	width: 118px;
+	height: 38px;
+	color: #fff;
+	font-size: 16px;
+	background-color: #CF9354;
+	border-radius: 4px;
+	margin-left: 16px;
+}
+.video_show button:hover{
+	background-color: #B27639;
+}
+
+
+/*****准备播放*****/
+.msg_play{
+	width: 100%;
+	height: 556px;
+	background: url(../img/z_bg_default.png) no-repeat;
+	background-size: 100% 100%;
+	text-align: center;
+	color: #fff;
+}
+.msg_play img{
+	cursor: pointer;
+	margin-top: 190px;
+}
+
+
+/*****视频*****/
+.msg_video{
+	border: 1px solid #E4E4E4;
+}
+.msg_video video{
+	width: 100%;
+	height: 562px;
+}
